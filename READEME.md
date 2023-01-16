@@ -14,4 +14,6 @@
 
 - 최동호
 
-gdgdgd
+### gitmoji 컨벤션
+
+dev
