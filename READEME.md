@@ -17,3 +17,7 @@
 ### gitmoji 컨벤션
 
 dev
+
+GIT TEST
+
+GIT TEST2
