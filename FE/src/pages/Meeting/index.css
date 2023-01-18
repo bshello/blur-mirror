@@ -1,0 +1,16 @@
+.MCenterDiv {
+  position: absolute;
+  width: 327.75px;
+  height: 465.75px;
+  left: 555.75px;
+  top: 148.5px;
+}
+.MCenterDiv .MCenterImgDiv {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 14.25px;
+  top: 0px;
+  background-image: url(../../assets/images/MPCenterImg.png);
+  background-size: 100% 100%;
+}/*# sourceMappingURL=index.css.map */
