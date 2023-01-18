@@ -3,89 +3,83 @@
   position: absolute;
   right: 65px;
   left: 65px;
-  top: 157.78px;
+  top: 157px;
   bottom: 80px;
   background: rgba(255, 255, 255, 0.19);
   border: 0.751331px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0px 3.00532px 3.00532px rgba(0, 0, 0, 0.25);
-  border-radius: 30.0532px;
+  border-radius: 30px;
 }
 .SubFrame .SubLeftDiv {
   position: absolute;
-  width: 530.44px;
-  height: 427.51px;
-  left: 10%;
-  top: 15%;
+  width: 530px;
+  height: 400px;
+  left: 5%;
+  bottom: 10%;
 }
 .SubFrame .SubLeftDiv .SubLeftTitle {
   position: absolute;
-  width: 369px;
-  height: 182px;
-  left: 70px;
-  top: 37.57px;
-  font-family: "Happy Monkey";
+  width: 370px;
+  height: 180px;
+  left: 0px;
+  top: 35px;
   font-style: normal;
   font-weight: 400;
-  font-size: 75.1331px;
-  line-height: 91px;
-  color: #FFFFFF;
+  font-size: 75px;
+  line-height: 90px;
+  text-align: left;
+  color: #ffffff;
 }
 .SubFrame .SubLeftDiv .SubLeftDesc {
-  /* SubLeftDesc */
   position: absolute;
   width: 376px;
   height: 36px;
-  left: 70px;
-  top: 222.75px;
-  font-family: "Happy Monkey";
+  left: 0px;
+  top: 220px;
   font-style: normal;
   font-weight: 400;
-  font-size: 30.0532px;
+  font-size: 30px;
   line-height: 36px;
-  display: flex;
-  align-items: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .SubFrame .SubLeftDiv .CommBoxFrame1 {
   position: absolute;
-  width: 525.93px;
-  height: 90.16px;
+  width: 525px;
+  height: 90px;
   left: 0px;
-  top: 337.35px;
-  background: #50A1A3;
-  box-shadow: 0px 3.00532px 3.00532px rgba(0, 0, 0, 0.25);
-  border-radius: 15.0266px;
+  bottom: 0px;
+  background: #50a1a3;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
 }
 .SubFrame .SubLeftDiv .CommBoxFrame1 .CommBoxFrameStart {
   position: absolute;
-  width: 109px;
+  width: 110px;
   height: 50px;
-  left: 208.87px;
-  top: 20.29px;
-  font-family: "Happy Monkey";
+  left: 208px;
+  top: 20px;
   font-style: normal;
   font-weight: 400;
-  font-size: 41.3232px;
+  font-size: 41px;
   line-height: 50px;
-  /* identical to box height */
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .SubFrame .SubRightDiv {
   position: absolute;
-  width: 563.5px;
-  height: 428.26px;
-  right: 10%;
-  top: 17%;
+  width: 530px;
+  height: 400px;
+  right: 5%;
+  bottom: 10%;
   background: rgba(250, 234, 234, 0.2);
-  border-radius: 30.0532px;
+  border-radius: 30px;
 }
 .SubFrame .SubRightDiv .SubRightImg {
   position: absolute;
-  width: 489.87px;
-  height: 372.66px;
-  right: 36px;
-  top: 27.8px;
+  left: 25px;
+  right: 25px;
+  top: 25px;
+  bottom: 25px;
   background-image: url(../../assets/images/SubRightImg.jpg);
   background-size: 100% 100%;
-  border-radius: 30.0532px;
+  border-radius: 30px;
 }/*# sourceMappingURL=index.css.map */
