@@ -12,7 +12,7 @@ function Main() {
 			</div>
 
 			<div className="SubRightDiv">
-				{/* <div className="SubRightImg"></div> */}
+				<div className="SubRightImg"></div>
 			</div>
 
 		</div>
