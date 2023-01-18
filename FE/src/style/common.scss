@@ -1,0 +1,33 @@
+// 공통 변수 설정
+
+$_mainBgColor: 00;
+$_mainColor: #000;
+$_mainFont: "";
+$_mainWidth: 00;
+$_mainHeight: 00;
+
+// mixin & include
+
+/* 
+  mixin: image
+  arg: name, format
+  desc: 인자(이미지이름, 파일포맷)받아 이미지 설정
+*/
+@mixin image($name, $path: "../assets/images/", $format) {
+  background-image: url("#{$path}#{$name}.#{$format}");
+  background-size: 100% 100%;
+}
+
+/* 
+  mixin: circle
+  arg: size
+  desc: 인자(size)를 받아 원을 만듦
+*/
+@mixin circle($size, $radius: 0) {
+  width: $size;
+  height: $size;
+
+  @if radius != 0 {
+    border-radius: $radius;
+  }
+}

@@ -1,0 +1,80 @@
+.CommNavDiv {
+  position: absolute;
+  width: 1402.5px;
+  height: 82.5px;
+  left: 18px;
+  top: 22.5px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  font-family: "Indie Flower";
+  color: #50a1a3;
+
+  .CommNavLogo {
+    position: absolute;
+    width: 120px;
+    height: 66px;
+    left: 37.5px;
+    top: 8.25px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 66px;
+
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+  }
+
+  .CommNavBtnsDiv {
+    position: absolute;
+    width: 300px;
+    height: 43.5px;
+    left: 1045.5px;
+    top: 19.5px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 44px;
+
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+
+    color: #50a1a3;
+
+    .CommNavBtnChat {
+      position: absolute;
+      width: 57px;
+      height: 44px;
+      left: 0px;
+      top: -1px;
+    }
+
+    .CommNavBtnAbout {
+      position: absolute;
+      width: 85px;
+      height: 44px;
+      left: 94.5px;
+      top: -1px;
+    }
+
+    .CommNavBtnMyInfo {
+      position: absolute;
+      width: 83px;
+      height: 44px;
+      left: 216.75px;
+      top: -1px;
+    }
+
+    .CommNavBtnSignIn {
+      position: absolute;
+      width: 110px;
+      height: 58px;
+      left: 289px;
+      top: 0px;
+    }
+  }
+}
