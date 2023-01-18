@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap");
+
 .App {
   text-align: center;
   min-height: 100vh;
@@ -5,9 +7,5 @@
   /* @include mixin.image(bg, jpg); */
   background-image: url(../src/assets/images/bg1.png);
   background-size: 100% 100%;
+  font-family: "Happy Monkey", cursive;
 }
-
-/* @font-face {
-  font-family: "Happy Monkey";
-  src: url("./fonts/HappyMonkey.ttf");
-} */

@@ -1,13 +1,12 @@
 .CommNavDiv {
   position: absolute;
-  width: 1402.5px;
   height: 82.5px;
-  left: 18px;
-  top: 22.5px;
+  left: 65px;
+  right: 65px;
+  top: 40px;
 
   background: rgba(255, 255, 255, 0.2);
   border-radius: 30px;
-  font-family: "Indie Flower";
   color: #50a1a3;
 
   .CommNavLogo {
@@ -21,26 +20,21 @@
     font-weight: 400;
     font-size: 45px;
     line-height: 66px;
-
-    display: flex;
-    align-items: center;
-    text-transform: capitalize;
+    text-align: center;
   }
 
   .CommNavBtnsDiv {
     position: absolute;
     width: 300px;
     height: 43.5px;
-    left: 1045.5px;
+    right: 60px;
     top: 19.5px;
 
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
-    line-height: 44px;
+    line-height: 43.5px;
 
-    display: flex;
-    align-items: center;
     text-transform: capitalize;
 
     color: #50a1a3;
