@@ -20,7 +20,7 @@ function Meeting() {
         <div className="MMyCamDiv"></div>
       </div>
       <div className="MStopBtnDiv">
-        <span className="MStopBtnText">Stop</span>
+        <span className="MStopBtnText"> Stop</span>
       </div>
     </div>
   );

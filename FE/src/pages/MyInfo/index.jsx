@@ -102,9 +102,7 @@ function MyInfo() {
       </span>
       <div className="MIProfileIntroducing">
         <span className="MIProfileIntroducingTitle">Introducing</span>
-        <span className="MIProfileIntroducingText">
-          안녕하세요. 스물 여섯 김블리입니다!
-        </span>
+        <span className="MIProfileIntroducingText">안녕하세요. 스물 여섯 김블리입니다!</span>
       </div>
       <span className="MIProfileLogo">Blur:)</span>
 

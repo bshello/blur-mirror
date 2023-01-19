@@ -19,3 +19,11 @@
   color: #fff;
   text-shadow: none;
 }
+
+button:active {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
