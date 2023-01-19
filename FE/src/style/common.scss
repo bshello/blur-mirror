@@ -9,7 +9,28 @@ $_mainHeight: 00;
 // mixin & include
 
 /* 
-  mixin: image
+  mixin name: sf
+  arg: x
+  desc: SubFrame css
+*/
+@mixin sf {
+  box-sizing: border-box;
+
+  position: absolute;
+  right: 65px;
+  left: 65px;
+  top: 157px;
+  bottom: 80px;
+
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.751331px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 3.00532px 3.00532px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  @content;
+}
+
+/* 
+  mixin name: image
   arg: name, format
   desc: 인자(이미지이름, 파일포맷)받아 이미지 설정
 */
@@ -19,7 +40,7 @@ $_mainHeight: 00;
 }
 
 /* 
-  mixin: circle
+  mixin name: circle
   arg: size
   desc: 인자(size)를 받아 원을 만듦
 */

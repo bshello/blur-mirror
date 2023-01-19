@@ -13,3 +13,9 @@
   font-family: "Happy Monkey", "BMHannaAir";
   /* font-family: "BMHannaAir"; */
 }
+
+::selection {
+  background: #50a1a3;
+  color: #fff;
+  text-shadow: none;
+}

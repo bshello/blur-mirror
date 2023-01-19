@@ -1,0 +1,173 @@
+@charset "UTF-8";
+/* 
+  mixin: image
+  arg: name, format
+  desc: 인자(이미지이름, 파일포맷)받아 이미지 설정
+*/
+/* 
+  mixin: circle
+  arg: size
+  desc: 인자(size)를 받아 원을 만듦
+*/
+.SubFrame {
+  box-sizing: border-box;
+  position: absolute;
+  right: 65px;
+  left: 65px;
+  top: 157px;
+  bottom: 80px;
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.751331px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 3.00532px 3.00532px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
+@media (max-height: 799px) {
+  .SubFrame .SubLeftDiv {
+    position: absolute;
+    width: 530px;
+    height: 400px;
+    left: 5%;
+    bottom: 10%;
+  }
+  .SubFrame .SubLeftDiv .SubLeftTitle {
+    position: absolute;
+    width: 370px;
+    height: 180px;
+    left: 0px;
+    top: 35px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 75px;
+    line-height: 90px;
+    text-align: left;
+    color: #ffffff;
+  }
+  .SubFrame .SubLeftDiv .SubLeftDesc {
+    position: absolute;
+    width: 376px;
+    height: 36px;
+    left: 0px;
+    top: 220px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    color: #ffffff;
+  }
+  .SubFrame .SubLeftDiv .CommBoxFrame1 {
+    position: absolute;
+    width: 525px;
+    height: 90px;
+    left: 0px;
+    bottom: 0px;
+    background: #50a1a3;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+  }
+  .SubFrame .SubLeftDiv .CommBoxFrame1 .CommBoxFrameStart {
+    position: absolute;
+    width: 110px;
+    height: 50px;
+    left: 208px;
+    top: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 41px;
+    line-height: 50px;
+    color: #ffffff;
+  }
+  .SubFrame .SubRightDiv {
+    position: absolute;
+    width: 530px;
+    height: 400px;
+    right: 5%;
+    bottom: 10%;
+    background: rgba(250, 234, 234, 0.2);
+    border-radius: 30px;
+  }
+  .SubFrame .SubRightDiv .SubRightImg {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    top: 25px;
+    bottom: 25px;
+    background-image: url(../../assets/images/SubRightImg.jpg);
+    background-size: 100% 100%;
+    border-radius: 30px;
+  }
+}
+@media (min-height: 800px) {
+  .SubFrame .SubLeftDiv {
+    position: absolute;
+    width: 530px;
+    left: 5%;
+    top: 10%;
+    bottom: 10%;
+  }
+  .SubFrame .SubLeftDiv .SubLeftTitle {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    left: 0px;
+    top: 50px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 120px;
+    text-align: left;
+    color: #ffffff;
+  }
+  .SubFrame .SubLeftDiv .SubLeftDesc {
+    position: absolute;
+    width: 376px;
+    height: 36px;
+    left: 0px;
+    top: 300px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    color: #ffffff;
+  }
+  .SubFrame .SubLeftDiv .CommBoxFrame1 {
+    position: absolute;
+    width: 525px;
+    height: 90px;
+    left: 0px;
+    bottom: 0px;
+    background: #50a1a3;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+  }
+  .SubFrame .SubLeftDiv .CommBoxFrame1 .CommBoxFrameStart {
+    position: absolute;
+    width: 110px;
+    height: 50px;
+    left: 208px;
+    top: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 41px;
+    line-height: 50px;
+    color: #ffffff;
+  }
+  .SubFrame .SubRightDiv {
+    position: absolute;
+    width: 530px;
+    right: 5%;
+    top: 10%;
+    bottom: 10%;
+    background: rgba(250, 234, 234, 0.2);
+    border-radius: 30px;
+  }
+  .SubFrame .SubRightDiv .SubRightImg {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    top: 25px;
+    bottom: 25px;
+    background-image: url(../../assets/images/SubRightImg.jpg);
+    background-size: 100% 100%;
+    border-radius: 30px;
+  }
+}/*# sourceMappingURL=index.css.map */
