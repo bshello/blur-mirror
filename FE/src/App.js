@@ -5,6 +5,7 @@ import "./App.css";
 
 import Start from "./pages/Start";
 import Meeting from "./pages/Meeting";
+import MyInfo from "./pages/MyInfo";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Start />}></Route>
           <Route path="/meeting" element={<Meeting />}></Route>
+          <Route path="/MyInfo" element={<MyInfo />}></Route>
         </Routes>
       </Router>
     </div>
