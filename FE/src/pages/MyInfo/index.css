@@ -1,3 +1,19 @@
+@charset "UTF-8";
+/* 
+  mixin name: sf
+  arg: x
+  desc: SubFrame css
+*/
+/* 
+  mixin name: image
+  arg: name, format
+  desc: 인자(이미지이름, 파일포맷)받아 이미지 설정
+*/
+/* 
+  mixin name: circle
+  arg: size
+  desc: 인자(size)를 받아 원을 만듦
+*/
 .MIProfileImgDiv {
   position: absolute;
   width: 500px;
@@ -233,17 +249,17 @@
   position: absolute;
   width: 155.63px;
   height: 58.64px;
-  left: 1092.44px;
+  left: 1090px;
   top: 445px;
   background: #68bbbd;
   border-radius: 7.51852px;
 }
 .Modal .ModalOut .ModalOutText {
   position: absolute;
-  width: 155.63px;
+  width: 155px;
   height: 27px;
   left: 0px;
-  top: 15.04px;
+  top: 15px;
   font-weight: 400;
   font-size: 22.5556px;
   line-height: 27px;
@@ -255,11 +271,11 @@
 .Modal .leftModal {
   position: relative;
   width: 430px;
-  height: 571px;
+  height: 570px;
   left: -1px;
   top: -1px;
   background: #50a1a3;
-  border-radius: 30.0741px;
+  border-radius: 30px;
 }
 .Modal .leftModal .leftModalImg {
   position: absolute;
@@ -277,10 +293,11 @@
   height: 40px;
   left: 0px;
   top: 0px;
+  text-align: center;
 }
 .Modal .leftModal .leftModalNameDiv .leftModalName {
   position: absolute;
-  width: 184px;
+  width: 185px;
   height: 38px;
   left: 120px;
   top: 265px;
@@ -292,7 +309,14 @@
   text-align: center;
   color: #ffffff;
 }
-.Modal .leftModal .lmProfileEditbtn {
+.Modal .leftModal .LMbtnDiv {
+  position: absolute;
+  width: 330px;
+  height: 130px;
+  left: 0px;
+  top: 0px;
+}
+.Modal .leftModal .LMbtnDiv .lmProfileEditbtn {
   position: absolute;
   width: 330px;
   height: 60px;
@@ -301,43 +325,13 @@
   background: #68bbbd;
   border-radius: 10px;
 }
-.Modal .leftModal .lmProfileEditbtn .lmProfileEditText {
-  position: absolute;
-  width: 330.81px;
-  height: 30px;
-  left: 0px;
-  top: -10px;
-  font-weight: 400px;
-  font-size: 25px;
-  line-height: 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.92);
-}
-.Modal .leftModal .lmSetiingbtn {
-  position: absolute;
-  width: 330px;
-  height: 60px;
-  left: 50px;
-  top: 430px;
-  background: #68bbbd;
-  border-radius: 10px;
-  font-weight: 400;
-  font-size: 22.5556px;
-  line-height: 27px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.92);
-}
-.Modal .leftModal .lmSetiingbtn .lmSetiingbtntext {
+.Modal .leftModal .LMbtnDiv .lmProfileEditbtn .lmProfileEditText {
   position: absolute;
   width: 330px;
   height: 27px;
   left: 0px;
   top: 15px;
-  font-weight: 400;
+  font-weight: 300px;
   font-size: 23px;
   line-height: 27px;
   display: flex;
@@ -345,14 +339,46 @@
   text-align: center;
   color: rgba(255, 255, 255, 0.92);
 }
-.Modal .MiddleModal {
+.Modal .leftModal .LMbtnDiv .lmSetiingbtn {
+  position: absolute;
+  width: 330px;
+  height: 60px;
+  left: 50px;
+  top: 430px;
+  text-align: center;
+  background: #68bbbd;
+  border-radius: 10px;
+  font-weight: 400px;
+  font-size: 23px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+}
+.Modal .leftModal .LMbtnDiv .lmSetiingbtn .lmSetiingbtntext {
+  position: absolute;
+  width: 330px;
+  height: 27px;
+  left: 0px;
+  top: 15px;
+  font-weight: 300px;
+  font-size: 23px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.MiddleModal {
   position: absolute;
   width: 330px;
   height: 490px;
   left: 490px;
   top: 40px;
 }
-.Modal .MiddleModal .MideModalProfileEdit {
+.MiddleModal .MideModalProfileEdit {
   position: absolute;
   width: 200px;
   height: 45px;
@@ -365,14 +391,14 @@
   align-items: center;
   color: #b2a5a5;
 }
-.Modal .MiddleModal .MiddleDivId {
+.MiddleModal .MiddleDivId {
   position: absolute;
   width: 330px;
   height: 90px;
   left: 0px;
   top: 70px;
 }
-.Modal .MiddleModal .MiddleDivId .MidIdLabel {
+.MiddleModal .MiddleDivId .MidIdLabel {
   position: absolute;
   width: 330px;
   height: 20px;
@@ -385,7 +411,7 @@
   align-items: center;
   color: #000000;
 }
-.Modal .MiddleModal .MiddleDivId .MidIdInputDiv {
+.MiddleModal .MiddleDivId .MidIdInputDiv {
   position: absolute;
   width: 330px;
   height: 60px;
@@ -394,14 +420,14 @@
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
-.Modal .MiddleModal .MiddleDivAGE {
+.MiddleModal .MiddleDivAGE {
   position: absolute;
   width: 330px;
   height: 90px;
   left: 0px;
   top: 170px;
 }
-.Modal .MiddleModal .MiddleDivAGE .MidIdLabel {
+.MiddleModal .MiddleDivAGE .MidIdLabel {
   position: absolute;
   width: 330px;
   height: 20px;
@@ -414,7 +440,7 @@
   align-items: center;
   color: #000000;
 }
-.Modal .MiddleModal .MiddleDivAGE .MidIdInputDiv {
+.MiddleModal .MiddleDivAGE .MidIdInputDiv {
   position: absolute;
   width: 330px;
   height: 60px;
@@ -423,14 +449,14 @@
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
-.Modal .MiddleModal .MiddleDivMBTI {
+.MiddleModal .MiddleDivMBTI {
   position: absolute;
   width: 330px;
   height: 90px;
   left: 0px;
   top: 270px;
 }
-.Modal .MiddleModal .MiddleDivMBTI .MidIdLabel {
+.MiddleModal .MiddleDivMBTI .MidIdLabel {
   position: absolute;
   width: 330px;
   height: 20px;
@@ -443,7 +469,7 @@
   align-items: center;
   color: #000000;
 }
-.Modal .MiddleModal .MiddleDivMBTI .MidIdInputDiv {
+.MiddleModal .MiddleDivMBTI .MidIdInputDiv {
   position: absolute;
   width: 330px;
   height: 60px;
@@ -452,14 +478,14 @@
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
-.Modal .MiddleModal .MiddleDivEmail {
+.MiddleModal .MiddleDivEmail {
   position: absolute;
   width: 330px;
   height: 90px;
   left: 0px;
   top: 370px;
 }
-.Modal .MiddleModal .MiddleDivEmail .MidIdLabel {
+.MiddleModal .MiddleDivEmail .MidIdLabel {
   position: absolute;
   width: 330px;
   height: 20px;
@@ -472,7 +498,7 @@
   align-items: center;
   color: #000000;
 }
-.Modal .MiddleModal .MiddleDivEmail .MidIdInputDiv {
+.MiddleModal .MiddleDivEmail .MidIdInputDiv {
   position: absolute;
   width: 330px;
   height: 60px;
@@ -481,21 +507,22 @@
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
-.Modal .RightModal {
+
+.RightModal {
   position: absolute;
   width: 330px;
   height: 320px;
   left: 920px;
   top: 105px;
 }
-.Modal .RightModal .RMGender {
+.RightModal .RMGender {
   position: absolute;
   width: 330px;
   height: 90px;
   left: 0px;
   top: 0px;
 }
-.Modal .RightModal .RMGender .RMGenderLabel {
+.RightModal .RMGender .RMGenderLabel {
   position: absolute;
   width: 330.81px;
   height: 20px;
@@ -508,14 +535,14 @@
   align-items: center;
   color: #000000;
 }
-.Modal .RightModal .RMGender .RmGenderCheck {
+.RightModal .RMGender .RmGenderCheck {
   position: absolute;
   width: 330px;
   height: 60px;
   left: 0px;
   top: 30px;
 }
-.Modal .RightModal .RMGender .RmGenderCheck .RmGenderMale {
+.RightModal .RMGender .RmGenderCheck .RmGenderMale {
   position: absolute;
   width: 160px;
   height: 60px;
@@ -524,7 +551,7 @@
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7.51852px;
 }
-.Modal .RightModal .RMGender .RmGenderCheck .RmGenderFemale {
+.RightModal .RMGender .RmGenderCheck .RmGenderFemale {
   position: absolute;
   width: 160px;
   height: 60px;
@@ -533,14 +560,14 @@
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
-.Modal .RightModal .RMIntroducing {
+.RightModal .RMIntroducing {
   position: absolute;
   width: 330px;
   height: 200px;
   left: 0px;
   top: 100px;
 }
-.Modal .RightModal .RMIntroducing .RMItroLabel {
+.RightModal .RMIntroducing .RMItroLabel {
   position: absolute;
   width: 330px;
   height: 20px;
@@ -553,7 +580,7 @@
   align-items: center;
   color: #000000;
 }
-.Modal .RightModal .RMIntroducing .RMItrInput {
+.RightModal .RMIntroducing .RMItrInput {
   position: absolute;
   width: 330px;
   height: 170px;
@@ -561,4 +588,208 @@
   top: 30px;
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
+}
+
+.SetMiddleModal {
+  position: absolute;
+  width: 565.5px;
+  height: 400px;
+  left: 490px;
+  top: 40px;
+}
+.SetMiddleModal .SEtMidLabel {
+  position: absolute;
+  width: 200px;
+  height: 45px;
+  left: 0px;
+  top: 0px;
+  font-weight: 400;
+  font-size: 37px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  color: #b2a5a5;
+}
+.SetMiddleModal .SEtMidModalChangediv {
+  position: absolute;
+  width: 565.5px;
+  height: 280.5px;
+  left: 0px;
+  top: 98.25px;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox {
+  position: absolute;
+  width: 565.5px;
+  height: 100px;
+  left: 0px;
+  top: 0px;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox .SetMidPartnerLable {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: 0px;
+  top: 20.25px;
+  font-weight: 400px;
+  font-size: 25px;
+  line-height: 18px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  color: #9b9a9a;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox .SetMMPartnerCheckdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 19.5px 0px;
+  gap: 7.5px;
+  position: absolute;
+  width: 340.5px;
+  height: 58.5px;
+  left: 225px;
+  top: 0px;
+  background: rgba(104, 187, 189, 0.2);
+  filter: blur(18.75px);
+  border-radius: 30px;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox .SetMMPartnerCheckdiv .SetMMPartnerCheck {
+  position: absolute;
+  width: 59px;
+  height: 32px;
+  left: 130px;
+  top: 20.5px;
+  font-weight: 400px;
+  font-size: 26.25px;
+  line-height: 32px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #50a1a3;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox2 {
+  position: absolute;
+  width: 565.5px;
+  height: 100px;
+  left: 0px;
+  top: 120px;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox2 .SetMidPartnerLable {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: 0px;
+  top: 20.25px;
+  font-weight: 400px;
+  font-size: 25px;
+  line-height: 18px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  color: #9b9a9a;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox2 .SetMMPartnerCheckdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 19.5px 0px;
+  gap: 7.5px;
+  position: absolute;
+  width: 340.5px;
+  height: 58.5px;
+  left: 225px;
+  top: 0px;
+  background: rgba(104, 187, 189, 0.2);
+  filter: blur(18.75px);
+  border-radius: 30px;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox2 .SetMMPartnerCheckdiv .SetMMPartnerCheck {
+  position: absolute;
+  width: 59px;
+  height: 32px;
+  left: 130px;
+  top: 20.5px;
+  font-weight: 400px;
+  font-size: 26.25px;
+  line-height: 32px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #50a1a3;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox3 {
+  position: absolute;
+  width: 565.5px;
+  height: 100px;
+  left: 0px;
+  top: 240px;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox3 .SetMidPartnerLable {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: 0px;
+  top: 20.25px;
+  font-weight: 400px;
+  font-size: 25px;
+  line-height: 18px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  color: #9b9a9a;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox3 .SetMMPartnerCheckdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 19.5px 0px;
+  gap: 7.5px;
+  position: absolute;
+  width: 340.5px;
+  height: 58.5px;
+  left: 225px;
+  top: 0px;
+  background: rgba(104, 187, 189, 0.2);
+  border-radius: 30px;
+}
+.SetMiddleModal .SEtMidModalChangediv .ModalInputBox3 .SetMMPartnerCheckdiv .SetMMPartnerCheck {
+  position: absolute;
+  width: 59px;
+  height: 32px;
+  left: 130px;
+  top: 20.5px;
+  font-weight: 400px;
+  font-size: 26.25px;
+  line-height: 32px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #50a1a3;
+}
+
+.inputtext {
+  position: absolute;
+  width: 330px;
+  height: 60px;
+  left: 0px;
+  top: 30px;
+  background: rgba(104, 187, 189, 0.2);
+  border-radius: 7px;
+}
+.inputtext .inputText {
+  position: absolute;
+  width: 290px;
+  height: 22px;
+  left: 20px;
+  top: 18px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  color: #000000;
 }/*# sourceMappingURL=index.css.map */

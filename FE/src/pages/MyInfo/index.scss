@@ -1,3 +1,5 @@
+@use "../../style/common" as mixin;
+
 .MIProfileImgDiv {
   position: absolute;
   width: 500px;
@@ -264,7 +266,7 @@
     position: absolute;
     width: 155.63px;
     height: 58.64px;
-    left: 1092.44px;
+    left: 1090px;
     top: 445px;
 
     background: #68bbbd;
@@ -272,10 +274,10 @@
 
     .ModalOutText {
       position: absolute;
-      width: 155.63px;
+      width: 155px;
       height: 27px;
       left: 0px;
-      top: 15.04px;
+      top: 15px;
 
       font-weight: 400;
       font-size: 22.5556px;
@@ -290,12 +292,12 @@
   .leftModal {
     position: relative;
     width: 430px;
-    height: 571px;
+    height: 570px;
     left: -1px;
     top: -1px;
 
     background: #50a1a3;
-    border-radius: 30.0741px;
+    border-radius: 30px;
 
     .leftModalImg {
       position: absolute;
@@ -313,10 +315,11 @@
       height: 40px;
       left: 0px;
       top: 0px;
+      text-align: center;
 
       .leftModalName {
         position: absolute;
-        width: 184px;
+        width: 185px;
         height: 38px;
         left: 120px;
         top: 265px;
@@ -331,323 +334,609 @@
         color: #ffffff;
       }
     }
-
-    .lmProfileEditbtn {
+    .LMbtnDiv {
       position: absolute;
       width: 330px;
-      height: 60px;
-      left: 50px;
-      top: 350px;
+      height: 130px;
+      left: 0px;
+      top: 0px;
 
-      background: #68bbbd;
-      border-radius: 10px;
-
-      .lmProfileEditText {
-        position: absolute;
-        width: 330.81px;
-        height: 30px;
-        left: 0px;
-        top: -10px;
-
-        font-weight: 400px;
-        font-size: 25px;
-        line-height: 30px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-
-        color: rgba(255, 255, 255, 0.92);
-      }
-    }
-    .lmSetiingbtn {
-      position: absolute;
-      width: 330px;
-      height: 60px;
-      left: 50px;
-      top: 430px;
-
-      background: #68bbbd;
-      border-radius: 10px;
-
-      font-weight: 400;
-      font-size: 22.5556px;
-      line-height: 27px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.92);
-
-      .lmSetiingbtntext {
+      .lmProfileEditbtn {
         position: absolute;
         width: 330px;
-        height: 27px;
-        left: 0px;
-        top: 15px;
+        height: 60px;
+        left: 50px;
+        top: 350px;
 
-        font-weight: 400;
+        background: #68bbbd;
+        border-radius: 10px;
+
+        .lmProfileEditText {
+          position: absolute;
+          width: 330px;
+          height: 27px;
+          left: 0px;
+          top: 15px;
+
+          font-weight: 300px;
+          font-size: 23px;
+          line-height: 27px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          color: rgba(255, 255, 255, 0.92);
+        }
+      }
+      .lmSetiingbtn {
+        position: absolute;
+        width: 330px;
+        height: 60px;
+        left: 50px;
+        top: 430px;
+        text-align: center;
+
+        background: #68bbbd;
+        border-radius: 10px;
+
+        font-weight: 400px;
         font-size: 23px;
         line-height: 27px;
         display: flex;
         align-items: center;
         text-align: center;
-
         color: rgba(255, 255, 255, 0.92);
+
+        .lmSetiingbtntext {
+          position: absolute;
+          width: 330px;
+          height: 27px;
+          left: 0px;
+          top: 15px;
+
+          font-weight: 300px;
+          font-size: 23px;
+          line-height: 27px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          color: rgba(255, 255, 255, 0.92);
+        }
       }
     }
   }
+}
 
-  .MiddleModal {
+.MiddleModal {
+  position: absolute;
+  width: 330px;
+  height: 490px;
+  left: 490px;
+  top: 40px;
+
+  .MideModalProfileEdit {
+    position: absolute;
+    width: 200px;
+    height: 45px;
+    left: 0px;
+    top: 0px;
+
+    font-weight: 400;
+    font-size: 37px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+
+    color: #b2a5a5;
+  }
+
+  .MiddleDivId {
     position: absolute;
     width: 330px;
-    height: 490px;
-    left: 490px;
-    top: 40px;
+    height: 90px;
+    left: 0px;
+    top: 70px;
 
-    .MideModalProfileEdit {
+    .MidIdLabel {
       position: absolute;
-      width: 200px;
-      height: 45px;
+      width: 330px;
+      height: 20px;
       left: 0px;
       top: 0px;
 
       font-weight: 400;
-      font-size: 37px;
-      line-height: 45px;
+      font-size: 15px;
+      line-height: 18px;
       display: flex;
       align-items: center;
-
-      color: #b2a5a5;
+      color: #000000;
     }
 
-    .MiddleDivId {
+    .MidIdInputDiv {
       position: absolute;
       width: 330px;
-      height: 90px;
+      height: 60px;
       left: 0px;
-      top: 70px;
+      top: 30px;
 
-      .MidIdLabel {
-        position: absolute;
-        width: 330px;
-        height: 20px;
-        left: 0px;
-        top: 0px;
-
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 18px;
-        display: flex;
-        align-items: center;
-        color: #000000;
-      }
-
-      .MidIdInputDiv {
-        position: absolute;
-        width: 330px;
-        height: 60px;
-        left: 0px;
-        top: 30px;
-
-        background: rgba(104, 187, 189, 0.2);
-        border-radius: 7px;
-      }
-    }
-
-    .MiddleDivAGE {
-      position: absolute;
-      width: 330px;
-      height: 90px;
-      left: 0px;
-      top: 170px;
-
-      .MidIdLabel {
-        position: absolute;
-        width: 330px;
-        height: 20px;
-        left: 0px;
-        top: 0px;
-
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 18px;
-        display: flex;
-        align-items: center;
-        color: #000000;
-      }
-
-      .MidIdInputDiv {
-        position: absolute;
-        width: 330px;
-        height: 60px;
-        left: 0px;
-        top: 30px;
-
-        background: rgba(104, 187, 189, 0.2);
-        border-radius: 7px;
-      }
-    }
-
-    .MiddleDivMBTI {
-      position: absolute;
-      width: 330px;
-      height: 90px;
-      left: 0px;
-      top: 270px;
-
-      .MidIdLabel {
-        position: absolute;
-        width: 330px;
-        height: 20px;
-        left: 0px;
-        top: 0px;
-
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 18px;
-        display: flex;
-        align-items: center;
-        color: #000000;
-      }
-
-      .MidIdInputDiv {
-        position: absolute;
-        width: 330px;
-        height: 60px;
-        left: 0px;
-        top: 30px;
-
-        background: rgba(104, 187, 189, 0.2);
-        border-radius: 7px;
-      }
-    }
-
-    .MiddleDivEmail {
-      position: absolute;
-      width: 330px;
-      height: 90px;
-      left: 0px;
-      top: 370px;
-
-      .MidIdLabel {
-        position: absolute;
-        width: 330px;
-        height: 20px;
-        left: 0px;
-        top: 0px;
-
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 18px;
-        display: flex;
-        align-items: center;
-        color: #000000;
-      }
-
-      .MidIdInputDiv {
-        position: absolute;
-        width: 330px;
-        height: 60px;
-        left: 0px;
-        top: 30px;
-
-        background: rgba(104, 187, 189, 0.2);
-        border-radius: 7px;
-      }
+      background: rgba(104, 187, 189, 0.2);
+      border-radius: 7px;
     }
   }
 
-  .RightModal {
+  .MiddleDivAGE {
     position: absolute;
     width: 330px;
-    height: 320px;
-    left: 920px;
-    top: 105px;
-    .RMGender {
+    height: 90px;
+    left: 0px;
+    top: 170px;
+
+    .MidIdLabel {
       position: absolute;
       width: 330px;
-      height: 90px;
+      height: 20px;
       left: 0px;
       top: 0px;
 
-      .RMGenderLabel {
-        position: absolute;
-        width: 330.81px;
-        height: 20px;
-        left: 0px;
-        top: 0px;
-
-        font-weight: 400px;
-        font-size: 15px;
-        line-height: 18px;
-        display: flex;
-        align-items: center;
-
-        color: #000000;
-      }
-
-      .RmGenderCheck {
-        position: absolute;
-        width: 330px;
-        height: 60px;
-        left: 0px;
-        top: 30px;
-
-        .RmGenderMale {
-          position: absolute;
-          width: 160px;
-          height: 60px;
-          left: 0px;
-          top: 0px;
-
-          background: rgba(104, 187, 189, 0.2);
-          border-radius: 7.51852px;
-        }
-        .RmGenderFemale {
-          position: absolute;
-          width: 160px;
-          height: 60px;
-          left: 170px;
-          top: 0px;
-
-          background: rgba(104, 187, 189, 0.2);
-          border-radius: 7px;
-        }
-      }
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      color: #000000;
     }
 
-    .RMIntroducing {
+    .MidIdInputDiv {
       position: absolute;
       width: 330px;
-      height: 200px;
+      height: 60px;
       left: 0px;
-      top: 100px;
+      top: 30px;
 
-      .RMItroLabel {
+      background: rgba(104, 187, 189, 0.2);
+      border-radius: 7px;
+    }
+  }
+
+  .MiddleDivMBTI {
+    position: absolute;
+    width: 330px;
+    height: 90px;
+    left: 0px;
+    top: 270px;
+
+    .MidIdLabel {
+      position: absolute;
+      width: 330px;
+      height: 20px;
+      left: 0px;
+      top: 0px;
+
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      color: #000000;
+    }
+
+    .MidIdInputDiv {
+      position: absolute;
+      width: 330px;
+      height: 60px;
+      left: 0px;
+      top: 30px;
+
+      background: rgba(104, 187, 189, 0.2);
+      border-radius: 7px;
+    }
+  }
+
+  .MiddleDivEmail {
+    position: absolute;
+    width: 330px;
+    height: 90px;
+    left: 0px;
+    top: 370px;
+
+    .MidIdLabel {
+      position: absolute;
+      width: 330px;
+      height: 20px;
+      left: 0px;
+      top: 0px;
+
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      color: #000000;
+    }
+
+    .MidIdInputDiv {
+      position: absolute;
+      width: 330px;
+      height: 60px;
+      left: 0px;
+      top: 30px;
+
+      background: rgba(104, 187, 189, 0.2);
+      border-radius: 7px;
+    }
+  }
+}
+
+.RightModal {
+  position: absolute;
+  width: 330px;
+  height: 320px;
+  left: 920px;
+  top: 105px;
+
+  .RMGender {
+    position: absolute;
+    width: 330px;
+    height: 90px;
+    left: 0px;
+    top: 0px;
+
+    .RMGenderLabel {
+      position: absolute;
+      width: 330.81px;
+      height: 20px;
+      left: 0px;
+      top: 0px;
+
+      font-weight: 400px;
+      font-size: 15px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+
+      color: #000000;
+    }
+
+    .RmGenderCheck {
+      position: absolute;
+      width: 330px;
+      height: 60px;
+      left: 0px;
+      top: 30px;
+
+      .RmGenderMale {
         position: absolute;
-        width: 330px;
-        height: 20px;
+        width: 160px;
+        height: 60px;
         left: 0px;
         top: 0px;
 
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 18px;
-        display: flex;
-        align-items: center;
-
-        color: #000000;
+        background: rgba(104, 187, 189, 0.2);
+        border-radius: 7.51852px;
       }
-
-      .RMItrInput {
+      .RmGenderFemale {
         position: absolute;
-        width: 330px;
-        height: 170px;
-        left: 0px;
-        top: 30px;
+        width: 160px;
+        height: 60px;
+        left: 170px;
+        top: 0px;
 
         background: rgba(104, 187, 189, 0.2);
         border-radius: 7px;
       }
     }
   }
+
+  .RMIntroducing {
+    position: absolute;
+    width: 330px;
+    height: 200px;
+    left: 0px;
+    top: 100px;
+
+    .RMItroLabel {
+      position: absolute;
+      width: 330px;
+      height: 20px;
+      left: 0px;
+      top: 0px;
+
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+
+      color: #000000;
+    }
+
+    .RMItrInput {
+      position: absolute;
+      width: 330px;
+      height: 170px;
+      left: 0px;
+      top: 30px;
+
+      background: rgba(104, 187, 189, 0.2);
+      border-radius: 7px;
+    }
+  }
+}
+
+// ------------------
+
+.SetMiddleModal {
+  position: absolute;
+  width: 565.5px;
+  height: 400px;
+  left: 490px;
+  top: 40px;
+
+  .SEtMidLabel {
+    position: absolute;
+    width: 200px;
+    height: 45px;
+    left: 0px;
+    top: 0px;
+
+    font-weight: 400;
+    font-size: 37px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+
+    color: #b2a5a5;
+  }
+
+  .SEtMidModalChangediv {
+    position: absolute;
+    width: 565.5px;
+    height: 280.5px;
+    left: 0px;
+    top: 98.25px;
+
+    .ModalInputBox {
+      position: absolute;
+      width: 565.5px;
+      height: 100px;
+      left: 0px;
+      top: 0px;
+      .SetMidPartnerLable {
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        left: 0px;
+        top: 20.25px;
+
+        font-weight: 400px;
+        font-size: 25px;
+        line-height: 18px;
+        /* identical to box height */
+
+        display: flex;
+        align-items: center;
+        color: #9b9a9a;
+      }
+
+      .SetMMPartnerCheckdiv {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 19.5px 0px;
+        gap: 7.5px;
+
+        position: absolute;
+        width: 340.5px;
+        height: 58.5px;
+        left: 225px;
+        top: 0px;
+
+        background: rgba(104, 187, 189, 0.2);
+        filter: blur(18.75px);
+        border-radius: 30px;
+
+        .SetMMPartnerCheck {
+          position: absolute;
+          width: 59px;
+          height: 32px;
+          left: 130px;
+          top: 20.5px;
+
+          font-weight: 400px;
+          font-size: 26.25px;
+          line-height: 32px;
+          /* identical to box height */
+
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          color: #50a1a3;
+        }
+      }
+    }
+
+    .ModalInputBox2 {
+      position: absolute;
+      width: 565.5px;
+      height: 100px;
+      left: 0px;
+      top: 120px;
+      .SetMidPartnerLable {
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        left: 0px;
+        top: 20.25px;
+
+        font-weight: 400px;
+        font-size: 25px;
+        line-height: 18px;
+        /* identical to box height */
+
+        display: flex;
+        align-items: center;
+        color: #9b9a9a;
+      }
+
+      .SetMMPartnerCheckdiv {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 19.5px 0px;
+        gap: 7.5px;
+
+        position: absolute;
+        width: 340.5px;
+        height: 58.5px;
+        left: 225px;
+        top: 0px;
+
+        background: rgba(104, 187, 189, 0.2);
+        filter: blur(18.75px);
+        border-radius: 30px;
+
+        .SetMMPartnerCheck {
+          position: absolute;
+          width: 59px;
+          height: 32px;
+          left: 130px;
+          top: 20.5px;
+
+          font-weight: 400px;
+          font-size: 26.25px;
+          line-height: 32px;
+          /* identical to box height */
+
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          color: #50a1a3;
+        }
+      }
+    }
+
+    .ModalInputBox3 {
+      position: absolute;
+      width: 565.5px;
+      height: 100px;
+      left: 0px;
+      top: 240px;
+      .SetMidPartnerLable {
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        left: 0px;
+        top: 20.25px;
+
+        font-weight: 400px;
+        font-size: 25px;
+        line-height: 18px;
+        /* identical to box height */
+
+        display: flex;
+        align-items: center;
+        color: #9b9a9a;
+      }
+
+      .SetMMPartnerCheckdiv {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 19.5px 0px;
+        gap: 7.5px;
+
+        position: absolute;
+        width: 340.5px;
+        height: 58.5px;
+        left: 225px;
+        top: 0px;
+
+        background: rgba(104, 187, 189, 0.2);
+        // filter: blur(18.75px);
+        border-radius: 30px;
+
+        .SetMMPartnerCheck {
+          position: absolute;
+          width: 59px;
+          height: 32px;
+          left: 130px;
+          top: 20.5px;
+
+          font-weight: 400px;
+          font-size: 26.25px;
+          line-height: 32px;
+          /* identical to box height */
+
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          color: #50a1a3;
+        }
+      }
+    }
+
+    // .SetMidFrom {
+    //   position: absolute;
+    //   width: 130px;
+    //   height: 18px;
+    //   left: 0px;
+    //   top: 20.25px;
+
+    //   font-weight: 400;
+    //   font-size: 15px;
+    //   line-height: 18px;
+    //   /* identical to box height */
+
+    //   display: flex;
+    //   align-items: center;
+
+    //   color: #9b9a9a;
+    //   .SetMidFrom {
+    //     display: flex;
+    //     flex-direction: row;
+    //     align-items: flex-start;
+    //     padding: 19.5px 0px;
+    //     gap: 7.5px;
+
+    //     position: absolute;
+    //     width: 340.5px;
+    //     height: 58.5px;
+    //     left: 225px;
+    //     top: 190px;
+
+    //     background: rgba(104, 187, 189, 0.2);
+    //     filter: blur(18.75px);
+    //     border-radius: 30px;
+
+    //     .SetMidFrom {
+    //       position: absolute;
+    //       width: 59px;
+    //       height: 32px;
+    //       left: 365.5px;
+    //       top: 15.25px;
+
+    //       font-weight: 400;
+    //       font-size: 26.25px;
+    //       line-height: 32px;
+    //       /* identical to box height */
+
+    //       display: flex;
+    //       align-items: center;
+    //       text-align: center;
+
+    //       color: #50a1a3;
+    //     }
+    //   }
+    // }
+  }
+}
+
+// ---------
+
+.inputtext {
+  @include mixin.inputdiv;
 }

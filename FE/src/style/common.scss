@@ -52,3 +52,32 @@ $_mainHeight: 00;
     border-radius: $radius;
   }
 }
+
+@mixin inputdiv {
+  position: absolute;
+  width: 330px;
+  height: 60px;
+  left: 0px;
+  top: 30px;
+
+  background: rgba(104, 187, 189, 0.2);
+  border-radius: 7px;
+
+  .inputText {
+    position: absolute;
+    width: 290px;
+    height: 22px;
+    left: 20px;
+    top: 18px;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+  }
+}
