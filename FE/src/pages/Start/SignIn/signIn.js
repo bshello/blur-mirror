@@ -1,27 +1,59 @@
 import "./signIn.css";
 
-function SignIn() {
+function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
   return (
     <div className="SIModal">
-      <div>
-        <h3>Sign In</h3>
+      <div className="SIModalHeader">
+        <span className="SIModalHeaderText">Sign In</span>
       </div>
-      <div>
-        <form>
-          <label htmlFor="user_id"></label>
-          <input id="user_id" placeholder="ID를 입력해 주세요"></input>
-          <label htmlFor="user_pw"></label>
-          <input id="user_pw" placeholder="PW를 입력해 주세요"></input>
-        </form>
-        <button>로그인</button>
-        <button>아이디 저장</button>
-        <button>회원가입</button>
-        <button>비밀번호 찾기</button>
+
+      <div className="ModalInputIdDiv">
+        <label className="ModalInputIdLabel" htmlFor="user_id">
+          ID
+        </label>
+        <input
+          className="ModalInputId"
+          id="user_id"
+          placeholder="ID를 입력해 주세요"
+        ></input>
       </div>
-      <div>
-        <button>카카오로 로그인</button>
-        <button>네이버로 로그인</button>
+      <div className="ModalInputPwDiv">
+        <label className="ModalInputPwLabel" htmlFor="user_pw">
+          PW
+        </label>
+        <input
+          className="ModalInputPw"
+          id="user_pw"
+          placeholder="PW를 입력해 주세요"
+        ></input>
       </div>
+      <div className="LoginBtnDiv">
+        <button className="LoginBtn">로그인</button>
+        <div className="IdSaveDiv">
+          <input className="IdSaveToggle" type="checkbox"></input>
+          <label className="IdSaveText">아이디 저장</label>
+        </div>
+        <button
+          className="SISignUpBtn"
+          onClick={() => {
+            showSignInModal();
+            showSignUpModal();
+          }}
+        >
+          회원가입
+        </button>
+        <button
+          className="SISearchingPwBtn"
+          onClick={() => {
+            showSearchPwModal();
+          }}
+        >
+          비밀번호 찾기
+        </button>
+      </div>
+
+      <button className="KakaoLoginBtn">카카오로 로그인</button>
+      <button className="NaverLoginBtn">네이버로 로그인</button>
     </div>
   );
 }
