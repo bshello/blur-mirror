@@ -3,7 +3,6 @@ package com.blur.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
@@ -29,10 +28,7 @@ public class User {
     @Column(name = "password", length = 255)
     String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Interest> interests;
+    @Column(name = "gender")
+    Boolean gender;
 
-    public void setPassword(String encPassword) {
-        this.password = encPassword;
-    }
 }

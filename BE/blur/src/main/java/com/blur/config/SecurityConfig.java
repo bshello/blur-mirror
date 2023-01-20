@@ -25,7 +25,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/user/**").authenticated() //user주소로 들어가려면 인증돼있어야한다
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
