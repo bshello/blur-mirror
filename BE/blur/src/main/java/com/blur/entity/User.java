@@ -31,4 +31,10 @@ public class User {
     @Column(name = "gender")
     Boolean gender;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    UserProfile userProfile;
+
+    public void update(Boolean gender) {
+        this.gender = gender;
+    }
 }

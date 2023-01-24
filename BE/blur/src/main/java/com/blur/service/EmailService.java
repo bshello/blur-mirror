@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequiredArgsConstructor
@@ -85,15 +86,23 @@ public class EmailService {
         MimeMessage message = createMessage(to);
         try{//예외처리
             emailSender.send(message);
+            EmailAuthDto dto = new EmailAuthDto();
+            EmailAuth emailAuth = dto.toEntity(ePw); // db에 인증키 저장
+            emailRepository.save(emailAuth);
+            System.out.println("이메일");
+            return emailAuth.getTempNo().toString();
         }catch(MailException es){
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
-        EmailAuthDto dto = new EmailAuthDto();
-        EmailAuth emailAuth = dto.toEntity(ePw); // db에 인증키 저장
-        emailRepository.save(emailAuth);
-        System.out.println("이메일");
-        return emailAuth.getTempNo().toString();
+    }
+
+    public Integer checkEmailConfirm(@RequestParam("emailTempNo")String emailTempNo, @RequestParam("emailKey")String emailKey) {
+        EmailAuth emailAuthEntity = emailRepository.findByTempNo(emailTempNo);
+        if (emailAuthEntity.getAuthKey() == emailKey) {
+            return 1;
+        }
+        return 0;
     }
 
 }
