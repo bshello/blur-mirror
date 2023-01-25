@@ -1,16 +1,13 @@
 package com.blur.api.controller;
 
 import com.blur.api.dto.request.UserInfoDto;
-import com.blur.api.dto.response.EmailAuthDto;
+import com.blur.api.dto.request.UserProfileDto;
 import com.blur.service.EmailService;
+import com.blur.service.PasswordService;
 import com.blur.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.awt.*;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserInfoController {
@@ -20,6 +17,9 @@ public class UserInfoController {
 
     @Autowired
     EmailService emailService;
+
+    @Autowired
+    PasswordService passwordService;
 
     @GetMapping({ "", "/" })
     public String index() {
@@ -33,7 +33,7 @@ public class UserInfoController {
         return "redirect:/testLogin";
     }
 
-    @PostMapping("/checkId")
+    @PostMapping("/checkId") //아이디 중복체크
     public String checkId(@RequestParam("userId")String userId) {
 
         userInfoService.checkId(userId);
@@ -41,12 +41,32 @@ public class UserInfoController {
         return "redirect:/testLogin";
     }
 
-    @PostMapping("/sendAuthEmail")
-    public String sendAuthEmail(@RequestParam String email) throws Exception {
+    @PostMapping("/sendAuthEmail") //이메일 인증메일 발송
+    public String sendAuthEmail(@RequestParam("email") String email) throws Exception {
 
-        String confirm = emailService.sendSimpleMessage(email);
+        String confirm = emailService.sendAuthMessage(email);
 
         return confirm;
+    }
+
+    @PutMapping("/findPassword") //비밀번호 찾기
+    public String findPassword(@RequestParam("userId") String userId) throws Exception {
+
+        passwordService.sendTempPassword(userId);
+        return userId;
+    }
+
+    @PutMapping("/updatePassword") //비밀번호 변경
+    public String updatePassword(@RequestParam("userId") String userId, @RequestParam("newPassword") String newPassword) throws Exception {
+
+        passwordService.updatePassword(userId, newPassword);
+        return userId;
+    }
+
+    @PutMapping("/updateProfile") //비밀번호 변경
+    public String updateProfile(@RequestBody UserProfileDto userProfileDto) throws Exception {
+        userInfoService.updateProfile(userProfileDto);
+        return userProfileDto.getNickname();
     }
 
     @GetMapping("/testLogin")

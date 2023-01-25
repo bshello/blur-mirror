@@ -1,6 +1,7 @@
 package com.blur.service;
 
 import com.blur.api.dto.request.UserInfoDto;
+import com.blur.api.dto.request.UserProfileDto;
 import com.blur.entity.User;
 
 import com.blur.entity.UserProfile;
@@ -27,8 +28,8 @@ public class UserInfoService {
     private final BCryptPasswordEncoder encoder;
 
     public long register(UserInfoDto dto) {
-        dto.encryptPassword(encoder.encode(dto.getPassword()));
         User user = dto.toEntity();
+        user.updatePassword(encoder.encode(dto.getPassword()));
         UserProfile userProfile = new UserProfile();
         userProfile.setUser(user);
         userRepository.save(user);
@@ -48,9 +49,15 @@ public class UserInfoService {
         return 0;
     }
 
-    public void updateProfile(Long userNo, User user) {
-        UserProfile userProfile = userProfileRepository.findByUserNo(userNo);
+    public String updateProfile(UserProfileDto userProfileDto) {
+        User user = userRepository.findByUserNo(userProfileDto.getUserNo());
+        UserProfile userProfile = userProfileRepository.findByUserNo(userProfileDto.getUserNo());
+        user.updateGender(userProfileDto.getGender());
+        userProfile.update(userProfileDto.getBirthyear(), userProfileDto.getNickname(), userProfileDto.getImage());
+        userRepository.save(user);
+        userProfileRepository.save(userProfile);
 
+        return user.getUserId();
     }
 
 

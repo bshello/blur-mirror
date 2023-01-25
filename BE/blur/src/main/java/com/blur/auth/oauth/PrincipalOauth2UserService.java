@@ -16,8 +16,6 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 @Service
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
@@ -56,15 +54,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
                     .email(email)
                     .build();
             userRepository.save(userEntity);
-
             UserProfile userProfile = new UserProfile();
             userProfile.setUser(userEntity);
-            System.out.println("user.getUserNo()```````````````````````````````````````````````");
-            System.out.println(userEntity.getUserNo());
-            System.out.println(userEntity);
-            System.out.println(userProfile.getUser());
-            System.out.println(userProfile.getUserNo());
-            System.out.println("```````````````````````````````````````````````");
             userProfileRepository.save(userProfile);
         }
         return new PrincipalDetails(userEntity, oAuth2User.getAttributes());

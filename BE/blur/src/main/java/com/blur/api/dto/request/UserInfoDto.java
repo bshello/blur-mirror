@@ -1,7 +1,6 @@
 package com.blur.api.dto.request;
 
 import com.blur.entity.User;
-import com.blur.entity.UserProfile;
 import lombok.*;
 
 @AllArgsConstructor
@@ -19,18 +18,6 @@ public class UserInfoDto {
 
     private String email;
 
-    private Boolean gender;
-
-    private Integer birthyear;
-
-    private String nickname;
-
-    private String image;
-
-    public void encryptPassword(String BCryptpassword) {
-        this.password = BCryptpassword;
-    }
-
     /* DTO -> Entity */
     public User toEntity() {
         User user = User.builder()
@@ -39,6 +26,13 @@ public class UserInfoDto {
                 .email(email)
                 .build();
         return user;
+    }
+
+    public UserInfoDto(User user) {
+        this.userNo = user.getUserNo();
+        this.userId = user.getUserId();
+        this.password = user.getPassword();
+        this.email = user.getEmail();
     }
 
 }

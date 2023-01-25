@@ -33,7 +33,11 @@ public class User {
     @OneToOne(mappedBy = "user")
     private UserProfile userProfile;
 
-    public void update(Boolean gender) {
+    public void updateGender(Boolean gender) {
         this.gender = gender;
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
     }
 }
