@@ -41,6 +41,7 @@
   height: 44px;
   left: 0px;
   top: 0px;
+  cursor: pointer;
 }
 .CommNavDiv .CommNavBtnsDiv .CommNavBtnAbout {
   position: absolute;
@@ -48,6 +49,7 @@
   height: 44px;
   left: 100px;
   top: 0px;
+  cursor: pointer;
 }
 .CommNavDiv .CommNavBtnsDiv .CommNavBtnMyInfo {
   position: absolute;
@@ -55,6 +57,7 @@
   height: 44px;
   left: 216.75px;
   top: 0px;
+  cursor: pointer;
 }
 .CommNavDiv .CommNavBtnsDiv .CommNavBtnSignIn {
   position: absolute;
@@ -62,4 +65,5 @@
   height: 58px;
   left: 289px;
   top: 0px;
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */

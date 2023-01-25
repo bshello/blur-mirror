@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-
+import "./style/normalize.css";
 import "./App.css";
 
 import Start from "./pages/Start";
