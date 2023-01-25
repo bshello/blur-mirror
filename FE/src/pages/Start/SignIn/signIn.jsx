@@ -46,6 +46,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           className="SISearchingPwBtn"
           onClick={() => {
             showSearchPwModal();
+            showSignInModal();
           }}
         >
           비밀번호 찾기

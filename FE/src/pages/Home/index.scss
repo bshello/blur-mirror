@@ -1,0 +1,143 @@
+.HomeSubFrame {
+  position: absolute;
+  width: 1305px;
+  height: 570px;
+  left: 61.5px;
+  top: 157.5px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+
+  .HomeLeftDiv {
+    position: absolute;
+    width: 517.5px;
+    height: 492.75px;
+    left: 60px;
+    top: 30px;
+
+    .HomeCamDiv {
+      position: absolute;
+      width: 375px;
+      height: 375px;
+      left: 71.25px;
+      top: 0px;
+
+      background: #e1f1f2;
+      border-radius: 30px;
+
+      .HomeCamImg {
+        position: absolute;
+        width: 375px;
+        height: 375px;
+        left: 0px;
+        top: 0px;
+
+        background: url(../../assets/images/HomeCamImg.png);
+        border-radius: 30px;
+      }
+    }
+
+    .InfoBlurBtn {
+      position: absolute;
+      width: 37.5px;
+      height: 37.5px;
+      left: 465.75px;
+      top: 266.25px;
+
+      background: url(../../assets/images/info.png);
+    }
+
+    .CamToggle {
+      position: absolute;
+      width: 37.5px;
+      height: 37.5px;
+      left: 465.75px;
+      top: 326.25px;
+
+      background: url(../../assets/images/MPMyCam.png);
+    }
+
+    .CommBoxFrame2 {
+      position: absolute;
+      width: 525px;
+      height: 90px;
+      left: 60px;
+      top: 432.75px;
+
+      background: #50a1a3;
+      border-radius: 15px;
+      .CommBoxFrameStart {
+        position: absolute;
+        width: 525px;
+        height: 50px;
+        left: 0px;
+        top: 20.25px;
+
+        font-family: "Happy Monkey";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 41.25px;
+        line-height: 50px;
+        /* identical to box height */
+
+        text-align: center;
+
+        color: #ffffff;
+      }
+    }
+  }
+
+  .HomeRightDiv {
+    position: absolute;
+    width: 533.25px;
+    height: 492.75px;
+    left: 680.25px;
+    top: 30px;
+
+    .HomeRightImgDiv {
+      position: absolute;
+      width: 533.25px;
+      height: 375px;
+      left: 0px;
+      top: 0px;
+
+      // background: url(../../assets/images/HomeRightDiv.png);
+      border-radius: 30px;
+
+      .HomeRightImg {
+        position: absolute;
+        width: 533.25px;
+        height: 375px;
+        left: 0px;
+        top: 0px;
+      }
+    }
+
+    .HomeRightToolTipDiv {
+      position: absolute;
+      width: 533.25px;
+      height: 60px;
+      left: 0px;
+      top: 432.75px;
+
+      background: #fffdfd;
+      border-radius: 15px;
+
+      .HomeRightToolTipText {
+        position: absolute;
+        width: 421px;
+        height: 27px;
+        left: 56.25px;
+        top: 16.5px;
+
+        font-family: "Happy Monkey";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22.5px;
+        line-height: 27px;
+
+        color: #50a1a3;
+      }
+    }
+  }
+}

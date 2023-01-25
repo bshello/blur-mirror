@@ -2,9 +2,10 @@ import { useState } from "react";
 import Header from "../../components/Header";
 import "./index.css";
 import SignIn from "./SignIn/signIn";
-import SignInWrap from "./SignIn/signInWrap";
+import ModalWrap from "./ModalWrap/modalWrap";
 import SignUp from "./SignUp/signUp";
 import SearchPw from "./SearchPw/searchPw";
+import Alert from "./Alert/alert";
 
 function Start() {
   const [signInModal, setSignInModal] = useState(false);
@@ -22,10 +23,15 @@ function Start() {
     setSearchPwModal((pre) => !pre);
   };
 
+  const [alertModal, setalertModal] = useState(false);
+  const showAlertModal = () => {
+    setalertModal((pre) => !pre);
+  };
+
   return (
     <div className="Start">
       {signInModal || signUpModal || searchPwModal ? (
-        <SignInWrap
+        <ModalWrap
           signInModal={signInModal}
           signUpModal={signUpModal}
           searchPwModal={searchPwModal}
@@ -50,16 +56,33 @@ function Start() {
         />
       ) : null}
 
-      {searchPwModal && !signInModal && !signUpModal ? <SearchPw /> : null}
+      {searchPwModal && !signInModal && !signUpModal ? (
+        <SearchPw
+          showSignInModal={showSignInModal}
+          showSearchPwModal={showSearchPwModal}
+          showAlertModal={showAlertModal}
+        />
+      ) : null}
+
+      {alertModal && !signInModal && !signUpModal && !searchPwModal ? (
+        <Alert
+          showAlertModal={showAlertModal}
+          content={"임시비밀번호가 이메일로 전송되었습니다."}
+        />
+      ) : null}
 
       <Header />
       <div className="SubFrame">
         <div className="SubLeftDiv">
           <span className="SubLeftTitle">Hey, Just Blur!</span>
           <span className="SubLeftDesc">Show me your own color.</span>
-          <div className="CommBoxFrame1" onClick={showSignInModal}>
+          <button
+            className="CommBoxFrame1"
+            onClick={showSignInModal}
+            disabled={alertModal === true ? true : false}
+          >
             <span className="CommBoxFrameStart">Start</span>
-          </div>
+          </button>
         </div>
 
         <div className="SubRightDiv">
