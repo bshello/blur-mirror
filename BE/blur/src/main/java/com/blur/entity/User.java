@@ -12,27 +12,26 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
-    @JsonIgnore
     @Id
     @Column(name = "user_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long userNo;
+    private Long userNo;
 
     @Column(name = "user_id", nullable = false, length = 255, unique = true)
-    String userId;
+    private String userId;
 
     @Column(name = "email", length = 30)
-    String email;
+    private String email;
 
     @JsonIgnore
     @Column(name = "password", length = 255)
-    String password;
+    private String password;
 
     @Column(name = "gender")
-    Boolean gender;
+    private Boolean gender;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-    UserProfile userProfile;
+    @OneToOne(mappedBy = "user")
+    private UserProfile userProfile;
 
     public void update(Boolean gender) {
         this.gender = gender;

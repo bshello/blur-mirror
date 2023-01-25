@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Locale;
 
 @Entity
 @Getter
@@ -18,24 +17,25 @@ public class UserProfile {
 
     @Id
     @Column(name = "user_no")
-    Long userNo;
+    private Long userNo;
 
     @Column(name = "birthyear")
-    Integer birthyear;
+    private Integer birthyear;
 
     @Column(name = "nickname")
-    String nickname;
+    private String nickname;
 
     @Column(name = "image")
-    String image;
+    private String image;
 
-    @MapsId("user_no")
+    @MapsId
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_no")
-    User user;
+    private User user;
 
     public void setUser(User user) {
         this.user = user;
+        this.userNo = user.getUserNo();
     }
 
     public void update(Integer birthyear, String nickname, String image) {

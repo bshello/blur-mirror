@@ -29,9 +29,9 @@ public class UserInfoService {
     public long register(UserInfoDto dto) {
         dto.encryptPassword(encoder.encode(dto.getPassword()));
         User user = dto.toEntity();
-        userRepository.save(user);
         UserProfile userProfile = new UserProfile();
         userProfile.setUser(user);
+        userRepository.save(user);
         userProfileRepository.save(userProfile);
         System.out.println("DB에 회원 저장 성공");
 
@@ -48,7 +48,7 @@ public class UserInfoService {
         return 0;
     }
 
-    public void updateProfile(Long userNo, User) {
+    public void updateProfile(Long userNo, User user) {
         UserProfile userProfile = userProfileRepository.findByUserNo(userNo);
 
     }

@@ -6,6 +6,8 @@ import com.blur.auth.oauth.provider.KakaoUserInfo;
 import com.blur.auth.oauth.provider.NaverUserInfo;
 import com.blur.auth.oauth.provider.OAuth2UserInfo;
 import com.blur.entity.User;
+import com.blur.entity.UserProfile;
+import com.blur.repository.UserProfileRepository;
 import com.blur.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -21,6 +23,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     //구글로부터 받은 userRequest데이터에 대해 후처리되는함수
     @Override
@@ -51,6 +56,16 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
                     .email(email)
                     .build();
             userRepository.save(userEntity);
+
+            UserProfile userProfile = new UserProfile();
+            userProfile.setUser(userEntity);
+            System.out.println("user.getUserNo()```````````````````````````````````````````````");
+            System.out.println(userEntity.getUserNo());
+            System.out.println(userEntity);
+            System.out.println(userProfile.getUser());
+            System.out.println(userProfile.getUserNo());
+            System.out.println("```````````````````````````````````````````````");
+            userProfileRepository.save(userProfile);
         }
         return new PrincipalDetails(userEntity, oAuth2User.getAttributes());
     }
