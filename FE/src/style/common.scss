@@ -81,3 +81,21 @@ $_mainHeight: 00;
     color: #000000;
   }
 }
+
+@mixin editModal {
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 1310px;
+  height: 570px;
+  left: 6.5%;
+  top: 7%;
+  z-index: 10;
+
+  background: #ffffff;
+  border: 0.751852px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 3.00741px 3.00741px rgba(0, 0, 0, 0.25);
+  border-radius: 30.0741px;
+  z-index: 10;
+  @content;
+}

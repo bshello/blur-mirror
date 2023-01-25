@@ -1,0 +1,64 @@
+.Hash {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  left: 280px;
+  top: 40px;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 40px;
+}
+.Hash .hashdiv {
+  position: absolute;
+  width: 800px;
+  height: 560px;
+  left: 0px;
+  top: 20px;
+}
+.Hash .hashdiv .hashSerchDiv {
+  position: absolute;
+  width: 585px;
+  height: 54px;
+  left: 100px;
+  top: 15px;
+}
+.Hash .hashdiv .hashSerchDiv .hashinput {
+  position: absolute;
+  width: 585px;
+  height: 54px;
+  left: 10px;
+  top: 0px;
+  background: none;
+  font-size: 25px;
+  border-style: none;
+  border: 0px;
+}
+.Hash .hashdiv .hashSerchDiv .hashVec {
+  position: absolute;
+  width: 576px;
+  height: 0px;
+  left: 0px;
+  top: 54px;
+  border: 3px solid #68bbbd;
+}
+.Hash .hashdiv .hashEdit {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  left: 250px;
+  top: 500px;
+  background: #50a1a3;
+  border-radius: 17px;
+}
+.Hash .hashdiv .hashEdit .hashEditText {
+  position: absolute;
+  width: 300px;
+  height: 57px;
+  left: 0px;
+  top: 0px;
+  font-weight: 400px;
+  font-size: 30px;
+  line-height: 50px;
+  /* identical to box height */
+  color: #ffffff;
+}/*# sourceMappingURL=Hash.css.map */
