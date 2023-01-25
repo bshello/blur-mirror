@@ -27,7 +27,7 @@ public class UserInfoService {
     @Autowired
     private final BCryptPasswordEncoder encoder;
 
-    public long register(UserInfoDto dto) {
+    public void register(UserInfoDto dto) {
         User user = dto.toEntity();
         user.updatePassword(encoder.encode(dto.getPassword()));
         UserProfile userProfile = new UserProfile();
@@ -36,7 +36,6 @@ public class UserInfoService {
         userProfileRepository.save(userProfile);
         System.out.println("DB에 회원 저장 성공");
 
-        return user.getUserNo();
     }
 
     public Integer checkId(@RequestParam("userId")String userId) {
@@ -49,7 +48,7 @@ public class UserInfoService {
         return 0;
     }
 
-    public String updateProfile(UserProfileDto userProfileDto) {
+    public void updateProfile(UserProfileDto userProfileDto) {
         User user = userRepository.findByUserNo(userProfileDto.getUserNo());
         UserProfile userProfile = userProfileRepository.findByUserNo(userProfileDto.getUserNo());
         user.updateGender(userProfileDto.getGender());
@@ -57,7 +56,6 @@ public class UserInfoService {
         userRepository.save(user);
         userProfileRepository.save(userProfile);
 
-        return user.getUserId();
     }
 
 

@@ -4,6 +4,7 @@ import com.blur.entity.User;
 import com.blur.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -83,7 +84,7 @@ public class PasswordService {
         return message;
     }
 
-    public String sendTempPassword(String userId)throws Exception {
+    public void sendTempPassword(String userId)throws Exception {
         User user = userRepository.findByUserId(userId);
         String to = user.getEmail();
         MimeMessage message = createMessage(to);
@@ -92,18 +93,16 @@ public class PasswordService {
             user.updatePassword(encoder.encode(tPw));
             userRepository.save(user);
             System.out.println("임시비번 발급");
-            return user.getUserNo().toString();
         }catch(MailException es){
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
     }
 
-    public String updatePassword(String userId, String newPassword)throws Exception {
+    public void updatePassword(String userId, String newPassword)throws Exception {
         User user = userRepository.findByUserId(userId);
         user.updatePassword(encoder.encode(newPassword));
         userRepository.save(user);
         System.out.println("비밀번호 변경");
-        return user.getUserNo().toString();
     }
 }
