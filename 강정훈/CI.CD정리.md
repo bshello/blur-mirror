@@ -1,0 +1,97 @@
+### DevOps와 CI/CD 강의
+
+- 퍼포먼스방법론(WaterFall)
+  
+  - 단계
+  1. 요구사항 정의
+  
+  2. 분석/설계
+  
+  3. 구현
+  
+  4. 테스트
+  
+  5. 운영
+
+ 
+
+- 에자일방법론
+
+- DevOps
+2. 실행과정
+   
+   도커 데크스탑설치
+   
+   - [도커설치](https://hub.docker.com)
+     
+     - [도커 is starting 오류] (AI RPA 매크로)(http://ngmsoftware.com/bbs/board.php?bo_table=study&wr_id=281&sca=Error&sst=wr_datetime&sod=desc&sop=and&page=1))
+     
+     - 파워셀 관리자 실행 후 다음 입력하니 완료
+     
+     - ```
+       cd "C:\Program Files\Docker\Docker"
+       ./DockerCli.exe -SwitchDaemon
+       ```
+   
+   - 젠킨스
+     
+     - [젠킨스 설치과정 중 오류](https://chaelin1211.github.io/study/2021/04/01/docker-error.html)
+     
+     - docker 명령어가 안될 때
+     
+     - Powershell에서 Net stop com.docker.service 입력 후 Net start com.docker.service 를 다시 입력하면 실행됨. 굿 [참고 사이트](https://stackoverflow.com/questions/63330590/error-response-from-daemon-open-pipe-docker-engine-linux-the-system-cannot)
+     
+     - ![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-01-25-15-52-59-image.png)
+     
+     - 젠킨스 명령어와 구조 들어간 사이트
+       
+       - [[Jenkins] Pipeline Syntax (젠킨스 파이프라인 문법)](https://waspro.tistory.com/554)
+
+3. 도커 가상컨테이너에 들어가는 명령어
+   
+   - docker exec -it {container name} bash
+- 빌드 에러시 console output을 통해 오류를 확인해야함.
+  
+  - 오류 git branch 설정이 잘못 되어있을 경우가 있음.
+    
+    ex) main 브랜치를 가져와야 하는데, masterbranch로 설정했을 경우
+  
+  - jenkins 폴더 내에 있는 java경로를 잘 확인했는지 여부
+    
+    docker exec -it {container name} bash 로 컨테이너 bash 창으로 들어간 후에
+    
+    which javac를 입력하면 검색결과가 나옴
+    
+    ex) /opt/java/openjdk/bin/javac
+    
+    -> 젠킨스 관리 > Global Tool Configuration > JDK 수정을 통해 /opt/java/openjdk 까지 입력해주면 완료 
+
+
+
+4. Tomcat 서버 연동
+
+![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-01-26-13-16-50-image.png)
+
+플러그인 deploy to container 설치
+
+![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-01-26-13-23-59-image.png)
+
+Post-build Action > Container: Tomcat 9.x Remote
+
+Username: deployer
+
+password: deployer
+
+ID: deployer_user1
+
+Description: user to deploy on tomcat
+
+설정 이후
+
+Credential: 방금 생성한 정보
+
+Tomcat URL: 포트번호 기존에 쓰던거 안쓰게 주의 예시에서는 8080말고 8088씀
+
+
+
+5. 
