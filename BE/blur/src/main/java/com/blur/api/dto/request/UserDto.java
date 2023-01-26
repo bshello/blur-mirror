@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @Builder
 @Setter
-public class UserInfoDto {
+public class UserDto {
 
     private String userId;
 
@@ -26,7 +26,7 @@ public class UserInfoDto {
         return user;
     }
 
-    public UserInfoDto(User user) {
+    public UserDto(User user) {
         this.userId = user.getUserId();
         this.password = user.getPassword();
         this.email = user.getEmail();

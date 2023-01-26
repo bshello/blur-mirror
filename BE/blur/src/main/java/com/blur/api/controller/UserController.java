@@ -1,19 +1,20 @@
 package com.blur.api.controller;
 
-import com.blur.api.dto.request.UserInfoDto;
+import com.blur.api.dto.request.UserDto;
 import com.blur.api.dto.request.UserProfileDto;
 import com.blur.service.EmailService;
 import com.blur.service.PasswordService;
-import com.blur.service.UserInfoService;
+import com.blur.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
-public class UserInfoController {
+public class UserController {
 
     @Autowired
-    UserInfoService userInfoService;
+    UserService userInfoService;
 
     @Autowired
     EmailService emailService;
@@ -27,7 +28,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/register")
-    public String register(UserInfoDto userDto) {
+    public String register(UserDto userDto) {
 
         userInfoService.register(userDto);
         return "redirect:/testLogin";

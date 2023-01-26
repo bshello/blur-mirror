@@ -1,6 +1,6 @@
 package com.blur.service;
 
-import com.blur.api.dto.request.UserInfoDto;
+import com.blur.api.dto.request.UserDto;
 import com.blur.api.dto.request.UserProfileDto;
 import com.blur.entity.User;
 
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequiredArgsConstructor
-public class UserInfoService {
+public class UserService {
 
     @Autowired
     private final UserRepository userRepository;
@@ -27,7 +27,7 @@ public class UserInfoService {
     @Autowired
     private final BCryptPasswordEncoder encoder;
 
-    public void register(UserInfoDto dto) {
+    public void register(UserDto dto) {
         User user = dto.toEntity();
         user.updatePassword(encoder.encode(dto.getPassword()));
         userRepository.save(user);
@@ -48,6 +48,8 @@ public class UserInfoService {
         System.out.println("회원가입가능");
         return 0;
     }
+
+
 
     public void updateProfile(UserProfileDto userProfileDto) {
         User user = userRepository.findByUserId(userProfileDto.getUserId());

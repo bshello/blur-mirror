@@ -30,7 +30,7 @@ public class UserProfile {
 
     @MapsId
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_no")
+    @JoinColumn(name="user_id")
     private User user;
 
     public void setUser(User user) {
