@@ -11,7 +11,7 @@ import lombok.*;
 @Setter
 public class UserProfileDto {
 
-    private Long userNo;
+    private String userId;
 
     private Integer birthyear;
 
@@ -21,15 +21,18 @@ public class UserProfileDto {
 
     private Boolean gender;
 
-    public UserProfileDto(UserProfile userProfile) {
-        this.userNo = userProfile.getUserNo();
-        this.birthyear = userProfile.getBirthyear();
-        this.nickname = userProfile.getNickname();
-        this.image = userProfile.getImage();
+    public UserProfile toEntity(User user) {
+        UserProfile userProfile = UserProfile.builder()
+                .userId(user.getUserId())
+                .birthyear(birthyear)
+                .nickname(nickname)
+                .image(image)
+                .build();
+        return userProfile;
     }
 
     public UserProfileDto(UserProfile userProfile, User user) {
-        this.userNo = userProfile.getUserNo();
+        this.userId = userProfile.getUserId();
         this.birthyear = userProfile.getBirthyear();
         this.nickname = userProfile.getNickname();
         this.image = userProfile.getImage();

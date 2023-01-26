@@ -4,6 +4,5 @@ import com.blur.entity.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserProfileRepository extends JpaRepository<UserProfile, Long> {
-
-    public UserProfile findByUserNo(Long userNo);
+    public UserProfile findByUserId(String userId);
 }

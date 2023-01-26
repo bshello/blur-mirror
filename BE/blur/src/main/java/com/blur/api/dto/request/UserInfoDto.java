@@ -10,8 +10,6 @@ import lombok.*;
 @Setter
 public class UserInfoDto {
 
-    private Long userNo;
-
     private String userId;
 
     private String password;
@@ -29,7 +27,6 @@ public class UserInfoDto {
     }
 
     public UserInfoDto(User user) {
-        this.userNo = user.getUserNo();
         this.userId = user.getUserId();
         this.password = user.getPassword();
         this.email = user.getEmail();

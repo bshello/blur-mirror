@@ -13,11 +13,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @Column(name = "user_no")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userNo;
-
-    @Column(name = "user_id", nullable = false, length = 255, unique = true)
+    @Column(name = "user_id", nullable = false, length = 255)
     private String userId;
 
     @Column(name = "email", length = 30)

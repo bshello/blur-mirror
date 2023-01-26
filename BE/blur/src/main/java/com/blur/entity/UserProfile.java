@@ -16,8 +16,8 @@ import javax.persistence.*;
 public class UserProfile {
 
     @Id
-    @Column(name = "user_no")
-    private Long userNo;
+    @Column(name = "user_id")
+    private String userId;
 
     @Column(name = "birthyear")
     private Integer birthyear;
@@ -35,10 +35,10 @@ public class UserProfile {
 
     public void setUser(User user) {
         this.user = user;
-        this.userNo = user.getUserNo();
+        this.userId = user.getUserId();
     }
 
-    public void update(Integer birthyear, String nickname, String image) {
+    public void updateProfile(Integer birthyear, String nickname, String image) {
         this.birthyear = birthyear;
         this.nickname = nickname;
         this.image = image;

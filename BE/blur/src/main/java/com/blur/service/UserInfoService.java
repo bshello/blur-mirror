@@ -30,9 +30,10 @@ public class UserInfoService {
     public void register(UserInfoDto dto) {
         User user = dto.toEntity();
         user.updatePassword(encoder.encode(dto.getPassword()));
-        UserProfile userProfile = new UserProfile();
-        userProfile.setUser(user);
         userRepository.save(user);
+        UserProfileDto userProfileDto = new UserProfileDto();
+        UserProfile userProfile = userProfileDto.toEntity(user);
+        userProfile.setUser(user);
         userProfileRepository.save(userProfile);
         System.out.println("DB에 회원 저장 성공");
 
@@ -49,10 +50,10 @@ public class UserInfoService {
     }
 
     public void updateProfile(UserProfileDto userProfileDto) {
-        User user = userRepository.findByUserNo(userProfileDto.getUserNo());
-        UserProfile userProfile = userProfileRepository.findByUserNo(userProfileDto.getUserNo());
+        User user = userRepository.findByUserId(userProfileDto.getUserId());
+        UserProfile userProfile = userProfileRepository.findByUserId(userProfileDto.getUserId());
         user.updateGender(userProfileDto.getGender());
-        userProfile.update(userProfileDto.getBirthyear(), userProfileDto.getNickname(), userProfileDto.getImage());
+        userProfile.updateProfile(userProfileDto.getBirthyear(), userProfileDto.getNickname(), userProfileDto.getImage());
         userRepository.save(user);
         userProfileRepository.save(userProfile);
 
