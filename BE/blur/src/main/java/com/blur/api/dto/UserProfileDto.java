@@ -1,4 +1,4 @@
-package com.blur.api.dto.request;
+package com.blur.api.dto;
 
 import com.blur.entity.User;
 import com.blur.entity.UserProfile;
@@ -31,7 +31,7 @@ public class UserProfileDto {
         return userProfile;
     }
 
-    public UserProfileDto(UserProfile userProfile, User user) {
+    public UserProfileDto(User user, UserProfile userProfile) {
         this.userId = userProfile.getUserId();
         this.birthyear = userProfile.getBirthyear();
         this.nickname = userProfile.getNickname();

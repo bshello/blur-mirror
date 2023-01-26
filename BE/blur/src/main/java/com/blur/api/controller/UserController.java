@@ -1,7 +1,6 @@
 package com.blur.api.controller;
 
-import com.blur.api.dto.request.UserDto;
-import com.blur.api.dto.request.UserProfileDto;
+import com.blur.api.dto.UserDto;
 import com.blur.service.EmailService;
 import com.blur.service.PasswordService;
 import com.blur.service.UserService;
@@ -11,10 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
+@RequestMapping("/")
 public class UserController {
 
     @Autowired
-    UserService userInfoService;
+    UserService userService;
 
     @Autowired
     EmailService emailService;
@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     PasswordService passwordService;
 
-    @GetMapping({ "", "/" })
+    @GetMapping
     public String index() {
         return "index";
     }
@@ -30,15 +30,15 @@ public class UserController {
     @PostMapping("/register")
     public String register(UserDto userDto) {
 
-        userInfoService.register(userDto);
+        userService.register(userDto);
         return "redirect:/testLogin";
     }
 
     @PostMapping("/checkId") //아이디 중복체크
     public void checkId(@RequestParam("userId")String userId) {
 
-        userInfoService.checkId(userId);
-        System.out.println(userInfoService.checkId(userId));
+        userService.checkId(userId);
+        System.out.println(userService.checkId(userId));
     }
 
     @PostMapping("/sendAuthEmail") //이메일 인증메일 발송
@@ -55,16 +55,7 @@ public class UserController {
         passwordService.sendTempPassword(userId);
     }
 
-    @PutMapping("/updatePassword") //비밀번호 변경
-    public void updatePassword(@RequestParam("userId") String userId, @RequestParam("newPassword") String newPassword) throws Exception {
 
-        passwordService.updatePassword(userId, newPassword);
-    }
-
-    @PutMapping("/updateProfile") //비밀번호 변경
-    public void updateProfile(@RequestBody UserProfileDto userProfileDto) throws Exception {
-        userInfoService.updateProfile(userProfileDto);
-    }
 
     @GetMapping("/testLogin")
     public String testLogin() {

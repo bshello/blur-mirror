@@ -1,4 +1,4 @@
-package com.blur.api.dto.response;
+package com.blur.api.dto;
 
 import com.blur.entity.EmailAuth;
 import lombok.*;

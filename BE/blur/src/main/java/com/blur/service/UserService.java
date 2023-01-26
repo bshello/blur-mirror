@@ -1,7 +1,7 @@
 package com.blur.service;
 
-import com.blur.api.dto.request.UserDto;
-import com.blur.api.dto.request.UserProfileDto;
+import com.blur.api.dto.UserDto;
+import com.blur.api.dto.UserProfileDto;
 import com.blur.entity.User;
 
 import com.blur.entity.UserProfile;
@@ -51,15 +51,7 @@ public class UserService {
 
 
 
-    public void updateProfile(UserProfileDto userProfileDto) {
-        User user = userRepository.findByUserId(userProfileDto.getUserId());
-        UserProfile userProfile = userProfileRepository.findByUserId(userProfileDto.getUserId());
-        user.updateGender(userProfileDto.getGender());
-        userProfile.updateProfile(userProfileDto.getBirthyear(), userProfileDto.getNickname(), userProfileDto.getImage());
-        userRepository.save(user);
-        userProfileRepository.save(userProfile);
 
-    }
 
 
 

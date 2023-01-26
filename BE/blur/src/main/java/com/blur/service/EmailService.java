@@ -5,7 +5,7 @@ import javax.mail.Message.RecipientType;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.blur.api.dto.response.EmailAuthDto;
+import com.blur.api.dto.EmailAuthDto;
 import com.blur.entity.EmailAuth;
 import com.blur.repository.EmailRepository;
 import lombok.RequiredArgsConstructor;
