@@ -19,9 +19,9 @@
 }
 .SPModal .SPModalHeader .SPModalHeaderText {
   position: absolute;
-  width: 453px;
+  width: 250px;
   height: 35px;
-  left: 0px;
+  left: 125px;
   top: 20.25px;
   font-family: "Noto Sans KR";
   font-style: normal;
@@ -109,7 +109,7 @@
 }
 .SPModal .SPConfirmBtn .SPConfirmBtnText {
   position: absolute;
-  width: 201px;
+  width: 230px;
   height: 18px;
   left: 64.5px;
   top: 19.5px;
@@ -135,7 +135,7 @@
 }
 .SPModal .SPCancleBtn .SPCancleBtnText {
   position: absolute;
-  width: 28px;
+  width: 30px;
   height: 18px;
   left: 150.75px;
   top: 19.5px;
@@ -149,4 +149,4 @@
   align-items: center;
   text-align: center;
   color: #50a1a3;
-} /*# sourceMappingURL=searchPw.css.map */
+}/*# sourceMappingURL=searchPw.css.map */

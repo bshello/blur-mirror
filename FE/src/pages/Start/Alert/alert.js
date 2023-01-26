@@ -3,7 +3,9 @@ import "./alert.css";
 function Alert({ showAlertModal, content }) {
   return (
     <div className="AlertDiv">
-      <span className="AlertHeader">Alert</span>
+      <div className="AlertHeader">
+        <span className="AlertHeaderText">Alert</span>
+      </div>
       <span className="AlertDesc">{content}</span>
       <button className="AlertBtnDiv" onClick={showAlertModal}>
         <span className="AlertBtnText">확인</span>

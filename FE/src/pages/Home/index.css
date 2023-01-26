@@ -1,105 +1,146 @@
+@charset "UTF-8";
+/* 
+  mixin name: sf
+  arg: x
+  desc: SubFrame css
+*/
+/* 
+  mixin name: image
+  arg: name, format
+  desc: 인자(이미지이름, 파일포맷)받아 이미지 설정
+*/
+/* 
+  mixin name: circle
+  arg: size
+  desc: 인자(size)를 받아 원을 만듦
+*/
+@-webkit-keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .HomeSubFrame {
+  box-sizing: border-box;
   position: absolute;
-  width: 1305px;
-  height: 570px;
-  left: 61.5px;
-  top: 157.5px;
-  background: rgba(255, 255, 255, 0.2);
+  right: 65px;
+  left: 65px;
+  top: 157px;
+  bottom: 80px;
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.751331px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 3.00532px 3.00532px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 }
 .HomeSubFrame .HomeLeftDiv {
   position: absolute;
   width: 517.5px;
-  height: 492.75px;
+  height: 450px;
   left: 60px;
   top: 30px;
 }
 .HomeSubFrame .HomeLeftDiv .HomeCamDiv {
   position: absolute;
-  width: 375px;
-  height: 375px;
+  width: 340px;
+  height: 340px;
   left: 71.25px;
   top: 0px;
-  background: #e1f1f2;
+  background: url(../../assets/images/HomeCamImg.png);
+  background-size: cover;
   border-radius: 30px;
 }
 .HomeSubFrame .HomeLeftDiv .HomeCamDiv .HomeCamImg {
   position: absolute;
   width: 375px;
-  height: 375px;
+  height: 250px;
   left: 0px;
   top: 0px;
-  background: url(../../assets/images/HomeCamImg.png);
   border-radius: 30px;
 }
 .HomeSubFrame .HomeLeftDiv .InfoBlurBtn {
   position: absolute;
   width: 37.5px;
   height: 37.5px;
-  left: 465.75px;
-  top: 266.25px;
+  left: 420px;
+  top: 230px;
   background: url(../../assets/images/info.png);
+  background-size: cover;
 }
 .HomeSubFrame .HomeLeftDiv .CamToggle {
   position: absolute;
   width: 37.5px;
   height: 37.5px;
-  left: 465.75px;
-  top: 326.25px;
+  left: 420px;
+  top: 270px;
   background: url(../../assets/images/MPMyCam.png);
+  background-size: cover;
 }
 .HomeSubFrame .HomeLeftDiv .CommBoxFrame2 {
   position: absolute;
-  width: 525px;
-  height: 90px;
-  left: 60px;
-  top: 432.75px;
+  width: 440px;
+  height: 70px;
+  left: 30px;
+  top: 350px;
   background: #50a1a3;
   border-radius: 15px;
 }
 .HomeSubFrame .HomeLeftDiv .CommBoxFrame2 .CommBoxFrameStart {
   position: absolute;
-  width: 525px;
+  width: 440px;
   height: 50px;
   left: 0px;
-  top: 20.25px;
-  font-family: "Happy Monkey";
-  font-style: normal;
+  top: 10px;
   font-weight: 400;
   font-size: 41.25px;
   line-height: 50px;
-  /* identical to box height */
   text-align: center;
   color: #ffffff;
 }
 .HomeSubFrame .HomeRightDiv {
   position: absolute;
   width: 533.25px;
-  height: 492.75px;
+  height: 450px;
   left: 680.25px;
   top: 30px;
+  -webkit-animation: smoothAppear 1s;
+          animation: smoothAppear 1s;
 }
 .HomeSubFrame .HomeRightDiv .HomeRightImgDiv {
   position: absolute;
-  width: 533.25px;
-  height: 375px;
+  width: 550px;
+  height: 340px;
   left: 0px;
   top: 0px;
   border-radius: 30px;
+  transition: all 0.3s;
 }
 .HomeSubFrame .HomeRightDiv .HomeRightImgDiv .HomeRightImg {
   position: absolute;
-  width: 533.25px;
-  height: 375px;
+  width: 550px;
+  height: 340px;
   left: 0px;
   top: 0px;
 }
 .HomeSubFrame .HomeRightDiv .HomeRightToolTipDiv {
   position: absolute;
-  width: 533.25px;
-  height: 60px;
+  width: 550px;
+  height: 80px;
   left: 0px;
-  top: 432.75px;
+  top: 350px;
   background: #fffdfd;
   border-radius: 15px;
 }

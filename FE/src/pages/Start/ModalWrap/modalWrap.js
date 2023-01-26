@@ -24,9 +24,7 @@ function ModalWrap({
           showBlurInfoModal();
         }
       }}
-    >
-      어두운배경
-    </div>
+    ></div>
   );
 }
 

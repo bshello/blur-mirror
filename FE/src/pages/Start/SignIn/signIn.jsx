@@ -6,27 +6,29 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
       <div className="SIModalHeader">
         <span className="SIModalHeaderText">Sign In</span>
       </div>
+      <form>
+        <div className="ModalInputIdDiv">
+          <label className="ModalInputIdLabel" htmlFor="user_id">
+            ID
+          </label>
+          <input
+            className="ModalInputId"
+            id="user_id"
+            placeholder="ID를 입력해 주세요"
+          ></input>
+        </div>
+        <div className="ModalInputPwDiv">
+          <label className="ModalInputPwLabel" htmlFor="user_pw">
+            PW
+          </label>
+          <input
+            className="ModalInputPw"
+            id="user_pw"
+            placeholder="PW를 입력해 주세요"
+          ></input>
+        </div>
+      </form>
 
-      <div className="ModalInputIdDiv">
-        <label className="ModalInputIdLabel" htmlFor="user_id">
-          ID
-        </label>
-        <input
-          className="ModalInputId"
-          id="user_id"
-          placeholder="ID를 입력해 주세요"
-        ></input>
-      </div>
-      <div className="ModalInputPwDiv">
-        <label className="ModalInputPwLabel" htmlFor="user_pw">
-          PW
-        </label>
-        <input
-          className="ModalInputPw"
-          id="user_pw"
-          placeholder="PW를 입력해 주세요"
-        ></input>
-      </div>
       <div className="LoginBtnDiv">
         <button className="LoginBtn">로그인</button>
         <div className="IdSaveDiv">
