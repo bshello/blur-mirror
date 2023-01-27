@@ -27,7 +27,7 @@ public class UserService {
     @Autowired
     private final BCryptPasswordEncoder encoder;
 
-    public void register(UserDto dto) {
+    public User register(UserDto dto) {
         User user = dto.toEntity();
         user.updatePassword(encoder.encode(dto.getPassword()));
         userRepository.save(user);
@@ -36,6 +36,7 @@ public class UserService {
         userProfile.setUser(user);
         userProfileRepository.save(userProfile);
         System.out.println("DB에 회원 저장 성공");
+        return user;
 
     }
 

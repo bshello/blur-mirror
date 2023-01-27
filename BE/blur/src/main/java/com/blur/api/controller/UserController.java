@@ -1,10 +1,12 @@
 package com.blur.api.controller;
 
 import com.blur.api.dto.UserDto;
+import com.blur.entity.User;
 import com.blur.service.EmailService;
 import com.blur.service.PasswordService;
 import com.blur.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,10 +30,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(UserDto userDto) {
+    public ResponseEntity<?> register(UserDto userDto) {
 
-        userService.register(userDto);
-        return "redirect:/testLogin";
+        User res = userService.register(userDto);
+        return ResponseEntity.ok(res);
     }
 
     @PostMapping("/checkId") //아이디 중복체크
@@ -48,6 +50,11 @@ public class UserController {
 
         return confirm;
     }
+
+//    @GetMapping("/emailConfirm")
+//    public String emailConfirm() {
+//
+//    }
 
     @PutMapping("/findPassword") //비밀번호 찾기
     public void findPassword(@RequestParam("userId") String userId) throws Exception {

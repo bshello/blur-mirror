@@ -12,7 +12,11 @@ public class EmailAuthDto {
 
     private Long tempNo;
 
+    private String authKey;
+
+
     public EmailAuth toEntity(String authKey) {
+        this.authKey = authKey;
         EmailAuth emailAuth = EmailAuth.builder()
                 .authKey(authKey)
                 .build();
