@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 HELP.md
 .gradle
 build/
@@ -36,6 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-=======
-/.metadata/
->>>>>>> 7999d9bd665a86672faf7bb9717185b076301e34
