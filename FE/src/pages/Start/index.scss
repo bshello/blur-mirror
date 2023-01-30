@@ -54,6 +54,28 @@ $_subFrameLeft: 3;
         box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
         border-radius: 15px;
 
+        cursor: pointer;
+        border: none;
+        background-size: 300% 100%;
+        border-radius: 50px;
+        -o-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover {
+          background-position: 100% 0;
+          -o-transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+          transition: all 0.4s ease-in-out;
+        }
+
+        &:focus {
+          outline: none;
+        }
+        &.color-5 {
+          background-image: linear-gradient(to right, #50a1a3, #50a1a3, #3f8384, #50a1a3);
+          box-shadow: 0 4px 15px 0 rgba(80, 161, 163, 0.85);
+        }
+
         .CommBoxFrameStart {
           position: absolute;
           width: 110px;
@@ -98,7 +120,7 @@ $_subFrameLeft: 3;
   @media (min-height: 800px) {
     .SubLeftDiv {
       position: absolute;
-      width: 530px;
+      width: 700px;
       left: 5%;
       top: 10%;
       bottom: 10%;
@@ -135,21 +157,44 @@ $_subFrameLeft: 3;
 
       .CommBoxFrame1 {
         position: absolute;
-        width: 525px;
         height: 90px;
         left: 0px;
+        right: 0px;
         bottom: 0px;
 
         background: #50a1a3;
         box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
         border-radius: 15px;
+        cursor: pointer;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-size: 300% 100%;
+        border-radius: 50px;
+        -o-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover {
+          background-position: 100% 0;
+          -o-transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+          transition: all 0.4s ease-in-out;
+        }
+
+        &:focus {
+          outline: none;
+        }
+        &.color-5 {
+          background-image: linear-gradient(to right, #50a1a3, #50a1a3, #3f8384, #50a1a3);
+          box-shadow: 0 4px 15px 0 rgba(80, 161, 163, 0.85);
+        }
 
         .CommBoxFrameStart {
           position: absolute;
           width: 110px;
           height: 50px;
-          left: 208px;
-          top: 20px;
 
           font-style: normal;
           font-weight: 400;
@@ -163,7 +208,7 @@ $_subFrameLeft: 3;
 
     .SubRightDiv {
       position: absolute;
-      width: 530px;
+      width: 700px;
       right: 5%;
       top: 10%;
       bottom: 10%;
