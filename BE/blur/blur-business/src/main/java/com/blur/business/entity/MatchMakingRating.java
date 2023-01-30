@@ -29,6 +29,6 @@ public class MatchMakingRating {
 
     @MapsId
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_no")
     private User user;
 }

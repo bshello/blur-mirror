@@ -49,6 +49,9 @@ public class User {
     @OneToOne(mappedBy = "user")
     private MatchingSetting matchingSetting;
 
+    @OneToOne(mappedBy = "user")
+    private MatchMakingRating matchMakingRating;
+
     public void updateGender(String gender) {
         this.gender = gender;
     }

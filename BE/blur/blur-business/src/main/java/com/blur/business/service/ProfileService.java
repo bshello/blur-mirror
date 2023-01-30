@@ -30,7 +30,7 @@ public class ProfileService {
         User user = userRepository.findByUserId(userProfileDto.getUserId());
         UserProfile userProfile = userProfileRepository.findByUserId(userProfileDto.getUserId());
         user.updateGender(userProfileDto.getGender());
-        userProfile.updateProfile(userProfileDto.getBirthyear(), userProfileDto.getNickname(), userProfileDto.getImage());
+        userProfile.updateProfile(userProfileDto.getAge(), userProfileDto.getNickname(), userProfileDto.getImage());
         userRepository.save(user);
         userProfileRepository.save(userProfile);
 
