@@ -1,5 +1,6 @@
 package com.blur.business.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,11 @@ import javax.persistence.*;
 @Table(name = "mmr")
 public class MatchMakingRating {
 
+    @JsonIgnore
+    @Column(name = "user_no")
     @Id
+    private Integer userNo;
+
     @Column(name = "user_id")
     private String userId;
 

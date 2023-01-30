@@ -15,6 +15,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Setter
 public class MatchDto {
 
+    private Integer userNo;
+
     private String userId;
 
     private String gender;
@@ -34,6 +36,7 @@ public class MatchDto {
     private Integer maxAge;
 
     public MatchDto(User user, UserProfile userProfile, MatchDto.MatchInfoDto matchInfoDto, MatchingSetting matchingSetting, MatchMakingRating matchMakingRating) {
+        this.userNo = user.getUserNo();
         this.userId = userProfile.getUserId();
         this.gender = user.getGender();
         this.age = userProfile.getAge();
@@ -49,6 +52,8 @@ public class MatchDto {
     @Getter
     public static class MatchSettingDto {
 
+        private Integer userNo;
+
         private String userId;
 
         private Integer maxDistance;
@@ -59,6 +64,7 @@ public class MatchDto {
 
         public MatchingSetting toEntity() {
             MatchingSetting matchingSetting = MatchingSetting.builder()
+                    .userNo(userNo)
                     .userId(userId)
                     .maxDistance(maxDistance)
                     .minAge(minAge)

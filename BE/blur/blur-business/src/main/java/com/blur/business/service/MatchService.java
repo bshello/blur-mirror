@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
@@ -53,34 +54,39 @@ public class MatchService {
         MatchDto matchDto = new MatchDto(user, userProfile, matchInfoDto, matchingSetting, matchMakingRating);
 
         if (matchDto.getGender() == "male") {
-            males.put(matchDto.getUserId(), matchDto);
+            males.put(matchDto.getUserNo(), matchDto);
+            try {
+                TimeUnit.SECONDS.sleep(300);
+                if (males.get(user.getUserNo()) == null) {return;}
+                males.remove(user.getUserNo());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             return;
         }
 
-        Queue<int[]> maleList = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if(o1[0] == o2[0]) {
-                    return Integer.compare(o2[1], o1[1]);
-                }
-                return Integer.compare(o1[0], o2[0]);
+        Queue<int[]> maleList = new PriorityQueue<>((o1, o2) -> {
+            if(o1[0] == o2[0]) {
+                return Integer.compare(o2[1], o1[1]);
             }
+            return Integer.compare(o2[0], o1[0]);
         });
         MatchDto femaleDto = matchDto;
 
         for (int male : males.keySet()) {
             MatchDto maleDto = males.get(male);
             if (!filter(maleDto, femaleDto)) {continue;}
-            maleList.offer(new int[] {maleDto.getMmr(), maleDto.getUserId()});
+            maleList.offer(new int[] {maleDto.getMmr(), maleDto.getUserNo()});
         }
         while (maleList != null) {
-            MatchDto selected = males.get(maleList.poll()[1]);
-            if (selected != null) {
-                System.out.println(selected.getUserId() + femaleDto.getUserId());
+            Integer maleNo = maleList.poll()[1];
+            MatchDto selectedMale = males.get(maleNo);
+            if (selectedMale != null) {
+                males.remove(maleNo);
+                System.out.println(selectedMale.getUserId() + femaleDto.getUserId());
             }
         }
     }
-
 
     private boolean filter(MatchDto maleDto, MatchDto femaleDto) {
         int maleAge = maleDto.getAge();

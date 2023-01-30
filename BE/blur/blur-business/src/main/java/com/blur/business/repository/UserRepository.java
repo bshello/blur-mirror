@@ -6,9 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.blur.business.entity.User;
 
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByUserId(String userId);
-//    public User findByUserNo(Long UserNo);
-//    boolean existsByUserId(String UserId);
+
 }

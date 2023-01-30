@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,31 +21,33 @@ import lombok.NoArgsConstructor;
 @Table(name = "user")
 public class User {
 
-//    @JsonIgnore
-//    @Id
-//    @Column(name = "user_no")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    Long userNo;
+    @JsonIgnore
+    @Id
+    @Column(name = "user_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userNo;
 
-	@Id
     @Column(name = "user_id", nullable = false, length = 255, unique = true)
-    String userId;
+    private String userId;
 
     @Column(name = "email", length = 30)
-    String email;
+    private String email;
 
     @JsonIgnore
     @Column(name = "password", length = 255)
-    String password;
+    private String password;
 
     @Column(name = "gender")
-    String gender;
+    private String gender;
     
     @Column(name = "roles", length = 255)
-    String roles;
+    private String roles;
     
     @OneToOne(mappedBy = "user")
     private UserProfile userProfile;
+
+    @OneToOne(mappedBy = "user")
+    private MatchingSetting matchingSetting;
 
     public void updateGender(String gender) {
         this.gender = gender;

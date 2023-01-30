@@ -1,5 +1,6 @@
 package com.blur.business.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,11 @@ import javax.persistence.*;
 @Table(name = "user_profile")
 public class UserProfile {
 
+    @JsonIgnore
+    @Column(name = "user_no")
     @Id
+    private Integer userNo;
+
     @Column(name = "user_id")
     private String userId;
 
@@ -30,12 +35,12 @@ public class UserProfile {
 
     @MapsId
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_no")
     private User user;
 
     public void setUser(User user) {
         this.user = user;
-        this.userId = user.getUserId();
+        this.userNo = user.getUserNo();
     }
 
     public void updateProfile(Integer age, String nickname, String image) {

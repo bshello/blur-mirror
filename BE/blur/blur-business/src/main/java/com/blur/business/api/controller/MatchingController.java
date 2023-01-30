@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.concurrent.TimeUnit;
+
 @Controller
 @RequestMapping("mathcing/")
 public class MatchingController {
@@ -27,5 +29,10 @@ public class MatchingController {
     public void matchStart(@RequestBody MatchDto.MatchInfoDto matchInfoDto) {
 
         matchService.matchStart(matchInfoDto);
+    }
+
+    @PostMapping("/start")
+    public void matchFail(@RequestBody MatchDto.MatchInfoDto matchInfoDto) {
+
     }
 }

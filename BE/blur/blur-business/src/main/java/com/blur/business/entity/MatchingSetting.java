@@ -1,5 +1,6 @@
 package com.blur.business.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,11 @@ import javax.persistence.*;
 @Table(name = "matcing_setting")
 public class MatchingSetting {
 
+    @JsonIgnore
+    @Column(name = "user_no")
     @Id
+    private Integer userNo;
+
     @Column(name = "user_id")
     private String userId;
 
@@ -30,7 +35,7 @@ public class MatchingSetting {
 
     @MapsId
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_no")
     private User user;
 
 }
