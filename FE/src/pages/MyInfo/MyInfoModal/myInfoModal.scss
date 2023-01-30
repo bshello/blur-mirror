@@ -1,0 +1,647 @@
+@use "../../../style/common" as mixin;
+
+.leftModal {
+  position: relative;
+  width: 430px;
+  height: 570px;
+  left: -2px;
+  top: -1px;
+
+  background: #50a1a3;
+  border-radius: 30px;
+  z-index: 20;
+
+  .leftModalImg {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 110px;
+    top: 50px;
+    background-image: url(../../../assets/images/woman.jpg);
+    background-size: 100% 100%;
+    border-radius: 70%;
+  }
+  .leftModalNameDiv {
+    position: absolute;
+    width: 180px;
+    height: 40px;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+
+    .leftModalName {
+      position: absolute;
+      width: 185px;
+      height: 38px;
+      left: 120px;
+      top: 265px;
+
+      font-weight: 400;
+      font-size: 26.3148px;
+      line-height: 38px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      color: #ffffff;
+    }
+  }
+  .leftModalbtnDiv {
+    position: absolute;
+    width: 330px;
+    height: 130px;
+    left: 0px;
+    top: 0px;
+
+    .leftModalEditbtn {
+      position: absolute;
+      width: 330px;
+      height: 60px;
+      left: 50px;
+      top: 350px;
+
+      background: #68bbbd;
+      border-radius: 10px;
+
+      .leftModalProText {
+        position: absolute;
+        width: 115px;
+        height: 27px;
+        left: 110px;
+        top: 15px;
+
+        font-weight: 300px;
+        font-size: 23px;
+        line-height: 27px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: rgba(255, 255, 255, 0.92);
+      }
+    }
+    .leftModalSetbtn {
+      position: absolute;
+      width: 330px;
+      height: 60px;
+      left: 50px;
+      top: 430px;
+      text-align: center;
+
+      background: #68bbbd;
+      border-radius: 10px;
+
+      font-weight: 400px;
+      font-size: 23px;
+      line-height: 27px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.92);
+
+      .leftModalSetText {
+        position: absolute;
+        width: 80;
+        height: 27px;
+        left: 125px;
+        top: 15px;
+
+        font-weight: 300px;
+        font-size: 23px;
+        line-height: 27px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: rgba(255, 255, 255, 0.92);
+      }
+    }
+  }
+}
+.Modal {
+  // @include mixin.editModal;
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 1310px;
+  height: 570px;
+  left: 6.5%;
+  top: 7%;
+  z-index: 10;
+
+  background: #ffffff;
+  border: 0.751852px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 3.00741px 3.00741px rgba(0, 0, 0, 0.25);
+  border-radius: 30.0741px;
+  z-index: 10;
+  .ModalOut {
+    position: absolute;
+    width: 155px;
+    height: 55px;
+    left: 1090px;
+    top: 445px;
+
+    background: #68bbbd;
+    border-radius: 7.51852px;
+
+    .ModalOutText {
+      position: absolute;
+      width: 155px;
+      height: 27px;
+      left: 0px;
+      top: 15px;
+
+      font-weight: 400;
+      font-size: 22.5556px;
+      line-height: 27px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      color: rgba(255, 255, 255, 0.92);
+    }
+  }
+  .ProfileModal {
+    position: absolute;
+    width: 760px;
+    height: 500px;
+    left: 490px;
+    top: 38px;
+
+    .PMLabel {
+      position: absolute;
+      width: 200px;
+      height: 45px;
+      left: 0px;
+      top: 0px;
+
+      font-weight: 400px;
+      font-size: 37px;
+      line-height: 45px;
+      display: flex;
+      align-items: center;
+
+      color: #b2a5a5;
+    }
+
+    .PMIdDiv {
+      position: absolute;
+      width: 330px;
+      height: 90px;
+      left: 0px;
+      top: 70px;
+
+      .PMIdLable {
+        position: absolute;
+        width: 330px;
+        height: 20px;
+        left: 0px;
+        top: 0px;
+
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+
+      .PMIdInput {
+        position: absolute;
+        width: 330px;
+        height: 60px;
+        left: 0px;
+        top: 30px;
+
+        background: rgba(104, 187, 189, 0.2);
+        border-radius: none;
+      }
+    }
+
+    .PMAge {
+      position: absolute;
+      width: 330px;
+      height: 90px;
+      left: 0px;
+      top: 170px;
+
+      .PMAgeLabel {
+        position: absolute;
+        width: 330px;
+        height: 20px;
+        left: 0px;
+        top: 0px;
+
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+
+      .PMAgeSelect {
+        position: absolute;
+        width: 330px;
+        height: 60px;
+        left: 0px;
+        top: 30px;
+
+        background: rgba(104, 187, 189, 0.2);
+        border-radius: 7px;
+      }
+    }
+
+    .PMMBTI {
+      position: absolute;
+      width: 330px;
+      height: 90px;
+      left: 0px;
+      top: 270px;
+
+      .PMMBTILabel {
+        position: absolute;
+        width: 330px;
+        height: 20px;
+        left: 0px;
+        top: 0px;
+
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+
+      .PMMBTISelect {
+        position: absolute;
+        width: 330px;
+        height: 60px;
+        left: 0px;
+        top: 30px;
+
+        background: rgba(104, 187, 189, 0.2);
+        border-radius: 7px;
+      }
+    }
+
+    .PMMEmail {
+      position: absolute;
+      width: 330px;
+      height: 90px;
+      left: 0px;
+      top: 370px;
+
+      .PMMEmailLabel {
+        position: absolute;
+        width: 330px;
+        height: 20px;
+        left: 0px;
+        top: 0px;
+
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+
+      .PMMEmailInput {
+        position: absolute;
+        width: 330px;
+        height: 60px;
+        left: 0px;
+        top: 30px;
+
+        background: rgba(104, 187, 189, 0.2);
+        border-radius: 7px;
+      }
+    }
+
+    .PMMGender {
+      position: absolute;
+      width: 330px;
+      height: 90px;
+      left: 430px;
+      top: 70px;
+
+      .PMMGenderLable {
+        position: absolute;
+        width: 330px;
+        height: 20px;
+        left: 0px;
+        top: 0px;
+
+        font-weight: 400px;
+        font-size: 15px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+
+        color: #000000;
+      }
+
+      .PMMGenderdiv {
+        position: absolute;
+        width: 330px;
+        height: 60px;
+        left: 0px;
+        top: 30px;
+
+        .PMMGenderMale {
+          position: absolute;
+          width: 160px;
+          height: 60px;
+          left: 0px;
+          top: 0px;
+          // align-items: center;
+          // text-align: center;
+
+          background: rgba(104, 187, 189, 0.2);
+          border-radius: 7.51852px;
+        }
+        .PMMGenderFemale {
+          position: absolute;
+          width: 160px;
+          height: 60px;
+          left: 170px;
+          top: 0px;
+
+          background: rgba(104, 187, 189, 0.2);
+          border-radius: 7px;
+        }
+      }
+
+      .PMIntroducing {
+        position: absolute;
+        width: 330px;
+        height: 200px;
+        left: 0px;
+        top: 100px;
+
+        .PMIntroducingLabel {
+          position: absolute;
+          width: 330px;
+          height: 20px;
+          left: 0px;
+          top: 0px;
+
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 18px;
+          display: flex;
+          align-items: center;
+
+          color: #000000;
+        }
+
+        .PMIntroducingInput {
+          position: absolute;
+          width: 330px;
+          height: 170px;
+          left: 0px;
+          top: 30px;
+
+          background: rgba(104, 187, 189, 0.2);
+          border-radius: 7px;
+        }
+      }
+    }
+  }
+
+  // ------------------
+  .SettingModal {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 1300px;
+    height: 565px;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+
+    background: #ffffff;
+    // border: 0.751852px solid rgba(255, 255, 255, 0.5);
+    // box-shadow: 0px 3.00741px 3.00741px rgba(0, 0, 0, 0.25);
+    border-radius: 30.0741px;
+
+    .SetModal {
+      position: absolute;
+      width: 565px;
+      height: 40px;
+      left: 490px;
+      top: 40px;
+
+      .SEtLabel {
+        position: absolute;
+        width: 200px;
+        height: 45px;
+        left: 0px;
+        top: 0px;
+
+        font-weight: 400;
+        font-size: 37px;
+        line-height: 45px;
+        display: flex;
+        align-items: center;
+
+        color: #b2a5a5;
+      }
+
+      .SEtMidModalChangediv {
+        position: absolute;
+        width: 565.5px;
+        height: 280.5px;
+        left: 0px;
+        top: 98.25px;
+
+        .ModalInputBox {
+          position: absolute;
+          width: 565px;
+          height: 100px;
+          left: 0px;
+          top: 0px;
+          .SetMidPartnerLable {
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            left: 0px;
+            top: 20px;
+
+            font-weight: 400px;
+            font-size: 25px;
+            line-height: 18px;
+            /* identical to box height */
+
+            display: flex;
+            align-items: center;
+            color: #9b9a9a;
+          }
+
+          .SetMMPartnerCheckdiv {
+            display: flex;
+            flex-direction: row;
+            // align-items: flex-start;
+            padding: 19.5px 0px;
+            gap: 7.5px;
+
+            position: absolute;
+            width: 340px;
+            height: 55px;
+            left: 225px;
+            top: 0px;
+
+            background: rgba(104, 187, 189, 0.2);
+            // filter: blur(18.75px);
+            border-radius: 30px;
+
+            .SetMMPartnerCheck {
+              position: absolute;
+              width: 59px;
+              height: 32px;
+              left: 130px;
+              top: 30px;
+
+              font-weight: 400px;
+              font-size: 26.25px;
+              line-height: 32px;
+              /* identical to box height */
+
+              display: flex;
+              align-items: center;
+              text-align: center;
+
+              z-index: 20;
+
+              color: #50a1a3;
+            }
+          }
+        }
+
+        .ModalInputBox2 {
+          position: absolute;
+          width: 565.5px;
+          height: 100px;
+          left: 0px;
+          top: 120px;
+          .SetMidPartnerLable {
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            left: 0px;
+            top: 20px;
+
+            font-weight: 400px;
+            font-size: 25px;
+            line-height: 18px;
+            /* identical to box height */
+
+            display: flex;
+            align-items: center;
+            color: #9b9a9a;
+          }
+
+          .SetMMPartnerCheckdiv {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 19.5px 0px;
+            gap: 7.5px;
+
+            position: absolute;
+            width: 340.5px;
+            height: 58.5px;
+            left: 225px;
+            top: 0px;
+
+            background: rgba(104, 187, 189, 0.2);
+            // filter: blur(18.75px);
+            border-radius: 30px;
+
+            .SetMMPartnerCheck {
+              position: absolute;
+              width: 59px;
+              height: 32px;
+              left: 130px;
+              top: 20.5px;
+
+              font-weight: 400px;
+              font-size: 26.25px;
+              line-height: 32px;
+              /* identical to box height */
+
+              display: flex;
+              align-items: center;
+              text-align: center;
+
+              color: #50a1a3;
+            }
+          }
+        }
+
+        .ModalInputBox3 {
+          position: absolute;
+          width: 565.5px;
+          height: 100px;
+          left: 0px;
+          top: 240px;
+          .SetMidPartnerLable {
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            left: 0px;
+            top: 20.25px;
+
+            font-weight: 400px;
+            font-size: 25px;
+            line-height: 18px;
+            /* identical to box height */
+
+            display: flex;
+            align-items: center;
+            color: #9b9a9a;
+          }
+
+          .SetMMPartnerCheckdiv {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 19.5px 0px;
+            gap: 7.5px;
+
+            position: absolute;
+            width: 340.5px;
+            height: 58.5px;
+            left: 225px;
+            top: 0px;
+
+            background: rgba(104, 187, 189, 0.2);
+            // filter: blur(18.75px);
+            border-radius: 30px;
+
+            .distancePartner {
+              position: absolute;
+              width: 59px;
+              height: 32px;
+              left: 130px;
+              top: 20.5px;
+
+              font-weight: 400px;
+              font-size: 26.25px;
+              line-height: 32px;
+              /* identical to box height */
+
+              display: flex;
+              align-items: center;
+              text-align: center;
+
+              color: #50a1a3;
+            }
+          }
+        }
+      }
+    }
+  }
+}

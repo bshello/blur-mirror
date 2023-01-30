@@ -27,6 +27,15 @@ public class MatchMakingRating {
     @Column(name = "mmr")
     private Integer mmr;
 
+    @Column(name = "winning_streak")
+    private Integer winningStreak;
+
+    @Column(name = "losing_streak")
+    private Integer losingStreak;
+
+    @Column(name = "report_count")
+    private Integer reportCount;
+
     @MapsId
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_no")

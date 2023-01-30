@@ -31,8 +31,4 @@ public class MatchingController {
         matchService.matchStart(matchInfoDto);
     }
 
-    @PostMapping("/start")
-    public void matchFail(@RequestBody MatchDto.MatchInfoDto matchInfoDto) {
-
-    }
 }

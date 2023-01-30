@@ -1,0 +1,64 @@
+.MeetingIn {
+  text-align: center;
+  display: flex; /*내부 요소들이 차례로 배치 */
+  justify-content: center; /*내부 요소의 좌우 정렬 상태를 가운데로 설정*/
+  position: absolute;
+  left: 65px;
+  right: 65px;
+  top: 170px;
+  bottom: 70px;
+}
+.MProgressBar {
+  position: absolute;
+  width: 1326px;
+  height: 17.25px;
+  left: 57.75px;
+  top: 112.5px;
+
+  border-radius: 30px;
+}
+.MLeftDiv1 {
+  position: absolute;
+  width: 530px;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  .ImotionBtn {
+    position: absolute;
+    width: 37.5px;
+    height: 37.5px;
+    top: 0px;
+
+    background-image: url(../../../assets/images/happy.png);
+    background-size: 100% 100%;
+  }
+  .MMyCamDiv {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    top: 60px;
+    bottom: 60px;
+
+    background-image: url(../../../assets/images/HomeCamImg.png);
+    background-size: 100% 100%;
+  }
+}
+.MCenterDiv1 {
+  position: absolute;
+  width: 95px;
+  left: 530px;
+  top: 0px;
+  bottom: 0px;
+  background-color: black;
+}
+.MRightDiv1 {
+  position: absolute;
+  width: 530px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: yellow;
+}

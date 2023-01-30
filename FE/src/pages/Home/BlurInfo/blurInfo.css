@@ -1,0 +1,54 @@
+.BlurInfoSubFrame {
+  position: absolute;
+  width: 1305px;
+  height: 570px;
+  left: 61.5px;
+  top: 157.5px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 30px;
+  z-index: 30;
+}
+.BlurInfoSubFrame .CommNavLogo {
+  position: absolute;
+  width: 256px;
+  height: 140px;
+  left: 192.75px;
+  top: 77.25px;
+  font-family: "Indie Flower";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 140px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  color: #50a1a3;
+}
+.BlurInfoSubFrame .Paragraph1 {
+  position: absolute;
+  width: 436.5px;
+  height: 216px;
+  left: 110.25px;
+  top: 254.25px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+}
+.BlurInfoSubFrame .Paragraph2 {
+  position: absolute;
+  width: 559.5px;
+  height: 450px;
+  left: 675px;
+  top: 20.25px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22.5px;
+  line-height: 27px;
+  color: #000000;
+}/*# sourceMappingURL=blurInfo.css.map */

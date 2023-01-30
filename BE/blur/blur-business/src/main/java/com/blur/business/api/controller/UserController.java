@@ -3,11 +3,7 @@ package com.blur.business.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.blur.business.api.dto.UserDto;
 import com.blur.business.entity.User;
@@ -15,8 +11,10 @@ import com.blur.business.service.EmailService;
 import com.blur.business.service.UserService;
 import com.blur.business.service.PasswordService;
 
-@Controller
-@RequestMapping("/")
+import java.util.Map;
+
+@RestController
+@RequestMapping("")
 public class UserController {
 
 	@Autowired
@@ -41,28 +39,30 @@ public class UserController {
 	}
 
 	@PostMapping("/checkId") // 아이디 중복체크
-	public void checkId(@RequestParam("userId") String userId) {
+	public String checkId(@RequestBody Map<String,String> param) {
 
+		String userId = param.get("userId");
 		userService.checkId(userId);
 		System.out.println(userService.checkId(userId));
+		System.out.println("dd" + userService.checkId(userId));
+		return userId;
+
 	}
 
 	@PostMapping("/sendAuthEmail") // 이메일 인증메일 발송
-	public String sendAuthEmail(@RequestParam("email") String email) throws Exception {
+	public String sendAuthEmail(@RequestBody Map<String,String> param) throws Exception {
 
+		String email = param.get("email");
 		String confirm = emailService.sendAuthMessage(email);
 
 		return confirm;
 	}
 
-//    @GetMapping("/emailConfirm")
-//    public String emailConfirm() {
-//
-//    }
 
 	@PutMapping("/findPassword") // 비밀번호 찾기
-	public void findPassword(@RequestParam("userId") String userId) throws Exception {
+	public void findPassword(@RequestBody Map<String,String> param) throws Exception {
 
+		String userId = param.get("userId");
 		passwordService.sendTempPassword(userId);
 	}
 

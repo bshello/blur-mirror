@@ -1,0 +1,80 @@
+.CommNavDiv {
+  position: absolute;
+  height: 82.5px;
+  left: 65px;
+  right: 65px;
+  top: 40px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  color: #50a1a3;
+  box-shadow: 0px 2.81482px 2.81482px rgba(0, 0, 0, 0.25);
+  border: 0.703704px solid rgba(255, 255, 255, 0.5);
+
+  .CommNavLogo {
+    position: absolute;
+    width: 120px;
+    height: 66px;
+    left: 37.5px;
+    top: 8.25px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 66px;
+    text-align: center;
+  }
+
+  .CommNavBtnsDiv {
+    position: absolute;
+    width: 300px;
+    height: 43.5px;
+    right: 60px;
+    top: 19.5px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 43.5px;
+
+    text-transform: capitalize;
+
+    color: #50a1a3;
+
+    .CommNavBtnChat {
+      position: absolute;
+      width: 57px;
+      height: 44px;
+      left: 0px;
+      top: 0px;
+      cursor: pointer;
+    }
+
+    .CommNavBtnAbout {
+      position: absolute;
+      width: 85px;
+      height: 44px;
+      left: 100px;
+      top: 0px;
+      cursor: pointer;
+    }
+
+    .CommNavBtnMyInfo {
+      position: absolute;
+      width: 83px;
+      height: 44px;
+      left: 216.75px;
+      top: 0px;
+      cursor: pointer;
+    }
+
+    .CommNavBtnSignIn {
+      position: absolute;
+      width: 110px;
+      height: 58px;
+      left: 289px;
+      top: 0px;
+      cursor: pointer;
+    }
+  }
+}
