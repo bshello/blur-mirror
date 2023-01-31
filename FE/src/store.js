@@ -1,26 +1,18 @@
-// import { configureStore, createSlice } from "@reduxjs/toolkit";
-// import MyInfoModal from "./pages/MyInfo/MyInfoModal/myInfoModal";
+// import { configureStore } from "@reduxjs/toolkit";
+// import user from "./reducer/userEdit";
 
-// const nickname = createSlice({
-//   name: "nickname",
-//   initialState: "nickName",
-//   reducers: {
-//     changeNickName(props) {
-//       return;
-//     },
-//   },
-// });
-// export const { changeNickName } = nickname.actions;
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-// const [nickName, setnickName] = createSlice((state) => {
-//   name: "nickname",
-// 	initialState: "nickName",
-// reducer : {
-// 	return state.nickName;
-// }});
+let user = createSlice({
+  //state 이름
+  name: "user",
 
-// export default configureStore({
-//   reducer: {
-//     nickname: nickname.reducer,
-//   },
-// });
+  //stae 값
+  initialState: "kim",
+});
+
+export default configureStore({
+  reducer: {
+    user: user.reducer,
+  },
+});

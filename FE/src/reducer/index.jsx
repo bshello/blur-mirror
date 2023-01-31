@@ -3,6 +3,7 @@
 /** root reducer */
 // import counter from "./counter";
 import MToggle from "./MToggle";
+import userEdit from "./userEdit";
 import { combineReducers } from "redux";
 
 // 여러 reducer를 사용하는 경우 reducer를 하나로 묶어주는 메소드입니다.
@@ -11,6 +12,7 @@ import { combineReducers } from "redux";
 const rootReducer = combineReducers({
   // counter,
   MToggle,
+  userEdit,
 });
 
 export default rootReducer;

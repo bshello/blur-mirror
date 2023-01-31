@@ -3,17 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+    "@reduxjs/toolkit": "^1.9.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "rc-slider": "^9.6.5",
+=======
     "@socket.io/admin-ui": "^0.5.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.6",
+>>>>>>> 6129d1f1153f3f8ca7d988502fc652b971e1e915
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
+    "react-slick": "^0.29.0",
+    "react-styled-carousel": "^0.5.1",
     "redux": "^4.2.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

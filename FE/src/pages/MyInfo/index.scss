@@ -12,7 +12,7 @@
 
   .MIbackbtn {
     position: absolute;
-    width: 75;
+    width: 75px;
     height: 50px;
     left: 5%;
     top: 5%;
@@ -24,6 +24,7 @@
     display: flex;
     align-items: center;
     text-align: right;
+    cursor: pointer;
 
     color: #ffffff;
   }
@@ -107,6 +108,7 @@
 
   border: 1.5px dashed #50a1a3;
   border-radius: 30px;
+  cursor: pointer;
 
   .MIHashSetIcon {
     position: absolute;
@@ -196,6 +198,7 @@
   text-align: right;
 
   color: #ffffff;
+  cursor: pointer;
 }
 
 .MIIntroducingDiv {
