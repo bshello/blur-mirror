@@ -114,7 +114,9 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           console.log(res);
         })
         .catch((err) => {
-          console.log(err);
+          console.log("11111111111");
+          alert("아이디중복 또는 비밀번호불일치 또는 이메일확인코드오류 입니다.");
+          console.log(err.response.data.errorMessage);
         });
     } else {
       alert("아이디중복 또는 비밀번호불일치 또는 이메일확인코드오류 입니다.");

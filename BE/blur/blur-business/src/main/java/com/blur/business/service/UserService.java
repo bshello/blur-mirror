@@ -28,7 +28,7 @@ public class UserService {
     @Autowired
     private final BCryptPasswordEncoder encoder;
 
-    public User register(UserDto dto) {
+    public User register(UserDto dto) throws Exception{
         User user = dto.toEntity();
         user.updatePassword(encoder.encode(dto.getPassword()));
         userRepository.save(user);
@@ -38,24 +38,16 @@ public class UserService {
         userProfileRepository.save(userProfile);
         System.out.println("DB에 회원 저장 성공");
         return user;
-
     }
 
     public Boolean checkId(String userId) {
-        System.out.println(userId);
+
         User userEntity = userRepository.findByUserId(userId);
         if (userEntity!=null) {
-            System.out.println("아이디 있음, 회원가입 불가");
             return false;
         }
         System.out.println("회원가입가능");
         return true;
     }
-
-
-
-
-
-
 
 }

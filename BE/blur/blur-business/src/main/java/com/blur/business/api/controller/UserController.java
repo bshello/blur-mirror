@@ -1,16 +1,13 @@
 package com.blur.business.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import com.blur.business.api.dto.UserDto;
-import com.blur.business.entity.User;
 import com.blur.business.service.EmailService;
 import com.blur.business.service.UserService;
 import com.blur.business.service.PasswordService;
-
 import java.util.Map;
 
 @RestController
@@ -18,13 +15,14 @@ import java.util.Map;
 public class UserController {
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@Autowired
-	EmailService emailService;
+	private EmailService emailService;
 
 	@Autowired
-	PasswordService passwordService;
+	private PasswordService passwordService;
+
 
 	@GetMapping
 	public String index() {
@@ -32,45 +30,35 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody UserDto userDto) {
-		System.out.println(userDto.getUserId());
-		User res = userService.register(userDto);
-		return ResponseEntity.ok(res);
+	public ResponseEntity<?> register(@RequestBody UserDto userDto) throws Exception{
+
+		userService.register(userDto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(null);
 	}
 
 	@PostMapping("/checkId") // 아이디 중복체크
-	public Boolean checkId(@RequestBody Map<String,String> param) {
+	public ResponseEntity<Boolean> checkId(@RequestBody Map<String,String> param) {
 
 		String userId = param.get("userId");
 		Boolean res = userService.checkId(userId);
-		return res;
+		return ResponseEntity.status(HttpStatus.OK).body(res);
 
 	}
 
 	@PostMapping("/sendAuthEmail") // 이메일 인증메일 발송
-	public String sendAuthEmail(@RequestBody Map<String,String> param) throws Exception {
+	public ResponseEntity<?> sendAuthEmail(@RequestBody Map<String,String> param) throws Exception {
 
 		String email = param.get("email");
-		String confirm = emailService.sendAuthMessage(email);
-
-		return confirm;
+		emailService.sendAuthMessage(email);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
-
 
 	@PutMapping("/findPassword") // 비밀번호 찾기
-	public void findPassword(@RequestBody Map<String,String> param) throws Exception {
+	public ResponseEntity<Boolean> findPassword(@RequestBody Map<String,String> param) throws Exception {
 
 		String userId = param.get("userId");
-		passwordService.sendTempPassword(userId);
+		Boolean res = passwordService.sendTempPassword(userId);
+		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 
-	@GetMapping("/testLogin")
-	public String testLogin() {
-		return "testLogin";
-	}
-
-	@GetMapping("/testRegister")
-	public String testRegister() {
-		return "testRegister";
-	}
 }

@@ -83,18 +83,23 @@ public class PasswordService {
         return message;
     }
 
-    public void sendTempPassword(String userId)throws Exception {
+    public Boolean sendTempPassword(String userId)throws Exception {
         User user = userRepository.findByUserId(userId);
-        String to = user.getEmail();
-        MimeMessage message = createMessage(to);
-        try{//예외처리
-            emailSender.send(message);
-            user.updatePassword(encoder.encode(tPw));
-            userRepository.save(user);
-            System.out.println("임시비번 발급");
-        }catch(MailException es){
-            es.printStackTrace();
-            throw new IllegalArgumentException();
+        if (user == null) {
+            return false;
+        }
+        else {
+            String to = user.getEmail();
+            MimeMessage message = createMessage(to);
+            try{//예외처리
+                emailSender.send(message);
+                user.updatePassword(encoder.encode(tPw));
+                userRepository.save(user);
+                return true;
+            }catch(MailException es){
+                es.printStackTrace();
+                throw new IllegalArgumentException();
+            }
         }
     }
 
