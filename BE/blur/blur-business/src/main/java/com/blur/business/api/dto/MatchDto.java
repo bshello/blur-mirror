@@ -23,7 +23,7 @@ public class MatchDto {
 
     private Integer age;
 
-    private Integer mmr;
+    private Integer point;
 
     private double lat;
 
@@ -40,7 +40,7 @@ public class MatchDto {
         this.userId = userProfile.getUserId();
         this.gender = user.getGender();
         this.age = userProfile.getAge();
-        this.mmr = matchMakingRating.getMmr();
+        this.point = matchMakingRating.getPoint();
         this.lat = matchInfoDto.getLat();
         this.lng = matchInfoDto.getLng();
         this.maxDistance = matchingSetting.getMaxDistance();

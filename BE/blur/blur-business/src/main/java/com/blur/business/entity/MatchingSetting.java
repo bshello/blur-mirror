@@ -38,4 +38,13 @@ public class MatchingSetting {
     @JoinColumn(name="user_no")
     private User user;
 
+    @Builder
+    public MatchingSetting(Integer userNo, String userId, Integer maxDistance, Integer minAge, Integer maxAge) {
+        this.userNo = userNo;
+        this.userId = userId;
+        this.maxDistance = maxDistance;
+        this.minAge = minAge;
+        this.maxAge = maxAge;
+    }
+
 }

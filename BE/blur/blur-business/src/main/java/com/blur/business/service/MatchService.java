@@ -76,7 +76,7 @@ public class MatchService {
         for (int male : males.keySet()) {
             MatchDto maleDto = males.get(male);
             if (!filter(maleDto, femaleDto)) {continue;}
-            maleList.offer(new int[] {maleDto.getMmr(), maleDto.getUserNo()});
+            maleList.offer(new int[] {maleDto.getPoint(), maleDto.getUserNo()});
         }
         while (maleList != null) {
             Integer maleNo = maleList.poll()[1];

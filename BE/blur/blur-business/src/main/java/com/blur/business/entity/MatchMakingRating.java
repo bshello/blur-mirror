@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "mmr")
+@Table(name = "matchmaking_rating")
 public class MatchMakingRating {
 
     @JsonIgnore
@@ -24,8 +24,8 @@ public class MatchMakingRating {
     @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "mmr")
-    private Integer mmr;
+    @Column(name = "point")
+    private Integer point;
 
     @Column(name = "winning_streak")
     private Integer winningStreak;
@@ -40,4 +40,14 @@ public class MatchMakingRating {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_no")
     private User user;
+
+    @Builder
+    public MatchMakingRating(Integer userNo, String userId, Integer point, Integer winningStreak, Integer losingStreak, Integer reportCount) {
+        this.userNo = userNo;
+        this.userId = userId;
+        this.point = point;
+        this.winningStreak = winningStreak;
+        this.losingStreak = losingStreak;
+        this.reportCount = reportCount;
+    }
 }
