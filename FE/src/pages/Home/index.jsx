@@ -55,17 +55,6 @@ function Home() {
         {slideNumber === 0 ? <Slide1 /> : null}
         {slideNumber === 1 ? <Slide2 /> : null}
         {slideNumber === 2 ? <Slide3 /> : null}
-
-        {/* <div className="HomeRightDiv">
-          <div className="HomeRightImgDiv">
-            <div className="HomeRightImg"></div>
-          </div>
-          <div className="HomeRightToolTipDiv">
-            <span className="HomeRightToolTipText">
-              자신감있는 대화로 당신의 매력을 어필하세요.
-            </span>
-          </div>
-        </div> */}
       </div>
     </div>
   );

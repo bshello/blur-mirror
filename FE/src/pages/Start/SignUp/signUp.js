@@ -134,7 +134,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputId"
             id="user_id"
-            placeholder="ID를 입력해 주세요"
+            placeholder="  ID를 입력해 주세요"
             onChange={enterId}
           ></input>
           <button
@@ -153,7 +153,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputPw"
             id="user_pw"
-            placeholder="PW를 입력해 주세요"
+            placeholder="  PW를 입력해 주세요"
             onChange={enterPs1}
           ></input>
         </div>
@@ -164,7 +164,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputPwChk"
             id="user_pw_re"
-            placeholder="PW를 다시 입력해 주세요"
+            placeholder="  PW를 다시 입력해 주세요"
             onChange={enterPs2}
           ></input>
           {psWarn ? <span>비밀번호가 다릅니다!</span> : null}
@@ -176,7 +176,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputEmail"
             id="user_email"
-            placeholder="E-mail을 입력해 주세요"
+            placeholder="  E-mail을 입력해 주세요"
             onChange={enterEmail}
           ></input>
           <button
@@ -198,7 +198,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputEmailConfirm"
             id="user_email_confirm"
-            placeholder="인증번호를 입력해 주세요"
+            placeholder="  인증번호를 입력해 주세요"
             onChange={enterOwNumber}
           ></input>
           <button
