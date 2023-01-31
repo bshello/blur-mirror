@@ -32,20 +32,18 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<?> register(UserDto userDto) {
-
+	public ResponseEntity<?> register(@RequestBody UserDto userDto) {
+		System.out.println(userDto.getUserId());
 		User res = userService.register(userDto);
 		return ResponseEntity.ok(res);
 	}
 
 	@PostMapping("/checkId") // 아이디 중복체크
-	public String checkId(@RequestBody Map<String,String> param) {
+	public Boolean checkId(@RequestBody Map<String,String> param) {
 
 		String userId = param.get("userId");
-		userService.checkId(userId);
-		System.out.println(userService.checkId(userId));
-		System.out.println("dd" + userService.checkId(userId));
-		return userId;
+		Boolean res = userService.checkId(userId);
+		return res;
 
 	}
 

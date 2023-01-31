@@ -41,14 +41,15 @@ public class UserService {
 
     }
 
-    public Integer checkId(@RequestParam("UserId")String userId) {
+    public Boolean checkId(String userId) {
+        System.out.println(userId);
         User userEntity = userRepository.findByUserId(userId);
         if (userEntity!=null) {
             System.out.println("아이디 있음, 회원가입 불가");
-            return 1;
+            return false;
         }
         System.out.println("회원가입가능");
-        return 0;
+        return true;
     }
 
 

@@ -253,4 +253,11 @@
   align-items: center;
   text-align: center;
   color: #50a1a3;
+}
+.SUModal .PlaceHolder {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 66px;
+  top: 800px;
 }/*# sourceMappingURL=signUp.css.map */

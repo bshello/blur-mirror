@@ -209,4 +209,11 @@
   top: 580px;
   background: rgba(54, 52, 150, 0.9607843137);
   border-radius: 7.5px;
+}
+.SIModal .PlaceHolder {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 66px;
+  top: 650px;
 }/*# sourceMappingURL=signIn.css.map */

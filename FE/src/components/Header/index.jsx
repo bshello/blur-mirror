@@ -1,6 +1,6 @@
 // import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
-
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <div className="CommNavDiv">
@@ -8,7 +8,9 @@ function Header() {
       <div className="CommNavBtnsDiv">
         <span className="CommNavBtnChat">Chat</span>
         <span className="CommNavBtnAbout">About</span>
-        <span className="CommNavBtnMyInfo">MyInfo</span>
+        <Link to="/MyInfo">
+          <span className="CommNavBtnMyInfo">MyInfo</span>
+        </Link>
       </div>
     </div>
   );

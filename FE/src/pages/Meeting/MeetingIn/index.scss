@@ -6,59 +6,532 @@
   left: 65px;
   right: 65px;
   top: 170px;
-  bottom: 70px;
+  bottom: 30px;
 }
 .MProgressBar {
   position: absolute;
   width: 1326px;
-  height: 17.25px;
-  left: 57.75px;
-  top: 112.5px;
+  height: 17px;
+  left: 57px;
+  top: 112x;
 
   border-radius: 30px;
 }
 .MLeftDiv1 {
   position: absolute;
-  width: 530px;
-  left: 0px;
+  width: 450px;
+  height: 550px;
+  left: 130px;
   top: 0px;
-  bottom: 0px;
-  border: 1px solid black;
+  bottom: 30px;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  .ImotionDiv {
+    position: absolute;
+    height: 45px;
+    left: 10px;
+    right: 10px;
+    top: 0px;
+    opacity: 0;
+
+    background: #faeaea33;
+    border-radius: 37.5px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+
+    .Imotion1 {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      top: 5px;
+      left: 140px;
+
+      background-image: url(../../../assets/images/tongue.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    .Imotion2 {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      top: 5px;
+      left: 80px;
+
+      background-image: url(../../../assets/images/nervous.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    .Imotion3 {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      top: 5px;
+      left: 20px;
+
+      background-image: url(../../../assets/images/surprised.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    .Imotion4 {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      top: 5px;
+      left: 255px;
+
+      background-image: url(../../../assets/images/balloon.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    .Imotion5 {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      top: 5px;
+      left: 315px;
+
+      background-image: url(../../../assets/images/heart.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    .Imotion6 {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      top: 7px;
+      left: 375px;
+
+      background-image: url(../../../assets/images/clover.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    &.clickSmileChangeDiv {
+      animation: smileDivMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+    }
+    &.basicSmileChangeDiv {
+      animation: smileDivUnMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+    }
+  }
+
   .ImotionBtn {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 5px;
+    left: 210px;
+
+    background-image: url(../../../assets/images/happy.png);
+    background-size: 100% 100%;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .MMyCamDiv {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 50px;
+    bottom: 60px;
+
+    border-radius: 30px;
+    background-image: url(../../../assets/images/HomeCamImg.png);
+    background-size: 100% 100%;
+  }
+  .MMyCamSubDiv {
+    position: absolute;
+    width: 450px;
+    height: 44px;
+    bottom: 0px;
+    .MMyCamSubText {
+      position: absolute;
+      width: 138px;
+      height: 44px;
+      left: 0px;
+      top: 0px;
+
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 44px;
+
+      text-transform: capitalize;
+      color: #50a1a3;
+    }
+    .MMyCamSubBtnsDiv {
+      position: absolute;
+      width: 176px;
+      height: 44px;
+      top: 0px;
+      right: 0px;
+
+      .MMyCamSubCamSettingBtn {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        left: 0px;
+        top: 8px;
+
+        background-image: url(../../../assets/images/setting.png);
+        background-size: 100% 100%;
+        cursor: pointer;
+      }
+
+      .MMyCamSubCamToggleBtn {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        left: 52px;
+        top: 8px;
+
+        background-image: url(../../../assets/images/camera.png);
+        background-size: 100% 100%;
+        cursor: pointer;
+      }
+
+      .MMyCamSubMicBtn {
+        position: absolute;
+        width: 15.24px;
+        height: 26.25px;
+        left: 104.5px;
+        top: 8.75px;
+
+        background-image: url(../../../assets/images/mic.png);
+        background-size: 100% 100%;
+        cursor: pointer;
+      }
+
+      .MMyCamSubSoundBtn {
+        position: absolute;
+        width: 26px;
+        height: 22px;
+        left: 145px;
+        top: 10px;
+
+        background-image: url(../../../assets/images/sound.png);
+        background-size: 100% 100%;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.MCenterDiv1 {
+  position: relative;
+  width: 140px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .MTimer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 200px;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 55px;
+    color: #ffffff;
+  }
+
+  .MCenterCloseBtnDiv {
+    position: absolute;
+    height: 40px;
+    left: 10px;
+    right: 10px;
+    top: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fff1f1;
+    border: 3px solid #50a1a3;
+    border-radius: 15px;
+    color: #50a1a3;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #50a1a3;
+      color: #fff1f1;
+    }
+
+    .MCenterCloseBtnText {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+
+      font-size: 22px;
+      line-height: 40px;
+    }
+  }
+}
+.MRightDiv1 {
+  position: absolute;
+  width: 450px;
+  height: 550px;
+  top: 0px;
+  right: 130px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+
+  .lightTagsDiv {
+    position: absolute;
+    height: 45px;
+    left: 10px;
+    right: 10px;
+    top: 0px;
+    opacity: 0;
+
+    background: #faeaea33;
+    border-radius: 37.5px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    &.clickLightChangeDiv {
+      animation: lightDivMoving 1s 0.5s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+
+      span:nth-child(n) {
+        opacity: 1;
+        margin: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+        color: #000000;
+      }
+      span:nth-child(1) {
+        padding-left: 85px;
+      }
+    }
+    &.basicLightChangeDiv {
+      animation: lightDivUnMoving 0.5s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+
+      span:nth-child(n) {
+        opacity: 0;
+      }
+    }
+  }
+
+  .lightTagBtn {
     position: absolute;
     width: 37.5px;
     height: 37.5px;
     top: 0px;
+    left: 210px;
 
-    background-image: url(../../../assets/images/happy.png);
+    background-image: url(../../../assets/images/lightbulbOff.png);
     background-size: 100% 100%;
+    cursor: pointer;
+    z-index: 2;
+
+    &.click {
+      background-image: url(../../../assets/images/lightbulb.png);
+
+      animation: moving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+    }
+    &.basic {
+      animation: unMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+    }
   }
-  .MMyCamDiv {
+
+  .blurEffect {
     position: absolute;
-    left: 60px;
-    right: 60px;
-    top: 60px;
+    left: 0px;
+    right: 0px;
+    top: 50px;
     bottom: 60px;
 
-    background-image: url(../../../assets/images/HomeCamImg.png);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(37.5px);
+    border-radius: 30px;
+    z-index: 1;
+  }
+
+  .MPartenerCamDiv {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 50px;
+    bottom: 60px;
+    border-radius: 30px;
+
+    background-image: url(../../../assets/images/MPartenerCamDiv.png);
     background-size: 100% 100%;
   }
 }
-.MCenterDiv1 {
+
+.MPartenerCamSubDiv {
   position: absolute;
-  width: 95px;
-  left: 530px;
-  top: 0px;
+  width: 450px;
+  height: 44px;
   bottom: 0px;
-  background-color: black;
+
+  .MPartenerCamSubText {
+    position: absolute;
+    width: 200px;
+    height: 44px;
+    left: 0px;
+    top: 0px;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 44px;
+    color: #50a1a3;
+  }
+
+  .MPartenerCamSubBtnsDiv {
+    position: absolute;
+    width: 120px;
+    height: 44px;
+    left: 325px;
+    top: 0px;
+
+    .MPartenerCamSubBlockBtn {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      left: 0px;
+      top: 8px;
+
+      background-image: url(../../../assets/images/emergency.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    .MPartenerCamSubMicBtn {
+      position: absolute;
+      width: 15px;
+      height: 26px;
+      left: 52px;
+      top: 8px;
+
+      background-image: url(../../../assets/images/mic.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    .MPartenerCamSubSoundBtn {
+      position: absolute;
+      width: 26px;
+      height: 22px;
+      left: 93px;
+      top: 10px;
+
+      background-image: url(../../../assets/images/sound.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+  }
 }
-.MRightDiv1 {
-  position: absolute;
-  width: 530px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  background-color: yellow;
+@keyframes moving {
+  0% {
+    left: 210px;
+  }
+
+  50% {
+    left: 105px;
+  }
+
+  75% {
+    left: 52.5px;
+  }
+
+  100% {
+    left: 40px;
+  }
+}
+@keyframes unMoving {
+  0% {
+    left: 40px;
+  }
+
+  50% {
+    left: 120px;
+  }
+
+  75% {
+    left: 180px;
+  }
+
+  100% {
+    left: 210px;
+  }
+}
+@keyframes lightDivMoving {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes lightDivUnMoving {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes smileDivMoving {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes smileDivUnMoving {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

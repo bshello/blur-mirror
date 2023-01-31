@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./signUp.css";
 import axios from "axios";
 
@@ -29,33 +29,96 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     console.log(email);
   };
 
+  const [owNumber, setOwNumber] = useState(null);
+  const enterOwNumber = (e) => {
+    setOwNumber(e.target.value);
+    console.log(owNumber);
+  };
+
   const [idCheck, setIdCheck] = useState(false);
   const callIdCheck = () => {
     axios({
       method: "post",
       url: `${API_URL}/checkId`,
       data: {
-        "userId": id,
+        userId: id,
       },
     })
       .then((res) => {
-        console.log("res.data", res.data);
+        console.log(res);
         setIdCheck(res.data);
+        
         console.log(idCheck);
+        if (!idCheck) {
+          alert("아이디가 중복되었습니다");
+        } else {
+          alert("사용가능한 아이디입니다.");
+        }
       })
       .catch((err) => {
-        console.log(id);
         console.log(err);
       });
   };
 
   const [psCheck, setPsCheck] = useState(false);
+  const [psWarn, setPsWarn] = useState(false);
+  const callPsCheck = (ps1, ps2) => {
+    if (ps1 === ps2) {
+      setPsCheck(true);
+      setPsWarn(false);
+    } else {
+      setPsCheck(false);
+      console.log("비밀번호가 다릅니다");
+      setPsWarn(true);
+    }
+  };
+
+  useEffect(() => {
+    callPsCheck(ps1, ps2);
+  }, [ps2]);
 
   const [emailCheck, setEmailCheck] = useState(false);
+  const sendToEmail = () => {
+    axios({
+      method: "post",
+      url: `${API_URL}/sendAuthEmail`,
+      data: {
+        email: email
+      }
+    })
+      .then((res) => {
+        console.log(res);
+        setEmailCheck(true);
+        alert("인증번호를 보냈습니다!");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("인증번호를 보내지 못했습니다.");
+      });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("막았다");
+    if (true) {
+      axios({
+        method: "post",
+        url: `${API_URL}/register`,
+        data: {
+          userId: id,
+          password: ps1,
+          email: email,
+        },
+        
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert("아이디중복 또는 비밀번호불일치 또는 이메일확인코드오류 입니다.");
+    }
   };
 
   return (
@@ -71,12 +134,13 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputId"
             id="user_id"
-            placeholder="ID를 입력해 주세요"
+            placeholder="  ID를 입력해 주세요"
             onChange={enterId}
           ></input>
           <button
+            style={{ cursor: "pointer" }}
             onClick={(e) => {
-              e.preventDefault(); callIdCheck();
+              e.preventDefault(), callIdCheck();
             }}
           >
             아이디 중복체크
@@ -89,7 +153,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputPw"
             id="user_pw"
-            placeholder="PW를 입력해 주세요"
+            placeholder="  PW를 입력해 주세요"
             onChange={enterPs1}
           ></input>
         </div>
@@ -100,9 +164,10 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputPwChk"
             id="user_pw_re"
-            placeholder="PW를 다시 입력해 주세요"
+            placeholder="  PW를 다시 입력해 주세요"
             onChange={enterPs2}
           ></input>
+          {psWarn ? <span>비밀번호가 다릅니다!</span> : null}
         </div>
         <div className="SUModalInputEmailDiv">
           <label className="SUModalInputEmailLabel" htmlFor="user_email">
@@ -111,10 +176,15 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputEmail"
             id="user_email"
-            placeholder="E-mail을 입력해 주세요"
+            placeholder="  E-mail을 입력해 주세요"
             onChange={enterEmail}
           ></input>
-          <button onClick={(e) => e.preventDefault()}>
+          <button
+            style={{ cursor: "pointer" }}
+            onClick={(e) => {
+              e.preventDefault(), sendToEmail();
+            }}
+          >
             이메일로 인증번호 보내기
           </button>
         </div>
@@ -128,18 +198,29 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputEmailConfirm"
             id="user_email_confirm"
-            placeholder="인증번호를 입력해 주세요"
+            placeholder="  인증번호를 입력해 주세요"
+            onChange={enterOwNumber}
           ></input>
-          <button onClick={(e) => e.preventDefault()}>인증번호 확인</button>
+          <button
+            style={{ cursor: "pointer" }}
+            onClick={(e) => e.preventDefault()}
+          >
+            인증번호 확인
+          </button>
         </div>
 
-        <button className="SUSignUpBtn" onClick={onSubmit}>
+        <button
+          className="SUSignUpBtn"
+          style={{ cursor: "pointer" }}
+          onClick={onSubmit}
+        >
           <span className="SUBtnText">회원가입</span>
         </button>
       </form>
 
       <button
         className="SUCancleBtn"
+        style={{ cursor: "pointer" }}
         onClick={() => {
           showSignUpModal();
           showSignInModal();
@@ -147,6 +228,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       >
         <span className="SUCancleBtnText">취소</span>
       </button>
+      <div className="PlaceHolder"></div>
     </div>
   );
 }
