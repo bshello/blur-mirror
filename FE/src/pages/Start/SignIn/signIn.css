@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 .SIModal {
   position: absolute;
   width: 460.5px;
@@ -7,6 +11,8 @@
   background: #ffffff;
   border-radius: 30px;
   z-index: 30;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .SIModal .SIModalHeader {
   position: absolute;
@@ -61,6 +67,7 @@
   top: 31.5px;
   background: #e1f1f2;
   border-radius: 7.5px;
+  border: 0;
 }
 .SIModal .ModalInputPwDiv {
   position: absolute;
@@ -93,6 +100,7 @@
   top: 30px;
   background: #e1f1f2;
   border-radius: 7.5px;
+  border: 0;
 }
 .SIModal .LoginBtnDiv {
   position: absolute;
@@ -191,5 +199,14 @@
   left: 66px;
   top: 512.25px;
   background: #00ca51;
+  border-radius: 7.5px;
+}
+.SIModal .GoogleLoginBtn {
+  position: absolute;
+  width: 330px;
+  height: 56.25px;
+  left: 66px;
+  top: 580px;
+  background: rgba(54, 52, 150, 0.9607843137);
   border-radius: 7.5px;
 }/*# sourceMappingURL=signIn.css.map */

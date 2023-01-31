@@ -57,6 +57,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
 
       <button className="KakaoLoginBtn">카카오로 로그인</button>
       <button className="NaverLoginBtn">네이버로 로그인</button>
+      <button className="GoogleLoginBtn">구글로 로그인</button>
     </div>
   );
 }
