@@ -1,6 +1,39 @@
+import { useState } from "react";
 import "./searchPw.css";
+import axios from "axios";
 
 function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
+  const API_URL = "http://localhost:8080";
+
+  const [id, setId] = useState(null);
+  const enterId = (e) => {
+    setId(e.target.value);
+    console.log(id);
+  };
+
+  const [email, setEmail] = useState(null);
+  const enterEmail = (e) => {
+    setEmail(e.target.value);
+    console.log(email);
+  };
+
+  const callSearchPwCheck = () => {
+    axios({
+      method: "post",
+      url: `${API_URL}/findPw`,
+      data: {
+        userId: id,
+        email: email,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="SPModal">
       <div className="SPModalHeader">
@@ -11,6 +44,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
         <input
           className="SPModalInputId"
           placeholder="  ID를 입력해 주세요"
+          onChange={enterId}
         ></input>
       </div>
       <div className="SPModalInputEmailDiv">
@@ -18,6 +52,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
         <input
           className="SPModalInputEmail"
           placeholder="  E-mail을 입력해 주세요"
+          onChange={enterEmail}
         ></input>
       </div>
       <button
@@ -25,6 +60,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
         onClick={() => {
           showAlertModal();
           showSearchPwModal();
+          callSearchPwCheck();
         }}
       >
         <span className="SPConfirmBtnText">임시비밀번호 이메일로 전송하기</span>
