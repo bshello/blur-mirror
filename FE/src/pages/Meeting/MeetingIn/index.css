@@ -237,12 +237,19 @@
   background-image: url(../../../assets/images/soundOff.png);
   background-size: 100% 100%;
 }
-.MLeftDiv1 .MMyCamSubSoundDescTop {
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc {
+  position: absolute;
+  width: 100px;
+  height: 25px;
+  top: 45px;
+  left: 107px;
+}
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .MMyCamSubSoundDescTop {
   position: absolute;
   width: 0;
   height: 0;
-  left: 0px;
-  top: 15px;
+  left: 36px;
+  top: -18px;
   border-bottom: 10px solid transparent;
   border-top: 10px solid transparent;
   border-left: 15px solid rgb(81, 161, 163);
@@ -250,16 +257,61 @@
   transform: rotate(-90deg);
   z-index: 1;
 }
-.MLeftDiv1 .MMyCamSubSoundDescMain {
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .MMyCamSubSoundDescMain {
   position: absolute;
   width: 100px;
   height: 25px;
-  left: -37px;
-  top: 33px;
+  left: 0px;
+  top: 0px;
   background-color: rgb(81, 161, 163);
   z-index: 2;
   border-radius: 30px;
   cursor: auto;
+}
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .range-slider {
+  -webkit-appearance: none;
+  position: absolute;
+  top: -118px;
+  left: 10px;
+  right: 10px;
+  margin: 8em auto;
+  display: flex;
+  z-index: 5;
+}
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .range-slider .slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.3em;
+  outline: none;
+  border-radius: 3px;
+  background-color: #eaf6f6;
+  /*
+    ㅁ 슬라이더 핸들(클릭해서 드래그하는 부분)
+    Chrome, Opera, Safari, Edge 브라우저를 다루기 위해선 -webkit-
+    Firefox의 경우 -moz- 사용
+  */
+}
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .range-slider .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: rgb(168, 222, 223);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 6;
+}
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .range-slider .progressSlider {
+  position: absolute;
+  width: 100%;
+  height: 0.4em;
+  border-radius: 3px;
+  background-color: #a8dedf;
+  top: 2px;
+  transform: translateY(-50%);
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .MCenterDiv1 {
@@ -623,20 +675,4 @@
 
 .MeetingIn a:hover {
   color: #fff;
-}
-
-.range-slide {
-  max-width: 30em;
-  margin: 8em auto;
-  position: relative;
-  display: flex;
-  z-index: 5;
-}
-.range-slide .slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 0.4em;
-  outline: none;
-  border-radius: 3px;
-  background-color: #50a1a3;
 }/*# sourceMappingURL=index.css.map */

@@ -2,6 +2,7 @@ import "./index.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
+import Slider from "react-input-slider";
 import Timer from "./Timer";
 
 function MeetingIn() {
@@ -10,6 +11,8 @@ function MeetingIn() {
   const [camToggle, setCamToggle] = useState(true);
   const [micToggle, setMicToggle] = useState(true);
   const [soundToggle, setSoundToggle] = useState(false);
+  const [fromrange, setfromrange] = useState(50);
+
   const showLight = () => {
     setLightToggle((prev) => !prev);
 
@@ -74,6 +77,14 @@ function MeetingIn() {
     setMicToggle((prev) => !prev);
   };
 
+  const onChangeSoundSlider = () => {
+    const slider = document.querySelector(".slider");
+    const progress = document.querySelector(".progressSlider");
+    setfromrange(slider.value);
+    const val = slider.value + "%";
+    progress.style.width = val;
+  };
+
   const showSound = () => {
     if (soundToggle) {
       document.querySelector(".soundOn").classList.replace("soundOn", "soundOff");
@@ -85,11 +96,7 @@ function MeetingIn() {
 
   return (
     <div className="MeetingIn">
-      <div className="range-slider">
-        <input type="range" className="slider" min="0" max="100"></input>
-        <div className="slider-thumb"></div>
-        <div className="progress"></div>
-      </div>
+      <div className="range-slider">{fromrange}</div>
       <div className="tempBackDiv" onClick={tempEvent}></div>
       {/* <div className="MProgressBar"></div> */}
       <ProgressBar done="70" />
@@ -111,13 +118,17 @@ function MeetingIn() {
             <div className="MMyCamSubCamSettingBtn"></div>
             <div className="MMyCamSubCamToggleBtn camOn" onClick={showCam}></div>
             <div className="MMyCamSubMicBtn micOn" onClick={openMic}></div>
-            <div className="MMyCamSubSoundBtn soundOff" onClick={showSound}>
-              <div className="MMyCamSubSoundDesc">
-                <div className="MMyCamSubSoundDescTop"></div>
-                <div className="MMyCamSubSoundDescMain"></div>
-                <div className="MMyCamSubSoundDescBar"></div>
-                <div className="MMyCamSubSoundDescBarPoint"></div>
+            <div className="MMyCamSubSoundBtn soundOff" onClick={showSound}></div>
+            <div className="MMyCamSubSoundDesc">
+              <div className="MMyCamSubSoundDescTop"></div>
+              <div className="MMyCamSubSoundDescMain"></div>
+              <div className="MMyCamSubSoundDescBar">
+                <div className="range-slider">
+                  <input type="range" className="slider" min="0" max="100" onChange={onChangeSoundSlider}></input>
+                  <div className="progressSlider"></div>
+                </div>
               </div>
+              <div className="MMyCamSubSoundDescBarPoint"></div>
             </div>
           </div>
         </div>
