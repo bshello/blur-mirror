@@ -208,7 +208,9 @@
   height: 56.25px;
   left: 66.75px;
   top: 670px;
+  cursor: pointer;
   background: #50a1a3;
+  color: #ffffff;
   border-radius: 10px;
 }
 .SUModal .SUSignUpBtn .SUBtnText {
@@ -234,6 +236,7 @@
   height: 56.25px;
   left: 66px;
   top: 740px;
+  cursor: pointer;
   background: #e1f1f2;
   border-radius: 10px;
 }
