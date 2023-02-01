@@ -137,17 +137,18 @@
 
 .MINameAgeDiv {
   position: absolute;
-  width: 180px;
-  height: 55px;
+  width: 400px;
+  height: 100px;
   left: 5%;
-  top: 650px;
+  top: 555px;
 }
 .MINameAgeDiv .MIName {
   position: absolute;
   width: 100px;
   height: 55px;
   left: 0px;
-  bottom: 50px;
+  bottom: 0px;
+  margin-left: 20;
   font-weight: 400px;
   font-size: 40px;
   line-height: 55px;
@@ -160,9 +161,9 @@
 .MINameAgeDiv .MIAge {
   position: absolute;
   width: 40px;
-  height: 55px;
-  left: 60%;
-  bottom: 47px;
+  height: 50px;
+  left: 0%;
+  bottom: 50px;
   font-weight: 400;
   font-size: 40px;
   line-height: 55px;
@@ -180,13 +181,13 @@
   bottom: 80px;
   right: 0%;
   top: 600px;
-  position: absolute;
   font-weight: 400px;
   font-size: 40px;
   line-height: 55px;
   display: flex;
   align-items: center;
   text-align: right;
+  justify-content: end;
   color: #ffffff;
   cursor: pointer;
 }

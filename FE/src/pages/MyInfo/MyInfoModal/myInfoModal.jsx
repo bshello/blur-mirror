@@ -2,13 +2,14 @@ import "../../../App.css";
 import "./myInfoModal.css";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Range } from "rc-slider";
-import "rc-slider/assets/index.css";
+// import "rc-slider/assets/index.css";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeName } from "../../../reducer/userEdit";
 import "../../../reducer/userEdit";
 import SetModal from "./SetModal/setmodal";
+import styled from "styled-components";
+import Avatar from "react-avatar";
 // import "../index";
 
 function MyInfoModal({ showMyinfoModal }) {
@@ -26,8 +27,8 @@ function MyInfoModal({ showMyinfoModal }) {
 
   const [introducing, setIntroducing] = useState("");
 
-  // const user = useSelector((state) => state.member);
-  // const { memberId, memberRepIcon, memberNickname } = member;
+  // const member = useSelector((state) => state.member);
+  // const { memberNickname } = member;
 
   // useEffect(() => {
   //   if (memberNickname && memberRepIcon) {
@@ -37,17 +38,27 @@ function MyInfoModal({ showMyinfoModal }) {
 
   // 이미지 업로드
 
-  // const [Image, setImage] = useState(
+  // const [imgFile, setImgFile] = useState(
   //   "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   // );
   // const fileInput = useRef(null);
+  // // const formData = new FormData(form);
+
+  // // <Avatar
+  // //   src={image}
+  // //   style={{ margin: "20px" }}
+  // //   size={200}
+  // //   onClick={() => {
+  // //     fileInput.current.click();
+  // //   }}
+  // // />;
 
   // const onChange = (e) => {
   //   if (e.target.files[0]) {
-  //     setFile(e.target.files[0]);
+  //     setImgFile(e.target.files[0]);
   //   } else {
   //     //업로드 취소할 시
-  //     setImage(
+  //     setImgFile(
   //       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   //     );
   //     return;
@@ -56,11 +67,24 @@ function MyInfoModal({ showMyinfoModal }) {
   //   const reader = new FileReader();
   //   reader.onload = () => {
   //     if (reader.readyState === 2) {
-  //       setImage(reader.result);
+  //       setImgFile(reader.result);
   //     }
   //   };
   //   reader.readAsDataURL(e.target.files[0]);
   // };
+
+  const [imgFile, setImgFile] = useState("");
+  const imgRef = useRef();
+
+  // 이미지 업로드 input의 onChange
+  const saveImgFile = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImgFile(reader.result);
+    };
+  };
 
   // 성별
   const gender = ["Male", "FeMale"];
@@ -143,32 +167,60 @@ function MyInfoModal({ showMyinfoModal }) {
 
   const age = (19, 70);
 
-  const ages = new Array(50).fill({ age });
+  // const ages = new Array(50).fill({ age });
+
+  const ages = [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
 
   return (
     <div className="Modal">
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
       <div className="leftModal">
-        {/* <input
-          className="leftModalImg"
+        {/* <div
+          // className="leftModalImg"
+          onClick={() => {
+            fileInput.current.click();
+          }}
+        ></div>
+        <input
+          // className="leftModalImg"
           type="file"
           // style={{ display: "none" }}
-          id="file"
-          accept="image/*"
-          // onChange={onChange}
-          // ref={fileInput}
-        ></input> */}
-        {/* <input
-          type="file"
-          style={{ display: "none" }}
           accept="image/jpg,impge/png,image/jpeg"
           name="profile_img"
           onChange={onChange}
           ref={fileInput}
+          onClick={() => {
+            fileInput.current.click();
+          }}
         /> */}
-
+        <form>
+          <label className="signup-profileImg-label" htmlFor="profileImg">
+            프로필 이미지 추가
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            id="profileImg"
+            onChange={saveImgFile}
+            ref={imgRef}
+          />
+        </form>
+        {/* 업로드 된 이미지 미리보기 */}
+        <img
+          className="leftModalImg"
+          src={imgFile ? imgFile : `/images/icon/user.png`}
+          alt="프로필 이미지"
+        />
+        이미지 업로드 input
+        <input
+          type="file"
+          accept="image/*"
+          id="profileImg"
+          onChange={saveImgFile}
+          ref={imgRef}
+        />
         <div className="leftModalNameDiv">
-          <h1 className="leftModalName"> welcome {user[0]} </h1>
+          <span className="leftModalName"> welcome {user[0]} </span>
         </div>
         <div className="leftModalbtnDiv">
           <button
@@ -203,9 +255,14 @@ function MyInfoModal({ showMyinfoModal }) {
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
           <select className="PMAgeSelect">
-            {ages.map(() => {
-              return <option> {age}</option>;
-            })}
+            <option> {ages[0]}</option>;<option> {ages[1]}</option>;
+            <option> {ages[2]}</option>;<option> {ages[3]}</option>;
+            <option> {ages[4]}</option>;<option> {ages[5]}</option>;
+            <option> {ages[6]}</option>;<option> {ages[7]}</option>;
+            <option> {ages[8]}</option>;<option> {ages[9]}</option>;
+            <option> {ages[10]}</option>;<option> {ages[11]}</option>;
+            <option> {ages[12]}</option>;<option> {ages[13]}</option>;
+            <option> {ages[14]}</option>;<option> {ages[15]}</option>;
           </select>
         </div>
         <div className="PMMBTI">
@@ -250,14 +307,12 @@ function MyInfoModal({ showMyinfoModal }) {
         <div className="PMMGender">
           <span className="PMMGenderLable">Gender</span>
           <div className="PMMGenderdiv">
-            {/* <button className="PMMGenderMale ">{gender[0]}</button> */}
             <button
               className={`btn ${genderCheck === "check" ? "active" : ""}`} // tab 값이 'curr' 이면 active 클래스를 추가
               onClick={() => setgenderCheck("check")}
             >
               {gender[0]}
             </button>
-            {/* <button className="PMMGenderFemale">{gender[1]}</button> */}
             <button
               className={`-btn ${genderCheck === "prev" ? "active" : ""}`} // tab 값이 'prev' 이면 active 클래스를 추가
               onClick={() => setgenderCheck("prev")} // 클릭했을 때 tab 값이 'prev'로 변경된다.
@@ -282,6 +337,14 @@ function MyInfoModal({ showMyinfoModal }) {
       <button className="ModalOut" onClick={showMyinfoModal}>
         {/* <button className="ModalOut" onClick={UserEdit}> */}
         <span className="ModalOutText">confirm</span>
+        {/* 이미지 업로드 input 추가하기
+        <input
+          type="file"
+          accept="image/*"
+          id="profileImg"
+          onClick={saveImgFile}
+          ref={imgRef}
+        /> */}
       </button>
     </div>
   );

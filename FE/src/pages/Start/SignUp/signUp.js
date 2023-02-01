@@ -161,9 +161,10 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           ></input>
           <button
             style={{ cursor: "pointer" }}
-            onClick={(e) => {
-              return e.preventDefault(), callIdCheck();
-            }}
+
+            // onClick={(e) => {
+            //   e.preventDefault(), callIdCheck();
+            // }}
           >
             아이디 중복체크
           </button>
@@ -202,10 +203,11 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             onChange={enterEmail}
           ></input>
           <button
-            style={{ cursor: "pointer" }}
-            onClick={(e) => {
-              return e.preventDefault(), sendToEmail();
-            }}
+
+          // style={{ cursor: "pointer" }}
+          // onClick={(e) => {
+          //   e.preventDefault(), sendToEmail();
+          // }}
           >
             이메일로 인증번호 보내기
           </button>

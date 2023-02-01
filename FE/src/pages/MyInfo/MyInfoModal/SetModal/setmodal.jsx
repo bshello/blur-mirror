@@ -1,71 +1,64 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../MyInfoModal/myInfoModal.css";
 import "./setmodal.css";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-input-slider";
+import styled from "styled-components";
 
-function SetModal() {
-  const [gender, setGender] = useState(["Male"]);
+function SetModal({ SetRange }) {
+  // 성별 바꾸기
+  const [gender, setGender] = useState(true);
+  const handleClick = () => setGender((setGender) => !setGender);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    position: "relative",
-
-    // arrow: true,
-  };
+  //range
+  const [fromrange, setfromrange] = useState({ x: 0 });
+  const [agerange, setagerange] = useState({ x: 0 });
 
   return (
     <div className="SettingModal">
-      {/* <Slider {...settings}>
-        <div className="SetMMPartnerCheckdiv">male</div>
-        <div className="SetMMPartnerCheckdiv">female</div>
-      </Slider> */}
+      <div></div>
       <div className="SetModal">
         <span className="SEtLabel">Setting</span>
         <div className="SEtMidModalChangediv">
           <div className="ModalInputBox">
             <span className="SetMidPartnerLable">Partner Gender</span>
             <div className="SetMMPartnerCheckdiv">
-              <Slider {...settings}>
-                <div className="SetMMPartnerCheckdiv">male</div>
-                <div className="SetMMPartnerChekdiv">female</div>
-              </Slider>
+              <div className="SetMMPartnerChekdiv">
+                <div className="arrow" onClick={handleClick}></div>
+                {gender ? <p>Male</p> : <p>FeMale</p>}
+                {gender}
+              </div>
+
               <div className="blurdiv"></div>
             </div>
           </div>
 
           <div className="ModalInputBox2">
             <span className="SetMidPartnerLable">Distance from partner</span>
+            {fromrange.x} km
             <div className="SetMMPartnerCheckdiv">
-              <div className="blurdiv"></div>
-              <input
-                type="range"
-                id="a"
-                name="ages"
-                min="10"
-                max="60"
-                step="10"
-              ></input>
+              <div className="blurdiv" />
+              <Slider
+                className="rangelocation"
+                axis="x"
+                xmax="50"
+                x={fromrange.x}
+                onChange={({ x }) => setfromrange((state) => ({ ...state, x }))}
+              />
             </div>
           </div>
 
           <div className="ModalInputBox3">
             <span className="SetMidPartnerLable">Partner's age group</span>
+            {agerange.x} 살
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv"></div>
-              <input
-                type="range"
-                id="a"
-                name="ages"
-                min="10"
-                max="60"
-                step="10"
-              ></input>
+              <Slider
+                className="rangelocation"
+                axis="x"
+                x={agerange.x}
+                xmax="10"
+                onChange={({ x }) => setagerange((state) => ({ ...state, x }))}
+              />
             </div>
           </div>
         </div>

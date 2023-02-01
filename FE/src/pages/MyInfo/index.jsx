@@ -7,7 +7,7 @@ import { changeName } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
-import user from "../../reducer/userEdit";
+import "../../reducer/userEdit";
 
 function MyInfo({ nickName }) {
   //profile edit modal
@@ -25,7 +25,10 @@ function MyInfo({ nickName }) {
   // 페이지 이동
   const navigate = useNavigate();
 
-  // store에서 state 가져오는 거
+  // 데이터 가져오는 거
+  const dispatch = useDispatch({});
+  const { user } = useSelector((state) => state.userEdit);
+  // console.log(user);
   // const state = useSelector((state) => {
   //   return state.userEdit.user;
   // });
@@ -65,8 +68,8 @@ function MyInfo({ nickName }) {
         </div>
       </div>
       <div className="MINameAgeDiv">
-        <span className="MIName">{user}</span>
-        {/* <span className="MIAge">{state?.user}</span> */}
+        <span className="MIName"> {user[0]} </span>
+        <span className="MIAge"> 26</span>
       </div>
       <div className="MIEdit" onClick={showMyinfoModal}>
         profile edit ->

@@ -30,24 +30,24 @@
   height: 200px;
   left: 110px;
   top: 50px;
-  background-image: url(../../../assets/images/woman.jpg);
-  background-size: 100% 100%;
   border-radius: 70%;
 }
 .leftModal .leftModalNameDiv {
   position: absolute;
-  width: 180px;
-  height: 40px;
+  width: 100%;
+  height: 50px;
   left: 0px;
-  top: 0px;
+  top: 250px;
   text-align: center;
+  justify-content: center;
 }
 .leftModal .leftModalNameDiv .leftModalName {
   position: absolute;
-  width: 185px;
+  width: 80%;
   height: 38px;
-  left: 120px;
-  top: 265px;
+  left: 10%;
+  top: 0px;
+  justify-content: center;
   font-weight: 400;
   font-size: 26.3148px;
   line-height: 38px;
@@ -60,15 +60,15 @@
   position: absolute;
   width: 330px;
   height: 130px;
-  left: 0px;
-  top: 0px;
+  left: 50px;
+  top: 360px;
 }
 .leftModal .leftModalbtnDiv .leftModalEditbtn {
   position: absolute;
   width: 330px;
   height: 60px;
-  left: 50px;
-  top: 350px;
+  left: 0px;
+  top: 0px;
   background: #68bbbd;
   border-radius: 10px;
   cursor: pointer;
@@ -91,8 +91,8 @@
   position: absolute;
   width: 330px;
   height: 60px;
-  left: 50px;
-  top: 430px;
+  left: 0px;
+  margin-top: 80px;
   text-align: center;
   background: #68bbbd;
   border-radius: 10px;
@@ -208,7 +208,7 @@
   left: 0px;
   top: 30px;
   background: rgba(104, 187, 189, 0.2);
-  border-radius: none;
+  border-radius: 7px;
 }
 .Modal .ProfileModal .PMAge {
   position: absolute;
@@ -428,8 +428,8 @@
 }
 .Modal .SettingModal .SetModal .SEtMidModalChangediv {
   position: absolute;
-  width: 565.5px;
-  height: 280.5px;
+  width: 565px;
+  height: 370px;
   left: 0px;
   top: 98.25px;
 }
@@ -478,7 +478,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 19.5px 0px;
+  padding: 19px 0px;
   gap: 7.5px;
   position: absolute;
   width: 340px;
@@ -680,4 +680,13 @@ input {
   /* background-color: #505bf0; */
   color: #fff;
   background-color: #16888a;
+}
+
+.signup-profileImg-label {
+  margin: 5px 0 20px 0;
+  font-weight: bold;
+  font-size: 13px;
+  color: #0095f6;
+  display: inline-block;
+  cursor: pointer;
 }/*# sourceMappingURL=myInfoModal.css.map */
