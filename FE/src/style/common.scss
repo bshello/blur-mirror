@@ -17,15 +17,15 @@ $_mainHeight: 00;
   box-sizing: border-box;
 
   position: absolute;
-  right: 65px;
-  left: 65px;
-  top: 157px;
-  bottom: 80px;
+  right: 4.514vw;
+  left: 4.514vw;
+  top: 10.903vw;
+  bottom: 5.556vw;
 
   background: rgba(255, 255, 255, 0.19);
-  border: 0.751331px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 3.00532px 3.00532px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
+  border: 0.052vw solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.083vw;
   @content;
 }
 
@@ -55,24 +55,24 @@ $_mainHeight: 00;
 
 @mixin inputdiv {
   position: absolute;
-  width: 330px;
-  height: 60px;
-  left: 0px;
-  top: 30px;
+  width: 22.917vw;
+  height: 4.167vw;
+  left: 0vw;
+  top: 2.083vw;
 
   background: rgba(104, 187, 189, 0.2);
-  border-radius: 7px;
+  border-radius: 0.486vw;
 
   .inputText {
     position: absolute;
-    width: 290px;
-    height: 22px;
-    left: 20px;
-    top: 18px;
+    width: 20.139vw;
+    height: 1.528vw;
+    left: 1.389vw;
+    top: 1.25vw;
 
     font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 1.25vw;
+    line-height: 1.528vw;
     /* identical to box height */
 
     display: flex;
@@ -86,16 +86,16 @@ $_mainHeight: 00;
   box-sizing: border-box;
 
   position: absolute;
-  width: 1310px;
-  height: 570px;
+  width: 90.972vw;
+  height: 39.583vw;
   left: 6.5%;
   top: 7%;
   z-index: 10;
 
   background: #ffffff;
-  border: 0.751852px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 3.00741px 3.00741px rgba(0, 0, 0, 0.25);
-  border-radius: 30.0741px;
+  border: 0.052vw solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.088vw;
   z-index: 10;
   @content;
 }

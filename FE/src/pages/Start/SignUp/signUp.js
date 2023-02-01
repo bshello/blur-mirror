@@ -153,6 +153,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <label className="SUModalInputIdLabel" htmlFor="user_id">
             ID
           </label>
+
           <input
             className="SUModalInputId"
             id="user_id"
@@ -165,6 +166,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             // onClick={(e) => {
             //   e.preventDefault(), callIdCheck();
             // }}
+
           >
             아이디 중복체크
           </button>
@@ -173,29 +175,34 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <label className="SUModalInputPwLabel" htmlFor="user_pw">
             PW
           </label>
+
           <input
             className="SUModalInputPw"
             id="user_pw"
             placeholder="  PW를 입력해 주세요"
             onChange={enterPs1}
           ></input>
+
         </div>
         <div className="SUModalInputPwChkDiv">
           <label className="SUModalInputPwChkLabel" htmlFor="user_pw_re">
             PW Check
           </label>
+
           <input
             className="SUModalInputPwChk"
             id="user_pw_re"
             placeholder="  PW를 다시 입력해 주세요"
             onChange={enterPs2}
           ></input>
+
           {psWarn ? <span>비밀번호가 다릅니다!</span> : null}
         </div>
         <div className="SUModalInputEmailDiv">
           <label className="SUModalInputEmailLabel" htmlFor="user_email">
             E-mail
           </label>
+
           <input
             className="SUModalInputEmail"
             id="user_email"
@@ -208,17 +215,16 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           // onClick={(e) => {
           //   e.preventDefault(), sendToEmail();
           // }}
+
           >
             이메일로 인증번호 보내기
           </button>
         </div>
         <div className="SUModalInputEmailConfirmDiv">
-          <label
-            className="SUModalInputEmailConfirmLabel"
-            htmlFor="user_email_confirm"
-          >
+          <label className="SUModalInputEmailConfirmLabel" htmlFor="user_email_confirm">
             E-mail 인증번호
           </label>
+
           <input
             className="SUModalInputEmailConfirm"
             id="user_email_confirm"
@@ -229,15 +235,12 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             style={{ cursor: "pointer" }}
             onClick={(e) => e.preventDefault()}
           >
+
             인증번호 확인
           </button>
         </div>
 
-        <button
-          className="SUSignUpBtn"
-          style={{ cursor: "pointer" }}
-          onClick={onSubmit}
-        >
+        <button className="SUSignUpBtn" style={{ cursor: "pointer" }} onClick={onSubmit}>
           <span className="SUBtnText">회원가입</span>
         </button>
       </form>

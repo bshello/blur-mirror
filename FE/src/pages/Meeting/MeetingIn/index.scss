@@ -8,6 +8,16 @@
   top: 170px;
   bottom: 30px;
 }
+.tempBackDiv {
+  position: absolute;
+  display: none;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  opacity: 0;
+  z-index: 0;
+}
 .MProgressBar {
   position: absolute;
   width: 1326px;
@@ -41,6 +51,7 @@
     display: flex;
     align-items: center;
     justify-self: center;
+    z-index: 1;
 
     .Imotion1 {
       position: absolute;
@@ -52,6 +63,7 @@
       background-image: url(../../../assets/images/tongue.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
     }
 
     .Imotion2 {
@@ -64,6 +76,7 @@
       background-image: url(../../../assets/images/nervous.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
     }
 
     .Imotion3 {
@@ -76,6 +89,7 @@
       background-image: url(../../../assets/images/surprised.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
     }
 
     .Imotion4 {
@@ -88,6 +102,7 @@
       background-image: url(../../../assets/images/balloon.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
     }
 
     .Imotion5 {
@@ -100,6 +115,7 @@
       background-image: url(../../../assets/images/heart.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
     }
 
     .Imotion6 {
@@ -112,12 +128,17 @@
       background-image: url(../../../assets/images/clover.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
     }
 
     &.clickSmileChangeDiv {
+      z-index: 1;
+
       animation: smileDivMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
     }
     &.basicSmileChangeDiv {
+      z-index: 1;
+
       animation: smileDivUnMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
     }
   }
@@ -132,7 +153,7 @@
     background-image: url(../../../assets/images/happy.png);
     background-size: 100% 100%;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
   }
   .MMyCamDiv {
     position: absolute;
@@ -144,6 +165,7 @@
     border-radius: 30px;
     background-image: url(../../../assets/images/HomeCamImg.png);
     background-size: 100% 100%;
+    z-index: 1;
   }
   .MMyCamSubDiv {
     position: absolute;
@@ -170,6 +192,7 @@
       height: 44px;
       top: 0px;
       right: 0px;
+      z-index: 1;
 
       .MMyCamSubCamSettingBtn {
         position: absolute;
@@ -190,21 +213,35 @@
         left: 52px;
         top: 8px;
 
-        background-image: url(../../../assets/images/camera.png);
-        background-size: 100% 100%;
         cursor: pointer;
+
+        &.camOff {
+          background-image: url(../../../assets/images/camOn.png);
+          background-size: 100% 100%;
+        }
+        &.camOn {
+          background-image: url(../../../assets/images/camOff.png);
+          background-size: 100% 100%;
+        }
       }
 
       .MMyCamSubMicBtn {
         position: absolute;
-        width: 15.24px;
-        height: 26.25px;
-        left: 104.5px;
-        top: 8.75px;
+        width: 35px;
+        height: 28px;
+        left: 96px;
+        top: 8px;
 
-        background-image: url(../../../assets/images/mic.png);
-        background-size: 100% 100%;
         cursor: pointer;
+
+        &.micOff {
+          background-image: url(../../../assets/images/micOn.png);
+          background-size: 100% 100%;
+        }
+        &.micOn {
+          background-image: url(../../../assets/images/micOff.png);
+          background-size: 100% 100%;
+        }
       }
 
       .MMyCamSubSoundBtn {
@@ -214,41 +251,61 @@
         left: 145px;
         top: 10px;
 
-        background-image: url(../../../assets/images/sound.png);
-        background-size: 100% 100%;
         cursor: pointer;
+
+        &.soundOff {
+          background-image: url(../../../assets/images/soundOn.png);
+          background-size: 100% 100%;
+        }
+        &.soundOn {
+          background-image: url(../../../assets/images/soundOff.png);
+          background-size: 100% 100%;
+        }
       }
     }
   }
+  .MMyCamSubSoundDescTop {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0px;
+    top: 15px;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-left: 15px solid rgb(81, 161, 163);
+    border-right: 15px solid transparent;
+    transform: rotate(-90deg);
+    z-index: 1;
+  }
+  .MMyCamSubSoundDescMain {
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    left: -37px;
+    top: 33px;
+    background-color: rgb(81, 161, 163);
+
+    z-index: 2;
+    border-radius: 30px;
+    cursor: auto;
+  }
 }
 .MCenterDiv1 {
-  position: relative;
-  width: 140px;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-  bottom: 0px;
+  position: absolute;
+  left: 400px;
+  right: 400px;
+  top: 220px;
+  bottom: 250px;
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  .MTimer {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 200px;
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 55px;
-    color: #ffffff;
-  }
+  justify-content: center;
 
   .MCenterCloseBtnDiv {
     position: absolute;
     height: 40px;
-    left: 10px;
-    right: 10px;
-    top: 270px;
+    left: 230px;
+    right: 230px;
+    top: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,6 +315,7 @@
     border-radius: 15px;
     color: #50a1a3;
     cursor: pointer;
+    z-index: 0;
 
     &:hover {
       background-color: #50a1a3;
@@ -284,6 +342,7 @@
   bottom: 0px;
   display: flex;
   justify-content: center;
+  z-index: 1;
 
   .lightTagsDiv {
     position: absolute;
@@ -334,12 +393,12 @@
     cursor: pointer;
     z-index: 2;
 
-    &.click {
+    &.clickLight {
       background-image: url(../../../assets/images/lightbulb.png);
 
       animation: moving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
     }
-    &.basic {
+    &.basicLight {
       animation: unMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
     }
   }
@@ -415,7 +474,7 @@
       left: 52px;
       top: 8px;
 
-      background-image: url(../../../assets/images/mic.png);
+      background-image: url(../../../assets/images/micOn.png);
       background-size: 100% 100%;
       cursor: pointer;
     }
@@ -427,7 +486,7 @@
       left: 93px;
       top: 10px;
 
-      background-image: url(../../../assets/images/sound.png);
+      background-image: url(../../../assets/images/soundOn.png);
       background-size: 100% 100%;
       cursor: pointer;
     }
@@ -533,5 +592,30 @@
 
   100% {
     opacity: 0;
+  }
+}
+.MeetingIn a,
+.MeetingIn a:link,
+.MeetingIn a:visited {
+  text-decoration: none;
+  color: #50a1a3;
+}
+.MeetingIn a:hover {
+  color: #fff;
+}
+.range-slide {
+  max-width: 30em;
+  margin: 8em auto;
+  position: relative;
+  display: flex;
+  z-index: 5;
+
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 0.4em;
+    outline: none;
+    border-radius: 3px;
+    background-color: #50a1a3;
   }
 }

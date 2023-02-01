@@ -24,14 +24,6 @@ button:active {
   border: none;
 }
 
-a,
-a:link,
-a:hover,
-a:visited {
-  text-decoration: none;
-  color: #50a1a3;
-}
-
 .hio {
   left: 200px;
   top: 300px;

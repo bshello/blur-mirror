@@ -9,7 +9,7 @@ import { changeName } from "../../../reducer/userEdit";
 import "../../../reducer/userEdit";
 import SetModal from "./SetModal/setmodal";
 import styled from "styled-components";
-import Avatar from "react-avatar";
+// import Avatar from "react-avatar";
 // import "../index";
 
 function MyInfoModal({ showMyinfoModal }) {
@@ -197,28 +197,12 @@ function MyInfoModal({ showMyinfoModal }) {
           <label className="signup-profileImg-label" htmlFor="profileImg">
             프로필 이미지 추가
           </label>
-          <input
-            type="file"
-            accept="image/*"
-            id="profileImg"
-            onChange={saveImgFile}
-            ref={imgRef}
-          />
+          <input type="file" accept="image/*" id="profileImg" onChange={saveImgFile} ref={imgRef} />
         </form>
         {/* 업로드 된 이미지 미리보기 */}
-        <img
-          className="leftModalImg"
-          src={imgFile ? imgFile : `/images/icon/user.png`}
-          alt="프로필 이미지"
-        />
+        <img className="leftModalImg" src={imgFile ? imgFile : `/images/icon/user.png`} alt="프로필 이미지" />
         이미지 업로드 input
-        <input
-          type="file"
-          accept="image/*"
-          id="profileImg"
-          onChange={saveImgFile}
-          ref={imgRef}
-        />
+        <input type="file" accept="image/*" id="profileImg" onChange={saveImgFile} ref={imgRef} />
         <div className="leftModalNameDiv">
           <span className="leftModalName"> welcome {user[0]} </span>
         </div>
@@ -255,14 +239,9 @@ function MyInfoModal({ showMyinfoModal }) {
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
           <select className="PMAgeSelect">
-            <option> {ages[0]}</option>;<option> {ages[1]}</option>;
-            <option> {ages[2]}</option>;<option> {ages[3]}</option>;
-            <option> {ages[4]}</option>;<option> {ages[5]}</option>;
-            <option> {ages[6]}</option>;<option> {ages[7]}</option>;
-            <option> {ages[8]}</option>;<option> {ages[9]}</option>;
-            <option> {ages[10]}</option>;<option> {ages[11]}</option>;
-            <option> {ages[12]}</option>;<option> {ages[13]}</option>;
-            <option> {ages[14]}</option>;<option> {ages[15]}</option>;
+            <option> {ages[0]}</option>;<option> {ages[1]}</option>;<option> {ages[2]}</option>;<option> {ages[3]}</option>;<option> {ages[4]}</option>;<option> {ages[5]}</option>;
+            <option> {ages[6]}</option>;<option> {ages[7]}</option>;<option> {ages[8]}</option>;<option> {ages[9]}</option>;<option> {ages[10]}</option>;<option> {ages[11]}</option>;
+            <option> {ages[12]}</option>;<option> {ages[13]}</option>;<option> {ages[14]}</option>;<option> {ages[15]}</option>;
           </select>
         </div>
         <div className="PMMBTI">
