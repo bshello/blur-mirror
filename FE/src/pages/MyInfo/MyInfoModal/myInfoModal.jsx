@@ -37,46 +37,20 @@ function MyInfoModal({ showMyinfoModal }) {
   // }, [member]);
 
   // 이미지 업로드
+  //   <form>
+  //   <label className="signup-profileImg-label" htmlFor="profileImg">프로필 이미지 추가</label>
+  //   <input
+  //   className="signup-profileImg-input"
+  //   type="file"
+  //   accept="image/*"
+  //   id="profileImg"
+  //   />
+  // </form>
 
-  // const [imgFile, setImgFile] = useState(
-  //   "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-  // );
-  // const fileInput = useRef(null);
-  // // const formData = new FormData(form);
-
-  // // <Avatar
-  // //   src={image}
-  // //   style={{ margin: "20px" }}
-  // //   size={200}
-  // //   onClick={() => {
-  // //     fileInput.current.click();
-  // //   }}
-  // // />;
-
-  // const onChange = (e) => {
-  //   if (e.target.files[0]) {
-  //     setImgFile(e.target.files[0]);
-  //   } else {
-  //     //업로드 취소할 시
-  //     setImgFile(
-  //       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-  //     );
-  //     return;
-  //   }
-  //   //화면에 프로필 사진 표시
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     if (reader.readyState === 2) {
-  //       setImgFile(reader.result);
-  //     }
-  //   };
-  //   reader.readAsDataURL(e.target.files[0]);
-  // };
-
+  // 이미지 input의 미리보기
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
 
-  // 이미지 업로드 input의 onChange
   const saveImgFile = () => {
     const file = imgRef.current.files[0];
     const reader = new FileReader();
@@ -175,34 +149,43 @@ function MyInfoModal({ showMyinfoModal }) {
     <div className="Modal">
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
       <div className="leftModal">
-        {/* <div
-          // className="leftModalImg"
-          onClick={() => {
-            fileInput.current.click();
-          }}
-        ></div>
-        <input
-          // className="leftModalImg"
-          type="file"
-          // style={{ display: "none" }}
-          accept="image/jpg,impge/png,image/jpeg"
-          name="profile_img"
-          onChange={onChange}
-          ref={fileInput}
-          onClick={() => {
-            fileInput.current.click();
-          }}
-        /> */}
-        <form>
+        {/* <form>
           <label className="signup-profileImg-label" htmlFor="profileImg">
             프로필 이미지 추가
           </label>
-          <input type="file" accept="image/*" id="profileImg" onChange={saveImgFile} ref={imgRef} />
-        </form>
+
+          <input
+            type="file"
+            accept="image/*"
+            id="profileImg"
+            onChange={saveImgFile}
+            ref={imgRef}
+          />
+        </form> */}
+
         {/* 업로드 된 이미지 미리보기 */}
-        <img className="leftModalImg" src={imgFile ? imgFile : `/images/icon/user.png`} alt="프로필 이미지" />
-        이미지 업로드 input
-        <input type="file" accept="image/*" id="profileImg" onChange={saveImgFile} ref={imgRef} />
+        <label className="imageEditBtn" htmlFor="profileImg">
+          변경
+        </label>
+        <img
+          className="leftModalImg"
+          src={
+            imgFile
+              ? imgFile
+              : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+          }
+          alt="사진"
+        />
+        {/* 이미지 업로드 input */}
+        <input
+          type="file"
+          accept="image/*"
+          id="profileImg"
+          onChange={saveImgFile}
+          ref={imgRef}
+          style={{ display: "none" }}
+        ></input>
+
         <div className="leftModalNameDiv">
           <span className="leftModalName"> welcome {user[0]} </span>
         </div>
@@ -239,9 +222,14 @@ function MyInfoModal({ showMyinfoModal }) {
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
           <select className="PMAgeSelect">
-            <option> {ages[0]}</option>;<option> {ages[1]}</option>;<option> {ages[2]}</option>;<option> {ages[3]}</option>;<option> {ages[4]}</option>;<option> {ages[5]}</option>;
-            <option> {ages[6]}</option>;<option> {ages[7]}</option>;<option> {ages[8]}</option>;<option> {ages[9]}</option>;<option> {ages[10]}</option>;<option> {ages[11]}</option>;
-            <option> {ages[12]}</option>;<option> {ages[13]}</option>;<option> {ages[14]}</option>;<option> {ages[15]}</option>;
+            <option> {ages[0]}</option>;<option> {ages[1]}</option>;
+            <option> {ages[2]}</option>;<option> {ages[3]}</option>;
+            <option> {ages[4]}</option>;<option> {ages[5]}</option>;
+            <option> {ages[6]}</option>;<option> {ages[7]}</option>;
+            <option> {ages[8]}</option>;<option> {ages[9]}</option>;
+            <option> {ages[10]}</option>;<option> {ages[11]}</option>;
+            <option> {ages[12]}</option>;<option> {ages[13]}</option>;
+            <option> {ages[14]}</option>;<option> {ages[15]}</option>;
           </select>
         </div>
         <div className="PMMBTI">
