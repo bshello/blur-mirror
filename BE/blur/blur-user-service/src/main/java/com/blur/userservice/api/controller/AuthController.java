@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blur.userservice.api.entity.AuthReqModel;
+import com.blur.userservice.api.dto.LoginModel;
 import com.blur.userservice.api.entity.UserRefreshToken;
 import com.blur.userservice.api.repository.UserRefreshTokenRepository;
 import com.blur.userservice.common.ApiResponse;
@@ -48,16 +48,16 @@ public class AuthController {
     public ApiResponse login(
             HttpServletRequest request,
             HttpServletResponse response,
-            @RequestBody AuthReqModel authReqModel
+            @RequestBody LoginModel loginModel
     ) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        authReqModel.getId(),
-                        authReqModel.getPassword()
+                		loginModel.getId(),
+                		loginModel.getPassword()
                 )
         );
 
-        String userId = authReqModel.getId();
+        String userId = loginModel.getId();
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         Date now = new Date();

@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.blur.userservice.api.dto.UserDto.UserDtoBuilder;
 import com.blur.userservice.oauth.entity.ProviderType;
 import com.blur.userservice.oauth.entity.RoleType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -62,7 +61,7 @@ public class User {
     @NotNull
     private RoleType roleType;
     
-    private String gender;
+//    private String gender;
 
     public User(
             @NotNull @Size(max = 64) String userId,
@@ -77,9 +76,9 @@ public class User {
         this.roleType = roleType;
     }
     
-    public void updateGender(String gender) {
-        this.gender = gender;
-    }
+//    public void updateGender(String gender) {
+//        this.gender = gender;
+//    }
 
     public void updatePassword(String password) {
         this.password = password;

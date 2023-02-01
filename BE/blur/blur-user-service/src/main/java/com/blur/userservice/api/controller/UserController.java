@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blur.userservice.api.dto.ErrorResponse;
-import com.blur.userservice.api.dto.UserDto;
 import com.blur.userservice.api.entity.User;
+import com.blur.userservice.api.entity.UserDto;
 import com.blur.userservice.api.repository.UserRepository;
 import com.blur.userservice.api.service.EmailService;
 import com.blur.userservice.api.service.PasswordService;
@@ -96,7 +96,6 @@ public class UserController {
     
     @PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody UserDto userDto) throws Exception{
-
 		userService.register(userDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(null);
 	}
