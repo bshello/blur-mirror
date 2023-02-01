@@ -191,11 +191,9 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             onChange={enterId}
           ></input>
           <button
-
             onClick={(e) => {
               return e.preventDefault(), callIdCheck();
             }}
-
           >
             아이디 중복체크
           </button>
@@ -211,7 +209,6 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             placeholder="  PW를 입력해 주세요"
             onChange={enterPs1}
           ></input>
-
         </div>
         <div className="SUModalInputPwChkDiv">
           <label className="SUModalInputPwChkLabel" htmlFor="user_pw_re">
@@ -239,53 +236,31 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             onChange={enterEmail}
           ></input>
           <button
-<<<<<<< HEAD
             onClick={(e) => {
               return e.preventDefault(), sendToEmail();
             }}
-=======
-
-          // style={{ cursor: "pointer" }}
-          // onClick={(e) => {
-          //   e.preventDefault(), sendToEmail();
-          // }}
-
->>>>>>> ce4c4a5fa23caa8fe08224125ac7520b553b8c7e
           >
             이메일로 인증번호 보내기
           </button>
         </div>
         <div className="SUModalInputEmailConfirmDiv">
-          <label className="SUModalInputEmailConfirmLabel" htmlFor="user_email_confirm">
+          <label
+            className="SUModalInputEmailConfirmLabel"
+            htmlFor="user_email_confirm"
+          >
             E-mail 인증번호
           </label>
-
           <input
             className="SUModalInputEmailConfirm"
             id="user_email_confirm"
             placeholder="  인증번호를 입력해 주세요"
             onChange={enterEmailCode}
           ></input>
-<<<<<<< HEAD
           <button onClick={(e) => e.preventDefault()}>인증번호 확인</button>
         </div>
-
         <button className="SUSignUpBtn" ref={signUpButton} onClick={onSubmit}>
           {/* <span className="SUBtnText">회원가입</span> */}
           회원가입
-=======
-          <button
-            style={{ cursor: "pointer" }}
-            onClick={(e) => e.preventDefault()}
-          >
-
-            인증번호 확인
-          </button>
-        </div>
-
-        <button className="SUSignUpBtn" style={{ cursor: "pointer" }} onClick={onSubmit}>
-          <span className="SUBtnText">회원가입</span>
->>>>>>> ce4c4a5fa23caa8fe08224125ac7520b553b8c7e
         </button>
       </form>
 
