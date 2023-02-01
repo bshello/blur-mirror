@@ -78,7 +78,7 @@ public class MatchService {
             if (!filter(maleDto, femaleDto)) {continue;}
             maleList.offer(new int[] {maleDto.getPoint(), maleDto.getUserNo()});
         }
-        while (maleList != null) {
+        while (!maleList.isEmpty()) {
             Integer maleNo = maleList.poll()[1];
             MatchDto selectedMale = males.get(maleNo);
             if (selectedMale != null) {

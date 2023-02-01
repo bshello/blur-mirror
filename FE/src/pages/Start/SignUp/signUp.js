@@ -46,13 +46,13 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     })
       .then((res) => {
         console.log(res);
-        setIdCheck(res.data);
         
-        console.log(idCheck);
-        if (!idCheck) {
+        if (!res.data) {
           alert("아이디가 중복되었습니다");
         } else {
           alert("사용가능한 아이디입니다.");
+          setIdCheck(res.data)
+          console.log(idCheck)
         }
       })
       .catch((err) => {
@@ -99,7 +99,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (true) {
+    if (idCheck === true) {
       axios({
         method: "post",
         url: `${API_URL}/register`,
@@ -142,7 +142,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <button
             style={{ cursor: "pointer" }}
             onClick={(e) => {
-              e.preventDefault(), callIdCheck();
+               return e.preventDefault(), callIdCheck();
             }}
           >
             아이디 중복체크

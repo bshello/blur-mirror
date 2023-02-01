@@ -24,8 +24,6 @@ public class PasswordService {
     @Autowired
     JavaMailSender emailSender;
 
-    public static final String tPw = createTempPassword();
-
     @Autowired
     private final BCryptPasswordEncoder encoder;
 
@@ -55,7 +53,7 @@ public class PasswordService {
         return key.toString();
     }
 
-    private MimeMessage createMessage(String to)throws Exception{
+    private MimeMessage createMessage(String to, String tPw)throws Exception{
         System.out.println("보내는 대상 : "+ to);
         System.out.println("인증 번호 : "+tPw);
         MimeMessage  message = emailSender.createMimeMessage();
@@ -85,12 +83,14 @@ public class PasswordService {
 
     public Boolean sendTempPassword(String userId)throws Exception {
         User user = userRepository.findByUserId(userId);
+
         if (user == null) {
             return false;
         }
         else {
             String to = user.getEmail();
-            MimeMessage message = createMessage(to);
+            String tPw = createTempPassword();
+            MimeMessage message = createMessage(to, tPw);
             try{//예외처리
                 emailSender.send(message);
                 user.updatePassword(encoder.encode(tPw));
@@ -103,7 +103,7 @@ public class PasswordService {
         }
     }
 
-    public void updatePassword(String userId, String newPassword)throws Exception {
+    public void updatePassword(String userId, String newPassword) throws Exception {
         User user = userRepository.findByUserId(userId);
         user.updatePassword(encoder.encode(newPassword));
         userRepository.save(user);
