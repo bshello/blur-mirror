@@ -24,41 +24,49 @@
   border-radius: 30px;
   z-index: 20;
 }
-.leftModal .imageEditBtn {
+.leftModal .imgbox {
+  position: absolute;
+  width: 250px;
+  height: 230px;
+  left: 90px;
+  top: 40px;
+}
+.leftModal .imgbox .imageEditBtn {
   position: absolute;
   width: 50px;
   height: 20px;
-  left: 290px;
-  top: 60px;
+  left: 220px;
+  top: 10px;
   border-radius: 70px;
   border: solid white 1px;
   color: white;
   cursor: pointer;
 }
-.leftModal :hover {
+.leftModal .imgbox :hover {
   background-color: white;
   color: black;
 }
-.leftModal .leftModalImg {
+.leftModal .imgbox .leftModalImg {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  left: 110px;
-  top: 50px;
+  width: 230px;
+  height: 230px;
+  left: 15px;
+  top: 0px;
   border: solid #ffffff 1px;
   background-size: 100% 100%;
   border-radius: 70%;
 }
-.leftModal .leftModalNameDiv {
+
+.leftModalNameDiv {
   position: absolute;
   width: 100%;
   height: 50px;
   left: 0px;
-  top: 250px;
+  top: 280px;
   text-align: center;
   justify-content: center;
 }
-.leftModal .leftModalNameDiv .leftModalName {
+.leftModalNameDiv .leftModalName {
   position: absolute;
   width: 80%;
   height: 38px;
@@ -73,14 +81,15 @@
   text-align: center;
   color: #ffffff;
 }
-.leftModal .leftModalbtnDiv {
+
+.leftModalbtnDiv {
   position: absolute;
   width: 330px;
   height: 130px;
   left: 50px;
   top: 360px;
 }
-.leftModal .leftModalbtnDiv .leftModalEditbtn {
+.leftModalbtnDiv .leftModalEditbtn {
   position: absolute;
   width: 330px;
   height: 60px;
@@ -90,7 +99,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.leftModal .leftModalbtnDiv .leftModalEditbtn .leftModalProText {
+.leftModalbtnDiv .leftModalEditbtn .leftModalProText {
   position: absolute;
   width: 125px;
   height: 27px;
@@ -104,7 +113,7 @@
   text-align: center;
   color: rgba(255, 255, 255, 0.92);
 }
-.leftModal .leftModalbtnDiv .leftModalSetbtn {
+.leftModalbtnDiv .leftModalSetbtn {
   position: absolute;
   width: 330px;
   height: 60px;
@@ -122,7 +131,7 @@
   color: rgba(255, 255, 255, 0.92);
   cursor: pointer;
 }
-.leftModal .leftModalbtnDiv .leftModalSetbtn .leftModalSetText {
+.leftModalbtnDiv .leftModalSetbtn .leftModalSetText {
   position: absolute;
   width: 80;
   height: 27px;
@@ -207,7 +216,7 @@
 }
 .Modal .ProfileModal .PMIdDiv .PMIdLable {
   position: absolute;
-  width: 330px;
+  width: 100px;
   height: 20px;
   left: 0px;
   top: 0px;
@@ -236,7 +245,7 @@
 }
 .Modal .ProfileModal .PMAge .PMAgeLabel {
   position: absolute;
-  width: 330px;
+  width: 100px;
   height: 20px;
   left: 0px;
   top: 0px;
@@ -265,7 +274,7 @@
 }
 .Modal .ProfileModal .PMMBTI .PMMBTILabel {
   position: absolute;
-  width: 330px;
+  width: 100px;
   height: 20px;
   left: 0px;
   top: 0px;
@@ -294,7 +303,7 @@
 }
 .Modal .ProfileModal .PMMEmail .PMMEmailLabel {
   position: absolute;
-  width: 330px;
+  width: 100px;
   height: 20px;
   left: 0px;
   top: 0px;
@@ -559,6 +568,7 @@
   align-items: flex-start;
   padding: 19.5px 0px;
   gap: 7.5px;
+  top: -1px;
   position: absolute;
   width: 340px;
   height: 58px;

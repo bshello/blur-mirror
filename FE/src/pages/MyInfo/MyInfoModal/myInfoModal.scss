@@ -10,134 +10,143 @@
   background: #50a1a3;
   border-radius: 30px;
   z-index: 20;
-  .imageEditBtn {
+  .imgbox {
     position: absolute;
-    width: 50px;
-    height: 20px;
-    left: 290px;
-    top: 60px;
-    border-radius: 70px;
-    border: solid white 1px;
-    color: white;
-    cursor: pointer;
-  }
-  :hover {
-    background-color: white;
-    color: black;
-  }
-  .leftModalImg {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    left: 110px;
-    top: 50px;
-    // background-image: url(../../../assets/images/woman.jpg);
-    // background-image: url(https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png);
-    border: solid #ffffff 1px;
-
-    background-size: 100% 100%;
-    border-radius: 70%;
-  }
-  .leftModalNameDiv {
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    left: 0px;
-    top: 250px;
-    text-align: center;
-    justify-content: center;
-
-    .leftModalName {
+    width: 250px;
+    height: 230px;
+    left: 90px;
+    top: 40px;
+    .imageEditBtn {
       position: absolute;
-      width: 80%;
-      height: 38px;
-      left: 10%;
+      width: 50px;
+      height: 20px;
+      left: 220px;
+      top: 10px;
+      border-radius: 70px;
+      border: solid white 1px;
+      color: white;
+      cursor: pointer;
+    }
+    :hover {
+      background-color: white;
+      color: black;
+    }
+    .leftModalImg {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      left: 15px;
       top: 0px;
-      justify-content: center;
-      font-weight: 400;
-      font-size: 26.3148px;
-      line-height: 38px;
-      display: flex;
-      align-items: center;
-      text-align: center;
+      // background-image: url(../../../assets/images/woman.jpg);
+      // background-image: url(https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png);
+      border: solid #ffffff 1px;
 
-      color: #ffffff;
+      background-size: 100% 100%;
+      border-radius: 70%;
     }
   }
-  .leftModalbtnDiv {
+}
+
+.leftModalNameDiv {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  left: 0px;
+  top: 280px;
+  text-align: center;
+  justify-content: center;
+
+  .leftModalName {
+    position: absolute;
+    width: 80%;
+    height: 38px;
+    left: 10%;
+    top: 0px;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 26.3148px;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #ffffff;
+  }
+}
+.leftModalbtnDiv {
+  position: absolute;
+  width: 330px;
+  height: 130px;
+  left: 50px;
+  top: 360px;
+
+  .leftModalEditbtn {
     position: absolute;
     width: 330px;
-    height: 130px;
-    left: 50px;
-    top: 360px;
+    height: 60px;
+    left: 0px;
+    top: 0px;
 
-    .leftModalEditbtn {
+    background: #68bbbd;
+    border-radius: 10px;
+    cursor: pointer;
+
+    .leftModalProText {
       position: absolute;
-      width: 330px;
-      height: 60px;
-      left: 0px;
-      top: 0px;
+      width: 125px;
+      height: 27px;
+      left: 105px;
+      top: 15px;
 
-      background: #68bbbd;
-      border-radius: 10px;
-      cursor: pointer;
-
-      .leftModalProText {
-        position: absolute;
-        width: 125px;
-        height: 27px;
-        left: 105px;
-        top: 15px;
-
-        font-weight: 300px;
-        font-size: 23px;
-        line-height: 27px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-
-        color: rgba(255, 255, 255, 0.92);
-      }
-    }
-    .leftModalSetbtn {
-      position: absolute;
-      width: 330px;
-      height: 60px;
-      left: 0px;
-      margin-top: 80px;
-      text-align: center;
-
-      background: #68bbbd;
-      border-radius: 10px;
-
-      font-weight: 400px;
+      font-weight: 300px;
       font-size: 23px;
       line-height: 27px;
       display: flex;
       align-items: center;
       text-align: center;
+
       color: rgba(255, 255, 255, 0.92);
-      cursor: pointer;
+    }
+  }
+  .leftModalSetbtn {
+    position: absolute;
+    width: 330px;
+    height: 60px;
+    left: 0px;
+    margin-top: 80px;
+    text-align: center;
 
-      .leftModalSetText {
-        position: absolute;
-        width: 80;
-        height: 27px;
-        left: 125px;
-        top: 15px;
+    background: #68bbbd;
+    border-radius: 10px;
 
-        font-weight: 300px;
-        font-size: 23px;
-        line-height: 27px;
-        display: flex;
-        align-items: center;
-        text-align: center;
+    font-weight: 400px;
+    font-size: 23px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
 
-        color: rgba(255, 255, 255, 0.92);
-      }
+    .leftModalSetText {
+      position: absolute;
+      width: 80;
+      height: 27px;
+      left: 125px;
+      top: 15px;
+
+      font-weight: 300px;
+      font-size: 23px;
+      line-height: 27px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      color: rgba(255, 255, 255, 0.92);
     }
   }
 }
+
 .Modal {
   // @include mixin.editModal;
   box-sizing: border-box;
@@ -217,7 +226,7 @@
 
       .PMIdLable {
         position: absolute;
-        width: 330px;
+        width: 100px;
         height: 20px;
         left: 0px;
         top: 0px;
@@ -251,7 +260,7 @@
 
       .PMAgeLabel {
         position: absolute;
-        width: 330px;
+        width: 100px;
         height: 20px;
         left: 0px;
         top: 0px;
@@ -285,7 +294,7 @@
 
       .PMMBTILabel {
         position: absolute;
-        width: 330px;
+        width: 100px;
         height: 20px;
         left: 0px;
         top: 0px;
@@ -319,7 +328,7 @@
 
       .PMMEmailLabel {
         position: absolute;
-        width: 330px;
+        width: 100px;
         height: 20px;
         left: 0px;
         top: 0px;
@@ -676,6 +685,7 @@
               align-items: flex-start;
               padding: 19.5px 0px;
               gap: 7.5px;
+              top: -1px;
 
               position: absolute;
               width: 340px;

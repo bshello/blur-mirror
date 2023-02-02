@@ -1,18 +1,11 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import user from "./reducer/userEdit";
+// store 부분은 configureStore 만 있으면 된다.
+import { configureStore } from "@reduxjs/toolkit";
+import userEdit from "./reducer/userEdit";
 
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-let user = createSlice({
-  //state 이름
-  name: "user",
-
-  //stae 값
-  initialState: "kim",
-});
-
-export default configureStore({
+const store = configureStore({
   reducer: {
-    user: user.reducer,
+    user: userEdit.reducer,
   },
 });
+
+export default store;

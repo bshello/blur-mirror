@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import "../../reducer/userEdit";
+import { edit } from "../../reducer/userEdit";
 
 function MyInfo({ nickName }) {
   //profile edit modal
@@ -26,17 +27,24 @@ function MyInfo({ nickName }) {
   const navigate = useNavigate();
 
   // 데이터 가져오는 거
-  const dispatch = useDispatch({});
-  const { user } = useSelector((state) => state.userEdit);
+  // const dispatch = useDispatch({});
+  // const { user } = useSelector((state) => state.userEdit);
   // console.log(user);
   // const state = useSelector((state) => {
   //   return state.userEdit.user;
   // });
   // console.log(state);
-  const member = useSelector((state) => state.userEdit);
+  // const member = useSelector((state) => state.userEdit);
   // const mypage = useSelector((state) => state.mypage);
   // const { memberNickname, memberRepIcon, memberId } = member;
   // const { memberCurrentStrick, memberTotalTime } = mypage;
+
+  // state를 연결해야된다.
+  const [input, setInput] = useState("");
+
+  const user = useSelector((state) => {
+    return state.user.value;
+  });
 
   return (
     <div className="myinfo">
@@ -68,7 +76,7 @@ function MyInfo({ nickName }) {
         </div>
       </div>
       <div className="MINameAgeDiv">
-        <span className="MIName"> {user[0]} </span>
+        <span className="MIName"> {user} </span>
         <span className="MIAge"> 26</span>
       </div>
       <div className="MIEdit" onClick={showMyinfoModal}>
