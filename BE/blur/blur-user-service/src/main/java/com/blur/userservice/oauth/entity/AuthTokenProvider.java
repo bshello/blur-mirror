@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AuthTokenProvider {
 
     private final Key key;
-    private static final String AUTHORITIES_KEY = "role";
+    private static final String AUTHORITIES_KEY = "auth";
 
     public AuthTokenProvider(String secret) {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());

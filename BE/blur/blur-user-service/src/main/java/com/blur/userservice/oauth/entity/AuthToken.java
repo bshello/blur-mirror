@@ -26,7 +26,7 @@ public class AuthToken {
     
 //    private final UserRepository userRepository;
     
-    private static final String AUTHORITIES_KEY = "role";
+    private static final String AUTHORITIES_KEY = "auth";
 
 //    AuthToken(String id, Date expiry, Key key, UserRepository userRepository) {
     AuthToken(String id, Date expiry, Key key) {

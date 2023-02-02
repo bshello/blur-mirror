@@ -10,6 +10,7 @@ import com.blur.userservice.api.entity.User;
 import com.blur.userservice.api.entity.UserDto;
 import com.blur.userservice.api.repository.UserRepository;
 import com.blur.userservice.oauth.entity.ProviderType;
+import com.blur.userservice.oauth.entity.RoleType;
 import com.blur.userservice.oauth.entity.UserPrincipal;
 
 import lombok.RequiredArgsConstructor;
@@ -18,21 +19,23 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
-    private final ProviderType providerType;
+//    private final ProviderType providerType;
 
     public User getUser(String userId) {
         return userRepository.findByUserId(userId);
     }
     
-    private final UserPrincipal userPrincipal;
+//    private final UserPrincipal userPrincipal;
     
     private final BCryptPasswordEncoder encoder;
 
     public User register(UserDto dto) throws Exception{
         User user = dto.toEntity();
-        user.setProviderType(providerType.LOCAL);
-        userPrincipal.create(user);
-//        user.updatePassword(encoder.encode(dto.getPassword()));
+        user.setProviderType(ProviderType.LOCAL);
+        user.setRoleType(RoleType.USER);
+//        user.setProviderType(providerType.LOCAL);
+//        userPrincipal.create(user);
+        user.updatePassword(encoder.encode(dto.getPassword()));
         userRepository.save(user);
         
 //        UserProfileDto userProfileDto = new UserProfileDto();

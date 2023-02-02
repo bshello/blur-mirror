@@ -37,4 +37,8 @@ public class UserDto {
         this.email = user.getEmail();
     }
 
+	@Override
+	public String toString() {
+		return "UserDto [userId=" + userId + ", password=" + password + ", email=" + email + "]";
+	}
 }

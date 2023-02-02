@@ -1,0 +1,2324 @@
+Windows10 볼륨에 대한 폴더 경로의 목록입니다.
+볼륨 일련 번호는 DC54-A099입니다.
+C:.
+|   .gitignore
+|   build.gradle
+|   gradlew
+|   gradlew.bat
+|   settings.gradle
+|   test.txt
+|   
++---.gradle
+|   +---7.6
+|   |   |   gc.properties
+|   |   |   
+|   |   +---checksums
+|   |   |       checksums.lock
+|   |   |       md5-checksums.bin
+|   |   |       sha1-checksums.bin
+|   |   |       
+|   |   +---dependencies-accessors
+|   |   |       dependencies-accessors.lock
+|   |   |       gc.properties
+|   |   |       
+|   |   +---executionHistory
+|   |   |       executionHistory.lock
+|   |   |       
+|   |   +---fileChanges
+|   |   |       last-build.bin
+|   |   |       
+|   |   +---fileHashes
+|   |   |       fileHashes.lock
+|   |   |       
+|   |   \---vcsMetadata
+|   +---buildOutputCleanup
+|   |       buildOutputCleanup.lock
+|   |       cache.properties
+|   |       
+|   \---vcs-1
+|           gc.properties
+|           
++---.metadata
+|   |   .bak_0.log
+|   |   .lock
+|   |   .log
+|   |   version.ini
+|   |   
+|   +---.mylyn
+|   |   |   repositories.xml.zip
+|   |   |   
+|   |   \---contexts
+|   \---.plugins
+|       +---org.eclipse.buildship.core
+|       |   +---init.d
+|       |   |       eclipsePlugin.gradle
+|       |   |       
+|       |   \---project-preferences
+|       |           blur-apigateway
+|       |           blur-business
+|       |           blur-user-service
+|       |           
+|       +---org.eclipse.core.resources
+|       |   |   7.snap
+|       |   |   
+|       |   +---.history
+|       |   |   +---0
+|       |   |   |       50be07fafea1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---10
+|       |   |   |       f06ddddae9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---11
+|       |   |   |       70f3719c07a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---12
+|       |   |   |       30e3011800a2001d17c5fe95a431ea31
+|       |   |   |       40b858de08a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---14
+|       |   |   |       f04fa1220ca1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---15
+|       |   |   +---16
+|       |   |   +---17
+|       |   |   |       701d5e32d8a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---18
+|       |   |   +---19
+|       |   |   |       a0c179b529a1001d1c36f12d704d4b9d
+|       |   |   |       b077f88fc8a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---1a
+|       |   |   |       900bff740aa1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---1b
+|       |   |   +---1c
+|       |   |   +---1d
+|       |   |   |       f0930968c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---1f
+|       |   |   |       80937c61ffa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---2
+|       |   |   |       3079b7a9f0a1001d17c5fe95a431ea31
+|       |   |   |       f03c2071c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---21
+|       |   |   +---23
+|       |   |   +---24
+|       |   |   |       30cd5073f8a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---25
+|       |   |   |       f0658c49d4a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---26
+|       |   |   |       009c2fe3c9a1001d17c5fe95a431ea31
+|       |   |   |       10cc306b3ea0001d1347f1d1d00a718f
+|       |   |   |       305554b701a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---27
+|       |   |   |       4089ec1afea0001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---2a
+|       |   |   |       101fd3d825a1001d1c36f12d704d4b9d
+|       |   |   |       b09832c600a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---2b
+|       |   |   |       80d3ba49d5a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---2c
+|       |   |   |       f045380a3ea0001d1347f1d1d00a718f
+|       |   |   |       
+|       |   |   +---2d
+|       |   |   |       60d5153b0ba2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---2e
+|       |   |   |       20bc783b2aa1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---3
+|       |   |   |       c0710de8d3a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---30
+|       |   |   +---31
+|       |   |   |       4017b6b2f9a1001d17c5fe95a431ea31
+|       |   |   |       50201b1232a0001d1347f1d1d00a718f
+|       |   |   |       
+|       |   |   +---32
+|       |   |   +---33
+|       |   |   |       f04cc850ffa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---34
+|       |   |   |       c0629b6b04a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---35
+|       |   |   |       40bf554f01a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---37
+|       |   |   |       501d38f8d0a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---38
+|       |   |   |       70368779f4a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---39
+|       |   |   |       5092f1b922a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---3a
+|       |   |   +---3c
+|       |   |   |       60e7ff1700a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---3e
+|       |   |   +---4
+|       |   |   |       10b31fc201a1001d18eaab0928039207
+|       |   |   |       c076000ed9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---40
+|       |   |   |       b012a50d0da2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---42
+|       |   |   +---43
+|       |   |   |       4068563800a2001d17c5fe95a431ea31
+|       |   |   |       50242a2231a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---44
+|       |   |   +---45
+|       |   |   |       d0413545c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---46
+|       |   |   |       f0e23802f7a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---47
+|       |   |   |       60cb38c9d2a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---49
+|       |   |   +---4a
+|       |   |   |       80f8b66403a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---4b
+|       |   |   |       b09c596ee6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---4e
+|       |   |   +---4f
+|       |   |   +---5
+|       |   |   |       90d4d48603a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---51
+|       |   |   +---53
+|       |   |   |       a0fafa2701a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---54
+|       |   |   |       8083998cefa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---55
+|       |   |   |       5056fb8b00a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---56
+|       |   |   |       402ec450ffa1001d17c5fe95a431ea31
+|       |   |   |       d0378b9e0aa2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---57
+|       |   |   |       f0267e2302a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---58
+|       |   |   +---5a
+|       |   |   |       40a92f5ceaa1001d17c5fe95a431ea31
+|       |   |   |       606b772eeea1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---5b
+|       |   |   |       10522de3c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---5c
+|       |   |   |       201eed81d5a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---5d
+|       |   |   |       90980aceefa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---6
+|       |   |   |       f08d758ed8a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---60
+|       |   |   |       90db993001a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---62
+|       |   |   +---63
+|       |   |   +---64
+|       |   |   |       10b27328caa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---65
+|       |   |   |       b0a728d10ea1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---67
+|       |   |   |       f0be36f8eaa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---69
+|       |   |   |       f05a30c10aa1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---6a
+|       |   |   |       209ddde002a1001d18eaab0928039207
+|       |   |   |       6055082dcaa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---6c
+|       |   |   |       f0d4ba0b07a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---6d
+|       |   |   |       f080035726a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---6f
+|       |   |   |       203ec5da01a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---7
+|       |   |   +---70
+|       |   |   |       f0c956150ca2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---72
+|       |   |   +---73
+|       |   |   |       b095c229c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---74
+|       |   |   |       208ec941c9a1001d17c5fe95a431ea31
+|       |   |   |       209c72b229a1001d1c36f12d704d4b9d
+|       |   |   |       8076325ae6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---75
+|       |   |   |       a04d4a78c8a1001d17c5fe95a431ea31
+|       |   |   |       e03fa3b7fea0001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---76
+|       |   |   +---77
+|       |   |   |       e0388b940da2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---78
+|       |   |   |       a083e81501a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---79
+|       |   |   +---7a
+|       |   |   |       0069d43000a2001d17c5fe95a431ea31
+|       |   |   |       b086ca63f5a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---7b
+|       |   |   |       30a4de65f6a1001d17c5fe95a431ea31
+|       |   |   |       a0d197aaf1a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---7d
+|       |   |   +---7e
+|       |   |   |       4067450302a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---7f
+|       |   |   +---8
+|       |   |   |       9092c9ee1ba1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---80
+|       |   |   +---81
+|       |   |   |       307b152acaa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---82
+|       |   |   |       3019327df8a1001d17c5fe95a431ea31
+|       |   |   |       e096ca50ffa1001d17c5fe95a431ea31
+|       |   |   |       e0b1157931a0001d1347f1d1d00a718f
+|       |   |   |       
+|       |   |   +---83
+|       |   |   |       3036e6ad29a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---85
+|       |   |   |       c02affd3d3a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---86
+|       |   |   |       00ad529309a1001d18eaab0928039207
+|       |   |   |       5030390a3ea0001d1347f1d1d00a718f
+|       |   |   |       702f66840ca2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---87
+|       |   |   |       b0196479d6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---88
+|       |   |   |       2071bdb1d2a1001d17c5fe95a431ea31
+|       |   |   |       d0648d57ffa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---8a
+|       |   |   +---8b
+|       |   |   |       d0ddc829f6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---8c
+|       |   |   |       60677e87c9a1001d17c5fe95a431ea31
+|       |   |   |       800d822909a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---8d
+|       |   |   |       a0bfc5b8eaa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---8e
+|       |   |   +---8f
+|       |   |   +---9
+|       |   |   |       3004147931a0001d1347f1d1d00a718f
+|       |   |   |       30c56982f6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---92
+|       |   |   +---93
+|       |   |   +---94
+|       |   |   +---95
+|       |   |   |       80639b31f5a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---96
+|       |   |   +---97
+|       |   |   |       b0e4871944a0001d1347f1d1d00a718f
+|       |   |   |       
+|       |   |   +---98
+|       |   |   +---9a
+|       |   |   |       10db5b490ba2001d17c5fe95a431ea31
+|       |   |   |       a0c3c17830a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---9b
+|       |   |   |       10d271500ba2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---9c
+|       |   |   |       307e79c62ba1001d1c36f12d704d4b9d
+|       |   |   |       d043558cc9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---9d
+|       |   |   |       e0ebd0f12ba1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---9f
+|       |   |   |       b02a7aade9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---a0
+|       |   |   |       20049ac108a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---a1
+|       |   |   |       50a37303eba1001d17c5fe95a431ea31
+|       |   |   |       e0e8a84bcaa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---a2
+|       |   |   +---a3
+|       |   |   |       10a8762eeea1001d17c5fe95a431ea31
+|       |   |   |       d00d3993f6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---a6
+|       |   |   |       806748e0fea1001d17c5fe95a431ea31
+|       |   |   |       906900580da2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---a7
+|       |   |   +---a8
+|       |   |   |       c014d16fd6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---a9
+|       |   |   |       30560d4807a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---aa
+|       |   |   |       e0438c3bc9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---ab
+|       |   |   |       d0bf1b0500a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---ad
+|       |   |   +---ae
+|       |   |   +---af
+|       |   |   |       f0b5d9ba02a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---b
+|       |   |   |       9086b3ab0ca2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---b0
+|       |   |   +---b1
+|       |   |   |       70e0c0420ba2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---b2
+|       |   |   |       808bf469ffa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---b3
+|       |   |   |       70739ef722a1001d1c36f12d704d4b9d
+|       |   |   |       e07f1c1232a0001d1347f1d1d00a718f
+|       |   |   |       
+|       |   |   +---b8
+|       |   |   |       000edaa003a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---b9
+|       |   |   +---ba
+|       |   |   |       d0567d61ffa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---bb
+|       |   |   |       00ebf8dcd5a1001d17c5fe95a431ea31
+|       |   |   |       301ef0f7d8a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---c
+|       |   |   |       30813fb208a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---c0
+|       |   |   |       808d9607f5a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---c2
+|       |   |   |       708a245affa1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---c3
+|       |   |   |       c0ba0764c9a1001d17c5fe95a431ea31
+|       |   |   |       d03d8ca6d8a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---c4
+|       |   |   +---c6
+|       |   |   +---c7
+|       |   |   +---c8
+|       |   |   |       e035e1c6c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---c9
+|       |   |   |       805f701131a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---cb
+|       |   |   |       40bbbcced3a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---cd
+|       |   |   +---ce
+|       |   |   +---cf
+|       |   |   |       6021840023a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---d
+|       |   |   |       a0025f070ca1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---d0
+|       |   |   |       b03ed39cf6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---d1
+|       |   |   |       d0e9c48e01a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---d3
+|       |   |   +---d4
+|       |   |   |       501bf31ed8a1001d17c5fe95a431ea31
+|       |   |   |       60b64d37f6a1001d17c5fe95a431ea31
+|       |   |   |       b0774ed37ba0001d1347f1d1d00a718f
+|       |   |   |       
+|       |   |   +---d5
+|       |   |   |       402a810704a1001d18eaab0928039207
+|       |   |   |       90acbf0fd1a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---d6
+|       |   |   |       f0b6e75201a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---d7
+|       |   |   +---d9
+|       |   |   +---da
+|       |   |   |       b0a01f71c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---dc
+|       |   |   |       304fb6cac8a1001d17c5fe95a431ea31
+|       |   |   |       70ab05fef4a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---dd
+|       |   |   +---e0
+|       |   |   +---e1
+|       |   |   |       30c34a86e6a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---e2
+|       |   |   |       10856cb3f0a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---e4
+|       |   |   |       10d7ff27c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---e5
+|       |   |   |       304ee485ffa0001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---e6
+|       |   |   +---e7
+|       |   |   +---e8
+|       |   |   |       c0999c4bffa1001d17c5fe95a431ea31
+|       |   |   |       e0bdd871d1a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---ea
+|       |   |   +---ef
+|       |   |   |       20b6063f30a1001d1c36f12d704d4b9d
+|       |   |   |       
+|       |   |   +---f
+|       |   |   |       203f30703ea0001d1347f1d1d00a718f
+|       |   |   |       a03364840ca2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---f0
+|       |   |   |       60f6e3370ba2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---f1
+|       |   |   +---f2
+|       |   |   |       a077ecbec9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---f3
+|       |   |   |       50f55870c9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---f4
+|       |   |   +---f5
+|       |   |   |       b0449bc6f4a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---f6
+|       |   |   +---f7
+|       |   |   +---fb
+|       |   |   |       301ddf2509a1001d18eaab0928039207
+|       |   |   |       
+|       |   |   +---fc
+|       |   |   |       10fdff05f7a1001d17c5fe95a431ea31
+|       |   |   |       50fa886ff9a1001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   +---fd
+|       |   |   |       10c74ec1c8a1001d17c5fe95a431ea31
+|       |   |   |       f0e9703601a2001d17c5fe95a431ea31
+|       |   |   |       
+|       |   |   \---ff
+|       |   |           90ab2dfcfea1001d17c5fe95a431ea31
+|       |   |           c0ff3937d4a1001d17c5fe95a431ea31
+|       |   |           
+|       |   +---.projects
+|       |   |   +---blur-apigateway
+|       |   |   |   |   .location
+|       |   |   |   |   .markers
+|       |   |   |   |   2.tree
+|       |   |   |   |   
+|       |   |   |   +---.indexes
+|       |   |   |   |   |   properties.index
+|       |   |   |   |   |   
+|       |   |   |   |   +---7
+|       |   |   |   |   |   \---b9
+|       |   |   |   |   |           history.index
+|       |   |   |   |   |           
+|       |   |   |   |   +---af
+|       |   |   |   |   |       history.index
+|       |   |   |   |   |       
+|       |   |   |   |   \---e4
+|       |   |   |   |       \---b9
+|       |   |   |   |           \---db
+|       |   |   |   |                   history.index
+|       |   |   |   |                   
+|       |   |   |   +---org.eclipse.egit.core
+|       |   |   |   |       GitProjectData.properties
+|       |   |   |   |       
+|       |   |   |   +---org.eclipse.jdt.apt.core
+|       |   |   |   \---org.eclipse.jdt.core
+|       |   |   |           state.dat
+|       |   |   |           
+|       |   |   +---blur-business
+|       |   |   |   |   .location
+|       |   |   |   |   .markers
+|       |   |   |   |   3.tree
+|       |   |   |   |   
+|       |   |   |   +---.indexes
+|       |   |   |   |   |   properties.index
+|       |   |   |   |   |   
+|       |   |   |   |   +---af
+|       |   |   |   |   |       history.index
+|       |   |   |   |   |       
+|       |   |   |   |   \---e4
+|       |   |   |   |       \---b9
+|       |   |   |   |           \---22
+|       |   |   |   |               \---81
+|       |   |   |   |                   \---67
+|       |   |   |   |                       \---40
+|       |   |   |   |                           \---1a
+|       |   |   |   |                               \---df
+|       |   |   |   |                                       history.index
+|       |   |   |   |                                       
+|       |   |   |   +---org.eclipse.egit.core
+|       |   |   |   |       GitProjectData.properties
+|       |   |   |   |       
+|       |   |   |   +---org.eclipse.jdt.apt.core
+|       |   |   |   \---org.eclipse.jdt.core
+|       |   |   |           state.dat
+|       |   |   |           
+|       |   |   +---blur-chat
+|       |   |   |   |   .location
+|       |   |   |   |   .markers.snap
+|       |   |   |   |   .syncinfo.snap
+|       |   |   |   |   
+|       |   |   |   +---.indexes
+|       |   |   |   |       properties.index
+|       |   |   |   |       
+|       |   |   |   +---org.eclipse.egit.core
+|       |   |   |   |       GitProjectData.properties
+|       |   |   |   |       
+|       |   |   |   \---org.eclipse.jdt.core
+|       |   |   +---blur-user-service
+|       |   |   |   |   .location
+|       |   |   |   |   .markers
+|       |   |   |   |   .markers.snap
+|       |   |   |   |   .syncinfo.snap
+|       |   |   |   |   
+|       |   |   |   +---.indexes
+|       |   |   |   |   |   history.index
+|       |   |   |   |   |   properties.index
+|       |   |   |   |   |   
+|       |   |   |   |   +---7
+|       |   |   |   |   |   \---b9
+|       |   |   |   |   |           history.index
+|       |   |   |   |   |           
+|       |   |   |   |   +---af
+|       |   |   |   |   |       history.index
+|       |   |   |   |   |       
+|       |   |   |   |   \---e4
+|       |   |   |   |       \---b9
+|       |   |   |   |           +---22
+|       |   |   |   |           |   \---81
+|       |   |   |   |           |       \---67
+|       |   |   |   |           |           \---8a
+|       |   |   |   |           |               +---1a
+|       |   |   |   |           |               |   +---1d
+|       |   |   |   |           |               |   |       history.index
+|       |   |   |   |           |               |   |       
+|       |   |   |   |           |               |   +---4a
+|       |   |   |   |           |               |   |       history.index
+|       |   |   |   |           |               |   |       
+|       |   |   |   |           |               |   +---9c
+|       |   |   |   |           |               |   |       history.index
+|       |   |   |   |           |               |   |       
+|       |   |   |   |           |               |   +---b5
+|       |   |   |   |           |               |   |       history.index
+|       |   |   |   |           |               |   |       
+|       |   |   |   |           |               |   \---df
+|       |   |   |   |           |               |       |   history.index
+|       |   |   |   |           |               |       |   
+|       |   |   |   |           |               |       +---8f
+|       |   |   |   |           |               |       |       history.index
+|       |   |   |   |           |               |       |       
+|       |   |   |   |           |               |       \---bf
+|       |   |   |   |           |               |               history.index
+|       |   |   |   |           |               |               
+|       |   |   |   |           |               +---97
+|       |   |   |   |           |               |   +---1d
+|       |   |   |   |           |               |   |       history.index
+|       |   |   |   |           |               |   |       
+|       |   |   |   |           |               |   \---88
+|       |   |   |   |           |               |           history.index
+|       |   |   |   |           |               |           
+|       |   |   |   |           |               \---be
+|       |   |   |   |           |                   |   history.index
+|       |   |   |   |           |                   |   
+|       |   |   |   |           |                   \---40
+|       |   |   |   |           |                           history.index
+|       |   |   |   |           |                           
+|       |   |   |   |           \---db
+|       |   |   |   |                   history.index
+|       |   |   |   |                   
+|       |   |   |   +---org.eclipse.egit.core
+|       |   |   |   |       GitProjectData.properties
+|       |   |   |   |       
+|       |   |   |   +---org.eclipse.jdt.apt.core
+|       |   |   |   \---org.eclipse.jdt.core
+|       |   |   +---RemoteSystemsTempFiles
+|       |   |   |   |   1.tree
+|       |   |   |   |   
+|       |   |   |   +---.indexes
+|       |   |   |   |       properties.index
+|       |   |   |   |       
+|       |   |   |   \---org.eclipse.egit.core
+|       |   |   |           GitProjectData.properties
+|       |   |   |           
+|       |   |   \---Servers
+|       |   |       |   4.tree
+|       |   |       |   
+|       |   |       +---.indexes
+|       |   |       |   |   properties.index
+|       |   |       |   |   
+|       |   |       |   +---82
+|       |   |       |   |       history.index
+|       |   |       |   |       
+|       |   |       |   \---af
+|       |   |       |           history.index
+|       |   |       |           
+|       |   |       \---org.eclipse.egit.core
+|       |   |               GitProjectData.properties
+|       |   |               
+|       |   +---.root
+|       |   |   |   .markers.snap
+|       |   |   |   7.tree
+|       |   |   |   
+|       |   |   \---.indexes
+|       |   |           history.version
+|       |   |           properties.index
+|       |   |           properties.version
+|       |   |           
+|       |   \---.safetable
+|       |           org.eclipse.core.resources
+|       |           
+|       +---org.eclipse.core.runtime
+|       |   \---.settings
+|       |           Cloud Foundry.prefs
+|       |           com.vmware.vfabric.ide.eclipse.tcserver.configurator.prefs
+|       |           Docker.prefs
+|       |           org.eclipse.ajdt.ui.prefs
+|       |           org.eclipse.core.resources.prefs
+|       |           org.eclipse.debug.ui.prefs
+|       |           org.eclipse.egit.core.prefs
+|       |           org.eclipse.jdt.core.prefs
+|       |           org.eclipse.jdt.junit.prefs
+|       |           org.eclipse.jdt.launching.prefs
+|       |           org.eclipse.jdt.ui.prefs
+|       |           org.eclipse.jsch.core.prefs
+|       |           org.eclipse.jst.jsp.core.prefs
+|       |           org.eclipse.m2e.discovery.prefs
+|       |           org.eclipse.mylyn.context.core.prefs
+|       |           org.eclipse.mylyn.java.ui.prefs
+|       |           org.eclipse.mylyn.monitor.ui.prefs
+|       |           org.eclipse.mylyn.tasks.ui.prefs
+|       |           org.eclipse.pde.api.tools.prefs
+|       |           org.eclipse.rse.core.prefs
+|       |           org.eclipse.search.prefs
+|       |           org.eclipse.ui.browser.prefs
+|       |           org.eclipse.ui.editors.prefs
+|       |           org.eclipse.ui.ide.prefs
+|       |           org.eclipse.ui.workbench.prefs
+|       |           org.eclipse.wst.jsdt.ui.prefs
+|       |           org.eclipse.wst.server.core.prefs
+|       |           org.eclipse.wst.server.discovery.prefs
+|       |           org.eclipse.wst.ws.service.policy.prefs
+|       |           org.springframework.ide.eclipse.imports.prefs
+|       |           org.springsource.ide.eclipse.commons.core.prefs
+|       |           org.springsource.ide.eclipse.commons.frameworks.core.prefs
+|       |           org.springsource.ide.eclipse.commons.ui.prefs
+|       |           org.springsource.ide.eclipse.dashboard.ui.prefs
+|       |           
+|       +---org.eclipse.debug.core
+|       |   \---.launches
+|       |           blur-business - BlurBusinessApplication.launch
+|       |           blur-user-service - BlurUserService1Application.launch
+|       |           
+|       +---org.eclipse.debug.ui
+|       |       dialog_settings.xml
+|       |       launchConfigurationHistory.xml
+|       |       
+|       +---org.eclipse.e4.ui.workbench.swt
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.e4.workbench
+|       |       workbench.xmi
+|       |       
+|       +---org.eclipse.emf.ecore
+|       +---org.eclipse.jdt.core
+|       |       1011043188.index
+|       |       1040756740.index
+|       |       1084332449.index
+|       |       1116627031.index
+|       |       1164749500.index
+|       |       1184257090.index
+|       |       1212246867.index
+|       |       1220812544.index
+|       |       1226619217.index
+|       |       1252277737.index
+|       |       1278255422.index
+|       |       1301766559.index
+|       |       130669378.index
+|       |       1342212547.index
+|       |       1349514163.index
+|       |       1352434728.index
+|       |       1364134567.index
+|       |       1374111878.index
+|       |       1376821086.index
+|       |       1380095901.index
+|       |       1411659136.index
+|       |       1430232377.index
+|       |       1454479412.index
+|       |       1477130661.index
+|       |       1529177369.index
+|       |       1564420527.index
+|       |       1575932658.index
+|       |       1585637553.index
+|       |       1651198597.index
+|       |       1674594025.index
+|       |       1730366236.index
+|       |       1733185845.index
+|       |       1779634390.index
+|       |       1794282628.index
+|       |       181802540.index
+|       |       1841646279.index
+|       |       1852166389.index
+|       |       1895378356.index
+|       |       1950857278.index
+|       |       2055355218.index
+|       |       2103916079.index
+|       |       2105400476.index
+|       |       2111940657.index
+|       |       2137392800.index
+|       |       215078017.index
+|       |       2170625312.index
+|       |       2193626115.index
+|       |       2218942742.index
+|       |       2221311941.index
+|       |       2237987307.index
+|       |       2256670077.index
+|       |       2275510010.index
+|       |       228160581.index
+|       |       2307729480.index
+|       |       2320330193.index
+|       |       2339446736.index
+|       |       2341205503.index
+|       |       2346616751.index
+|       |       2362068986.index
+|       |       2385486701.index
+|       |       2388497521.index
+|       |       2402945007.index
+|       |       2419413623.index
+|       |       2440043199.index
+|       |       2447305373.index
+|       |       2463676225.index
+|       |       2478033050.index
+|       |       2478847320.index
+|       |       2506502055.index
+|       |       2514435398.index
+|       |       2545784931.index
+|       |       2553244071.index
+|       |       2565356412.index
+|       |       2636856760.index
+|       |       2676062530.index
+|       |       2693326886.index
+|       |       2694203122.index
+|       |       272250610.index
+|       |       2774192692.index
+|       |       2871119980.index
+|       |       2992132412.index
+|       |       299437540.index
+|       |       3035081732.index
+|       |       309088890.index
+|       |       3116265093.index
+|       |       3121652361.index
+|       |       3146156636.index
+|       |       3151279596.index
+|       |       3170441246.index
+|       |       3178488630.index
+|       |       319464758.index
+|       |       3224565612.index
+|       |       3293408426.index
+|       |       3378592672.index
+|       |       3385411286.index
+|       |       3406521080.index
+|       |       3417802670.index
+|       |       3422924544.index
+|       |       3464332566.index
+|       |       3474631535.index
+|       |       3507131268.index
+|       |       3518261003.index
+|       |       355577803.index
+|       |       3604988676.index
+|       |       3614961311.index
+|       |       3632039181.index
+|       |       36336282.index
+|       |       3673889134.index
+|       |       3702161930.index
+|       |       3705455693.index
+|       |       3723846633.index
+|       |       3749800939.index
+|       |       3808009586.index
+|       |       3898445871.index
+|       |       3915325611.index
+|       |       392130642.index
+|       |       3953939605.index
+|       |       4051151469.index
+|       |       4053187525.index
+|       |       4065910230.index
+|       |       4207524454.index
+|       |       4229595192.index
+|       |       4231469800.index
+|       |       4236203240.index
+|       |       4259256283.index
+|       |       436735574.index
+|       |       451164859.index
+|       |       604596350.index
+|       |       652327269.index
+|       |       667227021.index
+|       |       786589506.index
+|       |       793781299.index
+|       |       809600803.index
+|       |       818696992.index
+|       |       818868135.index
+|       |       846438335.index
+|       |       847082425.index
+|       |       908313521.index
+|       |       922357563.index
+|       |       930795947.index
+|       |       962584739.index
+|       |       974982368.index
+|       |       assumedExternalFilesCache
+|       |       externalFilesCache
+|       |       externalLibsTimeStamps
+|       |       indexNamesMap.txt
+|       |       javaLikeNames.txt
+|       |       nonChainingJarsCache
+|       |       savedIndexNames.txt
+|       |       variablesAndContainers.dat
+|       |       
+|       +---org.eclipse.jdt.debug.ui
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.jdt.junit.core
+|       |   \---history
+|       +---org.eclipse.jdt.launching
+|       |       .install.xml
+|       |       libraryInfos.xml
+|       |       
+|       +---org.eclipse.jdt.ui
+|       |       dialog_settings.xml
+|       |       OpenTypeHistory.xml
+|       |       QualifiedTypeNameHistory.xml
+|       |       
+|       +---org.eclipse.jst.jsp.core
+|       |   +---jspsearch
+|       |   \---taglibindex
+|       +---org.eclipse.ltk.core.refactoring
+|       |   \---.refactorings
+|       |       +---.workspace
+|       |       |   \---2023
+|       |       |       \---1
+|       |       |           \---5
+|       |       |                   refactorings.history
+|       |       |                   refactorings.index
+|       |       |                   
+|       |       \---blur-user-service
+|       |           \---2023
+|       |               +---1
+|       |               |   \---5
+|       |               |           refactorings.history
+|       |               |           refactorings.index
+|       |               |           
+|       |               \---2
+|       |                   \---5
+|       |                           refactorings.history
+|       |                           refactorings.index
+|       |                           
+|       +---org.eclipse.ltk.ui.refactoring
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.m2e.logback.configuration
+|       |       0.log
+|       |       logback.1.15.0.20191217-1149.xml
+|       |       
+|       +---org.eclipse.mylyn.bugzilla.core
+|       |       repositoryConfigurations
+|       |       
+|       +---org.eclipse.mylyn.bugzilla.ui
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.mylyn.context.core
+|       |   \---contexts
+|       +---org.eclipse.mylyn.tasks.ui
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.pde.api.tools
+|       +---org.eclipse.pde.core
+|       |   +---.cache
+|       |   |       clean-cache.properties
+|       |   |       
+|       |   \---.p2
+|       |       \---org.eclipse.equinox.p2.engine
+|       |           \---profileRegistry
+|       +---org.eclipse.rse.core
+|       |   |   .log
+|       |   |   
+|       |   +---initializerMarks
+|       |   |       org.eclipse.rse.internal.core.RSELocalConnectionInitializer.mark
+|       |   |       
+|       |   \---profiles
+|       +---org.eclipse.rse.ui
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.search
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.tm.terminal.view.ui
+|       |   \---.executables
+|       |           data.properties
+|       |           
+|       +---org.eclipse.ui
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.ui.editors
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.ui.ide
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.ui.workbench
+|       |       dialog_settings.xml
+|       |       workingsets.xml
+|       |       
+|       +---org.eclipse.ui.workbench.texteditor
+|       |       dialog_settings.xml
+|       |       
+|       +---org.eclipse.wst.common.modulecore
+|       +---org.eclipse.wst.jsdt.core
+|       |   |   externalLibsTimeStamps
+|       |   |   variablesAndContainers.dat
+|       |   |   
+|       |   +---indexes
+|       |   \---libraries
+|       |           baseBrowserLibrary.js
+|       |           browserWindow.js
+|       |           dom5.js
+|       |           system.js
+|       |           xhr.js
+|       |           
+|       +---org.eclipse.wst.jsdt.ui
+|       |       OpenTypeHistory.xml
+|       |       QualifiedTypeNameHistory.xml
+|       |       
+|       +---org.eclipse.wst.server.core
+|       |       servers.xml
+|       |       
+|       +---org.eclipse.wst.server.discovery
+|       +---org.eclipse.wst.sse.core
+|       |       task-tags.properties
+|       |       
+|       +---org.springframework.ide.eclipse.aop.core
+|       |       .state
+|       |       
+|       +---org.springframework.ide.eclipse.beans.core.metadata
+|       |   +---metadata
+|       |   |       .state
+|       |   |       
+|       |   \---properties
+|       |           .state
+|       |           
+|       +---org.springframework.ide.eclipse.boot
+|       |   \---installs
+|       +---org.springframework.ide.eclipse.boot.dash
+|       +---org.springframework.ide.eclipse.boot.properties.editor
+|       |       dialog_settings.xml
+|       |       
+|       +---org.springframework.ide.eclipse.boot.properties.editor.yaml
+|       |       dialog_settings.xml
+|       |       
+|       +---org.springsource.ide.eclipse.commons.frameworks.core
+|       +---org.springsource.ide.eclipse.commons.gettingstarted
+|       |   \---dashboard
+|       |       \---1675036978505
+|       |           |   index.html
+|       |           |   
+|       |           \---common
+|       |               +---bootstrap
+|       |               |   +---css
+|       |               |   |       bootstrap.css
+|       |               |   |       bootstrap.min.js
+|       |               |   |       
+|       |               |   \---js
+|       |               |       |   bootstrap.min.js
+|       |               |       |   
+|       |               |       \---bootstrap-datetimepicker
+|       |               |           \---js
+|       |               |                   bootstrap-datetimepicker.min.js
+|       |               |                   
+|       |               +---bootstrap-datetimepicker
+|       |               |   \---js
+|       |               |           bootstrap-datetimepicker.min.js
+|       |               |           
+|       |               +---css
+|       |               |       application.css
+|       |               |       blog.css
+|       |               |       buttons.css
+|       |               |       dashboard.css
+|       |               |       docs.css
+|       |               |       flexbox.css
+|       |               |       font-awesome.css
+|       |               |       fontcustom.css
+|       |               |       highlight.css
+|       |               |       homepage.css
+|       |               |       icons.css
+|       |               |       main.css
+|       |               |       markdown-content.css
+|       |               |       panes.css
+|       |               |       projects.css
+|       |               |       responsive.css
+|       |               |       tools.css
+|       |               |       typography.css
+|       |               |       
+|       |               +---font-awesome
+|       |               |   \---css
+|       |               |           font-awesome.css
+|       |               |           
+|       |               +---font-custom
+|       |               |       fontcustom.woff
+|       |               |       
+|       |               +---img
+|       |               |       blog.png
+|       |               |       blog_32.png
+|       |               |       bug_32.png
+|       |               |       comparison_32.png
+|       |               |       compass.png
+|       |               |       compass_32.png
+|       |               |       extension.png
+|       |               |       extension_32.png
+|       |               |       favicon.png
+|       |               |       forum.png
+|       |               |       forum_32.png
+|       |               |       guides.png
+|       |               |       guides_32.png
+|       |               |       loading.gif
+|       |               |       logo_bigleaf.png
+|       |               |       logo_spring.png
+|       |               |       logo_sts.png
+|       |               |       new_32.png
+|       |               |       overlay-incoming.png
+|       |               |       question.png
+|       |               |       spring-logo.png
+|       |               |       springdocs.png
+|       |               |       springdocs_32.png
+|       |               |       
+|       |               \---js
+|       |                       application.js
+|       |                       filter.js
+|       |                       guide.js
+|       |                       jquery.js
+|       |                       modernizer.flexbox.js
+|       |                       
+|       \---org.springsource.ide.eclipse.dashboard.ui
+|           \---feeds
+|               +---dashboard.feeds.blogs
+|               |       -549550714.xml
+|               |       
+|               \---dashboard.feeds.update
+|                       -1223306788.xml
+|                       
++---bin
+|   +---main
+|   |   +---com
+|   |   |   \---blur
+|   |   |       +---api
+|   |   |       |   +---controller
+|   |   |       |   \---dto
+|   |   |       |       +---request
+|   |   |       |       \---response
+|   |   |       +---auth
+|   |   |       |   +---jwt
+|   |   |       |   \---oauth
+|   |   |       |       \---provider
+|   |   |       +---config
+|   |   |       +---entity
+|   |   |       +---exception
+|   |   |       +---repository
+|   |   |       \---service
+|   |   \---templates
+|   \---test
+|       \---com
+|           \---blur
++---blur-apigateway
+|   |   .classpath
+|   |   .gitignore
+|   |   .project
+|   |   build.gradle
+|   |   gradlew
+|   |   gradlew.bat
+|   |   settings.gradle
+|   |   
+|   +---.gradle
+|   |   +---7.6
+|   |   |   |   gc.properties
+|   |   |   |   
+|   |   |   +---checksums
+|   |   |   |       checksums.lock
+|   |   |   |       md5-checksums.bin
+|   |   |   |       sha1-checksums.bin
+|   |   |   |       
+|   |   |   +---dependencies-accessors
+|   |   |   |       dependencies-accessors.lock
+|   |   |   |       gc.properties
+|   |   |   |       
+|   |   |   +---executionHistory
+|   |   |   |       executionHistory.lock
+|   |   |   |       
+|   |   |   +---fileChanges
+|   |   |   |       last-build.bin
+|   |   |   |       
+|   |   |   +---fileHashes
+|   |   |   |       fileHashes.lock
+|   |   |   |       
+|   |   |   \---vcsMetadata
+|   |   +---buildOutputCleanup
+|   |   |       buildOutputCleanup.lock
+|   |   |       cache.properties
+|   |   |       
+|   |   \---vcs-1
+|   |           gc.properties
+|   |           
+|   +---.settings
+|   |       org.eclipse.buildship.core.prefs
+|   |       org.eclipse.jdt.core.prefs
+|   |       org.springframework.ide.eclipse.prefs
+|   |       
+|   +---bin
+|   |   +---com
+|   |   |   \---blur
+|   |   |       \---apigateway
+|   |   |           |   BlurApigatewayApplication.class
+|   |   |           |   BlurApigatewayApplicationTests.class
+|   |   |           |   
+|   |   |           +---filter
+|   |   |           |       AuthorizationHeaderFilter$Config.class
+|   |   |           |       AuthorizationHeaderFilter.class
+|   |   |           |       GlobalFilter$Config.class
+|   |   |           |       GlobalFilter.class
+|   |   |           |       
+|   |   |           +---handler
+|   |   |           |       GlobalExceptionHandler.class
+|   |   |           |       
+|   |   |           \---security
+|   |   |                   JwtTokenProvider.class
+|   |   |                   
+|   |   +---main
+|   |   |   |   application.yml
+|   |   |   |   
+|   |   |   \---com
+|   |   |       \---blur
+|   |   |           \---apigateway
+|   |   |               |   BlurApigatewayApplication.class
+|   |   |               |   
+|   |   |               +---filter
+|   |   |               |       AuthorizationHeaderFilter$Config.class
+|   |   |               |       AuthorizationHeaderFilter.class
+|   |   |               |       GlobalFilter$Config.class
+|   |   |               |       GlobalFilter.class
+|   |   |               |       
+|   |   |               +---handler
+|   |   |               |       GlobalExceptionHandler.class
+|   |   |               |       
+|   |   |               \---security
+|   |   |                       JwtTokenProvider.class
+|   |   |                       
+|   |   \---test
+|   |       \---com
+|   |           \---blur
+|   |               \---apigateway
+|   |                       BlurApigatewayApplicationTests.class
+|   |                       
+|   +---gradle
+|   |   \---wrapper
+|   |           gradle-wrapper.jar
+|   |           gradle-wrapper.properties
+|   |           
+|   \---src
+|       +---main
+|       |   +---java
+|       |   |   \---com
+|       |   |       \---blur
+|       |   |           \---apigateway
+|       |   |               |   BlurApigatewayApplication.java
+|       |   |               |   
+|       |   |               +---filter
+|       |   |               |       AuthorizationHeaderFilter.java
+|       |   |               |       GlobalFilter.java
+|       |   |               |       
+|       |   |               +---handler
+|       |   |               |       GlobalExceptionHandler.java
+|       |   |               |       
+|       |   |               \---security
+|       |   |                       JwtTokenProvider.java
+|       |   |                       
+|       |   \---resources
+|       |           application.yml
+|       |           
+|       \---test
+|           \---java
+|               \---com
+|                   \---blur
+|                       \---apigateway
+|                               BlurApigatewayApplicationTests.java
+|                               
++---blur-business
+|   |   .classpath
+|   |   .gitignore
+|   |   .project
+|   |   build.gradle
+|   |   gradlew
+|   |   gradlew.bat
+|   |   settings.gradle
+|   |   
+|   +---.gradle
+|   |   +---7.6
+|   |   |   |   gc.properties
+|   |   |   |   
+|   |   |   +---checksums
+|   |   |   |       checksums.lock
+|   |   |   |       md5-checksums.bin
+|   |   |   |       sha1-checksums.bin
+|   |   |   |       
+|   |   |   +---dependencies-accessors
+|   |   |   |       dependencies-accessors.lock
+|   |   |   |       gc.properties
+|   |   |   |       
+|   |   |   +---executionHistory
+|   |   |   |       executionHistory.lock
+|   |   |   |       
+|   |   |   +---fileChanges
+|   |   |   |       last-build.bin
+|   |   |   |       
+|   |   |   +---fileHashes
+|   |   |   |       fileHashes.lock
+|   |   |   |       
+|   |   |   \---vcsMetadata
+|   |   +---buildOutputCleanup
+|   |   |       buildOutputCleanup.lock
+|   |   |       cache.properties
+|   |   |       
+|   |   \---vcs-1
+|   |           gc.properties
+|   |           
+|   +---.settings
+|   |       org.eclipse.buildship.core.prefs
+|   |       org.eclipse.jdt.core.prefs
+|   |       org.eclipse.wst.common.project.facet.core.xml
+|   |       org.springframework.ide.eclipse.prefs
+|   |       
+|   +---bin
+|   |   +---com
+|   |   |   \---blur
+|   |   |       \---business
+|   |   |           |   BlurBusinessApplication.class
+|   |   |           |   BlurBusinessApplicationTests.class
+|   |   |           |   
+|   |   |           +---api
+|   |   |           |   +---controller
+|   |   |           |   |       AuthController.class
+|   |   |           |   |       ChattingController.class
+|   |   |           |   |       MatchingController.class
+|   |   |           |   |       ProfileController.class
+|   |   |           |   |       StatisticController.class
+|   |   |           |   |       UserController.class
+|   |   |           |   |       WebSocketController.class
+|   |   |           |   |       
+|   |   |           |   \---dto
+|   |   |           |       |   EmailAuthDto$EmailAuthDtoBuilder.class
+|   |   |           |       |   EmailAuthDto.class
+|   |   |           |       |   TokenDto$TokenDtoBuilder.class
+|   |   |           |       |   TokenDto.class
+|   |   |           |       |   UserDto$UserDtoBuilder.class
+|   |   |           |       |   UserDto.class
+|   |   |           |       |   UserProfileDto$UserProfileDtoBuilder.class
+|   |   |           |       |   UserProfileDto.class
+|   |   |           |       |   
+|   |   |           |       +---request
+|   |   |           |       |       LoginRequestDto$LoginRequestDtoBuilder.class
+|   |   |           |       |       LoginRequestDto.class
+|   |   |           |       |       
+|   |   |           |       \---response
+|   |   |           |               ErrorResponse.class
+|   |   |           |               LoginResponseDto.class
+|   |   |           |               
+|   |   |           +---config
+|   |   |           |       CorsConfig.class
+|   |   |           |       EmailConfig.class
+|   |   |           |       ImageConfig.class
+|   |   |           |       JpaConfig.class
+|   |   |           |       SwaggerConfig.class
+|   |   |           |       WebMvcConfig.class
+|   |   |           |       WebSocketConfig.class
+|   |   |           |       
+|   |   |           +---entity
+|   |   |           |       Category.class
+|   |   |           |       ChatHeader.class
+|   |   |           |       ChatRoomUser.class
+|   |   |           |       EmailAuth$EmailAuthBuilder.class
+|   |   |           |       EmailAuth.class
+|   |   |           |       Interest.class
+|   |   |           |       MatchingLog.class
+|   |   |           |       MatchingSetting.class
+|   |   |           |       MatchMakingRating.class
+|   |   |           |       Token$TokenBuilder.class
+|   |   |           |       Token.class
+|   |   |           |       User$UserBuilder.class
+|   |   |           |       User.class
+|   |   |           |       UserInterest.class
+|   |   |           |       UserProfile$UserProfileBuilder.class
+|   |   |           |       UserProfile.class
+|   |   |           |       
+|   |   |           +---exception
+|   |   |           |       UnAuthorizedException.class
+|   |   |           |       
+|   |   |           +---repository
+|   |   |           |       EmailRepository.class
+|   |   |           |       TokenRepository.class
+|   |   |           |       UserProfileRepository.class
+|   |   |           |       UserRepository.class
+|   |   |           |       
+|   |   |           \---service
+|   |   |                   EmailService.class
+|   |   |                   JwtService.class
+|   |   |                   JwtServiceImpl.class
+|   |   |                   PasswordService.class
+|   |   |                   ProfileService.class
+|   |   |                   TokenService.class
+|   |   |                   UserService.class
+|   |   |                   
+|   |   +---default
+|   |   +---main
+|   |   |   |   application.properties
+|   |   |   |   
+|   |   |   \---com
+|   |   |       \---blur
+|   |   |           \---business
+|   |   |               |   BlurBusinessApplication.class
+|   |   |               |   
+|   |   |               +---api
+|   |   |               |   +---controller
+|   |   |               |   |       AuthController.class
+|   |   |               |   |       ChattingController.class
+|   |   |               |   |       MatchingController.class
+|   |   |               |   |       ProfileController.class
+|   |   |               |   |       StatisticController.class
+|   |   |               |   |       UserController.class
+|   |   |               |   |       WebSocketController.class
+|   |   |               |   |       
+|   |   |               |   \---dto
+|   |   |               |       |   EmailAuthDto$EmailAuthDtoBuilder.class
+|   |   |               |       |   EmailAuthDto.class
+|   |   |               |       |   TokenDto$TokenDtoBuilder.class
+|   |   |               |       |   TokenDto.class
+|   |   |               |       |   UserDto$UserDtoBuilder.class
+|   |   |               |       |   UserDto.class
+|   |   |               |       |   UserProfileDto$UserProfileDtoBuilder.class
+|   |   |               |       |   UserProfileDto.class
+|   |   |               |       |   
+|   |   |               |       +---request
+|   |   |               |       |       LoginRequestDto$LoginRequestDtoBuilder.class
+|   |   |               |       |       LoginRequestDto.class
+|   |   |               |       |       
+|   |   |               |       \---response
+|   |   |               |               ErrorResponse.class
+|   |   |               |               LoginResponseDto.class
+|   |   |               |               
+|   |   |               +---config
+|   |   |               |       CorsConfig.class
+|   |   |               |       EmailConfig.class
+|   |   |               |       ImageConfig.class
+|   |   |               |       JpaConfig.class
+|   |   |               |       SwaggerConfig.class
+|   |   |               |       WebMvcConfig.class
+|   |   |               |       WebSocketConfig.class
+|   |   |               |       
+|   |   |               +---entity
+|   |   |               |       Category.class
+|   |   |               |       ChatHeader.class
+|   |   |               |       ChatRoomUser.class
+|   |   |               |       EmailAuth$EmailAuthBuilder.class
+|   |   |               |       EmailAuth.class
+|   |   |               |       Interest.class
+|   |   |               |       MatchingLog.class
+|   |   |               |       MatchingSetting.class
+|   |   |               |       MatchMakingRating.class
+|   |   |               |       Token$TokenBuilder.class
+|   |   |               |       Token.class
+|   |   |               |       User$UserBuilder.class
+|   |   |               |       User.class
+|   |   |               |       UserInterest.class
+|   |   |               |       UserProfile$UserProfileBuilder.class
+|   |   |               |       UserProfile.class
+|   |   |               |       
+|   |   |               +---exception
+|   |   |               |       UnAuthorizedException.class
+|   |   |               |       
+|   |   |               +---repository
+|   |   |               |       EmailRepository.class
+|   |   |               |       TokenRepository.class
+|   |   |               |       UserProfileRepository.class
+|   |   |               |       UserRepository.class
+|   |   |               |       
+|   |   |               \---service
+|   |   |                       EmailService.class
+|   |   |                       JwtService.class
+|   |   |                       JwtServiceImpl.class
+|   |   |                       PasswordService.class
+|   |   |                       ProfileService.class
+|   |   |                       TokenService.class
+|   |   |                       UserService.class
+|   |   |                       
+|   |   \---test
+|   |       \---com
+|   |           \---blur
+|   |               \---business
+|   |                       BlurBusinessApplicationTests.class
+|   |                       
+|   +---gradle
+|   |   \---wrapper
+|   |           gradle-wrapper.jar
+|   |           gradle-wrapper.properties
+|   |           
+|   \---src
+|       +---main
+|       |   +---java
+|       |   |   \---com
+|       |   |       \---blur
+|       |   |           \---business
+|       |   |               |   BlurBusinessApplication.java
+|       |   |               |   
+|       |   |               +---api
+|       |   |               |   +---controller
+|       |   |               |   |       AuthController.java
+|       |   |               |   |       ChattingController.java
+|       |   |               |   |       MatchingController.java
+|       |   |               |   |       ProfileController.java
+|       |   |               |   |       StatisticController.java
+|       |   |               |   |       UserController.java
+|       |   |               |   |       WebSocketController.java
+|       |   |               |   |       
+|       |   |               |   \---dto
+|       |   |               |       |   EmailAuthDto.java
+|       |   |               |       |   TokenDto.java
+|       |   |               |       |   UserDto.java
+|       |   |               |       |   UserProfileDto.java
+|       |   |               |       |   
+|       |   |               |       +---request
+|       |   |               |       |       LoginRequestDto.java
+|       |   |               |       |       
+|       |   |               |       \---response
+|       |   |               |               ErrorResponse.java
+|       |   |               |               LoginResponseDto.java
+|       |   |               |               
+|       |   |               +---config
+|       |   |               |       CorsConfig.java
+|       |   |               |       EmailConfig.java
+|       |   |               |       ImageConfig.java
+|       |   |               |       JpaConfig.java
+|       |   |               |       SwaggerConfig.java
+|       |   |               |       WebMvcConfig.java
+|       |   |               |       WebSocketConfig.java
+|       |   |               |       
+|       |   |               +---entity
+|       |   |               |       Category.java
+|       |   |               |       ChatHeader.java
+|       |   |               |       ChatRoomUser.java
+|       |   |               |       EmailAuth.java
+|       |   |               |       Interest.java
+|       |   |               |       MatchingLog.java
+|       |   |               |       MatchingSetting.java
+|       |   |               |       MatchMakingRating.java
+|       |   |               |       Token.java
+|       |   |               |       User.java
+|       |   |               |       UserInterest.java
+|       |   |               |       UserProfile.java
+|       |   |               |       
+|       |   |               +---exception
+|       |   |               |       UnAuthorizedException.java
+|       |   |               |       
+|       |   |               +---repository
+|       |   |               |       EmailRepository.java
+|       |   |               |       TokenRepository.java
+|       |   |               |       UserProfileRepository.java
+|       |   |               |       UserRepository.java
+|       |   |               |       
+|       |   |               \---service
+|       |   |                       EmailService.java
+|       |   |                       JwtService.java
+|       |   |                       JwtServiceImpl.java
+|       |   |                       PasswordService.java
+|       |   |                       ProfileService.java
+|       |   |                       TokenService.java
+|       |   |                       UserService.java
+|       |   |                       
+|       |   \---resources
+|       |           application-smtp.properties
+|       |           application.properties
+|       |           
+|       \---test
+|           \---java
+|               \---com
+|                   \---blur
+|                       \---business
+|                               BlurBusinessApplicationTests.java
+|                               
++---blur-chat
+|   |   .classpath
+|   |   .gitignore
+|   |   .project
+|   |   build.gradle
+|   |   gradlew
+|   |   gradlew.bat
+|   |   settings.gradle
+|   |   
+|   +---.gradle
+|   |   +---7.6
+|   |   |   |   gc.properties
+|   |   |   |   
+|   |   |   +---checksums
+|   |   |   |       checksums.lock
+|   |   |   |       md5-checksums.bin
+|   |   |   |       sha1-checksums.bin
+|   |   |   |       
+|   |   |   +---dependencies-accessors
+|   |   |   |       dependencies-accessors.lock
+|   |   |   |       gc.properties
+|   |   |   |       
+|   |   |   +---executionHistory
+|   |   |   |       executionHistory.lock
+|   |   |   |       
+|   |   |   +---fileChanges
+|   |   |   |       last-build.bin
+|   |   |   |       
+|   |   |   +---fileHashes
+|   |   |   |       fileHashes.lock
+|   |   |   |       
+|   |   |   \---vcsMetadata
+|   |   +---buildOutputCleanup
+|   |   |       buildOutputCleanup.lock
+|   |   |       cache.properties
+|   |   |       
+|   |   \---vcs-1
+|   |           gc.properties
+|   |           
+|   +---.settings
+|   |       org.eclipse.buildship.core.prefs
+|   |       org.springframework.ide.eclipse.prefs
+|   |       
+|   +---bin
+|   |   +---com
+|   |   |   \---blur
+|   |   |       \---chat
+|   |   |           |   BlurChatApplication.class
+|   |   |           |   BlurChatApplicationTests.class
+|   |   |           |   
+|   |   |           +---api
+|   |   |           |   +---contorller
+|   |   |           |   |       ChatDataController.class
+|   |   |           |   |       StompChatController.class
+|   |   |           |   |       
+|   |   |           |   +---dto
+|   |   |           |   |       ChatMessageSaveDto$ChatMessageSaveDtoBuilder.class
+|   |   |           |   |       ChatMessageSaveDto$MessageType.class
+|   |   |           |   |       ChatMessageSaveDto.class
+|   |   |           |   |       ChatPagingDto$ChatPagingDtoBuilder.class
+|   |   |           |   |       ChatPagingDto.class
+|   |   |           |   |       ChatPagingResponseDto$ChatPagingResponseDtoBuilder.class
+|   |   |           |   |       ChatPagingResponseDto.class
+|   |   |           |   |       
+|   |   |           |   +---entity
+|   |   |           |   |       Chat$ChatBuilder.class
+|   |   |           |   |       Chat.class
+|   |   |           |   |       
+|   |   |           |   +---repository
+|   |   |           |   |       ChatJdbcRepository.class
+|   |   |           |   |       ChatRepository.class
+|   |   |           |   |       ChatRoomRepository.class
+|   |   |           |   |       
+|   |   |           |   \---service
+|   |   |           |           ChatRedisCacheService.class
+|   |   |           |           ChatRoomService.class
+|   |   |           |           
+|   |   |           +---config
+|   |   |           |   +---websocket
+|   |   |           |   |   \---redis
+|   |   |           |   |           RedisConfig.class
+|   |   |           |   |           
+|   |   |           |   \---websokect
+|   |   |           |           StompHandler.class
+|   |   |           |           StompWebSocketConfig.class
+|   |   |           |           
+|   |   |           \---utils
+|   |   |                   ChatCachingInRedisScheduling.class
+|   |   |                   ChatUtils.class
+|   |   |                   ChatWriteBackScheduling.class
+|   |   |                   
+|   |   +---main
+|   |   |   |   application.properties
+|   |   |   |   
+|   |   |   \---com
+|   |   |       \---blur
+|   |   |           \---chat
+|   |   |               |   BlurChatApplication.class
+|   |   |               |   
+|   |   |               +---api
+|   |   |               |   +---contorller
+|   |   |               |   |       ChatDataController.class
+|   |   |               |   |       StompChatController.class
+|   |   |               |   |       
+|   |   |               |   +---dto
+|   |   |               |   |       ChatMessageSaveDto$ChatMessageSaveDtoBuilder.class
+|   |   |               |   |       ChatMessageSaveDto$MessageType.class
+|   |   |               |   |       ChatMessageSaveDto.class
+|   |   |               |   |       ChatPagingDto$ChatPagingDtoBuilder.class
+|   |   |               |   |       ChatPagingDto.class
+|   |   |               |   |       ChatPagingResponseDto$ChatPagingResponseDtoBuilder.class
+|   |   |               |   |       ChatPagingResponseDto.class
+|   |   |               |   |       
+|   |   |               |   +---entity
+|   |   |               |   |       Chat$ChatBuilder.class
+|   |   |               |   |       Chat.class
+|   |   |               |   |       
+|   |   |               |   +---repository
+|   |   |               |   |       ChatJdbcRepository.class
+|   |   |               |   |       ChatRepository.class
+|   |   |               |   |       ChatRoomRepository.class
+|   |   |               |   |       
+|   |   |               |   \---service
+|   |   |               |           ChatRedisCacheService.class
+|   |   |               |           ChatRoomService.class
+|   |   |               |           
+|   |   |               +---config
+|   |   |               |   +---websocket
+|   |   |               |   |   \---redis
+|   |   |               |   |           RedisConfig.class
+|   |   |               |   |           
+|   |   |               |   \---websokect
+|   |   |               |           StompHandler.class
+|   |   |               |           StompWebSocketConfig.class
+|   |   |               |           
+|   |   |               \---utils
+|   |   |                       ChatCachingInRedisScheduling.class
+|   |   |                       ChatUtils.class
+|   |   |                       ChatWriteBackScheduling.class
+|   |   |                       
+|   |   \---test
+|   |       \---com
+|   |           \---blur
+|   |               \---chat
+|   |                       BlurChatApplicationTests.class
+|   |                       
+|   +---gradle
+|   |   \---wrapper
+|   |           gradle-wrapper.jar
+|   |           gradle-wrapper.properties
+|   |           
+|   \---src
+|       +---main
+|       |   +---java
+|       |   |   \---com
+|       |   |       \---blur
+|       |   |           \---chat
+|       |   |               |   BlurChatApplication.java
+|       |   |               |   
+|       |   |               +---api
+|       |   |               |   +---contorller
+|       |   |               |   |       ChatDataController.java
+|       |   |               |   |       StompChatController.java
+|       |   |               |   |       
+|       |   |               |   +---dto
+|       |   |               |   |       ChatMessageSaveDto.java
+|       |   |               |   |       ChatPagingDto.java
+|       |   |               |   |       ChatPagingResponseDto.java
+|       |   |               |   |       
+|       |   |               |   +---entity
+|       |   |               |   |       Chat.java
+|       |   |               |   |       
+|       |   |               |   +---repository
+|       |   |               |   |       ChatJdbcRepository.java
+|       |   |               |   |       ChatRepository.java
+|       |   |               |   |       ChatRoomRepository.java
+|       |   |               |   |       
+|       |   |               |   \---service
+|       |   |               |           ChatRedisCacheService.java
+|       |   |               |           ChatRoomService.java
+|       |   |               |           
+|       |   |               +---config
+|       |   |               |   +---websocket
+|       |   |               |   |   \---redis
+|       |   |               |   |           RedisConfig.java
+|       |   |               |   |           
+|       |   |               |   \---websokect
+|       |   |               |           StompHandler.java
+|       |   |               |           StompWebSocketConfig.java
+|       |   |               |           
+|       |   |               \---utils
+|       |   |                       ChatCachingInRedisScheduling.java
+|       |   |                       ChatUtils.java
+|       |   |                       ChatWriteBackScheduling.java
+|       |   |                       
+|       |   \---resources
+|       |           application.properties
+|       |           
+|       \---test
+|           \---java
+|               \---com
+|                   \---blur
+|                       \---chat
+|                               BlurChatApplicationTests.java
+|                               
++---blur-oauth
+|   |   .classpath
+|   |   .gitignore
+|   |   .project
+|   |   build.gradle
+|   |   gradlew
+|   |   gradlew.bat
+|   |   settings.gradle
+|   |   
+|   +---.gradle
+|   |   +---7.6
+|   |   |   |   gc.properties
+|   |   |   |   
+|   |   |   +---checksums
+|   |   |   |       checksums.lock
+|   |   |   |       
+|   |   |   +---dependencies-accessors
+|   |   |   |       dependencies-accessors.lock
+|   |   |   |       gc.properties
+|   |   |   |       
+|   |   |   +---executionHistory
+|   |   |   |       executionHistory.lock
+|   |   |   |       
+|   |   |   +---fileChanges
+|   |   |   |       last-build.bin
+|   |   |   |       
+|   |   |   +---fileHashes
+|   |   |   |       fileHashes.lock
+|   |   |   |       
+|   |   |   \---vcsMetadata
+|   |   +---buildOutputCleanup
+|   |   |       buildOutputCleanup.lock
+|   |   |       cache.properties
+|   |   |       
+|   |   \---vcs-1
+|   |           gc.properties
+|   |           
+|   +---.settings
+|   |       org.eclipse.buildship.core.prefs
+|   |       org.eclipse.jdt.core.prefs
+|   |       org.springframework.ide.eclipse.prefs
+|   |       
+|   +---bin
+|   |   +---com
+|   |   |   \---blur
+|   |   |       \---oauth
+|   |   |           |   BlurOauthApplication.class
+|   |   |           |   BlurOauthApplicationTests.class
+|   |   |           |   
+|   |   |           +---config
+|   |   |           |       JwtAuthFilter.class
+|   |   |           |       OAuth2SuccessHandler.class
+|   |   |           |       UserRequestMapper.class
+|   |   |           |       
+|   |   |           +---domain
+|   |   |           |   +---api
+|   |   |           |   |       TestApi.class
+|   |   |           |   |       TokenController.class
+|   |   |           |   |       
+|   |   |           |   +---jwt
+|   |   |           |   |   +---redis
+|   |   |           |   |   |       Token.class
+|   |   |           |   |   |       
+|   |   |           |   |   \---service
+|   |   |           |   |           CustomOAuth2UserService.class
+|   |   |           |   |           OAuth2Attribute$OAuth2AttributeBuilder.class
+|   |   |           |   |           OAuth2Attribute.class
+|   |   |           |   |           TokenService.class
+|   |   |           |   |           
+|   |   |           |   \---user
+|   |   |           |       \---dto
+|   |   |           |               UserDto$UserDtoBuilder.class
+|   |   |           |               UserDto.class
+|   |   |           |               
+|   |   |           \---global
+|   |   |               \---config
+|   |   |                       SecurityConfig.class
+|   |   |                       
+|   |   +---main
+|   |   |   |   application.yml
+|   |   |   |   
+|   |   |   \---com
+|   |   |       \---blur
+|   |   |           \---oauth
+|   |   |               |   BlurOauthApplication.class
+|   |   |               |   
+|   |   |               +---config
+|   |   |               |       JwtAuthFilter.class
+|   |   |               |       OAuth2SuccessHandler.class
+|   |   |               |       UserRequestMapper.class
+|   |   |               |       
+|   |   |               +---domain
+|   |   |               |   +---api
+|   |   |               |   |       TestApi.class
+|   |   |               |   |       TokenController.class
+|   |   |               |   |       
+|   |   |               |   +---jwt
+|   |   |               |   |   +---redis
+|   |   |               |   |   |       Token.class
+|   |   |               |   |   |       
+|   |   |               |   |   \---service
+|   |   |               |   |           CustomOAuth2UserService.class
+|   |   |               |   |           OAuth2Attribute$OAuth2AttributeBuilder.class
+|   |   |               |   |           OAuth2Attribute.class
+|   |   |               |   |           TokenService.class
+|   |   |               |   |           
+|   |   |               |   \---user
+|   |   |               |       \---dto
+|   |   |               |               UserDto$UserDtoBuilder.class
+|   |   |               |               UserDto.class
+|   |   |               |               
+|   |   |               \---global
+|   |   |                   \---config
+|   |   |                           SecurityConfig.class
+|   |   |                           
+|   |   \---test
+|   |       \---com
+|   |           \---blur
+|   |               \---oauth
+|   |                       BlurOauthApplicationTests.class
+|   |                       
+|   +---gradle
+|   |   \---wrapper
+|   |           gradle-wrapper.jar
+|   |           gradle-wrapper.properties
+|   |           
+|   \---src
+|       +---main
+|       |   +---java
+|       |   |   \---com
+|       |   |       \---blur
+|       |   |           \---oauth
+|       |   |               |   BlurOauthApplication.java
+|       |   |               |   
+|       |   |               +---config
+|       |   |               |       JwtAuthFilter.java
+|       |   |               |       OAuth2SuccessHandler.java
+|       |   |               |       UserRequestMapper.java
+|       |   |               |       
+|       |   |               +---domain
+|       |   |               |   +---api
+|       |   |               |   |       TestApi.java
+|       |   |               |   |       TokenController.java
+|       |   |               |   |       
+|       |   |               |   +---jwt
+|       |   |               |   |   +---redis
+|       |   |               |   |   |       Token.java
+|       |   |               |   |   |       
+|       |   |               |   |   \---service
+|       |   |               |   |           CustomOAuth2UserService.java
+|       |   |               |   |           OAuth2Attribute.java
+|       |   |               |   |           TokenService.java
+|       |   |               |   |           
+|       |   |               |   \---user
+|       |   |               |       \---dto
+|       |   |               |               UserDto.java
+|       |   |               |               
+|       |   |               \---global
+|       |   |                   \---config
+|       |   |                           SecurityConfig.java
+|       |   |                           
+|       |   \---resources
+|       |           application.yml
+|       |           
+|       \---test
+|           \---java
+|               \---com
+|                   \---blur
+|                       \---oauth
+|                               BlurOauthApplicationTests.java
+|                               
++---blur-user-service
+|   |   .classpath
+|   |   .project
+|   |   build.gradle
+|   |   gradlew
+|   |   gradlew.bat
+|   |   settings.gradle
+|   |   
+|   +---.gradle
+|   |   +---6.3
+|   |   |   |   gc.properties
+|   |   |   |   
+|   |   |   +---fileChanges
+|   |   |   |       last-build.bin
+|   |   |   |       
+|   |   |   +---fileHashes
+|   |   |   |       fileHashes.lock
+|   |   |   |       
+|   |   |   \---vcsMetadata-1
+|   |   +---7.3.3
+|   |   |   \---vcsMetadata
+|   |   +---buildOutputCleanup
+|   |   |       buildOutputCleanup.lock
+|   |   |       cache.properties
+|   |   |       
+|   |   +---checksums
+|   |   |       checksums.lock
+|   |   |       md5-checksums.bin
+|   |   |       sha1-checksums.bin
+|   |   |       
+|   |   \---vcs-1
+|   |           gc.properties
+|   |           
+|   +---.settings
+|   |       org.eclipse.buildship.core.prefs
+|   |       org.springframework.ide.eclipse.prefs
+|   |       
+|   +---bin
+|   |   +---com
+|   |   |   \---blur
+|   |   |       \---userservice
+|   |   |           |   BlurUserService1Application.class
+|   |   |           |   BlurUserService1ApplicationTests.class
+|   |   |           |   
+|   |   |           +---api
+|   |   |           |   +---controller
+|   |   |           |   |       AuthController.class
+|   |   |           |   |       UserController.class
+|   |   |           |   |       
+|   |   |           |   +---entity
+|   |   |           |   |       AuthReqModel.class
+|   |   |           |   |       User.class
+|   |   |           |   |       UserRefreshToken.class
+|   |   |           |   |       
+|   |   |           |   +---repository
+|   |   |           |   |       UserRefreshTokenRepository.class
+|   |   |           |   |       UserRepository.class
+|   |   |           |   |       
+|   |   |           |   \---service
+|   |   |           |           UserService.class
+|   |   |           |           
+|   |   |           +---common
+|   |   |           |       ApiResponse.class
+|   |   |           |       ApiResponseHeader.class
+|   |   |           |       
+|   |   |           +---config
+|   |   |           |   +---properties
+|   |   |           |   |       AppProperties$Auth.class
+|   |   |           |   |       AppProperties$OAuth2.class
+|   |   |           |   |       AppProperties.class
+|   |   |           |   |       CorsProperties.class
+|   |   |           |   |       
+|   |   |           |   \---security
+|   |   |           |           JwtConfig.class
+|   |   |           |           SecurityConfig.class
+|   |   |           |           
+|   |   |           +---oauth
+|   |   |           |   +---entity
+|   |   |           |   |       AuthToken.class
+|   |   |           |   |       AuthTokenProvider.class
+|   |   |           |   |       ProviderType.class
+|   |   |           |   |       RoleType.class
+|   |   |           |   |       UserPrincipal.class
+|   |   |           |   |       
+|   |   |           |   +---exception
+|   |   |           |   |       OAuthProviderMissMatchException.class
+|   |   |           |   |       RestAuthenticationEntryPoint.class
+|   |   |           |   |       TokenValidFailedException.class
+|   |   |           |   |       
+|   |   |           |   +---filter
+|   |   |           |   |       TokenAuthenticationFilter.class
+|   |   |           |   |       
+|   |   |           |   +---handler
+|   |   |           |   |       OAuth2AuthenticationFailureHandler.class
+|   |   |           |   |       OAuth2AuthenticationSuccessHandler.class
+|   |   |           |   |       TokenAccessDeniedHandler.class
+|   |   |           |   |       
+|   |   |           |   +---info
+|   |   |           |   |   |   OAuth2UserInfo.class
+|   |   |           |   |   |   OAuth2UserInfoFactory.class
+|   |   |           |   |   |   
+|   |   |           |   |   \---impl
+|   |   |           |   |           GoogleOAuth2UserInfo.class
+|   |   |           |   |           KakaoOAuth2UserInfo.class
+|   |   |           |   |           NaverOAuth2UserInfo.class
+|   |   |           |   |           
+|   |   |           |   +---repository
+|   |   |           |   |       OAuth2AuthorizationRequestBasedOnCookieRepository.class
+|   |   |           |   |       
+|   |   |           |   \---service
+|   |   |           |           CustomOAuth2UserService.class
+|   |   |           |           CustomUserDetailsService.class
+|   |   |           |           
+|   |   |           \---utils
+|   |   |                   CookieUtil.class
+|   |   |                   HeaderUtil.class
+|   |   |                   
+|   |   +---default
+|   |   +---main
+|   |   |   |   application-smtp.properties
+|   |   |   |   application.yml
+|   |   |   |   log4j2.xml
+|   |   |   |   
+|   |   |   \---com
+|   |   |       \---blur
+|   |   |           \---userservice
+|   |   |               |   BlurUserService1Application.class
+|   |   |               |   
+|   |   |               +---api
+|   |   |               |   +---controller
+|   |   |               |   |       AuthController.class
+|   |   |               |   |       UserController$LoginUserResponse.class
+|   |   |               |   |       UserController.class
+|   |   |               |   |       
+|   |   |               |   +---dto
+|   |   |               |   |       EmailAuthDto$EmailAuthDtoBuilder.class
+|   |   |               |   |       EmailAuthDto.class
+|   |   |               |   |       ErrorResponse.class
+|   |   |               |   |       LoginModel.class
+|   |   |               |   |       
+|   |   |               |   +---entity
+|   |   |               |   |       EmailAuth$EmailAuthBuilder.class
+|   |   |               |   |       EmailAuth.class
+|   |   |               |   |       User$UserBuilder.class
+|   |   |               |   |       User.class
+|   |   |               |   |       UserDto$UserDtoBuilder.class
+|   |   |               |   |       UserDto.class
+|   |   |               |   |       UserRefreshToken.class
+|   |   |               |   |       
+|   |   |               |   +---repository
+|   |   |               |   |       EmailRepository.class
+|   |   |               |   |       UserRefreshTokenRepository.class
+|   |   |               |   |       UserRepository.class
+|   |   |               |   |       
+|   |   |               |   \---service
+|   |   |               |           EmailService.class
+|   |   |               |           PasswordService.class
+|   |   |               |           UserService.class
+|   |   |               |           
+|   |   |               +---common
+|   |   |               |       ApiResponse.class
+|   |   |               |       ApiResponseHeader.class
+|   |   |               |       
+|   |   |               +---config
+|   |   |               |   |   EmailConfig.class
+|   |   |               |   |   
+|   |   |               |   +---properties
+|   |   |               |   |       AppProperties$Auth.class
+|   |   |               |   |       AppProperties$OAuth2.class
+|   |   |               |   |       AppProperties.class
+|   |   |               |   |       CorsProperties.class
+|   |   |               |   |       
+|   |   |               |   \---security
+|   |   |               |           JwtConfig.class
+|   |   |               |           SecurityConfig.class
+|   |   |               |           
+|   |   |               +---oauth
+|   |   |               |   +---entity
+|   |   |               |   |       AuthToken.class
+|   |   |               |   |       AuthTokenProvider.class
+|   |   |               |   |       ProviderType.class
+|   |   |               |   |       RoleType.class
+|   |   |               |   |       UserPrincipal.class
+|   |   |               |   |       
+|   |   |               |   +---exception
+|   |   |               |   |       OAuthProviderMissMatchException.class
+|   |   |               |   |       RestAuthenticationEntryPoint.class
+|   |   |               |   |       TokenValidFailedException.class
+|   |   |               |   |       
+|   |   |               |   +---filter
+|   |   |               |   |       TokenAuthenticationFilter.class
+|   |   |               |   |       
+|   |   |               |   +---handler
+|   |   |               |   |       OAuth2AuthenticationFailureHandler.class
+|   |   |               |   |       OAuth2AuthenticationSuccessHandler.class
+|   |   |               |   |       TokenAccessDeniedHandler.class
+|   |   |               |   |       
+|   |   |               |   +---info
+|   |   |               |   |   |   OAuth2UserInfo.class
+|   |   |               |   |   |   OAuth2UserInfoFactory.class
+|   |   |               |   |   |   
+|   |   |               |   |   \---impl
+|   |   |               |   |           GoogleOAuth2UserInfo.class
+|   |   |               |   |           KakaoOAuth2UserInfo.class
+|   |   |               |   |           NaverOAuth2UserInfo.class
+|   |   |               |   |           
+|   |   |               |   +---repository
+|   |   |               |   |       OAuth2AuthorizationRequestBasedOnCookieRepository.class
+|   |   |               |   |       
+|   |   |               |   \---service
+|   |   |               |           CustomOAuth2UserService.class
+|   |   |               |           CustomUserDetailsService.class
+|   |   |               |           
+|   |   |               \---utils
+|   |   |                       CookieUtil.class
+|   |   |                       HeaderUtil.class
+|   |   |                       
+|   |   \---test
+|   |       \---com
+|   |           \---blur
+|   |               \---userservice
+|   |                       BlurUserService1ApplicationTests.class
+|   |                       
+|   \---src
+|       +---main
+|       |   +---java
+|       |   |   \---com
+|       |   |       \---blur
+|       |   |           \---userservice
+|       |   |               |   BlurUserService1Application.java
+|       |   |               |   
+|       |   |               +---api
+|       |   |               |   +---controller
+|       |   |               |   |       AuthController.java
+|       |   |               |   |       UserController.java
+|       |   |               |   |       
+|       |   |               |   +---dto
+|       |   |               |   |       EmailAuthDto.java
+|       |   |               |   |       ErrorResponse.java
+|       |   |               |   |       LoginModel.java
+|       |   |               |   |       
+|       |   |               |   +---entity
+|       |   |               |   |       EmailAuth.java
+|       |   |               |   |       User.java
+|       |   |               |   |       UserDto.java
+|       |   |               |   |       UserRefreshToken.java
+|       |   |               |   |       
+|       |   |               |   +---repository
+|       |   |               |   |       EmailRepository.java
+|       |   |               |   |       UserRefreshTokenRepository.java
+|       |   |               |   |       UserRepository.java
+|       |   |               |   |       
+|       |   |               |   \---service
+|       |   |               |           EmailService.java
+|       |   |               |           PasswordService.java
+|       |   |               |           UserService.java
+|       |   |               |           
+|       |   |               +---common
+|       |   |               |       ApiResponse.java
+|       |   |               |       ApiResponseHeader.java
+|       |   |               |       
+|       |   |               +---config
+|       |   |               |   |   EmailConfig.java
+|       |   |               |   |   
+|       |   |               |   +---properties
+|       |   |               |   |       AppProperties.java
+|       |   |               |   |       CorsProperties.java
+|       |   |               |   |       
+|       |   |               |   \---security
+|       |   |               |           JwtConfig.java
+|       |   |               |           SecurityConfig.java
+|       |   |               |           
+|       |   |               +---oauth
+|       |   |               |   +---entity
+|       |   |               |   |       AuthToken.java
+|       |   |               |   |       AuthTokenProvider.java
+|       |   |               |   |       ProviderType.java
+|       |   |               |   |       RoleType.java
+|       |   |               |   |       UserPrincipal.java
+|       |   |               |   |       
+|       |   |               |   +---exception
+|       |   |               |   |       OAuthProviderMissMatchException.java
+|       |   |               |   |       RestAuthenticationEntryPoint.java
+|       |   |               |   |       TokenValidFailedException.java
+|       |   |               |   |       
+|       |   |               |   +---filter
+|       |   |               |   |       TokenAuthenticationFilter.java
+|       |   |               |   |       
+|       |   |               |   +---handler
+|       |   |               |   |       OAuth2AuthenticationFailureHandler.java
+|       |   |               |   |       OAuth2AuthenticationSuccessHandler.java
+|       |   |               |   |       TokenAccessDeniedHandler.java
+|       |   |               |   |       
+|       |   |               |   +---info
+|       |   |               |   |   |   OAuth2UserInfo.java
+|       |   |               |   |   |   OAuth2UserInfoFactory.java
+|       |   |               |   |   |   
+|       |   |               |   |   \---impl
+|       |   |               |   |           GoogleOAuth2UserInfo.java
+|       |   |               |   |           KakaoOAuth2UserInfo.java
+|       |   |               |   |           NaverOAuth2UserInfo.java
+|       |   |               |   |           
+|       |   |               |   +---repository
+|       |   |               |   |       OAuth2AuthorizationRequestBasedOnCookieRepository.java
+|       |   |               |   |       
+|       |   |               |   \---service
+|       |   |               |           CustomOAuth2UserService.java
+|       |   |               |           CustomUserDetailsService.java
+|       |   |               |           
+|       |   |               \---utils
+|       |   |                       CookieUtil.java
+|       |   |                       HeaderUtil.java
+|       |   |                       
+|       |   \---resources
+|       |           application-smtp.properties
+|       |           application.yml
+|       |           log4j2.xml
+|       |           
+|       \---test
+|           \---java
+|               \---com
+|                   \---blur
+|                       \---userservice
+|                               BlurUserService1ApplicationTests.java
+|                               
++---gradle
+|   \---wrapper
+|           gradle-wrapper.jar
+|           gradle-wrapper.properties
+|           
+\---Servers
+    \---Tomcat v9.0 Server at localhost-config
+            catalina.policy
+            catalina.properties
+            context.xml
+            server.xml
+            tomcat-users.xml
+            web.xml
+            

@@ -34,7 +34,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
 	
@@ -96,6 +96,7 @@ public class UserController {
     
     @PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody UserDto userDto) throws Exception{
+    	System.out.println(userDto);
 		userService.register(userDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(null);
 	}
@@ -114,6 +115,7 @@ public class UserController {
 
 		String email = param.get("email");
 		emailService.sendAuthMessage(email);
+		System.out.println(param);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 

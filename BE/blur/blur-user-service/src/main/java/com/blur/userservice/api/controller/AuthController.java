@@ -32,7 +32,7 @@ import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -50,6 +50,8 @@ public class AuthController {
             HttpServletResponse response,
             @RequestBody LoginModel loginModel
     ) {
+    	
+//    	System.out.printf(loginModel.getId(), loginModel.getPassword());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                 		loginModel.getId(),
