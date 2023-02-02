@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { saveToken } from "../../../reducer/saveToken";
+import { saveToken } from "../../../redux/reducers/saveToken";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";

@@ -1,21 +1,14 @@
-const SAVE_TOKEN = "SAVE_TOKEN";
+import { createSlice } from "@reduxjs/toolkit";
 
-export const saveToken = (token) => ({ type: SAVE_TOKEN, token });
+const saveTokenReducer = createSlice({
+  name: "saveTokenReducer",
+  initialState: { token: null },
+  reducers: {
+    saveToken: (state, action) => {
+      state.token = action.payload;
+    },
+  },
+});
 
-const initialState = {
-  token: null,
-};
-
-function saveTokenReducer(state = initialState, action) {
-  switch (action.type) {
-    case SAVE_TOKEN:
-      return {
-        ...state,
-        token: action.token,
-      };
-    default:
-      return state;
-  }
-}
-
-export default saveTokenReducer;
+export default saveTokenReducer.reducer;
+export const { saveToken } = saveTokenReducer.actions;

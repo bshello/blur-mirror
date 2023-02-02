@@ -1,8 +1,8 @@
 import "./signIn.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { saveToken } from "../../../reducer/saveToken";
-import { useLocation, useNavigate } from "react-router-dom";
+import { saveToken } from "../../../redux/reducers/saveToken";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -11,7 +11,8 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
   const SOCIAL_API_URL = "http://192.168.31.192:8080";
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const ttoken = useSelector((state) => state.saveTokenReducer.token);
+  const ttoken = useSelector((state) => state.strr.token);
+  console.log(ttoken);
 
   const [signId, setSignId] = useState(null);
   const enterSignId = (e) => {
@@ -39,7 +40,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           console.log(res.data);
           console.log(res.data.accessToken.token);
           console.log(res.data.refreshToken.token);
-          dispatch(saveToken(res.data.key));
+          dispatch(saveToken(res.data.accessToken.token));
           navigate("/home");
         })
         .catch((err) => {
