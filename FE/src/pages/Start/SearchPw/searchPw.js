@@ -5,16 +5,10 @@ import axios from "axios";
 function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
   const API_URL = "http://localhost:8080";
 
-  const [id, setId] = useState(null);
+  const [spId, setSpId] = useState(null);
   const enterId = (e) => {
-    setId(e.target.value);
-    console.log(id);
-  };
-
-  const [email, setEmail] = useState(null);
-  const enterEmail = (e) => {
-    setEmail(e.target.value);
-    console.log(email);
+    setSpId(e.target.value);
+    console.log(spId);
   };
 
   const callSearchPwCheck = () => {
@@ -22,15 +16,17 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
       method: "post",
       url: `${API_URL}/findPw`,
       data: {
-        userId: id,
-        email: email,
+        userId: spId,
       },
     })
       .then((res) => {
         console.log(res);
+        showAlertModal();
+        showSearchPwModal();
       })
       .catch((err) => {
         console.log(err);
+        alert("id를 정확히 입력해 주세요");
       });
   };
 
@@ -47,19 +43,10 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
           onChange={enterId}
         ></input>
       </div>
-      <div className="SPModalInputEmailDiv">
-        <label className="SPModalInputEmailLabel">E-mail</label>
-        <input
-          className="SPModalInputEmail"
-          placeholder="  E-mail을 입력해 주세요"
-          onChange={enterEmail}
-        ></input>
-      </div>
+
       <button
         className="SPConfirmBtn"
         onClick={() => {
-          showAlertModal();
-          showSearchPwModal();
           callSearchPwCheck();
         }}
       >
