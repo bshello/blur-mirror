@@ -3,12 +3,12 @@ import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
 import React, { useState } from "react";
 // import { changeName } from "../../../reducer/userEdit";
-import { changeName } from "../../store";
-import { useDispatch, useSelector } from "react-redux";
+import { changeName } from "../../redux/store";
+import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
-import "../../reducer/userEdit";
-import { edit } from "../../reducer/userEdit";
+import "../../redux/reducers/userEdit";
+import { edit } from "../../redux/reducers/userEdit";
 
 function MyInfo({ nickName }) {
   //profile edit modal
@@ -84,9 +84,7 @@ function MyInfo({ nickName }) {
       </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>
-        <span className="MIIntroducingText">
-          안녕하세요. 스물 여섯 김블리입니다!
-        </span>
+        <span className="MIIntroducingText">안녕하세요. 스물 여섯 김블리입니다!</span>
       </div>
       <span className="MIProfileLogo">Blur:)</span>
     </div>

@@ -11,5 +11,5 @@ const userEdit = createSlice({
   },
 });
 
-export default userEdit;
+export default userEdit.reducer;
 export const { edit } = userEdit.actions;
