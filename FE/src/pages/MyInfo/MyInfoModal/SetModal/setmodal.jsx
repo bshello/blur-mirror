@@ -37,13 +37,7 @@ function SetModal({ SetRange }) {
             {fromrange.x} km
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv" />
-              <Slider
-                className="rangelocation"
-                axis="x"
-                xmax="50"
-                x={fromrange.x}
-                onChange={({ x }) => setfromrange((state) => ({ ...state, x }))}
-              />
+              <Slider className="rangelocation" axis="x" xmax="50" x={fromrange.x} onChange={({ x }) => setfromrange((state) => ({ ...state, x }))} />
             </div>
           </div>
 
@@ -52,13 +46,7 @@ function SetModal({ SetRange }) {
             {agerange.x} 살
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv"></div>
-              <Slider
-                className="rangelocation"
-                axis="x"
-                x={agerange.x}
-                xmax="10"
-                onChange={({ x }) => setagerange((state) => ({ ...state, x }))}
-              />
+              <Slider className="rangelocation" axis="x" x={agerange.x} xmax="10" onChange={({ x }) => setagerange((state) => ({ ...state, x }))} />
             </div>
           </div>
         </div>

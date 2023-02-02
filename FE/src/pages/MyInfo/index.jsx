@@ -3,11 +3,12 @@ import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
 import React, { useState } from "react";
 // import { changeName } from "../../../reducer/userEdit";
-import { changeName } from "../../store";
-import { useDispatch, useSelector } from "react-redux";
+import { changeName } from "../../redux/store";
+import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
-import "../../reducer/userEdit";
+import "../../redux/reducers/userEdit";
+import { edit } from "../../redux/reducers/userEdit";
 
 function MyInfo({ nickName }) {
   //profile edit modal
@@ -26,17 +27,24 @@ function MyInfo({ nickName }) {
   const navigate = useNavigate();
 
   // 데이터 가져오는 거
-  const dispatch = useDispatch({});
-  const { user } = useSelector((state) => state.userEdit);
+  // const dispatch = useDispatch({});
+  // const { user } = useSelector((state) => state.userEdit);
   // console.log(user);
   // const state = useSelector((state) => {
   //   return state.userEdit.user;
   // });
   // console.log(state);
-  const member = useSelector((state) => state.userEdit);
+  // const member = useSelector((state) => state.userEdit);
   // const mypage = useSelector((state) => state.mypage);
   // const { memberNickname, memberRepIcon, memberId } = member;
   // const { memberCurrentStrick, memberTotalTime } = mypage;
+
+  // state를 연결해야된다.
+  const [input, setInput] = useState("");
+
+  const user = useSelector((state) => {
+    return state.user.value;
+  });
 
   return (
     <div className="myinfo">
@@ -68,7 +76,7 @@ function MyInfo({ nickName }) {
         </div>
       </div>
       <div className="MINameAgeDiv">
-        <span className="MIName"> {user[0]} </span>
+        <span className="MIName"> {user} </span>
         <span className="MIAge"> 26</span>
       </div>
       <div className="MIEdit" onClick={showMyinfoModal}>
@@ -76,9 +84,7 @@ function MyInfo({ nickName }) {
       </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>
-        <span className="MIIntroducingText">
-          안녕하세요. 스물 여섯 김블리입니다!
-        </span>
+        <span className="MIIntroducingText">안녕하세요. 스물 여섯 김블리입니다!</span>
       </div>
       <span className="MIProfileLogo">Blur:)</span>
     </div>
