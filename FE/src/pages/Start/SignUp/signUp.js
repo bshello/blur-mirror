@@ -3,7 +3,7 @@ import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
-  const API_URL = "http://localhost:8080";
+  const API_URL = "http://192.168.31.192:8080/user";
 
   const [id, setId] = useState(null);
   const enterId = (e) => {

@@ -2,12 +2,13 @@ import "./signIn.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { saveToken } from "../../../reducer/saveToken";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "http://localhost:8080";
+  const API_URL = "http://192.168.31.192:8080/user";
+  const SOCIAL_API_URL = "http://192.168.31.192:8080";
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const ttoken = useSelector((state) => state.saveTokenReducer.token);
@@ -28,14 +29,16 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     if (signId && signPs) {
       axios({
         method: "post",
-        url: `${API_URL}/signIn`,
+        url: `${API_URL}/login`,
         data: {
           userId: signId,
           password: signPs,
         },
       })
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
+          console.log(res.data.accessToken.token);
+          console.log(res.data.refreshToken.token);
           dispatch(saveToken(res.data.key));
           navigate("/home");
         })
@@ -51,6 +54,10 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
   useEffect(() => {
     console.log(ttoken);
   }, [ttoken]);
+
+  const socialSignIn = (socialType) => {
+    return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=http://localhost:3000/social/redirect`;
+  };
 
   return (
     <div className="SIModal">
@@ -111,9 +118,33 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         </button>
       </div>
 
-      <button className="KakaoLoginBtn">카카오로 로그인</button>
-      <button className="NaverLoginBtn">네이버로 로그인</button>
-      <button className="GoogleLoginBtn">구글로 로그인</button>
+      <button
+        className="KakaoLoginBtn"
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = socialSignIn("kakao");
+        }}
+      >
+        카카오로 로그인
+      </button>
+      <button
+        className="NaverLoginBtn"
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = socialSignIn("naver");
+        }}
+      >
+        네이버로 로그인
+      </button>
+      <button
+        className="GoogleLoginBtn"
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = socialSignIn("google");
+        }}
+      >
+        구글로 로그인
+      </button>
       <div className="PlaceHolder"></div>
     </div>
   );
