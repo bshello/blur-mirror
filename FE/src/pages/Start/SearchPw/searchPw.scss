@@ -1,7 +1,7 @@
 .SPModal {
   position: absolute;
   width: 453px;
-  height: 510px;
+  height: 380px;
   left: 493.5px;
   top: 149.25px;
 
@@ -80,51 +80,13 @@
     }
   }
 
-  .SPModalInputEmailDiv {
-    position: absolute;
-    width: 330px;
-    height: 88px;
-    left: 66px;
-    top: 215px;
-
-    .SPModalInputEmailLabel {
-      position: absolute;
-      width: 47px;
-      height: 18px;
-      left: 0px;
-      top: 1.5px;
-
-      font-family: "Happy Monkey";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 18px;
-      /* identical to box height */
-
-      display: flex;
-      align-items: center;
-
-      color: #000000;
-    }
-
-    .SPModalInputEmail {
-      position: absolute;
-      width: 330px;
-      height: 56.25px;
-      left: 0px;
-      top: 31.5px;
-
-      background: #e1f1f2;
-      border-radius: 10px;
-    }
-  }
-
   .SPConfirmBtn {
     position: absolute;
     width: 330px;
     height: 56.25px;
     left: 65.25px;
-    top: 335.25px;
+    top: 220px;
+    cursor: pointer;
 
     background: #50a1a3;
     border-radius: 10px;
@@ -156,7 +118,8 @@
     width: 330px;
     height: 56.25px;
     left: 64.5px;
-    top: 400.5px;
+    top: 290px;
+    cursor: pointer;
 
     background: #e1f1f2;
     border-radius: 10px;
