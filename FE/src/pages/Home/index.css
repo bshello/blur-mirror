@@ -1,0 +1,160 @@
+@charset "UTF-8";
+/* 
+  mixin name: sf
+  arg: x
+  desc: SubFrame css
+*/
+/* 
+  mixin name: image
+  arg: name, format
+  desc: 인자(이미지이름, 파일포맷)받아 이미지 설정
+*/
+/* 
+  mixin name: circle
+  arg: size
+  desc: 인자(size)를 받아 원을 만듦
+*/
+@-webkit-keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.HomeSubFrame {
+  box-sizing: border-box;
+  position: absolute;
+  right: 4.514vw;
+  left: 4.514vw;
+  top: 10.903vw;
+  bottom: 5.556vw;
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.052vw solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.083vw;
+}
+.HomeSubFrame .HomeLeftDiv {
+  position: absolute;
+  width: 517.5px;
+  height: 450px;
+  left: 60px;
+  top: 30px;
+}
+.HomeSubFrame .HomeLeftDiv .HomeCamDiv {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  left: 71.25px;
+  top: 0px;
+  background: url(../../assets/images/HomeCamImg.png);
+  background-size: cover;
+  border-radius: 30px;
+}
+.HomeSubFrame .HomeLeftDiv .HomeCamDiv .HomeCamImg {
+  position: absolute;
+  width: 375px;
+  height: 250px;
+  left: 0px;
+  top: 0px;
+  border-radius: 30px;
+}
+.HomeSubFrame .HomeLeftDiv .InfoBlurBtn {
+  position: absolute;
+  width: 37.5px;
+  height: 37.5px;
+  left: 420px;
+  top: 230px;
+  background: url(../../assets/images/info.png);
+  background-size: cover;
+}
+.HomeSubFrame .HomeLeftDiv .CamToggle {
+  position: absolute;
+  width: 37.5px;
+  height: 37.5px;
+  left: 420px;
+  top: 270px;
+  background: url(../../assets/images/MPMyCam.png);
+  background-size: cover;
+}
+.HomeSubFrame .HomeLeftDiv .CommBoxFrame2 {
+  position: absolute;
+  width: 440px;
+  height: 70px;
+  left: 30px;
+  top: 350px;
+  background: #50a1a3;
+  border-radius: 15px;
+}
+.HomeSubFrame .HomeLeftDiv .CommBoxFrame2 .CommBoxFrameStart {
+  position: absolute;
+  width: 440px;
+  height: 50px;
+  left: 0px;
+  top: 10px;
+  font-weight: 400;
+  font-size: 41.25px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+}
+.HomeSubFrame .HomeRightDiv {
+  position: absolute;
+  width: 533.25px;
+  height: 450px;
+  left: 780px;
+  top: 30px;
+  -webkit-animation: smoothAppear 1s;
+          animation: smoothAppear 1s;
+}
+.HomeSubFrame .HomeRightDiv .HomeRightImgDiv {
+  position: absolute;
+  width: 550px;
+  height: 340px;
+  left: 0px;
+  top: 0px;
+  border-radius: 30px;
+  transition: all 0.3s;
+}
+.HomeSubFrame .HomeRightDiv .HomeRightImgDiv .HomeRightImg {
+  position: absolute;
+  width: 550px;
+  height: 340px;
+  left: 0px;
+  top: 0px;
+}
+.HomeSubFrame .HomeRightDiv .HomeRightToolTipDiv {
+  position: absolute;
+  width: 550px;
+  height: 80px;
+  left: 0px;
+  top: 350px;
+  background: #fffdfd;
+  border-radius: 15px;
+}
+.HomeSubFrame .HomeRightDiv .HomeRightToolTipDiv .HomeRightToolTipText {
+  position: absolute;
+  width: 421px;
+  height: 27px;
+  left: 56.25px;
+  top: 16.5px;
+  font-family: "Happy Monkey";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 27px;
+  color: #50a1a3;
+}/*# sourceMappingURL=index.css.map */

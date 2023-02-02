@@ -1,0 +1,122 @@
+.Hash {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  left: 280px;
+  top: 40px;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 40px;
+}
+.Hash .hashdiv {
+  position: absolute;
+  width: 800px;
+  height: 560px;
+  left: 0px;
+  top: 20px;
+}
+.Hash .hashdiv .hashSerchDiv {
+  position: absolute;
+  width: 585px;
+  height: 54px;
+  left: 100px;
+  top: 15px;
+}
+.Hash .hashdiv .hashSerchDiv .hashinput {
+  position: absolute;
+  width: 585px;
+  height: 54px;
+  left: 10px;
+  top: 0px;
+  background: none;
+  font-size: 25px;
+  border-style: none;
+  border: 0px;
+}
+.Hash .hashdiv .hashSerchDiv .hashVec {
+  position: absolute;
+  width: 576px;
+  height: 0px;
+  left: 0px;
+  top: 54px;
+  border: 3px solid #68bbbd;
+}
+.Hash .hashdiv .interestdiv {
+  position: absolute;
+  width: 735px;
+  height: 370px;
+  left: 30px;
+  top: 100px;
+}
+.Hash .hashdiv .interestdiv .interestbox {
+  position: relative;
+  width: 110px;
+  height: 60px;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 50px;
+  justify-content: center;
+  float: left;
+  cursor: pointer;
+}
+.Hash .hashdiv .interestdiv .interestbox .intBack {
+  position: absolute;
+  width: 160px;
+  height: 60px;
+  margin-top: auto;
+  margin-left: auto;
+  background: rgba(104, 187, 189, 0.2);
+  border-radius: 40px;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #b1b1b1;
+}
+.Hash .hashdiv .interestdiv .interestbox :hover {
+  background-color: #68bbbd;
+  color: black;
+}
+.Hash .hashdiv .interestdiv .interestbox :hover .intText {
+  position: absolute;
+  width: 160px;
+  height: 35px;
+  left: 0px;
+  top: 12px;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #b1b1b1;
+}
+.Hash .hashEdit {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  left: 250px;
+  top: 500px;
+  background: #50a1a3;
+  border-radius: 17px;
+  justify-content: center;
+  cursor: pointer;
+}
+.Hash .hashEdit .hashEditText {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  left: 0px;
+  top: -2px;
+  font-weight: 400px;
+  font-size: 30px;
+  line-height: 50px;
+  /* identical to box height */
+}
+
+.click {
+  background-color: #006e6f;
+  color: black;
+}/*# sourceMappingURL=Hash.css.map */
