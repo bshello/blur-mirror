@@ -1,17 +1,19 @@
 import "./index.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ProgressBar from "./ProgressBar";
-import Slider from "react-input-slider";
 import Timer from "./Timer";
+import ProgressBar from "./ProgressBar";
 
 function MeetingIn() {
   const [lightToggle, setLightToggle] = useState(false);
   const [smileToggle, setSmileToggle] = useState(false);
   const [camToggle, setCamToggle] = useState(true);
-  const [micToggle, setMicToggle] = useState(true);
-  const [soundToggle, setSoundToggle] = useState(false);
-  const [fromrange, setfromrange] = useState(50);
+  const [myMicToggle, setMyMicToggle] = useState(true);
+  const [partnerMicToggle, setPartnerMicToggle] = useState(true);
+  const [mysoundToggle, setMySoundToggle] = useState(false);
+  const [partnerSoundToggle, setPartnerSoundToggle] = useState(false);
+  const [mySoundVal, setMySoundVal] = useState(50);
+  const [partnerSoundVal, setPartnerSoundVal] = useState(50);
 
   const showLight = () => {
     setLightToggle((prev) => !prev);
@@ -47,7 +49,7 @@ function MeetingIn() {
     } else document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
   };
 
-  const tempEvent = () => {
+  const lightAndSmileBgOut = () => {
     if (smileToggle) {
       setSmileToggle((prev) => !prev);
       document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
@@ -68,38 +70,63 @@ function MeetingIn() {
     setCamToggle((prev) => !prev);
   };
 
-  const openMic = () => {
-    if (micToggle) {
-      document.querySelector(".micOn").classList.replace("micOn", "micOff");
+  const openMyMic = () => {
+    if (myMicToggle) {
+      document.querySelector(".myMicOn").classList.replace("myMicOn", "myMicOff");
     } else {
-      document.querySelector(".micOff").classList.replace("micOff", "micOn");
+      document.querySelector(".myMicOff").classList.replace("myMicOff", "myMicOn");
     }
-    setMicToggle((prev) => !prev);
+    setMyMicToggle((prev) => !prev);
   };
 
-  const onChangeSoundSlider = () => {
+  const openPartnerMic = () => {
+    if (partnerMicToggle) {
+      document.querySelector(".partMicOn").classList.replace("partMicOn", "partMicOff");
+    } else {
+      document.querySelector(".partMicOff").classList.replace("partMicOff", "partMicOn");
+    }
+    setPartnerMicToggle((prev) => !prev);
+  };
+
+  const onChangeMySoundSlider = () => {
     const slider = document.querySelector(".slider");
     const progress = document.querySelector(".progressSlider");
-    setfromrange(slider.value);
+    setMySoundVal(slider.value);
+    const val = slider.value + "%";
+    progress.style.width = val;
+  };
+  const onChangePartnerSoundSlider = () => {
+    const slider = document.querySelector(".slider");
+    const progress = document.querySelector(".progressSlider");
+    setPartnerSoundVal(slider.value);
     const val = slider.value + "%";
     progress.style.width = val;
   };
 
-  const showSound = () => {
-    if (soundToggle) {
-      document.querySelector(".soundOn").classList.replace("soundOn", "soundOff");
+  const showMySound = () => {
+    if (!mysoundToggle) {
+      // document.querySelector(".soundOn").classList.replace("soundOn", "soundOff");
+      document.querySelector(".MMyCamSubSoundDesc").style.display = "block";
     } else {
-      document.querySelector(".soundOff").classList.replace("soundOff", "soundOn");
+      document.querySelector(".MMyCamSubSoundDesc").style.display = "none";
+      // document.querySelector(".soundOff").classList.replace("soundOff", "soundOn");
     }
-    setSoundToggle((prev) => !prev);
+    setMySoundToggle((prev) => !prev);
+  };
+
+  const showPartnerSound = () => {
+    if (!partnerSoundToggle) {
+      document.querySelector(".MPartenerCamSubSoundDesc").style.display = "block";
+    } else {
+      document.querySelector(".MPartenerCamSubSoundDesc").style.display = "none";
+    }
+    setPartnerSoundToggle((prev) => !prev);
   };
 
   return (
     <div className="MeetingIn">
-      <div className="range-slider">{fromrange}</div>
-      <div className="tempBackDiv" onClick={tempEvent}></div>
-      {/* <div className="MProgressBar"></div> */}
       <ProgressBar done="70" />
+      <div className="tempBackDiv" onClick={lightAndSmileBgOut}></div>
       <div className="MLeftDiv1">
         <div className="ImotionDiv">
           <div className="Imotion1"></div>
@@ -117,18 +144,18 @@ function MeetingIn() {
           <div className="MMyCamSubBtnsDiv">
             <div className="MMyCamSubCamSettingBtn"></div>
             <div className="MMyCamSubCamToggleBtn camOn" onClick={showCam}></div>
-            <div className="MMyCamSubMicBtn micOn" onClick={openMic}></div>
-            <div className="MMyCamSubSoundBtn soundOff" onClick={showSound}></div>
+            <div className="MMyCamSubMicBtn myMicOn" onClick={openMyMic}></div>
+            <div className="MMyCamSubSoundBtn" onClick={showMySound}></div>
             <div className="MMyCamSubSoundDesc">
               <div className="MMyCamSubSoundDescTop"></div>
               <div className="MMyCamSubSoundDescMain"></div>
+              <span className="MMyCamSubSoundDescSoundVal">{mySoundVal}</span>
               <div className="MMyCamSubSoundDescBar">
                 <div className="range-slider">
-                  <input type="range" className="slider" min="0" max="100" onChange={onChangeSoundSlider}></input>
+                  <input type="range" className="slider" min="0" max="100" onChange={onChangeMySoundSlider}></input>
                   <div className="progressSlider"></div>
                 </div>
               </div>
-              <div className="MMyCamSubSoundDescBarPoint"></div>
             </div>
           </div>
         </div>
@@ -159,8 +186,19 @@ function MeetingIn() {
           <span className="MPartenerCamSubText">Partner Camera</span>
           <div className="MPartenerCamSubBtnsDiv">
             <div className="MPartenerCamSubBlockBtn"></div>
-            <div className="MPartenerCamSubMicBtn"></div>
-            <div className="MPartenerCamSubSoundBtn"></div>
+            <div className="MPartenerCamSubMicBtn partMicOn" onClick={openPartnerMic}></div>
+            <div className="MPartenerCamSubSoundBtn" onChange={showPartnerSound}></div>
+            <div className="MPartenerCamSubSoundDesc">
+              <div className="MPartenerCamSubSoundDescTop"></div>
+              <div className="MPartenerCamSubSoundDescMain"></div>
+              <span className="MPartenerCamSubSoundDescSoundVal">{partnerSoundVal}</span>
+              <div className="MPartenerCamSubSoundDescBar">
+                <div className="range-slider">
+                  <input type="range" className="slider" min="0" max="100" onChange={onChangePartnerSoundSlider}></input>
+                  <div className="progressSlider"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
