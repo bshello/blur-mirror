@@ -4,10 +4,9 @@ import "./myInfoModal.css";
 import React, { useState, useRef, useEffect, useReducer } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changeName } from "../../../reducer/userEdit";
 import store from "../../../store";
-import userEdit from "../../../reducer/userEdit";
 import { edit } from "../../../reducer/userEdit";
+import { introedit } from "../../../reducer/introEdit";
 import SetModal from "./SetModal/setmodal";
 import styled from "styled-components";
 // import Avatar from "react-avatar";
@@ -28,19 +27,32 @@ function MyInfoModal({ showMyinfoModal }) {
   };
 
   //profile 변경
-  const [input, setInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
+  const [introInput, setIntroInput] = useState("");
 
   // nicName
   const [nickName, setNickName] = useState("");
   // const [nickedit, setNickEdit] = useState(false);
   const handleInputChange = (e) => {
-    setInput(e.target.value);
+    setNameInput(e.target.value);
+  };
+
+  //emil
+  const [email, setEmail] = useState("");
+
+  //introducing
+  const [introducing, setIntroducing] = useState("");
+  const introHandleChange = (e) => {
+    setIntroInput(e.target.value);
   };
 
   // state 변경 핸들러
   const handleUpload = () => {
     setNickName(() => {
-      return input;
+      return nameInput;
+    });
+    setIntroducing(() => {
+      return introInput;
     });
   };
 
@@ -50,16 +62,6 @@ function MyInfoModal({ showMyinfoModal }) {
       handleUpload(); // Enter 입력이 되면 클릭 이벤트 실행
     }
   };
-
-  // const [name, dispatch] = useReducer(reducer, "");
-
-  //emil
-  const [email, setEmail] = useState("");
-  const [emailedit, setEmailEdit] = useState(false);
-
-  //introducing
-  const [introducing, setIntroducing] = useState("");
-
   ////////////////////////////////////////////////////////////////////////////////////////////////
   // 이미지 업로드
   //   <form>
@@ -92,67 +94,17 @@ function MyInfoModal({ showMyinfoModal }) {
   const gender = ["Male", "FeMale"];
   const [genderCheck, setgenderCheck] = useState("check");
 
-  // 데이터 가져오는 거
-
-  //nicName
-  // let nicNamecontent = (
-  //   <div>
-  //     <button onClick={() => setNickEdit(true)}>수정</button>
-  //   </div>
-  // );
-
-  // if (nickedit) {
-  //   nicNamecontent = (
-  //     <div>
-  //       <input
-  //         className="PMIdInput"
-  //         type="text"
-  //         value={nickName}
-  //         onChange={(e) => {
-  //           setNickName(e.target.value);
-  //         }}
-  //         onKeyPress={handleOnKeyPress}
-  //       />
-  //       <button onClick={() => setNickEdit(false)}>수정완료</button>
-  //     </div>
-  //   );
-  // }
-
-  // //e-mail
-  // let emailContent = (
-  //   <div>
-  //     <button onClick={() => setEmailEdit(true)}>수정</button>
-  //   </div>
-  // );
-
-  // if (emailedit) {
-  //   emailContent = (
-  //     <div>
-  //       <input
-  //         className="PMIdInput"
-  //         type="text"
-  //         value={email}
-  //         onChange={(e) => {
-  //           setEmail(e.target.value);
-  //         }}
-  //         onKeyPress={handleOnKeyPress}
-  //       />
-  //       <button onClick={() => setEmailEdit(false)}>수정완료</button>
-  //     </div>
-  //   );
-  // }
-
   const age = (19, 70);
 
   // const ages = new Array(50).fill({ age });
 
   const ages = [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
 
-  // 데이터 가져오는 거
+  // 데이터 주고 받기
   const dispatch = useDispatch();
-  const user = useSelector((state) => {
-    return state.user.value;
-  });
+  // const user = useSelector((state) => {
+  //   return state.user.value;
+  // });
 
   return (
     <div className="Modal">
@@ -196,18 +148,6 @@ function MyInfoModal({ showMyinfoModal }) {
             style={{ display: "none" }}
           ></input>
         </div>
-        <div>
-          <button
-            onClick={() => {
-              const a = document.querySelector(".PMIdInput").value;
-              console.log(a);
-              dispatch(edit(a));
-            }}
-          >
-            +
-          </button>
-        </div>
-        <span className="leftModalName"> {user} </span>
         <div className="leftModalNameDiv">
           <span className="leftModalName"> welcome {nickName} </span>
         </div>
@@ -228,34 +168,14 @@ function MyInfoModal({ showMyinfoModal }) {
       <div className="ProfileModal">
         <span className="PMLabel">Profile Edit</span>
         <div className="PMIdDiv">
-          {/* <span className="PMIdLable">NickName {nicNamecontent}</span> */}
           <span className="PMIdLable">NickName </span>
           <input
             type="text"
             className="PMIdInput"
-            value={input}
-            // onChange={(event) => {
-            //   setNickName(event.target.value);
-            // }}
-            // onChange={user}
+            value={nameInput}
             onChange={handleInputChange}
             onKeyPress={handleOnKeyPress}
           />
-          {/* <button
-            onClick={() => {
-              handleUpload();
-            }}
-          >
-            버튼
-          </button> */}
-          {/* <button
-            onClick={() => {
-              dispatch(edit);
-              handleUpload()
-            }}
-          >
-            저장
-          </button> */}
         </div>
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
@@ -331,16 +251,31 @@ function MyInfoModal({ showMyinfoModal }) {
             <input
               type="text"
               className="PMIntroducingInput"
-              value={introducing}
-              onChange={(event) => {
-                setIntroducing(event.target.value);
-              }}
+              value={introInput}
+              onChange={introHandleChange}
+              // onKeyPress={handleOnKeyPress}
             />
           </div>
         </div>
       </div>
-      <button className="ModalOut" onClick={showMyinfoModal}>
-        {/* <button className="ModalOut" onClick={UserEdit}> */}
+      <button
+        className="ModalOut"
+        onClick={() => {
+          showMyinfoModal();
+          {
+            const namechange = document.querySelector(".PMIdInput").value;
+            // console.log(a);
+            dispatch(edit(namechange));
+          }
+          {
+            const introchange = document.querySelector(
+              ".PMIntroducingInput"
+            ).value;
+            // console.log(introchange);
+            dispatch(introedit(introchange));
+          }
+        }}
+      >
         <span className="ModalOutText">confirm</span>
         {/* 이미지 업로드 input 추가하기
         <input

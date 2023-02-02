@@ -2,15 +2,14 @@ import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
 import React, { useState } from "react";
-// import { changeName } from "../../../reducer/userEdit";
 import { changeName } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import "../../reducer/userEdit";
-import { edit } from "../../reducer/userEdit";
+import "../../reducer/introEdit";
 
-function MyInfo({ nickName }) {
+function MyInfo() {
   //profile edit modal
   const [miModal, setMyInfoModal] = useState(false);
   const showMyinfoModal = () => {
@@ -26,24 +25,13 @@ function MyInfo({ nickName }) {
   // 페이지 이동
   const navigate = useNavigate();
 
-  // 데이터 가져오는 거
-  // const dispatch = useDispatch({});
-  // const { user } = useSelector((state) => state.userEdit);
-  // console.log(user);
-  // const state = useSelector((state) => {
-  //   return state.userEdit.user;
-  // });
-  // console.log(state);
-  // const member = useSelector((state) => state.userEdit);
-  // const mypage = useSelector((state) => state.mypage);
-  // const { memberNickname, memberRepIcon, memberId } = member;
-  // const { memberCurrentStrick, memberTotalTime } = mypage;
-
-  // state를 연결해야된다.
-  const [input, setInput] = useState("");
-
+  // reducer에서 변경된 값을 가져오자
   const user = useSelector((state) => {
     return state.user.value;
+  });
+
+  const intorduce = useSelector((state) => {
+    return state.intorduce.value;
   });
 
   return (
@@ -79,16 +67,14 @@ function MyInfo({ nickName }) {
         <span className="MIName"> {user} </span>
         <span className="MIAge"> 26</span>
       </div>
-      <div className="MIEdit" onClick={showMyinfoModal}>
-        profile edit ->
-      </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>
-        <span className="MIIntroducingText">
-          안녕하세요. 스물 여섯 김블리입니다!
-        </span>
+        <span className="MIIntroducingText"> {intorduce} </span>
       </div>
-      <span className="MIProfileLogo">Blur:)</span>
+      <span className="MIProfileLogo">Blur:</span>
+      <div className="MIEdit" onClick={showMyinfoModal}>
+        profile edit -
+      </div>
     </div>
   );
 }
