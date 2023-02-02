@@ -1,4 +1,4 @@
-package com.hanghae.final_project.global.config.redis;
+package com.blur.chat.config.redis;
 
 import com.hanghae.final_project.api.chat.dto.request.ChatMessageSaveDto;
 import com.hanghae.final_project.infra.redis.RedisSubscriber;

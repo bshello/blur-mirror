@@ -1,5 +1,6 @@
-package com.blur.chat.api.dto;
+package com.blur.chat.api.dto.response;
 
+import com.blur.chat.api.dto.request.ChatMessageSaveDto;
 import com.blur.chat.api.entity.Chat;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ChatPagingResponseDto {
 
-    private Long workSpaceId;
+    private Long roomNo;
     private String writer;
     private String message;
     private String createdAt;
@@ -24,7 +25,7 @@ public class ChatPagingResponseDto {
     public static ChatPagingResponseDto of(Chat chat){
         return ChatPagingResponseDto.builder()
                 .writer(chat.getUsers())
-//                .workSpaceId(chat.getWorkSpace().getId())
+                .workSpaceId(chat.getWorkSpace().getId())
                 .createdAt(chat.getCreatedAt())
                 .message(chat.getMessage())
                 .build();
@@ -34,7 +35,7 @@ public class ChatPagingResponseDto {
         return ChatPagingResponseDto.builder()
                 .writer(chatMessageSaveDto.getWriter())
                 .createdAt(chatMessageSaveDto.getCreatedAt())
-                .workSpaceId(Long.parseLong(chatMessageSaveDto.getRoomId()))
+                .roomNo(Long.parseLong(chatMessageSaveDto.roomNo()))
                 .message(chatMessageSaveDto.getMessage())
                 .build();
     }

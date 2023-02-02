@@ -1,12 +1,18 @@
 package com.blur.chat.api.entity;
 
-import lombok.*;
+import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.springframework.data.annotation.Id;
+
 import com.blur.chat.api.dto.ChatMessageSaveDto;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +28,7 @@ public class Chat implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long id;
+    private Long messagNo;
 
     @Column
     private String message;
@@ -33,9 +39,7 @@ public class Chat implements Serializable {
     @Column
     private String createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "workspace_id", nullable = false)
-    private WorkSpace workSpace;
+    private Long roomNo;
 
     public static Chat of(ChatMessageSaveDto chatMessageSaveDto, WorkSpace workSpace){
 

@@ -1,10 +1,7 @@
-package com.blur.chat.api.dto;
+package com.blur.chat.api.dto.request;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
