@@ -1,0 +1,21 @@
+.arrow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../../assets/images/right-arrow.png);
+  background-size: 100% 100%;
+  left: 300px;
+  top: 30px;
+  z-index: 50;
+  cursor: pointer;
+}
+
+.rangelocation {
+  top: 50%;
+  left: 20%;
+}
+
+.rangename {
+  top: 0;
+  left: -50px;
+}/*# sourceMappingURL=setmodal.css.map */

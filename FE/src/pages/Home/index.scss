@@ -1,0 +1,157 @@
+@use "../../style/common" as mixin;
+
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.HomeSubFrame {
+  @include mixin.sf;
+  // position: absolute;
+  // width: 1305px;
+  // height: 570px;
+  // left: 61.5px;
+  // top: 157.5px;
+
+  // background: rgba(255, 255, 255, 0.2);
+  // border-radius: 30px;
+
+  .HomeLeftDiv {
+    position: absolute;
+    width: 517.5px;
+    height: 450px;
+    left: 60px;
+    top: 30px;
+
+    .HomeCamDiv {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      left: 71.25px;
+      top: 0px;
+
+      background: url(../../assets/images/HomeCamImg.png);
+      background-size: cover;
+      border-radius: 30px;
+
+      .HomeCamImg {
+        position: absolute;
+        width: 375px;
+        height: 250px;
+        left: 0px;
+        top: 0px;
+
+        border-radius: 30px;
+      }
+    }
+
+    .InfoBlurBtn {
+      position: absolute;
+      width: 37.5px;
+      height: 37.5px;
+      left: 420px;
+      top: 230px;
+
+      background: url(../../assets/images/info.png);
+      background-size: cover;
+    }
+
+    .CamToggle {
+      position: absolute;
+      width: 37.5px;
+      height: 37.5px;
+      left: 420px;
+      top: 270px;
+
+      background: url(../../assets/images/MPMyCam.png);
+      background-size: cover;
+    }
+
+    .CommBoxFrame2 {
+      position: absolute;
+      width: 440px;
+      height: 70px;
+      left: 30px;
+      top: 350px;
+
+      background: #50a1a3;
+      border-radius: 15px;
+      .CommBoxFrameStart {
+        position: absolute;
+        width: 440px;
+        height: 50px;
+        left: 0px;
+        top: 10px;
+
+        font-weight: 400;
+        font-size: 41.25px;
+        line-height: 50px;
+        text-align: center;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .HomeRightDiv {
+    position: absolute;
+    width: 533.25px;
+    height: 450px;
+    left: 780px;
+    top: 30px;
+    animation: smoothAppear 1s;
+
+    .HomeRightImgDiv {
+      position: absolute;
+      width: 550px;
+      height: 340px;
+      left: 0px;
+      top: 0px;
+
+      // background: url(../../assets/images/HomeRightDiv.png);
+      border-radius: 30px;
+      transition: all 0.3s;
+
+      .HomeRightImg {
+        position: absolute;
+        width: 550px;
+        height: 340px;
+        left: 0px;
+        top: 0px;
+      }
+    }
+
+    .HomeRightToolTipDiv {
+      position: absolute;
+      width: 550px;
+      height: 80px;
+      left: 0px;
+      top: 350px;
+
+      background: #fffdfd;
+      border-radius: 15px;
+
+      .HomeRightToolTipText {
+        position: absolute;
+        width: 421px;
+        height: 27px;
+        left: 56.25px;
+        top: 16.5px;
+
+        font-family: "Happy Monkey";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 27px;
+
+        color: #50a1a3;
+      }
+    }
+  }
+}
