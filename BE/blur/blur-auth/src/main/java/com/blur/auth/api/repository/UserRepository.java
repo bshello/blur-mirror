@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.blur.auth.api.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
     User findByUserId(String userId);
     User findByUserNo(Integer userNo);
 }

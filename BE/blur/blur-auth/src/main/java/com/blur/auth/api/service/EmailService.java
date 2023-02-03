@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class EmailService {
-
+	
     @Autowired
     JavaMailSender emailSender;
 

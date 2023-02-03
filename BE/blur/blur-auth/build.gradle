@@ -2,9 +2,12 @@ plugins {
  	id 'org.springframework.boot' version '2.7.8'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
-group = 'com.blur.userservice'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.blur.auth'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -18,8 +21,12 @@ repositories {
     mavenCentral()
 }
 
+ext {
+	set('springBootAdminVersion', "2.7.4")
+}
+
 dependencies {
-//	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.31'
+	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.31'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
@@ -39,8 +46,50 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-
+    
+	//querydsl
+	implementation "com.querydsl:querydsl-jpa:5.0.0"
+	implementation "com.querydsl:querydsl-apt:5.0.0"
 }
+
+dependencyManagement {
+	imports {
+		mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+	}
+}
+
+bootJar.enabled=false
+jar.enabled=true
+
+//QueryDsl 관련 세팅
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+	main.java.srcDir querydslDir
+}
+
+// querydsl 컴파일시 사용할 옵션 설정
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
+}
+/*** comileQuerydsl.doFirst 추가*/
+compileQuerydsl.doFirst {
+	if (file(querydslDir).exists()) delete(file(querydslDir))
+}
+
 
 configurations {
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
