@@ -110,6 +110,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\ssafy\blur\BE\blur\blur-auth"/>
 			<item value="C:\ssafy\blur\BE\blur\blur-oauth"/>
 			<item value="C:\ssafy\blur\BE\blur\blur-business"/>
 			<item value="C:\ssafy\blur\BE\blur\blur-user-service"/>

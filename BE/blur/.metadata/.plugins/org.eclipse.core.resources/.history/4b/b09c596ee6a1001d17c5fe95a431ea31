@@ -1,5 +1,0 @@
-package com.blur.userservice.api.dto;
-
-public class LoginDto {
-
-}
