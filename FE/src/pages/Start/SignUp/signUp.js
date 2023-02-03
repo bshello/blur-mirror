@@ -1,31 +1,77 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
   const API_URL = "http://192.168.31.192:8080/user";
+  const navigate = useNavigate();
 
-  const [id, setId] = useState(null);
+  const [id, setId] = useState("");
+  const [isId, setIsId] = useState(false);
+  const [idMessage, setIdMessage] = useState("");
+
   const enterId = (e) => {
-    setId(e.target.value);
-    console.log(id);
+    const currentId = e.target.value;
+    setId(currentId);
+    const idRegex = /\s/g;
+
+    if (
+      !idRegex.test(e.target.value) &&
+      currentId.length > 2 &&
+      currentId.length < 15
+    ) {
+      setIdMessage("올바른 이름 형식입니다 :)");
+      setIsId(true);
+    } else {
+      setIdMessage("공백없이 3글자 이상 15글자 미만으로 입력해주세요.");
+      setIsId(false);
+    }
+    console.log(currentId);
   };
 
-  const [ps1, setPs1] = useState(null);
+  const [ps1, setPs1] = useState("");
   const enterPs1 = (e) => {
     setPs1(e.target.value);
+    const passwordRegex =
+      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    const passwordCurrent = e.target.value;
+
+    if (!passwordRegex.test(passwordCurrent)) {
+      setPasswordMessage(
+        "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!"
+      );
+      setIsPassword(false);
+    } else {
+      setPasswordMessage("안전한 비밀번호에요 : )");
+      setIsPassword(true);
+    }
     console.log(ps1);
   };
 
-  const [ps2, setPs2] = useState(null);
+  const [ps2, setPs2] = useState("");
   const enterPs2 = (e) => {
     setPs2(e.target.value);
     console.log(ps2);
   };
 
-  const [email, setEmail] = useState(null);
+  const [isPassword, setIsPassword] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState("");
+
+  const [email, setEmail] = useState("");
   const enterEmail = (e) => {
     setEmail(e.target.value);
+    const emailRegex =
+      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    const emailCurrent = e.target.value;
+
+    if (!emailRegex.test(emailCurrent)) {
+      setEmailMessage("이메일 형식이 틀렸어요! 다시 확인해주세요 ㅜ ㅜ");
+      setIsEmail(false);
+    } else {
+      setEmailMessage("올바른 이메일 형식이에요 : )");
+      setIsEmail(true);
+    }
     console.log(email);
   };
 
@@ -34,6 +80,9 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     setEmailCode(e.target.value);
     console.log(emailCode);
   };
+
+  const [emailMessage, setEmailMessage] = useState("");
+  const [isEmail, setIsEmail] = useState(false);
 
   const [idCheck, setIdCheck] = useState(false);
 
@@ -136,6 +185,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       })
         .then((res) => {
           console.log(res);
+          navigate("/");
         })
         .catch((err) => {
           console.log(err);
@@ -201,9 +251,10 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputId"
             id="user_id"
-            placeholder="  ID를 입력해 주세요"
+            placeholder="  ID는 공백없이 3자이상 15자미만"
             onChange={enterId}
           ></input>
+          {id.length > 0 && <span>{idMessage}</span>}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -222,10 +273,11 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             className="SUModalInputPw"
             id="user_pw"
             ref={psInput}
-            placeholder="  PW를 입력해 주세요"
+            placeholder="  비밀번호 (숫자+영문자+특수문자 조합으로 8자리 이상)"
             type="password"
             onChange={enterPs1}
           ></input>
+          {ps1.length > 0 && <span>{passwordMessage}</span>}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -261,6 +313,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             placeholder="  E-mail을 입력해 주세요"
             onChange={enterEmail}
           ></input>
+          {email.length > 0 && <span>{emailMessage}</span>}
           <button
             onClick={(e) => {
               e.preventDefault();
