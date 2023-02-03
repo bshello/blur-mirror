@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import Timer from "./Timer";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
+import { useDispatch, useSelector } from "react-redux";
+import { BTOGGLE, CLOSE_ALERT_TOGGLE } from "../../../redux/reducers/MToggle";
+import Alert from "../../Start/Alert";
 
 function MeetingIn() {
   const [lightToggle, setLightToggle] = useState(false);
@@ -17,6 +20,10 @@ function MeetingIn() {
   const [partnerSoundVal, setPartnerSoundVal] = useState(50);
   const [blockToggle, setBlockToggle] = useState(false);
   const [blockModalToggle, setBlockModalToggle] = useState(false);
+
+  const dispatch = useDispatch();
+  const isShowBlockModal = useSelector((state) => state.mt.isShowBlockModal);
+  const closeAlertToggle = useSelector((state) => state.mt.closeAlertToggle);
 
   // (파트너 캠 상단의) 관심사 표현 토글
   const showLight = () => {
@@ -151,17 +158,26 @@ function MeetingIn() {
 
   // (파트너) 신고 모달 토글
   const showBlockModal = () => {
-    if (!blockModalToggle) {
+    // blockModalToggle이 false 라면
+    if (!isShowBlockModal) {
+      // 1. 토글 버튼을 닫아주고
       setBlockToggle((prev) => !prev);
+      // 1. 해당 버튼의 div를 none처리 해줌
       document.querySelector(".MPartenerCamSubBlockDesc").style.display = "none";
+      dispatch(BTOGGLE(!isShowBlockModal));
     }
     setBlockModalToggle((prev) => !prev);
   };
 
+  const showAlertModal = () => {
+    dispatch(CLOSE_ALERT_TOGGLE(false));
+  };
+
   return (
     <div className="MeetingIn">
+      {closeAlertToggle ? <Alert showAlertModal={showAlertModal} content="신고가 완료되었습니다:)" /> : ""}
       <ProgressBar done={30} />
-      {blockModalToggle ? <BlockModal /> : ""}
+      {isShowBlockModal ? <BlockModal /> : ""}
       <div className="tempBackDiv" onClick={lightAndSmileBgOut}></div>
       <div className="MLeftDiv1">
         <div className="ImotionDiv">
