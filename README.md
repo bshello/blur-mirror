@@ -6,7 +6,7 @@
 
 ## SSAFY 8기 2학기 공통 프로젝트 - BLUR
 
-![mockup1.jpg](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/mockup1.jpg)
+https://lab.ssafy.com/s08-webmobile1-sub2/S08P12B307/-/blob/feature/choi/README/1.jpg
 
 ## 개요
 
