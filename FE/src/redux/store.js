@@ -11,12 +11,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import userEdit from "../redux/reducers/userEdit";
 import MToggle from "../redux/reducers/MToggle";
 import introEdit from "../redux/reducers/introEdit";
+import saveTokenReducer from "./reducers/saveToken";
 
 const store = configureStore({
   reducer: {
     user: userEdit,
     mt: MToggle,
     intro: introEdit,
+    strr: saveTokenReducer,
   },
 });
 

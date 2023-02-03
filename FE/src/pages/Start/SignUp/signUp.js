@@ -3,7 +3,7 @@ import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
-  const API_URL = "http://localhost:8080";
+  const API_URL = "http://192.168.31.192:8080/user";
 
   const [id, setId] = useState(null);
   const enterId = (e) => {
@@ -36,6 +36,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   };
 
   const [idCheck, setIdCheck] = useState(false);
+
   const callIdCheck = () => {
     axios({
       method: "post",
@@ -56,12 +57,15 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       })
       .catch((err) => {
         alert("중복확인 실패했습니다");
-        setIdCheck(true);
       });
   };
 
   const [psCheck, setPsCheck] = useState(false);
   const [psWarn, setPsWarn] = useState(false);
+  const [decode, setDecode] = useState(false);
+  const decodePs = () => {
+    setDecode((pre) => !pre);
+  };
   const callPsCheck = (ps1, ps2) => {
     if (ps1 === ps2) {
       setPsCheck(true);
@@ -75,6 +79,16 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   useEffect(() => {
     callPsCheck(ps1, ps2);
   }, [ps1, ps2]);
+
+  const psInput = useRef(null);
+
+  useEffect(() => {
+    if (decode === true) {
+      psInput.current.type = "text";
+    } else {
+      psInput.current.type = "password";
+    }
+  }, [decode]);
 
   const [emailCheck, setEmailCheck] = useState(false);
 
@@ -192,7 +206,8 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           ></input>
           <button
             onClick={(e) => {
-              return e.preventDefault(), callIdCheck();
+              e.preventDefault();
+              callIdCheck();
             }}
           >
             아이디 중복체크
@@ -206,9 +221,19 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           <input
             className="SUModalInputPw"
             id="user_pw"
+            ref={psInput}
             placeholder="  PW를 입력해 주세요"
+            type="password"
             onChange={enterPs1}
           ></input>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              decodePs();
+            }}
+          >
+            비밀번호보기
+          </button>
         </div>
         <div className="SUModalInputPwChkDiv">
           <label className="SUModalInputPwChkLabel" htmlFor="user_pw_re">
@@ -219,6 +244,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             className="SUModalInputPwChk"
             id="user_pw_re"
             placeholder="  PW를 다시 입력해 주세요"
+            type="password"
             onChange={enterPs2}
           ></input>
 
@@ -237,7 +263,8 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           ></input>
           <button
             onClick={(e) => {
-              return e.preventDefault(), sendToEmail();
+              e.preventDefault();
+              sendToEmail();
             }}
           >
             이메일로 인증번호 보내기
