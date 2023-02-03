@@ -254,6 +254,7 @@
         cursor: pointer;
         background-image: url(../../../assets/images/soundOn.png);
         background-size: 100% 100%;
+        z-index: 1;
 
         // &.soundOff {
         //   background-image: url(../../../assets/images/soundOn.png);
@@ -283,7 +284,7 @@
           border-left: 15px solid rgb(81, 161, 163);
           border-right: 15px solid transparent;
           transform: rotate(-90deg);
-          z-index: 1;
+          z-index: 0;
         }
         .MMyCamSubSoundDescMain {
           position: absolute;
@@ -535,6 +536,52 @@
       background-image: url(../../../assets/images/emergency.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
+    }
+
+    .MPartenerCamSubBlockDesc {
+      display: none;
+      position: absolute;
+      width: 80px;
+      height: 25px;
+      top: 45px;
+      left: -26px;
+
+      .MPartenerCamSubBlockDescTop {
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 26px;
+        top: -18px;
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid transparent;
+        border-left: 15px solid rgb(81, 161, 163);
+        border-right: 15px solid transparent;
+        transform: rotate(-90deg);
+        z-index: 0;
+      }
+      .MPartenerCamSubBlockDescMain {
+        position: absolute;
+        width: 80px;
+        height: 25px;
+        left: 0px;
+        top: 0px;
+        background-color: rgb(81, 161, 163);
+        z-index: 2;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .MPartenerCamSubBlockDescText {
+          position: absolute;
+          width: 100px;
+          text-align: center;
+          font-size: 13px;
+          color: white;
+        }
+      }
     }
 
     .MPartenerCamSubMicBtn {
@@ -568,6 +615,100 @@
       background-image: url(../../../assets/images/soundOn.png);
       background-size: 100% 100%;
       cursor: pointer;
+      z-index: 1;
+    }
+    .MPartenerCamSubSoundDesc {
+      display: none;
+      position: absolute;
+      width: 100px;
+      height: 25px;
+      top: 45px;
+      left: 55px;
+
+      .MPartenerCamSubSoundDescTop {
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 36px;
+        top: -18px;
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid transparent;
+        border-left: 15px solid rgb(81, 161, 163);
+        border-right: 15px solid transparent;
+        transform: rotate(-90deg);
+        z-index: 0;
+      }
+      .MPartenerCamSubSoundDescMain {
+        position: absolute;
+        width: 100px;
+        height: 25px;
+        left: 0px;
+        top: 0px;
+        background-color: rgb(81, 161, 163);
+
+        z-index: 2;
+        border-radius: 30px;
+        cursor: auto;
+      }
+      .MPartenerCamSubSoundDescSoundVal {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 5px;
+        top: 3px;
+        font-size: 13px;
+        line-height: 20px;
+        color: white;
+        z-index: 3;
+      }
+      .part-range-slider {
+        -webkit-appearance: none;
+        position: absolute;
+        top: -118px;
+        left: 30px;
+        right: 10px;
+        // max-width: 30em;
+        margin: 8em auto;
+        display: flex;
+        z-index: 5;
+
+        .partSlider {
+          -webkit-appearance: none; // 기본 CSS 스타일을 적용하지 않기 위해
+          width: 100%; // 슬라이더 길이
+          height: 0.4em; //         높이
+          outline: none; //         테두리 제거
+          border-radius: 3px; //         사각 테두리 둥글게
+          background-color: #eaf6f6; //         색상
+
+          /*
+            ㅁ 슬라이더 핸들(클릭해서 드래그하는 부분)
+            Chrome, Opera, Safari, Edge 브라우저를 다루기 위해선 -webkit-
+            Firefox의 경우 -moz- 사용
+          */
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none; // 기본 CSS 스타일을 적용하지 않기 위해
+            appearance: none; // 위와 동일
+            width: 15px; // 슬라이더핸들 길이
+            height: 15px; // 슬라이더핸들 높이
+            background-color: rgba(168, 222, 223, 1);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 6;
+          }
+        }
+        .partProgressSlider {
+          position: absolute;
+          width: 50%;
+          height: 0.4em;
+          border-radius: 3px;
+          background-color: #a8dedf;
+          top: 3px;
+          transform: translateY(-50%);
+          left: 0;
+          z-index: 1;
+          pointer-events: none;
+        }
+      }
     }
   }
 }
