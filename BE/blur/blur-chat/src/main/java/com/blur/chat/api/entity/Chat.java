@@ -30,13 +30,10 @@ public class Chat implements Serializable {
     @Id
     private Long messagNo;
 
-    @Column
     private String message;
 
-    @Column
     private String users;
 
-    @Column
     private String createdAt;
 
     private Long roomNo;
