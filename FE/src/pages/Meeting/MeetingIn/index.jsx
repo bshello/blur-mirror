@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Timer from "./Timer";
 import ProgressBar from "./ProgressBar";
+import BlockModal from "./BlockModal";
 
 function MeetingIn() {
   const [lightToggle, setLightToggle] = useState(false);
@@ -14,7 +15,10 @@ function MeetingIn() {
   const [partnerSoundToggle, setPartnerSoundToggle] = useState(false);
   const [mySoundVal, setMySoundVal] = useState(50);
   const [partnerSoundVal, setPartnerSoundVal] = useState(50);
+  const [blockToggle, setBlockToggle] = useState(false);
+  const [blockModalToggle, setBlockModalToggle] = useState(false);
 
+  // (파트너 캠 상단의) 관심사 표현 토글
   const showLight = () => {
     setLightToggle((prev) => !prev);
 
@@ -40,6 +44,7 @@ function MeetingIn() {
     }
   };
 
+  // (나의 캠 상단의) 이모지 표현 토글
   const showSmile = () => {
     setSmileToggle((prev) => !prev);
 
@@ -49,6 +54,7 @@ function MeetingIn() {
     } else document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
   };
 
+  // (관심사/이미지가 켜져있을 때) 바깥 배경 누르게되면 토글 off 처리
   const lightAndSmileBgOut = () => {
     if (smileToggle) {
       setSmileToggle((prev) => !prev);
@@ -61,6 +67,7 @@ function MeetingIn() {
     }
   };
 
+  // 나의 캠 토글
   const showCam = () => {
     if (camToggle) {
       document.querySelector(".camOn").classList.replace("camOn", "camOff");
@@ -70,6 +77,7 @@ function MeetingIn() {
     setCamToggle((prev) => !prev);
   };
 
+  // 나의 마이크 토글
   const openMyMic = () => {
     if (myMicToggle) {
       document.querySelector(".myMicOn").classList.replace("myMicOn", "myMicOff");
@@ -79,6 +87,7 @@ function MeetingIn() {
     setMyMicToggle((prev) => !prev);
   };
 
+  // 파트너 마이크 토글
   const openPartnerMic = () => {
     if (partnerMicToggle) {
       document.querySelector(".partMicOn").classList.replace("partMicOn", "partMicOff");
@@ -88,6 +97,7 @@ function MeetingIn() {
     setPartnerMicToggle((prev) => !prev);
   };
 
+  // 나의 음량 조절
   const onChangeMySoundSlider = () => {
     const slider = document.querySelector(".slider");
     const progress = document.querySelector(".progressSlider");
@@ -95,14 +105,17 @@ function MeetingIn() {
     const val = slider.value + "%";
     progress.style.width = val;
   };
+
+  // 파트너 음량 조절
   const onChangePartnerSoundSlider = () => {
-    const slider = document.querySelector(".slider");
-    const progress = document.querySelector(".progressSlider");
+    const slider = document.querySelector(".partSlider");
+    const progress = document.querySelector(".partProgressSlider");
     setPartnerSoundVal(slider.value);
     const val = slider.value + "%";
     progress.style.width = val;
   };
 
+  // 나의 음량 토글
   const showMySound = () => {
     if (!mysoundToggle) {
       // document.querySelector(".soundOn").classList.replace("soundOn", "soundOff");
@@ -114,6 +127,7 @@ function MeetingIn() {
     setMySoundToggle((prev) => !prev);
   };
 
+  // 파트너 음량 토글
   const showPartnerSound = () => {
     if (!partnerSoundToggle) {
       document.querySelector(".MPartenerCamSubSoundDesc").style.display = "block";
@@ -123,9 +137,31 @@ function MeetingIn() {
     setPartnerSoundToggle((prev) => !prev);
   };
 
+  // 파트너 신고 토글
+  const openBlock = () => {
+    if (!blockToggle) {
+      // 신고 div block으로 변경
+      document.querySelector(".MPartenerCamSubBlockDesc").style.display = "block";
+    } else {
+      // 신고 div none으로 변경
+      document.querySelector(".MPartenerCamSubBlockDesc").style.display = "none";
+    }
+    setBlockToggle((prev) => !prev);
+  };
+
+  // (파트너) 신고 모달 토글
+  const showBlockModal = () => {
+    if (!blockModalToggle) {
+      setBlockToggle((prev) => !prev);
+      document.querySelector(".MPartenerCamSubBlockDesc").style.display = "none";
+    }
+    setBlockModalToggle((prev) => !prev);
+  };
+
   return (
     <div className="MeetingIn">
-      <ProgressBar done="70" />
+      <ProgressBar done={30} />
+      {blockModalToggle ? <BlockModal /> : ""}
       <div className="tempBackDiv" onClick={lightAndSmileBgOut}></div>
       <div className="MLeftDiv1">
         <div className="ImotionDiv">
@@ -162,7 +198,6 @@ function MeetingIn() {
       </div>
       <div className="MCenterDiv1">
         <Timer />
-        {/* <span className="MTimer">02 : 53</span> */}
         <div className="MCenterCloseBtnDiv">
           <Link to="/home">
             <div className="MCenterCloseBtnText">Close</div>
@@ -185,17 +220,23 @@ function MeetingIn() {
         <div className="MPartenerCamSubDiv">
           <span className="MPartenerCamSubText">Partner Camera</span>
           <div className="MPartenerCamSubBtnsDiv">
-            <div className="MPartenerCamSubBlockBtn"></div>
+            <div className="MPartenerCamSubBlockBtn" onClick={openBlock}></div>
+            <div className="MPartenerCamSubBlockDesc">
+              <div className="MPartenerCamSubBlockDescTop"></div>
+              <div className="MPartenerCamSubBlockDescMain" onClick={showBlockModal}>
+                <span className="MPartenerCamSubBlockDescText">Report</span>
+              </div>
+            </div>
             <div className="MPartenerCamSubMicBtn partMicOn" onClick={openPartnerMic}></div>
-            <div className="MPartenerCamSubSoundBtn" onChange={showPartnerSound}></div>
+            <div className="MPartenerCamSubSoundBtn" onClick={showPartnerSound}></div>
             <div className="MPartenerCamSubSoundDesc">
               <div className="MPartenerCamSubSoundDescTop"></div>
               <div className="MPartenerCamSubSoundDescMain"></div>
               <span className="MPartenerCamSubSoundDescSoundVal">{partnerSoundVal}</span>
               <div className="MPartenerCamSubSoundDescBar">
-                <div className="range-slider">
-                  <input type="range" className="slider" min="0" max="100" onChange={onChangePartnerSoundSlider}></input>
-                  <div className="progressSlider"></div>
+                <div className="part-range-slider">
+                  <input type="range" className="partSlider" min="0" max="100" onChange={onChangePartnerSoundSlider}></input>
+                  <div className="partProgressSlider"></div>
                 </div>
               </div>
             </div>
