@@ -250,20 +250,20 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 |       |       \---blur
 |       |           \---apigateway
 |       |               |   BlurApigatewayApplication.java
-|       |               |
+|       |               |   
 |       |               +---filter
 |       |               |       AuthorizationHeaderFilter.java
 |       |               |       GlobalFilter.java
-|       |               |
+|       |               |       
 |       |               +---handler
 |       |               |       GlobalExceptionHandler.java
-|       |               |
+|       |               |       
 |       |               \---security
 |       |                       JwtTokenProvider.java
-|       |
+|       |                       
 |       \---resources
 |               application.yml
-|
+|               
 +---blur-business
 |   \---main
 |       +---java
@@ -271,7 +271,7 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 |       |       \---blur
 |       |           \---business
 |       |               |   BlurBusinessApplication.java
-|       |               |
+|       |               |   
 |       |               +---api
 |       |               |   +---controller
 |       |               |   |       AuthController.java
@@ -281,20 +281,20 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 |       |               |   |       StatisticController.java
 |       |               |   |       UserController.java
 |       |               |   |       WebSocketController.java
-|       |               |   |
+|       |               |   |       
 |       |               |   \---dto
 |       |               |       |   EmailAuthDto.java
 |       |               |       |   TokenDto.java
 |       |               |       |   UserDto.java
 |       |               |       |   UserProfileDto.java
-|       |               |       |
+|       |               |       |   
 |       |               |       +---request
 |       |               |       |       LoginRequestDto.java
-|       |               |       |
+|       |               |       |       
 |       |               |       \---response
 |       |               |               ErrorResponse.java
 |       |               |               LoginResponseDto.java
-|       |               |
+|       |               |               
 |       |               +---config
 |       |               |       CorsConfig.java
 |       |               |       EmailConfig.java
@@ -303,7 +303,7 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 |       |               |       SwaggerConfig.java
 |       |               |       WebMvcConfig.java
 |       |               |       WebSocketConfig.java
-|       |               |
+|       |               |       
 |       |               +---entity
 |       |               |       Category.java
 |       |               |       ChatHeader.java
@@ -317,16 +317,16 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 |       |               |       User.java
 |       |               |       UserInterest.java
 |       |               |       UserProfile.java
-|       |               |
+|       |               |       
 |       |               +---exception
 |       |               |       UnAuthorizedException.java
-|       |               |
+|       |               |       
 |       |               +---repository
 |       |               |       EmailRepository.java
 |       |               |       TokenRepository.java
 |       |               |       UserProfileRepository.java
 |       |               |       UserRepository.java
-|       |               |
+|       |               |       
 |       |               \---service
 |       |                       EmailService.java
 |       |                       JwtService.java
@@ -335,11 +335,11 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 |       |                       ProfileService.java
 |       |                       TokenService.java
 |       |                       UserService.java
-|       |
+|       |                       
 |       \---resources
 |               application-smtp.properties
 |               application.properties
-|
+|               
 +---blur-chat
 |   \---main
 |       +---java
@@ -347,140 +347,141 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 |       |       \---blur
 |       |           \---chat
 |       |               |   BlurChatApplication.java
-|       |               |
+|       |               |   
 |       |               +---api
 |       |               |   +---contorller
 |       |               |   |       ChatDataController.java
 |       |               |   |       StompChatController.java
-|       |               |   |
+|       |               |   |       
 |       |               |   +---dto
 |       |               |   |       ChatMessageSaveDto.java
 |       |               |   |       ChatPagingDto.java
 |       |               |   |       ChatPagingResponseDto.java
-|       |               |   |
+|       |               |   |       
 |       |               |   +---entity
 |       |               |   |       Chat.java
-|       |               |   |
+|       |               |   |       
 |       |               |   +---repository
 |       |               |   |       ChatJdbcRepository.java
 |       |               |   |       ChatRepository.java
 |       |               |   |       ChatRoomRepository.java
-|       |               |   |
+|       |               |   |       
 |       |               |   \---service
 |       |               |           ChatRedisCacheService.java
 |       |               |           ChatRoomService.java
-|       |               |
+|       |               |           
 |       |               +---config
 |       |               |   +---websocket
 |       |               |   |   \---redis
 |       |               |   |           RedisConfig.java
-|       |               |   |
+|       |               |   |           
 |       |               |   \---websokect
 |       |               |           StompHandler.java
 |       |               |           StompWebSocketConfig.java
-|       |               |
+|       |               |           
 |       |               \---utils
 |       |                       ChatCachingInRedisScheduling.java
 |       |                       ChatUtils.java
 |       |                       ChatWriteBackScheduling.java
-|       |
+|       |                       
 |       \---resources
 |               application.properties
-|
+|               
 \---blur-user-service
-\---main
-+---java
-|   \---com
-|       \---blur
-|           \---userservice
-|               |   BlurUserService1Application.java
-|               |
-|               +---api
-|               |   +---controller
-|               |   |       AuthController.java
-|               |   |       UserController.java
-|               |   |
-|               |   +---dto
-|               |   |       EmailAuthDto.java
-|               |   |       ErrorResponse.java
-|               |   |       LoginModel.java
-|               |   |
-|               |   +---entity
-|               |   |       EmailAuth.java
-|               |   |       User.java
-|               |   |       UserDto.java
-|               |   |       UserRefreshToken.java
-|               |   |
-|               |   +---repository
-|               |   |       EmailRepository.java
-|               |   |       UserRefreshTokenRepository.java
-|               |   |       UserRepository.java
-|               |   |
-|               |   \---service
-|               |           EmailService.java
-|               |           PasswordService.java
-|               |           UserService.java
-|               |
-|               +---common
-|               |       ApiResponse.java
-|               |       ApiResponseHeader.java
-|               |
-|               +---config
-|               |   |   EmailConfig.java
-|               |   |
-|               |   +---properties
-|               |   |       AppProperties.java
-|               |   |       CorsProperties.java
-|               |   |
-|               |   \---security
-|               |           JwtConfig.java
-|               |           SecurityConfig.java
-|               |
-|               +---oauth
-|               |   +---entity
-|               |   |       AuthToken.java
-|               |   |       AuthTokenProvider.java
-|               |   |       ProviderType.java
-|               |   |       RoleType.java
-|               |   |       UserPrincipal.java
-|               |   |
-|               |   +---exception
-|               |   |       OAuthProviderMissMatchException.java
-|               |   |       RestAuthenticationEntryPoint.java
-|               |   |       TokenValidFailedException.java
-|               |   |
-|               |   +---filter
-|               |   |       TokenAuthenticationFilter.java
-|               |   |
-|               |   +---handler
-|               |   |       OAuth2AuthenticationFailureHandler.java
-|               |   |       OAuth2AuthenticationSuccessHandler.java
-|               |   |       TokenAccessDeniedHandler.java
-|               |   |
-|               |   +---info
-|               |   |   |   OAuth2UserInfo.java
-|               |   |   |   OAuth2UserInfoFactory.java
-|               |   |   |
-|               |   |   \---impl
-|               |   |           GoogleOAuth2UserInfo.java
-|               |   |           KakaoOAuth2UserInfo.java
-|               |   |           NaverOAuth2UserInfo.java
-|               |   |
-|               |   +---repository
-|               |   |       OAuth2AuthorizationRequestBasedOnCookieRepository.java
-|               |   |
-|               |   \---service
-|               |           CustomOAuth2UserService.java
-|               |           CustomUserDetailsService.java
-|               |
-|               \---utils
-|                       CookieUtil.java
-|                       HeaderUtil.java
-|
-\---resources
-application-smtp.properties
-application.yml
-log4j2.xml
+    \---main
+        +---java
+        |   \---com
+        |       \---blur
+        |           \---userservice
+        |               |   BlurUserService1Application.java
+        |               |   
+        |               +---api
+        |               |   +---controller
+        |               |   |       AuthController.java
+        |               |   |       UserController.java
+        |               |   |       
+        |               |   +---dto
+        |               |   |       EmailAuthDto.java
+        |               |   |       ErrorResponse.java
+        |               |   |       LoginModel.java
+        |               |   |       
+        |               |   +---entity
+        |               |   |       EmailAuth.java
+        |               |   |       User.java
+        |               |   |       UserDto.java
+        |               |   |       UserRefreshToken.java
+        |               |   |       
+        |               |   +---repository
+        |               |   |       EmailRepository.java
+        |               |   |       UserRefreshTokenRepository.java
+        |               |   |       UserRepository.java
+        |               |   |       
+        |               |   \---service
+        |               |           EmailService.java
+        |               |           PasswordService.java
+        |               |           UserService.java
+        |               |           
+        |               +---common
+        |               |       ApiResponse.java
+        |               |       ApiResponseHeader.java
+        |               |       
+        |               +---config
+        |               |   |   EmailConfig.java
+        |               |   |   
+        |               |   +---properties
+        |               |   |       AppProperties.java
+        |               |   |       CorsProperties.java
+        |               |   |       
+        |               |   \---security
+        |               |           JwtConfig.java
+        |               |           SecurityConfig.java
+        |               |           
+        |               +---oauth
+        |               |   +---entity
+        |               |   |       AuthToken.java
+        |               |   |       AuthTokenProvider.java
+        |               |   |       ProviderType.java
+        |               |   |       RoleType.java
+        |               |   |       UserPrincipal.java
+        |               |   |       
+        |               |   +---exception
+        |               |   |       OAuthProviderMissMatchException.java
+        |               |   |       RestAuthenticationEntryPoint.java
+        |               |   |       TokenValidFailedException.java
+        |               |   |       
+        |               |   +---filter
+        |               |   |       TokenAuthenticationFilter.java
+        |               |   |       
+        |               |   +---handler
+        |               |   |       OAuth2AuthenticationFailureHandler.java
+        |               |   |       OAuth2AuthenticationSuccessHandler.java
+        |               |   |       TokenAccessDeniedHandler.java
+        |               |   |       
+        |               |   +---info
+        |               |   |   |   OAuth2UserInfo.java
+        |               |   |   |   OAuth2UserInfoFactory.java
+        |               |   |   |   
+        |               |   |   \---impl
+        |               |   |           GoogleOAuth2UserInfo.java
+        |               |   |           KakaoOAuth2UserInfo.java
+        |               |   |           NaverOAuth2UserInfo.java
+        |               |   |           
+        |               |   +---repository
+        |               |   |       OAuth2AuthorizationRequestBasedOnCookieRepository.java
+        |               |   |       
+        |               |   \---service
+        |               |           CustomOAuth2UserService.java
+        |               |           CustomUserDetailsService.java
+        |               |           
+        |               \---utils
+        |                       CookieUtil.java
+        |                       HeaderUtil.java
+        |                       
+        \---resources
+                application-smtp.properties
+                application.yml
+                log4j2.xml
+                
 
 ---
 
