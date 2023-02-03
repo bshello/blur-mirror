@@ -3,7 +3,7 @@ import "./index.css";
 import BlurInfo from "./BlurInfo/blurInfo";
 import { useEffect, useState } from "react";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
-import Alert from "../Start/Alert/alert";
+import Alert from "../Start/Alert";
 import Slide1 from "./Slide1/slide1";
 import Slide2 from "./Slide2/slide2";
 import Slide3 from "./Slide3/slide3";
@@ -26,19 +26,9 @@ function Home() {
 
   return (
     <div className="Home">
-      {blurInfoModal || alertModal ? (
-        <ModalWrap
-          blurInfoModal={blurInfoModal}
-          showBlurInfoModal={showBlurInfoModal}
-        />
-      ) : null}
+      {blurInfoModal || alertModal ? <ModalWrap blurInfoModal={blurInfoModal} showBlurInfoModal={showBlurInfoModal} /> : null}
       {blurInfoModal && !alertModal ? <BlurInfo /> : null}
-      {alertModal && !blurInfoModal ? (
-        <Alert
-          showAlertModal={showAlertModal}
-          content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."}
-        />
-      ) : null}
+      {alertModal && !blurInfoModal ? <Alert showAlertModal={showAlertModal} content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."} /> : null}
 
       <Header />
       <div className="HomeSubFrame">

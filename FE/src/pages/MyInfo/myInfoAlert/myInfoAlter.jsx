@@ -1,6 +1,6 @@
-import "./alert.css";
+import "./myInfoAlert.css";
 
-function Alert({ showAlertModal, content }) {
+function myInfoAlert({ showAlertModal, content }) {
   return (
     <div className="AlertDiv">
       <div className="AlertHeader">
@@ -14,4 +14,4 @@ function Alert({ showAlertModal, content }) {
   );
 }
 
-export default Alert;
+export default myInfoAlert;
