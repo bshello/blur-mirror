@@ -6,7 +6,7 @@
 
 ## SSAFY 8기 2학기 공통 프로젝트 - BLUR
 
-![mockup1.jpg](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/mockup1.jpg)
+![1](/uploads/e39a70088da0219afcd776efff0ad640/1.jpg)
 
 ## 개요
 
@@ -133,15 +133,14 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 - 로그인 시퀀스 다이어그램
 
-![springboot-oauth.jpg](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/springboot-oauth.jpg)
+![2](/uploads/0facf8f4e70d460e1f032f6c34fbe5db/2.jpg)
 
 - ERD
 
-![blur_20230202_153150.png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/blur_20230202_153150.png)
+![3](/uploads/15c172581cdb1da3ac51b8790ec0a9a6/3.png)
 
 - [캐시서버 사용 이유 및 Redis 선택 이유]()
 
-[캐시서버](https://www.notion.so/7dbabaacacd74f01bc048f28903be833)
 
 ## 피그마
 
@@ -149,499 +148,121 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 ### Landing Page
 
-![1.jpg](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/1.jpg)
-
+![4](/uploads/38f281c33a2164bc176f1ecf715ff0cc/4.jpg)
 ### Start Page
 
-![startpage.png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/startpage.png)
+![5](/uploads/1894578f57854128d0eb4ed003bcad73/5.png)
 
 ### Start Page - Sign In
 
-![start Page - Sign In.png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/start_Page_-_Sign_In.png)
+![6](/uploads/ede266bbaffe278f133db1e70bef0cbb/6.png)
 
 ### Start Page - Sign Up
 
-![start Page - Sign Up.png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/start_Page_-_Sign_Up.png)
+![7](/uploads/159882546fb68e956aa476f44c28a1e6/7.png)
 
 ### Start Page - Searching Password
 
-![start Page - Searching Password.png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/start_Page_-_Searching_Password.png)
+![8](/uploads/bcd5e32152233981a053c53026a0c793/8.png)
 
 ### Home Page
 
 - 사진과 차트 캐러셀 표현
 - 툴팁 표현
 
-![Home Page.png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Home_Page.png)
+![9](/uploads/e163617d45d7d69ca415fc5fe7eec824/9.png)
 
-![Home Page2.png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Home_Page2.png)
+![10](/uploads/ee4fbed4c7c53640b175223b4c293509/10.png)
 
 ### Meeting Page - Not Matching In
 
 - 매칭을 잡는 중일 때
 
-![Meeting Page - 24.jpg](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Meeting_Page_-_24.jpg)
+![11](/uploads/194a456e32f20b23ac0681decf64ff76/11.jpg)
 
 - 매칭이 잡혔을 때
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled.png)
+![12](/uploads/40045d9cd197bd7c1dad65de11bb3c05/12.png)
 
 ### Meeting Page - Matching In
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%201.png)
+![13](/uploads/67f2269171361efe2f0be2b95ec3e31b/13.png)
 
 - 나의 캠 상단의 이모지 버튼 눌르게 될 때
   - 이모지가 여러개 펼쳐지며, 클릭 시 상대방 카메라에 표현이 되도록 구현할 것
 - 나의 캠/상대방 캠 하단의 토글버튼 구현
   - 카메라 종류 선택/카메라 온오프/마이크 온오프/ 소리 음량 조절/ 신고 버튼 구현
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%202.png)
+![14](/uploads/35ecf1d5f09e6a92ba10fc4fa33d2198/14.png)
 
 - 상대방 캠 상단의 전구 버튼을 눌르게 될 때
   - 상대방이 프로필에서 설정한 관심사 태그 표시
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%203.png)
+![15](/uploads/651e6740a498591ebf5e585a8282b781/15.png)
 
 - 일정 시간이 지났을 때
   - 상대방이 채탕창에 추가 됨
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%204.png)
+![16](/uploads/fe282d1cc34f45c8dfe2c1d5cb2d572d/16.png)
 
 - 블러 효과가 옅어질 때마다
   - Progress bar 중앙에 블러 효과가 옅어진다는 문구 표시
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%205.png)
+![17](/uploads/f115da87561ab1c8a8a38063ef3ab80e/17.png)
 
 ### Chatting
 
 - 상단 메뉴바를 클릭 시, 채팅 모달 생성
 
-![## (2).png](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/_(2).png)
+![18](/uploads/495bba64b2c846bfeaa7928214596f3c/18.png)
 
 - 상대방과 연결된 채팅방 클릭시, 화면 중앙에 채팅 모달 구현
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%206.png)
+![19](/uploads/dcc258424078a7eba816e7a3944c7555/19.png)
 
 ### Profile Page
 
 - 자기소개/이름/성별/관심사/프로필 이미지를 설정 및 변경
 - 다른 사람의 경우에도 해당 페이지 확인가능(Read Only)
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%207.png)
+![20](/uploads/8d5d7f51ffb69c617a2ee8185496339f/20.png)
 
 - 관심사 설정 후 페이지
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%208.png)
+![21](/uploads/04bca03c1ea60c5ab752bcc6dcb72df7/21.png)
 
 - 프로필 수정 모달
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%209.png)
-
+![22](/uploads/f8c0c43996517bf8c3393452b7c51f9b/22.png)
 - 환경설정 모달
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2010.png)
+![23](/uploads/3fbb4c2050a08ae230a96ce35f726867/23.png)
 
 # 백앤드 디렉토리 구조
 
-+---blur-apigateway
-|   \---main
-|       +---java
-|       |   \---com
-|       |       \---blur
-|       |           \---apigateway
-|       |               |   BlurApigatewayApplication.java
-|       |               |
-|       |               +---filter
-|       |               |       AuthorizationHeaderFilter.java
-|       |               |       GlobalFilter.java
-|       |               |
-|       |               +---handler
-|       |               |       GlobalExceptionHandler.java
-|       |               |
-|       |               \---security
-|       |                       JwtTokenProvider.java
-|       |
-|       \---resources
-|               application.yml
-|
-+---blur-business
-|   \---main
-|       +---java
-|       |   \---com
-|       |       \---blur
-|       |           \---business
-|       |               |   BlurBusinessApplication.java
-|       |               |
-|       |               +---api
-|       |               |   +---controller
-|       |               |   |       AuthController.java
-|       |               |   |       ChattingController.java
-|       |               |   |       MatchingController.java
-|       |               |   |       ProfileController.java
-|       |               |   |       StatisticController.java
-|       |               |   |       UserController.java
-|       |               |   |       WebSocketController.java
-|       |               |   |
-|       |               |   \---dto
-|       |               |       |   EmailAuthDto.java
-|       |               |       |   TokenDto.java
-|       |               |       |   UserDto.java
-|       |               |       |   UserProfileDto.java
-|       |               |       |
-|       |               |       +---request
-|       |               |       |       LoginRequestDto.java
-|       |               |       |
-|       |               |       \---response
-|       |               |               ErrorResponse.java
-|       |               |               LoginResponseDto.java
-|       |               |
-|       |               +---config
-|       |               |       CorsConfig.java
-|       |               |       EmailConfig.java
-|       |               |       ImageConfig.java
-|       |               |       JpaConfig.java
-|       |               |       SwaggerConfig.java
-|       |               |       WebMvcConfig.java
-|       |               |       WebSocketConfig.java
-|       |               |
-|       |               +---entity
-|       |               |       Category.java
-|       |               |       ChatHeader.java
-|       |               |       ChatRoomUser.java
-|       |               |       EmailAuth.java
-|       |               |       Interest.java
-|       |               |       MatchingLog.java
-|       |               |       MatchingSetting.java
-|       |               |       MatchMakingRating.java
-|       |               |       Token.java
-|       |               |       User.java
-|       |               |       UserInterest.java
-|       |               |       UserProfile.java
-|       |               |
-|       |               +---exception
-|       |               |       UnAuthorizedException.java
-|       |               |
-|       |               +---repository
-|       |               |       EmailRepository.java
-|       |               |       TokenRepository.java
-|       |               |       UserProfileRepository.java
-|       |               |       UserRepository.java
-|       |               |
-|       |               \---service
-|       |                       EmailService.java
-|       |                       JwtService.java
-|       |                       JwtServiceImpl.java
-|       |                       PasswordService.java
-|       |                       ProfileService.java
-|       |                       TokenService.java
-|       |                       UserService.java
-|       |
-|       \---resources
-|               application-smtp.properties
-|               application.properties
-|
-+---blur-chat
-|   \---main
-|       +---java
-|       |   \---com
-|       |       \---blur
-|       |           \---chat
-|       |               |   BlurChatApplication.java
-|       |               |
-|       |               +---api
-|       |               |   +---contorller
-|       |               |   |       ChatDataController.java
-|       |               |   |       StompChatController.java
-|       |               |   |
-|       |               |   +---dto
-|       |               |   |       ChatMessageSaveDto.java
-|       |               |   |       ChatPagingDto.java
-|       |               |   |       ChatPagingResponseDto.java
-|       |               |   |
-|       |               |   +---entity
-|       |               |   |       Chat.java
-|       |               |   |
-|       |               |   +---repository
-|       |               |   |       ChatJdbcRepository.java
-|       |               |   |       ChatRepository.java
-|       |               |   |       ChatRoomRepository.java
-|       |               |   |
-|       |               |   \---service
-|       |               |           ChatRedisCacheService.java
-|       |               |           ChatRoomService.java
-|       |               |
-|       |               +---config
-|       |               |   +---websocket
-|       |               |   |   \---redis
-|       |               |   |           RedisConfig.java
-|       |               |   |
-|       |               |   \---websokect
-|       |               |           StompHandler.java
-|       |               |           StompWebSocketConfig.java
-|       |               |
-|       |               \---utils
-|       |                       ChatCachingInRedisScheduling.java
-|       |                       ChatUtils.java
-|       |                       ChatWriteBackScheduling.java
-|       |
-|       \---resources
-|               application.properties
-|
-\---blur-user-service
-\---main
-+---java
-|   \---com
-|       \---blur
-|           \---userservice
-|               |   BlurUserService1Application.java
-|               |
-|               +---api
-|               |   +---controller
-|               |   |       AuthController.java
-|               |   |       UserController.java
-|               |   |
-|               |   +---dto
-|               |   |       EmailAuthDto.java
-|               |   |       ErrorResponse.java
-|               |   |       LoginModel.java
-|               |   |
-|               |   +---entity
-|               |   |       EmailAuth.java
-|               |   |       User.java
-|               |   |       UserDto.java
-|               |   |       UserRefreshToken.java
-|               |   |
-|               |   +---repository
-|               |   |       EmailRepository.java
-|               |   |       UserRefreshTokenRepository.java
-|               |   |       UserRepository.java
-|               |   |
-|               |   \---service
-|               |           EmailService.java
-|               |           PasswordService.java
-|               |           UserService.java
-|               |
-|               +---common
-|               |       ApiResponse.java
-|               |       ApiResponseHeader.java
-|               |
-|               +---config
-|               |   |   EmailConfig.java
-|               |   |
-|               |   +---properties
-|               |   |       AppProperties.java
-|               |   |       CorsProperties.java
-|               |   |
-|               |   \---security
-|               |           JwtConfig.java
-|               |           SecurityConfig.java
-|               |
-|               +---oauth
-|               |   +---entity
-|               |   |       AuthToken.java
-|               |   |       AuthTokenProvider.java
-|               |   |       ProviderType.java
-|               |   |       RoleType.java
-|               |   |       UserPrincipal.java
-|               |   |
-|               |   +---exception
-|               |   |       OAuthProviderMissMatchException.java
-|               |   |       RestAuthenticationEntryPoint.java
-|               |   |       TokenValidFailedException.java
-|               |   |
-|               |   +---filter
-|               |   |       TokenAuthenticationFilter.java
-|               |   |
-|               |   +---handler
-|               |   |       OAuth2AuthenticationFailureHandler.java
-|               |   |       OAuth2AuthenticationSuccessHandler.java
-|               |   |       TokenAccessDeniedHandler.java
-|               |   |
-|               |   +---info
-|               |   |   |   OAuth2UserInfo.java
-|               |   |   |   OAuth2UserInfoFactory.java
-|               |   |   |
-|               |   |   \---impl
-|               |   |           GoogleOAuth2UserInfo.java
-|               |   |           KakaoOAuth2UserInfo.java
-|               |   |           NaverOAuth2UserInfo.java
-|               |   |
-|               |   +---repository
-|               |   |       OAuth2AuthorizationRequestBasedOnCookieRepository.java
-|               |   |
-|               |   \---service
-|               |           CustomOAuth2UserService.java
-|               |           CustomUserDetailsService.java
-|               |
-|               \---utils
-|                       CookieUtil.java
-|                       HeaderUtil.java
-|
-\---resources
-application-smtp.properties
-application.yml
-log4j2.xml
+![Untitled](/uploads/893723128e634378976b0e604e4f2beb/Untitled.png)
+
+![Untitled__1_](/uploads/36c87d2387fd64b927f68a55cb5b1402/Untitled__1_.png)
+
+![Untitled__2_](/uploads/f2078a549efa4c342239697a624d92bb/Untitled__2_.png)
+
+![Untitled__3_](/uploads/e56dfd48596038956c4932f308e88bee/Untitled__3_.png)
+
+![Untitled__10_](/uploads/47d2068efe039d8dd167596ca62becdc/Untitled__10_.png)
+
+![Untitled__11_](/uploads/03ba0fd1afe8f1fabbad620b5fa32f7b/Untitled__11_.png)
 
 ---
 
 # 프론트엔드 디렉토리 구조
 
-|   App.css
-|   App.js
-|   App.test.js
-|   index.js
-|   reportWebVitals.js
-|   setupTests.js
-|   test.css.map
-|   test.txt
-|
-+---components
-|   +---Footer
-|   |       index.css
-|   |       index.css.map
-|   |       index.jsx
-|   |       index.scss
-|   |
-|   \---Header
-|           index.css
-|           index.css.map
-|           index.jsx
-|           index.scss
-|
-+---pages
-|   +---Home
-|   |   |   index.css
-|   |   |   index.css.map
-|   |   |   index.jsx
-|   |   |   index.scss
-|   |   |
-|   |   +---BlurInfo
-|   |   |       blurInfo.css
-|   |   |       blurInfo.css.map
-|   |   |       blurInfo.jsx
-|   |   |       blurInfo.scss
-|   |   |
-|   |   +---Slide1
-|   |   |       slide1.jsx
-|   |   |
-|   |   +---Slide2
-|   |   |       slide2.jsx
-|   |   |
-|   |   \---Slide3
-|   |           slide3.jsx
-|   |
-|   +---Meeting
-|   |   |   Counter.jsx
-|   |   |   index.css
-|   |   |   index.css.map
-|   |   |   index.jsx
-|   |   |   index.scss
-|   |   |
-|   |   +---MeetingIn
-|   |   |   |   index.css
-|   |   |   |   index.css.map
-|   |   |   |   index.jsx
-|   |   |   |   index.scss
-|   |   |   |
-|   |   |   +---ProgressBar
-|   |   |   |       index.css
-|   |   |   |       index.css.map
-|   |   |   |       index.jsx
-|   |   |   |       index.scss
-|   |   |   |
-|   |   |   \---Timer
-|   |   |           index.css
-|   |   |           index.css.map
-|   |   |           index.jsx
-|   |   |           index.scss
-|   |   |
-|   |   \---MeetingNotIn
-|   |           index.css
-|   |           index.css.map
-|   |           index.jsx
-|   |           index.scss
-|   |
-|   +---MyInfo
-|   |   |   index.css
-|   |   |   index.css.map
-|   |   |   index.jsx
-|   |   |   index.scss
-|   |   |
-|   |   +---Hash
-|   |   |       Hash.css
-|   |   |       Hash.css.map
-|   |   |       Hash.jsx
-|   |   |       Hash.scss
-|   |   |
-|   |   \---MyInfoModal
-|   |       |   myInfoModal.css
-|   |       |   myInfoModal.css.map
-|   |       |   myInfoModal.jsx
-|   |       |   myInfoModal.scss
-|   |       |
-|   |       +---SetModal
-|   |       |       setmodal.css
-|   |       |       setmodal.css.map
-|   |       |       setmodal.jsx
-|   |       |       setmodal.scss
-|   |       |
-|   |       \---style
-|   |           \---setRange
-|   |                   setrange.css
-|   |                   setrange.css.map
-|   |                   setrange.jsx
-|   |                   setrange.scss
-|   |
-|   \---Start
-|       |   index.css
-|       |   index.css.map
-|       |   index.jsx
-|       |   index.scss
-|       |
-|       +---Alert
-|       |       alert.css
-|       |       alert.css.map
-|       |       alert.js
-|       |       alert.scss
-|       |
-|       +---ModalWrap
-|       |       modalWrap.css
-|       |       modalWrap.css.map
-|       |       modalWrap.js
-|       |       modalWrap.scss
-|       |
-|       +---SearchPw
-|       |       searchPw.css
-|       |       searchPw.css.map
-|       |       searchPw.js
-|       |       searchPw.scss
-|       |
-|       +---SignIn
-|       |       signIn.css
-|       |       signIn.css.map
-|       |       signIn.jsx
-|       |       signIn.scss
-|       |       signInWrap.jsx
-|       |
-|       \---SignUp
-|               signIn.css
-|               signUp.css
-|               signUp.css.map
-|               signUp.js
-|               signUp.scss
-|
-+---reducer
-|       counter.jsx
-|       index.jsx
-|       MToggle.jsx
-|       userEdit.jsx
-|
-\---style
-common.css
-common.css.map
-common.scss
-normalize.css
-normalize.css.map
-normalize.scss
+![Untitled](/uploads/cfb391affa8ae6d467b30d8d127bdb14/Untitled.png)
+
+![Untitled__1_](/uploads/49e36a26e76648d09c8fe64ec67c8a08/Untitled__1_.png)
+
+![Untitled__2_](/uploads/0e55ee7ac9bb9becfb1c7e6675f4e639/Untitled__2_.png)
+
+![Untitled__3_](/uploads/66eca26202e0fc16b1d9165499fb08d1/Untitled__3_.png)
+
 
 ---
