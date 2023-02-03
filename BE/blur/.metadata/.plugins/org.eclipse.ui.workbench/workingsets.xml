@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1675036974319_0" label="Java Main Sources" name="Java Main Sources">
+<item elementID="=blur-apigateway/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=blur-apigateway/src\/main\/resources=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=blur-user-service/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=blur-user-service/src\/main\/resources=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=blur-business/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=blur-business/src\/main\/resources=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1675036974334_1" label="Java Test Sources" name="Java Test Sources">
+<item elementID="=blur-apigateway/src\/test\/java=/gradle_scope=/test=/=/gradle_used_by_scope=/test=/=/test=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=blur-user-service/src\/test\/java=/gradle_scope=/test=/=/gradle_used_by_scope=/test=/=/test=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=blur-business/src\/test\/java=/test=/true=/=/gradle_scope=/test=/=/gradle_used_by_scope=/test=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1675037172578_2" label="Window Working Set" name="Aggregate for window 1675037172578"/>
+</workingSetManager>
