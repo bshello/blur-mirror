@@ -5,9 +5,9 @@ import SignIn from "./SignIn/signIn";
 import ModalWrap from "./ModalWrap/modalWrap";
 import SignUp from "./SignUp/signUp";
 import SearchPw from "./SearchPw/searchPw";
-import Alert from "./Alert/alert";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Alert from "./Alert";
 
 function Start() {
   const [signInModal, setSignInModal] = useState(false);
@@ -88,6 +88,7 @@ function Start() {
         <div className="SubLeftDiv">
           <span className="SubLeftTitle">Hey, Just Blur!</span>
           <span className="SubLeftDesc">Show me your own color.</span>
+
           <div
             className="CommBoxFrame1 color-5"
             onClick={StartBtn}

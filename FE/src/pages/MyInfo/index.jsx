@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
-import Alert from "../../pages/Start/Alert/alert";
+import Alert from "../../pages/Start/Alert";
 
 function MyInfo() {
   //profile edit modal
@@ -41,33 +41,13 @@ function MyInfo() {
 
   return (
     <div className="myinfo">
-      {miModal || hashModal ? (
-        <ModalWrap
-          miModal={miModal}
-          hashModal={hashModal}
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-        />
-      ) : null}
+      {miModal || hashModal ? <ModalWrap miModal={miModal} hashModal={hashModal} showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} /> : null}
 
-      {miModal && !hashModal ? (
-        <MyInfoModal
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-          showAlertModal={showAlertModal}
-        />
-      ) : null}
+      {miModal && !hashModal ? <MyInfoModal showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} showAlertModal={showAlertModal} /> : null}
 
-      {hashModal && !miModal ? (
-        <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} />
-      ) : null}
+      {hashModal && !miModal ? <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} /> : null}
 
-      {alertModal && !miModal && !hashModal ? (
-        <Alert
-          showAlertModal={showAlertModal}
-          content={"변경사항이 저장되었습니다."}
-        />
-      ) : null}
+      {alertModal && !miModal && !hashModal ? <Alert showAlertModal={showAlertModal} content={"변경사항이 저장되었습니다."} /> : null}
 
       <div className="DarkBlurDiv"></div>
       <div
@@ -83,11 +63,7 @@ function MyInfo() {
         <div className="MISetDiv"></div>
       </div>
       <span className="MIHashTag">Hash Tag</span>
-      <div
-        className="MIHashSet"
-        onClick={showHashModal}
-        disabled={alertModal === true ? true : false}
-      >
+      <div className="MIHashSet" onClick={showHashModal} disabled={alertModal === true ? true : false}>
         <div className="MIHashSetIcon">
           <span className="MIHashSetText">설정하기</span>
         </div>
