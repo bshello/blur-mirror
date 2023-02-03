@@ -5,7 +5,7 @@ import SignIn from "./SignIn/signIn";
 import ModalWrap from "./ModalWrap/modalWrap";
 import SignUp from "./SignUp/signUp";
 import SearchPw from "./SearchPw/searchPw";
-import Alert from "./Alert/alert";
+import Alert from "./Alert";
 
 function Start() {
   const [signInModal, setSignInModal] = useState(false);
@@ -41,46 +41,20 @@ function Start() {
         />
       ) : null}
 
-      {signInModal && !signUpModal && !searchPwModal ? (
-        <SignIn
-          showSignUpModal={showSignUpModal}
-          showSignInModal={showSignInModal}
-          showSearchPwModal={showSearchPwModal}
-        />
-      ) : null}
+      {signInModal && !signUpModal && !searchPwModal ? <SignIn showSignUpModal={showSignUpModal} showSignInModal={showSignInModal} showSearchPwModal={showSearchPwModal} /> : null}
 
-      {signUpModal && !signInModal && !searchPwModal ? (
-        <SignUp
-          showSignUpModal={showSignUpModal}
-          showSignInModal={showSignInModal}
-        />
-      ) : null}
+      {signUpModal && !signInModal && !searchPwModal ? <SignUp showSignUpModal={showSignUpModal} showSignInModal={showSignInModal} /> : null}
 
-      {searchPwModal && !signInModal && !signUpModal ? (
-        <SearchPw
-          showSignInModal={showSignInModal}
-          showSearchPwModal={showSearchPwModal}
-          showAlertModal={showAlertModal}
-        />
-      ) : null}
+      {searchPwModal && !signInModal && !signUpModal ? <SearchPw showSignInModal={showSignInModal} showSearchPwModal={showSearchPwModal} showAlertModal={showAlertModal} /> : null}
 
-      {alertModal && !signInModal && !signUpModal && !searchPwModal ? (
-        <Alert
-          showAlertModal={showAlertModal}
-          content={"임시비밀번호가 이메일로 전송되었습니다."}
-        />
-      ) : null}
+      {alertModal && !signInModal && !signUpModal && !searchPwModal ? <Alert showAlertModal={showAlertModal} content={"임시비밀번호가 이메일로 전송되었습니다."} /> : null}
 
       <Header />
       <div className="SubFrame">
         <div className="SubLeftDiv">
           <span className="SubLeftTitle">Hey, Just Blur!</span>
           <span className="SubLeftDesc">Show me your own color.</span>
-          <div
-            className="CommBoxFrame1 color-5"
-            onClick={showSignInModal}
-            disabled={alertModal === true ? true : false}
-          >
+          <div className="CommBoxFrame1 color-5" onClick={showSignInModal} disabled={alertModal === true ? true : false}>
             <span className="CommBoxFrameStart">Start</span>
           </div>
         </div>
