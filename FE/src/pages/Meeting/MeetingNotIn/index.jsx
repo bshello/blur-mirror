@@ -1,7 +1,7 @@
 import "./index.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
-import { toggleCntFunc } from "../../../reducer/MToggle";
+import { MTOGGLE } from "../../../redux/reducers/MToggle";
 function MeetingNotIn() {
   const [isMatching, setIsMatching] = useState(false);
   // const [isIn, setIsIn] = useState(false);
@@ -36,11 +36,10 @@ function MeetingNotIn() {
   // }
 
   const dispatch = useDispatch();
-  // const mToggle = useSelector((state) => state.MToggle.togg); // Redux에 저장되어있는 MToggle
 
   const toggleChange = (e) => {
     e.preventDefault();
-    dispatch(toggleCntFunc());
+    dispatch(MTOGGLE());
   };
 
   return (

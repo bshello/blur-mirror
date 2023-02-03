@@ -1,15 +1,15 @@
 // reducer 부분은 createSlice만 있으면 된다.
 import { createSlice } from "@reduxjs/toolkit";
 
-const userEdit = createSlice({
-  name: "userEdit",
+const introEdit = createSlice({
+  name: "introEdit",
   initialState: { value: "" },
   reducers: {
-    edit: (state, action) => {
+    intro: (state, action) => {
       state.value = action.payload;
     },
   },
 });
 
-export default userEdit;
-export const { edit } = userEdit.actions;
+export default introEdit.reducer;
+export const { intro } = introEdit.actions;

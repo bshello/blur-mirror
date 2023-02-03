@@ -213,11 +213,11 @@
   top: 8px;
   cursor: pointer;
 }
-.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubMicBtn.micOff {
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubMicBtn.myMicOff {
   background-image: url(../../../assets/images/micOn.png);
   background-size: 100% 100%;
 }
-.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubMicBtn.micOn {
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubMicBtn.myMicOn {
   background-image: url(../../../assets/images/micOff.png);
   background-size: 100% 100%;
 }
@@ -228,16 +228,11 @@
   left: 145px;
   top: 10px;
   cursor: pointer;
-}
-.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundBtn.soundOff {
   background-image: url(../../../assets/images/soundOn.png);
   background-size: 100% 100%;
 }
-.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundBtn.soundOn {
-  background-image: url(../../../assets/images/soundOff.png);
-  background-size: 100% 100%;
-}
 .MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc {
+  display: none;
   position: absolute;
   width: 100px;
   height: 25px;
@@ -268,11 +263,22 @@
   border-radius: 30px;
   cursor: auto;
 }
+.MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .MMyCamSubSoundDescSoundVal {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 5px;
+  top: 3px;
+  font-size: 13px;
+  line-height: 20px;
+  color: white;
+  z-index: 3;
+}
 .MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .range-slider {
   -webkit-appearance: none;
   position: absolute;
   top: -118px;
-  left: 10px;
+  left: 30px;
   right: 10px;
   margin: 8em auto;
   display: flex;
@@ -281,7 +287,7 @@
 .MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .range-slider .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 0.3em;
+  height: 0.4em;
   outline: none;
   border-radius: 3px;
   background-color: #eaf6f6;
@@ -303,11 +309,11 @@
 }
 .MLeftDiv1 .MMyCamSubDiv .MMyCamSubBtnsDiv .MMyCamSubSoundDesc .range-slider .progressSlider {
   position: absolute;
-  width: 100%;
+  width: 50%;
   height: 0.4em;
   border-radius: 3px;
   background-color: #a8dedf;
-  top: 2px;
+  top: 3px;
   transform: translateY(-50%);
   left: 0;
   z-index: 1;
@@ -478,13 +484,21 @@
 }
 .MPartenerCamSubDiv .MPartenerCamSubBtnsDiv .MPartenerCamSubMicBtn {
   position: absolute;
-  width: 15px;
-  height: 26px;
-  left: 52px;
+  width: 35px;
+  height: 28px;
+  left: 42px;
   top: 8px;
   background-image: url(../../../assets/images/micOn.png);
   background-size: 100% 100%;
   cursor: pointer;
+}
+.MPartenerCamSubDiv .MPartenerCamSubBtnsDiv .MPartenerCamSubMicBtn.partMicOff {
+  background-image: url(../../../assets/images/micOn.png);
+  background-size: 100% 100%;
+}
+.MPartenerCamSubDiv .MPartenerCamSubBtnsDiv .MPartenerCamSubMicBtn.partMicOn {
+  background-image: url(../../../assets/images/micOff.png);
+  background-size: 100% 100%;
 }
 .MPartenerCamSubDiv .MPartenerCamSubBtnsDiv .MPartenerCamSubSoundBtn {
   position: absolute;

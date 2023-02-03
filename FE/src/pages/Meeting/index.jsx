@@ -6,7 +6,7 @@ import MeetingNotIn from "./MeetingNotIn";
 import MeetingIn from "./MeetingIn";
 
 function Meeting() {
-  const mToggle = useSelector((state) => state.MToggle.togg); // Redux에 저장되어있는 MToggle
+  const mToggle = useSelector((state) => state.mt.togg); // Redux에 저장되어있는 MToggle
 
   return (
     <div className="Meeting">

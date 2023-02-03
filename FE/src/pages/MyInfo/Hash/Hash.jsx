@@ -16,12 +16,12 @@ function Hash({ showHashModal }) {
 
   return (
     <div className="Hash">
+      <div className="hashSerchDiv">
+        <div className="inputdodbogi"></div>
+        <input type="text" className="hashinput" />
+        <div className="hashVec" />
+      </div>
       <div className="hashdiv">
-        <div className="hashSerchDiv">
-          <input type="text" className="hashinput" />
-          <div className="hashVec" />
-        </div>
-
         <div className="interestdiv">
           {data.map((item, idx) => {
             return (
@@ -36,7 +36,7 @@ function Hash({ showHashModal }) {
         </div>
 
         <button className="hashEdit" onClick={showHashModal}>
-          <span className="hashEditText">선호 정보 수정</span>
+          선호 정보 수정
         </button>
       </div>
     </div>

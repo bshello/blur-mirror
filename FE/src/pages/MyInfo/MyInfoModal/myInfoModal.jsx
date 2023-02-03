@@ -4,27 +4,24 @@ import "./myInfoModal.css";
 import React, { useState, useRef, useEffect, useReducer } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../../../store";
-import { edit } from "../../../reducer/userEdit";
-import { introedit } from "../../../reducer/introEdit";
+import { edit } from "../../../redux/reducers/userEdit";
+import { intro } from "../../../redux/reducers/introEdit";
 import SetModal from "./SetModal/setmodal";
-import styled from "styled-components";
-// import Avatar from "react-avatar";
-// import "../index";
+import axios from "axios";
+// import styled from "styled-components";
 
-// 리덕스 툴킷 실습
-// function reducer(state, action){
-//   if(action.type === 'edit') {
-//     return (...state, value: state.value + action)
-//   }
-// }
-
-function MyInfoModal({ showMyinfoModal }) {
+function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   //setmodal
   const [setModal, setSettingmodal] = useState(false);
   const showSettingModal = () => {
     setSettingmodal((pre) => !pre);
   };
+
+  // //Arter 모달띄우기
+  // const [alertModal, setalertModal] = useState(false);
+  // const showAlertModal = () => {
+  //   setalertModal((pre) => !pre);
+  // };
 
   //profile 변경
   const [nameInput, setNameInput] = useState("");
@@ -32,19 +29,18 @@ function MyInfoModal({ showMyinfoModal }) {
 
   // nicName
   const [nickName, setNickName] = useState("");
-  // const [nickedit, setNickEdit] = useState(false);
   const handleInputChange = (e) => {
     setNameInput(e.target.value);
   };
-
-  //emil
-  const [email, setEmail] = useState("");
 
   //introducing
   const [introducing, setIntroducing] = useState("");
   const introHandleChange = (e) => {
     setIntroInput(e.target.value);
   };
+
+  //emil
+  const [email, setEmail] = useState("");
 
   // state 변경 핸들러
   const handleUpload = () => {
@@ -94,21 +90,26 @@ function MyInfoModal({ showMyinfoModal }) {
   const gender = ["Male", "FeMale"];
   const [genderCheck, setgenderCheck] = useState("check");
 
+  // 나이
   const age = (19, 70);
-
-  // const ages = new Array(50).fill({ age });
 
   const ages = [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
 
   // 데이터 주고 받기
   const dispatch = useDispatch();
-  // const user = useSelector((state) => {
-  //   return state.user.value;
-  // });
+
+  /////////////////////////////////////////////////test
 
   return (
     <div className="Modal">
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
+
+      {/* {setalertModal ? (
+        <Alert
+          showAlertModal={showAlertModal}
+          content={"변경값이 저장 되었습니다."}
+        />
+      ) : null} */}
       <div className="leftModal">
         <div className="imgbox">
           {/* <form>
@@ -193,25 +194,14 @@ function MyInfoModal({ showMyinfoModal }) {
         <div className="PMMBTI">
           <span className="PMMBTILabel">MBTI</span>
           <select className="PMMBTISelect">
-            <option> INTJ</option>
-            <option> INTP </option>
-            <option> ENTJ </option>
-            <option> ENTP</option>
-
-            <option> INFJ </option>
-            <option> INFP </option>
-            <option> ENFJ </option>
-            <option> ENFP </option>
-
-            <option> ISTJ</option>
-            <option> ISFJ</option>
-            <option> ESTJ</option>
-            <option> ESFJ </option>
-
-            <option> ISTP</option>
-            <option> ISFP </option>
-            <option> ESTP </option>
-            <option> ESFP </option>
+            <option> INTJ</option>;<option> INTP </option>;
+            <option> ENTJ </option>;<option> ENTP</option>;
+            <option> INFJ </option>;<option> INFP </option>;
+            <option> ENFJ </option>;<option> ENFP </option>;
+            <option> ISTJ</option>;<option> ISFJ</option>;<option> ESTJ</option>
+            ;<option> ESFJ </option>;<option> ISTP</option>;
+            <option> ISFP </option>;<option> ESTP </option>;
+            <option> ESFP </option>;
           </select>
         </div>
         <div className="PMMEmail">
@@ -245,34 +235,31 @@ function MyInfoModal({ showMyinfoModal }) {
               {gender[1]}
             </button>
           </div>
-          <div className="PMIntroducing">
-            <span className="PMIntroducingLabel">Introducing</span>
-            {/* <input type="text" className="PMIntroducingInput"></input> */}
-            <input
-              type="text"
-              className="PMIntroducingInput"
-              value={introInput}
-              onChange={introHandleChange}
-              // onKeyPress={handleOnKeyPress}
-            />
-          </div>
+        </div>
+
+        <div className="PMIntroducing">
+          <span className="PMIntroducingLabel">Introducing</span>
+          <input
+            type="text"
+            className="PMIntroducingInput"
+            value={introInput}
+            onChange={introHandleChange}
+            // onKeyPress={handleOnKeyPress}
+          />
         </div>
       </div>
       <button
         className="ModalOut"
         onClick={() => {
           showMyinfoModal();
+          showAlertModal();
           {
             const namechange = document.querySelector(".PMIdInput").value;
-            // console.log(a);
-            dispatch(edit(namechange));
-          }
-          {
             const introchange = document.querySelector(
               ".PMIntroducingInput"
             ).value;
-            // console.log(introchange);
-            dispatch(introedit(introchange));
+            dispatch(edit(namechange));
+            dispatch(intro(introchange));
           }
         }}
       >
