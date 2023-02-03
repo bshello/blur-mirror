@@ -2,15 +2,13 @@ import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
 import React, { useState } from "react";
-// import { changeName } from "../../../reducer/userEdit";
-import { changeName } from "../../redux/store";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
-import "../../redux/reducers/userEdit";
-import { edit } from "../../redux/reducers/userEdit";
+import ModalWrap from "../Start/ModalWrap/modalWrap";
+import Alert from "../../pages/Start/Alert/alert";
 
-function MyInfo({ nickName }) {
+function MyInfo() {
   //profile edit modal
   const [miModal, setMyInfoModal] = useState(false);
   const showMyinfoModal = () => {
@@ -23,35 +21,55 @@ function MyInfo({ nickName }) {
     setHashModal((pre) => !pre);
   };
 
+  //alert modal
+  const [alertModal, setalertModal] = useState(false);
+  const showAlertModal = () => {
+    setalertModal((pre) => !pre);
+  };
+
   // 페이지 이동
   const navigate = useNavigate();
 
-  // 데이터 가져오는 거
-  // const dispatch = useDispatch({});
-  // const { user } = useSelector((state) => state.userEdit);
-  // console.log(user);
-  // const state = useSelector((state) => {
-  //   return state.userEdit.user;
-  // });
-  // console.log(state);
-  // const member = useSelector((state) => state.userEdit);
-  // const mypage = useSelector((state) => state.mypage);
-  // const { memberNickname, memberRepIcon, memberId } = member;
-  // const { memberCurrentStrick, memberTotalTime } = mypage;
-
-  // state를 연결해야된다.
-  const [input, setInput] = useState("");
-
+  // reducer에서 변경된 값을 가져오자
   const user = useSelector((state) => {
     return state.user.value;
   });
 
+  const intro = useSelector((state) => {
+    return state.intro.value;
+  });
+
   return (
     <div className="myinfo">
-      {miModal ? <MyInfoModal showMyinfoModal={showMyinfoModal} /> : null}
+      {miModal || hashModal ? (
+        <ModalWrap
+          miModal={miModal}
+          hashModal={hashModal}
+          showHashModal={showHashModal}
+          showMyinfoModal={showMyinfoModal}
+        />
+      ) : null}
 
-      {hashModal ? <Hash showHashModal={showHashModal} /> : null}
+      {miModal && !hashModal ? (
+        <MyInfoModal
+          showHashModal={showHashModal}
+          showMyinfoModal={showMyinfoModal}
+          showAlertModal={showAlertModal}
+        />
+      ) : null}
 
+      {hashModal && !miModal ? (
+        <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} />
+      ) : null}
+
+      {alertModal && !miModal && !hashModal ? (
+        <Alert
+          showAlertModal={showAlertModal}
+          content={"변경사항이 저장되었습니다."}
+        />
+      ) : null}
+
+      <div className="DarkBlurDiv"></div>
       <div
         onClick={() => {
           navigate("/home");
@@ -62,15 +80,14 @@ function MyInfo({ nickName }) {
       </div>
       <div className="MIImgDiv">
         <div className="MIImg"></div>
-        <div className="MISetDiv">
-          {/* <div className="MISetting">
-            <div className="MIImgAddIcon"></div>
-            <span className="MIImgAddText">사진 설정</span>
-          </div> */}
-        </div>
+        <div className="MISetDiv"></div>
       </div>
       <span className="MIHashTag">Hash Tag</span>
-      <div className="MIHashSet" onClick={showHashModal}>
+      <div
+        className="MIHashSet"
+        onClick={showHashModal}
+        disabled={alertModal === true ? true : false}
+      >
         <div className="MIHashSetIcon">
           <span className="MIHashSetText">설정하기</span>
         </div>
@@ -79,14 +96,21 @@ function MyInfo({ nickName }) {
         <span className="MIName"> {user} </span>
         <span className="MIAge"> 26</span>
       </div>
-      <div className="MIEdit" onClick={showMyinfoModal}>
-        profile edit ->
-      </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>
-        <span className="MIIntroducingText">안녕하세요. 스물 여섯 김블리입니다!</span>
+        <span className="MIIntroducingText"> {intro} </span>
       </div>
-      <span className="MIProfileLogo">Blur:)</span>
+      <span className="MIProfileLogo">Blur:</span>
+      <div
+        className="MIEdit"
+        onClick={() => {
+          showMyinfoModal();
+          // anima();
+        }}
+        disabled={alertModal === true ? true : false}
+      >
+        profile edit -
+      </div>
     </div>
   );
 }

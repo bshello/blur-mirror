@@ -22,7 +22,7 @@
   top: -1px;
   background: #50a1a3;
   border-radius: 30px;
-  z-index: 20;
+  z-index: 30;
 }
 .leftModal .imgbox {
   position: absolute;
@@ -151,14 +151,13 @@
   position: absolute;
   width: 1310px;
   height: 570px;
-  left: 6.5%;
-  top: 7%;
-  z-index: 10;
+  left: 7%;
+  top: 11%;
+  z-index: 30;
   background: #ffffff;
   border: 0.751852px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0px 3.00741px 3.00741px rgba(0, 0, 0, 0.25);
   border-radius: 30.0741px;
-  z-index: 10;
 }
 .Modal .ModalOut {
   position: absolute;
@@ -166,7 +165,7 @@
   height: 55px;
   left: 1090px;
   top: 445px;
-  z-index: 20;
+  z-index: 30;
   cursor: pointer;
   background: #68bbbd;
   border-radius: 7.51852px;
@@ -392,14 +391,14 @@
 .Modal .ProfileModal .PMMGender .PMMGenderdiv :hover {
   background-color: #16888a;
 }
-.Modal .ProfileModal .PMMGender .PMIntroducing {
+.Modal .ProfileModal .PMIntroducing {
   position: absolute;
   width: 330px;
   height: 200px;
-  left: 0px;
-  top: 100px;
+  left: 430px;
+  top: 180px;
 }
-.Modal .ProfileModal .PMMGender .PMIntroducing .PMIntroducingLabel {
+.Modal .ProfileModal .PMIntroducing .PMIntroducingLabel {
   position: absolute;
   width: 330px;
   height: 20px;
@@ -412,9 +411,9 @@
   align-items: center;
   color: #000000;
 }
-.Modal .ProfileModal .PMMGender .PMIntroducing .PMIntroducingInput {
+.Modal .ProfileModal .PMIntroducing .PMIntroducingInput {
   position: absolute;
-  width: 330px;
+  width: 325px;
   height: 170px;
   left: 0px;
   top: 30px;

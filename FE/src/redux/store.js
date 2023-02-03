@@ -10,12 +10,14 @@ redux/toolkit은 configureStore 만 있으면 된다.(위의 4가지 모두 자�
 import { configureStore } from "@reduxjs/toolkit";
 import userEdit from "../redux/reducers/userEdit";
 import MToggle from "../redux/reducers/MToggle";
+import introEdit from "../redux/reducers/introEdit";
 import saveTokenReducer from "./reducers/saveToken";
 
 const store = configureStore({
   reducer: {
     user: userEdit,
     mt: MToggle,
+    intro: introEdit,
     strr: saveTokenReducer,
   },
 });

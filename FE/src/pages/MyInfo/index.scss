@@ -1,83 +1,41 @@
 @use "../../style/common" as mixin;
 
-.myinfo {
+.MIbackbtn {
   position: absolute;
-  width: 1440px;
-  height: 700px;
-  left: 2%;
+  width: 75px;
+  height: 50px;
+  left: 5%;
   top: 5%;
-  margin: 0;
-  // text-align: center;
-  // min-height: 100vh;
+  font-weight: 400;
+  font-size: 43px;
+  line-height: 88px;
+  /* identical to box height */
 
-  .MIbackbtn {
-    position: absolute;
-    width: 75px;
-    height: 50px;
-    left: 5%;
-    top: 5%;
-    font-weight: 400;
-    font-size: 43px;
-    line-height: 88px;
-    /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: right;
+  cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    text-align: right;
-    cursor: pointer;
+  color: #ffffff;
+}
+.MIImgDiv {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 32%;
+  top: 16%;
 
-    color: #ffffff;
-  }
-  .MIImgDiv {
+  background-size: 100% 100%;
+
+  .MIImg {
     position: absolute;
     width: 500px;
     height: 500px;
-    left: 480px;
-    top: 105px;
+    background-image: url(../../assets/images/woman.jpg);
+    background-size: 100% 100%;
+    border-radius: 70%;
 
-    .MIImg {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background-image: url(../../assets/images/woman.jpg);
-      background-size: 100% 100%;
-      border-radius: 70%;
-
-      opacity: 0.3;
-    }
-    .MISetDiv {
-      position: absolute;
-      width: 105px;
-      height: 90px;
-      left: 200px;
-      top: 200px;
-
-      .MIImgAddIcon {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        left: 33px;
-        top: 0%;
-        background-image: url(../../assets/images/add.png);
-        background-size: 100% 100%;
-      }
-      .MIImgAddText {
-        position: absolute;
-        width: 105px;
-        height: 45px;
-        left: 0px;
-        top: 46px;
-
-        font-weight: 40px;
-        font-size: 30px;
-        line-height: 45px;
-        display: flex;
-        align-items: center;
-        text-align: right;
-
-        color: #ffffff;
-      }
-    }
+    opacity: 0.3;
   }
 }
 
@@ -103,7 +61,8 @@
   width: 135px;
   height: 50px;
   left: 6.5%;
-  top: 200px;
+  top: 28%;
+  // margin-top: 5%;
   background: #ffffff;
 
   border: 1.5px dashed #50a1a3;
@@ -142,11 +101,11 @@
   width: 400px;
   height: 100px;
   left: 5%;
-  top: 555px;
+  bottom: 10%;
 
   .MIName {
     position: absolute;
-    width: 100px;
+    width: 400px;
     height: 55px;
     left: 0px;
     bottom: 0px;
@@ -188,8 +147,8 @@
   width: 300px;
   height: 55px;
   bottom: 80px;
-  right: 0%;
-  top: 600px;
+  right: 5%;
+  bottom: 10%;
   font-weight: 400px;
   font-size: 40px;
   line-height: 55px;
@@ -205,7 +164,7 @@
   position: absolute;
   width: 270px;
   height: 300px;
-  right: 0%;
+  right: 5%;
   top: 250px;
 
   .MIIntroducingTitle {
@@ -233,12 +192,13 @@
     left: 0px;
     top: 70px;
 
-    font-weight: 400;
+    font-weight: 400px;
     font-size: 25px;
-    line-height: 33px;
+    line-height: 35x;
     display: flex;
     text-align: left;
     color: #ffffff;
+    justify-content: center;
   }
 }
 
@@ -246,8 +206,8 @@
   position: absolute;
   width: 160px;
   height: 80px;
-  right: 0%;
-  top: 45px;
+  right: 5%;
+  top: 5%;
 
   font-weight: 400;
   font-size: 60px;
@@ -266,3 +226,15 @@
 // .inputtext {
 //   @include mixin.inputdiv;
 // }
+
+.DarkBlurDiv {
+  display: none;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  opacity: 0.5;
+  z-index: 10;
+  background-color: black;
+}
