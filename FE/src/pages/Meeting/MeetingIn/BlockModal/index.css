@@ -1,0 +1,97 @@
+.BlockModal {
+  position: absolute;
+  left: 537px;
+  right: 537px;
+  height: 216px;
+  top: 120px;
+  background: #ffffff;
+  border-radius: 40px;
+  z-index: 2;
+}
+.BlockModal .AlertHeader {
+  position: absolute;
+  height: 54px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  background: #68bbbd;
+  border-radius: 30px 30px 0px 0px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.BlockModal .AlertHeader .AlertHeaderText {
+  position: absolute;
+  height: 28px;
+  left: 0px;
+  right: 0px;
+  top: 13.5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19.5px;
+  line-height: 28px;
+  color: #ffffff;
+}
+.BlockModal .AlertBody {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  top: 54px;
+}
+.BlockModal .AlertBody .BlockAlertSelect {
+  box-sizing: border-box;
+  position: absolute;
+  height: 49px;
+  left: 10px;
+  right: 10px;
+  top: 25px;
+  background: #ffffff;
+  border: 3.75px solid #50a1a3;
+  border-radius: 22.5px;
+  text-align: center;
+  padding-left: 15px;
+}
+.BlockModal .AlertBody .BlockConfirmBtnDiv {
+  position: absolute;
+  width: 105px;
+  height: 33px;
+  left: 50px;
+  top: 99px;
+  background: #50a1a3;
+  border-radius: 7.5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+.BlockModal .AlertBody .BlockConfirmBtnDiv .BlockConfirmBtnText {
+  position: absolute;
+  width: 105px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #ffffff;
+}
+.BlockModal .AlertBody .BlockCancleBtnDiv {
+  position: absolute;
+  width: 102px;
+  height: 30px;
+  right: 50px;
+  top: 99px;
+  background: #ffffff;
+  border: 2px solid #50a1a3;
+  border-radius: 7.5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+.BlockModal .AlertBody .BlockCancleBtnDiv .BlockCancleBtnText {
+  position: absolute;
+  width: 105px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #50a1a3;
+}/*# sourceMappingURL=index.css.map */
