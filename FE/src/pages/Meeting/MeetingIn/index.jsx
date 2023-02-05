@@ -1,12 +1,12 @@
 import "./index.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Timer from "./Timer";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
-import { BTOGGLE, CLOSE_ALERT_TOGGLE } from "../../../redux/reducers/MToggle";
+import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE } from "../../../redux/reducers/MToggle";
 import Alert from "../../Start/Alert";
+import SettingModal from "../MeetingIn/SettingModal";
 
 function MeetingIn() {
   const [lightToggle, setLightToggle] = useState(false);
@@ -19,11 +19,11 @@ function MeetingIn() {
   const [mySoundVal, setMySoundVal] = useState(50);
   const [partnerSoundVal, setPartnerSoundVal] = useState(50);
   const [blockToggle, setBlockToggle] = useState(false);
-  const [blockModalToggle, setBlockModalToggle] = useState(false);
 
   const dispatch = useDispatch();
   const isShowBlockModal = useSelector((state) => state.mt.isShowBlockModal);
   const closeAlertToggle = useSelector((state) => state.mt.closeAlertToggle);
+  const camOpenToggle = useSelector((state) => state.mt.camOpenToggle);
 
   // (파트너 캠 상단의) 관심사 표현 토글
   const showLight = () => {
@@ -166,18 +166,22 @@ function MeetingIn() {
       document.querySelector(".MPartenerCamSubBlockDesc").style.display = "none";
       dispatch(BTOGGLE(!isShowBlockModal));
     }
-    setBlockModalToggle((prev) => !prev);
   };
 
   const showAlertModal = () => {
     dispatch(CLOSE_ALERT_TOGGLE(false));
   };
 
+  // 나의 캠 세팅 토글
+  const showSetting = () => {
+    dispatch(CAM_OPEN_TOGGLE(true));
+  };
+
   return (
     <div className="MeetingIn">
       {closeAlertToggle ? <Alert showAlertModal={showAlertModal} content="신고가 완료되었습니다:)" /> : ""}
-      <ProgressBar done={30} />
       {isShowBlockModal ? <BlockModal /> : ""}
+      {camOpenToggle ? <SettingModal /> : ""}
       <div className="tempBackDiv" onClick={lightAndSmileBgOut}></div>
       <div className="MLeftDiv1">
         <div className="ImotionDiv">
@@ -194,7 +198,7 @@ function MeetingIn() {
         <div className="MMyCamSubDiv">
           <span className="MMyCamSubText">My Camera</span>
           <div className="MMyCamSubBtnsDiv">
-            <div className="MMyCamSubCamSettingBtn"></div>
+            <div className="MMyCamSubCamSettingBtn" onClick={showSetting}></div>
             <div className="MMyCamSubCamToggleBtn camOn" onClick={showCam}></div>
             <div className="MMyCamSubMicBtn myMicOn" onClick={openMyMic}></div>
             <div className="MMyCamSubSoundBtn" onClick={showMySound}></div>
@@ -210,15 +214,6 @@ function MeetingIn() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="MCenterDiv1">
-        <Timer />
-        <div className="MCenterCloseBtnDiv">
-          <Link to="/home">
-            <div className="MCenterCloseBtnText">Close</div>
-          </Link>
-          <div className="MCenterCloseBtn btn-hover color-5"></div>
         </div>
       </div>
       <div className="MRightDiv1">
@@ -259,6 +254,7 @@ function MeetingIn() {
           </div>
         </div>
       </div>
+      <ProgressBar />
     </div>
   );
 }
