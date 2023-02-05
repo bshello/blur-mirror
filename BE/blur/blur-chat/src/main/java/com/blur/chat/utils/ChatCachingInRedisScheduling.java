@@ -1,9 +1,7 @@
-package com.hanghae.final_project.global.util.scheduler;
+package com.blur.chat.utils;
 
-import com.hanghae.final_project.api.chat.dto.request.ChatMessageSaveDto;
-import com.hanghae.final_project.global.util.ChatUtils;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import static com.blur.chat.api.repository.ChatRoomRepository.CHAT_SORTED_SET_;
+
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
@@ -11,7 +9,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.hanghae.final_project.domain.repository.chat.ChatRoomRepository.CHAT_SORTED_SET_;
+import com.blur.chat.api.dto.request.ChatMessageSaveDto;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor

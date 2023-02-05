@@ -1,32 +1,34 @@
-package com.hanghae.final_project.service.chat;
-
-import com.hanghae.final_project.domain.repository.chat.ChatRoomRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+package com.blur.chat.api.service;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.blur.chat.api.repository.ChatRoomRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class ChatRoomService {
 
-    public final ChatRoomRepository chatRoomRepository;
+	public final ChatRoomRepository chatRoomRepository;
 
-    public void enterChatRoom(String roomId, String sessionId,String username) {
-        chatRoomRepository.enterChatRoom(roomId,sessionId,username);
-    }
+	public void enterChatRoom(String roomNo, String sessionId, String username) {
+		chatRoomRepository.enterChatRoom(roomNo, sessionId, username);
+	}
 
-    public String disconnectWebsocket(String sessionId){
-        return chatRoomRepository.disconnectWebsocket(sessionId);
-    }
+	public String disconnectWebsocket(String sessionId) {
+		return chatRoomRepository.disconnectWebsocket(sessionId);
+	}
 
-    public String leaveChatRoom(String sessionId){
-        return chatRoomRepository.leaveChatRoom(sessionId);
-    }
-    public List<String> findUser(String roomId,String sessionId){
+	public String leaveChatRoom(String sessionId) {
+		return chatRoomRepository.leaveChatRoom(sessionId);
+	}
 
-       return chatRoomRepository.findUsersInWorkSpace(roomId,sessionId);
+    public List<String> findUser(String roomNo,String sessionId){
+       return chatRoomRepository.findUsersInWorkSpace(roomNo,sessionId);
     }
 }

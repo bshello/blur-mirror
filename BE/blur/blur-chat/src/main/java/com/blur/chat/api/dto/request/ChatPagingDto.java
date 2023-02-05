@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class ChatPagingDto {
 
-    private String  message;
-    private String  writer;
-    private String  cursor;
+    private String message;
+    private String writer;
+    private String cursor;
 }

@@ -1,5 +1,7 @@
 package com.blur.chat.api.dto.request;
 
+import java.util.List;
+
 import com.blur.chat.api.entity.Chat;
 
 import lombok.AllArgsConstructor;
@@ -15,15 +17,22 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ChatMessageSaveDto {
 
+    public enum MessageType{
+        ENTER,TALK,QUIT
+    }
+
+    private MessageType type;
     private String roomNo;
     private String writer;
     private String nickname;
     private String message;
     private String createdAt;
+    private List<String> userList;
 
     public static ChatMessageSaveDto of (Chat chat){
         return ChatMessageSaveDto.builder()
-                .roomId(chat.getWorkSpace().getId().toString())
+                .type(MessageType.TALK)
+                .roomNo(chat.getChatroom().getChatroomNo().toString())
                 .writer(chat.getUsers())
                 .createdAt(chat.getCreatedAt())
                 .message(chat.getMessage())
@@ -32,6 +41,7 @@ public class ChatMessageSaveDto {
 
     public static ChatMessageSaveDto createChatMessageSaveDto(ChatMessageSaveDto saveDto){
         return ChatMessageSaveDto.builder()
+                .type(MessageType.TALK)
                 .roomNo(saveDto.getRoomNo())
                 .writer(saveDto.getWriter())
                 .createdAt(saveDto.getCreatedAt())

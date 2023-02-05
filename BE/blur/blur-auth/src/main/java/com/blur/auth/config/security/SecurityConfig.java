@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsUtils;
@@ -46,10 +47,67 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final TokenAccessDeniedHandler tokenAccessDeniedHandler;
     private final UserRefreshTokenRepository userRefreshTokenRepository;
     
-
     /**
      * UserDetailsService 설정
      * */
+    
+//    @Bean
+//    protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//    	http
+//		.httpBasic()
+//			.disable()
+//			.cors()
+////        .and()
+////            .sessionManagement()
+////            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//        
+//        .and()
+//            .csrf().disable()
+//            .headers()
+//            .frameOptions()
+//            .sameOrigin()
+//        .and()
+//        	.authorizeRequests()
+//        	.antMatchers("/**")
+//        	.permitAll()
+////        .and()
+////            .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+////            .exceptionHandling()
+////            .authenticationEntryPoint(new RestAuthenticationEntryPoint())
+////            .accessDeniedHandler(tokenAccessDeniedHandler)
+//       .and()
+//            .formLogin().disable()
+//            .httpBasic().disable()
+//            .exceptionHandling()
+//            .authenticationEntryPoint(new RestAuthenticationEntryPoint())
+//            .accessDeniedHandler(tokenAccessDeniedHandler)
+//        .and()
+//            .authorizeRequests()
+//            .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+//            .antMatchers("/api/**").hasAnyAuthority(RoleType.USER.getCode())
+//            .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
+//            .anyRequest().authenticated()
+//        .and()
+//            .oauth2Login()
+//            .authorizationEndpoint()
+//            .baseUri("/oauth2/authorization")
+//            .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
+//        .and()
+//            .redirectionEndpoint()
+//            .baseUri("/*/oauth2/code/*")
+//        .and()
+//            .userInfoEndpoint()
+//            .userService(oAuth2UserService)
+//        .and()
+//            .successHandler(oAuth2AuthenticationSuccessHandler())
+//            .failureHandler(oAuth2AuthenticationFailureHandler());
+//
+//    	http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+//    	
+//    	return http.build();
+//    }
+    
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)

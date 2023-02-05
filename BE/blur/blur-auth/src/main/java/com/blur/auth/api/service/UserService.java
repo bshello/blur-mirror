@@ -24,9 +24,7 @@ public class UserService implements UserDetailsService {
     public User getUser(String userId) {
         return userRepository.findByUserId(userId);
     }
-    
-//    private final UserPrincipal userPrincipal;
-    
+        
     private final BCryptPasswordEncoder encoder;
 
     public User register(UserDto dto) throws Exception{

@@ -2,11 +2,14 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.8'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
+
+apply plugin: 'io.spring.dependency-management'
 
 group = 'com.blur.chat'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 configurations {
 	compileOnly {
@@ -25,12 +28,52 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	runtimeOnly 'mysql:mysql-connector-java'
 	
 	// for websocket, stomp
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation group: 'org.webjars', name: 'stomp-websocket', version: '2.3.3-1'
+    
+    //Junit Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation("org.assertj:assertj-core:3.23.1")
+    
+   	//querydsl
+	implementation "com.querydsl:querydsl-jpa:5.0.0"
+	implementation "com.querydsl:querydsl-apt:5.0.0"
+}
+
+//QueryDsl 관련 세팅
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+	main.java.srcDir querydslDir
+}
+
+// querydsl 컴파일시 사용할 옵션 설정
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
+}
+/*** comileQuerydsl.doFirst 추가*/
+compileQuerydsl.doFirst {
+	if (file(querydslDir).exists()) delete(file(querydslDir))
 }
 
 tasks.named('test') {

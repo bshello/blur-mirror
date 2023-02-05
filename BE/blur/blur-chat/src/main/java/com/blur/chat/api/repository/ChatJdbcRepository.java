@@ -1,14 +1,16 @@
 package com.blur.chat.api.repository;
 
-import com.hanghae.final_project.domain.model.Chat;
-import lombok.RequiredArgsConstructor;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
+import com.blur.chat.api.entity.Chat;
+
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
@@ -30,7 +32,7 @@ public class ChatJdbcRepository {
                 Chat chat = chatList.get(i);
                 ps.setString(1,chat.getMessage());
                 ps.setString(2,chat.getUsers());
-                ps.setLong(3,chat.getWorkSpace().getId());
+                ps.setLong(3,chat.getChatroom().getChatroomNo());
                 ps.setString(4,chat.getCreatedAt());
             }
 

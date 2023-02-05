@@ -24,22 +24,17 @@ public class AuthToken {
     private final String token;
     private final Key key;
     
-//    private final UserRepository userRepository;
     
     private static final String AUTHORITIES_KEY = "auth";
 
-//    AuthToken(String id, Date expiry, Key key, UserRepository userRepository) {
     AuthToken(String id, Date expiry, Key key) {
         this.key = key;
         this.token = createAuthToken(id, expiry);
-//        this.userRepository = userRepository;
     }
     
-//    AuthToken(String id, String role, Date expiry, Key key, UserRepository userRepository) {
     AuthToken(String id, String role, Date expiry, Key key) {
         this.key = key;
         this.token = createAuthToken(id, role, expiry);
-//        this.userRepository = userRepository;
     }
 
     private String createAuthToken(String id, Date expiry) {
@@ -51,17 +46,8 @@ public class AuthToken {
     }
 
     private String createAuthToken(String id, String role, Date expiry) {
-//    	User user = userRepository.findByUserId(id);
-//    	Integer userNo = user.getUserNo();
-    	
-//    	Claims claims = Jwts.claims().setSubject(id);
-//    	claims.put("userId", id);
-//    	claims.put("userNo", userNo);
-//    	claims.put(AUTHORITIES_KEY, role);
-    	
         return Jwts.builder()
                 .setSubject(id)
-//                .claim("userNo", userNo)
                 .claim(AUTHORITIES_KEY, role)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .setExpiration(expiry)

@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ChatPagingResponseDto {
 
-    private Long roomNo;
+    private Long chatroomNo;
     private String writer;
     private String message;
     private String createdAt;
@@ -25,7 +25,7 @@ public class ChatPagingResponseDto {
     public static ChatPagingResponseDto of(Chat chat){
         return ChatPagingResponseDto.builder()
                 .writer(chat.getUsers())
-                .workSpaceId(chat.getWorkSpace().getId())
+                .chatroomNo(chat.getChatroom().getChatroomNo())
                 .createdAt(chat.getCreatedAt())
                 .message(chat.getMessage())
                 .build();
@@ -35,7 +35,7 @@ public class ChatPagingResponseDto {
         return ChatPagingResponseDto.builder()
                 .writer(chatMessageSaveDto.getWriter())
                 .createdAt(chatMessageSaveDto.getCreatedAt())
-                .roomNo(Long.parseLong(chatMessageSaveDto.roomNo()))
+                .chatroomNo(Long.parseLong(chatMessageSaveDto.getRoomNo()))
                 .message(chatMessageSaveDto.getMessage())
                 .build();
     }

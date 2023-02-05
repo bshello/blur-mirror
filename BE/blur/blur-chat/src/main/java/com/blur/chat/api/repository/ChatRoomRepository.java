@@ -1,18 +1,25 @@
 package com.blur.chat.api.repository;
 
-import com.hanghae.final_project.api.chat.dto.ChatRoomDto;
-import com.hanghae.final_project.api.chat.dto.request.ChatMessageSaveDto;
-import com.hanghae.final_project.service.chat.ChatRedisCacheService;
-import com.hanghae.final_project.global.util.ChatUtils;
-import com.hanghae.final_project.domain.repository.workspace.WorkSpaceRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.data.redis.core.BoundHashOperations;
+import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.stereotype.Repository;
+
+import com.blur.chat.api.dto.request.ChatMessageSaveDto;
+import com.blur.chat.api.service.ChatRedisCacheService;
+import com.blur.chat.utils.ChatUtils;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.*;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.PostConstruct;
-import java.util.*;
 
 @RequiredArgsConstructor
 @Repository
@@ -22,7 +29,7 @@ public class ChatRoomRepository {
     private final RedisTemplate<String, Object> redisTemplate;
     private final RedisTemplate<String, String> roomRedisTemplate;
 
-    private final WorkSpaceRepository workSpaceRepository;
+//    private final WorkSpaceRepository workSpaceRepository;
 
     private final ChatRedisCacheService chatRedisCacheService;
 
@@ -48,35 +55,35 @@ public class ChatRoomRepository {
     }
 
     //채팅 SubScribe 할 때, WebSocket SessionId 를 통해서 redis에 저장
-    public void enterChatRoom(String roomId, String sessionId, String username) {
+    public void enterChatRoom(String roomNo, String sessionId, String username) {
 
         //세션 - 세션ID - 방 번호
-        opsHashEnterRoom.put(SESSION_ID, sessionId, roomId);
+        opsHashEnterRoom.put(SESSION_ID, sessionId, roomNo);
 
         //채팅방 - 세션ID - 유저 아이디
-        opsHashEnterRoom.put(CHAT_ROOM_ID_ + roomId, sessionId, username);
+        opsHashEnterRoom.put(CHAT_ROOM_ID_ + roomNo, sessionId, username);
 
     }
 
     //채팅 DisConnect 할 때, WebSocket SessionId 를 통해서 redis에서 삭제
     public String disconnectWebsocket(String sessionId) {
-        String roomId = opsHashEnterRoom.get(SESSION_ID, sessionId);
-        opsHashEnterRoom.delete(CHAT_ROOM_ID_ + roomId, sessionId);
+        String roomNo = opsHashEnterRoom.get(SESSION_ID, sessionId);
+        opsHashEnterRoom.delete(CHAT_ROOM_ID_ + roomNo, sessionId);
         opsHashEnterRoom.delete(SESSION_ID, sessionId);
-        return roomId;
+        return roomNo;
     }
 
     //채팅 unsubscribe 할떄 ,
     public String leaveChatRoom(String sessionId) {
-        String roomId = opsHashEnterRoom.get(SESSION_ID, sessionId);
-        opsHashEnterRoom.delete(CHAT_ROOM_ID_ + roomId, sessionId);
-        return roomId;
+        String roomNo = opsHashEnterRoom.get(SESSION_ID, sessionId);
+        opsHashEnterRoom.delete(CHAT_ROOM_ID_ + roomNo, sessionId);
+        return roomNo;
     }
 
     //채팅 참여자 list 생성
-    public List<String> findUsersInWorkSpace(String roomId, String sessionId) {
+    public List<String> findUsersInWorkSpace(String roomNo, String sessionId) {
 
-        setOperations = roomRedisTemplate.boundHashOps(CHAT_ROOM_ID_ + roomId);
+        setOperations = roomRedisTemplate.boundHashOps(CHAT_ROOM_ID_ + roomNo);
         ScanOptions scanOptions = ScanOptions.scanOptions().build();
         List<String> userListInWorkSpace = new ArrayList<>();
 

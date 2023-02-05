@@ -1,20 +1,26 @@
-package com.hanghae.final_project.global.util.scheduler;
+package com.blur.chat.utils;
 
-import com.hanghae.final_project.api.chat.dto.request.ChatMessageSaveDto;
-import com.hanghae.final_project.domain.model.Chat;
-import com.hanghae.final_project.domain.repository.chat.ChatJdbcRepository;
-import com.hanghae.final_project.domain.repository.chat.ChatRepository;
-import com.hanghae.final_project.domain.model.WorkSpace;
-import com.hanghae.final_project.domain.repository.workspace.WorkSpaceRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.redis.core.BoundZSetOperations;
+import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.blur.chat.api.dto.request.ChatMessageSaveDto;
+import com.blur.chat.api.entity.Chat;
+import com.blur.chat.api.entity.Chatroom;
+import com.blur.chat.api.repository.ChatJdbcRepository;
+import com.blur.chat.api.repository.ChatRepository;
+import com.blur.chat.api.repository.ChatRoomNoRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
@@ -28,7 +34,10 @@ public class ChatWriteBackScheduling {
     private final ChatRepository chatRepository;
 
     private final ChatJdbcRepository chatJdbcRepository;
-    private final WorkSpaceRepository workSpaceRepository;
+    
+//    private final WorkSpaceRepository workSpaceRepository;
+    
+    private final ChatRoomNoRepository chatRoomNoRepository;
 
     @Scheduled(cron = "0 0 0/1 * * *")
     @Transactional
@@ -43,17 +52,17 @@ public class ChatWriteBackScheduling {
         try(Cursor<ZSetOperations.TypedTuple<ChatMessageSaveDto>> cursor= setOperations.scan(scanOptions)){
 
             while(cursor.hasNext()){
-                ZSetOperations.TypedTuple<ChatMessageSaveDto> chatMessageDto =cursor.next();
+                ZSetOperations.TypedTuple<ChatMessageSaveDto> chatMessageDto = cursor.next();
 
-                WorkSpace workSpace= workSpaceRepository
-                        .findById(Long.parseLong(chatMessageDto.getValue().getRoomId()))
+                Chatroom chatroom = chatRoomNoRepository
+                        .findById(Long.parseLong(chatMessageDto.getValue().getRoomNo()))
                         .orElse(null);
 
-                if(workSpace==null) {
+                if(chatroom == null) {
                     continue;
                 }
 
-                chatList.add( Chat.of(chatMessageDto.getValue(),workSpace));
+                chatList.add( Chat.of(chatMessageDto.getValue(), chatroom));
             }
             chatJdbcRepository.batchInsertRoomInventories(chatList);
 
