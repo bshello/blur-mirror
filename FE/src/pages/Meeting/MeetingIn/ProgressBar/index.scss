@@ -1,17 +1,17 @@
 .ProgressBar {
   position: absolute;
   background-color: #faeaea33;
-  left: 20px;
-  right: 20px;
+  left: 0px;
+  right: 0px;
   height: 20px;
-  top: -40px;
+  bottom: 0px;
   border-radius: 30px;
   line-height: 30px;
 }
 
-.pgb {
+.currentProcessBar {
   width: 0%;
-  opacity: 0;
+  opacity: 1;
   height: 20px;
   background: linear-gradient(to right, #50a1a3, #b4cacb);
   color: white;
