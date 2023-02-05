@@ -87,26 +87,30 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   const [idCheck, setIdCheck] = useState(false);
 
   const callIdCheck = () => {
-    axios({
-      method: "post",
-      url: `${API_URL}/checkId`,
-      data: {
-        userId: id,
-      },
-    })
-      .then((res) => {
-        console.log(res);
-
-        if (!res.data) {
-          alert("아이디가 중복되었습니다");
-        } else {
-          alert("사용가능한 아이디입니다.");
-          setIdCheck(res.data);
-        }
+    if (isId) {
+      axios({
+        method: "post",
+        url: `${API_URL}/checkId`,
+        data: {
+          userId: id,
+        },
       })
-      .catch((err) => {
-        alert("중복확인 실패했습니다");
-      });
+        .then((res) => {
+          console.log(res);
+
+          if (!res.data) {
+            alert("아이디가 중복되었습니다");
+          } else {
+            alert("사용가능한 아이디입니다.");
+            setIdCheck(res.data);
+          }
+        })
+        .catch((err) => {
+          alert("중복확인 실패했습니다");
+        });
+    } else {
+      alert("id형식을 맞춰주세요");
+    }
   };
 
   const [psCheck, setPsCheck] = useState(false);
@@ -142,22 +146,26 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   const [emailCheck, setEmailCheck] = useState(false);
 
   const sendToEmail = () => {
-    axios({
-      method: "post",
-      url: `${API_URL}/sendAuthEmail`,
-      data: {
-        email: email,
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        setEmailCheck(true);
-        alert("인증번호를 보냈습니다!");
+    if (isEmail) {
+      axios({
+        method: "post",
+        url: `${API_URL}/sendAuthEmail`,
+        data: {
+          email: email,
+        },
       })
-      .catch((err) => {
-        console.log(err);
-        alert("인증번호를 보내지 못했습니다.");
-      });
+        .then((res) => {
+          console.log(res);
+          setEmailCheck(true);
+          alert("인증번호를 보냈습니다!");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("인증번호를 보내지 못했습니다.");
+        });
+    } else {
+      alert("이메일 형식을 지켜주세요");
+    }
   };
 
   const [emailCodeCheck, setEmailCodeCheck] = useState(false);
@@ -254,7 +262,14 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             placeholder="  ID는 공백없이 3자이상 15자미만"
             onChange={enterId}
           ></input>
-          {id.length > 0 && <span>{idMessage}</span>}
+          {id.length > 0 && (
+            <span
+              className="formCheckMessage"
+              style={isId ? { color: "green" } : { color: "red" }}
+            >
+              {idMessage}
+            </span>
+          )}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -277,7 +292,14 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             type="password"
             onChange={enterPs1}
           ></input>
-          {ps1.length > 0 && <span>{passwordMessage}</span>}
+          {ps1.length > 0 && (
+            <span
+              className="formCheckMessage"
+              style={isPassword ? { color: "green" } : { color: "red" }}
+            >
+              {passwordMessage}
+            </span>
+          )}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -313,7 +335,14 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             placeholder="  E-mail을 입력해 주세요"
             onChange={enterEmail}
           ></input>
-          {email.length > 0 && <span>{emailMessage}</span>}
+          {email.length > 0 && (
+            <span
+              className="formCheckMessage"
+              style={isEmail ? { color: "green" } : { color: "red" }}
+            >
+              {emailMessage}
+            </span>
+          )}
           <button
             onClick={(e) => {
               e.preventDefault();

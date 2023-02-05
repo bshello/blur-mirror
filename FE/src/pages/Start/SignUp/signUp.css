@@ -70,12 +70,20 @@
   border-radius: 7.5px;
   border: 0;
 }
+.SUModal .SUModalInputIdDiv .formCheckMessage {
+  top: 100px;
+  position: absolute;
+  width: 350px;
+  height: 56.25px;
+  left: 0px;
+  border: 0;
+}
 .SUModal .SUModalInputPwDiv {
   position: absolute;
   width: 330px;
   height: 86.25px;
   left: 65.25px;
-  top: 215px;
+  top: 245px;
 }
 .SUModal .SUModalInputPwDiv .SUModalInputPwLabel {
   position: absolute;
@@ -103,12 +111,20 @@
   border-radius: 7.5px;
   border: 0;
 }
+.SUModal .SUModalInputPwDiv .formCheckMessage {
+  top: 100px;
+  position: absolute;
+  width: 350px;
+  height: 56.25px;
+  left: 0px;
+  border: 0;
+}
 .SUModal .SUModalInputPwChkDiv {
   position: absolute;
   width: 330px;
   height: 86.25px;
   left: 66.5px;
-  top: 321.25px;
+  top: 380px;
 }
 .SUModal .SUModalInputPwChkDiv .SUModalInputPwChkLabel {
   position: absolute;
@@ -141,7 +157,7 @@
   width: 330px;
   height: 87.75px;
   left: 66.75px;
-  top: 427.5px;
+  top: 520px;
 }
 .SUModal .SUModalInputEmailDiv .SUModalInputEmailLabel {
   position: absolute;
@@ -169,12 +185,20 @@
   border-radius: 10px;
   border: 0;
 }
+.SUModal .SUModalInputEmailDiv .formCheckMessage {
+  top: 100px;
+  position: absolute;
+  width: 350px;
+  height: 56.25px;
+  left: 0px;
+  border: 0;
+}
 .SUModal .SUModalInputEmailConfirmDiv {
   position: absolute;
   width: 330px;
   height: 87.75px;
   left: 66.75px;
-  top: 550px;
+  top: 670px;
 }
 .SUModal .SUModalInputEmailConfirmDiv .SUModalInputEmailConfirmLabel {
   position: absolute;
@@ -207,7 +231,7 @@
   width: 330px;
   height: 56.25px;
   left: 66.75px;
-  top: 670px;
+  top: 790px;
   cursor: pointer;
   background: #50a1a3;
   color: #ffffff;
@@ -235,7 +259,7 @@
   width: 330px;
   height: 56.25px;
   left: 66px;
-  top: 740px;
+  top: 860px;
   cursor: pointer;
   background: #e1f1f2;
   border-radius: 10px;
@@ -262,5 +286,5 @@
   width: 10px;
   height: 10px;
   left: 66px;
-  top: 800px;
+  top: 920px;
 }/*# sourceMappingURL=signUp.css.map */

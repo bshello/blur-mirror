@@ -81,6 +81,16 @@
       border-radius: 7.5px;
       border: 0;
     }
+
+    .formCheckMessage {
+      top: 100px;
+      position: absolute;
+      width: 350px;
+      height: 56.25px;
+      left: 0px;
+
+      border: 0;
+    }
   }
 
   .SUModalInputPwDiv {
@@ -88,7 +98,7 @@
     width: 330px;
     height: 86.25px;
     left: 65.25px;
-    top: 215px;
+    top: 245px;
 
     .SUModalInputPwLabel {
       position: absolute;
@@ -121,6 +131,16 @@
       border-radius: 7.5px;
       border: 0;
     }
+
+    .formCheckMessage {
+      top: 100px;
+      position: absolute;
+      width: 350px;
+      height: 56.25px;
+      left: 0px;
+
+      border: 0;
+    }
   }
 
   .SUModalInputPwChkDiv {
@@ -128,7 +148,7 @@
     width: 330px;
     height: 86.25px;
     left: 66.5px;
-    top: 321.25px;
+    top: 380px;
 
     .SUModalInputPwChkLabel {
       position: absolute;
@@ -168,7 +188,7 @@
     width: 330px;
     height: 87.75px;
     left: 66.75px;
-    top: 427.5px;
+    top: 520px;
 
     .SUModalInputEmailLabel {
       position: absolute;
@@ -201,6 +221,16 @@
       border-radius: 10px;
       border: 0;
     }
+
+    .formCheckMessage {
+      top: 100px;
+      position: absolute;
+      width: 350px;
+      height: 56.25px;
+      left: 0px;
+
+      border: 0;
+    }
   }
 
   .SUModalInputEmailConfirmDiv {
@@ -208,7 +238,7 @@
     width: 330px;
     height: 87.75px;
     left: 66.75px;
-    top: 550px;
+    top: 670px;
 
     .SUModalInputEmailConfirmLabel {
       position: absolute;
@@ -248,7 +278,7 @@
     width: 330px;
     height: 56.25px;
     left: 66.75px;
-    top: 670px;
+    top: 790px;
     cursor: pointer;
 
     background: #50a1a3;
@@ -282,7 +312,7 @@
     width: 330px;
     height: 56.25px;
     left: 66px;
-    top: 740px;
+    top: 860px;
     cursor: pointer;
 
     background: #e1f1f2;
@@ -315,6 +345,6 @@
     width: 10px;
     height: 10px;
     left: 66px;
-    top: 800px;
+    top: 920px;
   }
 }
