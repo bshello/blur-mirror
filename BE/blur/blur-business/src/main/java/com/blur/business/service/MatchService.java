@@ -22,8 +22,30 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
-public class MatchService {
 
+public class MatchService {
+    static class tmp {
+        int mmr;
+        long userNo;
+        public tmp(int mmr, long userNo) {
+            super();
+            this.mmr = mmr;
+            this.userNo = userNo;
+        }
+        public int getMmr() {
+            return mmr;
+        }
+        public void setMmr(int mmr) {
+            this.mmr = mmr;
+        }
+        public long getUserNo() {
+            return userNo;
+        }
+        public void setUserNo(long userNo) {
+            this.userNo = userNo;
+        }
+
+    }
     @Autowired
     private final UserRepository userRepository;
 
@@ -65,8 +87,8 @@ public class MatchService {
             return;
         }
 
-        Queue<int[]> maleList = new PriorityQueue<>((o1, o2) -> {
-            if(o1[0] == o2[0]) {
+        Queue<tmp> maleList = new PriorityQueue<>((o1, o2) -> {
+            if(o1.getMmr() == o2.getMmr()) {
                 return Integer.compare(o2[1], o1[1]);
             }
             return Integer.compare(o2[0], o1[0]);
@@ -76,10 +98,10 @@ public class MatchService {
         for (int male : males.keySet()) {
             MatchDto maleDto = males.get(male);
             if (!filter(maleDto, femaleDto)) {continue;}
-            maleList.offer(new int[] {maleDto.getPoint(), maleDto.getUserNo()});
+            maleList.offer(new tmp(maleDto.getPoint(), maleDto.getUserNo()));
         }
         while (!maleList.isEmpty()) {
-            Integer maleNo = maleList.poll()[1];
+            long maleNo = maleList.poll().getUserNo();
             MatchDto selectedMale = males.get(maleNo);
             if (selectedMale != null) {
                 males.remove(maleNo);
