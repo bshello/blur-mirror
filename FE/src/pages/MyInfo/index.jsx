@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
-import Alert from "../../pages/Start/Alert/alert";
+
+import Alert from "../Start/Alert/index";
 import HashIntCheck from "./Hash/HashIntCheck/HashIntCheck";
 
 function MyInfo() {
@@ -129,6 +130,7 @@ function MyInfo() {
         <div className="MISetDiv"></div>
       </div>
       <span className="MIHashTag">Hash Tag</span>
+
       <div
         className="MIHashSet"
         onClick={showHashModal}
@@ -136,6 +138,7 @@ function MyInfo() {
         disabled={alertModal === true ? true : false}
       >
         {/* <HashIntCheck /> */}
+
         <div className="MIHashSetIcon">
           <span className="MIHashSetText">설정하기</span>
         </div>

@@ -1,18 +1,15 @@
 import "./signIn.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { saveToken } from "../../../redux/reducers/saveToken";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "http://192.168.31.192:8080/user";
+  const API_URL = "http://192.168.31.192:8080/auth";
   const SOCIAL_API_URL = "http://192.168.31.192:8080";
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const ttoken = useSelector((state) => state.strr.token);
-  console.log(ttoken);
 
   const [signId, setSignId] = useState(null);
   const enterSignId = (e) => {
@@ -41,6 +38,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           console.log(res.data.accessToken.token);
           console.log(res.data.refreshToken.token);
           dispatch(saveToken(res.data.accessToken.token));
+
           navigate("/home");
         })
         .catch((err) => {
@@ -51,10 +49,6 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
       alert("아이디와 비밀번호를 입력해주세요");
     }
   };
-
-  useEffect(() => {
-    console.log(ttoken);
-  }, [ttoken]);
 
   const socialSignIn = (socialType) => {
     return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=http://localhost:3000/social/redirect`;

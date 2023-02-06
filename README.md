@@ -6,7 +6,7 @@
 
 ## SSAFY 8기 2학기 공통 프로젝트 - BLUR
 
-![mockup1.jpg](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/mockup1.jpg)
+![mockup1.jpg](README_IMG/mockup1.jpg)
 
 ## 개요
 
@@ -244,27 +244,172 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 # 백앤드 디렉토리 구조
 
 ---
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2011.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2012.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2013.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2014.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2015.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2016.png)
-
 # 프론트엔드 디렉토리 구조
 
 ---
 
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2017.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2018.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2019.png)
-
-![Untitled](%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2%20md%206f1198312b9449cd872aa2e1c87f41ff/Untitled%2020.png)
+```
+|   App.css
+|   App.js
+|   App.test.js
+|   index.js
+|   test.txt
+|   
++---components
+|   +---Footer
+|   |       index.css
+|   |       index.css.map
+|   |       index.jsx
+|   |       index.scss
+|   |       
+|   \---Header
+|           index.css
+|           index.css.map
+|           index.jsx
+|           index.scss
+|           
++---pages
+|   +---Home
+|   |   |   index.css
+|   |   |   index.css.map
+|   |   |   index.jsx
+|   |   |   index.scss
+|   |   |   
+|   |   +---BlurInfo
+|   |   |       blurInfo.css
+|   |   |       blurInfo.css.map
+|   |   |       blurInfo.jsx
+|   |   |       blurInfo.scss
+|   |   |       
+|   |   +---Slide1
+|   |   |       slide1.jsx
+|   |   |       
+|   |   +---Slide2
+|   |   |       slide2.jsx
+|   |   |       
+|   |   \---Slide3
+|   |           slide3.jsx
+|   |           
+|   +---Meeting
+|   |   |   Counter.jsx
+|   |   |   index.css
+|   |   |   index.css.map
+|   |   |   index.jsx
+|   |   |   index.scss
+|   |   |   
+|   |   +---MeetingIn
+|   |   |   |   index.css
+|   |   |   |   index.css.map
+|   |   |   |   index.jsx
+|   |   |   |   index.scss
+|   |   |   |   
+|   |   |   +---BlockModal
+|   |   |   |       index.css
+|   |   |   |       index.css.map
+|   |   |   |       index.jsx
+|   |   |   |       index.scss
+|   |   |   |       
+|   |   |   +---ProgressBar
+|   |   |   |       index.css
+|   |   |   |       index.css.map
+|   |   |   |       index.jsx
+|   |   |   |       index.scss
+|   |   |   |       
+|   |   |   \---Timer
+|   |   |           index.css
+|   |   |           index.css.map
+|   |   |           index.jsx
+|   |   |           index.scss
+|   |   |           
+|   |   \---MeetingNotIn
+|   |           index.css
+|   |           index.css.map
+|   |           index.jsx
+|   |           index.scss
+|   |           
+|   +---MyInfo
+|   |   |   index.css
+|   |   |   index.css.map
+|   |   |   index.jsx
+|   |   |   index.scss
+|   |   |   
+|   |   +---Hash
+|   |   |       Hash.css
+|   |   |       Hash.css.map
+|   |   |       Hash.jsx
+|   |   |       Hash.scss
+|   |   |       
+|   |   \---MyInfoModal
+|   |       |   myInfoModal.css
+|   |       |   myInfoModal.css.map
+|   |       |   myInfoModal.jsx
+|   |       |   myInfoModal.scss
+|   |       |   
+|   |       +---SetModal
+|   |       |       setmodal.css
+|   |       |       setmodal.css.map
+|   |       |       setmodal.jsx
+|   |       |       setmodal.scss
+|   |       |       
+|   |       \---style
+|   |           \---setRange
+|   |                   setrange.css
+|   |                   setrange.css.map
+|   |                   setrange.jsx
+|   |                   setrange.scss
+|   |                   
+|   \---Start
+|       |   index.css
+|       |   index.css.map
+|       |   index.jsx
+|       |   index.scss
+|       |   
+|       +---Alert
+|       |       index.css
+|       |       index.css.map
+|       |       index.jsx
+|       |       index.scss
+|       |       
+|       +---ModalWrap
+|       |       modalWrap.css
+|       |       modalWrap.css.map
+|       |       modalWrap.js
+|       |       modalWrap.scss
+|       |       
+|       +---SearchPw
+|       |       searchPw.css
+|       |       searchPw.css.map
+|       |       searchPw.js
+|       |       searchPw.scss
+|       |       
+|       +---SignIn
+|       |       signIn.css
+|       |       signIn.css.map
+|       |       signIn.jsx
+|       |       signIn.scss
+|       |       signInWrap.jsx
+|       |       socialSignIn.js
+|       |       
+|       \---SignUp
+|               signIn.css
+|               signUp.css
+|               signUp.css.map
+|               signUp.js
+|               signUp.scss
+|               
++---redux
+|   |   store.js
+|   |   
+|   \---reducers
+|           MToggle.jsx
+|           saveToken.jsx
+|           userEdit.jsx
+|           
+\---style
+        common.css
+        common.css.map
+        common.scss
+        normalize.css
+        normalize.css.map
+        normalize.scss
+```

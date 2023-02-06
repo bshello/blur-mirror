@@ -1,4 +1,4 @@
-import "./alert.css";
+import "./index.css";
 
 function Alert({ showAlertModal, content }) {
   return (
