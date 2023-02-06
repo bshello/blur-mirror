@@ -143,8 +143,9 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   }, [decode]);
 
-  const [emailCheck, setEmailCheck] = useState(false);
+  const [emailCheck, setEmailCheck] = useState(true);
 
+  //이메일로 인증코드 보내는 함수
   const sendToEmail = () => {
     if (isEmail) {
       axios({
@@ -168,7 +169,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   };
 
-  const [emailCodeCheck, setEmailCodeCheck] = useState(false);
+  const [emailCodeCheck, setEmailCodeCheck] = useState(true);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -210,19 +211,19 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   }, [id]);
 
-  useEffect(() => {
-    if (emailCheck === true) {
-      alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
-      setEmailCheck(false);
-    }
-  }, [email]);
+  // useEffect(() => {
+  //   if (emailCheck === true) {
+  //     alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
+  //     setEmailCheck(false);
+  //   }
+  // }, [email]);
 
-  useEffect(() => {
-    if (emailCodeCheck === true) {
-      alert("이메일인증코드가 바뀌었습니다. 다시 인증코드 보내세요");
-    }
-    setEmailCodeCheck(false);
-  }, [emailCode]);
+  // useEffect(() => {
+  //   if (emailCodeCheck === true) {
+  //     alert("이메일인증코드가 바뀌었습니다. 다시 인증코드 보내세요");
+  //   }
+  //   setEmailCodeCheck(false);
+  // }, [emailCode]);
 
   const signUpButton = useRef(null);
 

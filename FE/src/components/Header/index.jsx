@@ -15,7 +15,9 @@ function Header({ showSignInModal }) {
   const logInOut = () => {
     if (userState) {
       dispatch(saveToken(null));
+
       console.log("로그아웃");
+
       navigate("/");
     } else {
       showSignInModal();
@@ -26,6 +28,7 @@ function Header({ showSignInModal }) {
     if (userState) {
       navigate("/MyInfo");
     } else {
+      console.log(userState);
       showSignInModal();
     }
   };

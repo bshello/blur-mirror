@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import store from "../src/redux/store";
 import App from "./App";
+import { persistor, store } from "../src/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 // import "./index.css";                            index에서는 잘 사용하지 않음
 // import reportWebVitals from "./reportWebVitals"; 리액트 성능 측정 도구(X)
@@ -10,9 +11,9 @@ import App from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
+    <PersistGate loading={null} persistor={persistor}>
       <App />
-    </React.StrictMode>
+    </PersistGate>
   </Provider>
 );
 

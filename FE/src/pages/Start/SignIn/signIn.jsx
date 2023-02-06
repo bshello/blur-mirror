@@ -4,9 +4,10 @@ import axios from "axios";
 import { saveToken } from "../../../redux/reducers/saveToken";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Cookies } from "react-cookie";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "http://192.168.31.192:8080/auth";
+  const API_URL = "http://192.168.31.192:8080/user";
   const SOCIAL_API_URL = "http://192.168.31.192:8080";
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,10 +35,11 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         },
       })
         .then((res) => {
-          console.log(res.data);
-          console.log(res.data.accessToken.token);
-          console.log(res.data.refreshToken.token);
-          dispatch(saveToken(res.data.accessToken.token));
+          console.log(res);
+          console.log(res.data.body);
+          console.log(res.data.body.token);
+
+          dispatch(saveToken(res.data.body.token));
 
           navigate("/home");
         })
