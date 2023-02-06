@@ -1,0 +1,43 @@
+.hashSerchbar {
+  position: absolute;
+  height: 230px;
+  width: 550px;
+  top: 65px;
+  z-index: 40;
+  left: 20px;
+  background-color: rgba(192, 192, 192, 0.951);
+  color: #50a1a3;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: auto;
+
+  .ilserchbar {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 5.5px;
+    float: left;
+    cursor: pointer;
+
+    background: rgba(4, 37, 37, 0.241);
+    border-radius: 40px;
+    // align-items: center;
+    // justify-content: center;
+    // display: flex;
+    font-weight: 400px;
+    font-size: 20px;
+    line-height: 35px;
+
+    border: solid 2px white;
+
+    color: #c8c7c7;
+  }
+  :hover {
+    background-color: #68bbbd;
+    color: white;
+    border: solid white 2px;
+  }
+}

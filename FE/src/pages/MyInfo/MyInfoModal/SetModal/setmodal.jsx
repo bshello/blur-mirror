@@ -4,7 +4,7 @@ import "./setmodal.css";
 import Slider from "react-input-slider";
 import styled from "styled-components";
 
-function SetModal({ SetRange }) {
+function SetModal() {
   // 성별 바꾸기
   const [gender, setGender] = useState(true);
   const handleClick = () => setGender((setGender) => !setGender);
@@ -37,7 +37,13 @@ function SetModal({ SetRange }) {
             {fromrange.x} km
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv" />
-              <Slider className="rangelocation" axis="x" xmax="50" x={fromrange.x} onChange={({ x }) => setfromrange((state) => ({ ...state, x }))} />
+              <Slider
+                className="rangelocation"
+                axis="x"
+                xmax="50"
+                x={fromrange.x}
+                onChange={({ x }) => setfromrange((state) => ({ ...state, x }))}
+              />
             </div>
           </div>
 
@@ -46,7 +52,13 @@ function SetModal({ SetRange }) {
             {agerange.x} 살
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv"></div>
-              <Slider className="rangelocation" axis="x" x={agerange.x} xmax="10" onChange={({ x }) => setagerange((state) => ({ ...state, x }))} />
+              <Slider
+                className="rangelocation"
+                axis="x"
+                x={agerange.x}
+                xmax="10"
+                onChange={({ x }) => setagerange((state) => ({ ...state, x }))}
+              />
             </div>
           </div>
         </div>

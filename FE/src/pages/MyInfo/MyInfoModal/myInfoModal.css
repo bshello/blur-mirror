@@ -715,4 +715,8 @@ input {
   color: #0095f6;
   display: inline-block;
   cursor: pointer;
+}
+
+select {
+  border: none;
 }/*# sourceMappingURL=myInfoModal.css.map */

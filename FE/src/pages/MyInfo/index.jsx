@@ -1,12 +1,13 @@
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../../pages/Start/Alert/alert";
+import HashIntCheck from "./Hash/HashIntCheck/HashIntCheck";
 
 function MyInfo() {
   //profile edit modal
@@ -19,6 +20,12 @@ function MyInfo() {
   const [hashModal, setHashModal] = useState(false);
   const showHashModal = () => {
     setHashModal((pre) => !pre);
+  };
+
+  // hash 관심사 적용되면 보일 거
+  const [changeHash, setChangeHash] = useState(false);
+  const showChangeHash = () => {
+    setChangeHash((change) => !change);
   };
 
   //alert modal
@@ -38,6 +45,19 @@ function MyInfo() {
   const intro = useSelector((state) => {
     return state.intro.value;
   });
+
+  // 이미지 미리보기
+  const [imgFile, setImgFile] = useState("");
+  const imgRef = useRef();
+
+  const saveImgFile = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImgFile(reader.result);
+    };
+  };
 
   return (
     <div className="myinfo">
@@ -59,7 +79,11 @@ function MyInfo() {
       ) : null}
 
       {hashModal && !miModal ? (
-        <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} />
+        <Hash
+          showMyinfoModal={showMyinfoModal}
+          showHashModal={showHashModal}
+          showAlertModal={showAlertModal}
+        />
       ) : null}
 
       {alertModal && !miModal && !hashModal ? (
@@ -80,14 +104,38 @@ function MyInfo() {
       </div>
       <div className="MIImgDiv">
         <div className="MIImg"></div>
+        {/* <label className="imageEditBtn" htmlFor="profileImg">
+          변경
+        </label>
+        <img
+        htmlFor="profileImg"
+          className="MIImg"
+          src={
+            imgFile
+              ? imgFile
+              : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+          }
+          alt="사진"
+        /> */}
+        {/* 이미지 업로드 input */}
+        {/* <input
+          type="file"
+          accept="image/*"
+          id="profileImg"
+          onChange={saveImgFile}
+          ref={imgRef}
+          style={{ display: "none" }}
+        ></input> */}
         <div className="MISetDiv"></div>
       </div>
       <span className="MIHashTag">Hash Tag</span>
       <div
         className="MIHashSet"
         onClick={showHashModal}
+        onChange={showChangeHash}
         disabled={alertModal === true ? true : false}
       >
+        {/* <HashIntCheck /> */}
         <div className="MIHashSetIcon">
           <span className="MIHashSetText">설정하기</span>
         </div>
