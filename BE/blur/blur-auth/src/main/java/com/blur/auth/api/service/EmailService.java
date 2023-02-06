@@ -21,12 +21,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class EmailService {
-
+	
     @Autowired
     JavaMailSender emailSender;
 
     @Autowired
     private final EmailRepository emailRepository;
+
+    public static final String ePw = createKey();
+
 
     public static String createKey() {
 
@@ -54,7 +57,7 @@ public class EmailService {
         return key.toString();
     }
 
-    private MimeMessage createMessage(String to, String ePw)throws Exception{
+    private MimeMessage createMessage(String to)throws Exception{
         System.out.println("보내는 대상 : "+ to);
         System.out.println("인증 번호 : "+ePw);
         MimeMessage  message = emailSender.createMimeMessage();
@@ -83,10 +86,7 @@ public class EmailService {
     }
 
     public String sendAuthMessage(String to)throws Exception {
-        String ePw = createKey();
-        MimeMessage message = createMessage(to, ePw);
-        System.out.println(to);
-        System.out.println(message.getContent().toString());
+        MimeMessage message = createMessage(to);
         try{//예외처리
             emailSender.send(message);
             EmailAuthDto dto = new EmailAuthDto();

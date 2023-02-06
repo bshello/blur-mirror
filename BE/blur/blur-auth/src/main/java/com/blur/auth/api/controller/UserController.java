@@ -3,6 +3,7 @@ package com.blur.auth.api.controller;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -37,9 +38,12 @@ import com.blur.auth.common.ApiResponseHeader;
 import com.blur.auth.config.properties.AppProperties;
 import com.blur.auth.oauth.entity.AuthToken;
 import com.blur.auth.oauth.entity.AuthTokenProvider;
+import com.blur.auth.oauth.entity.RoleType;
 import com.blur.auth.oauth.entity.UserPrincipal;
 import com.blur.auth.utils.CookieUtil;
+import com.blur.auth.utils.HeaderUtil;
 
+import io.jsonwebtoken.Claims;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -185,16 +189,79 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	
-	
-	@Data
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public class LoginUserResponse {
-        private AuthToken accessToken;
-        private AuthToken refreshToken;
-        public LoginUserResponse(AuthToken accessToken, AuthToken refreshToken) {
-            this.accessToken = accessToken;
-            this.refreshToken = refreshToken;
+	@GetMapping("/refresh")
+    public ApiResponse refreshToken (HttpServletRequest request, HttpServletResponse response) {
+        // access token 확인
+        String accessToken = HeaderUtil.getAccessToken(request);
+        AuthToken authToken = tokenProvider.convertAuthToken(accessToken);
+        if (!authToken.validate()) {
+            return ApiResponse.invalidAccessToken();
         }
+
+        // expired access token 인지 확인
+        Claims claims = authToken.getExpiredTokenClaims();
+        if (claims == null) {
+            return ApiResponse.notExpiredTokenYet();
+        }
+
+        String userId = claims.getSubject();
+        RoleType roleType = RoleType.of(claims.get("role", String.class));
+
+        // refresh token
+        String refreshToken = CookieUtil.getCookie(request, REFRESH_TOKEN)
+                .map(Cookie::getValue)
+                .orElse((null));
+        AuthToken authRefreshToken = tokenProvider.convertAuthToken(refreshToken);
+
+        if (authRefreshToken.validate()) {
+            return ApiResponse.invalidRefreshToken();
+        }
+
+        // userId refresh token 으로 DB 확인
+        UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdAndRefreshToken(userId, refreshToken);
+        if (userRefreshToken == null) {
+            return ApiResponse.invalidRefreshToken();
+        }
+
+        Date now = new Date();
+        AuthToken newAccessToken = tokenProvider.createAuthToken(
+                userId,
+                roleType.getCode(),
+                new Date(now.getTime() + appProperties.getAuth().getTokenExpiry())
+        );
+
+        long validTime = authRefreshToken.getTokenClaims().getExpiration().getTime() - now.getTime();
+
+        // refresh 토큰 기간이 3일 이하로 남은 경우, refresh 토큰 갱신
+        if (validTime <= THREE_DAYS_MSEC) {
+            // refresh 토큰 설정
+            long refreshTokenExpiry = appProperties.getAuth().getRefreshTokenExpiry();
+
+            authRefreshToken = tokenProvider.createAuthToken(
+                    appProperties.getAuth().getTokenSecret(),
+                    new Date(now.getTime() + refreshTokenExpiry)
+            );
+
+            // DB에 refresh 토큰 업데이트
+            userRefreshToken.setRefreshToken(authRefreshToken.getToken());
+
+            int cookieMaxAge = (int) refreshTokenExpiry / 60;
+            CookieUtil.deleteCookie(request, response, REFRESH_TOKEN);
+            CookieUtil.addCookie(response, REFRESH_TOKEN, authRefreshToken.getToken(), cookieMaxAge);
+        }
+
+        return ApiResponse.success("token", newAccessToken.getToken());
     }
+	
+	
+//	@Data
+//    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//    public class LoginUserResponse {
+//        private AuthToken accessToken;
+//        private AuthToken refreshToken;
+//        public LoginUserResponse(AuthToken accessToken, AuthToken refreshToken) {
+//            this.accessToken = accessToken;
+//            this.refreshToken = refreshToken;
+//        }
+//    }
 }

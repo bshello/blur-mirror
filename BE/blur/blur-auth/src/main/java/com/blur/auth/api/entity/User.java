@@ -58,7 +58,7 @@ public class User {
     @NotNull
     private ProviderType providerType;
 
-    @Column(name = "role_type", length = 20)
+    @Column(name = "role_type")
     @Enumerated(EnumType.STRING)
     @NotNull
     private RoleType roleType;
