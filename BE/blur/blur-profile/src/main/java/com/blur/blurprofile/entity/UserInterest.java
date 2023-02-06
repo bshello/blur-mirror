@@ -26,7 +26,7 @@ public class UserInterest {
     @Column(name = "user_id")
     private String userId;
 
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user_interest")
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userInterest")
     private Collection<Interest> interest;
 
     public void addInterest(Interest i){

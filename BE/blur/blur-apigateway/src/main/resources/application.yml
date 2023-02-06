@@ -13,49 +13,49 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
+        - id: blur-auth
+          uri: lb://BLUR-AUTH
           predicates:
-            - Path=/user-service/login
+            - Path=/blur-auth/login
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-        - id: user-service
-          uri: lb://USER-SERVICE
+            - RewritePath=/blur-auth/(?<segment>.*), /$\{segment}
+        - id: blur-auth
+          uri: lb://BLUR-AUTH
           predicates:
-            - Path=/user-service/register
+            - Path=/blur-auth/user/register
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-        - id: user-service
-          uri: lb://USER-SERVICE
+            - RewritePath=/blur-auth/(?<segment>.*), /$\{segment}
+        - id: blur-auth
+          uri: lb://BLUR-AUTH
           predicates:
-            - Path=/user-service/**
+            - Path=/blur-auth/**
             - Method=GET
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
-        - id: profile-service
-          uri: lb://PROFILE-SERVICE
+            - RewritePath=/blur-auth/(?<segment>.*), /$\{segment}
+#            - AuthorizationHeaderFilter
+        - id: blur-profile
+          uri: lb://BLUR-PROFILE
           predicates:
-            - Path=/profile-service/**
+            - Path=/blur-profile/**
             - Method= GET, POST, PUT
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/profile-service/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
-        - id: match-service
-          uri: lb://MATCH-SERVICE
+            - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
+#            - AuthorizationHeaderFilter
+        - id: blur-match
+          uri: lb://BLUR-MATCH
           predicates:
-            - Path=/match-service/**
+            - Path=/blur-match/**
             - Method= GET, POST, PUT
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/match-service/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
+            - RewritePath=/blur-match/(?<segment>.*), /$\{segment}
+#            - AuthorizationHeaderFilter
 
 eureka:
   client:
