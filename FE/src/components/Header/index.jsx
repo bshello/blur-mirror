@@ -60,12 +60,11 @@ function Header({ showSignInModal }) {
         <span className="CommNavBtnChat" onClick={Chat}>
           Chat
         </span>
-        <span className="CommNavBtnAbout" onClick={logInOut}>
-          {userState ? "Logout" : "Login"}
-        </span>
-
         <span className="CommNavBtnMyInfo" onClick={MyInfo}>
           MyInfo
+        </span>
+        <span className="CommNavBtnAbout" onClick={logInOut}>
+          {userState ? "Logout" : "Login"}
         </span>
       </div>
     </div>

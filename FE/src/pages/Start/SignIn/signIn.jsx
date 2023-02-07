@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { Cookies } from "react-cookie";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "http://192.168.31.192:8080/user";
+  const API_URL = "http://192.168.31.192:8080/BLUR-AUTH/user";
   const SOCIAL_API_URL = "http://192.168.31.192:8080";
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -60,6 +60,9 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     <div className="SIModal">
       <div className="SIModalHeader">
         <span className="SIModalHeaderText">Sign In</span>
+        <button className="SIModalClose" onClick={showSignInModal}>
+          x
+        </button>
       </div>
       <form>
         <div className="ModalInputIdDiv">
@@ -69,7 +72,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           <input
             className="ModalInputId"
             id="user_id"
-            placeholder="  ID를 입력해 주세요"
+            placeholder="ID를 입력해 주세요"
             onChange={enterSignId}
           ></input>
         </div>
@@ -80,7 +83,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           <input
             className="ModalInputPw"
             id="user_pw"
-            placeholder="  PW를 입력해 주세요"
+            placeholder="PW를 입력해 주세요"
             type="password"
             onChange={enterSignPs}
           ></input>
