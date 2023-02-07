@@ -62,8 +62,8 @@ spring:
             - Path=/blur-chat/**
             - Method= GET, POST, PUT
           filters:
+            - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
             - RemoveRequestHeader=Cookie
-            - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
 
 eureka:
   client:

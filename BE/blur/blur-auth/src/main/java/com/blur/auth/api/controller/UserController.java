@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -253,6 +254,11 @@ public class UserController {
         return ApiResponse.success("token", newAccessToken.getToken());
     }
 	
+	@PostMapping("/userInfo/{userId}")
+	public ApiResponse UserInfo(@PathVariable String userId) throws Exception {
+		System.out.println("userId : " + userId);
+		return ApiResponse.success("userInfo", userService.getUserInfo(userId));
+	}
 	
 //	@Data
 //    @NoArgsConstructor(access = AccessLevel.PROTECTED)

@@ -1,11 +1,23 @@
 package com.blur.chat.api.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.blur.chat.api.dto.FeignUserDto;
+
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+
 public class FeginService {
+	private final UserInfoClient userInfoClient;
+	
+	public FeignUserDto getUser(String userId) {
+		return userInfoClient.getUser(userId);
+	}
 	
 }

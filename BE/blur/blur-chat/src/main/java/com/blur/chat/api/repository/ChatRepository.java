@@ -10,7 +10,7 @@ import com.blur.chat.api.entity.Chat;
 
 public interface ChatRepository extends JpaRepository<Chat,Long> {
 
-    Slice<Chat> findAllByCreatedAtBeforeAndWorkSpace_IdOrderByCreatedAtDesc(String cursorCreatedAt,Long chatroomNo, Pageable pageable);
+    Slice<Chat> findAllByCreatedAtBeforeAndChatroomOrderByCreatedAtDesc(String cursorCreatedAt,Long chatroomNo, Pageable pageable);
 
     List<Chat> findAllByCreatedAtAfterOrderByCreatedAtDesc(String cursorCreatedAt);
 }
