@@ -25,7 +25,7 @@ public class FeignController {
 	
 	@PostMapping("/test/{userId}")
 	public ResponseEntity<?> test(@PathVariable String userId){
-		System.out.println("test123123");
+		System.out.println(userId);
     	FeignUserDto feignUserDto = feignService.getUser(userId);
 		return new ResponseEntity<> (feignUserDto, HttpStatus.OK);
 	}

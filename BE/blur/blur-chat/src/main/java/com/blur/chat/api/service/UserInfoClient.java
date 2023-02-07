@@ -12,6 +12,6 @@ import com.blur.chat.config.FeginConfig;
 @FeignClient(name = "feginClient", contextId = "UserInfoClient", url = "http://localhost:8000/blur-auth/user", configuration = FeginConfig.class)
 public interface UserInfoClient {
 	
-	@PostMapping("/userInfo/{userId}")
+	@RequestMapping(method = RequestMethod.GET, value = "/userInfo/{userId}")
 	FeignUserDto getUser(@PathVariable("userId") String userId);
 }

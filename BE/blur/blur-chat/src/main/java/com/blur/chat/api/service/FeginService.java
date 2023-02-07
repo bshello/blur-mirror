@@ -17,7 +17,10 @@ public class FeginService {
 	private final UserInfoClient userInfoClient;
 	
 	public FeignUserDto getUser(String userId) {
-		return userInfoClient.getUser(userId);
+//		FeignUserDto feignUserDto
+		System.out.println(userId);
+		FeignUserDto feignUserDto = userInfoClient.getUser(userId);
+		return feignUserDto;
 	}
 	
 }

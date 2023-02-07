@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blur.auth.api.dto.ErrorResponse;
+import com.blur.auth.api.entity.FeignUserInfo;
 import com.blur.auth.api.entity.User;
 import com.blur.auth.api.entity.UserDto;
 import com.blur.auth.api.entity.UserRefreshToken;
@@ -255,9 +256,12 @@ public class UserController {
     }
 	
 	@PostMapping("/userInfo/{userId}")
-	public ApiResponse UserInfo(@PathVariable String userId) throws Exception {
+	public ResponseEntity<?> UserInfo(@PathVariable String userId) throws Exception {
 		System.out.println("userId : " + userId);
-		return ApiResponse.success("userInfo", userService.getUserInfo(userId));
+		User user = userService.getUser(userId);
+		FeignUserInfo feignUserInfo = new FeignUserInfo(user.getUserNo(), userId, user.getUserId());
+//		return ApiResponse.success("userInfo", userService.getUserInfo(userId));
+		return new ResponseEntity<>(feignUserInfo, HttpStatus.OK);
 	}
 	
 //	@Data
