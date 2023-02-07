@@ -6,9 +6,7 @@ import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
-
-import Alert from "../Start/Alert/index";
-// import HashIntCheck from "./Hash/HashIntCheck/HashIntCheck";
+import Alert from "../../pages/Start/Alert";
 
 function MyInfo() {
   //profile edit modal
