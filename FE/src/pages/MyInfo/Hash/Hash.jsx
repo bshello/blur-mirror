@@ -1,35 +1,71 @@
 //카테고리 선택 창
 
 import "./Hash.css";
-import "../Hash/HashInt/HashInt.css";
+// import "../Hash/HashInt/HashInt.css";
 import React, { useState, useEffect } from "react";
-import HashInt from "./HashInt/HashInt";
-import HashIntCheck from "../Hash/HashIntCheck/HashIntCheck";
+import HashInt from "./HashComponent/HashInt";
+// import HashIntCheck from "./HashComponent/HashIntCheck";
+import HashAdd from "./HashComponent/HashAdd/HashAdd";
 
 function Hash({ showHashModal, showAlertModal }) {
   //카테고리 창인데 이걸 프롭스해서 창의 관심사로 가야할 거 같은데?
-  const catedata = [
-    "스포츠",
-    "보드게임",
-    "여행",
-    "문화생활",
-    "연예",
-    "콘솔게임",
-    "동물",
-    "크리에이터",
-    "제테크",
-    "금융",
-    "건강",
-    "식물",
-    "메타버스",
-    "게임",
-    "it 제품",
-    "음식",
+  const categories = [
+    {
+      id: 1,
+      name: "스포츠",
+      subcategories: [
+        { subCategoryId: 1, name: "축구" },
+        { subCategoryId: 2, name: "농구" },
+        { subCategoryId: 3, name: "아이스하키" },
+        { subCategoryId: 4, name: "스쿼시" },
+        { subCategoryId: 5, name: "아스날" },
+        { subCategoryId: 6, name: "외데고르" },
+        { subCategoryId: 7, name: "파티" },
+        { subCategoryId: 8, name: "마르치넬리" },
+        { subCategoryId: 9, name: "은케티아" },
+        { subCategoryId: 10, name: "램즈데일" },
+        { subCategoryId: 11, name: "살리바" },
+        { subCategoryId: 12, name: "마갈량이스" },
+        { subCategoryId: 13, name: "사카" },
+        { subCategoryId: 14, name: "자카" },
+        { subCategoryId: 15, name: "진첸코" },
+        { subCategoryId: 16, name: "마르치넬리" },
+      ],
+    },
+    { id: 2, name: "보드게임" },
+    { id: 3, name: "여행" },
+    { id: 4, name: "리액트" },
+    { id: 5, name: "데이터" },
+    { id: 6, name: "음식" },
+    { id: 7, name: "IT제품" },
+    { id: 8, name: "식물" },
+    { id: 9, name: "건강" },
+    { id: 10, name: "금융" },
+    { id: 11, name: "제테크" },
+    { id: 12, name: "크리에이터" },
+    { id: 13, name: "동물" },
+    { id: 14, name: "콘솔게임" },
+    { id: 15, name: "연예" },
+    { id: 16, name: "문화생활" },
   ];
+
+  function Category({ category, todoList }) {
+    return (
+      <div className="intBack" onClick={showIntModal}>
+        {category.name}
+      </div>
+    );
+  }
 
   const [intModal, setIntModal] = useState(false);
   const showIntModal = () => {
     setIntModal((pre) => !pre);
+  };
+
+  //  추가 데이터 저장
+  const [checkList, setCheckList] = useState([]);
+  const addIte = () => {
+    console.log("im hererere!");
   };
 
   // //검색기능
@@ -76,21 +112,38 @@ function Hash({ showHashModal, showAlertModal }) {
   function HashSerch() {
     return (
       <div>
-        <ui className="hashSerchbar">
+        <div className="hashSerchbar">
           {results.map((item) => (
             <div className="ilserchbar" key={item.name}>
               {item.name}
             </div>
           ))}
-        </ui>
+        </div>
       </div>
     );
   }
+
+  // TEST
+  const [inputValue, setInputValue] = useState("");
+  const [todoList, setTodoList] = useState([]);
+
+  const addItem = () => {
+    setTodoList([...todoList, inputValue]);
+  };
+
   //////////////////////////////////////////
   return (
     <div className="Hash">
       {intModal ? <HashInt showIntModal={setIntModal} /> : null}
       {searchBar ? <HashSerch showSearchBar={setSearchBar} /> : null}
+
+      {/* <HashAdd todoList={todoList} />
+      <input
+        value={inputValue}
+        type="text"
+        onChange={(event) => setInputValue(event.target.value)}
+      />
+      <button onClick={addItem}>추가</button> */}
 
       <div className="hashSerchDiv">
         <div className="inputdodbogi" />
@@ -102,25 +155,15 @@ function Hash({ showHashModal, showAlertModal }) {
           onChange={(e) => setSearchTerm(e.target.value)}
           onClick={showSearchBar}
         />
-        {/* <ui className="hashSerchbar">
-          {results.map((item) => (
-            <div className="ilserchbar" key={item.name}>
-              {item.name}
-            </div>
-          ))}
-        </ui> */}
 
         <div className="hashVec" />
       </div>
-      <div className="hashaddiv">
-        <HashIntCheck />
-      </div>
 
       <div className="interestdiv">
-        {catedata.map((item, idx) => {
+        {categories.map((category, idx) => {
           return (
-            <div className="interestbox" onClick={showIntModal} key={item}>
-              <div className="intBack">{catedata[idx]}</div>
+            <div className="interestbox">
+              <Category key={category.id} category={category} />
             </div>
           );
         })}

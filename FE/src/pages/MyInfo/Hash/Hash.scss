@@ -4,7 +4,7 @@
   height: 600px;
   left: 280px;
   top: 80px;
-  z-index: 30;
+  z-index: 20;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 30px;
 
@@ -51,112 +51,153 @@
       border: 3px solid #68bbbd;
     }
   }
+}
 
-  .hashaddiv {
-    position: absolute;
-    display: flex;
+.hashaddiv {
+  position: absolute;
+  display: flex;
+  width: 600px;
+  height: 60px;
+  top: -65px;
+  left: 0px;
+
+  // justify-content: center;
+  flex-direction: row;
+  // border: solid black 1px;
+
+  // hashcheck
+  .hashcheckdiv {
+    position: relative;
     width: 600px;
-    height: 60px;
-    top: 100px;
-    left: 75px;
-    // justify-content: center;
+    height: 70px;
+    left: 0%;
+    top: -15%;
+    z-index: 10;
+    display: flex;
     flex-direction: row;
-  }
 
-  .interestdiv {
-    position: absolute;
-    width: 550px;
-    height: 350px;
-    left: 100px;
-    top: 150px;
+    .hashcheckbox {
+      position: absolute;
+      width: 115px;
+      height: 50px;
+      // margin-left: 10;
+      margin-top: 12px;
 
-    .interestbox {
-      position: relative;
-      width: 110px;
-      height: 60px;
-      // margin-top: 5px;
-      padding-top: 20px;
-      padding-left: 15px;
-      margin-left: 5px;
-      // margin-right: 10px;
+      font-size: 20px;
+
+      display: flex;
+      align-items: center;
+
+      border: solid white 3px;
+      background: #68bbbd;
+      border-radius: 30px;
       justify-content: center;
-      float: left;
+      color: white;
       cursor: pointer;
-
-      .intBack {
-        position: absolute;
-        width: 120px;
-        height: 50px;
-        // margin-top: auto;
-        // margin-left: auto;
-
-        background: rgba(255, 255, 255, 0.886);
-        border-radius: 40px;
-        justify-content: center;
-        font-weight: 400px;
-        font-size: 20px;
-        line-height: 35px;
-        display: flex;
-        align-items: center;
-        border: solid 2px #5ebabb;
-
-        color: #68bbbd;
-      }
-      :hover {
-        background-color: #68bbbd;
-        color: white;
-        border: solid white 2px;
-
-        .intText {
-          position: absolute;
-          width: 160px;
-          height: 35px;
-          left: 0px;
-          top: 12px;
-
-          justify-content: center;
-          font-weight: 400;
-          font-size: 25px;
-          line-height: 36px;
-          display: flex;
-          align-items: center;
-
-          color: #b1b1b1;
-
-          // :hover {
-          //   color: black;
-        }
-      }
     }
-  }
-
-  .hashEdit {
-    position: absolute;
-    width: 200px;
-    height: 50px;
-    left: 280px;
-    top: 500px;
-    background: #50a1a3;
-    border-radius: 17px;
-    justify-content: center;
-    font-weight: 400px;
-    font-size: 25px;
-    line-height: 35px;
-    display: grid;
-    align-items: center;
-    cursor: pointer;
-    color: white;
-    border: solid white 2px;
+    :hover {
+      background-color: #68bbbd;
+      color: white;
+      border: solid white 2px;
+    }
   }
 }
 
+.interestdiv {
+  position: absolute;
+  width: 550px;
+  height: 310px;
+  left: 100px;
+  top: 150px;
+  z-index: 20;
+
+  .interestbox {
+    position: relative;
+    width: 110px;
+    height: 60px;
+    // margin-top: 5px;
+    padding-top: 20px;
+    padding-left: 15px;
+    margin-left: 5px;
+    // margin-right: 10px;
+    justify-content: center;
+    float: left;
+
+    .intBack {
+      position: absolute;
+      width: 120px;
+      height: 50px;
+      // margin-top: auto;
+      // margin-left: auto;
+
+      background: rgba(255, 255, 255, 0.886);
+      border-radius: 40px;
+      justify-content: center;
+      font-weight: 400px;
+      font-size: 20px;
+      line-height: 35px;
+      display: flex;
+      align-items: center;
+      border: solid 2px #5ebabb;
+
+      color: #68bbbd;
+      cursor: pointer;
+    }
+    :hover {
+      background-color: #68bbbd;
+      color: white;
+      border: solid white 2px;
+
+      .intText {
+        position: absolute;
+        width: 160px;
+        height: 35px;
+        left: 0px;
+        top: 12px;
+
+        justify-content: center;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+
+        color: #b1b1b1;
+
+        // :hover {
+        //   color: black;
+      }
+    }
+  }
+}
+
+.hashEdit {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: 280px;
+  top: 500px;
+  background: #50a1a3;
+  border-radius: 17px;
+  justify-content: center;
+  font-weight: 400px;
+  font-size: 25px;
+  line-height: 35px;
+  display: grid;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  border: solid white 2px;
+}
+
+//searchbar
 .hashSerchbar {
   position: absolute;
   // height: 230px;
-  width: 550px;
+  // width: 650px;
   top: 95px;
   z-index: 40;
-  left: 100px;
+  left: 200px;
   background-color: rgba(192, 192, 192, 0.951);
   color: #50a1a3;
   justify-content: center;
@@ -193,4 +234,217 @@
     color: white;
     border: solid white 2px;
   }
+}
+
+////////////////
+// // hashcheck
+// .hashcheckdiv {
+//   position: relative;
+//   width: 600px;
+//   height: 70px;
+//   left: 0%;
+//   top: -15%;
+//   z-index: 10;
+//   display: flex;
+//   flex-direction: row;
+
+//   .hashcheckbox {
+//     position: relative;
+//     width: 140px;
+//     height: 50px;
+//     left: 0px;
+//     margin-top: 12px;
+
+//     font-size: 20px;
+//     font-weight: 400px;
+//     line-height: 35px;
+//     display: flex;
+//     align-items: center;
+
+//     border: solid white 3px;
+//     background: #68bbbd;
+//     border-radius: 30px;
+//     justify-content: center;
+//     color: white;
+//     cursor: pointer;
+//   }
+//   :hover {
+//     background-color: #68bbbd;
+//     color: white;
+//     border: solid white 2px;
+//   }
+// }
+
+///////////////////////////////////////////
+// hashSerchbar
+.hashSerchbar {
+  position: absolute;
+  // height: 230px;
+  width: 550px;
+  top: 100px;
+  z-index: 40;
+  left: 100px;
+  background-color: rgba(192, 192, 192, 0.951);
+  color: #50a1a3;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: auto;
+
+  .ilserchbar {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 5.5px;
+    float: left;
+    cursor: pointer;
+
+    background: rgba(4, 37, 37, 0.241);
+    border-radius: 40px;
+    // align-items: center;
+    // justify-content: center;
+    // display: flex;
+    font-weight: 400px;
+    font-size: 20px;
+    line-height: 35px;
+
+    border: solid 2px white;
+
+    color: #c8c7c7;
+  }
+  :hover {
+    background-color: #68bbbd;
+    color: white;
+    border: solid white 2px;
+  }
+}
+
+//////////////////////////////////
+/// HashInt
+.hashintdiv {
+  position: absolute;
+  width: 600px;
+  height: 320px;
+  left: 75px;
+  top: 160px;
+  z-index: 32;
+  border: solid #68bbbd 1px;
+  opacity: 0.98;
+
+  background: rgb(249, 249, 249);
+  border-radius: 40px;
+  .category {
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    left: 200px;
+    top: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: white;
+    border: solid #68bbbd 1px;
+
+    color: #68bbbd;
+    cursor: pointer;
+  }
+  .cainterestdiv {
+    position: absolute;
+    width: 480px;
+    height: 230px;
+    left: 62px;
+    top: 70px;
+
+    .cainterestbox {
+      position: relative;
+      width: 110px;
+      height: 60px;
+
+      padding-left: 5px;
+      margin-left: 5px;
+
+      justify-content: center;
+      float: left;
+
+      .caintBack {
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        // margin-top: auto;
+        // margin-left: auto;
+
+        background: rgba(4, 37, 37, 0.2);
+        border-radius: 40px;
+        justify-content: center;
+        font-weight: 400px;
+        font-size: 20px;
+        line-height: 35px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        color: #b1b1b1;
+      }
+
+      .changecaintBack {
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        border: solid white 1px;
+        // margin-top: auto;
+        // margin-left: auto;
+
+        background: rgba(13, 124, 124, 0.2);
+        border-radius: 40px;
+        justify-content: center;
+        font-weight: 400px;
+        font-size: 20px;
+        line-height: 35px;
+        display: flex;
+        align-items: center;
+
+        background-color: #68bbbd;
+        color: white;
+      }
+      // :hover {
+      //   background-color: #68bbbd;
+      //   color: white;
+      // }
+
+      .caintText {
+        border-radius: 40px;
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        left: 0px;
+        top: 0px;
+
+        justify-content: center;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+
+        color: #b1b1b1;
+      }
+      :hover {
+        color: white;
+      }
+    }
+  }
+}
+/////////////////////////////////////////////////
+
+$checkbox-selector: 'input[type="checkbox"]';
+
+#{$checkbox-selector} {
+  position: absolute;
+  // visibility: hidden;
+  appearance: none;
+  width: 100px;
+  height: 40px;
+  border: 1.5px solid gainsboro;
+  border-radius: 40px;
+  cursor: pointer;
 }
