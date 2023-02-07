@@ -1,5 +1,6 @@
 package com.blur.chat.api.service;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +19,7 @@ public class FeginService {
 	
 	public FeignUserDto getUser(String userId) {
 //		FeignUserDto feignUserDto
-		System.out.println(userId);
+		System.out.println("service : " + userId);
 		FeignUserDto feignUserDto = userInfoClient.getUser(userId);
 		return feignUserDto;
 	}

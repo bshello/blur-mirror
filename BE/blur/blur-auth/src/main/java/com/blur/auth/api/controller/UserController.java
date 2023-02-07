@@ -261,6 +261,7 @@ public class UserController {
 		User user = userService.getUser(userId);
 		FeignUserInfo feignUserInfo = new FeignUserInfo(user.getUserNo(), userId, user.getUserId());
 //		return ApiResponse.success("userInfo", userService.getUserInfo(userId));
+		System.out.println(feignUserInfo.toString());
 		return new ResponseEntity<>(feignUserInfo, HttpStatus.OK);
 	}
 	

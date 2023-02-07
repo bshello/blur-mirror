@@ -1,12 +1,15 @@
 package com.blur.chat.api.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.blur.chat.api.dto.FeignUserDto;
 import com.blur.chat.api.service.FeginService;
@@ -22,11 +25,32 @@ public class FeignController {
 	
 	@Autowired
 	private final FeginService feignService;
+	RestTemplate restTemplate = new RestTemplate();
 	
-	@PostMapping("/test/{userId}")
-	public ResponseEntity<?> test(@PathVariable String userId){
-		System.out.println(userId);
-    	FeignUserDto feignUserDto = feignService.getUser(userId);
-		return new ResponseEntity<> (feignUserDto, HttpStatus.OK);
+	 @GetMapping("/test/{userId}")
+     public void post(@PathVariable String userId) {
+         HashMap<String, String> parameters = new HashMap<>();
+//         parameters.add("userId", userId);
+         parameters.put("userId", userId);
+         System.out.println("test");
+		//Test용 로컬 주소
+         String url = "http://localhost:8000/blur-auth/user/userInfo/" + userId;
+         ResponseEntity<String> res = new RestTemplate().postForEntity(url, parameters, String.class);
+         System.out.println(res.getBody());
+         System.out.println(res.getStatusCodeValue());
+     }
+	
+	
+	
+//	@PostMapping("/test/{userId}")
+	@PostMapping(value = "/user/userInfo/{userId}")
+	public FeignUserDto test(@PathVariable String userId){
+		System.out.println("controller : " + userId);
+		FeignUserDto feignUserDto = feignService.getUser(userId);
+		System.out.println(feignUserDto.toString());
+		return feignService.getUser(userId);
 	}
+	
+	
+	
 }
