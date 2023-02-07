@@ -12,6 +12,7 @@ import userEdit from "../redux/reducers/userEdit";
 import MToggle from "../redux/reducers/MToggle";
 import introEdit from "../redux/reducers/introEdit";
 import saveTokenReducer from "./reducers/saveToken";
+import checkData from "./reducers/checkData";
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     mt: MToggle,
     intro: introEdit,
     strr: saveTokenReducer,
+    check: checkData,
   },
 });
 

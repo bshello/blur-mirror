@@ -17,12 +17,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     setSettingmodal((pre) => !pre);
   };
 
-  // //Arter 모달띄우기
-  // const [alertModal, setalertModal] = useState(false);
-  // const showAlertModal = () => {
-  //   setalertModal((pre) => !pre);
-  // };
-
   //profile 변경
   const [nameInput, setNameInput] = useState("");
   const [introInput, setIntroInput] = useState("");
@@ -103,13 +97,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   return (
     <div className="Modal">
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
-
-      {/* {setalertModal ? (
-        <Alert
-          showAlertModal={showAlertModal}
-          content={"변경값이 저장 되었습니다."}
-        />
-      ) : null} */}
       <div className="leftModal">
         <div className="imgbox">
           {/* <form>
