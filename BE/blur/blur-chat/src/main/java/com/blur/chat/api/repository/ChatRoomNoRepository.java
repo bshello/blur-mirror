@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.blur.chat.api.entity.Chatroom;
 
 
-public interface ChatRoomNoRepository extends JpaRepository<Chatroom,Long> {
-	List<Chatroom> findbyChatrooms(Long userNo);
+public interface ChatRoomNoRepository extends JpaRepository<Chatroom, Long> {
+//	List<Chatroom> findbyChatroom (Long userNo);
 }
 

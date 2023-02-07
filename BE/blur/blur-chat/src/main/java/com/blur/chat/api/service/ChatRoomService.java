@@ -29,6 +29,6 @@ public class ChatRoomService {
 	}
 
     public List<String> findUser(String roomNo,String sessionId){
-       return chatRoomRepository.findUsersInWorkSpace(roomNo,sessionId);
+       return chatRoomRepository.findUsersInChatroom(roomNo,sessionId);
     }
 }

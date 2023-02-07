@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.blur.chat.api.dto.FeignUserDto;
 import com.blur.chat.api.dto.ResponseDto;
 import com.blur.chat.api.dto.request.ChatMessageSaveDto;
 import com.blur.chat.api.dto.request.ChatPagingDto;
@@ -39,8 +40,8 @@ public class ChatRedisCacheService {
     public static final String OUT_USER = "탈퇴한 회원";
     public static final String USERNAME_NICKNAME = "USERNAME_NICKNAME";
     private final RedisTemplate<String, Object> redisTemplate;
-    private final JdbcTemplate jdbcTemplate;
     private final ChatRepository chatRepository;
+    private final FeginService feginService;
 
 //    private final UserRepository userRepository;
 
@@ -116,7 +117,7 @@ public class ChatRedisCacheService {
                         chatUtils.changeLocalDateTimeToDouble(chatMessageSaveDto.getCreatedAt()));
     }
 
-    //redis 회원 닉네임 조회 username > email
+    //redis 회원 닉네임 조회 username > userId
     public String findUserNicknameByUsername(String username) {
 
         String nickname = (String) roomRedisTemplate.opsForHash().get(USERNAME_NICKNAME, username);
@@ -127,17 +128,15 @@ public class ChatRedisCacheService {
         //redis 닉네임이 존재하지 않는다면, MYSQL에서 데이터 불러오기
 //        User user = userRepository.findByUsername(username)
 //                .orElse(null);
-        String sql = "SELECT * FROM chat A JOIN user B ON A.users = B.email JOIN user_profile C on B.userNo = C.userNo";
-        String sql2 = "SELECT c.users, u.user_no, f.nickname"
-        		+ "from chat c, user u, user_profile f"
-        		+ "where c.user = u.email and u.user_no = f.user_no";
-
-        if (user == null) return OUT_USER;
+        
+        FeignUserDto feginUserDto = feginService.getUser(username);
+        
+        if (feginUserDto == null) return OUT_USER;
 
         // redis nickname_data insert
-        roomRedisTemplate.opsForHash().put(USERNAME_NICKNAME, username, user.getNickname());
+        roomRedisTemplate.opsForHash().put(USERNAME_NICKNAME, username, feginUserDto.getNickname());
 
-        return user.getNickname();
+        return feginUserDto.getNickname();
     }
 
     public void changeUserCachingNickname(String username, String changedNickname) {
@@ -168,7 +167,7 @@ public class ChatRedisCacheService {
         int dtoListSize = chatMessageDtoList.size();
         Slice<Chat> chatSlice =
                 chatRepository
-                        .findAllByCreatedAtBeforeAndWorkSpace_IdOrderByCreatedAtDesc(
+                        .findAllByCreatedAtBeforeAndChatroomOrderByCreatedAtDesc(
                                 lastCursor,
                                 roomNo,
                                 PageRequest.of(0, 30)

@@ -37,7 +37,8 @@ public class Chat implements Serializable {
 
     @Column
     private String message;
-
+    
+    //userId
     @Column
     private String users;
 

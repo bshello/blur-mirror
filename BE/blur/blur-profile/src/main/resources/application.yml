@@ -21,6 +21,21 @@ spring:
     username: sa  # H2 ?? ? ??? username ?? (??? ??? ??)
     password:  # H2 ?? ? ??? password ?? (??? ??? ??)
 
+mail:
+  host: smtp.gmail.com
+  port: 465
+  protocol: smtp
+  username: blurb307@gmail.com
+  password: tmvrjqvfxwwshppf
+  debug: true
+  smtp:
+    auth: true
+    starttls-tls-enable: true
+    ssl:
+      trust: smtp.gmail.com
+      enable: true
+
+
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

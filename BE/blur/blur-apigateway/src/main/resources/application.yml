@@ -56,6 +56,15 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-match/(?<segment>.*), /$\{segment}
 #            - AuthorizationHeaderFilter
+        - id: blur-chat
+          uri: lb://BLUR-CHAT
+          predicates:
+            - Path=/blur-chat/**
+            - Method= GET, POST, PUT
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
+#            - AuthorizationHeaderFilter
 
 eureka:
   client:
