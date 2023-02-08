@@ -18,11 +18,7 @@ import java.util.Collection;
 @Table(name = "user_interest")
 public class UserInterest {
 
-    @JsonIgnore
-    @Column(name = "user_no")
     @Id
-    private Long userNo;
-
     @Column(name = "user_id")
     private String userId;
 

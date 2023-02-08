@@ -27,7 +27,6 @@ public class Interest {
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_no")
     private UserInterest userInterest;
 
 }

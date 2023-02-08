@@ -2,9 +2,12 @@ package com.blur.blurprofile.service;
 
 import com.blur.blurprofile.dto.ProfileDto;
 import com.blur.blurprofile.dto.ResponseCard;
+import com.blur.blurprofile.entity.Category;
 import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.entity.UserInterest;
 import com.blur.blurprofile.entity.UserProfile;
+import com.blur.blurprofile.repository.CategoryRepository;
+import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.repository.UserInterestRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.blur.blurprofile.repository.UserProfileRepository;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -23,6 +27,12 @@ public class ProfileService {
 
     @Autowired
     UserInterestRepository userInterestRepository;
+
+    @Autowired
+    InterestRepository interestRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     public ProfileDto getProfile(String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
@@ -62,6 +72,22 @@ public class ProfileService {
         }
         ResponseCard responseCard = new ResponseCard(userProfile, userInterest);
         return responseCard;
+    }
+
+    public Collection getAllCategories(String userId) {
+        Collection<Category> categories = categoryRepository.findAll();
+        return categories;
+    }
+
+    public Collection getAllInterests(String userId) {
+        Collection<Interest> interests = interestRepository.findAll();
+        return interests;
+    }
+
+    public Collection getInterestByCategory(String categoryName) {
+        Category category = categoryRepository.findByCategoryName(categoryName);
+        Collection<Interest> interests = category.getInterest();
+        return interests;
     }
 
     public void updateInterest(ProfileDto.UserInterestDto userInterestDto) {
