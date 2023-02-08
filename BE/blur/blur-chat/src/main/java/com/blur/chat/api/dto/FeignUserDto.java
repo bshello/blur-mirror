@@ -10,4 +10,8 @@ public class FeignUserDto {
 	private Long userNo;
 	private String userId;
 	private String nickname;
+	
+	public FeignUserDto() {
+		
+	}
 }

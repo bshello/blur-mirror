@@ -33,11 +33,12 @@ spring:
           uri: lb://BLUR-AUTH
           predicates:
             - Path=/blur-auth/**
-            - Method=GET
+            - Method=GET            
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-auth/(?<segment>.*), /$\{segment}
 #            - AuthorizationHeaderFilter
+
         - id: blur-profile
           uri: lb://BLUR-PROFILE
           predicates:

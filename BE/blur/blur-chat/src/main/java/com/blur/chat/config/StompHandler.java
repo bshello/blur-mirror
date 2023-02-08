@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.blur.chat.api.dto.request.ChatMessageSaveDto;
 import com.blur.chat.api.service.ChatRoomService;
 import com.blur.chat.api.service.RedisPublisher;
+import com.blur.chat.api.service.UserInfo;
 import com.blur.chat.utils.ChatUtils;
 //import com.hanghae.final_project.global.config.security.jwt.HeaderTokenExtractor;
 //import com.hanghae.final_project.global.config.security.jwt.JwtDecoder;
@@ -40,6 +41,8 @@ public class StompHandler implements ChannelInterceptor {
     private final ChatRoomService chatRoomService;
 
     private final RedisPublisher redisPublisher;
+    
+    private final UserInfo userInfo;
 
 
     @Override

@@ -6,9 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.redis.core.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import com.blur.chat.api.dto.FeignUserDto;
 import com.blur.chat.api.dto.ResponseDto;
@@ -22,6 +24,7 @@ import com.blur.chat.utils.ChatUtils;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -41,9 +44,8 @@ public class ChatRedisCacheService {
     public static final String USERNAME_NICKNAME = "USERNAME_NICKNAME";
     private final RedisTemplate<String, Object> redisTemplate;
     private final ChatRepository chatRepository;
-    private final FeginService feginService;
-
 //    private final UserRepository userRepository;
+    private final UserInfo userInfo;
 
     private final RedisTemplate<String, ChatMessageSaveDto> chatRedisTemplate;
 
@@ -129,14 +131,20 @@ public class ChatRedisCacheService {
 //        User user = userRepository.findByUsername(username)
 //                .orElse(null);
         
-        FeignUserDto feginUserDto = feginService.getUser(username);
+//        HashMap<String, String> parameters = new HashMap<>();
+//        parameters.put("userId", username);
+//        String url = "http://localhost:8000/blur-auth/user/userInfo/" + username;
+//        ResponseEntity<FeignUserDto> res = new RestTemplate().postForEntity(url, parameters, FeignUserDto.class);
+//        FeignUserDto feignUserDto = res.getBody();
         
-        if (feginUserDto == null) return OUT_USER;
+        FeignUserDto feignUserDto = userInfo.getUserInfo(username);
+                
+        if (feignUserDto == null) return OUT_USER;
 
         // redis nickname_data insert
-        roomRedisTemplate.opsForHash().put(USERNAME_NICKNAME, username, feginUserDto.getNickname());
+        roomRedisTemplate.opsForHash().put(USERNAME_NICKNAME, username, feignUserDto.getNickname());
 
-        return feginUserDto.getNickname();
+        return feignUserDto.getNickname();
     }
 
     public void changeUserCachingNickname(String username, String changedNickname) {

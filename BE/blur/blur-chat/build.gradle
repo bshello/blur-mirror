@@ -56,9 +56,6 @@ dependencies {
 	implementation "com.querydsl:querydsl-jpa:5.0.0"
 	implementation "com.querydsl:querydsl-apt:5.0.0"
 	
-	//feign client
-	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-	
 	//spring cloud
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
