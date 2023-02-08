@@ -23,7 +23,7 @@ public class ChatJdbcRepository {
 
 
         String sql = "INSERT INTO chats"
-                +  "(message,users,workspace_id,created_at) VALUE(?,?,?,?)";
+                +  "(message, users, chatroom_no, createdAt) VALUE(?,?,?,?)";
 
 
         jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {

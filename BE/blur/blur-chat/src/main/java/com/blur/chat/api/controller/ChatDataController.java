@@ -39,4 +39,6 @@ public class ChatDataController {
 		}
 		return cacheService.getChatsFromRedis(roomNo, chatPagingDto);
 	}
+	
+	
 }

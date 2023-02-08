@@ -81,22 +81,22 @@ public class ChatRoomRepository {
     }
 
     //채팅 참여자 list 생성
-    public List<String> findUsersInWorkSpace(String roomNo, String sessionId) {
+    public List<String> findUsersInChatroom(String roomNo, String sessionId) {
 
         setOperations = roomRedisTemplate.boundHashOps(CHAT_ROOM_ID_ + roomNo);
         ScanOptions scanOptions = ScanOptions.scanOptions().build();
-        List<String> userListInWorkSpace = new ArrayList<>();
+        List<String> userListInChatroom = new ArrayList<>();
 
         try (Cursor<Map.Entry<String, String>> cursor = setOperations.scan(scanOptions)) {
 
             while (cursor.hasNext()) {
                 Map.Entry<String, String> data = cursor.next();
-                userListInWorkSpace.add(chatRedisCacheService.findUserNicknameByUsername(data.getValue()));
+                userListInChatroom.add(chatRedisCacheService.findUserNicknameByUsername(data.getValue()));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return userListInWorkSpace;
+        return userListInChatroom;
     }
 
 }
