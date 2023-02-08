@@ -1,37 +1,15 @@
 //카테고리 선택 창
 
 import "./Hash.css";
-// import "../Hash/HashInt/HashInt.css";
 import React, { useState, useEffect } from "react";
 import HashInt from "./HashComponent/HashInt";
-// import HashIntCheck from "./HashComponent/HashIntCheck";
-import HashAdd from "./HashComponent/HashAdd/HashAdd";
+// import HashAdd from "./HashComponent/HashAdd/HashAdd";
+import dummy from "../../../db/data.json";
 
 function Hash({ showHashModal, showAlertModal }) {
   //카테고리 창인데 이걸 프롭스해서 창의 관심사로 가야할 거 같은데?
   const categories = [
-    {
-      id: 1,
-      name: "스포츠",
-      subcategories: [
-        { subCategoryId: 1, name: "축구" },
-        { subCategoryId: 2, name: "농구" },
-        { subCategoryId: 3, name: "아이스하키" },
-        { subCategoryId: 4, name: "스쿼시" },
-        { subCategoryId: 5, name: "아스날" },
-        { subCategoryId: 6, name: "외데고르" },
-        { subCategoryId: 7, name: "파티" },
-        { subCategoryId: 8, name: "마르치넬리" },
-        { subCategoryId: 9, name: "은케티아" },
-        { subCategoryId: 10, name: "램즈데일" },
-        { subCategoryId: 11, name: "살리바" },
-        { subCategoryId: 12, name: "마갈량이스" },
-        { subCategoryId: 13, name: "사카" },
-        { subCategoryId: 14, name: "자카" },
-        { subCategoryId: 15, name: "진첸코" },
-        { subCategoryId: 16, name: "마르치넬리" },
-      ],
-    },
+    { id: 1, name: "스포츠" },
     { id: 2, name: "보드게임" },
     { id: 3, name: "여행" },
     { id: 4, name: "리액트" },
@@ -49,6 +27,12 @@ function Hash({ showHashModal, showAlertModal }) {
     { id: 16, name: "문화생활" },
   ];
 
+  // const categories = dummy.categories
+  //   .filter((name) => name.id === categories)
+  //   .map((name) => {
+  //     return <h4>{name.text} 전체</h4>;
+  //   });
+
   function Category({ category, todoList }) {
     return (
       <div className="intBack" onClick={showIntModal}>
@@ -63,10 +47,10 @@ function Hash({ showHashModal, showAlertModal }) {
   };
 
   //  추가 데이터 저장
-  const [checkList, setCheckList] = useState([]);
-  const addIte = () => {
-    console.log("im hererere!");
-  };
+  // const [checkList, setCheckList] = useState([]);
+  // const addIte = () => {
+  //   console.log("im hererere!");
+  // };
 
   // //검색기능
   const [data, setData] = useState([
@@ -102,7 +86,7 @@ function Hash({ showHashModal, showAlertModal }) {
   };
 
   useEffect(() => {
-    const results = data.filter((item) =>
+    const results = categories.filter((item) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setResults(results);
@@ -130,6 +114,12 @@ function Hash({ showHashModal, showAlertModal }) {
   const addItem = () => {
     setTodoList([...todoList, inputValue]);
   };
+
+  // const categoriess = dummy.categories
+  // .filter((name) => name.id === category)
+  //   .map((name) => {
+  //     return <div className="interestbox">{name.category} 전체</div>;
+  //   });
 
   //////////////////////////////////////////
   return (
@@ -161,9 +151,10 @@ function Hash({ showHashModal, showAlertModal }) {
 
       <div className="interestdiv">
         {categories.map((category, idx) => {
+          // .filter((name) => name.id === category)
           return (
             <div className="interestbox">
-              <Category key={category.id} category={category} />
+              <Category key={category} category={category} />
             </div>
           );
         })}
