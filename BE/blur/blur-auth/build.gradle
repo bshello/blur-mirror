@@ -1,8 +1,7 @@
 plugins {
- 	id 'org.springframework.boot' version '2.7.8'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+ 	id 'org.springframework.boot' version '2.7.8'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -22,8 +21,13 @@ repositories {
 }
 
 ext {
-	set('springBootAdminVersion', "2.7.4")
     set('springCloudVersion', "2021.0.5")
+}
+
+dependencyManagement {
+    imports {
+       mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 dependencies {
@@ -40,59 +44,16 @@ dependencies {
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.2'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
-    compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     
     
+    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     
-	//querydsl
-	implementation "com.querydsl:querydsl-jpa:5.0.0"
-	implementation "com.querydsl:querydsl-apt:5.0.0"
 }
-
-dependencyManagement {
-	imports {
-		mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
-}
-
-bootJar.enabled=false
-jar.enabled=true
-
-//QueryDsl 관련 세팅
-def querydslDir = "$buildDir/generated/querydsl"
-
-querydsl {
-	jpa = true
-	querydslSourcesDir = querydslDir
-}
-
-sourceSets {
-	main.java.srcDir querydslDir
-}
-
-// querydsl 컴파일시 사용할 옵션 설정
-compileQuerydsl{
-	options.annotationProcessorPath = configurations.querydsl
-}
-
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	querydsl.extendsFrom compileClasspath
-}
-/*** comileQuerydsl.doFirst 추가*/
-compileQuerydsl.doFirst {
-	if (file(querydslDir).exists()) delete(file(querydslDir))
-}
-
 
 configurations {
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
@@ -102,3 +63,4 @@ configurations {
 test {
     useJUnitPlatform()
 }
+
