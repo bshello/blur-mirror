@@ -1,7 +1,7 @@
 // 관심사 체크하면 모이는 거
-import { useSelector } from "react-redux";
-import "../Hash.css";
-import React, { useState, useEffect } from "react";
+// import { useSelector } from "react-redux";
+// import "../Hash.css";
+// import React, { useState, useEffect } from "react";
 
 function HashIntCheck(props) {
   const [hashIntCheck, setHashIntCheck] = [];
