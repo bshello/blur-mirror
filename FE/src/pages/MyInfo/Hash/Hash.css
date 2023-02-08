@@ -57,13 +57,12 @@
 }
 .hashaddiv .hashcheckdiv {
   position: relative;
-  width: 600px;
+  width: 120px;
   height: 70px;
   left: 0%;
   top: -15%;
   z-index: 10;
   display: flex;
-  flex-direction: row;
 }
 .hashaddiv .hashcheckdiv .hashcheckbox {
   position: absolute;
@@ -303,6 +302,10 @@
   background-color: #68bbbd;
   color: white;
 }
+.hashintdiv .cainterestdiv .cainterestbox :hover {
+  background-color: #68bbbd;
+  color: white;
+}
 .hashintdiv .cainterestdiv .cainterestbox .caintText {
   border-radius: 40px;
   position: absolute;
@@ -312,7 +315,7 @@
   top: 0px;
   justify-content: center;
   font-weight: 400;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 36px;
   display: flex;
   align-items: center;
@@ -324,9 +327,7 @@
 
 input[type=checkbox] {
   position: absolute;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  opacity: 0;
   width: 100px;
   height: 40px;
   border: 1.5px solid gainsboro;
