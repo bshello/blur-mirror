@@ -1,11 +1,10 @@
 server:
   port: 0
 
-
 spring:
   application:
     name: blur-auth
-  profiles.active: local
+  
   # 데이터 소스 설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -80,17 +79,19 @@ spring:
           userInfoUri: https://kapi.kakao.com/v2/user/me
           userNameAttribute: id
           
-    mail:
-      host: smtp.gmail.com
-      port: 465
-      username: blurb307@gmail.com
-      password: tmvrjqvfxwwshppf
-      properties:
-        mail:
-          smtp:
-            auth: true
-            starttls:
-              enable: true
+mail:
+  host: smtp.gmail.com
+  port: 465
+  protocol: smtp
+  username: blurb307@gmail.com
+  password: tmvrjqvfxwwshppf
+  debug: true
+  smtp:
+    auth: true
+    starttls-tls-enable: true
+    ssl:
+      trust: smtp.gmail.com
+      enable: true
 
 # Eureka 설정
 eureka:
@@ -116,7 +117,7 @@ jwt.secret: '8sknjlO3NPTBqo319DHLNqsQAfRJEdKsETOds'
 # 토큰 관련 secret Key 및 RedirectUri 설정
 app:
   auth:
-    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenSecret: PvQv00J9HBf32S8K7JtAcE5uHXywbhhN
     tokenExpiry: 1800000
     refreshTokenExpiry: 604800000
   oauth2:

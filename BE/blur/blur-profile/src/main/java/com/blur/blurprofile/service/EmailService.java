@@ -72,8 +72,6 @@ public class EmailService {
         emailHandler.setSubject("이메일 인증 테스트");
         emailHandler.setText(message, true);//내용
         emailHandler.setFrom("blurb307@gmail.com");//보내는 사람
-        System.out.println("11111111111111111111111111111");
-        System.out.println(to);
         try{//예외처리
             emailHandler.send();
             System.out.println("이메일");

@@ -33,7 +33,7 @@ spring:
           uri: lb://BLUR-AUTH
           predicates:
             - Path=/blur-auth/**
-            - Method=GET
+            - Method= GET, POST
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-auth/(?<segment>.*), /$\{segment}

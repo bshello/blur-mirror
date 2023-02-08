@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94074d7b-02b9-47d3-b749-008b5ca3b4cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/email/MailConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blur-apigateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../blur-apigateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.buildship.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.springframework.ide.eclipse.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.springframework.ide.eclipse.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/application-smtp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/application-smtp.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/api/controller/UserController$LoginUserResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/api/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/blur/auth/api/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/api/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/blur/auth/api/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/api/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/blur/auth/api/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/config/QuerydslConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/config/security/CustomSecurityConfigurer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/config/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/blur/auth/config/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/oauth/handler/OAuth2AuthenticationFailureHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/blur/auth/oauth/handler/OAuth2AuthenticationFailureHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/oauth/handler/OAuth2AuthenticationSuccessHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/blur/auth/oauth/handler/OAuth2AuthenticationSuccessHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/blur/auth/oauth/repository/OAuth2AuthorizationRequestBasedOnCookieRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/BlurUserAuthApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/controller/AuthController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/controller/UserController$LoginUserResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/dto/EmailAuthDto$EmailAuthDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/dto/EmailAuthDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/dto/ErrorResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/dto/LoginModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/EmailAuth$EmailAuthBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/EmailAuth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/QEmailAuth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/QUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/QUserRefreshToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/User$UserBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/UserDto$UserDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/UserDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/entity/UserRefreshToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/repository/EmailRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/repository/UserRefreshTokenRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/service/EmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/service/PasswordService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/api/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/common/ApiResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/common/ApiResponseHeader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/EmailConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/QuerydslConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/properties/AppProperties$Auth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/properties/AppProperties$OAuth2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/properties/AppProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/properties/CorsProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/security/CustomSecurityConfigurer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/security/JwtConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/config/security/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/entity/AuthToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/entity/AuthTokenProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/entity/ProviderType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/entity/RoleType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/entity/UserPrincipal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/exception/OAuthProviderMissMatchException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/exception/RestAuthenticationEntryPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/exception/TokenValidFailedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/filter/TokenAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/handler/OAuth2AuthenticationFailureHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/handler/OAuth2AuthenticationSuccessHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/handler/TokenAccessDeniedHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/info/OAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/info/OAuth2UserInfoFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/info/OAuth2UserInfoFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/info/impl/GoogleOAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/info/impl/KakaoOAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/info/impl/NaverOAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/repository/OAuth2AuthorizationRequestBasedOnCookieRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/service/CustomOAuth2UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/oauth/service/CustomUserDetailsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/utils/CookieUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/blur/auth/utils/HeaderUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/querydsl/com/blur/auth/api/entity/QEmailAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/querydsl/com/blur/auth/api/entity/QUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/querydsl/com/blur/auth/api/entity/QUserRefreshToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application-smtp.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileQuerydsl/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/BlurUserAuthApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/controller/AuthController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/controller/UserController$LoginUserResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/dto/EmailAuthDto$EmailAuthDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/dto/EmailAuthDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/dto/ErrorResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/dto/LoginModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/EmailAuth$EmailAuthBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/EmailAuth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/QEmailAuth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/QUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/QUserRefreshToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/User$UserBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/UserDto$UserDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/UserDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/entity/UserRefreshToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/repository/EmailRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/repository/UserRefreshTokenRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/service/EmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/service/PasswordService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/api/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/common/ApiResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/common/ApiResponseHeader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/EmailConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/QuerydslConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/properties/AppProperties$Auth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/properties/AppProperties$OAuth2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/properties/AppProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/properties/CorsProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/security/CustomSecurityConfigurer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/security/JwtConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/config/security/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/entity/AuthToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/entity/AuthTokenProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/entity/ProviderType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/entity/RoleType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/entity/UserPrincipal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/exception/OAuthProviderMissMatchException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/exception/RestAuthenticationEntryPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/exception/TokenValidFailedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/filter/TokenAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/handler/OAuth2AuthenticationFailureHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/handler/OAuth2AuthenticationSuccessHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/handler/TokenAccessDeniedHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/info/OAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/info/OAuth2UserInfoFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/info/OAuth2UserInfoFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/info/impl/GoogleOAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/info/impl/KakaoOAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/info/impl/NaverOAuth2UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/repository/OAuth2AuthorizationRequestBasedOnCookieRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/service/CustomOAuth2UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/oauth/service/CustomUserDetailsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/utils/CookieUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/blur/auth/utils/HeaderUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application-smtp.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/BlurUserAuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/BlurUserAuthApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/dto/EmailAuthDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/dto/EmailAuthDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/dto/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/dto/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/dto/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/dto/LoginModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/EmailAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/EmailAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/UserRefreshToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/entity/UserRefreshToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/repository/EmailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/repository/EmailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/repository/UserRefreshTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/repository/UserRefreshTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/service/EmailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/service/PasswordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/service/PasswordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/api/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/common/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/common/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/common/ApiResponseHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/common/ApiResponseHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/EmailConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/QuerydslConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/properties/AppProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/properties/AppProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/properties/CorsProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/properties/CorsProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/security/CustomSecurityConfigurer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/security/JwtConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/security/JwtConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/config/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/AuthToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/AuthToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/AuthTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/AuthTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/ProviderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/ProviderType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/RoleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/RoleType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/UserPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/entity/UserPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/exception/OAuthProviderMissMatchException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/exception/OAuthProviderMissMatchException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/exception/RestAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/exception/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/exception/TokenValidFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/exception/TokenValidFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/filter/TokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/filter/TokenAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/handler/OAuth2AuthenticationFailureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/handler/OAuth2AuthenticationFailureHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/handler/OAuth2AuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/handler/OAuth2AuthenticationSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/handler/TokenAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/handler/TokenAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/OAuth2UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/OAuth2UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/OAuth2UserInfoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/OAuth2UserInfoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/impl/GoogleOAuth2UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/impl/GoogleOAuth2UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/impl/KakaoOAuth2UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/impl/KakaoOAuth2UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/impl/NaverOAuth2UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/info/impl/NaverOAuth2UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/repository/OAuth2AuthorizationRequestBasedOnCookieRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/service/CustomOAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/service/CustomOAuth2UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/service/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/oauth/service/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/utils/CookieUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/utils/CookieUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blur/auth/utils/HeaderUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blur/auth/utils/HeaderUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-smtp.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/blur/userservice/BlurUserService1ApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/blur/userservice/BlurUserService1ApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blur-profile/src/main/java/com/blur/blurprofile/config/MailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blur-profile/src/main/java/com/blur/blurprofile/config/MailConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blur-profile/src/main/java/com/blur/blurprofile/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../blur-profile/src/main/java/com/blur/blurprofile/service/EmailService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="blur-auth" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LQupDo5SEeqBY5XsSItE9kbmku" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/SSAFY/Desktop/pjt/BE/blur/blur-auth/build.gradle",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.blur.auth.api.service" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94074d7b-02b9-47d3-b749-008b5ca3b4cf" name="Changes" comment="" />
+      <created>1675815810347</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675815810347</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

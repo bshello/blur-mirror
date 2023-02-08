@@ -1,7 +1,7 @@
 package com.blur.auth.oauth.handler;
 
-import static com.blur.auth.oauth.repository.OAuth2AuthorizationRequestBasedOnCookieRepository.REDIRECT_URI_PARAM_COOKIE_NAME;
-import static com.blur.auth.oauth.repository.OAuth2AuthorizationRequestBasedOnCookieRepository.REFRESH_TOKEN;
+import static com.blur.auth.oauth.repository.HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME;
+import static com.blur.auth.oauth.repository.HttpCookieOAuth2AuthorizationRequestRepository.REFRESH_TOKEN;
 
 import java.io.IOException;
 import java.net.URI;
@@ -31,7 +31,7 @@ import com.blur.auth.oauth.entity.ProviderType;
 import com.blur.auth.oauth.entity.RoleType;
 import com.blur.auth.oauth.info.OAuth2UserInfo;
 import com.blur.auth.oauth.info.OAuth2UserInfoFactory;
-import com.blur.auth.oauth.repository.OAuth2AuthorizationRequestBasedOnCookieRepository;
+import com.blur.auth.oauth.repository.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.blur.auth.utils.CookieUtil;
 
 import lombok.RequiredArgsConstructor;
@@ -43,7 +43,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     private final AuthTokenProvider tokenProvider;
     private final AppProperties appProperties;
     private final UserRefreshTokenRepository userRefreshTokenRepository;
-    private final OAuth2AuthorizationRequestBasedOnCookieRepository authorizationRequestRepository;
+    private final HttpCookieOAuth2AuthorizationRequestRepository authorizationRequestRepository;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
