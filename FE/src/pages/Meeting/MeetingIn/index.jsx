@@ -1,5 +1,5 @@
 import "./index.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +13,11 @@ let roomName;
 let myPeerConnection;
 let myStream;
 let videoDevices = [];
+let firstRendering = false;
 
 function MeetingIn() {
   // 컴퓨터와 연결되어있는 모든 장치를 가져옴
-  async function getCameras() {
+  const getCameras = useCallback(async () => {
     try {
       const devices = await navigator.mediaDevices.enumerateDevices();
       const cameras = devices.filter((device) => device.kind === "videoinput");
@@ -36,13 +37,13 @@ function MeetingIn() {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, []);
 
-  async function getMedia(deviceId) {
+  const getMedia = useCallback(async (deviceId) => {
     // 초기 실행
     const initialConstraints = {
       audio: false,
-      video: { width: { exact: 600 }, height: { exact: 593 } },
+      video: { width: { exact: 599.037 }, height: { exact: 560.638 } },
     };
     // (select에서) 카메라를 변경했을 때의 device로 실행
     const cameraConstraints = {
@@ -56,7 +57,7 @@ function MeetingIn() {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, []);
 
   async function handleCameraChange() {
     await getMedia(document.querySelector("#cameras").value);
@@ -148,7 +149,8 @@ function MeetingIn() {
   }
 
   // (파트너 캠 상단의) 관심사 표현 토글
-  const showLight = () => {
+
+  const showLight = useCallback(() => {
     setLightToggle((prev) => !prev);
 
     if (!lightToggle) {
@@ -171,7 +173,7 @@ function MeetingIn() {
       document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
       // document.querySelector(".lightTagsDiv").style.display = "none";
     }
-  };
+  }, [lightToggle]);
 
   // (나의 캠 상단의) 이모지 표현 토글
   const showSmile = () => {
@@ -185,15 +187,15 @@ function MeetingIn() {
 
   // (관심사/이미지가 켜져있을 때) 바깥 배경 누르게되면 토글 off 처리
   const lightAndSmileBgOut = () => {
-    if (smileToggle) {
-      setSmileToggle((prev) => !prev);
-      document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
-    }
-    if (lightToggle) {
-      setLightToggle((prev) => !prev);
-      document.querySelector(".clickLight").classList.replace("clickLight", "basicLight");
-      document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
-    }
+    // if (smileToggle) {
+    //   setSmileToggle((prev) => !prev);
+    //   document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
+    // }
+    // if (lightToggle) {
+    //   setLightToggle((prev) => !prev);
+    //   document.querySelector(".clickLight").classList.replace("clickLight", "basicLight");
+    //   document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
+    // }
   };
 
   // 나의 캠 토글
@@ -305,15 +307,17 @@ function MeetingIn() {
     dispatch(CAM_OPEN_TOGGLE(true));
   };
 
-  setTimeout(async () => {
-    // 소켓통신을 통해서 방에 접속(이부분은 매칭이 되었을때 진행해야 하므로 전 페이지로 빼낼예정)
-    // 카메라 장치 동작 메서드
-    await getMedia();
-    makeConnection();
-    socket.emit("join_room", 111);
-    roomName = 111;
-  }, 3000);
-
+  if (!firstRendering) {
+    firstRendering = true;
+    setTimeout(async () => {
+      // 소켓통신을 통해서 방에 접속(이부분은 매칭이 되었을때 진행해야 하므로 전 페이지로 빼낼예정)
+      // 카메라 장치 동작 메서드
+      await getMedia();
+      makeConnection();
+      socket.emit("join_room", 111);
+      roomName = 111;
+    }, 3000);
+  }
   return (
     <div className="MeetingIn">
       <select id="cameras" onChange={handleCameraChange}></select>
@@ -367,8 +371,8 @@ function MeetingIn() {
           <span className="lightTag6">쇼핑</span>
         </div>
         <div className="lightTagBtn" onClick={showLight}></div>
-        <div className="blurEffect"></div>
         <div className="MPartenerCamDiv">
+          <div className="blurEffect"></div>
           <video className="MPartenerCamDiv1" autoPlay playsInline></video>
         </div>
         <div className="MPartenerCamSubDiv">
