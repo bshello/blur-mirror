@@ -130,6 +130,14 @@
   background-size: 100% 100%;
   z-index: 1;
 }
+.MeetingIn .MLeftDiv1 .MMyCamDiv1 {
+  position: absolute;
+  left: 0px;
+  width: 600px;
+  height: 593px;
+  z-index: 2;
+  border-radius: 30px;
+}
 .MeetingIn .MLeftDiv1 .MMyCamSubDiv {
   position: absolute;
   height: 44px;
@@ -387,6 +395,14 @@
   border-radius: 30px;
   background-image: url(../../../assets/images/MPartenerCamDiv.png);
   background-size: 100% 100%;
+}
+.MeetingIn .MRightDiv1 .MPartenerCamDiv .MPartenerCamDiv1 {
+  position: absolute;
+  left: 0px;
+  width: 600px;
+  height: 593px;
+  z-index: 2;
+  border-radius: 30px;
 }
 .MeetingIn .MRightDiv1 .MPartenerCamSubDiv {
   position: absolute;
@@ -774,4 +790,12 @@
 
 .MeetingIn a:hover {
   color: #fff;
+}
+
+#cameras {
+  visibility: hidden;
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  z-index: 5;
 }/*# sourceMappingURL=index.css.map */

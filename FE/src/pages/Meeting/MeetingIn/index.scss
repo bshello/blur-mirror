@@ -146,6 +146,15 @@
       background-size: 100% 100%;
       z-index: 1;
     }
+    .MMyCamDiv1 {
+      position: absolute;
+      left: 0px;
+      width: 600px;
+      height: 593px;
+      z-index: 2;
+      border-radius: 30px;
+    }
+
     .MMyCamSubDiv {
       position: absolute;
       height: 44px;
@@ -480,6 +489,14 @@
 
       background-image: url(../../../assets/images/MPartenerCamDiv.png);
       background-size: 100% 100%;
+      .MPartenerCamDiv1 {
+        position: absolute;
+        left: 0px;
+        width: 600px;
+        height: 593px;
+        z-index: 2;
+        border-radius: 30px;
+      }
     }
 
     .MPartenerCamSubDiv {
@@ -825,3 +842,10 @@
 // .MMyCamSubSoundDescBar {
 //   width: 100px;
 // }
+#cameras {
+  visibility: hidden;
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  z-index: 5;
+}

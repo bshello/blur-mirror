@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
 import "./index.css";
 
 function ProgressBar() {
@@ -24,8 +23,8 @@ function ProgressBar() {
       function frame() {
         // 50분(600)이 다채워졌을 경우, 채팅창에 리스트 추가(시간은 계속감)
         if (width > 600) {
-          clearInterval(timer);
           currentProcessBar.innerHTML = width;
+          clearInterval(timer);
 
           alert("김블리님이 채팅목록에 추가 되었습니다:)");
         } else {
@@ -42,11 +41,14 @@ function ProgressBar() {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      start();
-    }, 3000);
-  }, [currentVal]);
+  useEffect(
+    () => {
+      setTimeout(() => {
+        start();
+      }, 3000);
+    }
+    // [currentVal]
+  );
 
   return <div className="ProgressBar">{/* <Timer /> */}</div>;
 }
