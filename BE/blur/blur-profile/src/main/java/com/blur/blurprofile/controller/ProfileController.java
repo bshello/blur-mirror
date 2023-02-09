@@ -1,6 +1,5 @@
 package com.blur.blurprofile.controller;
 
-import com.blur.blurprofile.dto.CategoryDto;
 import com.blur.blurprofile.dto.InterestDto;
 import com.blur.blurprofile.dto.ProfileDto;
 import com.blur.blurprofile.dto.ResponseCard;
@@ -10,11 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-//@RequestMapping("/profile/{id}")
-@RequestMapping("/profile")
+@RequestMapping("/profile/{id}")
 public class ProfileController {
 
     @Autowired
@@ -22,7 +18,7 @@ public class ProfileController {
 
     @GetMapping
     public ResponseEntity<ProfileDto> getProfile(@PathVariable("id") String userId) {
-
+        //매칭정보도 가져와야됨
         ProfileDto profileDto = profileService.getProfile(userId);
         return ResponseEntity.status(HttpStatus.OK).body(profileDto);
     }
@@ -31,12 +27,6 @@ public class ProfileController {
     public ResponseEntity<?> updateProfile(@RequestBody ProfileDto profileDto) throws Exception {
         ProfileDto profile= profileService.updateProfile(profileDto);
         return ResponseEntity.status(HttpStatus.OK).body(profile);
-    }
-
-    @GetMapping("getAllCategories")
-    public ResponseEntity<CategoryDto> getAllCategories(@PathVariable("id") String userId) {
-        CategoryDto categoryDto = profileService.getAllCategories(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(categoryDto);
     }
 
     @GetMapping("getAllInterests")
