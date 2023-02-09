@@ -11,5 +11,4 @@ public class BlurDiscoveryApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BlurDiscoveryApplication.class, args);
 	}
-
 }

@@ -1,7 +1,5 @@
 package com.blur.apigateway.filter;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -55,7 +53,6 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(httpStatus);
 
-        log.error(err);
         return response.setComplete();
     }
 
@@ -63,16 +60,10 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
         boolean returnValue = true;
 
         String userId = null;
-        Jws<Claims> jws;
-        
+
         try {
-            userId = Jwts
-            		.parserBuilder()
-            		.setSigningKey(env.getProperty("token.secret"))
-//                    .parseClaimsJws(jwt)
-            		.build()
-            		.parseClaimsJws(jwt)
-                    .getBody()
+            userId = Jwts.parser().setSigningKey(env.getProperty("token.secret"))
+                    .parseClaimsJws(jwt).getBody()
                     .getSubject();
             exchange.getRequest().mutate().header("userId", userId);
         } catch (Exception ex) {

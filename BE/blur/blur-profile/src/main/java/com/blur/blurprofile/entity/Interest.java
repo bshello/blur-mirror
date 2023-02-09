@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,7 +18,7 @@ import javax.persistence.*;
 public class Interest {
 
     @Id
-    @Column(nullable = false, length = 120, unique = true)
+    @Column(nullable = false, length = 120, unique = true, name = "interest_name")
     private String interestName;
 
 //    @Column(nullable = false)
@@ -26,8 +28,7 @@ public class Interest {
     @JoinColumn(name="category_name")
     private Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_no")
-    private UserInterest userInterest;
+    @OneToMany(mappedBy = "interest")
+    private List<UserInterest> userInterests = new ArrayList<>();
 
 }

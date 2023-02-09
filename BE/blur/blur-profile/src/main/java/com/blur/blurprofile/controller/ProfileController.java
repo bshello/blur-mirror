@@ -1,13 +1,16 @@
 package com.blur.blurprofile.controller;
 
+import com.blur.blurprofile.dto.CategoryDto;
+import com.blur.blurprofile.dto.InterestDto;
 import com.blur.blurprofile.dto.ProfileDto;
 import com.blur.blurprofile.dto.ResponseCard;
 import com.blur.blurprofile.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 //@RequestMapping("/profile/{id}")
@@ -16,11 +19,6 @@ public class ProfileController {
 
     @Autowired
     ProfileService profileService;
-
-    @GetMapping("/test")
-    public String test() {
-        return "11111111111111111111111111111111111111111111";
-    }
 
     @GetMapping
     public ResponseEntity<ProfileDto> getProfile(@PathVariable("id") String userId) {
@@ -35,6 +33,18 @@ public class ProfileController {
         return ResponseEntity.status(HttpStatus.OK).body(profile);
     }
 
+    @GetMapping("getAllCategories")
+    public ResponseEntity<CategoryDto> getAllCategories(@PathVariable("id") String userId) {
+        CategoryDto categoryDto = profileService.getAllCategories(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(categoryDto);
+    }
+
+    @GetMapping("getAllInterests")
+    public ResponseEntity<InterestDto> getAllInterests(@PathVariable("id") String userId) {
+        InterestDto interestDto = profileService.getAllInterests(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(interestDto);
+    }
+
     @GetMapping("/getCard")
     public ResponseEntity<ResponseCard> getCard(@PathVariable("id") String userId) {
 
@@ -43,9 +53,10 @@ public class ProfileController {
     }
 
     @PutMapping("/updateInterest")
-    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.UserInterestDto userInterestDto) throws Exception {
-        profileService.updateInterest(userInterestDto);
+    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.RequestUserInterestDto requestUserInterestDto, @PathVariable("id") String userId) throws Exception {
+        profileService.updateInterest(requestUserInterestDto, userId);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
+
 
 }

@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import com.blur.auth.config.properties.AppProperties;
 import com.blur.auth.config.properties.CorsProperties;
 
-//@EnableEurekaClient
 @SpringBootApplication
+@EnableEurekaClient
 @EnableConfigurationProperties({
     CorsProperties.class,
     AppProperties.class

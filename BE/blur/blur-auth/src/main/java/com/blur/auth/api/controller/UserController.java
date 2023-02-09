@@ -1,22 +1,22 @@
 package com.blur.auth.api.controller;
 
-import java.util.Date;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blur.auth.api.dto.ErrorResponse;
+import com.blur.auth.api.dto.UserInfo;
 import com.blur.auth.api.entity.User;
 import com.blur.auth.api.entity.UserDto;
 import com.blur.auth.api.repository.UserRepository;
@@ -40,12 +40,17 @@ public class UserController {
 	
     private final UserService userService;
     private final UserRepository userRepository;
-	private EmailService emailService;
-	private PasswordService passwordService;
+
 	private final MessageSource messageSource;
 	private final PasswordEncoder passwordEncoder;
 	private final AuthTokenProvider tokenProvider;
 	private final AppProperties appProperties;
+
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private PasswordService passwordService;
 
     @GetMapping
     public ApiResponse getUser() {
@@ -57,41 +62,41 @@ public class UserController {
     }
     
     
-    /**
-     * 로그인 JWT 발급
-     * @param userInfo {email, password}
-     * @return
-     */
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String, String> userInfo) {
-        User user = userRepository.findByUserId(userInfo.get("userId"));
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(new ErrorResponse(messageSource.getMessage("error.none.user", null, LocaleContextHolder.getLocale())));
-        }
-
-        if (!passwordEncoder.matches(userInfo.get("password"), user.getPassword())) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(new ErrorResponse(messageSource.getMessage("error.wrong.password", null, LocaleContextHolder.getLocale())));
-        }
-
-//        String token = jwtTokenProvider.createToken(user.getUsername(), user.getUserSeq());
-        Date now = new Date();
-        AuthToken accessToken = tokenProvider.createAuthToken(
-        		user.getUserId(),
-                new Date(now.getTime() + appProperties.getAuth().getTokenExpiry())
-        );
-
-        // refresh 토큰 설정
-        long refreshTokenExpiry = appProperties.getAuth().getRefreshTokenExpiry();
-
-        AuthToken refreshToken = tokenProvider.createAuthToken(
-                appProperties.getAuth().getTokenSecret(),
-                new Date(now.getTime() + refreshTokenExpiry)
-        );
-
-        return ResponseEntity.ok(new LoginUserResponse(accessToken, refreshToken));
-    }
+//    /**
+//     * 로그인 JWT 발급
+//     * @param userInfo {email, password}
+//     * @return
+//     */
+//    @PostMapping("/login")
+//    public ResponseEntity<?> login(@RequestBody Map<String, String> userInfo) {
+//        User user = userRepository.findByUserId(userInfo.get("userId"));
+//        if (user == null) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                    .body(new ErrorResponse(messageSource.getMessage("error.none.user", null, LocaleContextHolder.getLocale())));
+//        }
+//
+//        if (!passwordEncoder.matches(userInfo.get("password"), user.getPassword())) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                    .body(new ErrorResponse(messageSource.getMessage("error.wrong.password", null, LocaleContextHolder.getLocale())));
+//        }
+//
+////        String token = jwtTokenProvider.createToken(user.getUsername(), user.getUserSeq());
+//        Date now = new Date();
+//        AuthToken accessToken = tokenProvider.createAuthToken(
+//        		user.getUserId(),
+//                new Date(now.getTime() + appProperties.getAuth().getTokenExpiry())
+//        );
+//
+//        // refresh 토큰 설정
+//        long refreshTokenExpiry = appProperties.getAuth().getRefreshTokenExpiry();
+//
+//        AuthToken refreshToken = tokenProvider.createAuthToken(
+//                appProperties.getAuth().getTokenSecret(),
+//                new Date(now.getTime() + refreshTokenExpiry)
+//        );
+//
+//        return ResponseEntity.ok(new LoginUserResponse(accessToken, refreshToken));
+//    }
     
     
     @PostMapping("/register")
@@ -127,7 +132,12 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	
+	@PostMapping("userInfo/{userId}")
+	public ResponseEntity<?> getUserInfo(@PathVariable String userId) {
+		UserInfo userInfo = userService.getUserInfo(userId);
+		userInfo.setNickname("test");
+		return new ResponseEntity(userInfo, HttpStatus.OK);
+	}
 	
 	@Data
     @NoArgsConstructor(access = AccessLevel.PROTECTED)

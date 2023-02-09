@@ -16,7 +16,7 @@ spring:
         - id: blur-auth
           uri: lb://BLUR-AUTH
           predicates:
-            - Path=/blur-auth/**
+            - Path=/blur-auth/login
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
@@ -33,17 +33,16 @@ spring:
           uri: lb://BLUR-AUTH
           predicates:
             - Path=/blur-auth/**
-            - Method=GET            
+            - Method= GET, POST
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-auth/(?<segment>.*), /$\{segment}
 #            - AuthorizationHeaderFilter
-
         - id: blur-profile
           uri: lb://BLUR-PROFILE
           predicates:
             - Path=/blur-profile/**
-            - Method= GET, POST, PUT
+            - Method= GET, POST, PUT, OPTIONS
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
@@ -63,8 +62,9 @@ spring:
             - Path=/blur-chat/**
             - Method= GET, POST, PUT
           filters:
-            - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
             - RemoveRequestHeader=Cookie
+            - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
+#            - AuthorizationHeaderFilter
 
 eureka:
   client:
