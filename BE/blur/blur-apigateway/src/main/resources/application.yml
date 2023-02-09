@@ -6,6 +6,26 @@ spring:
     name: blur-gateway
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allow-credentials: false
+            allowedHeaders:
+              - x-requested-with
+              - authorization
+              - content-type
+              - credential
+              - X-AUTH-TOKEN
+              - X-CSRF-TOKEN
+            allowedMethods:
+              - POST
+              - GET
+              - PUT
+              - PATCH
+              - OPTIONS
+              - DELETE
       default-filters:
         - name: GlobalFilter
           args:

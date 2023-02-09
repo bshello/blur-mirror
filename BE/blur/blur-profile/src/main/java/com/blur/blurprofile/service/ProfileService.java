@@ -1,10 +1,14 @@
 package com.blur.blurprofile.service;
 
+import com.blur.blurprofile.dto.CategoryDto;
+import com.blur.blurprofile.dto.InterestDto;
 import com.blur.blurprofile.dto.ProfileDto;
 import com.blur.blurprofile.dto.ResponseCard;
 import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.entity.UserInterest;
 import com.blur.blurprofile.entity.UserProfile;
+import com.blur.blurprofile.repository.CategoryRepository;
+import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.repository.UserInterestRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -24,6 +28,12 @@ public class ProfileService {
     @Autowired
     UserInterestRepository userInterestRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
+    InterestRepository interestRepository;
+
     public ProfileDto getProfile(String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         if (userProfile == null) {
@@ -34,6 +44,18 @@ public class ProfileService {
         }
         ProfileDto profileDto = new ProfileDto(userProfile);
         return profileDto;
+    }
+
+    public CategoryDto getAllCategories(String userId) {
+
+        CategoryDto categories = new CategoryDto(categoryRepository.findAll());
+        return categories;
+    }
+
+    public InterestDto getAllInterests(String userId) {
+
+        InterestDto interestDto = new InterestDto(interestRepository.findAll());
+        return interestDto;
     }
 
     public ProfileDto updateProfile(ProfileDto profileDto) {
@@ -53,22 +75,21 @@ public class ProfileService {
                     .build();
             userProfileRepository.save(userProfile);
         }
-        UserInterest userInterest = userInterestRepository.findByUserId(userId);
-        if (userInterest == null) {
-            userInterest = UserInterest.builder()
-                    .userId(userId)
-                    .build();
-            userInterestRepository.save(userInterest);
-        }
-        ResponseCard responseCard = new ResponseCard(userProfile, userInterest);
+        List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
+        ResponseCard responseCard = new ResponseCard(userProfile, userInterests);
         return responseCard;
     }
 
-    public void updateInterest(ProfileDto.UserInterestDto userInterestDto) {
-        UserInterest userInterest = userInterestRepository.findByUserId(userInterestDto.getUserId());
-        for(Interest interest : userInterest.getInterest()) {
-            userInterest.addInterest(interest);
+    public void updateInterest(ProfileDto.RequestUserInterestDto requestUserInterestDto, String userId) {
+        UserProfile userProfile = userProfileRepository.findByUserId(userId);
+        List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
+        List<Interest> interests = requestUserInterestDto.getInterests();
+        for (Interest interest : interests) {
+            UserInterest userInterest = UserInterest.builder()
+                    .userProfile(userProfile)
+                    .interest(interest)
+                    .build();
+            userInterestRepository.save(userInterest);
         }
-        userInterestRepository.save(userInterest);
     }
 }

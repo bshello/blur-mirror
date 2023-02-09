@@ -27,7 +27,7 @@ import com.blur.auth.oauth.filter.TokenAuthenticationFilter;
 import com.blur.auth.oauth.handler.OAuth2AuthenticationFailureHandler;
 import com.blur.auth.oauth.handler.OAuth2AuthenticationSuccessHandler;
 import com.blur.auth.oauth.handler.TokenAccessDeniedHandler;
-import com.blur.auth.oauth.repository.HttpCookieOAuth2AuthorizationRequestRepository;
+import com.blur.auth.oauth.repository.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import com.blur.auth.oauth.service.CustomOAuth2UserService;
 import com.blur.auth.oauth.service.CustomUserDetailsService;
 
@@ -198,8 +198,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 인가 응답을 연계 하고 검증할 때 사용.
      * */
     @Bean
-    public HttpCookieOAuth2AuthorizationRequestRepository oAuth2AuthorizationRequestBasedOnCookieRepository() {
-        return new HttpCookieOAuth2AuthorizationRequestRepository();
+    public OAuth2AuthorizationRequestBasedOnCookieRepository oAuth2AuthorizationRequestBasedOnCookieRepository() {
+        return new OAuth2AuthorizationRequestBasedOnCookieRepository();
     }
 
     /**

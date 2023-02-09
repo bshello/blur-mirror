@@ -2,14 +2,11 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.8'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
-
-apply plugin: 'io.spring.dependency-management'
 
 group = 'com.blur.chat'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 configurations {
 	compileOnly {
@@ -32,14 +29,16 @@ dependencyManagement {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.31'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	
 	// for websocket, stomp
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
@@ -47,49 +46,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation group: 'org.webjars', name: 'stomp-websocket', version: '2.3.3-1'
     
-    //Junit Test
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	testImplementation("org.assertj:assertj-core:3.23.1")
-    
-   	//querydsl
-	implementation "com.querydsl:querydsl-jpa:5.0.0"
-	implementation "com.querydsl:querydsl-apt:5.0.0"
-	
-	//feign client
-	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-	
 	//spring cloud
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-}
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-//QueryDsl 관련 세팅
-def querydslDir = "$buildDir/generated/querydsl"
-
-querydsl {
-	jpa = true
-	querydslSourcesDir = querydslDir
-}
-
-sourceSets {
-	main.java.srcDir querydslDir
-}
-
-// querydsl 컴파일시 사용할 옵션 설정
-compileQuerydsl{
-	options.annotationProcessorPath = configurations.querydsl
-}
-
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	querydsl.extendsFrom compileClasspath
-}
-/*** comileQuerydsl.doFirst 추가*/
-compileQuerydsl.doFirst {
-	if (file(querydslDir).exists()) delete(file(querydslDir))
 }
 
 tasks.named('test') {

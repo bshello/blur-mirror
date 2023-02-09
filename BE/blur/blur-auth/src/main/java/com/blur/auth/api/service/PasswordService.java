@@ -1,17 +1,17 @@
 package com.blur.auth.api.service;
 
-import java.util.Random;
+import com.blur.auth.api.entity.User;
+import com.blur.auth.api.repository.UserRepository;
 import com.blur.auth.config.email.EmailHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.blur.auth.api.entity.User;
-import com.blur.auth.api.repository.UserRepository;
 
-import lombok.RequiredArgsConstructor;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -85,7 +85,7 @@ public class PasswordService {
             String message = createMessage(to, tPw);
             EmailHandler emailHandler = new EmailHandler(mailSender);
             emailHandler.setTo(to);
-            emailHandler.setSubject("이메일 인증 테스트");
+            emailHandler.setSubject("비밀번호변경테스트");
             emailHandler.setText(message, true);//내용
             emailHandler.setFrom(userName);//보내는 사람
             try{//예외처리

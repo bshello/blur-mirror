@@ -18,21 +18,18 @@ import java.util.Collection;
 @Table(name = "user_interest")
 public class UserInterest {
 
-    @JsonIgnore
-    @Column(name = "user_no")
     @Id
-    private Long userNo;
+    @Column(name = "seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long seq;
 
-    @Column(name = "user_id")
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "user_profile")
+    private UserProfile userProfile;
 
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userInterest")
-    private Collection<Interest> interest;
+    @ManyToOne
+    @JoinColumn(name = "interest")
+    private Interest interest;
 
-    public void addInterest(Interest i){
-        if(interest  == null ){
-            interest = new ArrayList<Interest>();
-        }
-        interest.add(i);
-    }
+
 }

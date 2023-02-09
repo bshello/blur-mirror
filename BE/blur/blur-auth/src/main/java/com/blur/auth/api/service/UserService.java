@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.blur.auth.api.entity.FeignUserInfo;
 import com.blur.auth.api.entity.User;
 import com.blur.auth.api.entity.UserDto;
 import com.blur.auth.api.repository.UserRepository;
@@ -63,11 +62,5 @@ public class UserService implements UserDetailsService {
         }
 //        return UserPrincipal.create(user);
         return null;
-	}
-	
-	public FeignUserInfo getUserInfo(String userId) throws Exception{
-		User user = userRepository.findByUserId(userId);
-		FeignUserInfo feignUserInfo = new FeignUserInfo(user.getUserNo(), userId, user.getUserId());
-		return feignUserInfo;
 	}
 }
