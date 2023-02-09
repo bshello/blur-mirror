@@ -15,7 +15,9 @@ function Header({ showSignInModal }) {
   const logInOut = () => {
     if (userState) {
       dispatch(saveToken(null));
+
       console.log("로그아웃");
+
       navigate("/");
     } else {
       showSignInModal();
@@ -26,6 +28,7 @@ function Header({ showSignInModal }) {
     if (userState) {
       navigate("/MyInfo");
     } else {
+      console.log(userState);
       showSignInModal();
     }
   };
@@ -57,12 +60,11 @@ function Header({ showSignInModal }) {
         <span className="CommNavBtnChat" onClick={Chat}>
           Chat
         </span>
-        <span className="CommNavBtnAbout" onClick={logInOut}>
-          {userState ? "Logout" : "Login"}
-        </span>
-
         <span className="CommNavBtnMyInfo" onClick={MyInfo}>
           MyInfo
+        </span>
+        <span className="CommNavBtnAbout" onClick={logInOut}>
+          {userState ? "Logout" : "Login"}
         </span>
       </div>
     </div>
