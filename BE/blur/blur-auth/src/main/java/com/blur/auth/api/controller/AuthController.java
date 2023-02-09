@@ -51,15 +51,15 @@ public class AuthController {
             @RequestBody LoginModel loginModel
     ) {
     	
-//    	System.out.printf(loginModel.getId(), loginModel.getPassword());
+    	System.out.printf(loginModel.getUserId(), loginModel.getPassword());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                		loginModel.getId(),
+                		loginModel.getUserId(),
                 		loginModel.getPassword()
                 )
         );
 
-        String userId = loginModel.getId();
+        String userId = loginModel.getUserId();
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         Date now = new Date();

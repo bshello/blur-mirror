@@ -37,28 +37,28 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo;
 
-    @Column(name = "user_id", length = 64, unique = true)
+    @Column(name = "user_id")
     @NotNull
     @Size(max = 64)
     private String userId;
 
     @JsonIgnore
-    @Column(name = "password", length = 128)
+    @Column(name = "password")
     @NotNull
     @Size(max = 128)
     private String password;
 
-    @Column(name = "email", length = 512, unique = true)
+    @Column(name = "email")
     @NotNull
     @Size(max = 512)
     private String email;
 
-    @Column(name = "provider_type", length = 20)
+    @Column(name = "provider_type")
     @Enumerated(EnumType.STRING)
     @NotNull
     private ProviderType providerType;
 
-    @Column(name = "role_type", length = 20)
+    @Column(name = "role_type")
     @Enumerated(EnumType.STRING)
     @NotNull
     private RoleType roleType;
