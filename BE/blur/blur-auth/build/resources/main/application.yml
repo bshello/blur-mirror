@@ -5,7 +5,7 @@ server:
 spring:
   application:
     name: blur-auth
-  profiles.active: local
+
   # 데이터 소스 설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

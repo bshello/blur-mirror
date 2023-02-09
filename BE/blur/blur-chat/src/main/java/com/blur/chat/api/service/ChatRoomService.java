@@ -36,10 +36,10 @@ public class ChatRoomService {
        return chatRoomRepository.findUsersInChatroom(roomNo,sessionId);
     }
     
-    public ResponseDto<Chatroom> createChatroom(Long userNo){
-    	Chatroom chatroom = new Chatroom(userNo);
-    	chatRoomNoRepository.save(chatroom);
-    	Long chatroonNo = ch
+//    public ResponseDto<Chatroom> createChatroom(Long userNo){
+//    	Chatroom chatroom = new Chatroom(userNo);
+//    	chatRoomNoRepository.save(chatroom);
+//    	Long chatroonNo = ch
 //    	return ResponseDto.success(responseDto);
-    }
+//    }
 }
