@@ -7,21 +7,48 @@ redux의 경우
 
 redux/toolkit은 configureStore 만 있으면 된다.(위의 4가지 모두 자동화)
 */
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userEdit from "../redux/reducers/userEdit";
 import MToggle from "../redux/reducers/MToggle";
 import introEdit from "../redux/reducers/introEdit";
 import saveTokenReducer from "./reducers/saveToken";
 import checkData from "./reducers/checkData";
+import storage from "redux-persist/lib/storage";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 
-const store = configureStore({
-  reducer: {
-    user: userEdit,
-    mt: MToggle,
-    intro: introEdit,
-    strr: saveTokenReducer,
-    check: checkData,
-  },
+const rootReducer = combineReducers({
+  user: userEdit,
+  mt: MToggle,
+  intro: introEdit,
+  strr: saveTokenReducer,
+  check: checkData,
 });
 
-export default store;
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["strr"],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);

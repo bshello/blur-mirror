@@ -1,0 +1,32 @@
+.ChatItem {
+  width: 359.25px;
+  height: 67.5px;
+  margin: 15px;
+  display: block;
+  background: #e1f1f2;
+  border-radius: 30px;
+}
+.ChatItem .ChatPicture {
+  position: relative;
+  display: inline-block;
+  top: 10px;
+  right: 150px;
+  width: 54px;
+  height: 44.25px;
+  border-radius: 30px;
+  background: url(../../../../assets/images/balloon.png);
+  background-size: cover;
+}
+.ChatItem .ChatContnet {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+.ChatItem .ChatContnet .ChatName {
+  height: 50px;
+  width: 50px;
+}
+.ChatItem .ChatContnet .ChatText {
+  height: 50px;
+  width: 50px;
+}/*# sourceMappingURL=chatitem.css.map */

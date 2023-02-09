@@ -2,22 +2,28 @@ import "./signIn.css";
 import { useState } from "react";
 import axios from "axios";
 import { saveToken } from "../../../redux/reducers/saveToken";
+import { saveId } from "../../../redux/reducers/saveToken";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useRef } from "react";
+import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "http://192.168.31.192:8080/auth";
-  const SOCIAL_API_URL = "http://192.168.31.192:8080";
+  const API_URL = "blur-auth/user";
+  const SOCIAL_API_URL = "blur-auth";
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [signId, setSignId] = useState(null);
+  const savedId = useSelector((state) => state.strr.id); // 저장되어 있는 아이디 가져오기
+  const checkbox = useRef(); // 아이디저장 체크박스
+
+  const [signId, setSignId] = useState("");
   const enterSignId = (e) => {
     setSignId(e.target.value);
     console.log(signId);
   };
 
-  const [signPs, setSignPs] = useState(null);
+  const [signPs, setSignPs] = useState("");
   const enterSignPs = (e) => {
     setSignPs(e.target.value);
     console.log(signPs);
@@ -34,10 +40,19 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         },
       })
         .then((res) => {
-          console.log(res.data);
-          console.log(res.data.accessToken.token);
-          console.log(res.data.refreshToken.token);
-          dispatch(saveToken(res.data.accessToken.token));
+          console.log(res);
+          console.log(res.data.body);
+          console.log(res.data.body.token);
+
+          dispatch(saveToken(res.data.body.token));
+          if (checkbox.current.checked) {
+            console.log("디스패치");
+
+            dispatch(saveId(signId));
+          } else {
+            console.log("초기화");
+            dispatch(saveId(""));
+          }
 
           navigate("/home");
         })
@@ -58,39 +73,44 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     <div className="SIModal">
       <div className="SIModalHeader">
         <span className="SIModalHeaderText">Sign In</span>
+        <button className="SIModalClose" onClick={showSignInModal}></button>
       </div>
-      <form>
-        <div className="ModalInputIdDiv">
-          <label className="ModalInputIdLabel" htmlFor="user_id">
-            ID
-          </label>
-          <input
-            className="ModalInputId"
-            id="user_id"
-            placeholder="  ID를 입력해 주세요"
-            onChange={enterSignId}
-          ></input>
-        </div>
-        <div className="ModalInputPwDiv">
-          <label className="ModalInputPwLabel" htmlFor="user_pw">
-            PW
-          </label>
-          <input
-            className="ModalInputPw"
-            id="user_pw"
-            placeholder="  PW를 입력해 주세요"
-            type="password"
-            onChange={enterSignPs}
-          ></input>
-        </div>
-      </form>
+
+      <div className="ModalInputIdDiv">
+        <label className="ModalInputIdLabel" htmlFor="user_id">
+          ID
+        </label>
+        <input
+          className="ModalInputId"
+          id="user_id"
+          placeholder="ID를 입력해 주세요"
+          onChange={enterSignId}
+          defaultValue={savedId}
+        ></input>
+      </div>
+      <div className="ModalInputPwDiv">
+        <label className="ModalInputPwLabel" htmlFor="user_pw">
+          PW
+        </label>
+        <input
+          className="ModalInputPw"
+          id="user_pw"
+          placeholder="PW를 입력해 주세요"
+          type="password"
+          onChange={enterSignPs}
+        ></input>
+      </div>
 
       <div className="LoginBtnDiv">
         <button className="LoginBtn" onClick={signIn}>
           로그인
         </button>
         <div className="IdSaveDiv">
-          <input className="IdSaveToggle" type="checkbox"></input>
+          <input
+            className="IdSaveToggle"
+            type="checkbox"
+            ref={checkbox}
+          ></input>
           <label className="IdSaveText">아이디 저장</label>
         </div>
         <button
@@ -109,7 +129,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
             showSignInModal();
           }}
         >
-          비밀번호 찾기
+          비밀번호찾기
         </button>
       </div>
 

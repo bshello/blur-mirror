@@ -34,12 +34,21 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
     <div className="SPModal">
       <div className="SPModalHeader">
         <span className="SPModalHeaderText">Searching Password</span>
+        <button
+          className="SPModalClose"
+          onClick={() => {
+            showSignInModal();
+            showSearchPwModal();
+          }}
+        >
+          x
+        </button>
       </div>
       <div className="SPModalInputIdDiv">
         <label className="SPModalInputIdLabel">ID</label>
         <input
           className="SPModalInputId"
-          placeholder="  ID를 입력해 주세요"
+          placeholder="ID를 입력해 주세요"
           onChange={enterId}
         ></input>
       </div>
@@ -50,7 +59,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
           callSearchPwCheck();
         }}
       >
-        <span className="SPConfirmBtnText">임시비밀번호 이메일로 전송하기</span>
+        임시비밀번호 이메일로 전송하기
       </button>
       <button
         className="SPCancleBtn"
@@ -59,7 +68,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
           showSearchPwModal();
         }}
       >
-        <span className="SPCancleBtnText">취소</span>
+        취소
       </button>
     </div>
   );
