@@ -1,24 +1,22 @@
 package com.blur.auth.api.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import javax.persistence.*;
+import javax.persistence.Id;
 
-@Entity
-@Getter
+import org.springframework.data.redis.core.RedisHash;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Table(name = "email_auth")
+@Data
+@RedisHash(value = "email_auth")
 public class EmailAuth {
 
-    @JsonIgnore
     @Id
-    @Column(name = "temp_no")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long tempNo;
-
-    @Column(name = "auth_key", length = 255)
-    String authKey;
-
+//    private Long tempNo;
+    private String email;
+    private String authKey;
+    
 }

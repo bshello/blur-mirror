@@ -1,8 +1,10 @@
 package com.blur.chat.api.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,7 +37,8 @@ public class RoomController {
 		return ResponseDto.success(userNo) ;
 	}
 	
-	public ResponseDto<?> getRooms(@RequestParam String userId) {
+	public ResponseDto<?> getRooms(@RequestBody Map<String, String> user) {
+		String userId = user.get("userId");
 		Long userNo = userInfo.getUserInfo(userId).getUserNo();
 		List<Chatroom> result = chatRoomService.getRooms(userNo);
 		return ResponseDto.success(result);

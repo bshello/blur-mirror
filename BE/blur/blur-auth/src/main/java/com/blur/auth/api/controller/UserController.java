@@ -124,6 +124,16 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
+	@PostMapping("/checkEmail")
+	public ResponseEntity<?> checkEmail(@RequestBody Map<String, String> param) throws Exception {
+		String email = param.get("email");
+		String authKey = param.get("authKey");
+		if(emailService.getAuthKey(email, authKey))
+			return new ResponseEntity<> (HttpStatus.OK);
+		else
+			return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
+	}
+	
 	@PutMapping("/findPassword") // 비밀번호 찾기
 	public ResponseEntity<Boolean> findPassword(@RequestBody Map<String,String> param) throws Exception {
 
@@ -133,20 +143,20 @@ public class UserController {
 	}
 	
 	@PostMapping("userInfo/{userId}")
-	public ResponseEntity<?> getUserInfo(@PathVariable String userId) {
+	public ResponseEntity<?> getUserInfo(@PathVariable String userId) throws Exception{
 		UserInfo userInfo = userService.getUserInfo(userId);
 		userInfo.setNickname("test");
-		return new ResponseEntity(userInfo, HttpStatus.OK);
+		return new ResponseEntity<>(userInfo, HttpStatus.OK);
 	}
 	
-	@Data
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public class LoginUserResponse {
-        private AuthToken accessToken;
-        private AuthToken refreshToken;
-        public LoginUserResponse(AuthToken accessToken, AuthToken refreshToken) {
-            this.accessToken = accessToken;
-            this.refreshToken = refreshToken;
-        }
-    }
+//	@Data
+//    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//    public class LoginUserResponse {
+//        private AuthToken accessToken;
+//        private AuthToken refreshToken;
+//        public LoginUserResponse(AuthToken accessToken, AuthToken refreshToken) {
+//            this.accessToken = accessToken;
+//            this.refreshToken = refreshToken;
+//        }
+//    }
 }

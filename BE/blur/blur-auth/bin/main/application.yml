@@ -38,7 +38,12 @@ spring:
         order_inserts: true
         order_updates: true
         format_sql: true
-        
+  
+  #redis 설정
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  
   # Security OAuth
   security:
     oauth2.client:

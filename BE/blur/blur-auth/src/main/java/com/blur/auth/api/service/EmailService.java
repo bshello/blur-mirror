@@ -1,9 +1,12 @@
 package com.blur.auth.api.service;
 
+import com.blur.auth.api.entity.EmailAuth;
+import com.blur.auth.api.repository.RedisRepository;
 import com.blur.auth.config.email.EmailHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -14,8 +17,9 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class EmailService {
 
-    @Autowired
     private JavaMailSender mailSender;
+    private RedisRepository redisRepository;
+    private RedisTemplate<String, String> redisTemplate;
 
     @Value("${mail.username}")
     private String userName;
@@ -74,6 +78,10 @@ public class EmailService {
         emailHandler.setSubject("이메일 인증 테스트");
         emailHandler.setText(message, true);//내용
         emailHandler.setFrom(userName);//보내는 사람
+        
+//        EmailAuth emailAuth = new EmailAuth(to, ePw.toString());
+//        redisRepository.save(emailAuth);
+        redisTemplate.opsForValue().set(to, ePw);
         try{//예외처리
             emailHandler.send();
             return "1111";
@@ -81,6 +89,15 @@ public class EmailService {
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
+        
     }
-
+    
+    
+    public Boolean getAuthKey(String email, String authKey) {
+//    	if(authKey == redisRepository.findByEmail(email).getAuthKey())
+    	if(authKey == redisTemplate.opsForValue().get(email))
+    		return true;
+    	else
+    		return false;
+    }
 }
