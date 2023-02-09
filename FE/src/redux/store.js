@@ -12,6 +12,7 @@ import userEdit from "../redux/reducers/userEdit";
 import MToggle from "../redux/reducers/MToggle";
 import introEdit from "../redux/reducers/introEdit";
 import saveTokenReducer from "./reducers/saveToken";
+import checkData from "./reducers/checkData";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   mt: MToggle,
   intro: introEdit,
   strr: saveTokenReducer,
+  check: checkData,
 });
 
 const persistConfig = {

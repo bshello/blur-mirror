@@ -25,7 +25,15 @@
   left: 32%;
   top: 16%;
 
+  opacity: 0.5;
   background-size: 100% 100%;
+  // position: absolute;
+  // width: 500px;
+  // height: 500px;
+  // left: 17%;
+  // top: 16%;
+
+  // background-size: 100% 100%;
 
   .MIImg {
     position: absolute;
@@ -34,8 +42,9 @@
     background-image: url(../../assets/images/woman.jpg);
     background-size: 100% 100%;
     border-radius: 70%;
+    border: solid white 1px;
 
-    opacity: 0.3;
+    // :opacity: 0.3;
   }
 }
 
@@ -81,10 +90,10 @@
 
   .MIHashSetText {
     position: absolute;
-    width: 65px;
+    width: 80px;
     height: 30px;
-    left: 28px;
-    top: -6px;
+    left: 25px;
+    top: -4px;
 
     font-weight: 400;
     font-size: 20px;

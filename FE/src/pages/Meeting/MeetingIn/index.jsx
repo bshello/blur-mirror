@@ -1,14 +1,77 @@
 import "./index.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
 import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE } from "../../../redux/reducers/MToggle";
 import Alert from "../../Start/Alert";
 import SettingModal from "../MeetingIn/SettingModal";
+import { io } from "socket.io-client";
+
+const socket = io.connect("http://localhost:3001");
+let roomName;
+let myPeerConnection;
+let myStream;
+let videoDevices = [];
+let firstRendering = false;
 
 function MeetingIn() {
+  // 컴퓨터와 연결되어있는 모든 장치를 가져옴
+  const getCameras = useCallback(async () => {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const cameras = devices.filter((device) => device.kind === "videoinput");
+      videoDevices = cameras;
+      const currentCamera = myStream.getVideoTracks()[0];
+
+      const camerasSelect = document.querySelector("#cameras");
+      cameras.forEach((camera) => {
+        const option = document.createElement("option");
+        option.value = camera.deviceId;
+        option.innerText = camera.label;
+        if (currentCamera.label === camera.label) {
+          option.selected = true;
+        }
+        camerasSelect.appendChild(option);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const getMedia = useCallback(async (deviceId) => {
+    // 초기 실행
+    const initialConstraints = {
+      audio: false,
+      video: { width: { exact: 599.037 }, height: { exact: 560.638 } },
+    };
+    // (select에서) 카메라를 변경했을 때의 device로 실행
+    const cameraConstraints = {
+      audio: false,
+      video: { deviceId: { exact: deviceId }, width: { exact: 600 }, height: { exact: 593 } },
+    };
+    try {
+      myStream = await navigator.mediaDevices.getUserMedia(deviceId ? cameraConstraints : initialConstraints);
+      document.querySelector(".MMyCamDiv1").srcObject = myStream;
+      await getCameras();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  async function handleCameraChange() {
+    await getMedia(document.querySelector("#cameras").value);
+
+    // 다른 브라우저로 보내진 나의 비디오와 오디오 데이터를 컨트롤
+    // 내 카메라가 변경될 때마다 상대방의 내화면도 바뀌게 해줌
+    if (myPeerConnection) {
+      const videoTrack = myStream.getVideoTracks()[0];
+      const videoSender = myPeerConnection.getSenders().find((sender) => sender.track.kind === "video");
+      console.log(videoSender);
+      videoSender.replaceTrack(videoTrack);
+    }
+  }
+
   const [lightToggle, setLightToggle] = useState(false);
   const [smileToggle, setSmileToggle] = useState(false);
   const [camToggle, setCamToggle] = useState(true);
@@ -25,8 +88,69 @@ function MeetingIn() {
   const closeAlertToggle = useSelector((state) => state.mt.closeAlertToggle);
   const camOpenToggle = useSelector((state) => state.mt.camOpenToggle);
 
+  // socket Code
+
+  // Peer A
+  socket.on("welcome", async () => {
+    // console.log("someone joined");
+    const offer = await myPeerConnection.createOffer();
+    myPeerConnection.setLocalDescription(offer);
+    // console.log(myPeerConnection.setLocalDescription(offer));
+    console.log("send the offer");
+    socket.emit("offer", offer, roomName);
+  });
+
+  // Peer B
+  socket.on("offer", async (offer) => {
+    console.log("received the offer");
+    myPeerConnection.setRemoteDescription(offer);
+    const answer = await myPeerConnection.createAnswer();
+    myPeerConnection.setLocalDescription(answer);
+    socket.emit("answer", answer, roomName);
+    console.log("sent the answer ");
+  });
+
+  // Peer A
+  socket.on("answer", (answer) => {
+    console.log("received the answer");
+    myPeerConnection.setRemoteDescription(answer);
+  });
+
+  socket.on("ice", (ice) => {
+    console.log("receive candidate");
+    myPeerConnection.addIceCandidate(ice);
+  });
+
+  // RTC Code
+
+  function makeConnection() {
+    myPeerConnection = new RTCPeerConnection({
+      iceServers: [
+        {
+          urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302", "stun:stun3.l.google.com:19302", "stun:stun4.l.google.com:19302"],
+        },
+      ],
+    });
+    // console.log(myStream.getTracks());
+    myPeerConnection.addEventListener("icecandidate", handleIce);
+    myPeerConnection.addEventListener("addstream", handleAddStream);
+    myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track, myStream));
+  }
+
+  function handleIce(data) {
+    console.log("sent candidate");
+    socket.emit("ice", data.candidate, roomName);
+  }
+
+  function handleAddStream(data) {
+    console.log("got an event from my peer");
+    const peerStream = document.querySelector(".MPartenerCamDiv1");
+    peerStream.srcObject = data.stream;
+  }
+
   // (파트너 캠 상단의) 관심사 표현 토글
-  const showLight = () => {
+
+  const showLight = useCallback(() => {
     setLightToggle((prev) => !prev);
 
     if (!lightToggle) {
@@ -49,7 +173,7 @@ function MeetingIn() {
       document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
       // document.querySelector(".lightTagsDiv").style.display = "none";
     }
-  };
+  }, [lightToggle]);
 
   // (나의 캠 상단의) 이모지 표현 토글
   const showSmile = () => {
@@ -63,19 +187,23 @@ function MeetingIn() {
 
   // (관심사/이미지가 켜져있을 때) 바깥 배경 누르게되면 토글 off 처리
   const lightAndSmileBgOut = () => {
-    if (smileToggle) {
-      setSmileToggle((prev) => !prev);
-      document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
-    }
-    if (lightToggle) {
-      setLightToggle((prev) => !prev);
-      document.querySelector(".clickLight").classList.replace("clickLight", "basicLight");
-      document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
-    }
+    // if (smileToggle) {
+    //   setSmileToggle((prev) => !prev);
+    //   document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
+    // }
+    // if (lightToggle) {
+    //   setLightToggle((prev) => !prev);
+    //   document.querySelector(".clickLight").classList.replace("clickLight", "basicLight");
+    //   document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
+    // }
   };
 
   // 나의 캠 토글
-  const showCam = () => {
+  const showCam = (e) => {
+    console.log(myStream.getUserMedia);
+    // console.log(myStream.getVideoTracks().enabled);
+    myStream.getVideoTracks().forEach((track) => (track.enabled = !track.enabled));
+
     if (camToggle) {
       document.querySelector(".camOn").classList.replace("camOn", "camOff");
     } else {
@@ -86,6 +214,8 @@ function MeetingIn() {
 
   // 나의 마이크 토글
   const openMyMic = () => {
+    myStream.getAudioTracks().forEach((track) => (track.enabled = !track.enabled));
+
     if (myMicToggle) {
       document.querySelector(".myMicOn").classList.replace("myMicOn", "myMicOff");
     } else {
@@ -177,8 +307,21 @@ function MeetingIn() {
     dispatch(CAM_OPEN_TOGGLE(true));
   };
 
+  if (!firstRendering) {
+    firstRendering = true;
+    setTimeout(async () => {
+      // 소켓통신을 통해서 방에 접속(이부분은 매칭이 되었을때 진행해야 하므로 전 페이지로 빼낼예정)
+      // 카메라 장치 동작 메서드
+      await getMedia();
+      makeConnection();
+      socket.emit("join_room", 111);
+      roomName = 111;
+    }, 3000);
+  }
   return (
     <div className="MeetingIn">
+      <select id="cameras" onChange={handleCameraChange}></select>
+
       {closeAlertToggle ? <Alert showAlertModal={showAlertModal} content="신고가 완료되었습니다:)" /> : ""}
       {isShowBlockModal ? <BlockModal /> : ""}
       {camOpenToggle ? <SettingModal /> : ""}
@@ -194,7 +337,9 @@ function MeetingIn() {
           <div className="Imotion7"></div>
         </div>
         <div className="ImotionBtn" onClick={showSmile}></div>
-        <div className="MMyCamDiv"></div>
+        <div className="MMyCamDiv">
+          <video className="MMyCamDiv1" autoPlay playsInline></video>
+        </div>
         <div className="MMyCamSubDiv">
           <span className="MMyCamSubText">My Camera</span>
           <div className="MMyCamSubBtnsDiv">
@@ -226,8 +371,10 @@ function MeetingIn() {
           <span className="lightTag6">쇼핑</span>
         </div>
         <div className="lightTagBtn" onClick={showLight}></div>
-        <div className="blurEffect"></div>
-        <div className="MPartenerCamDiv"></div>
+        <div className="MPartenerCamDiv">
+          <div className="blurEffect"></div>
+          <video className="MPartenerCamDiv1" autoPlay playsInline></video>
+        </div>
         <div className="MPartenerCamSubDiv">
           <span className="MPartenerCamSubText">Partner Camera</span>
           <div className="MPartenerCamSubBtnsDiv">

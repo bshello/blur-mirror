@@ -16,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Start />}></Route>
+<<<<<<< HEAD
           <Route path="/meeting" element={<GuardedRoute />}>
             <Route path="/meeting" element={<Meeting />}></Route>
           </Route>
@@ -29,6 +30,12 @@ function App() {
             path="/social/redirect"
             element={<SocialSignInRedirect />}
           ></Route>
+=======
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/meeting" element={<Meeting />}></Route>
+          <Route path="/MyInfo" element={<MyInfo />}></Route>
+          <Route path="/social/redirect" element={<SocialSignInRedirect />}></Route>
+>>>>>>> 417fd0020f435bfb56f7f88a36ee46ed75fa25ce
         </Routes>
       </Router>
     </div>

@@ -111,14 +111,17 @@
   position: absolute;
   width: 103px;
   height: 33px;
-  left: 67.5px;
+  left: 15px;
   top: 0px;
   font-weight: 400;
   font-size: 18px;
   line-height: 33px;
-  color: #ffffff;
+  color: #5c202c;
 }
-.MLeftDiv .MMyCamDiv {
+.MLeftDiv .MMyCamDiv2.noShow {
+  display: none;
+}
+.MLeftDiv .MMyCamDiv2.show {
   position: absolute;
   width: 237.75px;
   height: 286.5px;
@@ -126,6 +129,53 @@
   left: 0px;
   background-image: url(../../../assets/images/MPMyCam.png);
   background-size: 100% 100%;
+  z-index: 3;
+  border-radius: 30px;
+}
+.MLeftDiv .MMyCamSubCamToggleBtn {
+  position: absolute;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  top: 7px;
+  cursor: pointer;
+}
+.MLeftDiv .MMyCamSubCamToggleBtn.noShow {
+  background-image: url(../../../assets/images/camOn.png);
+  background-size: 100% 100%;
+}
+.MLeftDiv .MMyCamSubCamToggleBtn.show {
+  background-image: url(../../../assets/images/camOff.png);
+  background-size: 100% 100%;
+}
+.MLeftDiv .MMyCamSubMicBtn1 {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 160px;
+  top: 5px;
+  cursor: pointer;
+}
+.MLeftDiv .MMyCamSubMicBtn1.myMicOff {
+  background-image: url(../../../assets/images/micOn.png);
+  background-size: 100% 100%;
+}
+.MLeftDiv .MMyCamSubMicBtn1.myMicOn {
+  background-image: url(../../../assets/images/micOff.png);
+  background-size: 100% 100%;
+}
+.MLeftDiv .MMyCamDiv3.noShow {
+  display: none;
+}
+.MLeftDiv .MMyCamDiv3.show {
+  display: block;
+  position: absolute;
+  width: 237.75px;
+  height: 286.5px;
+  top: 33px;
+  left: 0px;
+  z-index: 1;
+  border-radius: 30px;
 }
 
 .MStopBtnDiv {
