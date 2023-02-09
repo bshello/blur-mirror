@@ -1,11 +1,11 @@
 .Hash {
   position: absolute;
-  width: 750px;
+  width: 700px;
   height: 600px;
-  left: 280px;
+  left: 27%;
   top: 80px;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.864);
   border-radius: 30px;
 }
 .Hash .hashSerchDiv {
@@ -19,7 +19,7 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  left: 60px;
+  left: 40px;
   top: 15px;
   background-image: url(../../../assets/images/reading\ glasses.png);
   background-size: 100% 100%;
@@ -29,7 +29,7 @@
   position: absolute;
   width: 400px;
   height: 54px;
-  left: 100px;
+  left: 80px;
   top: 0px;
   background: none;
   font-size: 25px;
@@ -41,7 +41,7 @@
   position: absolute;
   width: 500px;
   height: 0px;
-  left: 42px;
+  left: 20px;
   top: 54px;
   border: 3px solid #68bbbd;
 }
@@ -51,7 +51,7 @@
   display: flex;
   width: 600px;
   height: 60px;
-  top: -65px;
+  top: -62px;
   left: 0px;
   flex-direction: row;
 }
@@ -69,10 +69,10 @@
   width: 115px;
   height: 50px;
   margin-top: 12px;
+  border: solid 1px white;
   font-size: 20px;
   display: flex;
   align-items: center;
-  border: solid white 3px;
   background: #68bbbd;
   border-radius: 30px;
   justify-content: center;
@@ -82,7 +82,6 @@
 .hashaddiv .hashcheckdiv :hover {
   background-color: #68bbbd;
   color: white;
-  border: solid white 2px;
 }
 
 .interestdiv {
@@ -143,7 +142,7 @@
   position: absolute;
   width: 200px;
   height: 50px;
-  left: 280px;
+  left: 255px;
   top: 500px;
   background: #50a1a3;
   border-radius: 17px;
@@ -155,7 +154,6 @@
   align-items: center;
   cursor: pointer;
   color: white;
-  border: solid white 2px;
 }
 
 .hashSerchbar {
@@ -169,7 +167,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  overflow: auto;
+  overflow: scroll;
 }
 .hashSerchbar .ilserchbar {
   position: relative;
@@ -234,12 +232,10 @@
   position: absolute;
   width: 600px;
   height: 320px;
-  left: 75px;
+  left: 50px;
   top: 160px;
   z-index: 32;
-  border: solid #68bbbd 1px;
   opacity: 0.98;
-  background: rgb(249, 249, 249);
   border-radius: 40px;
 }
 .hashintdiv .category {
@@ -258,9 +254,10 @@
 .hashintdiv .cainterestdiv {
   position: absolute;
   width: 480px;
-  height: 230px;
-  left: 62px;
-  top: 70px;
+  height: 320px;
+  left: 65px;
+  top: px;
+  overflow: auto;
 }
 .hashintdiv .cainterestdiv .cainterestbox {
   position: relative;
@@ -275,7 +272,7 @@
   position: absolute;
   width: 100px;
   height: 40px;
-  background: rgba(4, 37, 37, 0.2);
+  background: rgba(255, 255, 255, 0.742);
   border-radius: 40px;
   justify-content: center;
   font-weight: 400px;
@@ -284,13 +281,12 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: #b1b1b1;
+  color: #68bbbd;
 }
 .hashintdiv .cainterestdiv .cainterestbox .changecaintBack {
   position: absolute;
   width: 100px;
   height: 40px;
-  border: solid white 1px;
   background: rgba(13, 124, 124, 0.2);
   border-radius: 40px;
   justify-content: center;

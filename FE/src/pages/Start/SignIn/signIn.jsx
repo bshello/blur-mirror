@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "http://192.168.31.192:8080/auth";
-  const SOCIAL_API_URL = "http://192.168.31.192:8080";
+  const API_URL = "http://192.168.31.192:8000/blur-auth/auth";
+  const SOCIAL_API_URL = "http://192.168.31.192:8000/blur-auth";
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

@@ -1,7 +1,7 @@
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,10 @@ import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../../pages/Start/Alert";
 
 function MyInfo() {
+  useEffect(() => {});
+
+  const [conunt, setCount] = useState(0);
+
   //profile edit modal
   const [miModal, setMyInfoModal] = useState(false);
   const showMyinfoModal = () => {
@@ -43,6 +47,10 @@ function MyInfo() {
 
   const intro = useSelector((state) => {
     return state.intro.value;
+  });
+
+  const age = useSelector((state) => {
+    return state.age.value;
   });
 
   // 이미지 미리보기
@@ -142,8 +150,8 @@ function MyInfo() {
         </div>
       </div>
       <div className="MINameAgeDiv">
+        <span className="MIAge"> {age}</span>
         <span className="MIName"> {user} </span>
-        <span className="MIAge"> 26</span>
       </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>

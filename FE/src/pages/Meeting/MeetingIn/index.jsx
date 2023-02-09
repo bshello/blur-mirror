@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
-import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE } from "../../../redux/reducers/MToggle";
+import {
+  BTOGGLE,
+  CLOSE_ALERT_TOGGLE,
+  CAM_OPEN_TOGGLE,
+} from "../../../redux/reducers/MToggle";
 import Alert from "../../Start/Alert";
 import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
@@ -47,10 +51,16 @@ function MeetingIn() {
     // (select에서) 카메라를 변경했을 때의 device로 실행
     const cameraConstraints = {
       audio: false,
-      video: { deviceId: { exact: deviceId }, width: { exact: 600 }, height: { exact: 593 } },
+      video: {
+        deviceId: { exact: deviceId },
+        width: { exact: 600 },
+        height: { exact: 593 },
+      },
     };
     try {
-      myStream = await navigator.mediaDevices.getUserMedia(deviceId ? cameraConstraints : initialConstraints);
+      myStream = await navigator.mediaDevices.getUserMedia(
+        deviceId ? cameraConstraints : initialConstraints
+      );
       document.querySelector(".MMyCamDiv1").srcObject = myStream;
       await getCameras();
     } catch (error) {
@@ -65,7 +75,9 @@ function MeetingIn() {
     // 내 카메라가 변경될 때마다 상대방의 내화면도 바뀌게 해줌
     if (myPeerConnection) {
       const videoTrack = myStream.getVideoTracks()[0];
-      const videoSender = myPeerConnection.getSenders().find((sender) => sender.track.kind === "video");
+      const videoSender = myPeerConnection
+        .getSenders()
+        .find((sender) => sender.track.kind === "video");
       console.log(videoSender);
       videoSender.replaceTrack(videoTrack);
     }
@@ -126,14 +138,22 @@ function MeetingIn() {
     myPeerConnection = new RTCPeerConnection({
       iceServers: [
         {
-          urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302", "stun:stun3.l.google.com:19302", "stun:stun4.l.google.com:19302"],
+          urls: [
+            "stun:stun.l.google.com:19302",
+            "stun:stun1.l.google.com:19302",
+            "stun:stun2.l.google.com:19302",
+            "stun:stun3.l.google.com:19302",
+            "stun:stun4.l.google.com:19302",
+          ],
         },
       ],
     });
     // console.log(myStream.getTracks());
     myPeerConnection.addEventListener("icecandidate", handleIce);
     myPeerConnection.addEventListener("addstream", handleAddStream);
-    myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track, myStream));
+    myStream
+      .getTracks()
+      .forEach((track) => myPeerConnection.addTrack(track, myStream));
   }
 
   function handleIce(data) {
@@ -154,21 +174,31 @@ function MeetingIn() {
     if (!lightToggle) {
       // basic 클래스 있을 경우(두번째 false 부터)
       if (document.querySelector(".basicLight")) {
-        document.querySelector(".basicLight").classList.replace("basicLight", "clickLight");
-        document.querySelector(".basicLightChangeDiv").classList.replace("basicLightChangeDiv", "clickLightChangeDiv");
+        document
+          .querySelector(".basicLight")
+          .classList.replace("basicLight", "clickLight");
+        document
+          .querySelector(".basicLightChangeDiv")
+          .classList.replace("basicLightChangeDiv", "clickLightChangeDiv");
       }
       // basic 클래스 없을 경우(첫번째 false)
       else {
         document.querySelector(".lightTagBtn").classList.add("clickLight");
-        document.querySelector(".lightTagsDiv").classList.add("clickLightChangeDiv");
+        document
+          .querySelector(".lightTagsDiv")
+          .classList.add("clickLightChangeDiv");
       }
 
       // document.querySelector(".lightTagsDiv").style.display = "block";
 
       // click 클래스인 경우(true)
     } else {
-      document.querySelector(".clickLight").classList.replace("clickLight", "basicLight");
-      document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
+      document
+        .querySelector(".clickLight")
+        .classList.replace("clickLight", "basicLight");
+      document
+        .querySelector(".clickLightChangeDiv")
+        .classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
       // document.querySelector(".lightTagsDiv").style.display = "none";
     }
   };
@@ -178,21 +208,36 @@ function MeetingIn() {
     setSmileToggle((prev) => !prev);
 
     if (!smileToggle) {
-      if (document.querySelector(".basicSmileChangeDiv")) document.querySelector(".basicSmileChangeDiv").classList.replace("basicSmileChangeDiv", "clickSmileChangeDiv");
-      else document.querySelector(".ImotionDiv").classList.add("clickSmileChangeDiv");
-    } else document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
+      if (document.querySelector(".basicSmileChangeDiv"))
+        document
+          .querySelector(".basicSmileChangeDiv")
+          .classList.replace("basicSmileChangeDiv", "clickSmileChangeDiv");
+      else
+        document
+          .querySelector(".ImotionDiv")
+          .classList.add("clickSmileChangeDiv");
+    } else
+      document
+        .querySelector(".clickSmileChangeDiv")
+        .classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
   };
 
   // (관심사/이미지가 켜져있을 때) 바깥 배경 누르게되면 토글 off 처리
   const lightAndSmileBgOut = () => {
     if (smileToggle) {
       setSmileToggle((prev) => !prev);
-      document.querySelector(".clickSmileChangeDiv").classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
+      document
+        .querySelector(".clickSmileChangeDiv")
+        .classList.replace("clickSmileChangeDiv", "basicSmileChangeDiv");
     }
     if (lightToggle) {
       setLightToggle((prev) => !prev);
-      document.querySelector(".clickLight").classList.replace("clickLight", "basicLight");
-      document.querySelector(".clickLightChangeDiv").classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
+      document
+        .querySelector(".clickLight")
+        .classList.replace("clickLight", "basicLight");
+      document
+        .querySelector(".clickLightChangeDiv")
+        .classList.replace("clickLightChangeDiv", "basicLightChangeDiv");
     }
   };
 
@@ -200,7 +245,9 @@ function MeetingIn() {
   const showCam = (e) => {
     console.log(myStream.getUserMedia);
     // console.log(myStream.getVideoTracks().enabled);
-    myStream.getVideoTracks().forEach((track) => (track.enabled = !track.enabled));
+    myStream
+      .getVideoTracks()
+      .forEach((track) => (track.enabled = !track.enabled));
 
     if (camToggle) {
       document.querySelector(".camOn").classList.replace("camOn", "camOff");
@@ -212,12 +259,18 @@ function MeetingIn() {
 
   // 나의 마이크 토글
   const openMyMic = () => {
-    myStream.getAudioTracks().forEach((track) => (track.enabled = !track.enabled));
+    myStream
+      .getAudioTracks()
+      .forEach((track) => (track.enabled = !track.enabled));
 
     if (myMicToggle) {
-      document.querySelector(".myMicOn").classList.replace("myMicOn", "myMicOff");
+      document
+        .querySelector(".myMicOn")
+        .classList.replace("myMicOn", "myMicOff");
     } else {
-      document.querySelector(".myMicOff").classList.replace("myMicOff", "myMicOn");
+      document
+        .querySelector(".myMicOff")
+        .classList.replace("myMicOff", "myMicOn");
     }
     setMyMicToggle((prev) => !prev);
   };
@@ -225,9 +278,13 @@ function MeetingIn() {
   // 파트너 마이크 토글
   const openPartnerMic = () => {
     if (partnerMicToggle) {
-      document.querySelector(".partMicOn").classList.replace("partMicOn", "partMicOff");
+      document
+        .querySelector(".partMicOn")
+        .classList.replace("partMicOn", "partMicOff");
     } else {
-      document.querySelector(".partMicOff").classList.replace("partMicOff", "partMicOn");
+      document
+        .querySelector(".partMicOff")
+        .classList.replace("partMicOff", "partMicOn");
     }
     setPartnerMicToggle((prev) => !prev);
   };
@@ -265,9 +322,11 @@ function MeetingIn() {
   // 파트너 음량 토글
   const showPartnerSound = () => {
     if (!partnerSoundToggle) {
-      document.querySelector(".MPartenerCamSubSoundDesc").style.display = "block";
+      document.querySelector(".MPartenerCamSubSoundDesc").style.display =
+        "block";
     } else {
-      document.querySelector(".MPartenerCamSubSoundDesc").style.display = "none";
+      document.querySelector(".MPartenerCamSubSoundDesc").style.display =
+        "none";
     }
     setPartnerSoundToggle((prev) => !prev);
   };
@@ -276,10 +335,12 @@ function MeetingIn() {
   const openBlock = () => {
     if (!blockToggle) {
       // 신고 div block으로 변경
-      document.querySelector(".MPartenerCamSubBlockDesc").style.display = "block";
+      document.querySelector(".MPartenerCamSubBlockDesc").style.display =
+        "block";
     } else {
       // 신고 div none으로 변경
-      document.querySelector(".MPartenerCamSubBlockDesc").style.display = "none";
+      document.querySelector(".MPartenerCamSubBlockDesc").style.display =
+        "none";
     }
     setBlockToggle((prev) => !prev);
   };
@@ -291,7 +352,8 @@ function MeetingIn() {
       // 1. 토글 버튼을 닫아주고
       setBlockToggle((prev) => !prev);
       // 1. 해당 버튼의 div를 none처리 해줌
-      document.querySelector(".MPartenerCamSubBlockDesc").style.display = "none";
+      document.querySelector(".MPartenerCamSubBlockDesc").style.display =
+        "none";
       dispatch(BTOGGLE(!isShowBlockModal));
     }
   };
@@ -318,7 +380,14 @@ function MeetingIn() {
     <div className="MeetingIn">
       <select id="cameras" onChange={handleCameraChange}></select>
 
-      {closeAlertToggle ? <Alert showAlertModal={showAlertModal} content="신고가 완료되었습니다:)" /> : ""}
+      {closeAlertToggle ? (
+        <Alert
+          showAlertModal={showAlertModal}
+          content="신고가 완료되었습니다:)"
+        />
+      ) : (
+        ""
+      )}
       {isShowBlockModal ? <BlockModal /> : ""}
       {camOpenToggle ? <SettingModal /> : ""}
       <div className="tempBackDiv" onClick={lightAndSmileBgOut}></div>
@@ -340,7 +409,10 @@ function MeetingIn() {
           <span className="MMyCamSubText">My Camera</span>
           <div className="MMyCamSubBtnsDiv">
             <div className="MMyCamSubCamSettingBtn" onClick={showSetting}></div>
-            <div className="MMyCamSubCamToggleBtn camOn" onClick={showCam}></div>
+            <div
+              className="MMyCamSubCamToggleBtn camOn"
+              onClick={showCam}
+            ></div>
             <div className="MMyCamSubMicBtn myMicOn" onClick={openMyMic}></div>
             <div className="MMyCamSubSoundBtn" onClick={showMySound}></div>
             <div className="MMyCamSubSoundDesc">
@@ -349,7 +421,13 @@ function MeetingIn() {
               <span className="MMyCamSubSoundDescSoundVal">{mySoundVal}</span>
               <div className="MMyCamSubSoundDescBar">
                 <div className="range-slider">
-                  <input type="range" className="slider" min="0" max="100" onChange={onChangeMySoundSlider}></input>
+                  <input
+                    type="range"
+                    className="slider"
+                    min="0"
+                    max="100"
+                    onChange={onChangeMySoundSlider}
+                  ></input>
                   <div className="progressSlider"></div>
                 </div>
               </div>
@@ -377,19 +455,36 @@ function MeetingIn() {
             <div className="MPartenerCamSubBlockBtn" onClick={openBlock}></div>
             <div className="MPartenerCamSubBlockDesc">
               <div className="MPartenerCamSubBlockDescTop"></div>
-              <div className="MPartenerCamSubBlockDescMain" onClick={showBlockModal}>
+              <div
+                className="MPartenerCamSubBlockDescMain"
+                onClick={showBlockModal}
+              >
                 <span className="MPartenerCamSubBlockDescText">Report</span>
               </div>
             </div>
-            <div className="MPartenerCamSubMicBtn partMicOn" onClick={openPartnerMic}></div>
-            <div className="MPartenerCamSubSoundBtn" onClick={showPartnerSound}></div>
+            <div
+              className="MPartenerCamSubMicBtn partMicOn"
+              onClick={openPartnerMic}
+            ></div>
+            <div
+              className="MPartenerCamSubSoundBtn"
+              onClick={showPartnerSound}
+            ></div>
             <div className="MPartenerCamSubSoundDesc">
               <div className="MPartenerCamSubSoundDescTop"></div>
               <div className="MPartenerCamSubSoundDescMain"></div>
-              <span className="MPartenerCamSubSoundDescSoundVal">{partnerSoundVal}</span>
+              <span className="MPartenerCamSubSoundDescSoundVal">
+                {partnerSoundVal}
+              </span>
               <div className="MPartenerCamSubSoundDescBar">
                 <div className="part-range-slider">
-                  <input type="range" className="partSlider" min="0" max="100" onChange={onChangePartnerSoundSlider}></input>
+                  <input
+                    type="range"
+                    className="partSlider"
+                    min="0"
+                    max="100"
+                    onChange={onChangePartnerSoundSlider}
+                  ></input>
                   <div className="partProgressSlider"></div>
                 </div>
               </div>

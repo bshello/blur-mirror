@@ -12,8 +12,7 @@
   top: 148.5px;
   text-align: center;
   margin: auto;
-  -webkit-animation: moving 1s 0s linear forwards;
-          animation: moving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: moving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .destroy2 .MCenterImgDiv {
   position: absolute;
@@ -63,8 +62,7 @@
   top: 0px;
   background: #50a1a3;
   border-radius: 50px;
-  -webkit-animation: loading 2s 0s linear infinite;
-          animation: loading 2s 0s linear infinite; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: loading 2s 0s linear infinite; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .destroy2 .MCenterCirclesDiv .MPCenterCircle2 {
   position: absolute;
@@ -74,8 +72,7 @@
   top: 0px;
   background: #30ab70;
   border-radius: 50px;
-  -webkit-animation: loading 2s 0.3s linear infinite;
-          animation: loading 2s 0.3s linear infinite; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: loading 2s 0.3s linear infinite; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .destroy2 .MCenterCirclesDiv .MPCenterCircle3 {
   position: absolute;
@@ -85,18 +82,7 @@
   top: 0px;
   background: #ffcf53;
   border-radius: 50px;
-  -webkit-animation: loading 2s 0.6s linear infinite;
-          animation: loading 2s 0.6s linear infinite; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
-}
-
-@-webkit-keyframes moving {
-  0% {
-    opactiy: 1;
-  }
-  100% {
-    opacity: 0;
-    display: none;
-  }
+  animation: loading 2s 0.6s linear infinite; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 
 @keyframes moving {

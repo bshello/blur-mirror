@@ -20,11 +20,18 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   //profile 변경
   const [nameInput, setNameInput] = useState("");
   const [introInput, setIntroInput] = useState("");
+  const [ageInput, setAgeInput] = useState("");
 
   // nicName
   const [nickName, setNickName] = useState("");
   const handleInputChange = (e) => {
     setNameInput(e.target.value);
+  };
+
+  // nicName
+  const [age, setAge] = useState("");
+  const handleAgeChange = (e) => {
+    setAgeInput(e.target.value);
   };
 
   //introducing
@@ -40,6 +47,9 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   const handleUpload = () => {
     setNickName(() => {
       return nameInput;
+    });
+    setAge(() => {
+      return ageInput;
     });
     setIntroducing(() => {
       return introInput;
@@ -83,11 +93,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   // 성별
   const gender = ["Male", "FeMale"];
   const [genderCheck, setgenderCheck] = useState("check");
-
-  // 나이
-  const age = (19, 70);
-
-  const ages = [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
 
   // 데이터 주고 받기
   const dispatch = useDispatch();
@@ -167,16 +172,12 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         </div>
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
-          <select className="PMAgeSelect">
-            <option> {ages[0]}</option>;<option> {ages[1]}</option>;
-            <option> {ages[2]}</option>;<option> {ages[3]}</option>;
-            <option> {ages[4]}</option>;<option> {ages[5]}</option>;
-            <option> {ages[6]}</option>;<option> {ages[7]}</option>;
-            <option> {ages[8]}</option>;<option> {ages[9]}</option>;
-            <option> {ages[10]}</option>;<option> {ages[11]}</option>;
-            <option> {ages[12]}</option>;<option> {ages[13]}</option>;
-            <option> {ages[14]}</option>;<option> {ages[15]}</option>;
-          </select>
+          <input
+            type="text"
+            className="PMAgeSelect"
+            value={ageInput}
+            onChange={handleAgeChange}
+          ></input>
         </div>
         <div className="PMMBTI">
           <span className="PMMBTILabel">MBTI</span>
@@ -193,9 +194,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         </div>
         <div className="PMMEmail">
           <span className="PMMEmailLabel">E-mail </span>
-          {/* <div className="PMMEmailInput">
-            <div className="PMMEmailInput">{email}</div>
-          </div> */}
           <input
             type="text"
             className="PMMEmailInput"
@@ -245,8 +243,10 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
             const introchange = document.querySelector(
               ".PMIntroducingInput"
             ).value;
+            const ageChange = document.querySelector(".PMAgeSelect").value;
             dispatch(edit(namechange));
             dispatch(intro(introchange));
+            dispatch(age(ageChange));
           }
         }}
       >
