@@ -30,16 +30,16 @@ public class MatchDto {
 
     private Integer maxAge;
 
-    public MatchDto(RequestMatchDto matchInfoDto, MatchSetting matchingSetting, MatchMakingRating matchMakingRating) {
-        this.userId = matchingSetting.getUserId();
-//        this.gender = userProfile.getGender();
-//        this.age = userProfile.getAge();
+    public MatchDto(RequestMatchDto requestMatchDto, MatchSetting matchSetting, MatchMakingRating matchMakingRating, ResponseProfile responseProfile) {
+        this.userId = matchSetting.getUserId();
+        this.gender = responseProfile.getGender();
+        this.age = responseProfile.getAge();
         this.point = matchMakingRating.getPoint();
-        this.lat = matchInfoDto.getLat();
-        this.lng = matchInfoDto.getLng();
-        this.maxDistance = matchingSetting.getMaxDistance();
-        this.minAge = matchingSetting.getMinAge();
-        this.maxAge = matchingSetting.getMaxAge();
+        this.lat = requestMatchDto.getLat();
+        this.lng = requestMatchDto.getLng();
+        this.maxDistance = matchSetting.getMaxDistance();
+        this.minAge = matchSetting.getMinAge();
+        this.maxAge = matchSetting.getMaxAge();
     }
 
 }

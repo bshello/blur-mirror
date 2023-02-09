@@ -21,6 +21,9 @@ spring:
     username: sa  # H2 ?? ? ??? username ?? (??? ??? ??)
     password:  # H2 ?? ? ??? password ?? (??? ??? ??)
 
+blur_profile:
+  url: http://127.0.0.1:8000/blur-profile/profile/%s/getProfile
+
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
@@ -29,6 +32,8 @@ eureka:
       defaultZone: http://127.0.0.1:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+
+
 
 
 
