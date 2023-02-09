@@ -30,7 +30,7 @@ function ProgressBar() {
 
           alert("김블리님이 채팅목록에 추가 되었습니다:)");
         } else {
-          if (width > 20) currentProcessBar.innerHTML = `${minute}분 ${second}초`;
+          if (width > 60) currentProcessBar.innerHTML = `${minute}분 ${second}초`;
 
           width++;
           currentProcessBar.style.width = (width / 600) * 100 + "%";
