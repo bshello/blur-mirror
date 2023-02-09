@@ -9,6 +9,9 @@
   border-radius: 30px;
   z-index: 30;
 }
+.ChatBackground .ChatHeader {
+  height: 80px;
+}
 .ChatBackground .ChatList {
   position: absolute;
   width: 387px;

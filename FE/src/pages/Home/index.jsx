@@ -7,7 +7,8 @@ import Alert from "../Start/Alert";
 import Slide1 from "./Slide1/slide1";
 import Slide2 from "./Slide2/slide2";
 import Slide3 from "./Slide3/slide3";
-import ChatList from "./ChatList/chatlist";
+import ChatList from "./Chat/ChatList/chatlist";
+import ChatPage from "./Chat/ChatPage/chatpage";
 import { useRef } from "react";
 
 function Home() {
@@ -33,6 +34,16 @@ function Home() {
     setalertModal((pre) => !pre);
   };
 
+  const [chatList, setChatList] = useState(false);
+  const showChatList = () => {
+    setChatList((pre) => !pre);
+  };
+
+  const [chatPage, setChatPage] = useState(false);
+  const showChatPage = () => {
+    setChatPage((pre) => !pre);
+  };
+
   const [slideNumber, setSlideNumber] = useState(0);
   useEffect(() => {
     setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 4000);
@@ -40,6 +51,8 @@ function Home() {
 
   return (
     <div className="Home">
+      {chatList ? <ChatList /> : null}
+      {chatPage ? <ChatPage /> : null}
       {blurInfoModal || alertModal ? (
         <ModalWrap
           blurInfoModal={blurInfoModal}
@@ -47,7 +60,7 @@ function Home() {
         />
       ) : null}
       {blurInfoModal && !alertModal ? <BlurInfo /> : null}
-      <ChatList />
+
       {alertModal && !blurInfoModal ? (
         <Alert
           showAlertModal={showAlertModal}
