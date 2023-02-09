@@ -80,17 +80,19 @@ spring:
           userInfoUri: https://kapi.kakao.com/v2/user/me
           userNameAttribute: id
           
-    mail:
-      host: smtp.gmail.com
-      port: 465
-      username: blurb307@gmail.com
-      password: tmvrjqvfxwwshppf
-      properties:
-        mail:
-          smtp:
-            auth: true
-            starttls:
-              enable: true
+mail:
+  host: smtp.gmail.com
+  port: 465
+  protocol: smtp
+  username: blurb307@gmail.com
+  password: tmvrjqvfxwwshppf
+  debug: true
+  smtp:
+    auth: true
+    starttls-tls-enable: true
+    ssl:
+      trust: smtp.gmail.com
+      enable: true
 
 # Eureka 설정
 eureka:

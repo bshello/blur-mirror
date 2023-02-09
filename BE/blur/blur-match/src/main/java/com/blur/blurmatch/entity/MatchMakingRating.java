@@ -16,11 +16,8 @@ import javax.persistence.*;
 public class MatchMakingRating {
 
     @JsonIgnore
-    @Column(name = "user_no")
+    @Column(name = "user_Id")
     @Id
-    private Integer userNo;
-
-    @Column(name = "user_id")
     private String userId;
 
     @Column(name = "point")
@@ -37,8 +34,7 @@ public class MatchMakingRating {
 
 
     @Builder
-    public MatchMakingRating(Integer userNo, String userId, Integer point, Integer winningStreak, Integer losingStreak, Integer reportCount) {
-        this.userNo = userNo;
+    public MatchMakingRating(String  userId, Integer point, Integer winningStreak, Integer losingStreak, Integer reportCount) {
         this.userId = userId;
         this.point = point;
         this.winningStreak = winningStreak;

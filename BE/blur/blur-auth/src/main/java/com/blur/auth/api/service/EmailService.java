@@ -1,35 +1,24 @@
 package com.blur.auth.api.service;
 
-import java.util.Random;
-
-import javax.mail.Message.RecipientType;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
+import com.blur.auth.config.email.EmailHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.blur.auth.api.dto.EmailAuthDto;
-import com.blur.auth.api.entity.EmailAuth;
-import com.blur.auth.api.repository.EmailRepository;
-
-import lombok.RequiredArgsConstructor;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
 public class EmailService {
-	
-    @Autowired
-    JavaMailSender emailSender;
 
     @Autowired
-    private final EmailRepository emailRepository;
+    private JavaMailSender mailSender;
 
-    public static final String ePw = createKey();
-
+    @Value("${mail.username}")
+    private String userName;
 
     public static String createKey() {
 
@@ -57,13 +46,7 @@ public class EmailService {
         return key.toString();
     }
 
-    private MimeMessage createMessage(String to)throws Exception{
-        System.out.println("보내는 대상 : "+ to);
-        System.out.println("인증 번호 : "+ePw);
-        MimeMessage  message = emailSender.createMimeMessage();
-
-        message.addRecipients(RecipientType.TO, to);//보내는 대상
-        message.setSubject("이메일 인증 테스트");//제목
+    private String createMessage(String to, String ePw)throws Exception{
 
         String msgg="";
         msgg+= "<div style='margin:20px;'>";
@@ -79,33 +62,25 @@ public class EmailService {
         msgg+= "CODE : <strong>";
         msgg+= ePw+"</strong><div><br/> ";
         msgg+= "</div>";
-        message.setText(msgg, "utf-8", "html");//내용
-        message.setFrom(new InternetAddress("blurb307@gmail.com","Blur"));//보내는 사람
 
-        return message;
+        return msgg;
     }
 
     public String sendAuthMessage(String to)throws Exception {
-        MimeMessage message = createMessage(to);
+        String ePw = createKey();
+        String message = createMessage(to, ePw);
+        EmailHandler emailHandler = new EmailHandler(mailSender);
+        emailHandler.setTo(to);
+        emailHandler.setSubject("이메일 인증 테스트");
+        emailHandler.setText(message, true);//내용
+        emailHandler.setFrom(userName);//보내는 사람
         try{//예외처리
-            emailSender.send(message);
-            EmailAuthDto dto = new EmailAuthDto();
-            EmailAuth emailAuth = dto.toEntity(ePw); // db에 인증키 저장
-            emailRepository.save(emailAuth);
-            System.out.println("이메일");
-            return emailAuth.getTempNo().toString();
+            emailHandler.send();
+            return "1111";
         }catch(MailException es){
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
-    }
-
-    public Integer checkEmailConfirm(@RequestParam("emailTempNo")String emailTempNo, @RequestParam("emailKey")String emailKey) {
-        EmailAuth emailAuthEntity = emailRepository.findByTempNo(emailTempNo);
-        if (emailAuthEntity.getAuthKey() == emailKey) {
-            return 1;
-        }
-        return 0;
     }
 
 }

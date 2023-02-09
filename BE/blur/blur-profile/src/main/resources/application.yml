@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: blur-profile
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://i8b307.p.ssafy.io/blur?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
@@ -23,7 +22,7 @@ spring:
   jpa:
     generate-ddl: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
     database: mysql
     properties:
@@ -36,22 +35,6 @@ spring:
         order_inserts: true
         order_updates: true
         format_sql: true
-
-
-mail:
-  host: smtp.gmail.com
-  port: 465
-  protocol: smtp
-  username: blurb307@gmail.com
-  password: tmvrjqvfxwwshppf
-  debug: true
-  smtp:
-    auth: true
-    starttls-tls-enable: true
-    ssl:
-      trust: smtp.gmail.com
-      enable: true
-
 
 eureka:
   instance:

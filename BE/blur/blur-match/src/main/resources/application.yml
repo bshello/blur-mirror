@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name:  match-service
+    name: blur-match
   # H2 Setting Info (H2 Console? ???? ?? ???? ??)
   h2:
     console:

@@ -4,8 +4,10 @@ import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.entity.UserInterest;
 import com.blur.blurprofile.entity.UserProfile;
 import lombok.*;
+import org.apache.catalina.User;
 
 import java.util.Collection;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,12 +22,12 @@ public class ResponseCard {
 
     private String introduce;
 
-    private Collection<Interest> interests;
+    private List<UserInterest> userInterests;
 
-    public ResponseCard(UserProfile userProfile, UserInterest userInterest) {
+    public ResponseCard(UserProfile userProfile, List<UserInterest> userInterests) {
         this.nickname = userProfile.getNickname();
         this.age = userProfile.getAge();
         this.introduce = userProfile.getIntroduce();
-        this.interests = userInterest.getInterest();
+        this.userInterests = userInterests;
     }
 }

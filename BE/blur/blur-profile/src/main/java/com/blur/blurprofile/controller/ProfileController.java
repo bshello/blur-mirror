@@ -10,11 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/profile/{id}")
+//@RequestMapping("/profile/{id}")
+@RequestMapping("/profile")
 public class ProfileController {
 
     @Autowired
@@ -33,6 +33,18 @@ public class ProfileController {
         return ResponseEntity.status(HttpStatus.OK).body(profile);
     }
 
+    @GetMapping("getAllCategories")
+    public ResponseEntity<CategoryDto> getAllCategories(@PathVariable("id") String userId) {
+        CategoryDto categoryDto = profileService.getAllCategories(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(categoryDto);
+    }
+
+    @GetMapping("getAllInterests")
+    public ResponseEntity<InterestDto> getAllInterests(@PathVariable("id") String userId) {
+        InterestDto interestDto = profileService.getAllInterests(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(interestDto);
+    }
+
     @GetMapping("/getCard")
     public ResponseEntity<ResponseCard> getCard(@PathVariable("id") String userId) {
 
@@ -40,30 +52,11 @@ public class ProfileController {
         return ResponseEntity.status(HttpStatus.OK).body(responseCard);
     }
 
-    @GetMapping("/getAllInterests")
-    public ResponseEntity<?> getAllInterests(@PathVariable("id") String userId) throws Exception {
-        Collection<InterestDto> interests = profileService.getAllInterests(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(interests);
-    }
-
-    @GetMapping("/getAllCategories")
-    public ResponseEntity<?> getAllCategories(@PathVariable("id") String userId) throws Exception {
-        Collection<CategoryDto> categories = profileService.getAllCategories(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(categories);
-    }
-
-    @GetMapping("/{categoryName}")
-    public ResponseEntity<?> getInterestByCategory(@PathVariable("categoryName") String categoryName) throws Exception {
-        Collection<InterestDto> interests = profileService.getInterestByCategory(categoryName);
-        return ResponseEntity.status(HttpStatus.OK).body(interests);
-    }
-
     @PutMapping("/updateInterest")
-    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.UserInterestDto userInterestDto) throws Exception {
-        profileService.updateInterest(userInterestDto);
+    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.RequestUserInterestDto requestUserInterestDto, @PathVariable("id") String userId) throws Exception {
+        profileService.updateInterest(requestUserInterestDto, userId);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
-
 
 
 }

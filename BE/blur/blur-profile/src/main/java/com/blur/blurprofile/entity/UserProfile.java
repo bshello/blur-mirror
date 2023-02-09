@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,11 +18,7 @@ import javax.persistence.*;
 @Table(name = "user_profile")
 public class UserProfile {
 
-    @JsonIgnore
-    @Column(name = "user_no")
     @Id
-    private Long userNo;
-
     @Column(name = "user_id")
     private String userId;
 
@@ -38,6 +36,10 @@ public class UserProfile {
 
     @Column(name = "introduce")
     private String introduce;
+
+    @OneToMany(mappedBy = "userProfile")
+    private List<UserInterest> userInterests =  new ArrayList<>();
+
 
     public void updateProfile(Integer age, String nickname, String image, String gender, String introduce) {
         this.age = age;

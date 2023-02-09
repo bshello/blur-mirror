@@ -3,6 +3,9 @@ package com.blur.auth.api.controller;
 import java.util.Date;
 import java.util.Map;
 
+import com.blur.auth.api.service.EmailService;
+import com.blur.auth.api.service.PasswordService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -20,8 +23,6 @@ import com.blur.auth.api.dto.ErrorResponse;
 import com.blur.auth.api.entity.User;
 import com.blur.auth.api.entity.UserDto;
 import com.blur.auth.api.repository.UserRepository;
-import com.blur.auth.api.service.EmailService;
-import com.blur.auth.api.service.PasswordService;
 import com.blur.auth.api.service.UserService;
 import com.blur.auth.common.ApiResponse;
 import com.blur.auth.config.properties.AppProperties;
@@ -40,12 +41,17 @@ public class UserController {
 	
     private final UserService userService;
     private final UserRepository userRepository;
-	private EmailService emailService;
-	private PasswordService passwordService;
+
 	private final MessageSource messageSource;
 	private final PasswordEncoder passwordEncoder;
 	private final AuthTokenProvider tokenProvider;
 	private final AppProperties appProperties;
+
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private PasswordService passwordService;
 
     @GetMapping
     public ApiResponse getUser() {

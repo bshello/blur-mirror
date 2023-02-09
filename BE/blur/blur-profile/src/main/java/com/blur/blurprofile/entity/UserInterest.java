@@ -19,16 +19,17 @@ import java.util.Collection;
 public class UserInterest {
 
     @Id
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long seq;
 
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userInterest")
-    private Collection<Interest> interest;
+    @ManyToOne
+    @JoinColumn(name = "user_profile")
+    private UserProfile userProfile;
 
-    public void addInterest(Interest i){
-        if(interest  == null ){
-            interest = new ArrayList<Interest>();
-        }
-        interest.add(i);
-    }
+    @ManyToOne
+    @JoinColumn(name = "interest")
+    private Interest interest;
+
+
 }
