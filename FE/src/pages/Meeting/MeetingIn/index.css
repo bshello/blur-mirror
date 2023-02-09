@@ -610,24 +610,6 @@
   z-index: 0;
 }
 
-<<<<<<< HEAD
-=======
-@-webkit-keyframes moving {
-  0% {
-    left: 19.444vw;
-  }
-  50% {
-    left: 9.722vw;
-  }
-  75% {
-    left: 8.681vw;
-  }
-  100% {
-    left: 7.639vw;
-  }
-}
-
->>>>>>> 417fd0020f435bfb56f7f88a36ee46ed75fa25ce
 @keyframes moving {
   0% {
     left: 19.444vw;
@@ -642,23 +624,6 @@
     left: 7.639vw;
   }
 }
-<<<<<<< HEAD
-=======
-@-webkit-keyframes unMoving {
-  0% {
-    left: 7.639vw;
-  }
-  50% {
-    left: 13.542vw;
-  }
-  75% {
-    left: 16.493vw;
-  }
-  100% {
-    left: 19.444vw;
-  }
-}
->>>>>>> 417fd0020f435bfb56f7f88a36ee46ed75fa25ce
 @keyframes unMoving {
   0% {
     left: 7.639vw;
@@ -750,20 +715,20 @@
 
 @media (min-height: 800px) {
   .MMyCamDiv,
-.MPartenerCamDiv {
+  .MPartenerCamDiv {
     scale: 1.08;
     margin-top: 50px;
   }
   .ImotionDiv,
-.ImotionBtn {
+  .ImotionBtn {
     margin-top: 30px;
   }
   .MMyCamSubDiv,
-.MPartenerCamSubDiv {
+  .MPartenerCamSubDiv {
     margin-bottom: 50px;
   }
   .lightTagsDiv,
-.lightTagBtn {
+  .lightTagBtn {
     margin-top: 30px;
   }
 }
@@ -772,7 +737,7 @@
     flex-direction: row;
   }
   .MLeftDiv1,
-.MRightDiv1 {
+  .MRightDiv1 {
     width: 50vw;
   }
 }
@@ -781,7 +746,7 @@
     flex-direction: column;
   }
   .MLeftDiv1,
-.MRightDiv1 {
+  .MRightDiv1 {
     height: calc(50% - 10px);
   }
 }/*# sourceMappingURL=index.css.map */
