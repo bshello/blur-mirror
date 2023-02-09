@@ -7,6 +7,7 @@ import Alert from "../Start/Alert";
 import Slide1 from "./Slide1/slide1";
 import Slide2 from "./Slide2/slide2";
 import Slide3 from "./Slide3/slide3";
+import ChatList from "./ChatList/chatlist";
 import { useRef } from "react";
 
 function Home() {
@@ -46,6 +47,7 @@ function Home() {
         />
       ) : null}
       {blurInfoModal && !alertModal ? <BlurInfo /> : null}
+      <ChatList />
       {alertModal && !blurInfoModal ? (
         <Alert
           showAlertModal={showAlertModal}
@@ -54,6 +56,7 @@ function Home() {
       ) : null}
 
       <Header />
+
       <div className="HomeSubFrame">
         <div className="HomeLeftDiv">
           {/* <div className="HomeCamImg"></div> */}

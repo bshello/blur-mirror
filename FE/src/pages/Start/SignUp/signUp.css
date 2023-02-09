@@ -4,9 +4,9 @@
 
 .SUModal {
   position: absolute;
-  width: 453px;
+  width: 460px;
   height: 706.5px;
-  left: 493.5px;
+  left: 493px;
   top: 30px;
   background: #ffffff;
   border-radius: 30px;
@@ -29,15 +29,23 @@
   color: #50a1a3;
   width: 430px;
   margin: 0%;
+  margin-top: 20px;
   display: inline-block;
 }
 .SUModal .SUModalHeader .SUModalClose {
-  background: #e1f1f2;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  background: url(../../../assets/images/x-mark.png);
+  background-size: cover;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 .SUModal .SUModalInputIdDiv {
   display: block;
-  height: 140px;
+  margin-top: 10px;
+  height: 150px;
 }
 .SUModal .SUModalInputIdDiv .SUModalInputIdLabel {
   font-family: "Happy Monkey";
@@ -50,6 +58,10 @@
   align-items: center;
   color: #000000;
 }
+.SUModal .SUModalInputIdDiv .SUModalInputIdLabel .SUModalInputIdLabelText {
+  position: relative;
+  right: 160px;
+}
 .SUModal .SUModalInputIdDiv .SUModalInputId {
   height: 58px;
   width: 330px;
@@ -59,16 +71,20 @@
   border: 0;
 }
 .SUModal .SUModalInputIdDiv .SUModalInputBTN {
-  height: 40px;
-  width: 330px;
+  height: 58px;
+  width: 342px;
   display: block;
   margin: auto;
+  margin-top: 10px;
   border-radius: 7.5px;
   border: 0;
+  background-color: #50a1a3;
+  color: #ffffff;
 }
 .SUModal .SUModalInputPwDiv {
   height: auto;
   display: block;
+  margin-top: 10px;
 }
 .SUModal .SUModalInputPwDiv .SUModalInputPwLabel {
   font-family: "Happy Monkey";
@@ -103,9 +119,14 @@
   background-size: cover;
   color: #000000;
 }
+.SUModal .SUModalInputPwDiv .SUModalInputPwLabelText {
+  position: relative;
+  right: 155px;
+}
 .SUModal .SUModalInputPwChkDiv {
   height: auto;
   display: block;
+  margin-top: 10px;
 }
 .SUModal .SUModalInputPwChkDiv .SUModalInputPwChkLabel {
   font-family: "Happy Monkey";
@@ -118,6 +139,10 @@
   align-items: center;
   color: #000000;
 }
+.SUModal .SUModalInputPwChkDiv .SUModalInputPwChkLabel .SUModalInputPwChkLabelText {
+  position: relative;
+  right: 132px;
+}
 .SUModal .SUModalInputPwChkDiv .SUModalInputPwChk {
   height: 58px;
   width: 330px;
@@ -127,8 +152,9 @@
   border: 0;
 }
 .SUModal .SUModalInputEmailDiv {
-  height: auto;
+  height: 150px;
   display: block;
+  margin-top: 10px;
 }
 .SUModal .SUModalInputEmailDiv .SUModalInputEmailLabel {
   font-family: "Happy Monkey";
@@ -141,6 +167,10 @@
   align-items: center;
   color: #000000;
 }
+.SUModal .SUModalInputEmailDiv .SUModalInputEmailLabelText {
+  position: relative;
+  right: 144px;
+}
 .SUModal .SUModalInputEmailDiv .SUModalInputEmail {
   height: 58px;
   padding-left: 10px;
@@ -150,12 +180,20 @@
   border: 0;
 }
 .SUModal .SUModalInputEmailDiv .SUModalSendEmail {
-  height: 60px;
-  display: inline-block;
+  height: 58px;
+  width: 342px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 7.5px;
+  border: 0;
+  background-color: #50a1a3;
+  color: #ffffff;
 }
 .SUModal .SUModalInputEmailConfirmDiv {
   height: auto;
   display: block;
+  margin-top: 10px;
 }
 .SUModal .SUModalInputEmailConfirmDiv .SUModalInputEmailConfirmLabel {
   font-family: "Happy Monkey";
@@ -168,6 +206,10 @@
   align-items: center;
   color: #000000;
 }
+.SUModal .SUModalInputEmailConfirmDiv .SUModalInputEmailConfirmLabel .SUModalInputEmailConfirmLabelText {
+  position: relative;
+  right: 110px;
+}
 .SUModal .SUModalInputEmailConfirmDiv .SUModalInputEmailConfirm {
   height: 58px;
   padding-left: 10px;
@@ -177,14 +219,21 @@
   border: 0;
 }
 .SUModal .SUModalInputEmailConfirmDiv .SUModalEmailBTN {
-  height: 60px;
-  width: 200px;
+  height: 58px;
+  width: 342px;
   display: block;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 7.5px;
+  border: 0;
+  background-color: #50a1a3;
+  color: #ffffff;
 }
 .SUModal .SUSignUpBtn {
   cursor: pointer;
-  width: 330px;
+  width: 342px;
   height: 56px;
+  margin-top: 30px;
   background: #50a1a3;
   color: #ffffff;
   border-radius: 10px;
@@ -203,8 +252,9 @@
 }
 .SUModal .SUCancleBtn {
   cursor: pointer;
-  width: 330px;
+  width: 342px;
   height: 56px;
+  margin-top: 10px;
   background: #e1f1f2;
   border-radius: 10px;
 }

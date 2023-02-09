@@ -101,13 +101,11 @@
 }
 .MeetingIn .MLeftDiv1 .ImotionDiv.clickSmileChangeDiv {
   z-index: 1;
-  -webkit-animation: smileDivMoving 1s 0s linear forwards;
-          animation: smileDivMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: smileDivMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .MeetingIn .MLeftDiv1 .ImotionDiv.basicSmileChangeDiv {
   z-index: 1;
-  -webkit-animation: smileDivUnMoving 1s 0s linear forwards;
-          animation: smileDivUnMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: smileDivUnMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .MeetingIn .MLeftDiv1 .ImotionBtn {
   position: absolute;
@@ -326,8 +324,7 @@
   justify-self: center;
 }
 .MeetingIn .MRightDiv1 .lightTagsDiv.clickLightChangeDiv {
-  -webkit-animation: lightDivMoving 1s 0.5s linear forwards;
-          animation: lightDivMoving 1s 0.5s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: lightDivMoving 1s 0.5s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .MeetingIn .MRightDiv1 .lightTagsDiv.clickLightChangeDiv span:nth-child(n) {
   opacity: 1;
@@ -341,8 +338,7 @@
   padding-left: 85px;
 }
 .MeetingIn .MRightDiv1 .lightTagsDiv.basicLightChangeDiv {
-  -webkit-animation: lightDivUnMoving 0.5s 0s linear forwards;
-          animation: lightDivUnMoving 0.5s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: lightDivUnMoving 0.5s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .MeetingIn .MRightDiv1 .lightTagsDiv.basicLightChangeDiv span:nth-child(n) {
   opacity: 0;
@@ -359,12 +355,10 @@
 }
 .MeetingIn .MRightDiv1 .lightTagBtn.clickLight {
   background-image: url(../../../assets/images/lightbulb.png);
-  -webkit-animation: moving 1s 0s linear forwards;
-          animation: moving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: moving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .MeetingIn .MRightDiv1 .lightTagBtn.basicLight {
-  -webkit-animation: unMoving 1s 0s linear forwards;
-          animation: unMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+  animation: unMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
 .MeetingIn .MRightDiv1 .blurEffect {
   position: absolute;
@@ -596,21 +590,6 @@
   z-index: 0;
 }
 
-@-webkit-keyframes moving {
-  0% {
-    left: 280px;
-  }
-  50% {
-    left: 140px;
-  }
-  75% {
-    left: 125px;
-  }
-  100% {
-    left: 110px;
-  }
-}
-
 @keyframes moving {
   0% {
     left: 280px;
@@ -623,20 +602,6 @@
   }
   100% {
     left: 110px;
-  }
-}
-@-webkit-keyframes unMoving {
-  0% {
-    left: 110px;
-  }
-  50% {
-    left: 195px;
-  }
-  75% {
-    left: 237.5px;
-  }
-  100% {
-    left: 280px;
   }
 }
 @keyframes unMoving {
@@ -653,20 +618,6 @@
     left: 280px;
   }
 }
-@-webkit-keyframes lightDivMoving {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  75% {
-    opacity: 0.75;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 @keyframes lightDivMoving {
   0% {
     opacity: 0;
@@ -679,20 +630,6 @@
   }
   100% {
     opacity: 1;
-  }
-}
-@-webkit-keyframes lightDivUnMoving {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  75% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 0;
   }
 }
 @keyframes lightDivUnMoving {
@@ -709,20 +646,6 @@
     opacity: 0;
   }
 }
-@-webkit-keyframes smileDivMoving {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  75% {
-    opacity: 0.75;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 @keyframes smileDivMoving {
   0% {
     opacity: 0;
@@ -735,20 +658,6 @@
   }
   100% {
     opacity: 1;
-  }
-}
-@-webkit-keyframes smileDivUnMoving {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  75% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 0;
   }
 }
 @keyframes smileDivUnMoving {

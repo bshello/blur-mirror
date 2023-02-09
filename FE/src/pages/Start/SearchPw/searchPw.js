@@ -48,7 +48,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
         <label className="SPModalInputIdLabel">ID</label>
         <input
           className="SPModalInputId"
-          placeholder="  ID를 입력해 주세요"
+          placeholder="ID를 입력해 주세요"
           onChange={enterId}
         ></input>
       </div>

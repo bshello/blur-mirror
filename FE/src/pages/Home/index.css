@@ -14,16 +14,6 @@
   arg: size
   desc: 인자(size)를 받아 원을 만듦
 */
-@-webkit-keyframes smoothAppear {
-  from {
-    opacity: 0;
-    transform: translateX(-5%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 @keyframes smoothAppear {
   from {
     opacity: 0;
@@ -117,8 +107,7 @@
   height: 450px;
   left: 780px;
   top: 30px;
-  -webkit-animation: smoothAppear 1s;
-          animation: smoothAppear 1s;
+  animation: smoothAppear 1s;
 }
 .HomeSubFrame .HomeRightDiv .HomeRightImgDiv {
   position: absolute;

@@ -1,8 +1,8 @@
 .SPModal {
   position: absolute;
-  width: 453px;
+  width: 460px;
   height: 380px;
-  left: 493.5px;
+  left: 493px;
   top: 30px;
 
   background: #ffffff;
@@ -11,7 +11,7 @@
 
   .SPModalHeader {
     position: absolute;
-    width: 453px;
+    width: 460px;
     height: 75px;
     left: 0px;
     top: 0.5px;
@@ -44,7 +44,10 @@
       position: absolute;
       right: 20px;
       top: 30px;
-      background: #e1f1f2;
+      background: url(../../../assets/images/x-mark.png);
+      background-size: cover;
+      width: 30px;
+      height: 30px;
 
       cursor: pointer;
     }
@@ -83,6 +86,7 @@
       height: 56.25px;
       left: 0px;
       top: 31.5px;
+      padding-left: 10px;
 
       background: #e1f1f2;
       border-radius: 7.5px;
@@ -91,7 +95,7 @@
 
   .SPConfirmBtn {
     position: absolute;
-    width: 330px;
+    width: 342px;
     height: 56.25px;
     left: 65.25px;
     top: 220px;
@@ -124,7 +128,7 @@
 
   .SPCancleBtn {
     position: absolute;
-    width: 330px;
+    width: 342px;
     height: 56.25px;
     left: 64.5px;
     top: 290px;

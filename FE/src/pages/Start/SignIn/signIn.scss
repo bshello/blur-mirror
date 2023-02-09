@@ -4,9 +4,9 @@
 
 .SIModal {
   position: absolute;
-  width: 460.5px;
+  width: 460px;
   height: 615px;
-  left: 490.5px;
+  left: 493px;
   top: 30px;
 
   background: #ffffff;
@@ -17,7 +17,7 @@
 
   .SIModalHeader {
     position: absolute;
-    width: 460.5px;
+    width: 460px;
     height: 75px;
     left: 0px;
     top: 0px;
@@ -44,7 +44,11 @@
       position: absolute;
       right: 20px;
       top: 30px;
-      background: #e1f1f2;
+
+      background: url(../../../assets/images/x-mark.png);
+      background-size: cover;
+      width: 30px;
+      height: 30px;
 
       cursor: pointer;
     }
@@ -134,14 +138,14 @@
 
   .LoginBtnDiv {
     position: absolute;
-    width: 330.75px;
+    width: 342px;
     height: 78.75px;
     left: 65.25px;
     top: 324.75px;
 
     .LoginBtn {
       position: absolute;
-      width: 330px;
+      width: 342px;
       height: 56.25px;
       left: 0px;
       top: 0px;
@@ -192,7 +196,7 @@
       position: absolute;
       width: 65px;
       height: 14px;
-      left: 180px;
+      left: 200px;
       top: 64.5px;
       cursor: pointer;
 
@@ -211,9 +215,9 @@
 
     .SISearchingPwBtn {
       position: absolute;
-      width: 87px;
+      width: 90px;
       height: 14px;
-      left: 245px;
+      left: 260px;
       top: 64.5px;
       cursor: pointer;
 
@@ -233,7 +237,7 @@
 
   .KakaoLoginBtn {
     position: absolute;
-    width: 330px;
+    width: 342px;
     height: 56.25px;
     left: 65.25px;
     top: 441px;
@@ -245,7 +249,7 @@
 
   .NaverLoginBtn {
     position: absolute;
-    width: 330px;
+    width: 342px;
     height: 56.25px;
     left: 66px;
     top: 512.25px;
@@ -257,7 +261,7 @@
 
   .GoogleLoginBtn {
     position: absolute;
-    width: 330px;
+    width: 342px;
     height: 56.25px;
     left: 66px;
     top: 580px;
