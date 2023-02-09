@@ -1,16 +1,15 @@
 package com.blur.blurprofile.service;
 
-import com.blur.blurprofile.dto.CategoryDto;
 import com.blur.blurprofile.dto.InterestDto;
 import com.blur.blurprofile.dto.ProfileDto;
 import com.blur.blurprofile.dto.ResponseCard;
 import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.entity.UserInterest;
 import com.blur.blurprofile.entity.UserProfile;
-import com.blur.blurprofile.repository.CategoryRepository;
 import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.repository.UserInterestRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +28,6 @@ public class ProfileService {
     UserInterestRepository userInterestRepository;
 
     @Autowired
-    CategoryRepository categoryRepository;
-
-    @Autowired
     InterestRepository interestRepository;
 
     public ProfileDto getProfile(String userId) {
@@ -46,15 +42,9 @@ public class ProfileService {
         return profileDto;
     }
 
-    public CategoryDto getAllCategories(String userId) {
-
-        CategoryDto categories = new CategoryDto(categoryRepository.findAll());
-        return categories;
-    }
-
     public InterestDto getAllInterests(String userId) {
-
-        InterestDto interestDto = new InterestDto(interestRepository.findAll());
+        UserProfile userProfile = userProfileRepository.findByUserId(userId);
+        InterestDto interestDto = new InterestDto(interestRepository.findAll(),userInterestRepository.findByUserProfile(userProfile));
         return interestDto;
     }
 

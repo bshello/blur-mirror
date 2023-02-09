@@ -32,8 +32,8 @@ public class MatchDto {
 
     public MatchDto(RequestMatchDto matchInfoDto, MatchSetting matchingSetting, MatchMakingRating matchMakingRating) {
         this.userId = matchingSetting.getUserId();
-        this.gender = userProfile.getGender();
-        this.age = userProfile.getAge();
+//        this.gender = userProfile.getGender();
+//        this.age = userProfile.getAge();
         this.point = matchMakingRating.getPoint();
         this.lat = matchInfoDto.getLat();
         this.lng = matchInfoDto.getLng();

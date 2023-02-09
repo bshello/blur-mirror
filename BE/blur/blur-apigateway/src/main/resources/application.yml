@@ -6,26 +6,6 @@ spring:
     name: blur-gateway
   cloud:
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins:
-              - "*"
-            allow-credentials: false
-            allowedHeaders:
-              - x-requested-with
-              - authorization
-              - content-type
-              - credential
-              - X-AUTH-TOKEN
-              - X-CSRF-TOKEN
-            allowedMethods:
-              - POST
-              - GET
-              - PUT
-              - PATCH
-              - OPTIONS
-              - DELETE
       default-filters:
         - name: GlobalFilter
           args:
@@ -62,7 +42,7 @@ spring:
           uri: lb://BLUR-PROFILE
           predicates:
             - Path=/blur-profile/**
-            - Method= GET, POST, PUT
+            - Method= GET, POST, PUT, OPTIONS
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
