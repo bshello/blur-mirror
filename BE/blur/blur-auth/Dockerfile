@@ -6,4 +6,5 @@ ENTRYPOINT [ "java", "-jar", "BlurAuth.jar" ]
 # ./gradlew clean build 먼저 시행
 # docker build --tag gangesriver/blur-auth:0.1 .
 # docker push gangesriver/blur-auth:0.1
-# docker run -d --network ecommerce-network --name blur-auth -e "eureka.client.serviceUrl.defaultZone=http://blur-discover:8761/eureka/" gangesriver/blur-auth:0.1
+# docker pull gangesriver/blur-auth:0.1
+# docker run --rm -d --network ecommerce-network --name blur-auth -e "eureka.client.serviceUrl.defaultZone=http://blur-discover:8761/eureka/" gangesriver/blur-auth:0.1

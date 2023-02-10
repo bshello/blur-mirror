@@ -10,4 +10,5 @@ RUN apt-get install -y tzdata
 # ./gradlew clean build 먼저 시행
 # docker build --tag gangesriver/blur-discover:0.1 .
 # docker push gangesriver/blur-discover:0.1
-# docker run -d -p 8761:8761 --network ecommerce-network --name blur-discover gangesriver/blur-discover:0.1
+# docker pull gangesriver/blur-discover:0.1
+# docker run --rm -d -p 8761:8761 --network ecommerce-network --name blur-discover gangesriver/blur-discover:0.1
