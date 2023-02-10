@@ -14,6 +14,8 @@ import introEdit from "../redux/reducers/introEdit";
 import saveTokenReducer from "./reducers/saveToken";
 import checkData from "./reducers/checkData";
 import storage from "redux-persist/lib/storage";
+import ageEdit from "./reducers/ageEdit";
+
 import {
   persistStore,
   persistReducer,
@@ -31,6 +33,7 @@ const rootReducer = combineReducers({
   intro: introEdit,
   strr: saveTokenReducer,
   check: checkData,
+  age: ageEdit,
 });
 
 const persistConfig = {

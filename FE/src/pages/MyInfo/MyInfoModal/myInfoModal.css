@@ -52,7 +52,6 @@
   height: 230px;
   left: 15px;
   top: 0px;
-  border: solid #ffffff 1px;
   background-size: 100% 100%;
   border-radius: 70%;
 }
@@ -228,10 +227,12 @@
 }
 .Modal .ProfileModal .PMIdDiv .PMIdInput {
   position: absolute;
-  width: 330px;
+  width: 300px;
   height: 60px;
   left: 0px;
   top: 30px;
+  font-size: 20px;
+  padding-left: 30px;
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
@@ -257,12 +258,14 @@
 }
 .Modal .ProfileModal .PMAge .PMAgeSelect {
   position: absolute;
-  width: 330px;
+  width: 300px;
   height: 60px;
   left: 0px;
   top: 30px;
+  font-size: 20px;
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
+  padding-left: 30px;
 }
 .Modal .ProfileModal .PMMBTI {
   position: absolute;
@@ -290,6 +293,7 @@
   height: 60px;
   left: 0px;
   top: 30px;
+  padding-left: 95px;
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
@@ -315,12 +319,14 @@
 }
 .Modal .ProfileModal .PMMEmail .PMMEmailInput {
   position: absolute;
-  width: 330px;
+  width: 300px;
   height: 60px;
   left: 0px;
   top: 30px;
+  font-size: 20px;
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
+  padding-left: 30px;
 }
 .Modal .ProfileModal .PMMGender {
   position: absolute;
@@ -417,6 +423,7 @@
   height: 170px;
   left: 0px;
   top: 30px;
+  font-size: 20px;
   background: rgba(104, 187, 189, 0.2);
   border-radius: 7px;
 }
