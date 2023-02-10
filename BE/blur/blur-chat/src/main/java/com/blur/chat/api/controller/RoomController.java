@@ -38,7 +38,7 @@ public class RoomController {
 		Long userNo = userInfo.getUserInfo(userId).getUserNo();
 		System.out.println("controller : " + userNo);
 		chatRoomService.createChatroom(userNo);
-		return ResponseDto.success(userNo, HttpStatus.OK) ;
+		return ResponseDto.success(userNo) ;
 	}
 	
 	public ResponseDto<?> getRooms(@RequestBody Map<String, String> user) {
