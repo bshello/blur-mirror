@@ -1,7 +1,7 @@
 import "./signIn.css";
 import { useState } from "react";
 import axios from "axios";
-import { saveToken } from "../../../redux/reducers/saveToken";
+import { loginId, saveToken } from "../../../redux/reducers/saveToken";
 import { saveId } from "../../../redux/reducers/saveToken";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -9,8 +9,8 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "blur-auth/user";
-  const SOCIAL_API_URL = "blur-auth";
+  const API_URL = process.env.REACT_APP_SIGN_API_URL;
+  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,6 +45,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           console.log(res.data.body.token);
 
           dispatch(saveToken(res.data.body.token));
+          dispatch(loginId(signId));
           if (checkbox.current.checked) {
             console.log("디스패치");
 
