@@ -66,7 +66,9 @@ public class UserService implements UserDetailsService {
 	
 	public UserInfo getUserInfo(String userId) {
 		User user = userRepository.findByUserId(userId);
+		System.out.println(userId);
 		UserInfo userInfo = new UserInfo(user.getUserNo(), userId);
+		System.out.println(userInfo.toString());
 		return userInfo;
 	}
 }

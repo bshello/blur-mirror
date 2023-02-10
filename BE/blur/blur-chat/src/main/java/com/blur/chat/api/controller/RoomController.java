@@ -3,6 +3,7 @@ package com.blur.chat.api.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +32,13 @@ public class RoomController {
 //	}
 	
 	@PostMapping("/create")
-	public ResponseDto<?> createChatroom(@RequestParam String userId){
+	public ResponseDto<?> createChatroom(@RequestBody Map<String, String> user){
+		String userId = user.get("userId");
+		System.out.println("controller : " + userId);
 		Long userNo = userInfo.getUserInfo(userId).getUserNo();
+		System.out.println("controller : " + userNo);
 		chatRoomService.createChatroom(userNo);
-		return ResponseDto.success(userNo) ;
+		return ResponseDto.success(userNo, HttpStatus.OK) ;
 	}
 	
 	public ResponseDto<?> getRooms(@RequestBody Map<String, String> user) {

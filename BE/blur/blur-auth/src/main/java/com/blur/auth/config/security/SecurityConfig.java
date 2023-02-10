@@ -227,16 +227,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * */
 //    @Bean
 //    public UrlBasedCorsConfigurationSource corsConfigurationSource() {
-//        UrlBasedCorsConfigurationSource corsConfigSource = new UrlBasedCorsConfigurationSource();
+////        UrlBasedCorsConfigurationSource corsConfigSource = new UrlBasedCorsConfigurationSource();
+////
+////        CorsConfiguration corsConfig = new CorsConfiguration();
+////        corsConfig.setAllowedHeaders(Arrays.asList(corsProperties.getAllowedHeaders().split(",")));
+////        corsConfig.setAllowedMethods(Arrays.asList(corsProperties.getAllowedMethods().split(",")));
+////        corsConfig.setAllowedOrigins(Arrays.asList(corsProperties.getAllowedOrigins().split(",")));
+////        corsConfig.setAllowCredentials(true);
+////        corsConfig.setMaxAge(corsConfig.getMaxAge());
+////
+////        corsConfigSource.registerCorsConfiguration("/**", corsConfig);
+////        return corsConfigSource;
+//    	
+//    	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        CorsConfiguration config = new CorsConfiguration();
 //
-//        CorsConfiguration corsConfig = new CorsConfiguration();
-//        corsConfig.setAllowedHeaders(Arrays.asList(corsProperties.getAllowedHeaders().split(",")));
-//        corsConfig.setAllowedMethods(Arrays.asList(corsProperties.getAllowedMethods().split(",")));
-//        corsConfig.setAllowedOrigins(Arrays.asList(corsProperties.getAllowedOrigins().split(",")));
-//        corsConfig.setAllowCredentials(true);
-//        corsConfig.setMaxAge(corsConfig.getMaxAge());
+//        config.setAllowCredentials(true);
+//        // config.addAllowedOrigin("*");
+//        config.addAllowedOriginPattern("*"); // addAllowedOriginPattern("*") 대신 사용
+//        config.addAllowedHeader("*");
+//        config.addAllowedMethod("*");
+//        source.registerCorsConfiguration("/**", config);
 //
-//        corsConfigSource.registerCorsConfiguration("/**", corsConfig);
-//        return corsConfigSource;
+//        return source;
 //    }
 }
