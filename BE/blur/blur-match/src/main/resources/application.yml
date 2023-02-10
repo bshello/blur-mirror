@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: blur-profile
+    name: blur-match
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://i8b307.p.ssafy.io/blur?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
@@ -45,5 +45,10 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
 
-blur-match:
-  url: http://127.0.0.1:8000/blur-match/match
+blur-profile:
+  url: http://127.0.0.1:8000/blur-profile/profile
+
+
+
+
+

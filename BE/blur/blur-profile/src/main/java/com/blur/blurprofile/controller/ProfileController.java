@@ -1,26 +1,28 @@
 package com.blur.blurprofile.controller;
 
-import com.blur.blurprofile.dto.CategoryDto;
-import com.blur.blurprofile.dto.InterestDto;
-import com.blur.blurprofile.dto.ProfileDto;
-import com.blur.blurprofile.dto.ResponseCard;
+import com.blur.blurprofile.dto.*;
 import com.blur.blurprofile.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-//@RequestMapping("/profile/{id}")
-@RequestMapping("/profile")
+@RequestMapping("/profile/{id}")
 public class ProfileController {
 
     @Autowired
     ProfileService profileService;
 
+
     @GetMapping
+    public ResponseEntity<ResponseProfileSettingDto> getProfileSetting(@PathVariable("id") String userId) {
+        //매칭정보도 가져와야됨
+        ResponseProfileSettingDto responseProfileSettingDto = profileService.getProfileSetting(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(responseProfileSettingDto);
+    }
+
+    @GetMapping("/service")
     public ResponseEntity<ProfileDto> getProfile(@PathVariable("id") String userId) {
 
         ProfileDto profileDto = profileService.getProfile(userId);
@@ -28,15 +30,9 @@ public class ProfileController {
     }
 
     @PutMapping("/updateProfile") //프로필 변경
-    public ResponseEntity<?> updateProfile(@RequestBody ProfileDto profileDto) throws Exception {
-        ProfileDto profile= profileService.updateProfile(profileDto);
+    public ResponseEntity<?> updateProfile(@RequestBody RequestProfileSettingDto requestProfileSettingDto) throws Exception {
+        RequestProfileSettingDto profile = profileService.updateProfile(requestProfileSettingDto);
         return ResponseEntity.status(HttpStatus.OK).body(profile);
-    }
-
-    @GetMapping("getAllCategories")
-    public ResponseEntity<CategoryDto> getAllCategories(@PathVariable("id") String userId) {
-        CategoryDto categoryDto = profileService.getAllCategories(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(categoryDto);
     }
 
     @GetMapping("getAllInterests")

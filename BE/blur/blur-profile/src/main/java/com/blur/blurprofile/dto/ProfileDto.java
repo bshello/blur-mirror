@@ -27,14 +27,7 @@ public class ProfileDto {
 
     private String introduce;
 
-    public ProfileDto(UserProfile userProfile) {
-        this.userId = userProfile.getUserId();
-        this.age = userProfile.getAge();
-        this.nickname = userProfile.getNickname();
-        this.image = userProfile.getImage();
-        this.gender = userProfile.getGender();
-        this.introduce = userProfile.getIntroduce();
-    }
+    private String mbti;
 
     @NoArgsConstructor
     @Getter

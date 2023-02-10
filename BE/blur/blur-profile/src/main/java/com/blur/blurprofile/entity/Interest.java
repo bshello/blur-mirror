@@ -24,10 +24,6 @@ public class Interest {
 //    @Column(nullable = false)
 //    private JSON interest_relation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_name")
-    private Category category;
-
     @OneToMany(mappedBy = "interest")
     private List<UserInterest> userInterests = new ArrayList<>();
 

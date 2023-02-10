@@ -22,12 +22,18 @@ public class ResponseCard {
 
     private String introduce;
 
+    private String gender;
+
+    private String image;
+
     private List<UserInterest> userInterests;
 
     public ResponseCard(UserProfile userProfile, List<UserInterest> userInterests) {
         this.nickname = userProfile.getNickname();
         this.age = userProfile.getAge();
         this.introduce = userProfile.getIntroduce();
+        this.gender = userProfile.getGender();
+        this.image = userProfile.getImage();
         this.userInterests = userInterests;
     }
 }
