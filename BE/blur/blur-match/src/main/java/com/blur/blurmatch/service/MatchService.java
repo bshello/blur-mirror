@@ -3,7 +3,6 @@ package com.blur.blurmatch.service;
 import com.blur.blurmatch.dto.MatchDto;
 import com.blur.blurmatch.dto.MatchSettingDto;
 import com.blur.blurmatch.dto.QueueDto;
-import com.blur.blurmatch.dto.ResponseProfile;
 import com.blur.blurmatch.dto.request.RequestMatchDto;
 import com.blur.blurmatch.dto.response.ResponseMatchDto;
 import com.blur.blurmatch.entity.MatchMakingRating;
@@ -13,12 +12,7 @@ import com.blur.blurmatch.repository.MatchSettingRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.core.env.Environment;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -34,12 +28,6 @@ public class MatchService {
 
     @Autowired
     private final MatchMakingRatingRepository matchMakingRatingRepository;
-    
-    @Autowired
-    private RestTemplate restTemplate;
-    
-    @Autowired
-    private Environment env;
 
     private static Map<String, MatchDto> males = new ConcurrentHashMap<>();
 
@@ -49,16 +37,12 @@ public class MatchService {
     }
 
     public ResponseMatchDto matchStart(RequestMatchDto requestMatchDto) {
-        System.out.println(males);
+
         String userId = requestMatchDto.getUserId();
-        String profileUrl = String.format(env.getProperty("blur_profile.url"), userId);
-        ResponseEntity<ResponseProfile> profileResponse = restTemplate.exchange
-                (profileUrl, HttpMethod.GET, null, new ParameterizedTypeReference<ResponseProfile>() {});
-        ResponseProfile responseProfile = profileResponse.getBody();
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
         MatchMakingRating matchMakingRating = matchMakingRatingRepository.findByUserId(userId);
         ResponseMatchDto responseMatchDto = null;
-        MatchDto matchDto = new MatchDto(requestMatchDto, matchSetting, matchMakingRating, responseProfile); //수정 해야함
+        MatchDto matchDto = new MatchDto(); //수정 해야함
 
         if (matchDto.getGender() == "male") {
             males.put(matchDto.getUserId(), matchDto);

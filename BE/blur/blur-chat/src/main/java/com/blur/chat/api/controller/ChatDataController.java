@@ -28,7 +28,7 @@ public class ChatDataController {
 	private final ChatRedisCacheService cacheService;
 
 //    @ApiOperation(value = "채팅", notes = "채팅 cursor paging 을 통해 조회하기")
-	@PostMapping("/api/chats/{roomNo}")
+	@PostMapping("/chats/{roomNo}")
 	public ResponseDto<List<ChatPagingResponseDto>> getChatting(@PathVariable Long roomNo,
 			@RequestBody(required = false) ChatPagingDto chatPagingDto) {
 

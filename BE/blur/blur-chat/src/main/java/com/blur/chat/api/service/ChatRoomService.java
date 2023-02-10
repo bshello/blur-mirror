@@ -36,10 +36,17 @@ public class ChatRoomService {
        return chatRoomRepository.findUsersInChatroom(roomNo,sessionId);
     }
     
-//    public ResponseDto<Chatroom> createChatroom(Long userNo){
-//    	Chatroom chatroom = new Chatroom(userNo);
-//    	chatRoomNoRepository.save(chatroom);
-//    	Long chatroonNo = ch
-//    	return ResponseDto.success(responseDto);
-//    }
+    public String createChatroom(Long userNo){
+    	Chatroom chatroom = new Chatroom(userNo);
+    	String chatroomNo = chatroom.getUserNo().toString();
+    	System.out.println("createChatroom : " + chatroomNo.toString());
+    	chatRoomNoRepository.save(chatroom);
+    	
+    	return chatroomNo;
+    }
+    
+    public List<Chatroom> getRooms(Long userNo){
+    	List<Chatroom> result = chatRoomNoRepository.findByUserNo(userNo);
+    	return result;
+    }
 }

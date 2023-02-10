@@ -6,12 +6,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.blur.auth.api.dto.UserInfo;
 import com.blur.auth.api.entity.User;
 import com.blur.auth.api.entity.UserDto;
 import com.blur.auth.api.repository.UserRepository;
 import com.blur.auth.oauth.entity.ProviderType;
 import com.blur.auth.oauth.entity.RoleType;
-import com.blur.auth.oauth.entity.UserPrincipal;
 
 import lombok.RequiredArgsConstructor;
 
@@ -62,5 +62,13 @@ public class UserService implements UserDetailsService {
         }
 //        return UserPrincipal.create(user);
         return null;
+	}
+	
+	public UserInfo getUserInfo(String userId) {
+		User user = userRepository.findByUserId(userId);
+		System.out.println(userId);
+		UserInfo userInfo = new UserInfo(user.getUserNo(), userId);
+		System.out.println(userInfo.toString());
+		return userInfo;
 	}
 }
