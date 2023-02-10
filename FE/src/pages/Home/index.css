@@ -45,12 +45,12 @@
 }
 .HomeSubFrame .HomeLeftDiv .HomeCamDiv {
   position: absolute;
-  width: 340px;
+  width: 440px;
   height: 340px;
-  left: 71.25px;
+  left: 30px;
   top: 0px;
-  background: url(../../assets/images/HomeCamImg.png);
-  background-size: cover;
+  background: url(../../assets/images/man4.jfif);
+  background-size: 100% 100%;
   border-radius: 30px;
 }
 .HomeSubFrame .HomeLeftDiv .HomeCamDiv .HomeCamImg {
@@ -63,19 +63,19 @@
 }
 .HomeSubFrame .HomeLeftDiv .InfoBlurBtn {
   position: absolute;
-  width: 37.5px;
-  height: 37.5px;
-  left: 420px;
-  top: 230px;
+  width: 35px;
+  height: 35px;
+  left: 480px;
+  top: 160px;
   background: url(../../assets/images/info.png);
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .HomeSubFrame .HomeLeftDiv .CamToggle {
   position: absolute;
-  width: 37.5px;
-  height: 37.5px;
-  left: 420px;
-  top: 270px;
+  width: 33px;
+  height: 33px;
+  left: 480px;
+  top: 200px;
   background: url(../../assets/images/camera.png);
   background-size: cover;
 }

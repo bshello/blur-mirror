@@ -4,7 +4,7 @@ import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
-  const API_URL = "http://192.168.31.192:8080/user";
+  const API_URL = "http://192.168.31.192:8000/blur-auth/user";
   const navigate = useNavigate();
 
   const [id, setId] = useState("");
@@ -16,11 +16,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     setId(currentId);
     const idRegex = /\s/g;
 
-    if (
-      !idRegex.test(e.target.value) &&
-      currentId.length > 2 &&
-      currentId.length < 15
-    ) {
+    if (!idRegex.test(e.target.value) && currentId.length > 2 && currentId.length < 15) {
       setIdMessage("올바른 이름 형식입니다 :)");
       setIsId(true);
     } else {
@@ -33,14 +29,11 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   const [ps1, setPs1] = useState("");
   const enterPs1 = (e) => {
     setPs1(e.target.value);
-    const passwordRegex =
-      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
     const passwordCurrent = e.target.value;
 
     if (!passwordRegex.test(passwordCurrent)) {
-      setPasswordMessage(
-        "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!"
-      );
+      setPasswordMessage("숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!");
       setIsPassword(false);
     } else {
       setPasswordMessage("안전한 비밀번호에요 : )");
@@ -61,8 +54,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   const [email, setEmail] = useState("");
   const enterEmail = (e) => {
     setEmail(e.target.value);
-    const emailRegex =
-      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     const emailCurrent = e.target.value;
 
     if (!emailRegex.test(emailCurrent)) {
@@ -143,7 +135,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   }, [decode]);
 
-  const [emailCheck, setEmailCheck] = useState(true);
+  const [emailCheck, setEmailCheck] = useState(false);
 
   //이메일로 인증코드 보내는 함수
   const sendToEmail = () => {
@@ -173,16 +165,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (
-      id &&
-      ps1 &&
-      email &&
-      emailCode &&
-      idCheck &&
-      psCheck &&
-      emailCheck &&
-      emailCodeCheck
-    ) {
+    if (id && ps1 && email && emailCode && idCheck && psCheck && emailCheck && emailCodeCheck) {
       axios({
         method: "post",
         url: `${API_URL}/register`,
@@ -194,6 +177,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       })
         .then((res) => {
           console.log(res);
+          alert("회원가입이 완료되었습니다.");
           navigate("/");
         })
         .catch((err) => {
@@ -228,16 +212,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   const signUpButton = useRef(null);
 
   useEffect(() => {
-    if (
-      id &&
-      ps1 &&
-      email &&
-      emailCode &&
-      idCheck &&
-      psCheck &&
-      emailCheck &&
-      emailCodeCheck
-    ) {
+    if (id && ps1 && email && emailCode && idCheck && psCheck && emailCheck && emailCodeCheck) {
       signUpButton.current.disabled = false;
       signUpButton.current.style.background = "#50a1a3";
     } else {
@@ -266,12 +241,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             <span className="SUModalInputIdLabelText">ID</span>
           </label>
 
-          <input
-            className="SUModalInputId"
-            id="user_id"
-            placeholder="ID는 공백없이 3자이상 15자미만"
-            onChange={enterId}
-          ></input>
+          <input className="SUModalInputId" id="user_id" placeholder="ID는 공백없이 3자이상 15자미만" onChange={enterId}></input>
 
           <button
             className="SUModalInputBTN "
@@ -284,10 +254,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           </button>
         </div>
         {id.length > 0 && (
-          <span
-            className="formCheckMessage"
-            style={isId ? { color: "green" } : { color: "red" }}
-          >
+          <span className="formCheckMessage" style={isId ? { color: "green" } : { color: "red" }}>
             {idMessage}
           </span>
         )}
@@ -296,14 +263,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             <span className="SUModalInputPwLabelText">PW</span>
           </label>
 
-          <input
-            className="SUModalInputPw"
-            id="user_pw"
-            ref={psInput}
-            placeholder="(숫자+영문자+특수문자 조합으로 8자리 이상)"
-            type="password"
-            onChange={enterPs1}
-          ></input>
+          <input className="SUModalInputPw" id="user_pw" ref={psInput} placeholder="(숫자+영문자+특수문자 조합으로 8자리 이상)" type="password" onChange={enterPs1}></input>
 
           <button
             className={!decode ? "ShowPassword" : "HidePassword"}
@@ -314,10 +274,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           ></button>
         </div>
         {ps1.length > 0 && (
-          <span
-            className="formCheckMessage"
-            style={isPassword ? { color: "green" } : { color: "red" }}
-          >
+          <span className="formCheckMessage" style={isPassword ? { color: "green" } : { color: "red" }}>
             {passwordMessage}
           </span>
         )}
@@ -326,28 +283,15 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             <span className="SUModalInputPwChkLabelText">PW Check</span>
           </label>
 
-          <input
-            className="SUModalInputPwChk"
-            id="user_pw_re"
-            placeholder="PW를 다시 입력해 주세요"
-            type="password"
-            onChange={enterPs2}
-          ></input>
+          <input className="SUModalInputPwChk" id="user_pw_re" placeholder="PW를 다시 입력해 주세요" type="password" onChange={enterPs2}></input>
         </div>
-        {psWarn ? (
-          <span style={{ color: "red" }}>비밀번호가 다릅니다!</span>
-        ) : null}
+        {psWarn ? <span style={{ color: "red" }}>비밀번호가 다릅니다!</span> : null}
         <div className="SUModalInputEmailDiv">
           <label className="SUModalInputEmailLabel" htmlFor="user_email">
             <span className="SUModalInputEmailLabelText">E-mail</span>
           </label>
 
-          <input
-            className="SUModalInputEmail"
-            id="user_email"
-            placeholder="E-mail을 입력해 주세요"
-            onChange={enterEmail}
-          ></input>
+          <input className="SUModalInputEmail" id="user_email" placeholder="E-mail을 입력해 주세요" onChange={enterEmail}></input>
 
           <button
             className="SUModalSendEmail"
@@ -360,33 +304,17 @@ function SignUp({ showSignUpModal, showSignInModal }) {
           </button>
         </div>
         {email.length > 0 && (
-          <span
-            className="formCheckMessage"
-            style={isEmail ? { color: "green" } : { color: "red" }}
-          >
+          <span className="formCheckMessage" style={isEmail ? { color: "green" } : { color: "red" }}>
             {emailMessage}
           </span>
         )}
         {emailCheck ? (
           <div className="SUModalInputEmailConfirmDiv">
-            <label
-              className="SUModalInputEmailConfirmLabel"
-              htmlFor="user_email_confirm"
-            >
-              <span className="SUModalInputEmailConfirmLabelText">
-                E-mail 인증번호
-              </span>
+            <label className="SUModalInputEmailConfirmLabel" htmlFor="user_email_confirm">
+              <span className="SUModalInputEmailConfirmLabelText">E-mail 인증번호</span>
             </label>
-            <input
-              className="SUModalInputEmailConfirm"
-              id="user_email_confirm"
-              placeholder="인증번호를 입력해 주세요"
-              onChange={enterEmailCode}
-            ></input>
-            <button
-              className="SUModalEmailBTN"
-              onClick={(e) => e.preventDefault()}
-            >
+            <input className="SUModalInputEmailConfirm" id="user_email_confirm" placeholder="인증번호를 입력해 주세요" onChange={enterEmailCode}></input>
+            <button className="SUModalEmailBTN" onClick={(e) => e.preventDefault()}>
               인증번호 확인
             </button>
           </div>

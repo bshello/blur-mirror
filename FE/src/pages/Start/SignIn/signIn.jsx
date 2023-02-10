@@ -9,7 +9,7 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = "blur-auth/user";
+  const API_URL = "http://192.168.31.192:8000/blur-auth/auth";
   const SOCIAL_API_URL = "blur-auth";
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -80,25 +80,13 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         <label className="ModalInputIdLabel" htmlFor="user_id">
           ID
         </label>
-        <input
-          className="ModalInputId"
-          id="user_id"
-          placeholder="ID를 입력해 주세요"
-          onChange={enterSignId}
-          defaultValue={savedId}
-        ></input>
+        <input className="ModalInputId" id="user_id" placeholder="ID를 입력해 주세요" onChange={enterSignId} defaultValue={savedId}></input>
       </div>
       <div className="ModalInputPwDiv">
         <label className="ModalInputPwLabel" htmlFor="user_pw">
           PW
         </label>
-        <input
-          className="ModalInputPw"
-          id="user_pw"
-          placeholder="PW를 입력해 주세요"
-          type="password"
-          onChange={enterSignPs}
-        ></input>
+        <input className="ModalInputPw" id="user_pw" placeholder="PW를 입력해 주세요" type="password" onChange={enterSignPs}></input>
       </div>
 
       <div className="LoginBtnDiv">
@@ -106,11 +94,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           로그인
         </button>
         <div className="IdSaveDiv">
-          <input
-            className="IdSaveToggle"
-            type="checkbox"
-            ref={checkbox}
-          ></input>
+          <input className="IdSaveToggle" type="checkbox" ref={checkbox}></input>
           <label className="IdSaveText">아이디 저장</label>
         </div>
         <button
