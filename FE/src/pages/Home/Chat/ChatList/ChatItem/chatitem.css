@@ -3,6 +3,7 @@
   height: 67.5px;
   margin: 15px;
   display: block;
+  display: flex;
   background: #e1f1f2;
   border-radius: 30px;
 }
@@ -10,23 +11,31 @@
   position: relative;
   display: inline-block;
   top: 10px;
-  right: 150px;
   width: 54px;
   height: 44.25px;
   border-radius: 30px;
-  background: url(../../../../assets/images/balloon.png);
+  background: url(../../../../../assets/images/balloon.png);
   background-size: cover;
 }
-.ChatItem .ChatContnet {
+.ChatItem .ChatContent {
+  position: relative;
   display: inline-block;
-  width: 50px;
+  top: 10px;
+  width: 250px;
   height: 50px;
 }
-.ChatItem .ChatContnet .ChatName {
-  height: 50px;
-  width: 50px;
+.ChatItem .ChatContent .ChatName {
+  width: 250px;
+  height: 25px;
 }
-.ChatItem .ChatContnet .ChatText {
+.ChatItem .ChatContent .ChatText {
+  width: 250px;
+  height: 25px;
+}
+.ChatItem .ChatAlarm {
+  position: relative;
+  top: 10px;
+  display: inline-block;
+  width: 30px;
   height: 50px;
-  width: 50px;
 }/*# sourceMappingURL=chatitem.css.map */

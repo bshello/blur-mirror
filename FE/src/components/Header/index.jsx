@@ -1,7 +1,7 @@
 // import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
 import { Link } from "react-router-dom";
-import { saveToken } from "../../redux/reducers/saveToken";
+import { loginId, saveToken } from "../../redux/reducers/saveToken";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ function Header({ showSignInModal }) {
   const logInOut = () => {
     if (userState) {
       dispatch(saveToken(null));
+      dispatch(loginId(null));
 
       console.log("로그아웃");
 
