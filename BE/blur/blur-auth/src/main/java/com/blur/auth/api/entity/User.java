@@ -1,7 +1,5 @@
 package com.blur.auth.api.entity;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -37,7 +35,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", unique = true)
     @NotNull
     @Size(max = 64)
     private String userId;

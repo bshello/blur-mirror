@@ -1,15 +1,18 @@
 package com.blur.auth.config.email;
 
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class EmailHandler {
-    private JavaMailSender sender;
-    private MimeMessage message;
-    private MimeMessageHelper messageHelper;
+    private final JavaMailSender sender;
+    private final MimeMessage message;
+    private final MimeMessageHelper messageHelper;
 
     // 생성자
     public EmailHandler(JavaMailSender jSender) throws

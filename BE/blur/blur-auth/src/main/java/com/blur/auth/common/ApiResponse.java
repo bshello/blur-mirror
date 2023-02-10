@@ -10,15 +10,15 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ApiResponse<T> {
 
-    private final static int SUCCESS = 200;
-    private final static int NOT_FOUND = 400;
-    private final static int FAILED = 500;
-    private final static String SUCCESS_MESSAGE = "SUCCESS";
-    private final static String NOT_FOUND_MESSAGE = "NOT FOUND";
-    private final static String FAILED_MESSAGE = "서버에서 오류가 발생하였습니다.";
-    private final static String INVALID_ACCESS_TOKEN = "Invalid access token.";
-    private final static String INVALID_REFRESH_TOKEN = "Invalid refresh token.";
-    private final static String NOT_EXPIRED_TOKEN_YET = "Not expired token yet.";
+    public final static int SUCCESS = 200;
+    public final static int NOT_FOUND = 400;
+    public final static int FAILED = 500;
+    public final static String SUCCESS_MESSAGE = "SUCCESS";
+    public final static String NOT_FOUND_MESSAGE = "NOT FOUND";
+    public final static String FAILED_MESSAGE = "서버에서 오류가 발생하였습니다.";
+    public final static String INVALID_ACCESS_TOKEN = "Invalid access token.";
+    public final static String INVALID_REFRESH_TOKEN = "Invalid refresh token.";
+    public final static String NOT_EXPIRED_TOKEN_YET = "Not expired token yet.";
 
     private final ApiResponseHeader header;
     private final Map<String, T> body;

@@ -1,21 +1,25 @@
 package com.blur.auth.api.service;
 
-import com.blur.auth.config.email.EmailHandler;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import java.util.Random;
+import com.blur.auth.config.email.EmailHandler;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class EmailService {
-
-    @Autowired
-    private JavaMailSender mailSender;
+	
+    private final JavaMailSender mailSender;
+//    private RedisRepository redisRepository;
+    private final RedisTemplate<String, String> redisTemplate;
 
     @Value("${mail.username}")
     private String userName;
@@ -66,14 +70,21 @@ public class EmailService {
         return msgg;
     }
 
-    public String sendAuthMessage(String to)throws Exception {
+    public String sendAuthMessage(String to) throws Exception {
         String ePw = createKey();
+        System.out.println("1");
         String message = createMessage(to, ePw);
+        System.out.println("2");
         EmailHandler emailHandler = new EmailHandler(mailSender);
         emailHandler.setTo(to);
         emailHandler.setSubject("이메일 인증 테스트");
         emailHandler.setText(message, true);//내용
         emailHandler.setFrom(userName);//보내는 사람
+        
+//        EmailAuth emailAuth = new EmailAuth(to, ePw.toString());
+//        redisRepository.save(emailAuth);
+        System.out.println("test");
+        redisTemplate.opsForValue().set(to, ePw, 300, TimeUnit.SECONDS);
         try{//예외처리
             emailHandler.send();
             return "1111";
@@ -81,6 +92,17 @@ public class EmailService {
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
+        
     }
-
+    
+    
+    public Boolean getAuthKey(String email, String authKey) {
+//    	if(authKey == redisRepository.findByEmail(email).getAuthKey())
+    	System.out.println(authKey + " " + redisTemplate.opsForValue().get(email));
+    	System.out.println(redisTemplate.opsForValue().get(email).getClass().getName());
+    	if(authKey.equals(redisTemplate.opsForValue().get(email)))
+    		return true;
+    	else
+    		return false;
+    }
 }
