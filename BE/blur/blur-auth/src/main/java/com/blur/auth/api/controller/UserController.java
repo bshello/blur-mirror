@@ -48,6 +48,7 @@ import com.blur.auth.utils.HeaderUtil;
 
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
+import static com.blur.auth.common.ApiResponse.*;
 
 @RestController
 @RequestMapping("/user")
@@ -287,16 +288,21 @@ public class UserController {
 		AuthToken authToken = tokenProvider.convertAuthToken(accessToken);
         if (!authToken.validate()) {
             return ApiResponse.invalidAccessToken();
+//        	return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
         }
         
-        Claims claims = authToken.getExpiredTokenClaims();
-        if (claims == null) {
-            return ApiResponse.notExpiredTokenYet();
-        }
+        Claims claims = authToken.getTokenClaims();
+//        if (claims == null) {
+//            return ApiResponse.notExpiredTokenYet();
+//        }
         
         String userId = claims.getSubject();
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", userId);
+       
         
         return ApiResponse.success("userId", userId);
+//        return new ResponseEntity<> (userId, HttpStatus.OK);
 	}
 	
 //	@Data
