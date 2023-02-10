@@ -43,7 +43,7 @@ function MeetingIn() {
     // 초기 실행
     const initialConstraints = {
       audio: false,
-      video: { width: { exact: 599.037 }, height: { exact: 560.638 } },
+      video: { width: 160, height: 150 },
     };
     // (select에서) 카메라를 변경했을 때의 device로 실행
     const cameraConstraints = {

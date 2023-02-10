@@ -9,18 +9,6 @@ function MeetingNotIn() {
   const [camToggle, setCamToggle] = useState(true);
   const [myMicToggle, setMyMicToggle] = useState(true);
 
-  // async function getCameras() {
-  //   try {
-  //     myStream = await navigator.mediaDevices.getUserMedia({
-  //       audio: true,
-  //       video: { width: { exact: 237.75 }, height: { exact: 286.5 } },
-  //     });
-  //     document.querySelector(".MMyCamDiv3").srcObject = myStream;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   const getCameras1 = useCallback(async () => {
     try {
       myStream = await navigator.mediaDevices.getUserMedia({
