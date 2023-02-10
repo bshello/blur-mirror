@@ -62,11 +62,8 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
         String userId = null;
 
         try {
-            userId = Jwts.parserBuilder()
-            		.setSigningKey(env.getProperty("token.secret"))
-            		.build()
-                    .parseClaimsJws(jwt)
-                    .getBody()
+            userId = Jwts.parser().setSigningKey(env.getProperty("token.secret"))
+                    .parseClaimsJws(jwt).getBody()
                     .getSubject();
             exchange.getRequest().mutate().header("userId", userId);
         } catch (Exception ex) {
