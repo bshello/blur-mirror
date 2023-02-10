@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import "./style/normalize.css";
 import "./App.css";
-
 import Start from "./pages/Start";
 import Home from "./pages/Home";
 import Meeting from "./pages/Meeting";
@@ -26,7 +25,7 @@ function App() {
             <Route path="/home" element={<Home />}></Route>
           </Route>
           <Route
-            path="/social/redirect"
+            path="/oauth/redirect"
             element={<SocialSignInRedirect />}
           ></Route>
         </Routes>

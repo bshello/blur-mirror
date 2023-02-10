@@ -5,12 +5,33 @@ import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
   const API_URL = "http://192.168.31.192:8000/blur-auth/user";
+  // const API_URL = process.env.REACT_APP_SIGN_API_URL;
   const navigate = useNavigate();
+  const psInput = useRef(null);
+  const signUpButton = useRef(null);
 
   const [id, setId] = useState("");
   const [isId, setIsId] = useState(false);
   const [idMessage, setIdMessage] = useState("");
 
+  const [ps1, setPs1] = useState("");
+  const [ps2, setPs2] = useState("");
+  const [isPassword, setIsPassword] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [psWarn, setPsWarn] = useState(false);
+  const [decode, setDecode] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [emailCode, setEmailCode] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [isEmail, setIsEmail] = useState(false);
+
+  const [idCheck, setIdCheck] = useState(false);
+  const [psCheck, setPsCheck] = useState(false);
+  const [emailCheck, setEmailCheck] = useState(false);
+  const [emailCodeCheck, setEmailCodeCheck] = useState(false);
+
+  //입력받는 아이디
   const enterId = (e) => {
     const currentId = e.target.value;
     setId(currentId);
@@ -26,7 +47,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     console.log(currentId);
   };
 
-  const [ps1, setPs1] = useState("");
+  //입력받는 비밀번호 1
   const enterPs1 = (e) => {
     setPs1(e.target.value);
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -42,16 +63,13 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     console.log(ps1);
   };
 
-  const [ps2, setPs2] = useState("");
+  //입력받는 비밀번호 2
   const enterPs2 = (e) => {
     setPs2(e.target.value);
     console.log(ps2);
   };
 
-  const [isPassword, setIsPassword] = useState(false);
-  const [passwordMessage, setPasswordMessage] = useState("");
-
-  const [email, setEmail] = useState("");
+  //입력받는 이메일
   const enterEmail = (e) => {
     setEmail(e.target.value);
     const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -67,17 +85,12 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     console.log(email);
   };
 
-  const [emailCode, setEmailCode] = useState(null);
   const enterEmailCode = (e) => {
     setEmailCode(e.target.value);
     console.log(emailCode);
   };
 
-  const [emailMessage, setEmailMessage] = useState("");
-  const [isEmail, setIsEmail] = useState(false);
-
-  const [idCheck, setIdCheck] = useState(false);
-
+  //아이디 중복체크 함수
   const callIdCheck = () => {
     if (isId) {
       axios({
@@ -105,12 +118,12 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   };
 
-  const [psCheck, setPsCheck] = useState(false);
-  const [psWarn, setPsWarn] = useState(false);
-  const [decode, setDecode] = useState(false);
+  //비밀번호 보이게 하는 함수
   const decodePs = () => {
     setDecode((pre) => !pre);
   };
+
+  // 비밀번호 2개 똑같은지 확인하는 함수
   const callPsCheck = (ps1, ps2) => {
     if (ps1 === ps2) {
       setPsCheck(true);
@@ -121,12 +134,12 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   };
 
+  // 비밀번호가 바뀔때마다 비교
   useEffect(() => {
     callPsCheck(ps1, ps2);
   }, [ps1, ps2]);
 
-  const psInput = useRef(null);
-
+  //비밀번호 보이기 숨기기
   useEffect(() => {
     if (decode === true) {
       psInput.current.type = "text";
@@ -134,8 +147,6 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       psInput.current.type = "password";
     }
   }, [decode]);
-
-  const [emailCheck, setEmailCheck] = useState(false);
 
   //이메일로 인증코드 보내는 함수
   const sendToEmail = () => {
@@ -161,8 +172,29 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   };
 
-  const [emailCodeCheck, setEmailCodeCheck] = useState(true);
+  //이메일로 받은 코드 확인하는 함수
+  const checkEmailCode = () => {
+    axios({
+      method: "post",
+      url: `${API_URL}/checkEmail`,
+      data: {
+        email: email,
+        authKey: emailCode,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        console.log(res.statusText);
+        setEmailCodeCheck(true);
+        alert("인증번호가 확인됐습니다.");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("오류가 났습니다.");
+      });
+  };
 
+  // 회원가입 함수
   const onSubmit = (e) => {
     e.preventDefault();
     if (id && ps1 && email && emailCode && idCheck && psCheck && emailCheck && emailCodeCheck) {
@@ -177,17 +209,18 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       })
         .then((res) => {
           console.log(res);
-          alert("회원가입이 완료되었습니다.");
-          navigate("/");
+          navigate("/home");
         })
         .catch((err) => {
           console.log(err);
+          alert("회원가입 실패!");
         });
     } else {
       alert("아이디중복 또는 비밀번호불일치 또는 이메일확인코드오류 입니다.");
     }
   };
 
+  //중복확인 통과뒤 아이디가 바뀐경우 경고
   useEffect(() => {
     if (idCheck === true) {
       alert("아이디가 바뀌었습니다. 다시 중복확인 해주세요");
@@ -195,22 +228,23 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   }, [id]);
 
-  // useEffect(() => {
-  //   if (emailCheck === true) {
-  //     alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
-  //     setEmailCheck(false);
-  //   }
-  // }, [email]);
+  //중복확인 통과뒤 이메일이 바뀐경우 경고
+  useEffect(() => {
+    if (emailCheck === true) {
+      alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
+      setEmailCheck(false);
+    }
+  }, [email]);
 
-  // useEffect(() => {
-  //   if (emailCodeCheck === true) {
-  //     alert("이메일인증코드가 바뀌었습니다. 다시 인증코드 보내세요");
-  //   }
-  //   setEmailCodeCheck(false);
-  // }, [emailCode]);
+  //중복확인 통과뒤 이메일 인증코드 가 바뀐경우 경고
+  useEffect(() => {
+    if (emailCodeCheck === true) {
+      alert("이메일인증코드가 바뀌었습니다. 다시 인증코드 보내세요");
+    }
+    setEmailCodeCheck(false);
+  }, [emailCode]);
 
-  const signUpButton = useRef(null);
-
+  //회원가입 버튼 활성화 비활성화
   useEffect(() => {
     if (id && ps1 && email && emailCode && idCheck && psCheck && emailCheck && emailCodeCheck) {
       signUpButton.current.disabled = false;
@@ -314,13 +348,18 @@ function SignUp({ showSignUpModal, showSignInModal }) {
               <span className="SUModalInputEmailConfirmLabelText">E-mail 인증번호</span>
             </label>
             <input className="SUModalInputEmailConfirm" id="user_email_confirm" placeholder="인증번호를 입력해 주세요" onChange={enterEmailCode}></input>
-            <button className="SUModalEmailBTN" onClick={(e) => e.preventDefault()}>
+            <button
+              className="SUModalEmailBTN"
+              onClick={(e) => {
+                e.preventDefault();
+                checkEmailCode();
+              }}
+            >
               인증번호 확인
             </button>
           </div>
         ) : null}
         <button className="SUSignUpBtn" ref={signUpButton} onClick={onSubmit}>
-          {/* <span className="SUBtnText">회원가입</span> */}
           회원가입
         </button>
       </form>

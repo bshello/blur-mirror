@@ -14,6 +14,8 @@ import introEdit from "../redux/reducers/introEdit";
 import saveTokenReducer from "./reducers/saveToken";
 import checkData from "./reducers/checkData";
 import storage from "redux-persist/lib/storage";
+import ageEdit from "./reducers/ageEdit";
+
 import {
   persistStore,
   persistReducer,
@@ -31,12 +33,13 @@ const rootReducer = combineReducers({
   intro: introEdit,
   strr: saveTokenReducer,
   check: checkData,
+  age: ageEdit,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["strr"],
+  whitelist: ["strr"], //로컬스토리지에 저장해서 상태를유지하고싶다면 화이트리스트에 리듀서를 담아주세요.
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,8 +1,8 @@
 import "./chatitem.css";
 
-function ChatItem() {
+function ChatItem({ showChatPage }) {
   return (
-    <div className="ChatItem">
+    <div className="ChatItem" onClick={showChatPage}>
       <div className="ChatPicture"></div>
       <div className="ChatContent">
         <div className="ChatName">한효주</div>
