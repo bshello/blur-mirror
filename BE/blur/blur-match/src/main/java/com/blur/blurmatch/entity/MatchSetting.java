@@ -1,5 +1,6 @@
 package com.blur.blurmatch.entity;
 
+import com.blur.blurmatch.dto.MatchSettingDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Builder
-@Table(name = "matcing_setting")
+@Table(name = "matching_setting")
 public class MatchSetting {
 
     @JsonIgnore
@@ -36,4 +37,9 @@ public class MatchSetting {
         this.maxAge = maxAge;
     }
 
+    public void update(MatchSettingDto matchSettingDto) {
+        this.maxDistance = matchSettingDto.getMaxDistance();
+        this.maxAge = matchSettingDto.getMaxAge();
+        this.minAge = matchSettingDto.getMinAge();
+    }
 }

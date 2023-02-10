@@ -5,6 +5,7 @@ import com.blur.blurmatch.dto.MatchSettingDto;
 import com.blur.blurmatch.dto.QueueDto;
 import com.blur.blurmatch.dto.request.RequestMatchDto;
 import com.blur.blurmatch.dto.response.ResponseMatchDto;
+import com.blur.blurmatch.dto.response.ResponseProfileDto;
 import com.blur.blurmatch.entity.MatchMakingRating;
 import com.blur.blurmatch.entity.MatchSetting;
 import com.blur.blurmatch.repository.MatchMakingRatingRepository;
@@ -12,7 +13,12 @@ import com.blur.blurmatch.repository.MatchSettingRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,29 +26,65 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
-
 public class MatchService {
 
     @Autowired
-    private final MatchSettingRepository matchSettingRepository;
+    private MatchSettingRepository matchSettingRepository;
 
     @Autowired
-    private final MatchMakingRatingRepository matchMakingRatingRepository;
+    private MatchMakingRatingRepository matchMakingRatingRepository;
+
+    @Autowired
+    private Environment env;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     private static Map<String, MatchDto> males = new ConcurrentHashMap<>();
 
-    public void saveSetting(MatchSettingDto matchSettingDto) {
+    public MatchSettingDto getSetting(String userId) {
+        MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
+        System.out.println(matchSetting == null);
+        if (matchSetting == null) {
+            matchSetting = MatchSetting.builder()
+                    .userId(userId)
+                    .build();
+            matchSettingRepository.save(matchSetting);
+        };
+        MatchSettingDto matchSettingDto = new ModelMapper().map(matchSetting, MatchSettingDto.class);
+        return matchSettingDto;
+    }
+
+    public void createSetting(MatchSettingDto matchSettingDto) {
         MatchSetting matchSetting = new ModelMapper().map(matchSettingDto, MatchSetting.class);
         matchSettingRepository.save(matchSetting);
     }
 
-    public ResponseMatchDto matchStart(RequestMatchDto requestMatchDto) {
+    public void updateSetting(MatchSettingDto matchSettingDto) {
+        String userId = matchSettingDto.getUserId();
+        MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
+        matchSetting.update(matchSettingDto);
+        matchSettingRepository.save(matchSetting);
+    }
 
+    public ResponseMatchDto matchStart(RequestMatchDto requestMatchDto) {
+        System.out.println(males);
         String userId = requestMatchDto.getUserId();
+        String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
+        ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.exchange
+                (getProfileUrl, HttpMethod.GET, null, new ParameterizedTypeReference<ResponseProfileDto>() {});
+        ResponseProfileDto responseProfileDto = profileResponse.getBody();
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
         MatchMakingRating matchMakingRating = matchMakingRatingRepository.findByUserId(userId);
+        if (matchMakingRating == null) {
+            matchMakingRating = MatchMakingRating.builder()
+                    .userId(userId)
+                    .point(1000)
+                    .build();
+            matchMakingRatingRepository.save(matchMakingRating);
+        }
+        MatchDto matchDto = new MatchDto(requestMatchDto, matchSetting, matchMakingRating, responseProfileDto);
         ResponseMatchDto responseMatchDto = null;
-        MatchDto matchDto = new MatchDto(); //수정 해야함
 
         if (matchDto.getGender() == "male") {
             males.put(matchDto.getUserId(), matchDto);
