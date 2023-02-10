@@ -12,6 +12,20 @@ function SetModal() {
   //range
   const [fromrange, setfromrange] = useState({ x: 0 });
   const [agerange, setagerange] = useState({ x: 0 });
+  const [mySoundVal, setMySoundVal] = useState(50);
+  const onChangeMySoundSlider = () => {
+    const slider = document.querySelector(".slider");
+    const progress = document.querySelector(".progressSlider");
+    setMySoundVal(slider.value);
+    const val = slider.value + "%";
+    progress.style.width = val;
+  };
+
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   return (
     <div className="SettingModal">
@@ -24,7 +38,7 @@ function SetModal() {
             <div className="SetMMPartnerCheckdiv">
               <div className="SetMMPartnerChekdiv">
                 <div className="arrow" onClick={handleClick}></div>
-                {gender ? <p>Male</p> : <p>FeMale</p>}
+                {gender ? <p>FeMale</p> : <p>Male</p>}
                 {gender}
               </div>
 
@@ -37,13 +51,23 @@ function SetModal() {
             {fromrange.x} km
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv" />
-              <Slider
+              {/* <Slider
                 className="rangelocation"
                 axis="x"
                 xmax="50"
                 x={fromrange.x}
                 onChange={({ x }) => setfromrange((state) => ({ ...state, x }))}
-              />
+              /> */}
+              <div className="range-slider">
+                <input
+                  type="range"
+                  className="slider"
+                  min="0"
+                  max="100"
+                  onChange={onChangeMySoundSlider}
+                ></input>
+                <div className="progressSlider"></div>
+              </div>
             </div>
           </div>
 
@@ -52,13 +76,20 @@ function SetModal() {
             {agerange.x} 살
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv"></div>
-              <Slider
-                className="rangelocation"
-                axis="x"
-                x={agerange.x}
-                xmax="10"
-                onChange={({ x }) => setagerange((state) => ({ ...state, x }))}
-              />
+              <div className="range-slider">
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={value}
+                  className="slider"
+                  onChange={handleChange}
+                />
+                <div
+                  className="progressSlider"
+                  style={{ width: `${value}%` }}
+                />
+              </div>
             </div>
           </div>
         </div>

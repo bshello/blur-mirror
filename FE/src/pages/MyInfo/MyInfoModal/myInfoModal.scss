@@ -38,10 +38,6 @@
       height: 230px;
       left: 15px;
       top: 0px;
-      // background-image: url(../../../assets/images/woman.jpg);
-      // background-image: url(https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png);
-      border: solid #ffffff 1px;
-
       background-size: 100% 100%;
       border-radius: 70%;
     }
@@ -241,10 +237,12 @@
 
       .PMIdInput {
         position: absolute;
-        width: 330px;
+        width: 300px;
         height: 60px;
         left: 0px;
         top: 30px;
+        font-size: 20px;
+        padding-left: 30px;
 
         background: rgba(104, 187, 189, 0.2);
         border-radius: 7px;
@@ -275,13 +273,14 @@
 
       .PMAgeSelect {
         position: absolute;
-        width: 330px;
+        width: 300px;
         height: 60px;
         left: 0px;
         top: 30px;
-
+        font-size: 20px;
         background: rgba(104, 187, 189, 0.2);
         border-radius: 7px;
+        padding-left: 30px;
       }
     }
 
@@ -313,6 +312,7 @@
         height: 60px;
         left: 0px;
         top: 30px;
+        padding-left: 95px;
 
         background: rgba(104, 187, 189, 0.2);
         border-radius: 7px;
@@ -343,13 +343,14 @@
 
       .PMMEmailInput {
         position: absolute;
-        width: 330px;
+        width: 300px;
         height: 60px;
         left: 0px;
         top: 30px;
-
+        font-size: 20px;
         background: rgba(104, 187, 189, 0.2);
         border-radius: 7px;
+        padding-left: 30px;
       }
     }
 
@@ -501,7 +502,7 @@
         height: 170px;
         left: 0px;
         top: 30px;
-
+        font-size: 20px;
         background: rgba(104, 187, 189, 0.2);
         border-radius: 7px;
       }

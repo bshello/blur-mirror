@@ -6,11 +6,78 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { edit } from "../../../redux/reducers/userEdit";
 import { intro } from "../../../redux/reducers/introEdit";
+import { age } from "../../../redux/reducers/ageEdit";
 import SetModal from "./SetModal/setmodal";
 import axios from "axios";
 // import styled from "styled-components";
 
 function MyInfoModal({ showMyinfoModal, showAlertModal }) {
+  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
+  const id = "123123";
+
+  // const getProfile = () => {
+  //   axios({
+  //     method: "GET",
+  //     url: `${API_URL}/${id}`,
+  //     data: {},
+  //   })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       console.log(res.status);
+  //     })
+  //     .catch((err) => {
+  //       alert("기존 데이터 없다");
+  //       console.log(err);
+  //     });
+  // };
+
+  // 컴포넌트 켜지자말자 데이터 받아 오기
+  const [proFile, setProFile] = useState([]);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `${API_URL}/${id}`,
+      data: {},
+    })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.status);
+        setProFile(res.data);
+        console.log("성공><");
+      })
+      .catch((err) => {
+        alert("기존 데이터 없다.");
+        console.log(err);
+      });
+  }, []);
+
+  // 유저프로필 업데이트 하기
+  const handleSave = async () => {
+    console.log(nameInput);
+    console.log(ageInput);
+    console.log(introInput);
+    const response = await fetch(`${API_URL}/${id}/updateProfile`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: id,
+        age: ageInput,
+        nickname: nameInput,
+        // image: document.querySelector(".leftModalImg"),
+        // gender: gender,
+        introduce: introInput,
+        // mbti: mbti,
+      }),
+    });
+    if (response.ok) {
+      console.log("성공적으로 업데이트 됐다.");
+    } else {
+      console.error("실패했다.");
+    }
+  };
+
   //setmodal
   const [setModal, setSettingmodal] = useState(false);
   const showSettingModal = () => {
@@ -20,17 +87,66 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   //profile 변경
   const [nameInput, setNameInput] = useState("");
   const [introInput, setIntroInput] = useState("");
+  const [ageInput, setAgeInput] = useState("");
 
   // nicName
   const [nickName, setNickName] = useState("");
+  // const handleInputChange = (e) => {
+  //   setNameInput(e.target.value);
+  // };
+
   const handleInputChange = (e) => {
-    setNameInput(e.target.value);
+    if (e.target.value.length <= 10) {
+      setNameInput(e.target.value);
+    } else {
+      alert("10글자 이상 입력할 수 없습니다.");
+    }
+  };
+
+  // age
+  const [agee, setAge] = useState("");
+  const handleAgeChange = (e) => {
+    const inputValue = e.target.value;
+    if (!isNaN(inputValue) && inputValue.length <= 2) {
+      setAgeInput(inputValue);
+    } else {
+      alert("숫자 2자리 이하만 입력 가능합니다.");
+    }
   };
 
   //introducing
   const [introducing, setIntroducing] = useState("");
   const introHandleChange = (e) => {
     setIntroInput(e.target.value);
+  };
+
+  //
+  const [mbti, setMbti] = useState([
+    { value: "ISTJ", label: "ISTJ - Inspector" },
+    { value: "ISFJ", label: "ISFJ - Protector" },
+    { value: "INFJ", label: "INFJ - Counselor" },
+    { value: "INTJ", label: "INTJ - Architect" },
+
+    { value: "ISTP", label: "ISTP - Craftsman" },
+    { value: "ISFP", label: "ISFP - Composer" },
+    { value: "INFP", label: "INFP - Healer" },
+    { value: "INTP", label: "INTP - Architect" },
+
+    { value: "ESTP", label: "ESTP - Dynamo" },
+    { value: "ESFP", label: "ESFP - Performer" },
+    { value: "ENFP", label: "ENFP - Champion" },
+    { value: "ENTP", label: "ENTP - Visionary" },
+
+    { value: "ESTJ", label: "ESTJ - Supervisor" },
+    { value: "ESFJ", label: "ESFJ - Provider" },
+    { value: "ENFJ", label: "ENFJ - Teacher" },
+    { value: "ENTJ", label: "ENTJ - Commander" },
+  ]);
+
+  const [selectedMbti, setSelectedMbti] = useState("");
+
+  const handleMbtiChange = (e) => {
+    setSelectedMbti(e.target.value);
   };
 
   //emil
@@ -40,6 +156,9 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   const handleUpload = () => {
     setNickName(() => {
       return nameInput;
+    });
+    setAge(() => {
+      return ageInput;
     });
     setIntroducing(() => {
       return introInput;
@@ -84,18 +203,12 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   const gender = ["Male", "FeMale"];
   const [genderCheck, setgenderCheck] = useState("check");
 
-  // 나이
-  const age = (19, 70);
-
-  const ages = [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
-
   // 데이터 주고 받기
   const dispatch = useDispatch();
 
-  /////////////////////////////////////////////////test
-
   return (
     <div className="Modal">
+      {/* <button onClick={getProfile}>ddd</button> */}
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
       <div className="leftModal">
         <div className="imgbox">
@@ -162,47 +275,46 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
             className="PMIdInput"
             value={nameInput}
             onChange={handleInputChange}
+            placeholder="10자까지만 가능합니다."
             onKeyPress={handleOnKeyPress}
-          />
+          >
+            {/* {proFile.nickname} */}
+          </input>
         </div>
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
-          <select className="PMAgeSelect">
-            <option> {ages[0]}</option>;<option> {ages[1]}</option>;
-            <option> {ages[2]}</option>;<option> {ages[3]}</option>;
-            <option> {ages[4]}</option>;<option> {ages[5]}</option>;
-            <option> {ages[6]}</option>;<option> {ages[7]}</option>;
-            <option> {ages[8]}</option>;<option> {ages[9]}</option>;
-            <option> {ages[10]}</option>;<option> {ages[11]}</option>;
-            <option> {ages[12]}</option>;<option> {ages[13]}</option>;
-            <option> {ages[14]}</option>;<option> {ages[15]}</option>;
-          </select>
+          <input
+            type="text"
+            className="PMAgeSelect"
+            value={ageInput}
+            onChange={handleAgeChange}
+            placeholder="숫자만 입력 가능합니다."
+          ></input>
         </div>
         <div className="PMMBTI">
           <span className="PMMBTILabel">MBTI</span>
-          <select className="PMMBTISelect">
-            <option> INTJ</option>;<option> INTP </option>;
-            <option> ENTJ </option>;<option> ENTP</option>;
-            <option> INFJ </option>;<option> INFP </option>;
-            <option> ENFJ </option>;<option> ENFP </option>;
-            <option> ISTJ</option>;<option> ISFJ</option>;<option> ESTJ</option>
-            ;<option> ESFJ </option>;<option> ISTP</option>;
-            <option> ISFP </option>;<option> ESTP </option>;
-            <option> ESFP </option>;
+          {/* <select className="PMMBTISelect"> */}
+          <select
+            value={selectedMbti}
+            onChange={email}
+            className="PMMBTISelect"
+          >
+            {mbti.map((mbti) => (
+              <option key={mbti.value} value={mbti.value}>
+                {mbti.label}
+              </option>
+            ))}
           </select>
         </div>
+
         <div className="PMMEmail">
           <span className="PMMEmailLabel">E-mail </span>
-          {/* <div className="PMMEmailInput">
-            <div className="PMMEmailInput">{email}</div>
-          </div> */}
           <input
             type="text"
             className="PMMEmailInput"
             value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
+            // // onChange={emailHandleChange}
+            // placeholder="Enter email"
           />
         </div>
 
@@ -245,9 +357,12 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
             const introchange = document.querySelector(
               ".PMIntroducingInput"
             ).value;
+            const ageChange = document.querySelector(".PMAgeSelect").value;
             dispatch(edit(namechange));
             dispatch(intro(introchange));
+            dispatch(age(ageChange));
           }
+          handleSave();
         }}
       >
         <span className="ModalOutText">confirm</span>
