@@ -11,27 +11,29 @@ import Alert from "./Alert";
 
 function Start() {
   const [signInModal, setSignInModal] = useState(false);
+  const [signUpModal, setSignUpModal] = useState(false);
+  const [searchPwModal, setSearchPwModal] = useState(false);
+  const [alertModal, setalertModal] = useState(false);
+
+  const userState = useSelector((state) => state.strr.token);
+  const navigate = useNavigate();
+
   const showSignInModal = () => {
     setSignInModal((pre) => !pre);
   };
 
-  const [signUpModal, setSignUpModal] = useState(false);
   const showSignUpModal = () => {
     setSignUpModal((pre) => !pre);
   };
 
-  const [searchPwModal, setSearchPwModal] = useState(false);
   const showSearchPwModal = () => {
     setSearchPwModal((pre) => !pre);
   };
 
-  const [alertModal, setalertModal] = useState(false);
   const showAlertModal = () => {
     setalertModal((pre) => !pre);
   };
 
-  const userState = useSelector((state) => state.strr.token);
-  const navigate = useNavigate();
   const StartBtn = () => {
     if (userState) {
       navigate("/home");
@@ -53,13 +55,35 @@ function Start() {
         />
       ) : null}
 
-      {signInModal && !signUpModal && !searchPwModal ? <SignIn showSignUpModal={showSignUpModal} showSignInModal={showSignInModal} showSearchPwModal={showSearchPwModal} /> : null}
+      {signInModal && !signUpModal && !searchPwModal ? (
+        <SignIn
+          showSignUpModal={showSignUpModal}
+          showSignInModal={showSignInModal}
+          showSearchPwModal={showSearchPwModal}
+        />
+      ) : null}
 
-      {signUpModal && !signInModal && !searchPwModal ? <SignUp showSignUpModal={showSignUpModal} showSignInModal={showSignInModal} /> : null}
+      {signUpModal && !signInModal && !searchPwModal ? (
+        <SignUp
+          showSignUpModal={showSignUpModal}
+          showSignInModal={showSignInModal}
+        />
+      ) : null}
 
-      {searchPwModal && !signInModal && !signUpModal ? <SearchPw showSignInModal={showSignInModal} showSearchPwModal={showSearchPwModal} showAlertModal={showAlertModal} /> : null}
+      {searchPwModal && !signInModal && !signUpModal ? (
+        <SearchPw
+          showSignInModal={showSignInModal}
+          showSearchPwModal={showSearchPwModal}
+          showAlertModal={showAlertModal}
+        />
+      ) : null}
 
-      {alertModal && !signInModal && !signUpModal && !searchPwModal ? <Alert showAlertModal={showAlertModal} content={"임시비밀번호가 이메일로 전송되었습니다."} /> : null}
+      {alertModal && !signInModal && !signUpModal && !searchPwModal ? (
+        <Alert
+          showAlertModal={showAlertModal}
+          content={"임시비밀번호가 이메일로 전송되었습니다."}
+        />
+      ) : null}
 
       <Header showSignInModal={showSignInModal} />
       <div className="SubFrame">
@@ -67,7 +91,11 @@ function Start() {
           <span className="SubLeftTitle">Hey, Just Blur!</span>
           <span className="SubLeftDesc">Show me your own color.</span>
 
-          <div className="CommBoxFrame1 color-5" onClick={StartBtn} disabled={alertModal === true ? true : false}>
+          <div
+            className="CommBoxFrame1 color-5"
+            onClick={StartBtn}
+            disabled={alertModal === true ? true : false}
+          >
             <span className="CommBoxFrameStart">Start</span>
           </div>
         </div>

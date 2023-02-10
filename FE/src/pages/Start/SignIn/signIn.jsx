@@ -13,22 +13,23 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
   const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const savedId = useSelector((state) => state.strr.id); // 저장되어 있는 아이디 가져오기
-  const checkbox = useRef(); // 아이디저장 체크박스
+  const savedId = useSelector((state) => state.strr.id);
+  const checkbox = useRef();
 
   const [signId, setSignId] = useState("");
+  const [signPs, setSignPs] = useState("");
+
   const enterSignId = (e) => {
     setSignId(e.target.value);
     console.log(signId);
   };
 
-  const [signPs, setSignPs] = useState("");
   const enterSignPs = (e) => {
     setSignPs(e.target.value);
     console.log(signPs);
   };
 
+  //로그인 함수
   const signIn = () => {
     if (signId && signPs) {
       axios({
@@ -41,9 +42,6 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
       })
         .then((res) => {
           console.log(res);
-          console.log(res.data.body);
-          console.log(res.data.body.token);
-
           dispatch(saveToken(res.data.body.token));
           dispatch(loginId(signId));
           if (checkbox.current.checked) {
@@ -66,8 +64,9 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     }
   };
 
+  //소셜 로그인 함수
   const socialSignIn = (socialType) => {
-    return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=http://localhost:3000/social/redirect`;
+    return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=http://localhost:3000/oauth/redirect`;
   };
 
   return (
@@ -112,6 +111,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
             type="checkbox"
             ref={checkbox}
           ></input>
+
           <label className="IdSaveText">아이디 저장</label>
         </div>
         <button
