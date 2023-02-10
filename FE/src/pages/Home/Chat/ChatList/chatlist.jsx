@@ -1,7 +1,7 @@
 import "./chatlist.css";
 import ChatItem from "./ChatItem/chatitem";
 
-function ChatList() {
+function ChatList({ showChatPage }) {
   return (
     <div className="ChatBackground">
       <div className="ChatHeader">
@@ -9,7 +9,7 @@ function ChatList() {
         <span>Chatting</span>
       </div>
       <div className="ChatList">
-        <ChatItem />
+        <ChatItem showChatPage={showChatPage} />
         <ChatItem />
         <ChatItem />
         <ChatItem />

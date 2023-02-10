@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-function Header({ showSignInModal }) {
+function Header({ showSignInModal, showChatList }) {
   const userState = useSelector((state) => state.strr.token);
 
   const dispatch = useDispatch();
@@ -37,7 +37,9 @@ function Header({ showSignInModal }) {
   const Chat = () => {
     if (userState) {
       navigate("/home");
+
       //채팅창 뜨는 기능 추가 예정
+      showChatList();
     } else {
       showSignInModal();
     }

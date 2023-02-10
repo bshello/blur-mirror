@@ -36,7 +36,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["strr"],
+  whitelist: ["strr"], //로컬스토리지에 저장해서 상태를유지하고싶다면 화이트리스트에 리듀서를 담아주세요.
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

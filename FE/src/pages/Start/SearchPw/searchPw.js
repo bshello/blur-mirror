@@ -3,9 +3,10 @@ import "./searchPw.css";
 import axios from "axios";
 
 function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
-  const API_URL = "http://localhost:8080";
+  const API_URL = process.env.REACT_APP_SIGN_API_URL;
 
   const [spId, setSpId] = useState(null);
+
   const enterId = (e) => {
     setSpId(e.target.value);
     console.log(spId);
