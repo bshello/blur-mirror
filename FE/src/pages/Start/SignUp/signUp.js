@@ -4,7 +4,7 @@ import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
-  const API_URL = "http://192.168.31.192:8080/user";
+  const API_URL = process.env.REACT_APP_SIGN_API_URL;
   const navigate = useNavigate();
 
   const [id, setId] = useState("");
@@ -75,7 +75,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     console.log(email);
   };
 
-  const [emailCode, setEmailCode] = useState(null);
+  const [emailCode, setEmailCode] = useState("");
   const enterEmailCode = (e) => {
     setEmailCode(e.target.value);
     console.log(emailCode);
@@ -143,7 +143,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   }, [decode]);
 
-  const [emailCheck, setEmailCheck] = useState(true);
+  const [emailCheck, setEmailCheck] = useState(false);
 
   //이메일로 인증코드 보내는 함수
   const sendToEmail = () => {
@@ -169,7 +169,28 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   };
 
-  const [emailCodeCheck, setEmailCodeCheck] = useState(true);
+  const [emailCodeCheck, setEmailCodeCheck] = useState(false);
+
+  const checkEmailCode = () => {
+    axios({
+      method: "post",
+      url: `${API_URL}/checkEmail`,
+      data: {
+        email: email,
+        authKey: emailCode,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        console.log(res.statusText);
+        setEmailCodeCheck(true);
+        alert("인증번호가 확인됐습니다.");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("오류가 났습니다.");
+      });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -194,10 +215,11 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       })
         .then((res) => {
           console.log(res);
-          navigate("/");
+          navigate("/home");
         })
         .catch((err) => {
           console.log(err);
+          alert("오류가 났습니다!");
         });
     } else {
       alert("아이디중복 또는 비밀번호불일치 또는 이메일확인코드오류 입니다.");
@@ -211,19 +233,19 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     }
   }, [id]);
 
-  // useEffect(() => {
-  //   if (emailCheck === true) {
-  //     alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
-  //     setEmailCheck(false);
-  //   }
-  // }, [email]);
+  useEffect(() => {
+    if (emailCheck === true) {
+      alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
+      setEmailCheck(false);
+    }
+  }, [email]);
 
-  // useEffect(() => {
-  //   if (emailCodeCheck === true) {
-  //     alert("이메일인증코드가 바뀌었습니다. 다시 인증코드 보내세요");
-  //   }
-  //   setEmailCodeCheck(false);
-  // }, [emailCode]);
+  useEffect(() => {
+    if (emailCodeCheck === true) {
+      alert("이메일인증코드가 바뀌었습니다. 다시 인증코드 보내세요");
+    }
+    setEmailCodeCheck(false);
+  }, [emailCode]);
 
   const signUpButton = useRef(null);
 
@@ -385,7 +407,10 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             ></input>
             <button
               className="SUModalEmailBTN"
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.preventDefault();
+                checkEmailCode();
+              }}
             >
               인증번호 확인
             </button>
