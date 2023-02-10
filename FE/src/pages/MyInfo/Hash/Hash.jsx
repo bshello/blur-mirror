@@ -4,36 +4,29 @@ import "./Hash.css";
 import React, { useState, useEffect } from "react";
 import HashInt from "./HashComponent/HashInt";
 // import HashAdd from "./HashComponent/HashAdd/HashAdd";
-import dummy from "../../../db/data.json";
+import axios from "axios";
 
 function Hash({ showHashModal, showAlertModal }) {
-  //카테고리 창인데 이걸 프롭스해서 창의 관심사로 가야할 거 같은데?
-  const categories = [
-    { id: 1, name: "스포츠" },
-    { id: 2, name: "보드게임" },
-    { id: 3, name: "여행" },
-    { id: 4, name: "리액트" },
-    { id: 5, name: "데이터" },
-    { id: 6, name: "음식" },
-    { id: 7, name: "IT제품" },
-    { id: 8, name: "식물" },
-    { id: 9, name: "건강" },
-    { id: 10, name: "금융" },
-    { id: 11, name: "제테크" },
-    { id: 12, name: "크리에이터" },
-    { id: 13, name: "동물" },
-    { id: 14, name: "콘솔게임" },
-    { id: 15, name: "연예" },
-    { id: 16, name: "문화생활" },
-  ];
+  // const API_URL = "blur-profile/profile/dddd";
 
-  // const categories = dummy.categories
-  //   .filter((name) => name.id === categories)
-  //   .map((name) => {
-  //     return <h4>{name.text} 전체</h4>;
-  //   });
+  const getCategories = () => {
+    axios({
+      method: "GET",
+      url: `http://192.168.31.73:8000/blur-profile/profile/dddd/getAllInterests`,
+      data: {},
+    })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.status);
+      })
+      .catch((err) => {
+        alert("카테고리 없다.");
+        console.log(err);
+      });
+  };
 
-  function Category({ category, todoList }) {
+  // 카테고리 이름
+  function Category({ category, checkData }) {
     return (
       <div className="intBack" onClick={showIntModal}>
         {category.name}
@@ -41,17 +34,11 @@ function Hash({ showHashModal, showAlertModal }) {
     );
   }
 
+  // 관심사 모달 띄우는 거
   const [intModal, setIntModal] = useState(false);
   const showIntModal = () => {
     setIntModal((pre) => !pre);
   };
-
-  //  추가 데이터 저장
-  // const [checkList, setCheckList] = useState([]);
-  // const addIte = () => {
-  //   console.log("im hererere!");
-  // };
-
   // //검색기능
   const [data, setData] = useState([
     { id: 1, name: "축구", clicked: false },
@@ -85,13 +72,6 @@ function Hash({ showHashModal, showAlertModal }) {
     setSearchBar((pre) => !pre);
   };
 
-  useEffect(() => {
-    const results = categories.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setResults(results);
-  }, [searchTerm]);
-
   //search 바
   function HashSerch() {
     return (
@@ -107,33 +87,21 @@ function Hash({ showHashModal, showAlertModal }) {
     );
   }
 
-  // TEST
+  // TEST 데이터 띄우기
   const [inputValue, setInputValue] = useState("");
-  const [todoList, setTodoList] = useState([]);
+  const [checkData, setcheckData] = useState([]);
 
   const addItem = () => {
-    setTodoList([...todoList, inputValue]);
+    setcheckData([...checkData, inputValue]);
   };
-
-  // const categoriess = dummy.categories
-  // .filter((name) => name.id === category)
-  //   .map((name) => {
-  //     return <div className="interestbox">{name.category} 전체</div>;
-  //   });
 
   //////////////////////////////////////////
   return (
     <div className="Hash">
+      {/* <HashInt getCategories={getCategories} /> */}
+      {/* <button onClick={getCategories}>ddd</button> */}
       {intModal ? <HashInt showIntModal={setIntModal} /> : null}
       {searchBar ? <HashSerch showSearchBar={setSearchBar} /> : null}
-
-      {/* <HashAdd todoList={todoList} />
-      <input
-        value={inputValue}
-        type="text"
-        onChange={(event) => setInputValue(event.target.value)}
-      />
-      <button onClick={addItem}>추가</button> */}
 
       <div className="hashSerchDiv">
         <div className="inputdodbogi" />
@@ -149,16 +117,7 @@ function Hash({ showHashModal, showAlertModal }) {
         <div className="hashVec" />
       </div>
 
-      <div className="interestdiv">
-        {categories.map((category, idx) => {
-          // .filter((name) => name.id === category)
-          return (
-            <div className="interestbox">
-              <Category key={category} category={category} />
-            </div>
-          );
-        })}
-      </div>
+      <HashInt />
 
       <button
         className="hashEdit"

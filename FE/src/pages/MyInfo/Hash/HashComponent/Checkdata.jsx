@@ -1,7 +1,6 @@
 import React from "react";
 
-function TodoItem(props) {
-  const [hashIntCheck, setHashIntCheck] = [];
+function Checkdata(props) {
   return (
     <div className="hashcheckdiv">
       <div className="hashcheckbox">{props.item}</div>
@@ -11,4 +10,4 @@ function TodoItem(props) {
   );
 }
 
-export default TodoItem;
+export default Checkdata;
