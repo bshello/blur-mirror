@@ -26,7 +26,7 @@ function App() {
             <Route path="/home" element={<Home />}></Route>
           </Route>
           <Route
-            path="/social/redirect"
+            path="/oauth/redirect"
             element={<SocialSignInRedirect />}
           ></Route>
         </Routes>
