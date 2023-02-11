@@ -1,5 +1,7 @@
 package com.blur.auth.api.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,12 +13,13 @@ import lombok.Setter;
 @Getter
 @Builder
 @Setter
+@ApiModel("UserDto")
 public class UserDto {
-
+	@ApiModelProperty(value = "userId", example = "userId", required=true)
     private String userId;
-
+	@ApiModelProperty(value = "password", example = "password", required=true)
     private String password;
-
+	@ApiModelProperty(value = "email", example = "email", required=true)
     private String email;
 
 //    private String gender;

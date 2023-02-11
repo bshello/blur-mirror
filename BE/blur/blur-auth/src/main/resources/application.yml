@@ -1,16 +1,24 @@
 server:
-  port: 8080
+  port: 9999
 
 spring:
   application:
     name: blur-auth
-
+    
+#스웨거 설정  
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+      
   # 데이터 소스 설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://i8b307.p.ssafy.io/blur?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://localhost:3306/ssafy?createDatabaseIfNotExist=true
     username: blur
     password: blur
+#    username: ssafy
+#    password: ssaft
     hikari:
       pool-name: jpa-hikari-pool
       maximum-pool-size: 5
@@ -129,3 +137,4 @@ app:
     authorizedRedirectUris:
       - http://localhost:3000/oauth/redirect
       
+

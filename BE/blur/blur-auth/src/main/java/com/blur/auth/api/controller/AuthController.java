@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blur.auth.api.dto.LoginModel;
 import com.blur.auth.api.entity.UserRefreshToken;
 import com.blur.auth.api.repository.UserRefreshTokenRepository;
-import com.blur.auth.common.ApiResponse;
+import com.blur.auth.common.Response;
 import com.blur.auth.config.properties.AppProperties;
 import com.blur.auth.oauth.entity.AuthToken;
 import com.blur.auth.oauth.entity.AuthTokenProvider;
@@ -29,11 +29,17 @@ import com.blur.auth.utils.CookieUtil;
 import com.blur.auth.utils.HeaderUtil;
 
 import io.jsonwebtoken.Claims;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@Api(value = "인증 API", tags = {"blur-auth"})
 public class AuthController {
 
     private final AppProperties appProperties;
@@ -45,10 +51,16 @@ public class AuthController {
     private final static String REFRESH_TOKEN = "refresh_token";
 
     @PostMapping("/login")
-    public ApiResponse login(
+    @ApiOperation(value = "로그인", notes = "로그인에 필요한 아이디 패스워드 입력")
+    @ApiResponses(value= {
+        @ApiResponse(code = 200, message = "SUCCESS", response = ApiResponse.class),
+        @ApiResponse(code = 400, message = "NOT FOUND"),
+        @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public Response<?> login(
             HttpServletRequest request,
             HttpServletResponse response,
-            @RequestBody LoginModel loginModel
+            @RequestBody @ApiParam(value="로그인 정보", required = true) LoginModel loginModel
     ) {
     	
     	System.out.printf(loginModel.getUserId(), loginModel.getPassword());
@@ -89,23 +101,30 @@ public class AuthController {
         int cookieMaxAge = (int) refreshTokenExpiry / 60;
         CookieUtil.deleteCookie(request, response, REFRESH_TOKEN);
         CookieUtil.addCookie(response, REFRESH_TOKEN, refreshToken.getToken(), cookieMaxAge);
-
-        return ApiResponse.success("token", accessToken.getToken());
+        return Response.success("token", accessToken.getToken());
     }
 
     @GetMapping("/refresh")
-    public ApiResponse refreshToken (HttpServletRequest request, HttpServletResponse response) {
+    @ApiOperation(value = "엑세스 토큰 재 발급", notes = "리프레시 토큰 확인 후 재발급")
+    @ApiResponses(value= {
+        @ApiResponse(code = 200, message = "SUCCESS", response = ApiResponse.class),
+        @ApiResponse(code = 400, message = "NOT FOUND"),
+        @ApiResponse(code = 500, message = "Invalid access token."),
+        @ApiResponse(code = 500, message = "Invalid refresh token."),
+        @ApiResponse(code = 500, message = "Not expired token yet.")
+    })
+    public Response<?> refreshToken (HttpServletRequest request, HttpServletResponse response) {
         // access token 확인
         String accessToken = HeaderUtil.getAccessToken(request);
         AuthToken authToken = tokenProvider.convertAuthToken(accessToken);
         if (!authToken.validate()) {
-            return ApiResponse.invalidAccessToken();
+            return Response.invalidAccessToken();
         }
 
         // expired access token 인지 확인
         Claims claims = authToken.getExpiredTokenClaims();
         if (claims == null) {
-            return ApiResponse.notExpiredTokenYet();
+            return Response.notExpiredTokenYet();
         }
 
         String userId = claims.getSubject();
@@ -118,13 +137,13 @@ public class AuthController {
         AuthToken authRefreshToken = tokenProvider.convertAuthToken(refreshToken);
 
         if (authRefreshToken.validate()) {
-            return ApiResponse.invalidRefreshToken();
+            return Response.invalidRefreshToken();
         }
 
         // userId refresh token 으로 DB 확인
         UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdAndRefreshToken(userId, refreshToken);
         if (userRefreshToken == null) {
-            return ApiResponse.invalidRefreshToken();
+            return Response.invalidRefreshToken();
         }
 
         Date now = new Date();
@@ -154,6 +173,6 @@ public class AuthController {
             CookieUtil.addCookie(response, REFRESH_TOKEN, authRefreshToken.getToken(), cookieMaxAge);
         }
 
-        return ApiResponse.success("token", newAccessToken.getToken());
+        return Response.success("token", newAccessToken.getToken());
     }
 }

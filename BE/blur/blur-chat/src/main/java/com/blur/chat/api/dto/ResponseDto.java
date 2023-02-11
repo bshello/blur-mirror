@@ -1,5 +1,7 @@
 package com.blur.chat.api.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,9 +11,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel("ResponseDto")
 public class ResponseDto<T> {
+	@ApiModelProperty(value = "success 메세지", example = "true")
     private boolean success;
+	@ApiModelProperty(value = "전달 데이터", example = "data")
     private T data;
+	@ApiModelProperty(value = "에러 메세지", example = "Error")
     private Error error;
 
     public static <T> ResponseDto<T> success(T data) {
@@ -25,7 +31,9 @@ public class ResponseDto<T> {
     @Getter
     @AllArgsConstructor
     static class Error {
+    	@ApiModelProperty(value = "에러 코드", example = "404")
         private String code;
+    	@ApiModelProperty(value = "에러 메세지", example = "에러 메세지")
         private String message;
     }
 
