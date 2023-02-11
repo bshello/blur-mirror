@@ -18,7 +18,7 @@ public class UserInfo {
 	    String url = "http://localhost:8000/blur-auth/user/userInfo/" + userId;
 	    ResponseEntity<FeignUserDto> res = new RestTemplate().postForEntity(url, parameters, FeignUserDto.class);
 	    FeignUserDto feignUserDto = res.getBody();
-	    System.out.println("getUserInfo : " + feignUserDto.toString());
+//	    System.out.println("getUserInfo : " + feignUserDto.toString());
 	    return feignUserDto;
 	}
 	

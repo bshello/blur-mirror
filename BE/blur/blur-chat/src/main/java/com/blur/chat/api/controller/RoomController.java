@@ -54,10 +54,11 @@ public class RoomController {
 		    required = true)
 			Map<String, String> user){
 		String userId = user.get("userId");
-//		System.out.println("controller : " + userId);
+//		System.out.println("controller userId : " + userId);
 		Long userNo = userInfo.getUserInfo(userId).getUserNo();
-//		System.out.println("controller : " + userNo);
-		return ResponseDto.success(chatRoomService.createChatroom(userNo)) ;
+//		System.out.println("controller userNo : " + userNo);
+		String chatroomNo = chatRoomService.createChatroom(userNo);
+		return ResponseDto.success(chatroomNo) ;
 	}
 	
 	@PostMapping("/getRooms")
