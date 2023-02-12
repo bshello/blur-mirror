@@ -46,6 +46,15 @@ public class ChatRoomService {
     	return chatroomNo;
     }
     
+    public List<Chatroom> enterChatroom(Long userNo, Long chatroomNo){
+    	Chatroom chatroom = new Chatroom(userNo, chatroomNo);
+//    	System.out.println(chatroom.toString());
+    	chatRoomNoRepository.save(chatroom);
+//    	System.out.println("createChatroom : " + chatroomNo.toString());
+    	List<Chatroom> result = chatRoomNoRepository.findByChatroomNo(chatroomNo);
+    	return result;
+    }
+    
     public List<Chatroom> getRooms(Long userNo){
     	List<Chatroom> result = chatRoomNoRepository.findByUserNo(userNo);
     	return result;

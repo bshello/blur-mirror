@@ -10,5 +10,6 @@ import com.blur.chat.api.entity.Chatroom;
 @Repository
 public interface ChatRoomNoRepository extends JpaRepository<Chatroom, Long> {
 	List<Chatroom> findByUserNo(Long userNo);
+	List<Chatroom> findByChatroomNo(Long chatroomNo);
 } 
 

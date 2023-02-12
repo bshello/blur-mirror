@@ -1,19 +1,24 @@
 package com.blur.chat.api.service;
 
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import static com.blur.chat.api.repository.ChatRoomRepository.CHAT_SORTED_SET_;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
-import org.springframework.data.redis.core.*;
-import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
-import com.blur.chat.api.dto.FeignUserDto;
 import com.blur.chat.api.dto.ResponseDto;
+import com.blur.chat.api.dto.UserInfoDto;
 import com.blur.chat.api.dto.request.ChatMessageSaveDto;
 import com.blur.chat.api.dto.request.ChatPagingDto;
 import com.blur.chat.api.dto.response.ChatPagingResponseDto;
@@ -21,16 +26,8 @@ import com.blur.chat.api.entity.Chat;
 import com.blur.chat.api.repository.ChatRepository;
 import com.blur.chat.utils.ChatUtils;
 
-import javax.annotation.PostConstruct;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import static com.blur.chat.api.repository.ChatRoomRepository.CHAT_ROOMS;
-import static com.blur.chat.api.repository.ChatRoomRepository.CHAT_SORTED_SET_;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
@@ -137,14 +134,14 @@ public class ChatRedisCacheService {
 //        ResponseEntity<FeignUserDto> res = new RestTemplate().postForEntity(url, parameters, FeignUserDto.class);
 //        FeignUserDto feignUserDto = res.getBody();
         
-        FeignUserDto feignUserDto = userInfo.getUserInfo(username);
+        UserInfoDto userInfoDto = userInfo.getUserInfo(username);
                 
-        if (feignUserDto == null) return OUT_USER;
+        if (userInfoDto == null) return OUT_USER;
 
         // redis nickname_data insert
-        roomRedisTemplate.opsForHash().put(USERNAME_NICKNAME, username, feignUserDto.getNickname());
+        roomRedisTemplate.opsForHash().put(USERNAME_NICKNAME, username, userInfoDto.getNickname());
 
-        return feignUserDto.getNickname();
+        return userInfoDto.getNickname();
     }
 
     public void changeUserCachingNickname(String username, String changedNickname) {
