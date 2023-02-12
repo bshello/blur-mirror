@@ -84,8 +84,8 @@ public class MatchingController {
     public ResponseEntity<?> matchStart(@RequestBody RequestMatchDto requestMatchDto) {
 
         ResponseMatchDto responseMatchDto = matchService.matchStart(requestMatchDto);
-        if (responseMatchDto.getMyGender() == null) {
-            return ResponseEntity.status(403).body(null);
+        if (responseMatchDto == null) {
+            return ResponseEntity.status(403).body("신고10회이상");
         }
         return ResponseEntity.status(HttpStatus.OK).body(responseMatchDto);
     }
@@ -106,18 +106,6 @@ public class MatchingController {
         if (gender.equals("M")) {
             matchService.matchDecline(userId);
         }
-        System.out.println("111111111111111111111111111111");
-        System.out.println(userId);
-        System.out.println(gender);
-        System.out.println("111111111111111111111111111111");
-        System.out.println("111111111111111111111111111111");
-        System.out.println(userId);
-        System.out.println(gender);
-        System.out.println("111111111111111111111111111111");
-        System.out.println("111111111111111111111111111111");
-        System.out.println(userId);
-        System.out.println(gender);
-        System.out.println("111111111111111111111111111111");
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
