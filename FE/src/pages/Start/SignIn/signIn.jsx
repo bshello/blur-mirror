@@ -13,7 +13,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
   const dispatch = useDispatch();
   const API_URL = process.env.REACT_APP_SIGN_API_URL;
   const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
-  const savedId = useSelector((state) => state.strr.id);
+  const savedId = useSelector((state) => state.strr.savedId);
   const checkbox = useRef();
 
   const [signId, setSignId] = useState("");

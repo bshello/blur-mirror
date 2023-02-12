@@ -37,6 +37,7 @@ function SocialSignInRedirect() {
           alert("아이디가 저장되지 못했습니다.");
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <></>;
 }

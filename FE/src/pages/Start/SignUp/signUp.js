@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
   const API_URL = process.env.REACT_APP_SIGN_API_URL;
-  const navigate = useNavigate();
+
   const psInput = useRef(null);
   const signUpButton = useRef(null);
 
@@ -216,7 +215,8 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       .then((res) => {
         console.log(res);
         alert("회원가입이 완료되었습니다. 로그인해주세요!");
-        navigate("/home");
+        showSignUpModal();
+        showSignInModal();
       })
       .catch((err) => {
         console.log(err);
@@ -230,6 +230,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       alert("아이디가 바뀌었습니다. 다시 중복확인 해주세요");
       setIdCheck(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   //중복확인 통과뒤 이메일이 바뀐경우 경고
@@ -238,6 +239,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
       setEmailCheck(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email]);
 
   //중복확인 통과뒤 이메일 인증코드 가 바뀐경우 경고
@@ -246,6 +248,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       alert("이메일인증코드가 바뀌었습니다. 제대로 다시 입력해주세요!");
       setEmailCodeCheck(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailCode]);
 
   //회원가입 버튼 활성화 비활성화

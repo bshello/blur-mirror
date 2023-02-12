@@ -23,7 +23,9 @@ function Home() {
     console.log(process.env);
   }, []);
   // startVideo 함수 실행하면 자신의 모습 볼수있음
-  const CONSTRAINTS = { video: { width: { exact: 440 }, height: { exact: 340 } } };
+  const CONSTRAINTS = {
+    video: { width: { exact: 440 }, height: { exact: 340 } },
+  };
   const videoRef = useRef(null);
 
   useEffect(() => {}, []);
@@ -85,11 +87,18 @@ function Home() {
       if (!alert("미팅 페이지로 이동합니다.")) {
         // 데이터 백에 넘겨줌
         navigator.geolocation.getCurrentPosition((loc) => {
-          console.log(`lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`);
+          console.log(
+            `lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`
+          );
           axios({
             method: "post",
             url: `${API_URL}/start`,
-            data: { lat: loc.coords.latitude, lng: loc.coords.longitude, userId: "anonymous", gender: "M" },
+            data: {
+              lat: loc.coords.latitude,
+              lng: loc.coords.longitude,
+              userId: "anonymous",
+              gender: "M",
+            },
           })
             .then((res) => {
               console.log(`res : `, res.data);
@@ -100,7 +109,9 @@ function Home() {
             .catch((err) => {
               // 실패 시 알람 띄움
               console.log(err);
-              alert("서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+              alert(
+                "서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!"
+              );
             });
         });
       }
@@ -116,11 +127,21 @@ function Home() {
   return (
     <div className="Home">
       {chatList ? <ChatList showChatPage={showChatPage} /> : null}
-      {chatPage ? <ChatPage /> : null}
-      {blurInfoModal || alertModal ? <ModalWrap blurInfoModal={blurInfoModal} showBlurInfoModal={showBlurInfoModal} /> : null}
+      {chatPage ? <ChatPage showChatPage={showChatPage} /> : null}
+      {blurInfoModal || alertModal ? (
+        <ModalWrap
+          blurInfoModal={blurInfoModal}
+          showBlurInfoModal={showBlurInfoModal}
+        />
+      ) : null}
       {blurInfoModal && !alertModal ? <BlurInfo /> : null}
 
-      {alertModal && !blurInfoModal ? <Alert showAlertModal={goMyInfo} content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."} /> : null}
+      {alertModal && !blurInfoModal ? (
+        <Alert
+          showAlertModal={goMyInfo}
+          content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."}
+        />
+      ) : null}
 
       <Header showChatList={showChatList} />
 

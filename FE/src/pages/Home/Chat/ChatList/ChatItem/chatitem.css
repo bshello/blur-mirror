@@ -6,6 +6,7 @@
   display: flex;
   background: #e1f1f2;
   border-radius: 30px;
+  cursor: pointer;
 }
 .ChatItem .ChatPicture {
   position: relative;

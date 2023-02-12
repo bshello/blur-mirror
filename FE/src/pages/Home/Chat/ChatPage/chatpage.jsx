@@ -1,30 +1,22 @@
 import "./chatpage.css";
+import ChatPageDialogueMe from "./ChatDialogueMe/chatdialogueme";
+import ChatPageDialogueYou from "./ChatDialogueYou/chatdialogueyou";
 
-function ChatPage() {
+function ChatPage({ showChatPage }) {
   return (
     <div className="ChatPageBack">
       <div className="ChatPageHeader">
-        <div className="ChatPageHeaderBtn"></div>
+        <div className="ChatPageHeaderBtn" onClick={showChatPage}></div>
         <div className="ChatPageHeaderName">한효주</div>
       </div>
       <div className="ChatPageContent">
         <div className="ChatPageDialogue">
-          <div className="ChatPageDialogueMe">
-            <div className="ChatPageDialogueContent">안녕</div>
-            <div className="ChatPageProfilePicture"></div>
-          </div>
-          <div className="ChatPageDialogueYou">
-            <div className="ChatPageProfilePicture"></div>
-            <div className="ChatPageDialogueContent">얀녕</div>
-          </div>
-          <div className="ChatPageDialogueMe">
-            <div className="ChatPageDialogueContent">난 이승기야</div>
-            <div className="ChatPageProfilePicture"></div>
-          </div>
-          <div className="ChatPageDialogueYou">
-            <div className="ChatPageProfilePicture"></div>
-            <div className="ChatPageDialogueContent">난 한효주야</div>
-          </div>
+          <ChatPageDialogueMe content={"안녕"} />
+          <ChatPageDialogueYou content={"응 안녕"} />
+          <ChatPageDialogueMe content={"난 이승기야"} />
+          <ChatPageDialogueYou content={"난 한효주야"} />
+          <ChatPageDialogueMe content={"노브랜드버거먹자"} />
+          <ChatPageDialogueYou content={"그래그래"} />
         </div>
         <div className="ChatPageInputDiv">
           <div className="ChatPageInput">
