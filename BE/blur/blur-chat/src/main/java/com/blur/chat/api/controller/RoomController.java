@@ -1,5 +1,6 @@
 package com.blur.chat.api.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -73,7 +74,11 @@ public class RoomController {
 	public ResponseDto<?> getRooms(@RequestBody Map<String, String> user) {
 		String userId = user.get("userId");
 		Long userNo = userInfo.getUserInfo(userId).getUserNo();
-		List<Chatroom> result = chatRoomService.getRooms(userNo);
+		List<Chatroom> result = chatRoomService.getManRooms(userNo);
+		
+		if(result == null)
+			result = chatRoomService.getWomanRooms(userNo);
+			
 		return ResponseDto.success(result);
 	}
 	
@@ -91,9 +96,9 @@ public class RoomController {
 	public ResponseDto<?> enterRoom(@RequestBody EnterRoom enterRoom) {
 //		Long userNo = userInfo.getUserInfo(enterRoom.getUserId()).getUserNo();
 		UserInfoDto userInfoDto = userInfo.getUserInfo(enterRoom.getUserId());
-		List<?> result = chatRoomService.enterChatroom(userInfoDto, enterRoom.getChatroomNo());
-		System.out.println(result.toString());
-		return ResponseDto.success(result);
+		Chatroom chatroom = chatRoomService.enterChatroom(userInfoDto, enterRoom.getChatroomNo());
+		System.out.println(chatroom.toString());
+		return ResponseDto.success(chatroom);
 	}
 	
 }

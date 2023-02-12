@@ -47,17 +47,25 @@ public class ChatRoomService {
     	return chatroomNo;
     }
     
-    public List<Chatroom> enterChatroom(UserInfoDto userInfoDto, Long chatroomNo){
-    	Chatroom chatroom = new Chatroom(chatroomNo, userInfoDto.getUserNo(), userInfoDto.getNickname());
+    public Chatroom enterChatroom(UserInfoDto userInfoDto, Long chatroomNo){
+//    	Chatroom chatroom = new Chatroom();
+//    	chatroom.enterWoman(userInfoDto, chatroomNo);
 //    	System.out.println(chatroom.toString());
-    	chatRoomNoRepository.save(chatroom);
+    	
 //    	System.out.println("createChatroom : " + chatroomNo.toString());
-    	List<Chatroom> result = chatRoomNoRepository.findByChatroomNo(chatroomNo);
+    	Chatroom chatroom = chatRoomNoRepository.findByChatroomNo(chatroomNo);
+    	chatroom.update(userInfoDto.getUserNo(), userInfoDto.getUserId());
+    	
+    	return chatroom;
+    }
+    
+    public List<Chatroom> getWomanRooms(Long womanNo){
+    	List<Chatroom> result = chatRoomNoRepository.findByWomanNo(womanNo);
     	return result;
     }
     
-    public List<Chatroom> getRooms(Long userNo){
-    	List<Chatroom> result = chatRoomNoRepository.findByUserNo(userNo);
+    public List<Chatroom> getManRooms(Long manNo){
+    	List<Chatroom> result = chatRoomNoRepository.findByManNo(manNo);
     	return result;
     }
 }

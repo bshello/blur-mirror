@@ -43,7 +43,6 @@ public class User {
     @JsonIgnore
     @Column(name = "password")
     @NotNull
-    @Size(max = 128)
     private String password;
 
     @Column(name = "email")
