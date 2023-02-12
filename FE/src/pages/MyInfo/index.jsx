@@ -1,14 +1,38 @@
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../../pages/Start/Alert";
+import axios from "axios";
+
 
 function MyInfo() {
+  // 화면 켜지자 말자 띄우는 거
+  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
+  const id = "123123";
+  const [proFile, setProFile] = useState([]);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `${API_URL}/${id}`,
+      data: {},
+    })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.status);
+        setProFile(res.data);
+        console.log("성공><");
+      })
+      .catch((err) => {
+        alert("기존 데이터 없다.");
+        console.log(err);
+      });
+  }, []);
+
   //profile edit modal
   const [miModal, setMyInfoModal] = useState(false);
   const showMyinfoModal = () => {
@@ -45,6 +69,10 @@ function MyInfo() {
     return state.intro.value;
   });
 
+  const age = useSelector((state) => {
+    return state.age.value;
+  });
+
   // 이미지 미리보기
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
@@ -68,7 +96,6 @@ function MyInfo() {
           showMyinfoModal={showMyinfoModal}
         />
       ) : null}
-
       {miModal && !hashModal ? (
         <MyInfoModal
           showHashModal={showHashModal}
@@ -128,22 +155,19 @@ function MyInfo() {
         <div className="MISetDiv"></div>
       </div>
       <span className="MIHashTag">Hash Tag</span>
-
       <div
         className="MIHashSet"
         onClick={showHashModal}
         onChange={showChangeHash}
         disabled={alertModal === true ? true : false}
       >
-        {/* <HashIntCheck /> */}
-
         <div className="MIHashSetIcon">
           <span className="MIHashSetText">설정하기</span>
         </div>
       </div>
       <div className="MINameAgeDiv">
+        <span className="MIAge"> {proFile.age}</span>
         <span className="MIName"> {user} </span>
-        <span className="MIAge"> 26</span>
       </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>

@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import "./index.css";
 import BlurInfo from "./BlurInfo/blurInfo";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../Start/Alert";
 import Slide1 from "./Slide1/slide1";
@@ -10,21 +10,31 @@ import Slide3 from "./Slide3/slide3";
 import ChatList from "./Chat/ChatList/chatlist";
 import ChatPage from "./Chat/ChatPage/chatpage";
 import { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+let myStream;
+let carousel;
 function Home() {
+  console.log("Home 페이지 렌더링");
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
+  useEffect(() => {
+    console.log(process.env);
+  }, []);
   // startVideo 함수 실행하면 자신의 모습 볼수있음
-  const CONSTRAINTS = { video: true };
+  const CONSTRAINTS = { video: { width: { exact: 440 }, height: { exact: 340 } } };
   const videoRef = useRef(null);
-  const startVideo = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
+
+  useEffect(() => {}, []);
+  const startVideo = useCallback(async () => {
+    myStream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
     if (videoRef && videoRef.current && !videoRef.current.srcObject) {
-      videoRef.current.srcObject = stream;
+      videoRef.current.srcObject = myStream;
     } else {
       videoRef.current.srcObject = null;
     }
-  };
+  }, []);
 
   const [blurInfoModal, setBlurInfoModal] = useState(false);
   const [alertModal, setalertModal] = useState(false);
@@ -33,7 +43,8 @@ function Home() {
   const [slideNumber, setSlideNumber] = useState(0);
 
   //프로필 설정이 완료여부 알려주는 변수
-  const profiled = useSelector((state) => state.strr.profiled);
+  // const profiled = useSelector((state) => state.strr.profiled);
+  const profiled = true;
   const navigate = useNavigate();
 
   const showBlurInfoModal = () => {
@@ -42,6 +53,11 @@ function Home() {
 
   const showAlertModal = () => {
     setalertModal((pre) => !pre);
+
+    if (alertModal) {
+      myStream.getTracks().forEach((track) => track.stop());
+      videoRef.srcObject = null;
+    }
   };
 
   const showChatList = () => {
@@ -54,13 +70,40 @@ function Home() {
 
   //캐러셀 화면
   useEffect(() => {
-    setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 10000);
+    carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 10000);
   }, [slideNumber]);
 
   //Start 버튼에서 미팅으로 갈지, 프로필로 갈지
   const goMeeting = () => {
+    /**
+     * 프로필 등록 O
+     * - 데이터(아이디/위도/경도)를 넘겨줌
+     * - axios 성공 시 : 미팅 페이지로 이동
+     *         실패 시 : 알람 띄움
+     */
     if (profiled) {
-      navigate("/meeting");
+      if (!alert("미팅 페이지로 이동합니다.")) {
+        // 데이터 백에 넘겨줌
+        navigator.geolocation.getCurrentPosition((loc) => {
+          console.log(`lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`);
+          axios({
+            method: "post",
+            url: `${API_URL}/start`,
+            data: { lat: loc.coords.latitude, lng: loc.coords.longitude, userId: "anonymous", gender: "M" },
+          })
+            .then((res) => {
+              console.log(`res : `, res.data);
+              // 성공 시 미팅 페이지로 이동
+              clearTimeout(carousel);
+              navigate("/meeting");
+            })
+            .catch((err) => {
+              // 실패 시 알람 띄움
+              console.log(err);
+              alert("서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+            });
+        });
+      }
     } else {
       showAlertModal();
     }
@@ -74,20 +117,10 @@ function Home() {
     <div className="Home">
       {chatList ? <ChatList showChatPage={showChatPage} /> : null}
       {chatPage ? <ChatPage /> : null}
-      {blurInfoModal || alertModal ? (
-        <ModalWrap
-          blurInfoModal={blurInfoModal}
-          showBlurInfoModal={showBlurInfoModal}
-        />
-      ) : null}
+      {blurInfoModal || alertModal ? <ModalWrap blurInfoModal={blurInfoModal} showBlurInfoModal={showBlurInfoModal} /> : null}
       {blurInfoModal && !alertModal ? <BlurInfo /> : null}
 
-      {alertModal && !blurInfoModal ? (
-        <Alert
-          showAlertModal={goMyInfo}
-          content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."}
-        />
-      ) : null}
+      {alertModal && !blurInfoModal ? <Alert showAlertModal={goMyInfo} content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."} /> : null}
 
       <Header showChatList={showChatList} />
 

@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import "./style/normalize.css";
 import "./App.css";
-
 import Start from "./pages/Start";
 import Home from "./pages/Home";
 import Meeting from "./pages/Meeting";

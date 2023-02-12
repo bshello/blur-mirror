@@ -5,7 +5,6 @@ import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
   const API_URL = process.env.REACT_APP_SIGN_API_URL;
-
   const navigate = useNavigate();
   const psInput = useRef(null);
   const signUpButton = useRef(null);

@@ -15,6 +15,7 @@ let myStream;
 let videoDevices = [];
 let firstRendering = false;
 
+console.log("MeetingIn 페이지 렌더링");
 function MeetingIn() {
   // 컴퓨터와 연결되어있는 모든 장치를 가져옴
   const getCameras = useCallback(async () => {
@@ -43,7 +44,7 @@ function MeetingIn() {
     // 초기 실행
     const initialConstraints = {
       audio: false,
-      video: { width: { exact: 599.037 }, height: { exact: 560.638 } },
+      video: { width: 160, height: 150 },
     };
     // (select에서) 카메라를 변경했을 때의 device로 실행
     const cameraConstraints = {
@@ -87,6 +88,7 @@ function MeetingIn() {
   const isShowBlockModal = useSelector((state) => state.mt.isShowBlockModal);
   const closeAlertToggle = useSelector((state) => state.mt.closeAlertToggle);
   const camOpenToggle = useSelector((state) => state.mt.camOpenToggle);
+  const sendRoomName = useSelector((state) => state.mt.roomNumber);
 
   // socket Code
 
@@ -314,10 +316,13 @@ function MeetingIn() {
       // 카메라 장치 동작 메서드
       await getMedia();
       makeConnection();
-      socket.emit("join_room", 111);
-      roomName = 111;
+      socket.emit("join_room", sendRoomName);
+      console.log(`sendRoomName: ${sendRoomName}`);
+
+      roomName = sendRoomName;
     }, 3000);
   }
+
   return (
     <div className="MeetingIn">
       <div className="MeetingIn_CamDiv">
