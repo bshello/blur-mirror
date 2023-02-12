@@ -14,7 +14,7 @@
   width: 54px;
   height: 44.25px;
   border-radius: 30px;
-  background: url(../../../../../assets/images/balloon.png);
+  background: url(../../../../../assets/images/hanhyoju.jpg);
   background-size: cover;
 }
 .ChatItem .ChatContent {
@@ -28,14 +28,24 @@
   width: 250px;
   height: 25px;
 }
+.ChatItem .ChatContent .ChatName .ChatNameWho {
+  position: absolute;
+  left: 0px;
+}
 .ChatItem .ChatContent .ChatText {
   width: 250px;
   height: 25px;
 }
+.ChatItem .ChatContent .ChatText .ChatTextWhat {
+  position: absolute;
+  left: 0px;
+}
 .ChatItem .ChatAlarm {
   position: relative;
-  top: 10px;
+  top: 25px;
   display: inline-block;
-  width: 30px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50px;
 }/*# sourceMappingURL=chatitem.css.map */

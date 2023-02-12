@@ -9,12 +9,10 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth/auth`;
-  const SOCIAL_API_URL = "blur-auth";
-  // const API_URL = process.env.REACT_APP_SIGN_API_URL;
-  // const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const API_URL = process.env.REACT_APP_SIGN_API_URL;
+  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const savedId = useSelector((state) => state.strr.id);
   const checkbox = useRef();
 
@@ -36,7 +34,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     if (signId && signPs) {
       axios({
         method: "post",
-        url: `${API_URL}/login`,
+        url: `${API_URL}/auth/login`,
         data: {
           userId: signId,
           password: signPs,
@@ -82,13 +80,25 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         <label className="ModalInputIdLabel" htmlFor="user_id">
           ID
         </label>
-        <input className="ModalInputId" id="user_id" placeholder="ID를 입력해 주세요" onChange={enterSignId} defaultValue={savedId}></input>
+        <input
+          className="ModalInputId"
+          id="user_id"
+          placeholder="ID를 입력해 주세요"
+          onChange={enterSignId}
+          defaultValue={savedId}
+        ></input>
       </div>
       <div className="ModalInputPwDiv">
         <label className="ModalInputPwLabel" htmlFor="user_pw">
           PW
         </label>
-        <input className="ModalInputPw" id="user_pw" placeholder="PW를 입력해 주세요" type="password" onChange={enterSignPs}></input>
+        <input
+          className="ModalInputPw"
+          id="user_pw"
+          placeholder="PW를 입력해 주세요"
+          type="password"
+          onChange={enterSignPs}
+        ></input>
       </div>
 
       <div className="LoginBtnDiv">
@@ -96,7 +106,11 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           로그인
         </button>
         <div className="IdSaveDiv">
-          <input className="IdSaveToggle" type="checkbox" ref={checkbox}></input>
+          <input
+            className="IdSaveToggle"
+            type="checkbox"
+            ref={checkbox}
+          ></input>
 
           <label className="IdSaveText">아이디 저장</label>
         </div>
