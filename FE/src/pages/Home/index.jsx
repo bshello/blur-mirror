@@ -11,14 +11,18 @@ import ChatList from "./Chat/ChatList/chatlist";
 import ChatPage from "./Chat/ChatPage/chatpage";
 import { useRef } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
 
 let myStream;
 let carousel;
 function Home() {
+  let userId = useSelector((state) => state.strr.id); // Redux에 저장되어있는 MToggle
+  const dispatch = useDispatch();
+
   console.log("Home 페이지 렌더링");
-  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
+  const API_URL = `http://172.30.1.43:8000/blur-match/match`;
   useEffect(() => {
     console.log(process.env);
   }, []);
@@ -82,17 +86,26 @@ function Home() {
      *         실패 시 : 알람 띄움
      */
     if (profiled) {
-      if (!alert("미팅 페이지로 이동합니다.")) {
+      // meeting Not In 로 이동
+      if (!alert("미팅 대기 페이지로 이동합니다.")) {
         // 데이터 백에 넘겨줌
         navigator.geolocation.getCurrentPosition((loc) => {
           console.log(`lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`);
+          dispatch(MYGEO({ lat: loc.coords.latitude, lng: loc.coords.longitude }));
           axios({
             method: "post",
             url: `${API_URL}/start`,
-            data: { lat: loc.coords.latitude, lng: loc.coords.longitude, userId: "anonymous", gender: "M" },
+            data: { lat: loc.coords.latitude, lng: loc.coords.longitude, userId: userId },
           })
             .then((res) => {
+              // [response data : myGender/partnerId/sessionId(방번호)]
+              // 남자의 경우 O/X/X
+              // 여자의 경우 O/X/X
               console.log(`res : `, res.data);
+              console.log(`res myGender: `, res.data.myGender);
+              dispatch(MYGENDER(res.data.myGender));
+              alert("start: 백에 통신 성공");
+
               // 성공 시 미팅 페이지로 이동
               clearTimeout(carousel);
               navigate("/meeting");
