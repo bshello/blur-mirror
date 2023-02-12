@@ -1,5 +1,6 @@
 package com.blur.blurprofile.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Entity
 @Getter
@@ -27,6 +26,7 @@ public class UserInterest {
     @JoinColumn(name = "user_profile")
     private UserProfile userProfile;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "interest")
     private Interest interest;

@@ -4,6 +4,12 @@ server:
 spring:
   application:
     name: blur-match
+
+  #스웨거 설정
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://i8b307.p.ssafy.io/blur?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true

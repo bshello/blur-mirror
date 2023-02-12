@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @AllArgsConstructor
-@Builder
 @Setter
 public class MatchDto {
 

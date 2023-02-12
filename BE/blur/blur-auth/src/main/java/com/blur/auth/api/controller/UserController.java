@@ -181,33 +181,11 @@ public class UserController {
 	@ApiImplicitParam( name = "userId", value = "userId", required = true, dataType = "string", paramType = "path", defaultValue = "None")
 	public ResponseEntity<?> getUserInfo(@PathVariable(name ="userId") String userId) throws Exception{
 		UserInfo userInfo = userService.getUserInfo(userId);
-		userInfo.setNickname("test");
-		return new ResponseEntity<>(userInfo, HttpStatus.OK);
+		Long userNo = userService.getUserInfo(userId).getUserNo();
+//		userInfo.setNickname("test");
+		return new ResponseEntity<>(userNo, HttpStatus.OK);
 	}
 	
-	@GetMapping
-	public Response<?> getUserId(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String accessToken = HeaderUtil.getAccessToken(request);
-		System.out.println(accessToken);
-		AuthToken authToken = tokenProvider.convertAuthToken(accessToken);
-        if (!authToken.validate()) {
-            return Response.invalidAccessToken();
-//        	return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
-        }
-        
-        Claims claims = authToken.getTokenClaims();
-//        if (claims == null) {
-//            return ApiResponse.notExpiredTokenYet();
-//        }
-        
-        String userId = claims.getSubject();
-        Map<String, String> map = new HashMap<>();
-        map.put("userId", userId);
-       
-        
-        return Response.success("userId", userId);
-//        return new ResponseEntity<> (userId, HttpStatus.OK);
-	}
 	
 //	@Data
 //    @NoArgsConstructor(access = AccessLevel.PROTECTED)

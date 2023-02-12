@@ -2,57 +2,123 @@ package com.blur.blurprofile.controller;
 
 import com.blur.blurprofile.dto.*;
 import com.blur.blurprofile.service.ProfileService;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/profile/{id}")
+@Api(value = "프로필", description = "프로필 관련 API")
 public class ProfileController {
 
     @Autowired
     ProfileService profileService;
 
-
+    @ApiOperation(value = "카드 정보 가져오기", response = ResponseCardDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "카드 정보 가져오기 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
     @GetMapping
-    public ResponseEntity<ResponseProfileSettingDto> getProfileSetting(@PathVariable("id") String userId) {
-        //매칭정보도 가져와야됨
+    public ResponseEntity<ResponseCardDto> getCard(
+            @ApiParam(value = "사용자의 ID", required = true) @PathVariable("id") String userId) {
+
+        ResponseCardDto responseCardDto = profileService.getCard(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(responseCardDto);
+    }
+
+    @ApiOperation(value = "프로필 세팅 가져오기", response = ResponseProfileSettingDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "프로필 세팅 가져오기 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @GetMapping("/getProfile")
+    public ResponseEntity<ResponseProfileSettingDto> getProfileSetting(@ApiParam(value = "User ID", required = true)
+                                                                           @PathVariable("id") String userId) {
+
         ResponseProfileSettingDto responseProfileSettingDto = profileService.getProfileSetting(userId);
         return ResponseEntity.status(HttpStatus.OK).body(responseProfileSettingDto);
     }
 
-    @GetMapping("/service")
-    public ResponseEntity<ProfileDto> getProfile(@PathVariable("id") String userId) {
-
-        ProfileDto profileDto = profileService.getProfile(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(profileDto);
-    }
-
-    @PutMapping("/updateProfile") //프로필 변경
+    @ApiOperation(value = "프로필 설정 업데이트", response = RequestProfileSettingDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "프로필 설정 업데이트 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @PutMapping("/updateProfile")
     public ResponseEntity<?> updateProfile(@RequestBody RequestProfileSettingDto requestProfileSettingDto) throws Exception {
         RequestProfileSettingDto profile = profileService.updateProfile(requestProfileSettingDto);
         return ResponseEntity.status(HttpStatus.OK).body(profile);
     }
 
-    @GetMapping("getAllInterests")
-    public ResponseEntity<InterestDto> getAllInterests(@PathVariable("id") String userId) {
-        InterestDto interestDto = profileService.getAllInterests(userId);
+    @ApiOperation(value = "관심사 가져오기", response = InterestDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "관심사 가져오기 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @GetMapping("/getInterest")
+    public ResponseEntity<InterestDto> getInterests(@ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) {
+        InterestDto interestDto = profileService.getInterests(userId);
         return ResponseEntity.status(HttpStatus.OK).body(interestDto);
     }
 
-    @GetMapping("/getCard")
-    public ResponseEntity<ResponseCard> getCard(@PathVariable("id") String userId) {
-
-        ResponseCard responseCard = profileService.getCard(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(responseCard);
-    }
-
+    @ApiOperation(value = "관심사 설정 업데이트", response = Void.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "관심사 설정 업데이트 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
     @PutMapping("/updateInterest")
-    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.RequestUserInterestDto requestUserInterestDto, @PathVariable("id") String userId) throws Exception {
+    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.RequestUserInterestDto requestUserInterestDto,
+                                            @ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) throws Exception {
         profileService.updateInterest(requestUserInterestDto, userId);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
+    @ApiOperation(value = "프로필", response = ProfileDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "프로필 가져오기 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @GetMapping("/service")
+    public ResponseEntity<ProfileDto> getProfile(@ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) {
+
+        ProfileDto profileDto = profileService.getProfile(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(profileDto);
+    }
+
+    @GetMapping("/service/partner")
+    public ResponseEntity<?> getPartnerInterest(@ApiParam(value = "Partner ID", required = true) @PathVariable("id") String partnerId) {
+
+        Collection<String> partnerInterest = profileService.getPartnerInterest(partnerId);
+        return ResponseEntity.status(HttpStatus.OK).body(partnerInterest);
+    }
 
 }

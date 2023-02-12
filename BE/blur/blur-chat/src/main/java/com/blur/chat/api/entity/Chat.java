@@ -40,7 +40,7 @@ public class Chat implements Serializable {
     private String message;
     
     //userId
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private String users;
 
     @Column(name = "created_at")

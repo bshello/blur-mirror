@@ -1,5 +1,6 @@
 package com.blur.blurprofile.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,9 +22,7 @@ public class Interest {
     @Column(nullable = false, length = 120, unique = true, name = "interest_name")
     private String interestName;
 
-//    @Column(nullable = false)
-//    private JSON interest_relation;
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "interest")
     private List<UserInterest> userInterests = new ArrayList<>();
 

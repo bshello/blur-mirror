@@ -1,6 +1,8 @@
 package com.blur.auth.api.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -175,4 +177,28 @@ public class AuthController {
 
         return Response.success("token", newAccessToken.getToken());
     }
+    
+	@GetMapping
+	public Response<?> getUserId(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String accessToken = HeaderUtil.getAccessToken(request);
+		System.out.println(accessToken);
+		AuthToken authToken = tokenProvider.convertAuthToken(accessToken);
+        if (!authToken.validate()) {
+            return Response.invalidAccessToken();
+//        	return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
+        }
+        
+        Claims claims = authToken.getTokenClaims();
+//        if (claims == null) {
+//            return ApiResponse.notExpiredTokenYet();
+//        }
+        
+        String userId = claims.getSubject();
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", userId);
+       
+        
+        return Response.success("userId", userId);
+//        return new ResponseEntity<> (userId, HttpStatus.OK);
+	}
 }

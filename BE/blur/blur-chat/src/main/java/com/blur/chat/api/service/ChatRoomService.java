@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.blur.chat.api.dto.ResponseDto;
+import com.blur.chat.api.dto.UserInfoDto;
 import com.blur.chat.api.entity.Chatroom;
 import com.blur.chat.api.repository.ChatRoomNoRepository;
 import com.blur.chat.api.repository.ChatRoomRepository;
@@ -36,18 +37,35 @@ public class ChatRoomService {
        return chatRoomRepository.findUsersInChatroom(roomNo,sessionId);
     }
     
-    public String createChatroom(Long userNo){
-    	Chatroom chatroom = new Chatroom(userNo);
-//    	System.out.println(chatroom.toString());
+    public Long createChatroom(UserInfoDto userInfoDto){
+    	Chatroom chatroom = new Chatroom(userInfoDto.getUserNo(), userInfoDto.getNickname());
+    	System.out.println(chatroom.toString());
     	chatRoomNoRepository.save(chatroom);
-    	String chatroomNo = chatroom.getChatroomNo().toString();
-//    	System.out.println("createChatroom : " + chatroomNo.toString());
+    	Long chatroomNo = chatroom.getChatroomNo();
+    	System.out.println("createChatroom : " + chatroomNo);
     	
     	return chatroomNo;
     }
     
-    public List<Chatroom> getRooms(Long userNo){
-    	List<Chatroom> result = chatRoomNoRepository.findByUserNo(userNo);
+    public Chatroom enterChatroom(UserInfoDto userInfoDto, Long chatroomNo){
+//    	Chatroom chatroom = new Chatroom();
+//    	chatroom.enterWoman(userInfoDto, chatroomNo);
+//    	System.out.println(chatroom.toString());
+    	
+//    	System.out.println("createChatroom : " + chatroomNo.toString());
+    	Chatroom chatroom = chatRoomNoRepository.findByChatroomNo(chatroomNo);
+    	chatroom.update(userInfoDto.getUserNo(), userInfoDto.getUserId());
+    	
+    	return chatroom;
+    }
+    
+    public List<Chatroom> getWomanRooms(Long womanNo){
+    	List<Chatroom> result = chatRoomNoRepository.findByWomanNo(womanNo);
+    	return result;
+    }
+    
+    public List<Chatroom> getManRooms(Long manNo){
+    	List<Chatroom> result = chatRoomNoRepository.findByManNo(manNo);
     	return result;
     }
 }
