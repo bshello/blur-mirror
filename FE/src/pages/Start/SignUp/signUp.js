@@ -5,6 +5,7 @@ import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
   const API_URL = process.env.REACT_APP_SIGN_API_URL;
+
   const navigate = useNavigate();
   const psInput = useRef(null);
   const signUpButton = useRef(null);
@@ -102,7 +103,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     if (isId) {
       axios({
         method: "post",
-        url: `${API_URL}/checkId`,
+        url: `${API_URL}/user/checkId`,
         data: {
           userId: id,
         },
@@ -160,7 +161,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
     if (isEmail) {
       axios({
         method: "post",
-        url: `${API_URL}/sendAuthEmail`,
+        url: `${API_URL}/user/sendAuthEmail`,
         data: {
           email: email,
         },
@@ -183,7 +184,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   const checkEmailCode = () => {
     axios({
       method: "post",
-      url: `${API_URL}/checkEmail`,
+      url: `${API_URL}/user/checkEmail`,
       data: {
         email: email,
         authKey: emailCode,
@@ -204,36 +205,24 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   // 회원가입 함수
   const onSubmit = (e) => {
     e.preventDefault();
-    if (
-      id &&
-      ps1 &&
-      email &&
-      emailCode &&
-      idCheck &&
-      psCheck &&
-      emailCheck &&
-      emailCodeCheck
-    ) {
-      axios({
-        method: "post",
-        url: `${API_URL}/register`,
-        data: {
-          userId: id,
-          password: ps1,
-          email: email,
-        },
+    axios({
+      method: "post",
+      url: `${API_URL}/user/register`,
+      data: {
+        userId: id,
+        password: ps1,
+        email: email,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        alert("회원가입이 완료되었습니다. 로그인해주세요!");
+        navigate("/home");
       })
-        .then((res) => {
-          console.log(res);
-          navigate("/home");
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("오류가 났습니다!");
-        });
-    } else {
-      alert("아이디중복 또는 비밀번호불일치 또는 이메일확인코드오류 입니다.");
-    }
+      .catch((err) => {
+        console.log(err);
+        alert("오류가 났습니다!");
+      });
   };
 
   //중복확인 통과뒤 아이디가 바뀐경우 경고
@@ -255,9 +244,9 @@ function SignUp({ showSignUpModal, showSignInModal }) {
   //중복확인 통과뒤 이메일 인증코드 가 바뀐경우 경고
   useEffect(() => {
     if (emailCodeCheck === true) {
-      alert("이메일인증코드가 바뀌었습니다. 다시 인증코드 보내세요");
+      alert("이메일인증코드가 바뀌었습니다. 제대로 다시 입력해주세요!");
+      setEmailCodeCheck(false);
     }
-    setEmailCodeCheck(false);
   }, [emailCode]);
 
   //회원가입 버튼 활성화 비활성화
@@ -267,6 +256,9 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       ps1 &&
       email &&
       emailCode &&
+      isId &&
+      isPassword &&
+      isEmail &&
       idCheck &&
       psCheck &&
       emailCheck &&
@@ -278,7 +270,19 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       signUpButton.current.disabled = true;
       signUpButton.current.style.background = "grey";
     }
-  }, [id, ps1, email, emailCode, idCheck, psCheck, emailCheck, emailCodeCheck]);
+  }, [
+    id,
+    ps1,
+    email,
+    emailCode,
+    isId,
+    isEmail,
+    isPassword,
+    idCheck,
+    psCheck,
+    emailCheck,
+    emailCodeCheck,
+  ]);
 
   return (
     <div className="SUModal">

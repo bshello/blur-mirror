@@ -5,8 +5,10 @@ function ChatList({ showChatPage }) {
   return (
     <div className="ChatBackground">
       <div className="ChatHeader">
-        <button>이모티콘</button>
-        <span>Chatting</span>
+        <div className="ChatHeaderEmoticon"></div>
+        <div className="ChatHeaderText">
+          <h3>Chatting</h3>
+        </div>
       </div>
       <div className="ChatList">
         <ChatItem showChatPage={showChatPage} />

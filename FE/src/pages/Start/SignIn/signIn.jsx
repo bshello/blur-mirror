@@ -9,10 +9,10 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = process.env.REACT_APP_SIGN_API_URL;
-  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const API_URL = process.env.REACT_APP_SIGN_API_URL;
+  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const savedId = useSelector((state) => state.strr.id);
   const checkbox = useRef();
 
@@ -34,7 +34,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     if (signId && signPs) {
       axios({
         method: "post",
-        url: `${API_URL}/login`,
+        url: `${API_URL}/auth/login`,
         data: {
           userId: signId,
           password: signPs,
