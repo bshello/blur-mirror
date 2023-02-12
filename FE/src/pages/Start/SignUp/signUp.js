@@ -4,7 +4,7 @@ import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
-  const API_URL = "http://192.168.31.192:8000/blur-auth/user";
+  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth/user`;
   // const API_URL = process.env.REACT_APP_SIGN_API_URL;
   const navigate = useNavigate();
   const psInput = useRef(null);

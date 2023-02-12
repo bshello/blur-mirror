@@ -11,13 +11,14 @@ import ChatList from "./Chat/ChatList/chatlist";
 import ChatPage from "./Chat/ChatPage/chatpage";
 import { useRef } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 let myStream;
+let carousel;
 function Home() {
+  console.log("Home 페이지 렌더링");
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
-  console.log(API_URL);
   useEffect(() => {
     console.log(process.env);
   }, []);
@@ -42,7 +43,8 @@ function Home() {
   const [slideNumber, setSlideNumber] = useState(0);
 
   //프로필 설정이 완료여부 알려주는 변수
-  const profiled = useSelector((state) => state.strr.profiled);
+  // const profiled = useSelector((state) => state.strr.profiled);
+  const profiled = true;
   const navigate = useNavigate();
 
   const showBlurInfoModal = () => {
@@ -53,21 +55,6 @@ function Home() {
     setalertModal((pre) => !pre);
 
     if (alertModal) {
-      navigator.geolocation.getCurrentPosition((loc) => {
-        console.log(`lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`);
-        axios({
-          method: "post",
-          url: `${API_URL}/start`,
-          data: { lat: loc.coords.latitude, lng: loc.coords.longitude, userId: "anonymous", gender: "M" },
-        })
-          .then((res) => {
-            console.log(`res : `, res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
-
       myStream.getTracks().forEach((track) => track.stop());
       videoRef.srcObject = null;
     }
@@ -83,13 +70,40 @@ function Home() {
 
   //캐러셀 화면
   useEffect(() => {
-    setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 10000);
+    carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 10000);
   }, [slideNumber]);
 
   //Start 버튼에서 미팅으로 갈지, 프로필로 갈지
   const goMeeting = () => {
+    /**
+     * 프로필 등록 O
+     * - 데이터(아이디/위도/경도)를 넘겨줌
+     * - axios 성공 시 : 미팅 페이지로 이동
+     *         실패 시 : 알람 띄움
+     */
     if (profiled) {
-      navigate("/meeting");
+      if (!alert("미팅 페이지로 이동합니다.")) {
+        // 데이터 백에 넘겨줌
+        navigator.geolocation.getCurrentPosition((loc) => {
+          console.log(`lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`);
+          axios({
+            method: "post",
+            url: `${API_URL}/start`,
+            data: { lat: loc.coords.latitude, lng: loc.coords.longitude, userId: "anonymous", gender: "M" },
+          })
+            .then((res) => {
+              console.log(`res : `, res.data);
+              // 성공 시 미팅 페이지로 이동
+              clearTimeout(carousel);
+              navigate("/meeting");
+            })
+            .catch((err) => {
+              // 실패 시 알람 띄움
+              console.log(err);
+              alert("서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+            });
+        });
+      }
     } else {
       showAlertModal();
     }

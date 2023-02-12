@@ -8,7 +8,7 @@ function SettingModal() {
   const confirmClick = () => {
     // 백엔드에게 선택한 option값을 보냄
     // 만약 checkOptionValue값이 빈값일 때 -> 원래 선택했던것을 선택했음 -> 변경이 안되는걸로
-    console.log(checkOptionValue);
+    // console.log(checkOptionValue);
 
     // 창 닫기
     dispatch(CAM_OPEN_TOGGLE(false));
