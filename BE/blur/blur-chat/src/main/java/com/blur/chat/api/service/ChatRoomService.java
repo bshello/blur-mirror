@@ -38,9 +38,10 @@ public class ChatRoomService {
     
     public String createChatroom(Long userNo){
     	Chatroom chatroom = new Chatroom(userNo);
-    	String chatroomNo = chatroom.getUserNo().toString();
-    	System.out.println("createChatroom : " + chatroomNo.toString());
+//    	System.out.println(chatroom.toString());
     	chatRoomNoRepository.save(chatroom);
+    	String chatroomNo = chatroom.getChatroomNo().toString();
+//    	System.out.println("createChatroom : " + chatroomNo.toString());
     	
     	return chatroomNo;
     }

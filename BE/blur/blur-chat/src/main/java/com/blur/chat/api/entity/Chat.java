@@ -33,16 +33,17 @@ public class Chat implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "chat_no")
     private Long chatNo;
 
-    @Column
+    @Column(name = "message")
     private String message;
     
     //userId
-    @Column
+    @Column(name = "userId")
     private String users;
 
-    @Column
+    @Column(name = "created_at")
     private String createdAt;
 
     @ManyToOne

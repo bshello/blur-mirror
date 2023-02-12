@@ -22,12 +22,20 @@ import lombok.Setter;
 public class Chatroom {
 
     @Id
+    @Column(name = "chatroom_no")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long chatroomNo;
-	@Column
+
+    @Column(name = "user_no")
 	private Long userNo;
 	
 	public Chatroom(Long userNo) {
 		super();
 		this.userNo = userNo;
+	}
+
+	@Override
+	public String toString() {
+		return "Chatroom [chatroomNo=" + chatroomNo + ", userNo=" + userNo + "]";
 	}
 }
