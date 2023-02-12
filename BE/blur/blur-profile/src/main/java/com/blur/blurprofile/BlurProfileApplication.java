@@ -18,4 +18,6 @@ public class BlurProfileApplication {
 		return new RestTemplate();
 	}
 
+
+
 }

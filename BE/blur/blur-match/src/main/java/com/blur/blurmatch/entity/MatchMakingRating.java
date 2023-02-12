@@ -41,4 +41,10 @@ public class MatchMakingRating {
         this.losingStreak = losingStreak;
         this.reportCount = reportCount;
     }
+
+    public void update(Integer point, Integer winningStreak, Integer losingStreak) {
+        this.point = point;
+        this.winningStreak = winningStreak;
+        this.losingStreak = losingStreak;
+    }
 }

@@ -1,12 +1,11 @@
 package com.blur.blurprofile.dto;
 
-import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.entity.UserInterest;
 import com.blur.blurprofile.entity.UserProfile;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
-import org.apache.catalina.User;
 
-import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
@@ -14,21 +13,28 @@ import java.util.List;
 @Getter
 @Builder
 @Setter
-public class ResponseCard {
+@ApiModel(value = "ResponseCardDto")
+public class ResponseCardDto {
 
+    @ApiModelProperty(value = "닉네임")
     private String nickname;
 
+    @ApiModelProperty(value = "나이")
     private Integer age;
 
+    @ApiModelProperty(value = "소개")
     private String introduce;
 
+    @ApiModelProperty(value = "성별")
     private String gender;
 
+    @ApiModelProperty(value = "이미지")
     private String image;
 
+    @ApiModelProperty(value = "사용자 관심사")
     private List<UserInterest> userInterests;
 
-    public ResponseCard(UserProfile userProfile, List<UserInterest> userInterests) {
+    public ResponseCardDto(UserProfile userProfile, List<UserInterest> userInterests) {
         this.nickname = userProfile.getNickname();
         this.age = userProfile.getAge();
         this.introduce = userProfile.getIntroduce();

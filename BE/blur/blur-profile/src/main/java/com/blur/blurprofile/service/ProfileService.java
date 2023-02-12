@@ -7,19 +7,15 @@ import com.blur.blurprofile.entity.UserProfile;
 import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.repository.UserInterestRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import com.blur.blurprofile.repository.UserProfileRepository;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -40,8 +36,7 @@ public class ProfileService {
     @Autowired
     private RestTemplate restTemplate;
 
-
-    public ProfileDto getProfile(String userId) {
+    public ResponseCardDto getCard(String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         if (userProfile == null) {
             userProfile = UserProfile.builder()
@@ -49,8 +44,9 @@ public class ProfileService {
                     .build();
             userProfileRepository.save(userProfile);
         }
-        ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
-        return profileDto;
+        List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
+        ResponseCardDto responseCardDto = new ResponseCardDto(userProfile, userInterests);
+        return responseCardDto;
     }
 
     public ResponseProfileSettingDto getProfileSetting(String userId) {
@@ -62,17 +58,11 @@ public class ProfileService {
             userProfileRepository.save(userProfile);
         }
         ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
-        String getMatchSettingUrl = String.format(env.getProperty("blur-match.url")) +"/" + userId + "/getSetting";
-        ResponseEntity<MatchSettingDto> response = restTemplate.getForEntity(getMatchSettingUrl, MatchSettingDto.class);
+        String getMatchSettingUrl = String.format(env.getProperty("blur-match.url")) + "/getSetting";
+        ResponseEntity<MatchSettingDto> response = restTemplate.getForEntity(getMatchSettingUrl, MatchSettingDto.class, userId);
         MatchSettingDto matchSetting = response.getBody();
         ResponseProfileSettingDto responseProfileSettingDto = new ResponseProfileSettingDto(profileDto, matchSetting);
         return responseProfileSettingDto;
-    }
-
-    public InterestDto getAllInterests(String userId) {
-        UserProfile userProfile = userProfileRepository.findByUserId(userId);
-        InterestDto interestDto = new InterestDto(interestRepository.findAll(),userInterestRepository.findByUserProfile(userProfile));
-        return interestDto;
     }
 
     public RequestProfileSettingDto updateProfile(RequestProfileSettingDto requestProfileSettingDto) {
@@ -85,28 +75,22 @@ public class ProfileService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<MatchSettingDto> request = new HttpEntity<>(matchSettingDto, headers);
-        String updateMatchSettingUrl = String.format(env.getProperty("blur-match.url")) +"/" + userId + "/updateSetting";
+        String updateMatchSettingUrl = String.format(env.getProperty("blur-match.url")) + "/updateSetting";
         System.out.println(updateMatchSettingUrl);
         ResponseEntity<String> response = restTemplate.exchange(updateMatchSettingUrl, HttpMethod.PUT, request, String.class);
         return requestProfileSettingDto;
     }
 
-    public ResponseCard getCard(String userId) {
+    public InterestDto getInterests(String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
-        if (userProfile == null) {
-            userProfile = UserProfile.builder()
-                    .userId(userId)
-                    .build();
-            userProfileRepository.save(userProfile);
-        }
-        List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
-        ResponseCard responseCard = new ResponseCard(userProfile, userInterests);
-        return responseCard;
+        InterestDto interestDto = new InterestDto(interestRepository.findAll(),userInterestRepository.findByUserProfile(userProfile));
+        return interestDto;
     }
 
     public void updateInterest(ProfileDto.RequestUserInterestDto requestUserInterestDto, String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
+        userInterestRepository.deleteAll(userInterests);
         List<Interest> interests = requestUserInterestDto.getInterests();
         for (Interest interest : interests) {
             UserInterest userInterest = UserInterest.builder()
@@ -115,5 +99,17 @@ public class ProfileService {
                     .build();
             userInterestRepository.save(userInterest);
         }
+    }
+
+    public ProfileDto getProfile(String userId) {
+        UserProfile userProfile = userProfileRepository.findByUserId(userId);
+        if (userProfile == null) {
+            userProfile = UserProfile.builder()
+                    .userId(userId)
+                    .build();
+            userProfileRepository.save(userProfile);
+        }
+        ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
+        return profileDto;
     }
 }
