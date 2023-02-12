@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/profile/{id}")
 @Api(value = "프로필", description = "프로필 관련 API")
@@ -110,6 +112,13 @@ public class ProfileController {
 
         ProfileDto profileDto = profileService.getProfile(userId);
         return ResponseEntity.status(HttpStatus.OK).body(profileDto);
+    }
+
+    @GetMapping("/service/partner")
+    public ResponseEntity<?> getPartnerInterest(@ApiParam(value = "Partner ID", required = true) @PathVariable("id") String partnerId) {
+
+        Collection<String> partnerInterest = profileService.getPartnerInterest(partnerId);
+        return ResponseEntity.status(HttpStatus.OK).body(partnerInterest);
     }
 
 }

@@ -22,5 +22,5 @@ public class RequestAcceptDto {
     private String partnerId;
 
     @ApiModelProperty(notes = "세션 ID")
-    private String SessionId;
+    private String sessionId;
 }

@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import com.blur.blurprofile.repository.UserProfileRepository;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -111,5 +113,15 @@ public class ProfileService {
         }
         ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
         return profileDto;
+    }
+
+    public Collection<String> getPartnerInterest(String partnerId) {
+        UserProfile partner = userProfileRepository.findByUserId(partnerId);
+        List<UserInterest> partnerInterests = userInterestRepository.findByUserProfile(partner);
+        Collection<String> partnerInterestNames = new ArrayList<>();
+        for (UserInterest partnerInterest : partnerInterests) {
+            partnerInterestNames.add(partnerInterest.getInterest().getInterestName());
+        }
+        return partnerInterestNames;
     }
 }

@@ -2,9 +2,11 @@ package com.blur.blurmatch.controller;
 
 import com.blur.blurmatch.dto.MatchSettingDto;
 import com.blur.blurmatch.dto.MeetingDto;
+import com.blur.blurmatch.dto.ReportDto;
 import com.blur.blurmatch.dto.request.RequestAcceptDto;
 import com.blur.blurmatch.dto.request.RequestCheckDto;
 import com.blur.blurmatch.dto.request.RequestMatchDto;
+import com.blur.blurmatch.dto.response.ResponseAceeptDto;
 import com.blur.blurmatch.dto.response.ResponseMatchDto;
 import com.blur.blurmatch.service.MatchService;
 import io.swagger.annotations.*;
@@ -82,6 +84,9 @@ public class MatchingController {
     public ResponseEntity<?> matchStart(@RequestBody RequestMatchDto requestMatchDto) {
 
         ResponseMatchDto responseMatchDto = matchService.matchStart(requestMatchDto);
+        if (responseMatchDto.getMyGender() == null) {
+            return ResponseEntity.status(403).body(null);
+        }
         return ResponseEntity.status(HttpStatus.OK).body(responseMatchDto);
     }
 
@@ -98,9 +103,21 @@ public class MatchingController {
     public ResponseEntity<?> matchStop(@ApiParam(value = "유저 ID", required = true) @RequestParam("userId") String userId,
                                        @ApiParam(value = "성별 (M/F)", required = true) @RequestParam("gender") String gender) {
 
-        if (gender == "M") {
+        if (gender.equals("M")) {
             matchService.matchDecline(userId);
         }
+        System.out.println("111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println(gender);
+        System.out.println("111111111111111111111111111111");
+        System.out.println("111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println(gender);
+        System.out.println("111111111111111111111111111111");
+        System.out.println("111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println(gender);
+        System.out.println("111111111111111111111111111111");
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
@@ -117,13 +134,13 @@ public class MatchingController {
     public ResponseEntity<?> matchCheck(@RequestBody RequestCheckDto requestCheckDto) {
 
         String gender = requestCheckDto.getGender();
-        if (gender == "F") {
+        if (gender.equals("F")) {
             RequestMatchDto requestMatchDto = new ModelMapper().map(requestCheckDto, RequestMatchDto.class);
             ResponseMatchDto responseMatchDto = matchService.matchStart(requestMatchDto);
             return ResponseEntity.status(HttpStatus.OK).body(responseMatchDto);
         }
         String userId = requestCheckDto.getUserId();
-        ResponseMatchDto responseMatchDto = matchService.matchCheck(userId);
+        ResponseMatchDto responseMatchDto = matchService.matchCheck(userId, gender);
         return ResponseEntity.status(HttpStatus.OK).body(responseMatchDto);
     }
 
@@ -139,8 +156,11 @@ public class MatchingController {
     @PostMapping("/accept")
     public ResponseEntity<?> matchAccept(@RequestBody RequestAcceptDto requestAcceptDto) {
 
-        String res = matchService.matchAccept(requestAcceptDto);
-        return ResponseEntity.status(HttpStatus.OK).body(res);
+        ResponseAceeptDto responseAceeptDto = matchService.matchAccept(requestAcceptDto);
+        if (responseAceeptDto == null) {
+            return ResponseEntity.status(404).body("Failed");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(responseAceeptDto);
     }
 
     @ApiOperation(value = "매칭 거절", response = void.class)
@@ -176,6 +196,22 @@ public class MatchingController {
 
         String res = matchService.meetingExit(meetingDto);
         return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
+    @ApiOperation(value = "신고하기", response = void.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "신고성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @PostMapping("/report")
+    public ResponseEntity<?> meetingReport(@RequestBody ReportDto reportDto) {
+
+        matchService.meetingReport(reportDto);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
 }
