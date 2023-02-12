@@ -12,6 +12,23 @@
 .ChatBackground .ChatHeader {
   height: 80px;
 }
+.ChatBackground .ChatHeader .ChatHeaderEmoticon {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background: url("../../../../assets/images/bubble-chat.png");
+  background-size: cover;
+}
+.ChatBackground .ChatHeader .ChatHeaderText {
+  position: absolute;
+  top: 30px;
+  left: 70px;
+  display: inline-block;
+  height: 50px;
+}
 .ChatBackground .ChatList {
   position: absolute;
   width: 387px;
