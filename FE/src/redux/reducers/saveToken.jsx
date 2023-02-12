@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const saveTokenReducer = createSlice({
   name: "saveTokenReducer",
   initialState: {
-    token: "aa",
-    savedId: "초기아이디",
+    token: "a",
+    savedId: "",
     id: "",
     profiled: "false",
   },

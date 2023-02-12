@@ -11,6 +11,30 @@
 
   z-index: 30;
 
+  .ChatPageHeader {
+    height: 50px;
+
+    .ChatPageHeaderBtn {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      background: url("../../../../assets/images/left-arrow.png");
+      background-size: cover;
+    }
+
+    .ChatPageHeaderName {
+      position: absolute;
+      top: 20px;
+      left: 70px;
+      display: inline-block;
+      height: 40px;
+      font-size: 20px;
+    }
+  }
+
   .ChatPageContent {
     position: absolute;
     width: 387px;
@@ -20,6 +44,62 @@
 
     background: #e1f1f2;
     border-radius: 30px;
+
+    .ChatPageDialogue {
+      position: absolute;
+      width: 387px;
+      top: 30px;
+      .ChatPageDialogueMe {
+        margin: 10px;
+        height: 60px;
+        .ChatPageDialogueContent {
+          position: absolute;
+          display: inline-block;
+          right: 80px;
+          padding: 10px;
+
+          background: #50a1a3;
+          border-radius: 30px;
+        }
+
+        .ChatPageProfilePicture {
+          position: absolute;
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          right: 20px;
+
+          background: url("../../../../assets/images/leeseunggi.jpg");
+          background-size: cover;
+        }
+      }
+
+      .ChatPageDialogueYou {
+        margin: 10px;
+        height: 60px;
+        .ChatPageDialogueContent {
+          position: absolute;
+          display: inline-block;
+          left: 80px;
+
+          padding: 10px;
+
+          background: #f1f5f5;
+          border-radius: 30px;
+        }
+
+        .ChatPageProfilePicture {
+          position: absolute;
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          left: 20px;
+
+          background: url("../../../../assets/images/hanhyoju.jpg");
+          background-size: cover;
+        }
+      }
+    }
 
     .ChatPageInputDiv {
       position: absolute;
