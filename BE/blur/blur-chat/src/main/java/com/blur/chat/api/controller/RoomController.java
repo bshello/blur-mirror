@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blur.chat.api.dto.ResponseDto;
+import com.blur.chat.api.dto.UserInfoDto;
 import com.blur.chat.api.dto.request.EnterRoom;
 import com.blur.chat.api.entity.Chatroom;
 import com.blur.chat.api.service.ChatRoomService;
@@ -54,10 +55,10 @@ public class RoomController {
 		    required = true)
 			Map<String, String> user){
 		String userId = user.get("userId");
-//		System.out.println("controller userId : " + userId);
-		Long userNo = userInfo.getUserInfo(userId).getUserNo();
-//		System.out.println("controller userNo : " + userNo);
-		String chatroomNo = chatRoomService.createChatroom(userNo);
+		System.out.println("controller userId : " + userId);
+		UserInfoDto userInfoDto = userInfo.getUserInfo(userId);
+		System.out.println("controller userNo : " + userInfoDto.getUserNo());
+		Long chatroomNo = chatRoomService.createChatroom(userInfoDto);
 		return ResponseDto.success(chatroomNo) ;
 	}
 	
@@ -88,8 +89,9 @@ public class RoomController {
 //		@ApiImplicitParam( name = "userNo", value = "userNp", required = true, dataType = "Long", paramType = "path", defaultValue = "None")
 //	})
 	public ResponseDto<?> enterRoom(@RequestBody EnterRoom enterRoom) {
-		Long userNo = userInfo.getUserInfo(enterRoom.getUserId()).getUserNo();
-		List<?> result = chatRoomService.enterChatroom(userNo, enterRoom.getChatroomNo());
+//		Long userNo = userInfo.getUserInfo(enterRoom.getUserId()).getUserNo();
+		UserInfoDto userInfoDto = userInfo.getUserInfo(enterRoom.getUserId());
+		List<?> result = chatRoomService.enterChatroom(userInfoDto, enterRoom.getChatroomNo());
 		System.out.println(result.toString());
 		return ResponseDto.success(result);
 	}
