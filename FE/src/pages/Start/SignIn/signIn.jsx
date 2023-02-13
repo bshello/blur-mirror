@@ -7,9 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
+import useFetch from "../../../hooks/useFetch";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = `http://192.168.31.192:8000/blur-auth/`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const API_URL = process.env.REACT_APP_SIGN_API_URL;
@@ -31,6 +32,12 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
   };
 
   //로그인 함수
+  // const [signIn1] = useFetch("post", `${API_URL}/auth/login`, {
+  //   userId: signId,
+  //   password: signPs,
+  // });
+  // console.log(signIn1);
+
   const signIn = () => {
     if (signId && signPs) {
       axios({
@@ -58,7 +65,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         })
         .catch((err) => {
           console.log(err);
-          alert("에러가 발생했습니다.");
+          alert("로그인 에러");
         });
     } else {
       alert("아이디와 비밀번호를 입력해주세요");

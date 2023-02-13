@@ -4,7 +4,7 @@ import "./signUp.css";
 import axios from "axios";
 
 function SignUp({ showSignUpModal, showSignInModal }) {
-  const API_URL = `http://192.168.31.192:8000/blur-auth/`;
+  const API_URL = `http://192.168.31.192:8000/blur-auth`;
   const navigate = useNavigate();
   const psInput = useRef(null);
   const signUpButton = useRef(null);

@@ -5,7 +5,7 @@ import { Outlet, Navigate } from "react-router-dom";
 const GuardedRoute = () => {
   const token = useSelector((state) => state.strr.token);
 
-  console.log(token);
+  // console.log(token);
 
   return token ? <Outlet /> : <Navigate to="/" />;
 };
