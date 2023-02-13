@@ -56,7 +56,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           navigate("/home");
         })
         .catch((err) => {
-          console.log(err);
+          console.log(typeof err.response.status);
           alert("에러가 발생했습니다.");
         });
     } else {
