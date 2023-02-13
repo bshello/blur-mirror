@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.blur.chat.api.dto.UserInfoDto;
 import com.blur.chat.api.dto.request.ChatMessageSaveDto;
@@ -33,13 +33,13 @@ public class StompChatController {
 //    private final JwtDecoder jwtDecoder;
     private final UserInfo userInfo;
     
-    @MessageMapping("/chat/message/{userId}")
+    @MessageMapping("/chat/message")
     @ApiResponses(value= {
             @ApiResponse(code = 200, message = "SUCCESS", response = ApiResponse.class),
             @ApiResponse(code = 400, message = "NOT FOUND"),
             @ApiResponse(code = 500, message = "서버오류"),
         })
-    public void message(ChatMessageSaveDto message, @PathVariable(name ="userId") String userId) {
+    public void message(ChatMessageSaveDto message, @Header("userId") String userId) {
 //    public void message(ChatMessageSaveDto message, @Header("token") String token){
 //        UserInfo userInfo = jwtDecoder.decodeUsername(headerTokenExtractor.extract(token));
 //    	System.out.println("test123123");

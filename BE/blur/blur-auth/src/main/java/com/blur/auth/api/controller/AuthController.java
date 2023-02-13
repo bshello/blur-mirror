@@ -50,6 +50,7 @@ public class AuthController {
     private final UserRefreshTokenRepository userRefreshTokenRepository;
 
     private final static long THREE_DAYS_MSEC = 259200000;
+//    private final static long THREE_DAYS_MSEC = 5;
     private final static String REFRESH_TOKEN = "refresh_token";
 
     @PostMapping("/login")
