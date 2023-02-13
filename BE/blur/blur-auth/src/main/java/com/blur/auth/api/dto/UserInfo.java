@@ -12,11 +12,11 @@ import lombok.Setter;
 public class UserInfo {
 	private Long userNo;
 	private String userId;
-	private String nickname;
+//	private String nickname;
 	
-	public UserInfo(Long userNo, String userId) {
-		super();
-		this.userNo = userNo;
-		this.userId = userId;
-	}
+//	public UserInfo(Long userNo, String userId) {
+//		super();
+//		this.userNo = userNo;
+//		this.userId = userId;
+//	}
 }

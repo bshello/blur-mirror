@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.blur.chat.api.entity.Chat;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,18 +17,22 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel("ChatMessageSaveDto")
 public class ChatMessageSaveDto {
 
     public enum MessageType{
         ENTER,TALK,QUIT
     }
-
+    
     private MessageType type;
+    @ApiModelProperty(value = "roomNo", example = "roomNo")
     private String roomNo;
     private String writer;
     private String nickname;
+    @ApiModelProperty(value = "message", example = "message")
     private String message;
     private String createdAt;
+    @ApiModelProperty(value = "userList", example = "userList")
     private List<String> userList;
 
     public static ChatMessageSaveDto of (Chat chat){
