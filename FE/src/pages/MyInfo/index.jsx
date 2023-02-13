@@ -7,7 +7,6 @@ import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../../pages/Start/Alert";
-import axios from "axios";
 
 function MyInfo() {
   // 화면 켜지자 말자 띄우는 거
@@ -76,9 +75,9 @@ function MyInfo() {
     return state.intro.value;
   });
 
-  const age = useSelector((state) => {
-    return state.age.value;
-  });
+  // const age = useSelector((state) => {
+  //   return state.age.value;
+  // });
 
   // 이미지 미리보기
   // const [imgFile, setImgFile] = useState("");
@@ -95,36 +94,12 @@ function MyInfo() {
 
   return (
     <div className="myinfo">
-      {miModal || hashModal ? (
-        <ModalWrap
-          miModal={miModal}
-          hashModal={hashModal}
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-        />
-      ) : null}
-      {miModal && !hashModal ? (
-        <MyInfoModal
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-          showAlertModal={showAlertModal}
-        />
-      ) : null}
+      {miModal || hashModal ? <ModalWrap miModal={miModal} hashModal={hashModal} showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} /> : null}
+      {miModal && !hashModal ? <MyInfoModal showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} showAlertModal={showAlertModal} /> : null}
 
-      {hashModal && !miModal ? (
-        <Hash
-          showMyinfoModal={showMyinfoModal}
-          showHashModal={showHashModal}
-          showAlertModal={showAlertModal}
-        />
-      ) : null}
+      {hashModal && !miModal ? <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} showAlertModal={showAlertModal} /> : null}
 
-      {alertModal && !miModal && !hashModal ? (
-        <Alert
-          showAlertModal={showAlertModal}
-          content={"변경사항이 저장되었습니다."}
-        />
-      ) : null}
+      {alertModal && !miModal && !hashModal ? <Alert showAlertModal={showAlertModal} content={"변경사항이 저장되었습니다."} /> : null}
 
       <div className="DarkBlurDiv"></div>
       <div
