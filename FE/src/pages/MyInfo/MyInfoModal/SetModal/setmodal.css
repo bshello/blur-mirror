@@ -65,7 +65,7 @@
   border-radius: 0.25em;
   outline: none;
   position: absolute;
-  top: 5vw;
+  margin: 1em auto;
   cursor: pointer;
   background-color: #eaf6f6;
 }
@@ -81,12 +81,13 @@
 
 .range-bar {
   position: absolute;
-  top: 5vw;
+  top: 1vw;
   height: 0.5em;
   background-color: #a8dedf;
+  width: 70%;
   border-radius: 0.25em;
   pointer-events: none;
-  z-index: 5;
+  z-index: 11;
 }
 
 .range-slider1-left {

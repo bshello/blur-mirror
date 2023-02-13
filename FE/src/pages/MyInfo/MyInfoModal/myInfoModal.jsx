@@ -1,16 +1,20 @@
 import "../../../App.css";
 import "./myInfoModal.css";
-
 import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { edit } from "../../../redux/reducers/userEdit";
 import { intro } from "../../../redux/reducers/introEdit";
 import { age } from "../../../redux/reducers/ageEdit";
 import SetModal from "./SetModal/setmodal";
+
+import axios from "axios";
 // import styled from "styled-components";
 
 function MyInfoModal({ showMyinfoModal, showAlertModal }) {
-  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
+  const API_URL = `http://192.168.31.192:8000/blur-profile/profile`;
+  // const id = useSelector((state) => {
+  //   return state.strr.id;
+  // });
   const id = "123123";
 
   // const getProfile = () => {
@@ -30,51 +34,96 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   // };
 
   // 컴포넌트 켜지자말자 데이터 받아 오기
-  // const [proFile, setProFile] = useState([]);
+  const [proFile, setProFile] = useState([]);
+  const token = useSelector((state) => {
+    return state.strr.token;
+  });
+
   // useEffect(() => {
-  //   axios({
-  //     method: "GET",
-  //     url: `${API_URL}/${id}`,
-  //     data: {},
-  //   })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       console.log(res.status);
-  //       setProFile(res.data);
-  //       console.log("성공><");
-  //     })
-  //     .catch((err) => {
-  //       alert("기존 데이터 없다.");
-  //       console.log(err);
-  //     });
+  axios({
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    url: `${API_URL}/${id}/getProfile`,
+    data: {},
+  })
+    .then((res) => {
+      console.log(res.data);
+      console.log(res.status);
+      setProFile(res.data);
+      console.log("성공><");
+    })
+    .catch((err) => {
+      alert("기존 데이터 없다.");
+      console.log(err);
+    });
   // }, []);
 
   // 유저프로필 업데이트 하기
-  const handleSave = async () => {
-    console.log(nameInput);
-    console.log(ageInput);
-    console.log(introInput);
-    const response = await fetch(`${API_URL}/${id}/updateProfile`, {
-      method: "PUT",
+
+  console.log(`${API_URL}/${id}/updateProfile`);
+
+  const handleSave = () => {
+    axios({
+      method: "put",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
+      url: `${API_URL}/${id}/updateProfile`,
+      data: {
         userId: id,
         age: ageInput,
         nickname: nameInput,
-        // image: document.querySelector(".leftModalImg"),
-        // gender: gender,
         introduce: introInput,
-        // mbti: mbti,
-      }),
-    });
-    if (response.ok) {
-      console.log("성공적으로 업데이트 됐다.");
-    } else {
-      console.error("실패했다.");
-    }
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.status);
+
+        console.log("성공><");
+      })
+      .catch((err) => {
+        alert("기존 데이터 없다.");
+        console.log(err);
+      });
   };
+
+  // const handleSave = async () => {
+  //   console.log(nameInput);
+  //   console.log(ageInput);
+  //   console.log(introInput);
+
+  //   const response = await fetch(`${API_URL}/${id}/updateProfile`, {
+  //     method: "PUT",
+  //     headers: {
+  //       // "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //     body: JSON.stringify({
+  //       userId: id,
+  //       age: ageInput,
+  //       nickname: nameInput,
+  //       // image: document.querySelector(".leftModalImg"),
+  //       // gender: gender,
+  //       introduce: introInput,
+  //       // mbti: mbti,
+  //       // maxAge: 0,
+  //       // maxDistance: 0,
+  //       // mbti: "infp",
+  //       // minAge: 0,
+  //     }),
+  //   });
+  //   if (response.ok) {
+  //     console.log("성공적으로 업데이트 됐다.");
+  //   } else {
+  //     console.error("실패했다.");
+  //     console.dir(response);
+  //   }
+  // };
 
   //setmodal
   const [setModal, setSettingmodal] = useState(false);
@@ -210,6 +259,9 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   return (
     <div className="Modal">
+      <div>
+        {(proFile, agee, introducing, setMbti, handleMbtiChange, setEmail)}
+      </div>
       {/* <button onClick={getProfile}>ddd</button> */}
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
       <div className="leftModal">

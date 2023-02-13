@@ -1,7 +1,7 @@
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
@@ -11,28 +11,27 @@ import Alert from "../../pages/Start/Alert";
 function MyInfo() {
   // 화면 켜지자 말자 띄우는 거
   // const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
+  const id = "123123";
+  const API_URL = `http://192.168.31.73:8000/blur-profile/profile/${id}`;
   // const id = "123123";
-  // const API_URL = `http://192.168.31.73:8000/blur-profile/profile/${id}`;
-  // const id = "123123";
-  const [proFile, setProFile] = useState([]);
-  setProFile(1);
-  // useEffect(() => {
-  //   axios({
-  //     method: "GET",
-  //     url: `${API_URL}/${id}`,
-  //     data: {},
-  //   })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       console.log(res.status);
-  //       setProFile(res.data);
-  //       console.log("성공><");
-  //     })
-  //     .catch((err) => {
-  //       alert("기존 데이터 없다.");
-  //       console.log(err);
-  //     });
-  // }, []);
+  // const [proFile, setProFile] = useState([]);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `${API_URL}`,
+      data: {},
+    })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.status);
+        // setProFile(res.data);
+        console.log("성공><");
+      })
+      .catch((err) => {
+        alert("기존 데이터 없다.");
+        console.log(err);
+      });
+  }, []);
 
   //profile edit modal
   const [miModal, setMyInfoModal] = useState(false);
@@ -46,12 +45,11 @@ function MyInfo() {
     setHashModal((pre) => !pre);
   };
 
-  // hash 관심사 적용되면 보일 거
-  const [changeHash, setChangeHash] = useState(false);
-  console.log(changeHash);
-  const showChangeHash = () => {
-    setChangeHash((change) => !change);
-  };
+  // // hash 관심사 적용되면 보일 거
+  // const [changeHash, setChangeHash] = useState(false);
+  // const showChangeHash = () => {
+  //   setChangeHash((change) => !change);
+  // };
 
   //alert modal
   const [alertModal, setalertModal] = useState(false);
@@ -82,19 +80,17 @@ function MyInfo() {
   // });
 
   // 이미지 미리보기
-  const [imgFile, setImgFile] = useState("");
-  console.log(imgFile);
-  const imgRef = useRef();
+  // const [imgFile, setImgFile] = useState("");
+  // const imgRef = useRef();
 
-  const saveImgFile = () => {
-    const file = imgRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImgFile(reader.result);
-    };
-  };
-  console.log(saveImgFile);
+  // const saveImgFile = () => {
+  //   const file = imgRef.current.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //     setImgFile(reader.result);
+  //   };
+  // };
 
   return (
     <div className="myinfo">
@@ -141,13 +137,18 @@ function MyInfo() {
         <div className="MISetDiv"></div>
       </div>
       <span className="MIHashTag">Hash Tag</span>
-      <div className="MIHashSet" onClick={showHashModal} onChange={showChangeHash} disabled={alertModal === true ? true : false}>
+      <div
+        className="MIHashSet"
+        onClick={showHashModal}
+        // onChange={showChangeHash}
+        disabled={alertModal === true ? true : false}
+      >
         <div className="MIHashSetIcon">
           <span className="MIHashSetText">설정하기</span>
         </div>
       </div>
       <div className="MINameAgeDiv">
-        <span className="MIAge"> {proFile.age}</span>
+        <span className="MIAge"> {age}</span>
         <span className="MIName"> {user} </span>
       </div>
       <div className="MIIntroducingDiv">
