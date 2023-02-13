@@ -15,8 +15,6 @@ import com.blur.chat.api.service.ChatRoomService;
 import com.blur.chat.api.service.RedisPublisher;
 import com.blur.chat.api.service.UserInfo;
 import com.blur.chat.utils.ChatUtils;
-//import com.hanghae.final_project.global.config.security.jwt.HeaderTokenExtractor;
-//import com.hanghae.final_project.global.config.security.jwt.JwtDecoder;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
