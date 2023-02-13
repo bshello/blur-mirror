@@ -1,6 +1,6 @@
 FROM openjdk:11-slim
 VOLUME /tmp
-COPY ./build/libs/blur-chat-0.0.1-SNAPSHOT.jar BlurMatch.jar
+COPY ./build/libs/blur-match-0.0.1-SNAPSHOT.jar BlurMatch.jar
 ENTRYPOINT [ "java", "-jar", "BlurMatch.jar" ]
 
 # ./gradlew clean build 먼저 시행
