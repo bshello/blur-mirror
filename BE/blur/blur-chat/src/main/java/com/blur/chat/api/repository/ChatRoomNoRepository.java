@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.blur.chat.api.entity.Chatroom;
 
-@Repository
 public interface ChatRoomNoRepository extends JpaRepository<Chatroom, Long> {
 	List<Chatroom> findByManNo(Long manNo);
 	List<Chatroom> findByWomanNo(Long womanNo);

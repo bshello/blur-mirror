@@ -94,7 +94,6 @@ public class RoomController {
 //		@ApiImplicitParam( name = "userNo", value = "userNp", required = true, dataType = "Long", paramType = "path", defaultValue = "None")
 //	})
 	public ResponseDto<?> enterRoom(@RequestBody EnterRoom enterRoom) {
-//		Long userNo = userInfo.getUserInfo(enterRoom.getUserId()).getUserNo();
 		UserInfoDto userInfoDto = userInfo.getUserInfo(enterRoom.getUserId());
 		Chatroom chatroom = chatRoomService.enterChatroom(userInfoDto, enterRoom.getChatroomNo());
 		System.out.println(chatroom.toString());
