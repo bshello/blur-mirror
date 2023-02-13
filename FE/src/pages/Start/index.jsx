@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Alert from "./Alert";
 
 function Start() {
+  console.log(process.env.NODE_ENV);
   const [signInModal, setSignInModal] = useState(false);
   const [signUpModal, setSignUpModal] = useState(false);
   const [searchPwModal, setSearchPwModal] = useState(false);
