@@ -1,19 +1,37 @@
 import "./index.css";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
-import { MTOGGLE, ROOM_NUM } from "../../../redux/reducers/MToggle";
+import { MTOGGLE, ROOM_NUM, PARTNERINTERESTS, PARTNERNICK } from "../../../redux/reducers/MToggle";
+import { saveToken } from "../../../redux/reducers/saveToken";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 let myStream;
-// store에서 성별을 가져옴 : true(남) false(여)
-let USERSEX = false;
+let USERSEX = "";
 let firstRendering = false;
 let errorCnt = 0;
 function MeetingNotIn() {
-  console.log("MeetingNotIn 페이지 렌더링");
-  let mtoggle = useSelector((state) => state.mt.togg); // Redux에 저장되어있는 MToggle
+  let userId = useSelector((state) => state.strr.id); // store에 저장되어있는 내 아이디
+  USERSEX = useSelector((state) => state.mt.myGender); // store에 저장되어있는 내 성별
+  let myGeo = useSelector((state) => state.mt.myGeo); // store에 저장되어있는 내 위치(위도, 경도)
+  let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
+
+  // 방번호 생성 메서드
+  function makeRoomName() {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = ("0" + (today.getMonth() + 1)).slice(-2);
+    let day = ("0" + today.getDate()).slice(-2);
+    let hours = ("0" + today.getHours()).slice(-2);
+    let minutes = ("0" + today.getMinutes()).slice(-2);
+    let seconds = ("0" + today.getSeconds()).slice(-2);
+    let dataString = `${year}${month}${day}${hours}${minutes}${seconds}`;
+
+    return dataString;
+  }
+
   const navigate = useNavigate();
-  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`; // 여기 주소 바뀌어야함!!!!!!!!!!!!!!!!!!!!!!!!
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
 
   const [isMatching, setIsMatching] = useState(false);
   const [camToggle, setCamToggle] = useState(true);
@@ -108,113 +126,263 @@ function MeetingNotIn() {
     getCameras1();
   }, []);
 
-  // 아래 코드는 axios 통신 시 사용할 코드(155번 줄 코드는 axios통신 하기 전 테스트 코드)
-  // 5초마다 백엔드 서버에 get 통신 보내서 방번호 알아오기
-  // const interval1 = setInterval(() => {
-  //   axios({
-  //     method: "get",
-  //     url: `${API_URL}/start`, // 바뀌어야 할 부분!!!!!!!!!!!!!!!!!!!!!!
-  //     data: "3",
-  //   })
-  //     .then((res) => {
-  //       console.log(`res : `, res.data);
-  //       // 남자 여자 분기 시작
-  //       // 남자일 경우
-  //       if (USERSEX) {
-  //         // 반환되는 값이 undefined이나 null이 아닐 때 -> 성공
-  //         if (res.data !== undefined && res.data !== null) {
-  //           // 성공했을 때 store에 방번호 저장하기
-  //           dispatch(ROOM_NUM(123123));
+  // 아래 코드는 axios 통신 시 사용할 코드
+  const interval = setInterval(() => {
+    axios({
+      method: "post",
+      url: `${API_URL}/check`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${myToken}`,
+      },
+      data: {
+        gender: USERSEX,
+        lat: myGeo.lat,
+        lng: myGeo.lng,
+        userId: userId,
+      },
+    })
+      .then((res) => {
+        // [response data : myGender, parnerId, sessionId]
+        console.log(`check OK res : `, res.data);
+        const partnerID = res.data.partnerId;
+        // console.log(`partnerID: ${partnerID}`);
+        // alert("check: 백에 통신 성공");
 
-  //           if (!firstRendering) {
-  //             firstRendering = true;
+        // 남자 여자 분기 시작
+        // 남자일 경우
+        if (USERSEX === "M" && res.data.myGender) {
+          // partnerId && sessionId 있을경우 => 여자를 거치고 왔을 때
+          // => 정상
+          if (res.data.partnerId && res.data.sessionId) {
+            // 성공했을 때 store에 방번호 저장하기
+            dispatch(ROOM_NUM(res.data.sessionId));
 
-  //             // 캐칭 페이지로 이동
-  //             anima();
+            // meeting In 페이지로 넘어가는 로직
+            if (!firstRendering) {
+              firstRendering = true;
 
-  //             const timer = setTimeout(() => {
-  //               alert("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.");
-  //               clearInterval(interval1);
-  //               clearTimeout(timer);
-  //               toggleChange();
-  //             }, 7 * 1000);
-  //           }
-  //         }
-  //       }
-  //       // 여자일 경우
-  //       else {
-  //         // 반환되는 값이 undefined이나 null이 아닐 때 -> 성공
-  //         if (res.data !== undefined && res.data !== null) {
-  //           // 반환된 데이터들을 저장
-  //           let resData = res.data;
-  //           // 성공했을 때 store에 방번호 저장하기
-  //           dispatch(ROOM_NUM(123123));
+              // 캐칭 페이지로 이동
+              anima();
 
-  //           // 반환된 데이터를 다시 백에 axios 요청
-  //           axios({
-  //             method: "post",
-  //             url: `${API_URL}/ㅁㅁㅁ`, // 바뀌어야 할 부분!!!!!!!!!!!!!!!!!!!!!!
-  //             data: {
-  //               partnerId: resData, // 바뀌어야 할 부분!!!!!!!!!!!!!!!!!!!!!!
-  //               roomName: "11", // 바뀌어야 할 부분!!!!!!!!!!!!!!!!!!!!!!
-  //             },
-  //           })
-  //             // 데이터가 정상적으로 온다면 -> boolean으로 올 예정
-  //             .then((res) => {
-  //               if (!firstRendering) {
-  //                 firstRendering = true;
+              const timer = setTimeout(() => {
+                clearInterval(interval);
+                clearTimeout(timer);
+                if (!alert("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.")) {
+                  toggleChange();
+                }
+              }, 7 * 1000);
+            }
+          }
+          // partnerId && sessionId 없을 경우 => 여자를 안거치고 바로 왔을 경우
+          // => 비정상(다시 요청을 보내야함)
+          else {
+            console.log("여자를 안거치고 바로와서 partnerId/sessionId가 없음 => 인터벌 안닫힘, 다시 요청해야함", errorCnt);
+            if (++errorCnt >= 10) {
+              // 에러가 5회이상일 경우 해당 요청 취소 및 알람
+              axios({
+                method: "post",
+                url: `${API_URL}/stop`,
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${myToken}`,
+                },
+                data: {
+                  gender: USERSEX,
+                  userId: userId,
+                },
+              })
+                .then((res) => {
+                  console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
+                })
+                .catch(() => {
+                  console.log("stop 통신 실패");
+                });
+              clearInterval(interval);
+              alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+            }
+          }
+        }
+        // 여자일 경우
+        else {
+          console.log(`check res 여자 : `, res.data);
+          console.log(res.data.partnerId, res.data.sessionId, res.data.myGender);
 
-  //                 // 캐칭 페이지로 이동
-  //                 anima();
+          if (res.data.partnerId && res.data.myGender) {
+            // 반환된 데이터들을 저장
+            let partnerId = res.data.partnerId;
+            console.log(`check partnerId: ${partnerId}`);
 
-  //                 const timer = setTimeout(() => {
-  //                   alert("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.");
-  //                   clearInterval(interval1);
-  //                   clearTimeout(timer);
-  //                   toggleChange();
-  //                 }, 7 * 1000);
-  //               }
-  //             })
-  //             // 실패했을 경우 에러 반환
-  //             .catch((error) => console.log(error));
-  //         }
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       // 실패했을 경우, 다시 요청(setInterval)
-  //       console.log(err);
-  //       if (++errorCnt >= 3) {
-  //         // 에러가 3회이상일 경우 해당 요청 취소 및 알람
-  //         clearInterval(interval1);
-  //       alert("서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+            // 방번호 생성해줘야 함 : 현재날짜+시간으로 방이름 만들어줌
+            let makingRoomName = makeRoomName();
+            console.log(makingRoomName);
 
-  //       }
-  //     });
-  // }, 7 * 1000);
+            // 성공했을 때 store에 방번호 저장하기
+            dispatch(ROOM_NUM(makingRoomName));
+
+            // 반환된 데이터를 다시 백에 axios 요청
+            // url: accept
+            if (window.confirm("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.")) {
+              axios({
+                method: "post",
+                url: `${API_URL}/accept`,
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${myToken}`,
+                },
+                data: {
+                  userId: userId,
+                  partnerId: partnerId,
+                  sessionId: makingRoomName,
+                  myGender: USERSEX,
+                },
+              })
+                // 데이터가 정상적으로 온다면 -> res 데이터 안씀 + meeting In으로 넘어감
+                .then((res) => {
+                  // resData인 관심사 배열을 store에 저장(meeting In에서 사용할 것)
+                  // console.log(`accept partnerInterests :`, res.data.partnerInterests);
+                  console.log(`accept data : `, res.data);
+                  dispatch(PARTNERINTERESTS(res.data.partnerInterests));
+                  dispatch(PARTNERNICK(res.data.partnerNickname));
+
+                  if (!firstRendering) {
+                    firstRendering = true;
+
+                    // 캐칭 페이지로 이동
+                    anima();
+
+                    const timer = setTimeout(() => {
+                      clearInterval(interval);
+                      clearTimeout(timer);
+                      toggleChange();
+                    }, 7 * 1000);
+                  }
+                })
+                // 실패했을 경우 에러 반환 => 인터벌 안닫힘, 다시 요청해야함
+                .catch((error) => {
+                  console.log(error);
+                  console.log("accept catch 분기", errorCnt);
+                  if (++errorCnt >= 10) {
+                    // 에러가 5회이상일 경우 해당 요청 취소 및 알람
+                    axios({
+                      method: "post",
+                      url: `${API_URL}/stop`,
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${myToken}`,
+                      },
+                      data: {
+                        gender: USERSEX,
+                        userId: userId,
+                      },
+                    })
+                      .then((res) => {
+                        console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
+                      })
+                      .catch(() => {
+                        console.log("stop 통신 실패");
+                      });
+                    clearInterval(interval);
+                    alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+                  }
+                });
+            } else {
+              // decline
+            }
+          } else {
+            console.log("check OK, 남자와 매칭이 안됐을 경우", errorCnt);
+            if (++errorCnt >= 10) {
+              // 에러가 5회이상일 경우 해당 요청 취소 및 알람
+              axios({
+                method: "post",
+                url: `${API_URL}/stop`,
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${myToken}`,
+                },
+                data: {
+                  gender: USERSEX,
+                  userId: userId,
+                },
+              })
+                .then((res) => {
+                  console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
+                })
+                .catch(() => {
+                  console.log("stop 통신 실패");
+                });
+              clearInterval(interval);
+              alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+            }
+          }
+        }
+      })
+      // check axios 통신이 아예 안되는 경우 => 인터벌 안닫힘, 다시 요청해야함
+      .catch((err) => {
+        console.log(err);
+        if (err.response.status === 403) {
+          axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
+          }).then((res) => {
+            console.log("액세스 토큰 재발급");
+            dispatch(saveToken(res.data.body.token));
+          });
+        } else if (err.response.status === 500) {
+          dispatch(saveToken(""));
+          navigate("/");
+        } else {
+          console.log("check 실패 ", errorCnt);
+          if (++errorCnt >= 10) {
+            // 에러가 10회이상일 경우 해당 요청 취소 및 알람
+            axios({
+              method: "post",
+              url: `${API_URL}/stop`,
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${myToken}`,
+              },
+              data: {
+                gender: USERSEX,
+                userId: userId,
+              },
+            })
+              .then((res) => {
+                console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
+              })
+              .catch(() => {
+                console.log("stop 통신 실패");
+              });
+            clearInterval(interval);
+            alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+          }
+        }
+      });
+  }, 7 * 1000);
 
   // 테스트용 axios 통신 true 가정하고 없앰
-  const interval = setInterval(() => {
-    if (!USERSEX) {
-      // 반환되는 값이 undefined이나 null이 아닐 때 -> 성공
-      if (true) {
-        // store에 방번호 저장하기
-        dispatch(ROOM_NUM(123123));
+  // const interval = setInterval(() => {
+  //   if (!USERSEX) {
+  //     // 반환되는 값이 undefined이나 null이 아닐 때 -> 성공
+  //     if (true) {
+  //       // store에 방번호 저장하기
+  //       dispatch(ROOM_NUM(123123));
 
-        // 캐칭 페이지로 이동
-        if (!firstRendering) {
-          firstRendering = true;
-          anima();
+  //       // 캐칭 페이지로 이동
+  //       if (!firstRendering) {
+  //         firstRendering = true;
+  //         anima();
 
-          const timer = setTimeout(() => {
-            alert("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.");
-            clearInterval(interval);
-            clearTimeout(timer);
-            toggleChange();
-          }, 7 * 1000);
-        }
-      }
-    }
-  }, 7 * 1000);
+  //         const timer = setTimeout(() => {
+  //           alert("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.");
+  //           clearInterval(interval);
+  //           clearTimeout(timer);
+  //           toggleChange();
+  //         }, 5 * 1000);
+  //       }
+  //     }
+  //   }
+  // }, 5 * 1000);
 
   function stopMatching() {
     clearInterval(interval);

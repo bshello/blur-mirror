@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "../../MyInfoModal/myInfoModal.css";
 import "./setmodal.css";
-import Slider from "react-input-slider";
 import styled from "styled-components";
 
 function SetModal() {
@@ -9,22 +8,34 @@ function SetModal() {
   const [gender, setGender] = useState(true);
   const handleClick = () => setGender((setGender) => !setGender);
 
-  //range
-  const [fromrange, setfromrange] = useState({ x: 0 });
-  const [agerange, setagerange] = useState({ x: 0 });
-  const [mySoundVal, setMySoundVal] = useState(50);
-  const onChangeMySoundSlider = () => {
+  // //range
+
+  const [distance, setDistance] = useState();
+  const changeDistance = () => {
     const slider = document.querySelector(".slider");
     const progress = document.querySelector(".progressSlider");
-    setMySoundVal(slider.value);
-    const val = slider.value + "%";
-    progress.style.width = val;
+    setDistance(slider.value);
+    const dis = slider.value + "%";
+    progress.style.width = dis;
   };
 
-  const [value, setValue] = useState(0);
+  const [leftSliderValue, setLeftSliderValue] = useState(18);
+  const [rightSliderValue, setRightSliderValue] = useState(40);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleLeftSliderChange = (event) => {
+    const newValue = parseInt(event.target.value);
+    if (newValue >= rightSliderValue) {
+      setRightSliderValue(newValue);
+    }
+    setLeftSliderValue(newValue);
+  };
+
+  const handleRightSliderChange = (event) => {
+    const newValue = parseInt(event.target.value);
+    if (newValue <= leftSliderValue) {
+      setLeftSliderValue(newValue);
+    }
+    setRightSliderValue(newValue);
   };
 
   return (
@@ -48,23 +59,17 @@ function SetModal() {
 
           <div className="ModalInputBox2">
             <span className="SetMidPartnerLable">Distance from partner</span>
-            {fromrange.x} km
+            {distance} km
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv" />
-              {/* <Slider
-                className="rangelocation"
-                axis="x"
-                xmax="50"
-                x={fromrange.x}
-                onChange={({ x }) => setfromrange((state) => ({ ...state, x }))}
-              /> */}
+
               <div className="range-slider">
                 <input
                   type="range"
                   className="slider"
                   min="0"
-                  max="100"
-                  onChange={onChangeMySoundSlider}
+                  max="50"
+                  onChange={changeDistance}
                 ></input>
                 <div className="progressSlider"></div>
               </div>
@@ -73,23 +78,35 @@ function SetModal() {
 
           <div className="ModalInputBox3">
             <span className="SetMidPartnerLable">Partner's age group</span>
-            {agerange.x} 살
+            {leftSliderValue}살 ~ {rightSliderValue}살
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv"></div>
-              <div className="range-slider">
-                <input
-                  type="range"
-                  min={0}
-                  max={100}
-                  value={value}
-                  className="slider"
-                  onChange={handleChange}
-                />
-                <div
-                  className="progressSlider"
-                  style={{ width: `${value}%` }}
-                />
-              </div>
+
+              <input
+                type="range"
+                className="range-slider1 range-slider1-left"
+                value={leftSliderValue}
+                onChange={handleLeftSliderChange}
+                style={{ pointerEvents: "none" }}
+                min={18}
+                max={40}
+              />
+              <input
+                type="range"
+                className="range-slider1 range-slider1-right"
+                value={rightSliderValue}
+                onChange={handleRightSliderChange}
+                style={{ pointerEvents: "none" }}
+                min={18}
+                max={40}
+              />
+              <div
+                className="range-bar"
+                style={{
+                  left: `${leftSliderValue}%`,
+                  width: `${rightSliderValue - leftSliderValue}%`,
+                }}
+              />
             </div>
           </div>
         </div>

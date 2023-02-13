@@ -11,17 +11,19 @@ import ChatList from "./Chat/ChatList/chatlist";
 import ChatPage from "./Chat/ChatPage/chatpage";
 import { useRef } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
+import { saveToken } from "../../redux/reducers/saveToken";
 
 let myStream;
 let carousel;
 function Home() {
-  console.log("Home 페이지 렌더링");
+  let userId = useSelector((state) => state.strr.id); // Redux에 저장되어있는 MToggle
+  let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
+  const dispatch = useDispatch();
+
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
-  useEffect(() => {
-    console.log(process.env);
-  }, []);
   // startVideo 함수 실행하면 자신의 모습 볼수있음
   const CONSTRAINTS = {
     video: { width: { exact: 440 }, height: { exact: 340 } },
@@ -36,6 +38,7 @@ function Home() {
     } else {
       videoRef.current.srcObject = null;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [blurInfoModal, setBlurInfoModal] = useState(false);
@@ -84,33 +87,66 @@ function Home() {
      *         실패 시 : 알람 띄움
      */
     if (profiled) {
-      if (!alert("미팅 페이지로 이동합니다.")) {
+      // meeting Not In 로 이동
+      if (!alert("미팅 대기 페이지로 이동합니다.")) {
         // 데이터 백에 넘겨줌
         navigator.geolocation.getCurrentPosition((loc) => {
           console.log(
             `lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`
           );
+          dispatch(
+            MYGEO({ lat: loc.coords.latitude, lng: loc.coords.longitude })
+          );
           axios({
             method: "post",
             url: `${API_URL}/start`,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${myToken}`,
+            },
             data: {
               lat: loc.coords.latitude,
               lng: loc.coords.longitude,
-              userId: "anonymous",
-              gender: "M",
+              userId: userId,
             },
           })
             .then((res) => {
+              // [response data : myGender/partnerId/sessionId(방번호)]
+              // 남자의 경우 O/X/X
+              // 여자의 경우 O/X/X
               console.log(`res : `, res.data);
+              console.log(`res myGender: `, res.data.myGender);
+              dispatch(MYGENDER(res.data.myGender));
+              alert("start: 백에 통신 성공");
+
               // 성공 시 미팅 페이지로 이동
               clearTimeout(carousel);
               navigate("/meeting");
             })
             .catch((err) => {
-              // 실패 시 알람 띄움
               console.log(err);
+
+              if (err.response.status === 403) {
+                console.log(err);
+                axios({
+                  method: "get",
+                  url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
+                  header: {
+                    token: myToken,
+                  },
+                }).then((res) => {
+                  console.log("액세스 토큰 재발급");
+                  dispatch(saveToken(res.data.body.token));
+                });
+              } else if (err.response.status === 500) {
+                console.log(err);
+                dispatch(saveToken(""));
+                navigate("/");
+              }
+              // 실패 시 알람 띄움
               alert(
-                "서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!"
+                err.response.status +
+                  "error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!"
               );
             });
         });

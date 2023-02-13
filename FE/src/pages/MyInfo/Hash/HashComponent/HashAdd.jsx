@@ -1,6 +1,7 @@
+// 이걸로 화면에 띄워 주면 될 듯       <HashAdd todoList={todoList} />
+
 import React from "react";
 import CheckData from "./Checkdata";
-import HashIntCheck from "./HashIntCheck";
 import "../Hash.css";
 
 function HashAdd(props) {
