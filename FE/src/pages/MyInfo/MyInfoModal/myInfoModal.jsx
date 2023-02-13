@@ -32,24 +32,24 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   // };
 
   // 컴포넌트 켜지자말자 데이터 받아 오기
-  const [proFile, setProFile] = useState([]);
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `${API_URL}/${id}`,
-      data: {},
-    })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.status);
-        setProFile(res.data);
-        console.log("성공><");
-      })
-      .catch((err) => {
-        alert("기존 데이터 없다.");
-        console.log(err);
-      });
-  }, []);
+  // const [proFile, setProFile] = useState([]);
+  // useEffect(() => {
+  //   axios({
+  //     method: "GET",
+  //     url: `${API_URL}/${id}`,
+  //     data: {},
+  //   })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       console.log(res.status);
+  //       setProFile(res.data);
+  //       console.log("성공><");
+  //     })
+  //     .catch((err) => {
+  //       alert("기존 데이터 없다.");
+  //       console.log(err);
+  //     });
+  // }, []);
 
   // 유저프로필 업데이트 하기
   const handleSave = async () => {
