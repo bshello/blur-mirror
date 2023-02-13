@@ -14,18 +14,16 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
+import { loginId, saveToken } from "../../redux/reducers/saveToken";
 
 let myStream;
 let carousel;
 function Home() {
   let userId = useSelector((state) => state.strr.id); // Redux에 저장되어있는 MToggle
+  let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
   const dispatch = useDispatch();
 
-  console.log("Home 페이지 렌더링");
-  const API_URL = `http://172.30.1.43:8000/blur-match/match`;
-  useEffect(() => {
-    console.log(process.env);
-  }, []);
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
   // startVideo 함수 실행하면 자신의 모습 볼수있음
   const CONSTRAINTS = { video: { width: { exact: 440 }, height: { exact: 340 } } };
   const videoRef = useRef(null);
@@ -95,6 +93,10 @@ function Home() {
           axios({
             method: "post",
             url: `${API_URL}/start`,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${myToken}`,
+            },
             data: { lat: loc.coords.latitude, lng: loc.coords.longitude, userId: userId },
           })
             .then((res) => {
@@ -111,9 +113,27 @@ function Home() {
               navigate("/meeting");
             })
             .catch((err) => {
-              // 실패 시 알람 띄움
               console.log(err);
-              alert("서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+
+              if (err.response.status === 403) {
+                console.log(err);
+                axios({
+                  method: "get",
+                  url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
+                  header: {
+                    token: myToken,
+                  },
+                }).then((res) => {
+                  console.log("액세스 토큰 재발급");
+                  dispatch(saveToken(res.data.body.token));
+                });
+              } else if (err.response.status === 500) {
+                console.log(err);
+                dispatch(saveToken(""));
+                navigate("/");
+              }
+              // 실패 시 알람 띄움
+              alert(err.response.status + "error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
             });
         });
       }

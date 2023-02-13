@@ -15,7 +15,7 @@ let myStream;
 let videoDevices = [];
 let firstRendering = false;
 
-console.log("MeetingIn 페이지 렌더링");
+// console.log("MeetingIn 페이지 렌더링");
 function MeetingIn() {
   // 컴퓨터와 연결되어있는 모든 장치를 가져옴
   const getCameras = useCallback(async () => {
@@ -89,6 +89,8 @@ function MeetingIn() {
   const closeAlertToggle = useSelector((state) => state.mt.closeAlertToggle);
   const camOpenToggle = useSelector((state) => state.mt.camOpenToggle);
   const sendRoomName = useSelector((state) => state.mt.roomNumber);
+  const partnerInterests = useSelector((state) => state.mt.partnerInterests);
+  const partnerNick = useSelector((state) => state.mt.partnerNick);
 
   // socket Code
 
@@ -323,6 +325,16 @@ function MeetingIn() {
     }, 3000);
   }
 
+  useEffect(() => {
+    const lightTagsDiv = document.querySelector(".lightTagsDiv");
+    for (let i = 1; i <= partnerInterests.length; i++) {
+      const lightTag = document.createElement("span");
+      lightTag.id = `lightTag${i}`;
+      lightTag.innerText = partnerInterests[i - 1];
+      lightTagsDiv.appendChild(lightTag);
+    }
+  });
+
   return (
     <div className="MeetingIn">
       <div className="MeetingIn_CamDiv">
@@ -369,12 +381,12 @@ function MeetingIn() {
         </div>
         <div className="MRightDiv1">
           <div className="lightTagsDiv">
-            <span className="lightTag1">운동</span>
+            {/* <span className="lightTag1">운동</span>
             <span className="lightTag2">맛집</span>
             <span className="lightTag3">카페</span>
             <span className="lightTag4">영화</span>
             <span className="lightTag5">등산하기</span>
-            <span className="lightTag6">쇼핑</span>
+            <span className="lightTag6">쇼핑</span> */}
           </div>
           <div className="lightTagBtn" onClick={showLight}></div>
           <div className="MPartenerCamDiv">
@@ -382,7 +394,7 @@ function MeetingIn() {
             <video className="MPartenerCamDiv1" autoPlay playsInline></video>
           </div>
           <div className="MPartenerCamSubDiv">
-            <span className="MPartenerCamSubText">Partner Camera</span>
+            <span className="MPartenerCamSubText">{partnerNick} </span>
             <div className="MPartenerCamSubBtnsDiv">
               <div className="MPartenerCamSubBlockBtn" onClick={openBlock}></div>
               <div className="MPartenerCamSubBlockDesc">
