@@ -1,14 +1,12 @@
 import "../../../App.css";
 import "./myInfoModal.css";
 
-import React, { useState, useRef, useEffect, useReducer } from "react";
-import ReactDOM from "react-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { edit } from "../../../redux/reducers/userEdit";
 import { intro } from "../../../redux/reducers/introEdit";
 import { age } from "../../../redux/reducers/ageEdit";
 import SetModal from "./SetModal/setmodal";
-import axios from "axios";
 // import styled from "styled-components";
 
 function MyInfoModal({ showMyinfoModal, showAlertModal }) {
@@ -105,6 +103,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   // age
   const [agee, setAge] = useState("");
+  console.log(agee);
   const handleAgeChange = (e) => {
     const inputValue = e.target.value;
     if (!isNaN(inputValue) && inputValue.length <= 2) {
@@ -116,6 +115,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   //introducing
   const [introducing, setIntroducing] = useState("");
+  console.log(introducing);
   const introHandleChange = (e) => {
     setIntroInput(e.target.value);
   };
@@ -142,16 +142,18 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     { value: "ENFJ", label: "ENFJ - Teacher" },
     { value: "ENTJ", label: "ENTJ - Commander" },
   ]);
+  console.log(setMbti);
 
   const [selectedMbti, setSelectedMbti] = useState("");
 
   const handleMbtiChange = (e) => {
     setSelectedMbti(e.target.value);
   };
+  console.log(handleMbtiChange);
 
   //emil
   const [email, setEmail] = useState("");
-
+  console.log(setEmail);
   // state 변경 핸들러
   const handleUpload = () => {
     setNickName(() => {
@@ -230,24 +232,9 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
           <label className="imageEditBtn" htmlFor="profileImg">
             변경
           </label>
-          <img
-            className="leftModalImg"
-            src={
-              imgFile
-                ? imgFile
-                : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
-            }
-            alt="사진"
-          />
+          <img className="leftModalImg" src={imgFile ? imgFile : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`} alt="사진" />
           {/* 이미지 업로드 input */}
-          <input
-            type="file"
-            accept="image/*"
-            id="profileImg"
-            onChange={saveImgFile}
-            ref={imgRef}
-            style={{ display: "none" }}
-          ></input>
+          <input type="file" accept="image/*" id="profileImg" onChange={saveImgFile} ref={imgRef} style={{ display: "none" }}></input>
         </div>
         <div className="leftModalNameDiv">
           <span className="leftModalName"> welcome {nickName} </span>
@@ -270,35 +257,18 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         <span className="PMLabel">Profile Edit</span>
         <div className="PMIdDiv">
           <span className="PMIdLable">NickName </span>
-          <input
-            type="text"
-            className="PMIdInput"
-            value={nameInput}
-            onChange={handleInputChange}
-            placeholder="10자까지만 가능합니다."
-            onKeyPress={handleOnKeyPress}
-          >
+          <input type="text" className="PMIdInput" value={nameInput} onChange={handleInputChange} placeholder="10자까지만 가능합니다." onKeyPress={handleOnKeyPress}>
             {/* {proFile.nickname} */}
           </input>
         </div>
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
-          <input
-            type="text"
-            className="PMAgeSelect"
-            value={ageInput}
-            onChange={handleAgeChange}
-            placeholder="숫자만 입력 가능합니다."
-          ></input>
+          <input type="text" className="PMAgeSelect" value={ageInput} onChange={handleAgeChange} placeholder="숫자만 입력 가능합니다."></input>
         </div>
         <div className="PMMBTI">
           <span className="PMMBTILabel">MBTI</span>
           {/* <select className="PMMBTISelect"> */}
-          <select
-            value={selectedMbti}
-            onChange={email}
-            className="PMMBTISelect"
-          >
+          <select value={selectedMbti} onChange={email} className="PMMBTISelect">
             {mbti.map((mbti) => (
               <option key={mbti.value} value={mbti.value}>
                 {mbti.label}
@@ -354,9 +324,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
           showAlertModal();
           {
             const namechange = document.querySelector(".PMIdInput").value;
-            const introchange = document.querySelector(
-              ".PMIntroducingInput"
-            ).value;
+            const introchange = document.querySelector(".PMIntroducingInput").value;
             const ageChange = document.querySelector(".PMAgeSelect").value;
             dispatch(edit(namechange));
             dispatch(intro(introchange));
