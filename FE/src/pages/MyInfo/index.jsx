@@ -1,7 +1,7 @@
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
@@ -82,7 +82,7 @@ function MyInfo() {
 
   // 이미지 미리보기
   // const [imgFile, setImgFile] = useState("");
-  const imgRef = useRef();
+  // const imgRef = useRef();
 
   // const saveImgFile = () => {
   //   const file = imgRef.current.files[0];

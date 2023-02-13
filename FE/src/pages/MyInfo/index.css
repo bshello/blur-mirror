@@ -24,7 +24,6 @@
   font-size: 43px;
   line-height: 88px;
   /* identical to box height */
-  display: flex;
   align-items: center;
   text-align: right;
   cursor: pointer;
@@ -59,7 +58,6 @@
   font-size: 40px;
   line-height: 55px;
   /* identical to box height */
-  display: flex;
   align-items: center;
   color: #ffffff;
 }
@@ -93,7 +91,6 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 27px;
-  display: flex;
   align-items: center;
   text-align: center;
   color: #50a1a3;
@@ -117,7 +114,6 @@
   font-size: 40px;
   line-height: 55px;
   /* identical to box height */
-  display: flex;
   align-items: center;
   text-align: center;
   color: #ffffff;
@@ -132,8 +128,6 @@
   font-size: 40px;
   line-height: 55px;
   /* identical to box height */
-  display: flex;
-  align-items: flex-end;
   text-align: center;
   color: #ffffff;
 }
@@ -148,7 +142,6 @@
   font-weight: 400px;
   font-size: 40px;
   line-height: 55px;
-  display: flex;
   align-items: center;
   text-align: right;
   justify-content: end;
@@ -173,7 +166,6 @@
   font-size: 40px;
   line-height: 55px;
   /* identical to box height */
-  display: flex;
   align-items: center;
   text-align: right;
   color: #ffffff;
@@ -187,7 +179,6 @@
   font-weight: 400px;
   font-size: 25px;
   line-height: 35x;
-  display: flex;
   text-align: left;
   color: #ffffff;
   justify-content: center;
@@ -202,8 +193,6 @@
   font-weight: 400;
   font-size: 60px;
   line-height: 90px;
-  /* identical to box height */
-  display: flex;
   align-items: center;
   text-transform: capitalize;
   color: #ffffff;

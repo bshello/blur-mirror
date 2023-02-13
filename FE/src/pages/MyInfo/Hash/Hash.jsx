@@ -2,9 +2,9 @@ import "./Hash.css";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Checkdata from "../Hash/HashComponent/Checkdata";
-import saveToken from "../../../redux/reducers/saveToken";
+// import saveToken from "../../../redux/reducers/saveToken";
 import { useSelector } from "react-redux";
-import { type } from "@testing-library/user-event/dist/type";
+// import { type } from "@testing-library/user-event/dist/type";
 
 function Hash({ showHashModal, showAlertModal }) {
   // const API_URL = "blur-profile/profile/dddd";

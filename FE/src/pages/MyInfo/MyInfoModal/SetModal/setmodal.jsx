@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../MyInfoModal/myInfoModal.css";
 import "./setmodal.css";
-import styled from "styled-components";
 
 function SetModal() {
   // 성별 바꾸기

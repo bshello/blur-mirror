@@ -1,8 +1,6 @@
 import "../../../App.css";
 import "./myInfoModal.css";
-
-import React, { useState, useRef, useEffect, useReducer } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { edit } from "../../../redux/reducers/userEdit";
 import { intro } from "../../../redux/reducers/introEdit";
@@ -37,32 +35,33 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   // 컴포넌트 켜지자말자 데이터 받아 오기
   const [proFile, setProFile] = useState([]);
-  useEffect(() => {
-    axios({
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      url: `${API_URL}/${id}/getProfile`,
-      data: {},
-    })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.status);
-        setProFile(res.data);
-        console.log("성공><");
-      })
-      .catch((err) => {
-        alert("기존 데이터 없다.");
-        console.log(err);
-      });
-  }, []);
-
-  // 유저프로필 업데이트 하기
   const token = useSelector((state) => {
     return state.strr.token;
   });
+
+  // useEffect(() => {
+  axios({
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    url: `${API_URL}/${id}/getProfile`,
+    data: {},
+  })
+    .then((res) => {
+      console.log(res.data);
+      console.log(res.status);
+      setProFile(res.data);
+      console.log("성공><");
+    })
+    .catch((err) => {
+      alert("기존 데이터 없다.");
+      console.log(err);
+    });
+  // }, []);
+
+  // 유저프로필 업데이트 하기
 
   console.log(`${API_URL}/${id}/updateProfile`);
 
@@ -256,6 +255,9 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   return (
     <div className="Modal">
+      <div>
+        {(proFile, agee, introducing, setMbti, handleMbtiChange, setEmail)}
+      </div>
       {/* <button onClick={getProfile}>ddd</button> */}
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
       <div className="leftModal">
