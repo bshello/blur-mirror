@@ -19,13 +19,15 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry config) {
 
         config.enableSimpleBroker("/sub");
+        // /pub으로 시작하는 STOMP 메세지의 "destination" 헤더는 @Controller 객체의 @MessageMapping 메서드로 라우팅
         config.setApplicationDestinationPrefixes("/pub");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/stomp/chat")
-                .setAllowedOrigins("http://localhost:8080","http://localhost:3000","https://d-velkit.com")
+//                .setAllowedOrigins("http://localhost:8080", "http://localhost:3000", "https://d-velkit.com")
+        		.setAllowedOriginPatterns("*")
                 .withSockJS();
     }
 

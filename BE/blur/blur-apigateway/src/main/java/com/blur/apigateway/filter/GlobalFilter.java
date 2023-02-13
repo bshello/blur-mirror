@@ -31,6 +31,8 @@ public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Conf
                 log.info("Global Filter Start: request path -> {}" , request.getPath());
             }
 
+            System.out.println(exchange.toString());
+            System.out.println(request.toString());
             // Global Post Filter
             //Mono는 webflux에서 단일값 전송할때 Mono값으로 전송
             return chain.filter(exchange).then(Mono.fromRunnable(()->{

@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.blur.chat.api.service.ChatRoomService"/>
-    <fullyQualifiedTypeName name="javax.websocket.server.PathParam"/>
-    <fullyQualifiedTypeName name="com.blur.chat.api.service.UserInfo"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
-    <fullyQualifiedTypeName name="org.springframework.boot.web.servlet.FilterRegistrationBean"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-    <fullyQualifiedTypeName name="com.blur.auth.api.dto.UserInfo"/>
-    <fullyQualifiedTypeName name="org.springframework.cache.annotation.EnableCaching"/>
-    <fullyQualifiedTypeName name="java.lang.Object"/>
-    <fullyQualifiedTypeName name="org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer"/>
-    <fullyQualifiedTypeName name="org.springframework.data.redis.connection.RedisStandaloneConfiguration"/>
-    <fullyQualifiedTypeName name="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory"/>
-    <fullyQualifiedTypeName name="org.springframework.cache.CacheManager"/>
-    <fullyQualifiedTypeName name="org.springframework.data.redis.cache.RedisCacheConfiguration"/>
-    <fullyQualifiedTypeName name="org.springframework.data.redis.serializer.RedisSerializationContext"/>
-    <fullyQualifiedTypeName name="org.springframework.data.redis.cache.RedisCacheManager"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
     <fullyQualifiedTypeName name="org.springframework.data.redis.serializer.StringRedisSerializer"/>
     <fullyQualifiedTypeName name="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/>
@@ -60,4 +43,21 @@
     <fullyQualifiedTypeName name="com.blur.chat.api.dto.request.EnterRoom"/>
     <fullyQualifiedTypeName name="com.blur.chat.api.entity.Chatroom"/>
     <fullyQualifiedTypeName name="com.blur.chat.api.dto.ResponseDto"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.client.standard.StandardWebSocketClient"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.messaging.WebSocketStompClient"/>
+    <fullyQualifiedTypeName name="org.springframework.messaging.converter.MappingJackson2MessageConverter"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.sun.org.slf4j.internal.Logger"/>
+    <fullyQualifiedTypeName name="com.sun.org.slf4j.internal.LoggerFactory"/>
+    <fullyQualifiedTypeName name="lombok.Value"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.PropertySource"/>
+    <fullyQualifiedTypeName name="javax.annotation.Resource"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.blur.apigateway.config.AuthToken"/>
+    <fullyQualifiedTypeName name="org.springframework.core.env.Environment"/>
+    <fullyQualifiedTypeName name="io.jsonwebtoken.security.Keys"/>
 </qualifiedTypeNameHistroy>

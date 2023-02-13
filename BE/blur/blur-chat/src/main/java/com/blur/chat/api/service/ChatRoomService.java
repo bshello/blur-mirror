@@ -48,14 +48,10 @@ public class ChatRoomService {
     }
     
     public Chatroom enterChatroom(UserInfoDto userInfoDto, Long chatroomNo){
-//    	Chatroom chatroom = new Chatroom();
-//    	chatroom.enterWoman(userInfoDto, chatroomNo);
-//    	System.out.println(chatroom.toString());
-    	
-//    	System.out.println("createChatroom : " + chatroomNo.toString());
     	Chatroom chatroom = chatRoomNoRepository.findByChatroomNo(chatroomNo);
     	chatroom.update(userInfoDto.getUserNo(), userInfoDto.getUserId());
     	
+    	chatRoomNoRepository.save(chatroom);
     	return chatroom;
     }
     

@@ -97,8 +97,7 @@ public class MatchService {
             matchMakingRatingRepository.save(matchMakingRating);
         }
         if (matchMakingRating.getReportCount() > 10) {
-            ResponseMatchDto responseMatchDto = new ResponseMatchDto();
-            return responseMatchDto;
+            return null;
         }
         String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
         ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl , ResponseProfileDto.class, userId);
@@ -166,7 +165,8 @@ public class MatchService {
             successInfo.add(requestAcceptDto.getSessionId());
             successInfo.add(requestAcceptDto.getUserId());
             success.put(requestAcceptDto.getPartnerId(), successInfo);
-            String getUserInterestUrl = String.format(env.getProperty("blur-profile.url")) + "/" + requestAcceptDto.getPartnerId() + "/service/partner";
+            String partnerId = requestAcceptDto.getPartnerId();
+            String getUserInterestUrl = String.format(env.getProperty("blur-profile.url")) + "/" + partnerId + "/service/partner";
             ResponseEntity<Collection<String>> partnerInterests = restTemplate.exchange(
                     getUserInterestUrl,
                     HttpMethod.GET,
@@ -174,16 +174,21 @@ public class MatchService {
                     new ParameterizedTypeReference<Collection<String>>(){}
             );
             Collection<String> partnerInterestsBody = partnerInterests.getBody();
-            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(requestAcceptDto, partnerInterestsBody);
+            String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + partnerId + "/service";
+            ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl , ResponseProfileDto.class, partnerId);
+            String partnerNickname = profileResponse.getBody().getNickname();
+            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(requestAcceptDto, partnerNickname, partnerInterestsBody);
             return responseAceeptDto;
         }
         else {
-            String sessionId = success.get(requestAcceptDto.getUserId()).get(0);
-            if (sessionId == null) {
+            List<String> successInfo = success.get(requestAcceptDto.getUserId());
+            if (successInfo == null) {
                 return null;
             }
+            String sessionId = successInfo.get(0);
+            String partnerId = successInfo.get(1);
             success.remove(requestAcceptDto.getUserId());
-            String getUserInterestUrl = String.format(env.getProperty("blur-profile.url")) + "/" + requestAcceptDto.getPartnerId() + "/service/partner";
+            String getUserInterestUrl = String.format(env.getProperty("blur-profile.url")) + "/" + partnerId + "/service/partner";
             ResponseEntity<Collection<String>> partnerInterests = restTemplate.exchange(
                     getUserInterestUrl,
                     HttpMethod.GET,
@@ -191,7 +196,10 @@ public class MatchService {
                     new ParameterizedTypeReference<Collection<String>>(){}
             );
             Collection<String> partnerInterestsBody = partnerInterests.getBody();
-            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(requestAcceptDto, partnerInterestsBody);
+            String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + partnerId + "/service";
+            ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl , ResponseProfileDto.class, partnerId);
+            String partnerNickname = profileResponse.getBody().getNickname();
+            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(partnerId, partnerNickname, partnerInterestsBody, sessionId);
             return responseAceeptDto;
         }
     }
