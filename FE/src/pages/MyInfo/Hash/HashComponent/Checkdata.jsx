@@ -1,9 +1,11 @@
 import React from "react";
 
-function Checkdata(props) {
+function Checkdata({ item, onRemove }) {
   return (
     <div className="hashcheckdiv">
-      <div className="hashcheckbox">{props.item}</div>
+      <div className="hashcheckbox" onClick={onRemove}>
+        {item}
+      </div>
     </div>
 
     // <div className="hashcheckdiv">{props.item}</div>

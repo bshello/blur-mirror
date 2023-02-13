@@ -1,123 +1,230 @@
-//카테고리 선택 창
-
 import "./Hash.css";
-import React, { useState, useEffect } from "react";
-import HashInt from "./HashComponent/HashInt";
-// import HashAdd from "./HashComponent/HashAdd/HashAdd";
-import axios from "axios";
+import React, { useState, useEffect, useRef } from "react";
+// import axios from "axios";
+import Checkdata from "../Hash/HashComponent/Checkdata";
 
 function Hash({ showHashModal, showAlertModal }) {
   // const API_URL = "blur-profile/profile/dddd";
 
-  const getCategories = () => {
-    axios({
-      method: "GET",
-      url: `http://192.168.31.73:8000/blur-profile/profile/dddd/getAllInterests`,
-      data: {},
-    })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.status);
-      })
-      .catch((err) => {
-        alert("카테고리 없다.");
-        console.log(err);
-      });
-  };
+  // const getCategories = () => {
+  //   axios({
+  //     method: "GET",
+  //     url: `http://192.168.31.73:8000/blur-profile/profile/dddd/getAllInterests`,
+  //     data: {},
+  //   })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       console.log(res.status);
+  //     })
+  //     .catch((err) => {
+  //       alert("카테고리 없다.");
+  //       console.log(err);
+  //     });
+  // };
 
-  // 카테고리 이름
-  function Category({ category, checkData }) {
-    return (
-      <div className="intBack" onClick={showIntModal}>
-        {category.name}
-      </div>
-    );
-  }
+  //   useEffect 함수를 사용하여 데이터를 가져오는 방법
+  // const [intdata, setIntData] = useState([]);
 
-  // 관심사 모달 띄우는 거
-  const [intModal, setIntModal] = useState(false);
-  const showIntModal = () => {
-    setIntModal((pre) => !pre);
-  };
-  // //검색기능
-  const [data, setData] = useState([
-    { id: 1, name: "축구", clicked: false },
-    { id: 2, name: "농구", clicked: false },
-    { id: 3, name: "아이스하키", clicked: false },
-    { id: 4, name: "스쿼시", clicked: false },
-    { id: 5, name: "아스날", clicked: false },
-    { id: 6, name: "외데고르", clicked: false },
-    { id: 7, name: "파티", clicked: false },
-    { id: 8, name: "마르치넬리", clicked: false },
-    { id: 9, name: "은케티아", clicked: false },
-    { id: 10, name: "램즈데일", clicked: false },
-    { id: 11, name: "살리바", clicked: false },
-    { id: 12, name: "마갈량이스", clicked: false },
-    { id: 13, name: "사카", clicked: false },
-    { id: 14, name: "자카", clicked: false },
-    { id: 15, name: "진첸코", clicked: false },
-    { id: 16, name: "이단아", clicked: false },
-    { id: 17, name: "빡대가리", clicked: false },
-    { id: 18, name: "라서", clicked: false },
-    { id: 19, name: "힘이", clicked: false },
-    { id: 20, name: "든다", clicked: false },
+  // useEffect(() => {
+  //   axios({
+  //     method: "GET",
+  //     url: `http://192.168.31.73:8000/blur-profile/profile/dddd/getAllInterests`,
+  //     data: {},
+  //   })
+  //     .then((res) => {
+  //       console.log(res.data.interests);
+  //       console.log(res.status);
+  //       setIntData(res.data.interests);
+  //     })
+  //     .catch((err) => {
+  //       alert("카테고리 없다.");
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  // 임시
+  const [intdata] = useState([
+    { interestName: "이단아" },
+    { interestName: "김성훈" },
+    { interestName: "김은재" },
+
+    { interestName: "박유정" },
+
+    { interestName: "박현수" },
+    { interestName: "조인애" },
+
+    { interestName: "이한아" },
+    { interestName: "이현아" },
+    { interestName: "1" },
+    { interestName: "2" },
+    { interestName: "3" },
+
+    { interestName: "4" },
+
+    { interestName: "5" },
+    { interestName: "6" },
+
+    { interestName: "7" },
+    { interestName: "8" },
+    { interestName: "11" },
+    { interestName: "12" },
+    { interestName: "13" },
+
+    { interestName: "14" },
+
+    { interestName: "15" },
+    { interestName: "16" },
+
+    { interestName: "17" },
+    { interestName: "18" },
   ]);
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
-
-  //  그냥 서치바 초기에 안보이게 설정해야됨
+  const [checkData, setcheckData] = useState([]); //체크한 데이터 띄우기
+  const [limit] = useState(5);
+  // 검색기능
   const [searchBar, setSearchBar] = useState(false);
-  const showSearchBar = () => {
-    setSearchBar((pre) => !pre);
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredData = intdata.filter((item) =>
+    item.interestName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  const handleRemove = (item) => {
+    setcheckData((prev) => prev.filter((intdata) => intdata !== item));
   };
 
-  //search 바
-  function HashSerch() {
-    return (
-      <div>
-        <div className="hashSerchbar">
-          {results.map((item) => (
-            <div className="ilserchbar" key={item.name}>
-              {item.name}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  // TEST 데이터 띄우기
-  const [inputValue, setInputValue] = useState("");
-  const [checkData, setcheckData] = useState([]);
-
-  const addItem = () => {
-    setcheckData([...checkData, inputValue]);
+  const handleClick = (interestName) => {
+    if (checkData.length >= limit) {
+      alert(
+        `최대 ${limit}개만 선택 가능합니다. 취소하려면 위에 선택된 관심사를 클릭해 제거해주세요`
+      );
+      return;
+    }
+    const found = checkData.find((data) => data === interestName);
+    if (found) {
+      handleRemove(interestName);
+    } else {
+      setcheckData((prev) => [...prev, interestName]);
+    }
   };
 
-  //////////////////////////////////////////
+  console.log("HashInt", checkData);
+
+  const HashSerch = ({ results, handleClick }) => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        handleClick();
+      }
+    };
+
+    const ref = useRef();
+
+    useEffect(() => {
+      document.addEventListener("click", handleClickOutside);
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    });
+
+    return <div ref={ref}></div>;
+  };
+
   return (
     <div className="Hash">
-      {/* <HashInt getCategories={getCategories} /> */}
-      {/* <button onClick={getCategories}>ddd</button> */}
-      {intModal ? <HashInt showIntModal={setIntModal} /> : null}
       {searchBar ? <HashSerch showSearchBar={setSearchBar} /> : null}
 
-      <div className="hashSerchDiv">
-        <div className="inputdodbogi" />
-        <input
-          className="hashinput"
-          type="text"
-          value={searchTerm}
-          placeholder="관심사를 찾아보세요."
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onClick={showSearchBar}
-        />
-
-        <div className="hashVec" />
+      <div>
+        <div className="hashSerchDiv">
+          <div className="inputdodbogi" />
+          <input
+            className="hashinput"
+            type="text"
+            placeholder="Search interests"
+            value={searchQuery}
+            onChange={handleSearch}
+            style={{ outline: "none" }}
+          />
+          {searchQuery !== "" && (
+            <HashSerch handleClick={() => setSearchQuery("")} />
+          )}
+          <div className="hashVec" />
+        </div>
+        <div className="hashintdiv">
+          <div className="searchintbox">
+            <div className="searchdiv">
+              {searchQuery.length > 0 &&
+                filteredData.map((item, idx) => {
+                  const selected = checkData.includes(item.interestName);
+                  return (
+                    <div
+                      className="searchbox"
+                      key={item.interestName}
+                      data-idx={idx}
+                    >
+                      <button
+                        className={`btn ${
+                          selected ? "changesearchback" : "searchback"
+                        }`}
+                      >
+                        <input
+                          className="custom-checkbox-style"
+                          type="checkbox"
+                          key={item.interestName}
+                          data-idx={idx}
+                          value={item.interestName}
+                          checked={selected}
+                          onChange={(e) => {
+                            handleClick(item.interestName);
+                          }}
+                        />
+                        {item.interestName}
+                      </button>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+          <div>
+            <div className="hashaddiv">
+              {checkData &&
+                checkData.map((item) => (
+                  <Checkdata item={item} onRemove={() => handleRemove(item)} />
+                ))}
+            </div>
+          </div>
+          <div className="cainterestdiv">
+            {intdata.map((item, idx) => {
+              const selected = checkData.includes(item.interestName);
+              return (
+                <div
+                  className="cainterestbox"
+                  key={item.interestName}
+                  data-idx={idx}
+                >
+                  <button
+                    className={`btn ${
+                      selected ? "changecaintBack" : "caintBack"
+                    }`}
+                  >
+                    <input
+                      className="custom-checkbox-style"
+                      type="checkbox"
+                      key={item.interestName}
+                      data-idx={idx}
+                      value={item.interestName}
+                      checked={selected}
+                      onChange={(e) => {
+                        handleClick(item.interestName);
+                      }}
+                    />
+                    {item.interestName}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
-
-      <HashInt />
 
       <button
         className="hashEdit"

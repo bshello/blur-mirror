@@ -10,96 +10,12 @@
   cursor: pointer;
 }
 
-//-------------------- range
-// .middle {
-//   position: relative;
-//   width: 80%;
-//   max-width: 500px;
-// }
-
-// .slider {
-//   position: relative;
-//   z-index: 1;
-//   height: 10px;
-//   margin: 0px;
-// }
-// .slider > .track {
-//   position: absolute;
-//   z-index: 1;
-//   left: 0;
-//   right: 0;
-//   top: 0;
-//   bottom: 0;
-//   border-radius: 5px;
-//   background-color: #c6aee7;
-// }
-// .slider > .range {
-//   position: absolute;
-//   z-index: 2;
-//   left: 25%;
-//   right: 25%;
-//   top: 0;
-//   bottom: 0;
-//   border-radius: 5px;
-//   background-color: #6200ee;
-// }
-// .slider > .thumb {
-//   position: absolute;
-//   z-index: 3;
-//   width: 20px;
-//   height: 20px;
-//   background-color: #6200ee;
-//   border-radius: 50%;
-//   top: 5px;
-// }
-// .slider > .thumb.left {
-//   left: 25%;
-//   transform: translate(-15px, -10px);
-// }
-// .slider > .thumb.right {
-//   right: 25%;
-//   transform: translate(15px, -10px);
-// }
-
-// input[type="range"] {
-//   position: absolute;
-//   /* opacity로 가린 것을 이벤트도 비활성화하기 위해 */
-//   // pointer-events: none;
-//   // -webkit-appearance: none;
-//   z-index: 2;
-//   height: 10px;
-//   width: 100%;
-//   opacity: 0;
-// }
-// input[type="range"]::-webkit-slider-thumb {
-//   /* 겹쳐진 두 thumb를 모두 활성화 */
-//   pointer-events: all;
-//   width: 30px;
-//   height: 30px;
-//   border-radius: 0;
-//   border: 0 none;
-//   background-color: red;
-//   cursor: pointer;
-
-//   /* appearance를 해야 위의 스타일들을 볼 수 있음 */
-//   -webkit-appearance: none;
-// }
-.rangelocation {
-  top: 50%;
-  left: 20%;
-}
-
-.rangename {
-  top: 0;
-  left: -50px;
-}
-
 .range-slider {
   -webkit-appearance: none;
   position: absolute;
-  top: -5.5vw;
-  left: 1.5vw;
-  right: 0.694vw;
+  top: -5.194vw;
+  left: 2vw;
+  right: 2vw;
   // max-width: 30em;
   margin: 8em auto;
   display: flex;
@@ -108,7 +24,7 @@
   .slider {
     -webkit-appearance: none; // 기본 CSS 스타일을 적용하지 않기 위해
     width: 100%; // 슬라이더 길이
-    height: 0.4em; //         높이
+    height: 0.5em;
     outline: none; //         테두리 제거
     border-radius: 0.208vw; //         사각 테두리 둥글게
     background-color: #eaf6f6; //         색상
@@ -132,10 +48,10 @@
   .progressSlider {
     position: absolute;
     width: 50%;
-    height: 0.4em;
+    height: 0.5em;
     border-radius: 0.208vw;
     background-color: #a8dedf;
-    top: 0.208vw;
+    top: 0.28vw;
     transform: translateY(-50%);
     left: 0;
     z-index: 1;
@@ -143,51 +59,45 @@
   }
 }
 
-// .range-slider {
-//   -webkit-appearance: none;
-//   position: absolute;
-//   top: -5.5vw;
-//   left: 1.5vw;
-//   right: 0.694vw;
-//   // max-width: 30em;
-//   margin: 8em auto;
-//   display: flex;
-//   z-index: 5;
+// 양방향
 
-//   .slider {
-//     -webkit-appearance: none; // 기본 CSS 스타일을 적용하지 않기 위해
-//     width: 100%; // 슬라이더 길이
-//     height: 0.4em; //         높이
-//     outline: none; //         테두리 제거
-//     border-radius: 0.208vw; //         사각 테두리 둥글게
-//     background-color: #eaf6f6; //         색상
+.range-slider1 {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.5em;
+  background-color: transparent;
+  border-radius: 0.25em;
+  outline: none;
+  position: absolute;
+  top: 5vw;
 
-//     /*
-//     ㅁ 슬라이더 핸들(클릭해서 드래그하는 부분)
-//     Chrome, Opera, Safari, Edge 브라우저를 다루기 위해선 -webkit-
-//     Firefox의 경우 -moz- 사용
-//   */
-//     &::-webkit-slider-thumb {
-//       -webkit-appearance: none; // 기본 CSS 스타일을 적용하지 않기 위해
-//       appearance: none; // 위와 동일
-//       width: 1.042vw; // 슬라이더핸들 길이
-//       height: 1.042vw; // 슬라이더핸들 높이
-//       background-color: rgba(168, 222, 223, 1);
-//       border-radius: 50%;
-//       cursor: pointer;
-//       z-index: 6;
-//     }
-//   }
-//   .progressSlider {
-//     position: absolute;
-//     width: 50%;
-//     height: 0.4em;
-//     border-radius: 0.208vw;
-//     background-color: #a8dedf;
-//     top: 0.208vw;
-//     transform: translateY(-50%);
-//     left: 0;
-//     z-index: 1;
-//     pointer-events: none;
-//   }
-// }
+  cursor: pointer;
+  background-color: #eaf6f6;
+}
+
+.range-slider1::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.042vw; // 슬라이더핸들 길이
+  height: 1.042vw; // 슬라이더핸들 높이
+  background-color: rgba(168, 222, 223, 1);
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+.range-bar {
+  position: absolute;
+  top: 5vw;
+  height: 0.5em;
+  background-color: #a8dedf;
+  border-radius: 0.25em;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.range-slider1-left {
+  left: 0;
+}
+
+.range-slider1-right {
+  right: 0;
+}
