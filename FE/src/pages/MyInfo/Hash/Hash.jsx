@@ -1,7 +1,10 @@
 import "./Hash.css";
 import React, { useState, useEffect, useRef } from "react";
-// import axios from "axios";
+import axios from "axios";
 import Checkdata from "../Hash/HashComponent/Checkdata";
+import saveToken from "../../../redux/reducers/saveToken";
+import { useSelector } from "react-redux";
+import { type } from "@testing-library/user-event/dist/type";
 
 function Hash({ showHashModal, showAlertModal }) {
   // const API_URL = "blur-profile/profile/dddd";
@@ -22,62 +25,66 @@ function Hash({ showHashModal, showAlertModal }) {
   //     });
   // };
 
-  //   useEffect 함수를 사용하여 데이터를 가져오는 방법
-  // const [intdata, setIntData] = useState([]);
+  // useEffect 함수를 사용하여 데이터를 가져오는 방법
+  // const id = useSelector((state) => {
+  //   return state.strr.id;
+  // });
+  const id = "123123";
 
-  // useEffect(() => {
-  //   axios({
-  //     method: "GET",
-  //     url: `http://192.168.31.73:8000/blur-profile/profile/dddd/getAllInterests`,
-  //     data: {},
-  //   })
-  //     .then((res) => {
-  //       console.log(res.data.interests);
-  //       console.log(res.status);
-  //       setIntData(res.data.interests);
-  //     })
-  //     .catch((err) => {
-  //       alert("카테고리 없다.");
-  //       console.log(err);
-  //     });
-  // }, []);
+  const [intdata, setIntData] = useState([]);
 
-  // 임시
-  const [intdata] = useState([
-    { interestName: "이단아" },
-    { interestName: "김성훈" },
-    { interestName: "김은재" },
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `http://192.168.31.73:8000/blur-profile/profile/${id}/getInterest`,
+      data: {},
+    })
+      .then((res) => {
+        console.log(res.data.interests);
+        console.log(res.status);
+        setIntData(res.data.interests);
+      })
+      .catch((err) => {
+        alert("카테고리 없다.");
+        console.log(err);
+      });
+  }, []);
 
-    { interestName: "박유정" },
+  // 관심사 업데이트
+  const token = useSelector((state) => {
+    return state.strr.token;
+  });
 
-    { interestName: "박현수" },
-    { interestName: "조인애" },
+  // console.log(typeof checkData);
+  // console.log(checkData[0]);
 
-    { interestName: "이한아" },
-    { interestName: "이현아" },
-    { interestName: "1" },
-    { interestName: "2" },
-    { interestName: "3" },
+  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
+  console.log(`${API_URL}/${id}/updateInterest`);
 
-    { interestName: "4" },
+  const intSave = () => {
+    axios({
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      url: `${API_URL}/${id}/updateInterest`,
+      data: {
+        interests: [checkData],
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.status);
 
-    { interestName: "5" },
-    { interestName: "6" },
+        console.log("성공><");
+      })
+      .catch((err) => {
+        alert("기존 데이터 없다.");
+        console.log(err);
+      });
+  };
 
-    { interestName: "7" },
-    { interestName: "8" },
-    { interestName: "11" },
-    { interestName: "12" },
-    { interestName: "13" },
-
-    { interestName: "14" },
-
-    { interestName: "15" },
-    { interestName: "16" },
-
-    { interestName: "17" },
-    { interestName: "18" },
-  ]);
   const [checkData, setcheckData] = useState([]); //체크한 데이터 띄우기
   const [limit] = useState(5);
   // 검색기능
@@ -108,7 +115,7 @@ function Hash({ showHashModal, showAlertModal }) {
     }
   };
 
-  console.log("HashInt", checkData);
+  // console.log(checkData);
 
   const HashSerch = ({ results, handleClick }) => {
     const handleClickOutside = (event) => {
@@ -154,13 +161,9 @@ function Hash({ showHashModal, showAlertModal }) {
             <div className="searchdiv">
               {searchQuery.length > 0 &&
                 filteredData.map((item, idx) => {
-                  const selected = checkData.includes(item.interestName);
+                  const selected = checkData.includes(item);
                   return (
-                    <div
-                      className="searchbox"
-                      key={item.interestName}
-                      data-idx={idx}
-                    >
+                    <div className="searchbox" key={item} data-idx={idx}>
                       <button
                         className={`btn ${
                           selected ? "changesearchback" : "searchback"
@@ -169,12 +172,12 @@ function Hash({ showHashModal, showAlertModal }) {
                         <input
                           className="custom-checkbox-style"
                           type="checkbox"
-                          key={item.interestName}
+                          key={item}
                           data-idx={idx}
-                          value={item.interestName}
+                          value={item}
                           checked={selected}
                           onChange={(e) => {
-                            handleClick(item.interestName);
+                            handleClick(item);
                           }}
                         />
                         {item.interestName}
@@ -187,7 +190,7 @@ function Hash({ showHashModal, showAlertModal }) {
           <div>
             <div className="hashaddiv">
               {checkData &&
-                checkData.map((item) => (
+                checkData.map((item, idx) => (
                   <Checkdata item={item} onRemove={() => handleRemove(item)} />
                 ))}
             </div>
@@ -209,12 +212,12 @@ function Hash({ showHashModal, showAlertModal }) {
                     <input
                       className="custom-checkbox-style"
                       type="checkbox"
-                      key={item.interestName}
+                      key={item}
                       data-idx={idx}
-                      value={item.interestName}
+                      value={item}
                       checked={selected}
                       onChange={(e) => {
-                        handleClick(item.interestName);
+                        handleClick(item);
                       }}
                     />
                     {item.interestName}
@@ -231,6 +234,7 @@ function Hash({ showHashModal, showAlertModal }) {
         onClick={() => {
           showHashModal();
           showAlertModal();
+          intSave();
         }}
       >
         선호 정보 수정
