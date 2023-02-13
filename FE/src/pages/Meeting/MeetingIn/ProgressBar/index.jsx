@@ -1,10 +1,9 @@
-import { useEffect } from "react";
-import axios from "axios";
+// import { useEffect } from "react";
 import "./index.css";
 
+let ProgressBarTmp = 0;
 function ProgressBar() {
   let currentVal = false;
-  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`; // 여기 주소 바뀌어야함!!!!!!!!!!!!!!!!!!!!!!!!
   // const user = useSelector((state) => state.mt.@@@@@@); // Redux에 저장되어있는 @@@@@
 
   const start = () => {
@@ -53,11 +52,12 @@ function ProgressBar() {
     }
   };
 
-  useEffect(() => {
+  if (ProgressBarTmp === 1) {
+    ProgressBarTmp = 0;
     setTimeout(() => {
       start();
     }, 3000);
-  }, []);
+  }
 
   return <div className="ProgressBar">{/* <Timer /> */}</div>;
 }

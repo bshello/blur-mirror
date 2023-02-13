@@ -16,8 +16,3 @@ root.render(
     </PersistGate>
   </Provider>
 );
-
-// reportWebVitals();
-{
-  /* </React.StrictMode> */
-}

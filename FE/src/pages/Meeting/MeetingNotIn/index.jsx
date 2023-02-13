@@ -1,5 +1,5 @@
 import "./index.css";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
 import { MTOGGLE, ROOM_NUM, PARTNERINTERESTS, PARTNERNICK } from "../../../redux/reducers/MToggle";
 import { saveToken } from "../../../redux/reducers/saveToken";
@@ -10,6 +10,7 @@ let myStream;
 let USERSEX = "";
 let firstRendering = false;
 let errorCnt = 0;
+let meetingNotInTmp = 0;
 function MeetingNotIn() {
   let userId = useSelector((state) => state.strr.id); // store에 저장되어있는 내 아이디
   USERSEX = useSelector((state) => state.mt.myGender); // store에 저장되어있는 내 성별
@@ -122,10 +123,10 @@ function MeetingNotIn() {
     setMyMicToggle(!myMicToggle);
   }, [myMicToggle]);
 
-  useEffect(() => {
+  if (meetingNotInTmp === 0) {
+    meetingNotInTmp = 1;
     getCameras1();
-  }, []);
-
+  }
   // 아래 코드는 axios 통신 시 사용할 코드
   const interval = setInterval(() => {
     axios({
@@ -145,7 +146,7 @@ function MeetingNotIn() {
       .then((res) => {
         // [response data : myGender, parnerId, sessionId]
         console.log(`check OK res : `, res.data);
-        const partnerID = res.data.partnerId;
+        // const partnerID = res.data.partnerId;
         // console.log(`partnerID: ${partnerID}`);
         // alert("check: 백에 통신 성공");
 

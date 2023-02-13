@@ -1,21 +1,21 @@
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../../pages/Start/Alert";
-import axios from "axios";
 
 function MyInfo() {
   // 화면 켜지자 말자 띄우는 거
-  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
-  const id = "123123";
+  // const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
+  // const id = "123123";
   // const API_URL = `http://192.168.31.73:8000/blur-profile/profile/${id}`;
   // const id = "123123";
   const [proFile, setProFile] = useState([]);
+  setProFile(1);
   // useEffect(() => {
   //   axios({
   //     method: "GET",
@@ -48,6 +48,7 @@ function MyInfo() {
 
   // hash 관심사 적용되면 보일 거
   const [changeHash, setChangeHash] = useState(false);
+  console.log(changeHash);
   const showChangeHash = () => {
     setChangeHash((change) => !change);
   };
@@ -59,10 +60,10 @@ function MyInfo() {
   };
 
   // 관심사 5개 띄우는 거
-  const [myInterest, setMyInterest] = useState([]);
-  const showMyInterest = () => {
-    setMyInterest((int) => !int);
-  };
+  // const [myInterest, setMyInterest] = useState([]);
+  // const showMyInterest = () => {
+  //   setMyInterest((int) => !int);
+  // };
 
   // 페이지 이동
   const navigate = useNavigate();
@@ -76,12 +77,13 @@ function MyInfo() {
     return state.intro.value;
   });
 
-  const age = useSelector((state) => {
-    return state.age.value;
-  });
+  // const age = useSelector((state) => {
+  //   return state.age.value;
+  // });
 
   // 이미지 미리보기
   const [imgFile, setImgFile] = useState("");
+  console.log(imgFile);
   const imgRef = useRef();
 
   const saveImgFile = () => {
@@ -92,39 +94,16 @@ function MyInfo() {
       setImgFile(reader.result);
     };
   };
+  console.log(saveImgFile);
 
   return (
     <div className="myinfo">
-      {miModal || hashModal ? (
-        <ModalWrap
-          miModal={miModal}
-          hashModal={hashModal}
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-        />
-      ) : null}
-      {miModal && !hashModal ? (
-        <MyInfoModal
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-          showAlertModal={showAlertModal}
-        />
-      ) : null}
+      {miModal || hashModal ? <ModalWrap miModal={miModal} hashModal={hashModal} showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} /> : null}
+      {miModal && !hashModal ? <MyInfoModal showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} showAlertModal={showAlertModal} /> : null}
 
-      {hashModal && !miModal ? (
-        <Hash
-          showMyinfoModal={showMyinfoModal}
-          showHashModal={showHashModal}
-          showAlertModal={showAlertModal}
-        />
-      ) : null}
+      {hashModal && !miModal ? <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} showAlertModal={showAlertModal} /> : null}
 
-      {alertModal && !miModal && !hashModal ? (
-        <Alert
-          showAlertModal={showAlertModal}
-          content={"변경사항이 저장되었습니다."}
-        />
-      ) : null}
+      {alertModal && !miModal && !hashModal ? <Alert showAlertModal={showAlertModal} content={"변경사항이 저장되었습니다."} /> : null}
 
       <div className="DarkBlurDiv"></div>
       <div
@@ -162,12 +141,7 @@ function MyInfo() {
         <div className="MISetDiv"></div>
       </div>
       <span className="MIHashTag">Hash Tag</span>
-      <div
-        className="MIHashSet"
-        onClick={showHashModal}
-        onChange={showChangeHash}
-        disabled={alertModal === true ? true : false}
-      >
+      <div className="MIHashSet" onClick={showHashModal} onChange={showChangeHash} disabled={alertModal === true ? true : false}>
         <div className="MIHashSetIcon">
           <span className="MIHashSetText">설정하기</span>
         </div>

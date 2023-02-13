@@ -1,10 +1,10 @@
 import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
-import { BTOGGLE, CAM_OPEN_TOGGLE } from "../../../../redux/reducers/MToggle";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { CAM_OPEN_TOGGLE } from "../../../../redux/reducers/MToggle";
+// import { useState } from "react";
 function SettingModal() {
   const dispatch = useDispatch();
-  const [checkOptionValue, setCheckOptionValue] = useState("");
+  // const [checkOptionValue, setCheckOptionValue] = useState("");
   const confirmClick = () => {
     // 백엔드에게 선택한 option값을 보냄
     // 만약 checkOptionValue값이 빈값일 때 -> 원래 선택했던것을 선택했음 -> 변경이 안되는걸로
@@ -13,9 +13,9 @@ function SettingModal() {
     // 창 닫기
     dispatch(CAM_OPEN_TOGGLE(false));
   };
-  function catchingValue(e) {
-    setCheckOptionValue(e.target[e.target.value - 1].innerText);
-  }
+  // function catchingValue(e) {
+  //   setCheckOptionValue(e.target[e.target.value - 1].innerText);
+  // }
 
   return (
     <div className="camSettingModal">
@@ -23,7 +23,10 @@ function SettingModal() {
         <span className="camAlertHeaderText">카메라 설정</span>
       </div>
       <div className="camAlertBody">
-        <select className="camAlertSelect" onChange={catchingValue}>
+        <select
+          className="camAlertSelect"
+          // onChange={catchingValue}
+        >
           <option value="1">Logitech 3.0</option>
           <option value="2">Desktop Cam</option>
         </select>

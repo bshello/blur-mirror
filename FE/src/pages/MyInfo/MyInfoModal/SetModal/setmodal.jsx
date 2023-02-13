@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../MyInfoModal/myInfoModal.css";
 import "./setmodal.css";
-import styled from "styled-components";
 
 function SetModal() {
   // 성별 바꾸기
@@ -64,13 +63,7 @@ function SetModal() {
               <div className="blurdiv" />
 
               <div className="range-slider">
-                <input
-                  type="range"
-                  className="slider"
-                  min="0"
-                  max="50"
-                  onChange={changeDistance}
-                ></input>
+                <input type="range" className="slider" min="0" max="50" onChange={changeDistance}></input>
                 <div className="progressSlider"></div>
               </div>
             </div>
@@ -82,24 +75,8 @@ function SetModal() {
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv"></div>
 
-              <input
-                type="range"
-                className="range-slider1 range-slider1-left"
-                value={leftSliderValue}
-                onChange={handleLeftSliderChange}
-                style={{ pointerEvents: "none" }}
-                min={18}
-                max={40}
-              />
-              <input
-                type="range"
-                className="range-slider1 range-slider1-right"
-                value={rightSliderValue}
-                onChange={handleRightSliderChange}
-                style={{ pointerEvents: "none" }}
-                min={18}
-                max={40}
-              />
+              <input type="range" className="range-slider1 range-slider1-left" value={leftSliderValue} onChange={handleLeftSliderChange} style={{ pointerEvents: "none" }} min={18} max={40} />
+              <input type="range" className="range-slider1 range-slider1-right" value={rightSliderValue} onChange={handleRightSliderChange} style={{ pointerEvents: "none" }} min={18} max={40} />
               <div
                 className="range-bar"
                 style={{
