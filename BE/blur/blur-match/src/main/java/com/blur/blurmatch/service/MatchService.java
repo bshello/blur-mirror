@@ -165,7 +165,8 @@ public class MatchService {
             successInfo.add(requestAcceptDto.getSessionId());
             successInfo.add(requestAcceptDto.getUserId());
             success.put(requestAcceptDto.getPartnerId(), successInfo);
-            String getUserInterestUrl = String.format(env.getProperty("blur-profile.url")) + "/" + requestAcceptDto.getPartnerId() + "/service/partner";
+            String partnerId = requestAcceptDto.getPartnerId();
+            String getUserInterestUrl = String.format(env.getProperty("blur-profile.url")) + "/" + partnerId + "/service/partner";
             ResponseEntity<Collection<String>> partnerInterests = restTemplate.exchange(
                     getUserInterestUrl,
                     HttpMethod.GET,
@@ -173,7 +174,10 @@ public class MatchService {
                     new ParameterizedTypeReference<Collection<String>>(){}
             );
             Collection<String> partnerInterestsBody = partnerInterests.getBody();
-            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(requestAcceptDto, partnerInterestsBody);
+            String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + partnerId + "/service";
+            ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl , ResponseProfileDto.class, partnerId);
+            String partnerNickname = profileResponse.getBody().getNickname();
+            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(requestAcceptDto, partnerNickname, partnerInterestsBody);
             return responseAceeptDto;
         }
         else {
@@ -192,7 +196,10 @@ public class MatchService {
                     new ParameterizedTypeReference<Collection<String>>(){}
             );
             Collection<String> partnerInterestsBody = partnerInterests.getBody();
-            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(partnerId, partnerInterestsBody, sessionId);
+            String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + partnerId + "/service";
+            ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl , ResponseProfileDto.class, partnerId);
+            String partnerNickname = profileResponse.getBody().getNickname();
+            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(partnerId, partnerNickname, partnerInterestsBody, sessionId);
             return responseAceeptDto;
         }
     }

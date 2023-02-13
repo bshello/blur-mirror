@@ -129,6 +129,10 @@ public class MatchingController {
         }
         String userId = requestCheckDto.getUserId();
         ResponseMatchDto responseMatchDto = matchService.matchCheck(userId, gender);
+//        ResponseMatchDto responseMatchDto = new ResponseMatchDto();
+//        responseMatchDto.setMyGender("M");
+//        responseMatchDto.setSessionId("20230213112856");
+//        responseMatchDto.setPartnerId("kim125");
         return ResponseEntity.status(HttpStatus.OK).body(responseMatchDto);
     }
 
@@ -148,6 +152,11 @@ public class MatchingController {
         if (responseAceeptDto == null) {
             return ResponseEntity.status(404).body("Failed");
         }
+        System.out.println("11111111111111111111111111111111111111111111111111111111111");
+        System.out.println(responseAceeptDto.getPartnerId());
+        System.out.println(responseAceeptDto.getSessionId());
+        System.out.println(responseAceeptDto.getPartnerInterests());
+        System.out.println("11111111111111111111111111111111111111111111111111111111111");
         return ResponseEntity.status(HttpStatus.OK).body(responseAceeptDto);
     }
 
