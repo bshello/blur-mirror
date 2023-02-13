@@ -11,9 +11,9 @@
 .Hash .hashSerchDiv {
   position: absolute;
   width: 580px;
-  height: 55x;
-  left: 80px;
-  top: 30px;
+  height: 55px;
+  left: 70px;
+  top: 20px;
 }
 .Hash .hashSerchDiv .inputdodbogi {
   position: absolute;
@@ -46,12 +46,97 @@
   border: 3px solid #68bbbd;
 }
 
+.searchintbox {
+  position: absolute;
+  left: 50px;
+  top: 150px;
+  z-index: 32;
+  border-radius: 40px;
+}
+.searchintbox .searchdiv {
+  position: relative;
+  width: 500px;
+  top: -230px;
+  z-index: 100;
+  left: 0px;
+  background-color: rgba(192, 192, 192, 0.951);
+  color: #50a1a3;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: scroll;
+}
+.searchintbox .searchdiv .searchbox {
+  position: relative;
+  width: 110px;
+  height: 60px;
+  top: 10px;
+  padding-left: 5px;
+  margin-left: 5px;
+  left: 10px;
+  justify-content: center;
+  float: left;
+}
+.searchintbox .searchdiv .searchbox .searchback {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.742);
+  border-radius: 40px;
+  justify-content: center;
+  font-weight: 400px;
+  font-size: 17px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #68bbbd;
+}
+.searchintbox .searchdiv .searchbox .changesearchback {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  background: rgba(13, 124, 124, 0.2);
+  border-radius: 40px;
+  justify-content: center;
+  font-weight: 400px;
+  font-size: 17px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  background-color: #68bbbd;
+  color: white;
+}
+.searchintbox .searchdiv .searchbox :hover {
+  background-color: #68bbbd;
+  color: white;
+}
+.searchintbox .searchdiv .searchbox .caintText {
+  border-radius: 40px;
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  left: 0px;
+  top: 0px;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #b1b1b1;
+}
+.searchintbox .searchdiv .searchbox :hover {
+  color: white;
+}
+
 .hashaddiv {
   position: absolute;
   display: flex;
   width: 600px;
   height: 60px;
-  top: -62px;
+  top: -70px;
   left: 0px;
   flex-direction: row;
 }
@@ -61,8 +146,7 @@
   height: 70px;
   left: 0%;
   top: -15%;
-  z-index: 10;
-  display: flex;
+  z-index: 5;
 }
 .hashaddiv .hashcheckdiv .hashcheckbox {
   position: absolute;
@@ -158,46 +242,10 @@
 
 .hashSerchbar {
   position: absolute;
-  top: 95px;
-  z-index: 40;
-  left: 200px;
-  background-color: rgba(192, 192, 192, 0.951);
-  color: #50a1a3;
-  justify-content: center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  overflow: scroll;
-}
-.hashSerchbar .ilserchbar {
-  position: relative;
-  width: 100px;
-  height: 40px;
-  margin-top: 10px;
-  margin-left: 5.5px;
-  margin-bottom: 10px;
-  float: left;
-  cursor: pointer;
-  background: rgba(4, 37, 37, 0.241);
-  border-radius: 40px;
-  font-weight: 400px;
-  font-size: 20px;
-  line-height: 35px;
-  border: solid 2px white;
-  color: #c8c7c7;
-}
-.hashSerchbar :hover {
-  background-color: #68bbbd;
-  color: white;
-  border: solid white 2px;
-}
-
-.hashSerchbar {
-  position: absolute;
   width: 550px;
-  top: 100px;
+  top: 60px;
   z-index: 40;
-  left: 100px;
+  left: -3px;
   background-color: rgba(192, 192, 192, 0.951);
   color: #50a1a3;
   justify-content: center;
@@ -216,10 +264,8 @@
   cursor: pointer;
   background: rgba(4, 37, 37, 0.241);
   border-radius: 40px;
-  font-weight: 400px;
   font-size: 20px;
   line-height: 35px;
-  border: solid 2px white;
   color: #c8c7c7;
 }
 .hashSerchbar :hover {
@@ -238,25 +284,12 @@
   opacity: 0.98;
   border-radius: 40px;
 }
-.hashintdiv .category {
-  position: absolute;
-  width: 200px;
-  height: 40px;
-  left: 200px;
-  top: 10px;
-  border-radius: 10px;
-  font-size: 20px;
-  background-color: white;
-  border: solid #68bbbd 1px;
-  color: #68bbbd;
-  cursor: pointer;
-}
 .hashintdiv .cainterestdiv {
   position: absolute;
   width: 480px;
   height: 320px;
   left: 65px;
-  top: px;
+  top: 0px;
   overflow: auto;
 }
 .hashintdiv .cainterestdiv .cainterestbox {
@@ -323,9 +356,25 @@
 
 .custom-checkbox-style {
   position: absolute;
+  opacity: 0;
   width: 100px;
   height: 40px;
-  border: 1.5px solid gainsboro;
   border-radius: 40px;
   cursor: pointer;
+}
+
+.selected {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.unselected {
+  background-color: #333;
+  color: #f2f2f2;
+}
+
+.searchContainer {
+  position: absolute;
+  top: 50px;
+  left: 10px;
 }/*# sourceMappingURL=Hash.css.map */

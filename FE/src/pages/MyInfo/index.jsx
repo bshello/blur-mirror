@@ -9,29 +9,30 @@ import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../../pages/Start/Alert";
 import axios from "axios";
 
-
 function MyInfo() {
   // 화면 켜지자 말자 띄우는 거
   const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
   const id = "123123";
+  // const API_URL = `http://192.168.31.73:8000/blur-profile/profile/${id}`;
+  // const id = "123123";
   const [proFile, setProFile] = useState([]);
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `${API_URL}/${id}`,
-      data: {},
-    })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.status);
-        setProFile(res.data);
-        console.log("성공><");
-      })
-      .catch((err) => {
-        alert("기존 데이터 없다.");
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios({
+  //     method: "GET",
+  //     url: `${API_URL}/${id}`,
+  //     data: {},
+  //   })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       console.log(res.status);
+  //       setProFile(res.data);
+  //       console.log("성공><");
+  //     })
+  //     .catch((err) => {
+  //       alert("기존 데이터 없다.");
+  //       console.log(err);
+  //     });
+  // }, []);
 
   //profile edit modal
   const [miModal, setMyInfoModal] = useState(false);
@@ -55,6 +56,12 @@ function MyInfo() {
   const [alertModal, setalertModal] = useState(false);
   const showAlertModal = () => {
     setalertModal((pre) => !pre);
+  };
+
+  // 관심사 5개 띄우는 거
+  const [myInterest, setMyInterest] = useState([]);
+  const showMyInterest = () => {
+    setMyInterest((int) => !int);
   };
 
   // 페이지 이동

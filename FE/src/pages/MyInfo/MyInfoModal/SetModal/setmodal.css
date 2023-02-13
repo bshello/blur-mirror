@@ -11,22 +11,12 @@
   cursor: pointer;
 }
 
-.rangelocation {
-  top: 50%;
-  left: 20%;
-}
-
-.rangename {
-  top: 0;
-  left: -50px;
-}
-
 .range-slider {
   -webkit-appearance: none;
   position: absolute;
-  top: -5.5vw;
-  left: 1.5vw;
-  right: 0.694vw;
+  top: -5.194vw;
+  left: 2vw;
+  right: 2vw;
   margin: 8em auto;
   display: flex;
   z-index: 5;
@@ -34,7 +24,7 @@
 .range-slider .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 0.4em;
+  height: 0.5em;
   outline: none;
   border-radius: 0.208vw;
   background-color: #eaf6f6;
@@ -57,12 +47,52 @@
 .range-slider .progressSlider {
   position: absolute;
   width: 50%;
-  height: 0.4em;
+  height: 0.5em;
   border-radius: 0.208vw;
   background-color: #a8dedf;
-  top: 0.208vw;
+  top: 0.28vw;
   transform: translateY(-50%);
   left: 0;
   z-index: 1;
   pointer-events: none;
+}
+
+.range-slider1 {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.5em;
+  background-color: transparent;
+  border-radius: 0.25em;
+  outline: none;
+  position: absolute;
+  top: 5vw;
+  cursor: pointer;
+  background-color: #eaf6f6;
+}
+
+.range-slider1::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.042vw;
+  height: 1.042vw;
+  background-color: rgb(168, 222, 223);
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+.range-bar {
+  position: absolute;
+  top: 5vw;
+  height: 0.5em;
+  background-color: #a8dedf;
+  border-radius: 0.25em;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.range-slider1-left {
+  left: 0;
+}
+
+.range-slider1-right {
+  right: 0;
 }/*# sourceMappingURL=setmodal.css.map */
