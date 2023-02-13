@@ -192,7 +192,7 @@ public class MatchService {
                     new ParameterizedTypeReference<Collection<String>>(){}
             );
             Collection<String> partnerInterestsBody = partnerInterests.getBody();
-            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(requestAcceptDto, partnerInterestsBody);
+            ResponseAceeptDto responseAceeptDto = new ResponseAceeptDto(partnerId, partnerInterestsBody, sessionId);
             return responseAceeptDto;
         }
     }

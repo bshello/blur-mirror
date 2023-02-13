@@ -23,6 +23,12 @@ public class ResponseAceeptDto {
     @ApiModelProperty(notes = "세션 ID")
     private String sessionId;
 
+    public ResponseAceeptDto(String partnerId, Collection<String> partnerInterests, String sessionId) {
+        this.partnerId = partnerId;
+        this.partnerInterests = partnerInterests;
+        this.sessionId = sessionId;
+    }
+
     public ResponseAceeptDto(RequestAcceptDto requestAcceptDto, Collection<String> partnerInterests) {
         this.partnerId = requestAcceptDto.getPartnerId();
         this.partnerInterests = partnerInterests;
