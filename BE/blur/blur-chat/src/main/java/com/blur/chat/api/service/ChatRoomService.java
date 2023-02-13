@@ -47,7 +47,7 @@ public class ChatRoomService {
     	return chatroomNo;
     }
     
-    public Chatroom enterChatroom(UserInfoDto userInfoDto, Long chatroomNo){
+    public Chatroom enterChat(UserInfoDto userInfoDto, Long chatroomNo){
     	Chatroom chatroom = chatRoomNoRepository.findByChatroomNo(chatroomNo);
     	chatroom.update(userInfoDto.getUserNo(), userInfoDto.getUserId());
     	

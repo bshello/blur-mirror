@@ -95,7 +95,7 @@ public class RoomController {
 //	})
 	public ResponseDto<?> enterRoom(@RequestBody EnterRoom enterRoom) {
 		UserInfoDto userInfoDto = userInfo.getUserInfo(enterRoom.getUserId());
-		Chatroom chatroom = chatRoomService.enterChatroom(userInfoDto, enterRoom.getChatroomNo());
+		Chatroom chatroom = chatRoomService.enterChat(userInfoDto, enterRoom.getChatroomNo());
 		System.out.println(chatroom.toString());
 		return ResponseDto.success(chatroom);
 	}

@@ -34,11 +34,6 @@ public class StompChatController {
     private final UserInfo userInfo;
     
     @MessageMapping("/chat/message")
-    @ApiResponses(value= {
-            @ApiResponse(code = 200, message = "SUCCESS", response = ApiResponse.class),
-            @ApiResponse(code = 400, message = "NOT FOUND"),
-            @ApiResponse(code = 500, message = "서버오류"),
-        })
     public void message(ChatMessageSaveDto message, @Header("userId") String userId) {
 //    public void message(ChatMessageSaveDto message, @Header("token") String token){
 //        UserInfo userInfo = jwtDecoder.decodeUsername(headerTokenExtractor.extract(token));
