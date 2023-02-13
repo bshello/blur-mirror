@@ -110,7 +110,7 @@ public class ProfileController {
             @ApiResponse(code = 500, message = "Internal server error")
     })
     @PutMapping("/updateInterest")
-    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.RequestUserInterestDto requestUserInterestDto,
+    public ResponseEntity<?> updateInterest(@RequestBody RequestUserInterestDto requestUserInterestDto,
                                             @ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) throws Exception {
         profileService.updateInterest(requestUserInterestDto, userId);
         System.out.println("1111111111111111111111");

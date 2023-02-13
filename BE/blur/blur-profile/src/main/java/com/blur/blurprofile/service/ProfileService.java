@@ -89,7 +89,7 @@ public class ProfileService {
         return interestDto;
     }
 
-    public void updateInterest(ProfileDto.RequestUserInterestDto requestUserInterestDto, String userId) {
+    public void updateInterest(RequestUserInterestDto requestUserInterestDto, String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
         userInterestRepository.deleteAll(userInterests);

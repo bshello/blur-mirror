@@ -1,0 +1,24 @@
+package com.blur.blurprofile.dto;
+
+import com.blur.blurprofile.entity.Interest;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
+@ApiModel(value = "RequestUserInterestDto")
+@NoArgsConstructor
+@Getter
+@Setter
+public class RequestUserInterestDto {
+
+    @ApiModelProperty(value = "관심사 목록", required = true)
+    private List<Interest> Interests;
+
+    public RequestUserInterestDto(List<Interest> interests) {
+        this.Interests = interests;
+    }
+
+}
