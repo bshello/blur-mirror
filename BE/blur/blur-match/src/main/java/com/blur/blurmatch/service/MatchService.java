@@ -76,6 +76,15 @@ public class MatchService {
     public void updateSetting(MatchSettingDto matchSettingDto) {
 
         String userId = matchSettingDto.getUserId();
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
         matchSetting.update(matchSettingDto);
         matchSettingRepository.save(matchSetting);

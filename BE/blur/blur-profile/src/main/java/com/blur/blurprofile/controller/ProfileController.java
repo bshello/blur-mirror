@@ -1,14 +1,17 @@
 package com.blur.blurprofile.controller;
 
 import com.blur.blurprofile.dto.*;
+import com.blur.blurprofile.entity.Interest;
+import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.service.ProfileService;
 import io.swagger.annotations.*;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.*;
 
 @RestController
 @RequestMapping("/profile/{id}")
@@ -17,6 +20,21 @@ public class ProfileController {
 
     @Autowired
     ProfileService profileService;
+
+    @Autowired
+    InterestRepository interestRepository;
+
+    @PostMapping("/test")
+    public void test(@PathVariable("id") String userId) {
+        List<Interest> interestList = interestRepository.findAll();
+        Integer num = interestList.size();
+        Set<Interest> interests = new HashSet<Interest>();
+        Random rand = new Random();
+        while (interests.size() < 5) {
+            Interest randomInterest = interestList.get(rand.nextInt(num));
+            interests.add(randomInterest);
+        }
+    }
 
     @ApiOperation(value = "카드 정보 가져오기", response = ResponseCardDto.class)
     @ApiResponses(value = {
@@ -82,7 +100,7 @@ public class ProfileController {
         return ResponseEntity.status(HttpStatus.OK).body(interestDto);
     }
 
-    @ApiOperation(value = "관심사 설정 업데이트", response = Void.class)
+    @ApiOperation(value = "관심사 설정 업데이트", response = void.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "관심사 설정 업데이트 성공"),
             @ApiResponse(code = 400, message = "Bad request"),
@@ -95,6 +113,9 @@ public class ProfileController {
     public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.RequestUserInterestDto requestUserInterestDto,
                                             @ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) throws Exception {
         profileService.updateInterest(requestUserInterestDto, userId);
+        System.out.println("1111111111111111111111");
+        System.out.println("1111111111111111111111");
+        System.out.println("1111111111111111111111");
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
