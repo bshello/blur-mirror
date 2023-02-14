@@ -83,6 +83,10 @@ function Home() {
     axios({
       method: "GET",
       url: `${API_URL}/blur-profile/profile/${userId}/check`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${myToken}`,
+      },
     })
       .then((res) => {
         console.log(`res.data: ${res.data}`);
