@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -89,6 +91,21 @@ public class ProfileController {
         return ResponseEntity.status(HttpStatus.OK).body(profile);
     }
 
+    @ApiOperation(value = "프로필 사진 업데이트", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "프로필 사진 업데이트 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @PostMapping("/updateImage")
+    public ResponseEntity<String> updateImage(@PathVariable("id") String userId, @RequestParam("profileImage") MultipartFile profileImage) throws IOException {
+        String res = profileService.updateImage(userId, profileImage);
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
     @ApiOperation(value = "관심사 가져오기", response = ResponseInterestDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "관심사 가져오기 성공"),
@@ -116,10 +133,8 @@ public class ProfileController {
     @PutMapping("/updateInterest")
     public ResponseEntity<?> updateInterest(@RequestBody RequestUserInterestDto requestUserInterestDto,
                                             @ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) throws Exception {
+
         profileService.updateInterest(requestUserInterestDto, userId);
-        System.out.println("1111111111111111111111");
-        System.out.println("1111111111111111111111");
-        System.out.println("1111111111111111111111");
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
