@@ -39,17 +39,4 @@ public class ProfileDto {
     @ApiModelProperty(value = "사용자 MBTI 유형")
     private String mbti;
 
-    @ApiModel(value = "RequestUserInterestDto")
-    @NoArgsConstructor
-    @Getter
-    @Setter
-    public static class RequestUserInterestDto {
-
-        @ApiModelProperty(value = "관심사 목록", required = true)
-        private List<Interest> Interests;
-
-        public RequestUserInterestDto(List<Interest> interests) {
-            this.Interests = interests;
-        }
-    }
 }

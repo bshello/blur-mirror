@@ -46,7 +46,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter
         - id: blur-match
           uri: lb://BLUR-MATCH
           predicates:
@@ -55,7 +55,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-match/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter
         - id: blur-chat
           uri: lb://BLUR-CHAT
           predicates:
@@ -64,7 +64,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter
 
 eureka:
   client:
@@ -73,5 +73,9 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-token:
-  secret: blurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserToken
+#token:
+#  secret: blurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserTokenblurUserToken
+
+  
+  # jwt secret key 설정
+jwt.secret: '8sknjlO3NPTBqo319DHLNqsQAfRJEdKsETOds'

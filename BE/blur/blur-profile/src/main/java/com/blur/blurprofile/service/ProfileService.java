@@ -60,8 +60,8 @@ public class ProfileService {
             userProfileRepository.save(userProfile);
         }
         ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
-        String getMatchSettingUrl = String.format(env.getProperty("blur-match.url")) + "/getSetting";
-        ResponseEntity<MatchSettingDto> response = restTemplate.getForEntity(getMatchSettingUrl, MatchSettingDto.class, userId);
+        String getMatchSettingUrl = String.format(env.getProperty("blur-match.url")) + "/getSetting?userId=" + userId;
+        ResponseEntity<MatchSettingDto> response = restTemplate.getForEntity(getMatchSettingUrl, MatchSettingDto.class);
         MatchSettingDto matchSetting = response.getBody();
         ResponseProfileSettingDto responseProfileSettingDto = new ResponseProfileSettingDto(profileDto, matchSetting);
         return responseProfileSettingDto;
@@ -89,7 +89,7 @@ public class ProfileService {
         return interestDto;
     }
 
-    public void updateInterest(ProfileDto.RequestUserInterestDto requestUserInterestDto, String userId) {
+    public void updateInterest(RequestUserInterestDto requestUserInterestDto, String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
         userInterestRepository.deleteAll(userInterests);

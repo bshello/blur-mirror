@@ -1,7 +1,5 @@
 package com.blur.apigateway.filter;
 
-import io.jsonwebtoken.Jwts;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.env.Environment;
@@ -11,15 +9,18 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config> {
-    Environment env;
-
-
-
+    
+	Environment env;
+	
     public AuthorizationHeaderFilter(Environment env) {
         super(Config.class);
         this.env = env;
@@ -39,12 +40,14 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             }
 
             String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-            String jwt = authorizationHeader.replace("Bearer", "");
+            String jwt = authorizationHeader.replace("Bearer ", "");
 
-
+            System.out.println(jwt);
+            System.out.println(env.getProperty("jwt.secret").getBytes());
             if (!isJwtValid(jwt, exchange)) {
                 return onError(exchange, "JWT token is not valid", HttpStatus.UNAUTHORIZED);
             }
+            
             return chain.filter(exchange);
         };
     }
@@ -56,16 +59,25 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
         return response.setComplete();
     }
 
+
+    
     private boolean isJwtValid(String jwt, ServerWebExchange exchange) {
         boolean returnValue = true;
 
         String userId = null;
 
         try {
-            userId = Jwts.parser().setSigningKey(env.getProperty("token.secret"))
-                    .parseClaimsJws(jwt).getBody()
+            userId = Jwts.parserBuilder()
+//            		.setSigningKey(env.getProperty("token.secret"))
+            		.setSigningKey(Keys.hmacShaKeyFor(env.getProperty("jwt.secret").getBytes()))
+//            		.setSigningKey(key)
+                    .build()
+            		.parseClaimsJws(jwt)
+                    .getBody()
                     .getSubject();
             exchange.getRequest().mutate().header("userId", userId);
+            
+            System.out.println(env.getProperty("jwt.secret").getBytes());
         } catch (Exception ex) {
             returnValue = false;
         }
