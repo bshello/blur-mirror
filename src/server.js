@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors);
+app.use(cors());
 
 // express를 이용해 http 서버를 만듦(노출 서버)
 const httpServer = http.createServer(app);
