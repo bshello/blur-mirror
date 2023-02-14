@@ -99,6 +99,9 @@ public class MatchService {
             matchMakingRating = MatchMakingRating.builder()
                     .userId(userId)
                     .point(1000)
+                    .winningStreak(0)
+                    .losingStreak(0)
+                    .reportCount(0)
                     .build();
             matchMakingRatingRepository.save(matchMakingRating);
         }
