@@ -136,8 +136,7 @@ function Home() {
               console.log(err);
               console.log(err.response.status === 500);
               console.log(`token: ${myToken}`);
-              if (err.response.status === 403) {
-                console.log(err);
+              if (err.response.status === 401) {
                 axios({
                   method: "get",
                   url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
@@ -149,7 +148,6 @@ function Home() {
                   dispatch(saveToken(res.data.body.token));
                 });
               } else if (err.response.status === 500) {
-                console.log(err);
                 dispatch(saveToken(""));
                 navigate("/");
               }
