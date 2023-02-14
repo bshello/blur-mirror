@@ -43,5 +43,5 @@ wsServer.on("connection", (socket) => {
   });
 });
 
-const handleListen = () => console.log(`Listening on http://localhost:3001`);
+const handleListen = () => console.log(`Listening on i8b307.p.ssafy.io`);
 httpServer.listen(3001, handleListen);
