@@ -105,6 +105,14 @@ public class MatchService {
         if (matchMakingRating.getReportCount() > 10) {
             return null;
         }
+        MatchMakingRating matchMakingRating123 = matchMakingRatingRepository.findByUserId("test123");
+        if (matchMakingRating123 == null) {
+            matchMakingRating123 = MatchMakingRating.builder()
+                    .userId("test123")
+                    .point(1000)
+                    .build();
+            matchMakingRatingRepository.save(matchMakingRating123);
+        }
         String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
         MatchMakingRating matchMakingRating1 = matchMakingRatingRepository.findByUserId("test1");
         if (matchMakingRating1 == null) {
