@@ -9,7 +9,10 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
+  let API_URL = "";
+  if (process.env.NODE_ENV === "development") API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
+  else API_URL = `http://localhost:8000/blur-auth`;
+  console.log(API_URL);
   const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
