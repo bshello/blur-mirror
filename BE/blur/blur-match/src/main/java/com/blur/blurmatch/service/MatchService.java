@@ -117,10 +117,11 @@ public class MatchService {
             matchMakingRatingRepository.save(matchMakingRating123);
         }
         String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
-        MatchMakingRating matchMakingRating1 = matchMakingRatingRepository.findByUserId("test1");
+
+        MatchMakingRating matchMakingRating1 = matchMakingRatingRepository.findByUserId(getProfileUrl);
         if (matchMakingRating1 == null) {
             matchMakingRating1 = MatchMakingRating.builder()
-                    .userId("test1")
+                    .userId(getProfileUrl)
                     .point(1000)
                     .build();
             matchMakingRatingRepository.save(matchMakingRating1);
