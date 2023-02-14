@@ -14,10 +14,11 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
-import { saveToken } from "../../redux/reducers/saveToken";
+import { saveToken, ISMYPROFILE } from "../../redux/reducers/saveToken";
 
 let myStream;
 let carousel;
+let getProfileToggle = 0;
 function Home() {
   let userId = useSelector((state) => state.strr.id); // Redux에 저장되어있는 MToggle
   let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
@@ -49,7 +50,6 @@ function Home() {
 
   //프로필 설정이 완료여부 알려주는 변수
   const profiled = useSelector((state) => state.strr.profiled);
-  // const profiled = true;
   const navigate = useNavigate();
 
   const showBlurInfoModal = () => {
@@ -77,6 +77,19 @@ function Home() {
   useEffect(() => {
     carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 10000);
   }, [slideNumber]);
+
+  if (getProfileToggle === 0) {
+    getProfileToggle = 1;
+    axios({
+      method: "GET",
+      url: `${API_URL}/`,
+    })
+      .then((res) => {
+        console.log(`res.data: ${res.data}`);
+        dispatch(ISMYPROFILE(res.data.ff));
+      })
+      .catch((err) => console.log(err));
+  }
 
   //Start 버튼에서 미팅으로 갈지, 프로필로 갈지
   const goMeeting = () => {
