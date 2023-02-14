@@ -7,7 +7,9 @@ import com.blur.blurprofile.dto.response.ResponseCardDto;
 import com.blur.blurprofile.dto.response.ResponseInterestDto;
 import com.blur.blurprofile.dto.response.ResponseProfileSettingDto;
 import com.blur.blurprofile.entity.Interest;
+import com.blur.blurprofile.entity.UserProfile;
 import com.blur.blurprofile.repository.InterestRepository;
+import com.blur.blurprofile.repository.UserProfileRepository;
 import com.blur.blurprofile.service.ProfileService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,13 @@ import java.util.*;
 public class ProfileController {
 
     @Autowired
-    ProfileService profileService;
+    private ProfileService profileService;
 
     @Autowired
-    InterestRepository interestRepository;
+    private InterestRepository interestRepository;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     @PostMapping("/test")
     public void test(@PathVariable("id") String userId) {
@@ -161,7 +166,13 @@ public class ProfileController {
     })
     @GetMapping("/service")
     public ResponseEntity<ProfileDto> getProfile(@ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) {
-
+        UserProfile userProfile11 = userProfileRepository.findByUserId("test11");
+        if (userProfile11 == null) {
+            userProfile11 = UserProfile.builder()
+                    .userId("test11")
+                    .build();
+            userProfileRepository.save(userProfile11);
+        }
         ProfileDto profileDto = profileService.getProfile(userId);
         return ResponseEntity.status(HttpStatus.OK).body(profileDto);
     }

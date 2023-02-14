@@ -162,6 +162,13 @@ public class ProfileService {
             userProfileRepository.save(userProfile);
         }
         ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
+        UserProfile userProfile12 = userProfileRepository.findByUserId("test12");
+        if (userProfile12 == null) {
+            userProfile12 = UserProfile.builder()
+                    .userId("test12")
+                    .build();
+            userProfileRepository.save(userProfile12);
+        }
         return profileDto;
     }
 
