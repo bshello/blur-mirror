@@ -86,7 +86,7 @@ function Home() {
     })
       .then((res) => {
         console.log(`res.data: ${res.data}`);
-        dispatch(ISMYPROFILE(res.data.ff));
+        dispatch(ISMYPROFILE(res.data));
       })
       .catch((err) => console.log(err));
   }
