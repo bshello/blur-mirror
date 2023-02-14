@@ -108,54 +108,36 @@ public class MatchService {
         if (matchMakingRating.getReportCount() > 10) {
             return null;
         }
-        MatchMakingRating matchMakingRating123 = matchMakingRatingRepository.findByUserId("test123");
-        if (matchMakingRating123 == null) {
-            matchMakingRating123 = MatchMakingRating.builder()
-                    .userId("test123")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating123);
-        }
         String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
-//        String getProfileUrl = "http://i8b307.p.ssafy.io/blur-profile/profile/1234/service";
-        MatchMakingRating matchMakingRating1 = matchMakingRatingRepository.findByUserId(getProfileUrl);
-        if (matchMakingRating1 == null) {
-            matchMakingRating1 = MatchMakingRating.builder()
-                    .userId(getProfileUrl)
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating1);
-        }
-
-
-
         ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl, ResponseProfileDto.class, userId);
-        MatchMakingRating matchMakingRating2 = matchMakingRatingRepository.findByUserId("test2");
-        if (matchMakingRating2 == null) {
-            matchMakingRating2 = MatchMakingRating.builder()
-                    .userId("test2")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating2);
-        }
         ResponseProfileDto responseProfileDto = profileResponse.getBody();
-        MatchMakingRating matchMakingRating3 = matchMakingRatingRepository.findByUserId("test3");
-        if (matchMakingRating3 == null) {
-            matchMakingRating3 = MatchMakingRating.builder()
-                    .userId("test3")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating3);
-        }
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
-        MatchMakingRating matchMakingRating4 = matchMakingRatingRepository.findByUserId("test4");
-        if (matchMakingRating4 == null) {
-            matchMakingRating4 = MatchMakingRating.builder()
-                    .userId("test4")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating4);
+        if (responseProfileDto == null) {
+                MatchMakingRating matchMakingRating222 = MatchMakingRating.builder()
+                        .userId("responseProfileDto")
+                        .point(1000)
+                        .winningStreak(0)
+                        .losingStreak(0)
+                        .reportCount(0)
+                        .build();
+                matchMakingRatingRepository.save(matchMakingRating222);
         }
+        else {
+            MatchMakingRating matchMakingRating223 = MatchMakingRating.builder()
+                    .userId("null아님")
+                    .point(1000)
+                    .winningStreak(0)
+                    .losingStreak(0)
+                    .reportCount(0)
+                    .build();
+            matchMakingRatingRepository.save(matchMakingRating223);
+
+        }
+
+
+
+
+
         MatchDto matchDto = new MatchDto(requestMatchDto, matchSetting, matchMakingRating, responseProfileDto);
         MatchMakingRating matchMakingRating5 = matchMakingRatingRepository.findByUserId("test5");
         if (matchMakingRating5 == null) {
