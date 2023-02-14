@@ -1,16 +1,22 @@
 package com.blur.blurprofile.controller;
 
 import com.blur.blurprofile.dto.*;
+import com.blur.blurprofile.dto.request.RequestProfileSettingDto;
+import com.blur.blurprofile.dto.request.RequestUserInterestDto;
+import com.blur.blurprofile.dto.response.ResponseCardDto;
+import com.blur.blurprofile.dto.response.ResponseInterestDto;
+import com.blur.blurprofile.dto.response.ResponseProfileSettingDto;
 import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.service.ProfileService;
 import io.swagger.annotations.*;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -85,7 +91,22 @@ public class ProfileController {
         return ResponseEntity.status(HttpStatus.OK).body(profile);
     }
 
-    @ApiOperation(value = "관심사 가져오기", response = InterestDto.class)
+    @ApiOperation(value = "프로필 사진 업데이트", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "프로필 사진 업데이트 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @PostMapping("/updateImage")
+    public ResponseEntity<String> updateImage(@PathVariable("id") String userId, @RequestParam("profileImage") MultipartFile profileImage) throws IOException {
+        String res = profileService.updateImage(userId, profileImage);
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
+    @ApiOperation(value = "관심사 가져오기", response = ResponseInterestDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "관심사 가져오기 성공"),
             @ApiResponse(code = 400, message = "Bad request"),
@@ -95,9 +116,9 @@ public class ProfileController {
             @ApiResponse(code = 500, message = "Internal server error")
     })
     @GetMapping("/getInterest")
-    public ResponseEntity<InterestDto> getInterests(@ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) {
-        InterestDto interestDto = profileService.getInterests(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(interestDto);
+    public ResponseEntity<ResponseInterestDto> getInterests(@ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) {
+        ResponseInterestDto responseInterestDto = profileService.getInterests(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(responseInterestDto);
     }
 
     @ApiOperation(value = "관심사 설정 업데이트", response = void.class)
@@ -110,12 +131,10 @@ public class ProfileController {
             @ApiResponse(code = 500, message = "Internal server error")
     })
     @PutMapping("/updateInterest")
-    public ResponseEntity<?> updateInterest(@RequestBody ProfileDto.RequestUserInterestDto requestUserInterestDto,
+    public ResponseEntity<?> updateInterest(@RequestBody RequestUserInterestDto requestUserInterestDto,
                                             @ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) throws Exception {
+
         profileService.updateInterest(requestUserInterestDto, userId);
-        System.out.println("1111111111111111111111");
-        System.out.println("1111111111111111111111");
-        System.out.println("1111111111111111111111");
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 

@@ -42,6 +42,19 @@ spring:
         order_updates: true
         format_sql: true
 
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAXM2ROBDTA7R7L6M4      # AWS IAM AccessKey 적기
+      secretKey: 9RJ1UENpMmk6c/3DZmPV2YQoZhOvTWSgAXh5JOOo   # AWS IAM SecretKey 적기
+    s3:
+      bucket: blur307bucket    # ex) marryting-gyunny
+      dir: /blur # ex) /gyunny
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

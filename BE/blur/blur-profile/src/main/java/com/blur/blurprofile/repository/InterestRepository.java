@@ -7,4 +7,6 @@ import java.util.List;
 public interface InterestRepository extends JpaRepository<Interest, String> {
 
     public List<Interest> findAll();
+
+    public Interest findByInterestName(String interestName);
 }

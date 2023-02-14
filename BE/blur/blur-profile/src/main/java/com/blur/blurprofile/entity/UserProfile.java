@@ -1,6 +1,7 @@
 package com.blur.blurprofile.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,16 +38,20 @@ public class UserProfile {
     @Column(name = "introduce")
     private String introduce;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "userProfile")
     private List<UserInterest> userInterests =  new ArrayList<>();
 
 
-    public void updateProfile(Integer age, String nickname, String image, String gender, String introduce) {
+    public void updateProfile(Integer age, String nickname, String gender, String introduce) {
         this.age = age;
         this.nickname = nickname;
-        this.image = image;
         this.gender = gender;
         this.introduce = introduce;
+    }
+
+    public void updateImage(String image) {
+        this.image = image;
     }
 
 }

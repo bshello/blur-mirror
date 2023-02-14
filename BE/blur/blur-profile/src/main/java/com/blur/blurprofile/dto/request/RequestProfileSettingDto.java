@@ -1,4 +1,4 @@
-package com.blur.blurprofile.dto;
+package com.blur.blurprofile.dto.request;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,10 +7,10 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@ApiModel(description = "ResponseProfileSettingDto")
-public class ResponseProfileSettingDto {
+@ApiModel(value = "RequestProfileSettingDto")
+public class RequestProfileSettingDto {
 
-    @ApiModelProperty(value = "사용자 ID")
+    @ApiModelProperty(value = "유저 아이디", required = true)
     private String userId;
 
     @ApiModelProperty(value = "나이")
@@ -35,21 +35,8 @@ public class ResponseProfileSettingDto {
     private Integer maxDistance;
 
     @ApiModelProperty(value = "최소 나이")
-    private Integer minAge ;
+    private Integer minAge;
 
     @ApiModelProperty(value = "최대 나이")
     private Integer maxAge;
-
-    public ResponseProfileSettingDto(ProfileDto profileDto, MatchSettingDto matchSettingDto) {
-        this.userId = profileDto.getUserId();
-        this.age = profileDto.getAge();
-        this.nickname = profileDto.getNickname();
-        this.image = profileDto.getImage();
-        this.gender = profileDto.getGender();
-        this.introduce = profileDto.getIntroduce();
-        this.mbti = profileDto.getMbti();
-        this.maxDistance = matchSettingDto.getMaxDistance();
-        this.minAge = matchSettingDto.getMinAge();
-        this.maxAge = matchSettingDto.getMaxAge();
-    }
 }
