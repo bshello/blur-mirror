@@ -3,42 +3,49 @@ import { useCallback, useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
-import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE } from "../../../redux/reducers/MToggle";
+import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, ROOM_NUM, PARTNERNICK } from "../../../redux/reducers/MToggle";
 import Alert from "../../Start/Alert";
 import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
+import { useNavigate } from "react-router-dom";
 
 const socket = io.connect("http://localhost:3001");
 let roomName;
 let myPeerConnection;
 let myStream;
-let videoDevices = [];
 let firstRendering = false;
+let meetingInTmp = 0;
+// let videoDevices = [];
 
 // console.log("MeetingIn 페이지 렌더링");
 function MeetingIn() {
-  // 컴퓨터와 연결되어있는 모든 장치를 가져옴
-  const getCameras = useCallback(async () => {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const cameras = devices.filter((device) => device.kind === "videoinput");
-      videoDevices = cameras;
-      const currentCamera = myStream.getVideoTracks()[0];
+  const navigate = useNavigate();
 
-      const camerasSelect = document.querySelector("#cameras");
-      cameras.forEach((camera) => {
-        const option = document.createElement("option");
-        option.value = camera.deviceId;
-        option.innerText = camera.label;
-        if (currentCamera.label === camera.label) {
-          option.selected = true;
-        }
-        camerasSelect.appendChild(option);
-      });
-    } catch (error) {
-      console.log(error);
+  // 컴퓨터와 연결되어있는 모든 장치를 가져옴
+  const getCameras = async () => {
+    if (meetingInTmp === 0) {
+      meetingInTmp = 1;
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const cameras = devices.filter((device) => device.kind === "videoinput");
+        // videoDevices = cameras;
+        const currentCamera = myStream.getVideoTracks()[0];
+
+        const camerasSelect = document.querySelector("#cameras");
+        cameras.forEach((camera) => {
+          const option = document.createElement("option");
+          option.value = camera.deviceId;
+          option.innerText = camera.label;
+          if (currentCamera.label === camera.label) {
+            option.selected = true;
+          }
+          camerasSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }, []);
+  };
 
   const getMedia = useCallback(async (deviceId) => {
     // 초기 실행
@@ -323,6 +330,14 @@ function MeetingIn() {
 
       roomName = sendRoomName;
     }, 3000);
+
+    setTimeout(() => {
+      if (!alert("상대가 접속하지 않았기 때문에 홈페이지로 이동합니다.")) {
+        dispatch(ROOM_NUM(""));
+        dispatch(PARTNERNICK(""));
+        navigate("/home");
+      }
+    }, 30000);
   }
 
   useEffect(() => {

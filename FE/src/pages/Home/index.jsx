@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import "./index.css";
 import BlurInfo from "./BlurInfo/blurInfo";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../Start/Alert";
 import Slide1 from "./Slide1/slide1";
@@ -25,22 +25,24 @@ function Home() {
 
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
   // startVideo 함수 실행하면 자신의 모습 볼수있음
+  const videoRef = useRef(null);
   const CONSTRAINTS = {
     video: { width: { exact: 440 }, height: { exact: 340 } },
   };
-  const videoRef = useRef(null);
 
-  useEffect(() => {}, []);
-  const startVideo = useCallback(async () => {
-    myStream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
-    if (videoRef && videoRef.current && !videoRef.current.srcObject) {
-      videoRef.current.srcObject = myStream;
-    } else {
-      videoRef.current.srcObject = null;
+  const startVideo = async () => {
+    if (toggleStartVideo === false) {
+      setToggleStartVideo(!setToggleStartVideo);
+      myStream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
+      if (videoRef && videoRef.current && !videoRef.current.srcObject) {
+        videoRef.current.srcObject = myStream;
+      } else {
+        videoRef.current.srcObject = null;
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
+  const [toggleStartVideo, setToggleStartVideo] = useState(false);
   const [blurInfoModal, setBlurInfoModal] = useState(false);
   const [alertModal, setalertModal] = useState(false);
   const [chatList, setChatList] = useState(false);

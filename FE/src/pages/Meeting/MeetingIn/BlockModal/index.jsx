@@ -1,9 +1,9 @@
 import "./index.css";
-import { useState } from "react";
+// import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BTOGGLE, CLOSE_ALERT_TOGGLE } from "../../../../redux/reducers/MToggle";
 function BlockModal() {
-  const [checkOptionValue, setCheckOptionValue] = useState("");
+  // const [checkOptionValue, setCheckOptionValue] = useState("");
   const dispatch = useDispatch();
   const isShowBlockModal = useSelector((state) => state.mt.isShowBlockModal);
 
@@ -22,9 +22,9 @@ function BlockModal() {
     dispatch(BTOGGLE(!isShowBlockModal));
   };
 
-  function catchingValue(e) {
-    setCheckOptionValue(e.target[e.target.value - 1].innerText);
-  }
+  // function catchingValue(e) {
+  //   setCheckOptionValue(e.target[e.target.value - 1].innerText);
+  // }
 
   return (
     <div className="BlockModal">
@@ -32,7 +32,10 @@ function BlockModal() {
         <span className="AlertHeaderText">신고 사유</span>
       </div>
       <div className="AlertBody">
-        <select className="BlockAlertSelect" onChange={catchingValue}>
+        <select
+          className="BlockAlertSelect"
+          // onChange={catchingValue}
+        >
           <option value="1">불쾌한 노출</option>
           <option value="2">부적절한 언행</option>
           <option value="3">사용 불가 연령</option>

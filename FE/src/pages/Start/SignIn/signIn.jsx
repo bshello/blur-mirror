@@ -9,12 +9,12 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
+  let API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
+  console.log(API_URL);
+  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const API_URL = process.env.REACT_APP_SIGN_API_URL;
-  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
-  const savedId = useSelector((state) => state.strr.savedId);
+  const savedId = useSelector((state) => state.strr.id);
   const checkbox = useRef();
 
   const [signId, setSignId] = useState("");
@@ -29,13 +29,6 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     setSignPs(e.target.value);
     console.log(signPs);
   };
-
-  //로그인 함수
-  // const [signIn1] = useFetch("post", `${API_URL}/auth/login`, {
-  //   userId: signId,
-  //   password: signPs,
-  // });
-  // console.log(signIn1);
 
   const signIn = () => {
     if (signId && signPs) {

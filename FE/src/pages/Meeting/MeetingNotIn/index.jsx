@@ -1,5 +1,5 @@
 import "./index.css";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
 import { MTOGGLE, ROOM_NUM, PARTNERINTERESTS, PARTNERNICK } from "../../../redux/reducers/MToggle";
 import { saveToken } from "../../../redux/reducers/saveToken";
@@ -10,6 +10,7 @@ let myStream;
 let USERSEX = "";
 let firstRendering = false;
 let errorCnt = 0;
+let meetingNotInTmp = 0;
 function MeetingNotIn() {
   let userId = useSelector((state) => state.strr.id); // store에 저장되어있는 내 아이디
   USERSEX = useSelector((state) => state.mt.myGender); // store에 저장되어있는 내 성별
@@ -122,10 +123,10 @@ function MeetingNotIn() {
     setMyMicToggle(!myMicToggle);
   }, [myMicToggle]);
 
-  useEffect(() => {
+  if (meetingNotInTmp === 0) {
+    meetingNotInTmp = 1;
     getCameras1();
-  }, []);
-
+  }
   // 아래 코드는 axios 통신 시 사용할 코드
   const interval = setInterval(() => {
     axios({
@@ -145,7 +146,7 @@ function MeetingNotIn() {
       .then((res) => {
         // [response data : myGender, parnerId, sessionId]
         console.log(`check OK res : `, res.data);
-        const partnerID = res.data.partnerId;
+        // const partnerID = res.data.partnerId;
         // console.log(`partnerID: ${partnerID}`);
         // alert("check: 백에 통신 성공");
 
@@ -158,20 +159,102 @@ function MeetingNotIn() {
             // 성공했을 때 store에 방번호 저장하기
             dispatch(ROOM_NUM(res.data.sessionId));
 
-            // meeting In 페이지로 넘어가는 로직
-            if (!firstRendering) {
-              firstRendering = true;
+            // url: accept
+            if (window.confirm("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.")) {
+              axios({
+                method: "post",
+                url: `${API_URL}/accept`,
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${myToken}`,
+                },
+                data: {
+                  userId: userId,
+                  partnerId: res.data.partnerId,
+                  sessionId: res.data.sessionId,
+                  myGender: USERSEX,
+                },
+              })
+                // 데이터가 정상적으로 온다면 -> res 데이터 안씀 + meeting In으로 넘어감
+                .then((res) => {
+                  // resData인 관심사 배열을 store에 저장(meeting In에서 사용할 것)
+                  // console.log(`accept partnerInterests :`, res.data.partnerInterests);
+                  console.log(`accept data : `, res.data);
+                  dispatch(PARTNERINTERESTS(res.data.partnerInterests));
+                  dispatch(PARTNERNICK(res.data.partnerNickname));
 
-              // 캐칭 페이지로 이동
-              anima();
+                  if (!firstRendering) {
+                    firstRendering = true;
 
-              const timer = setTimeout(() => {
-                clearInterval(interval);
-                clearTimeout(timer);
-                if (!alert("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.")) {
-                  toggleChange();
-                }
-              }, 7 * 1000);
+                    // 캐칭 페이지로 이동
+                    anima();
+
+                    const timer = setTimeout(() => {
+                      clearInterval(interval);
+                      clearTimeout(timer);
+                      toggleChange();
+                    }, 7 * 1000);
+                  }
+                })
+                // 실패했을 경우 에러 반환 => 인터벌 안닫힘, 다시 요청해야함
+                .catch((error) => {
+                  console.log(error);
+                  console.log("accept catch 분기", errorCnt);
+                  if (++errorCnt >= 10) {
+                    // 에러가 5회이상일 경우 해당 요청 취소 및 알람
+                    axios({
+                      method: "post",
+                      url: `${API_URL}/stop`,
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${myToken}`,
+                      },
+                      data: {
+                        gender: USERSEX,
+                        userId: userId,
+                      },
+                    })
+                      .then((res) => {
+                        console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
+                      })
+                      .catch(() => {
+                        console.log("stop 통신 실패");
+                      });
+                    clearInterval(interval);
+                    alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+                  }
+                });
+            } else {
+              // 취소 버튼을 눌렀을 때, axios:decline
+              dispatch(ROOM_NUM(""));
+              axios({
+                method: "post",
+                url: `${process.env.REACT_APP_API_ROOT_WONWOONG}/decline`,
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${myToken}`,
+                },
+                data: {},
+              })
+                .then((res) => {
+                  clearInterval(interval);
+                  navigate("/home");
+                })
+                .catch((err) => {
+                  console.log(`${err.response.status}error, decline error 발생`);
+                  if (err.response.status === 403) {
+                    axios({
+                      method: "get",
+                      url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
+                    }).then((res) => {
+                      console.log("액세스 토큰 재발급");
+                      dispatch(saveToken(res.data.body.token));
+                    });
+                  } else if (err.response.status === 500) {
+                    dispatch(saveToken(""));
+                    navigate("/");
+                  }
+                });
             }
           }
           // partnerId && sessionId 없을 경우 => 여자를 안거치고 바로 왔을 경우
@@ -213,7 +296,7 @@ function MeetingNotIn() {
             let partnerId = res.data.partnerId;
             console.log(`check partnerId: ${partnerId}`);
 
-            // 방번호 생성해줘야 함 : 현재날짜+시간으로 방이름 만들어줌
+            // 방번호(sessionId) 생성
             let makingRoomName = makeRoomName();
             console.log(makingRoomName);
 
@@ -287,7 +370,36 @@ function MeetingNotIn() {
                   }
                 });
             } else {
-              // decline
+              // 취소 버튼을 눌렀을 때, axios:decline
+              dispatch(ROOM_NUM(""));
+              axios({
+                method: "post",
+                url: `${process.env.REACT_APP_API_ROOT_WONWOONG}/decline`,
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${myToken}`,
+                },
+                data: {},
+              })
+                .then((res) => {
+                  clearInterval(interval);
+                  navigate("/home");
+                })
+                .catch((err) => {
+                  console.log(`${err.response.status}error, decline error 발생`);
+                  if (err.response.status === 403) {
+                    axios({
+                      method: "get",
+                      url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
+                    }).then((res) => {
+                      console.log("액세스 토큰 재발급");
+                      dispatch(saveToken(res.data.body.token));
+                    });
+                  } else if (err.response.status === 500) {
+                    dispatch(saveToken(""));
+                    navigate("/");
+                  }
+                });
             }
           } else {
             console.log("check OK, 남자와 매칭이 안됐을 경우", errorCnt);
@@ -385,6 +497,7 @@ function MeetingNotIn() {
   // }, 5 * 1000);
 
   function stopMatching() {
+    dispatch(ROOM_NUM(""));
     clearInterval(interval);
     navigate("/home");
   }

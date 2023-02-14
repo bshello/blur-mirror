@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../MyInfoModal/myInfoModal.css";
 import "./setmodal.css";
-import styled from "styled-components";
 
 function SetModal() {
   // 성별 바꾸기
@@ -15,29 +14,27 @@ function SetModal() {
     const slider = document.querySelector(".slider");
     const progress = document.querySelector(".progressSlider");
     setDistance(slider.value);
-    const dis = slider.value + "%";
+    const dis = slider.value * 2 + "%";
     progress.style.width = dis;
   };
 
-  const [leftSliderValue, setLeftSliderValue] = useState(18);
-  const [rightSliderValue, setRightSliderValue] = useState(40);
+  /// 양방향
+  const [leftSliderValue, setLeftSliderValue] = useState(20);
+  const [rightSliderValue, setRightSliderValue] = useState(50);
 
   const handleLeftSliderChange = (event) => {
-    const newValue = parseInt(event.target.value);
-    if (newValue >= rightSliderValue) {
-      setRightSliderValue(newValue);
+    const newLeftSliderValue = event.target.value;
+    if (newLeftSliderValue <= rightSliderValue) {
+      setLeftSliderValue(newLeftSliderValue);
     }
-    setLeftSliderValue(newValue);
   };
 
   const handleRightSliderChange = (event) => {
-    const newValue = parseInt(event.target.value);
-    if (newValue <= leftSliderValue) {
-      setLeftSliderValue(newValue);
+    const newRightSliderValue = event.target.value;
+    if (newRightSliderValue >= leftSliderValue) {
+      setRightSliderValue(newRightSliderValue);
     }
-    setRightSliderValue(newValue);
   };
-
   return (
     <div className="SettingModal">
       <div></div>
@@ -64,13 +61,7 @@ function SetModal() {
               <div className="blurdiv" />
 
               <div className="range-slider">
-                <input
-                  type="range"
-                  className="slider"
-                  min="0"
-                  max="50"
-                  onChange={changeDistance}
-                ></input>
+                <input type="range" className="slider" min="0" max="50" onChange={changeDistance}></input>
                 <div className="progressSlider"></div>
               </div>
             </div>
@@ -82,31 +73,33 @@ function SetModal() {
             <div className="SetMMPartnerCheckdiv">
               <div className="blurdiv"></div>
 
-              <input
-                type="range"
-                className="range-slider1 range-slider1-left"
-                value={leftSliderValue}
-                onChange={handleLeftSliderChange}
-                style={{ pointerEvents: "none" }}
-                min={18}
-                max={40}
-              />
-              <input
-                type="range"
-                className="range-slider1 range-slider1-right"
-                value={rightSliderValue}
-                onChange={handleRightSliderChange}
-                style={{ pointerEvents: "none" }}
-                min={18}
-                max={40}
-              />
-              <div
-                className="range-bar"
-                style={{
-                  left: `${leftSliderValue}%`,
-                  width: `${rightSliderValue - leftSliderValue}%`,
-                }}
-              />
+              <div className="range-slider">
+                <input
+                  className="range-slider1 range-slider1-left"
+                  type="range"
+                  min="20"
+                  max="50"
+                  style={{ pointerEvents: "none" }}
+                  value={leftSliderValue}
+                  onChange={handleLeftSliderChange}
+                />
+                <input
+                  className="range-slider1 range-slider1-right"
+                  type="range"
+                  min="20"
+                  max="50"
+                  style={{ pointerEvents: "none" }}
+                  value={rightSliderValue}
+                  onChange={handleRightSliderChange}
+                />
+                <div
+                  className="range-bar"
+                  style={{
+                    left: `${leftSliderValue / 20}% `,
+                    width: `${rightSliderValue * 2 - leftSliderValue}%`,
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
