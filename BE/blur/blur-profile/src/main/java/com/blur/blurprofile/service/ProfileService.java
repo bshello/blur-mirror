@@ -169,7 +169,24 @@ public class ProfileService {
                     .build();
             userProfileRepository.save(userProfile12);
         }
-        return profileDto;
+        if (profileDto != null) {
+
+            UserProfile userProfile13 = userProfileRepository.findByUserId("test13");
+            if (userProfile13 == null) {
+                userProfile13 = UserProfile.builder()
+                        .userId("test13")
+                        .build();
+                userProfileRepository.save(userProfile13);
+            } else {
+                UserProfile userProfile14 = userProfileRepository.findByUserId("test14");
+                if (userProfile14 == null) {
+                    userProfile14 = UserProfile.builder()
+                            .userId("test14")
+                            .build();
+                    userProfileRepository.save(userProfile14);
+                }
+            }
+        }return profileDto;
     }
 
     public Collection<String> getPartnerInterest(String partnerId) {
