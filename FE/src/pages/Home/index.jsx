@@ -48,8 +48,8 @@ function Home() {
   const [slideNumber, setSlideNumber] = useState(0);
 
   //프로필 설정이 완료여부 알려주는 변수
-  // const profiled = useSelector((state) => state.strr.profiled);
-  const profiled = true;
+  const profiled = useSelector((state) => state.strr.profiled);
+  // const profiled = true;
   const navigate = useNavigate();
 
   const showBlurInfoModal = () => {
