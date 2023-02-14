@@ -1,12 +1,18 @@
 package com.blur.blurprofile.service;
 
 import com.blur.blurprofile.dto.*;
+import com.blur.blurprofile.dto.request.RequestProfileSettingDto;
+import com.blur.blurprofile.dto.request.RequestUserInterestDto;
+import com.blur.blurprofile.dto.response.ResponseCardDto;
+import com.blur.blurprofile.dto.response.ResponseInterestDto;
+import com.blur.blurprofile.dto.response.ResponseProfileSettingDto;
 import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.entity.UserInterest;
 import com.blur.blurprofile.entity.UserProfile;
 import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.repository.UserInterestRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -46,7 +52,11 @@ public class ProfileService {
                     .build();
             userProfileRepository.save(userProfile);
         }
-        List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
+        List<UserInterest> UserInterests = userInterestRepository.findByUserProfile(userProfile);
+        List<Interest> userInterests = new ArrayList<>();
+        for (UserInterest UserInterest : UserInterests) {
+            userInterests.add(UserInterest.getInterest());
+        }
         ResponseCardDto responseCardDto = new ResponseCardDto(userProfile, userInterests);
         return responseCardDto;
     }
@@ -83,18 +93,25 @@ public class ProfileService {
         return requestProfileSettingDto;
     }
 
-    public InterestDto getInterests(String userId) {
+    public ResponseInterestDto getInterests(String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
-        InterestDto interestDto = new InterestDto(interestRepository.findAll(),userInterestRepository.findByUserProfile(userProfile));
-        return interestDto;
+        List<Interest> allInterests = interestRepository.findAll();
+        List<UserInterest> UserInterests = userInterestRepository.findByUserProfile(userProfile);
+        List<Interest> userInterests = new ArrayList<>();
+        for (UserInterest userInterest : UserInterests) {
+            userInterests.add(userInterest.getInterest());
+        }
+        ResponseInterestDto responseInterestDto = new ResponseInterestDto(allInterests, userInterests);
+        return responseInterestDto;
     }
 
     public void updateInterest(RequestUserInterestDto requestUserInterestDto, String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         List<UserInterest> userInterests = userInterestRepository.findByUserProfile(userProfile);
         userInterestRepository.deleteAll(userInterests);
-        List<Interest> interests = requestUserInterestDto.getInterests();
-        for (Interest interest : interests) {
+        List<String> interests = requestUserInterestDto.getInterests();
+        for (String interestName : interests) {
+            Interest interest = interestRepository.findByInterestName(interestName);
             UserInterest userInterest = UserInterest.builder()
                     .userProfile(userProfile)
                     .interest(interest)
