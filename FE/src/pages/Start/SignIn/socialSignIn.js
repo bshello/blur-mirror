@@ -22,7 +22,7 @@ function SocialSignInRedirect() {
 
     axios({
       method: "get",
-      url: process.env.REACT_APP_SIGN_API_URL,
+      url: process.env.REACT_APP_API_ROOT_DONGHO,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
