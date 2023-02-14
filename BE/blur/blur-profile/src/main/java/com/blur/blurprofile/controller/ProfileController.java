@@ -7,9 +7,8 @@ import com.blur.blurprofile.dto.response.ResponseCardDto;
 import com.blur.blurprofile.dto.response.ResponseInterestDto;
 import com.blur.blurprofile.dto.response.ResponseProfileSettingDto;
 import com.blur.blurprofile.entity.Interest;
-import com.blur.blurprofile.entity.UserProfile;
 import com.blur.blurprofile.repository.InterestRepository;
-import com.blur.blurprofile.repository.UserProfileRepository;
+import com.blur.blurprofile.service.CountService;
 import com.blur.blurprofile.service.ProfileService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +26,13 @@ import java.util.*;
 public class ProfileController {
 
     @Autowired
-    private ProfileService profileService;
+    ProfileService profileService;
 
     @Autowired
-    private InterestRepository interestRepository;
-
+    InterestRepository interestRepository;
+    
     @Autowired
-    private UserProfileRepository userProfileRepository;
+    CountService countService;
 
     @PostMapping("/test")
     public void test(@PathVariable("id") String userId) {
@@ -45,18 +44,6 @@ public class ProfileController {
             Interest randomInterest = interestList.get(rand.nextInt(num));
             interests.add(randomInterest);
         }
-    }
-
-    @ApiOperation(value = "프로필 유무 확인", response = ResponseCardDto.class)
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "프로필 유무 확인"),
-    })
-    @GetMapping("/check")
-    public ResponseEntity<Boolean> check(
-            @ApiParam(value = "사용자의 ID", required = true) @PathVariable("id") String userId) {
-
-        Boolean res = profileService.check(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
     @ApiOperation(value = "카드 정보 가져오기", response = ResponseCardDto.class)
@@ -166,13 +153,7 @@ public class ProfileController {
     })
     @GetMapping("/service")
     public ResponseEntity<ProfileDto> getProfile(@ApiParam(value = "User ID", required = true) @PathVariable("id") String userId) {
-        UserProfile userProfile11 = userProfileRepository.findByUserId("test11");
-        if (userProfile11 == null) {
-            userProfile11 = UserProfile.builder()
-                    .userId("test11")
-                    .build();
-            userProfileRepository.save(userProfile11);
-        }
+
         ProfileDto profileDto = profileService.getProfile(userId);
         return ResponseEntity.status(HttpStatus.OK).body(profileDto);
     }
@@ -183,5 +164,20 @@ public class ProfileController {
         Collection<String> partnerInterest = profileService.getPartnerInterest(partnerId);
         return ResponseEntity.status(HttpStatus.OK).body(partnerInterest);
     }
-
+    
+    
+    
+    @ApiOperation(value = "관심사 순위 가져오기", response = ResponseInterestDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "관심사 순위 가져오기 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @GetMapping("/getInterestRank")
+    public ResponseEntity<?> getInterestRank(@RequestBody String interestName) {
+        return ResponseEntity.status(HttpStatus.OK).body(countService.getTopUserInterestsByInterest(interestName));
+    }
 }
