@@ -10,6 +10,10 @@ app.use(cors());
 // express를 이용해 http 서버를 만듦(노출 서버)
 const httpServer = http.createServer(app);
 
+// 로컬 / ec2서버
+// cors: http://localhost:3000  /  [https://admin.socket.io]
+// httpServer.listen: 3001  /  https://i8b307.p.ssafy.io
+
 // // http 서버 위에 ws(webSocket) 서버를 만듦
 const wsServer = new Server(httpServer, {
   cors: {
@@ -33,11 +37,14 @@ wsServer.on("connection", (socket) => {
   socket.on("ice", (ice, roomName) => {
     socket.to(roomName).emit("ice", ice);
   });
+  socket.on("leave-room", (roomName, done) => {
+    socket.to(roomName).emit("peer-leaving");
+    socket.leave(roomName);
+    done();
+  });
   socket.on("disconnecting", () => {
     socket.rooms.forEach((room) => {
-      // Notify other peer that current user is leaving
       socket.to(room).emit("peer-leaving");
-      // Leave the room
       socket.leave(room);
     });
   });
