@@ -60,13 +60,13 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           alert("로그인 에러");
         });
     } else {
-      alert("아이디와 비밀번호를 입력해주세요");
+      alert("아이디와 비밀번호를 입력해주세요.");
     }
   };
 
   //소셜 로그인 함수
   const socialSignIn = (socialType) => {
-    return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=${SOCIAL_API_URL}/oauth/redirect`;
+    return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=http://localhost:3000/oauth/redirect`;
   };
 
   return (
