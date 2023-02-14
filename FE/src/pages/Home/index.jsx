@@ -24,7 +24,7 @@ function Home() {
   let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
   const dispatch = useDispatch();
 
-  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}`;
   // startVideo 함수 실행하면 자신의 모습 볼수있음
   const videoRef = useRef(null);
   const CONSTRAINTS = { video: { width: { exact: 440 }, height: { exact: 340 } } };
@@ -82,7 +82,7 @@ function Home() {
     getProfileToggle = 1;
     axios({
       method: "GET",
-      url: `${API_URL}/`,
+      url: `${API_URL}/blur-profile/profile/${userId}/check`,
     })
       .then((res) => {
         console.log(`res.data: ${res.data}`);
@@ -108,7 +108,7 @@ function Home() {
           dispatch(MYGEO({ lat: loc.coords.latitude, lng: loc.coords.longitude }));
           axios({
             method: "post",
-            url: `${API_URL}/start`,
+            url: `${API_URL}/blur-match/match/start`,
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${myToken}`,
