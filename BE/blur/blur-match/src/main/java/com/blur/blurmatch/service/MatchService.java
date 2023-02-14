@@ -132,7 +132,7 @@ public class MatchService {
         ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl, ResponseProfileDto.class, userId);
         MatchMakingRating matchMakingRating2 = matchMakingRatingRepository.findByUserId("test2");
         if (matchMakingRating2 == null) {
-            matchMakingRating = MatchMakingRating.builder()
+            matchMakingRating2 = MatchMakingRating.builder()
                     .userId("test2")
                     .point(1000)
                     .build();

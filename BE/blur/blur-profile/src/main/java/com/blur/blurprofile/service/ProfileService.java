@@ -163,30 +163,7 @@ public class ProfileService {
         }
         ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
         UserProfile userProfile12 = userProfileRepository.findByUserId("test12");
-        if (userProfile12 == null) {
-            userProfile12 = UserProfile.builder()
-                    .userId("test12")
-                    .build();
-            userProfileRepository.save(userProfile12);
-        }
-        if (profileDto != null) {
-
-            UserProfile userProfile13 = userProfileRepository.findByUserId("test13");
-            if (userProfile13 == null) {
-                userProfile13 = UserProfile.builder()
-                        .userId("test13")
-                        .build();
-                userProfileRepository.save(userProfile13);
-            } else {
-                UserProfile userProfile14 = userProfileRepository.findByUserId("test14");
-                if (userProfile14 == null) {
-                    userProfile14 = UserProfile.builder()
-                            .userId("test14")
-                            .build();
-                    userProfileRepository.save(userProfile14);
-                }
-            }
-        }return profileDto;
+        return profileDto;
     }
 
     public Collection<String> getPartnerInterest(String partnerId) {
