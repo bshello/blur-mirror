@@ -53,7 +53,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter
         - id: blur-match
           uri: lb://BLUR-MATCH
           predicates:
@@ -62,7 +62,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-match/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter
         - id: blur-chat
           uri: lb://BLUR-CHAT
           predicates:
@@ -71,7 +71,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter
 
 eureka:
   client:

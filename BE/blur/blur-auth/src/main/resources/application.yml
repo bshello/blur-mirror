@@ -135,7 +135,7 @@ app:
     refreshTokenExpiry: 604800000
   oauth2:
     authorizedRedirectUris:
-      - http://localhost:3000/oauth/redirect
+      - https://i8b307.p.ssafy.io/oauth/redirect
       
 
 #token:
