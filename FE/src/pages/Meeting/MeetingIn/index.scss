@@ -494,6 +494,12 @@
           top: 0vw;
           right: 0vw;
 
+          .MPartenerCamSubExitBtn {
+            width: 50px;
+            height: 50px;
+            z-index: 6;
+          }
+
           .MPartenerCamSubBlockBtn {
             position: absolute;
             width: 1.806vw;
