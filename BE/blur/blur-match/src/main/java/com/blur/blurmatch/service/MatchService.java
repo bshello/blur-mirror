@@ -116,8 +116,8 @@ public class MatchService {
                     .build();
             matchMakingRatingRepository.save(matchMakingRating123);
         }
-        String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
-
+//        String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
+        String getProfileUrl = "http://i8b307.p.ssafy.io/blur-profile/profile/1234/service";
         MatchMakingRating matchMakingRating1 = matchMakingRatingRepository.findByUserId(getProfileUrl);
         if (matchMakingRating1 == null) {
             matchMakingRating1 = MatchMakingRating.builder()
@@ -126,6 +126,9 @@ public class MatchService {
                     .build();
             matchMakingRatingRepository.save(matchMakingRating1);
         }
+
+
+
         ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl, ResponseProfileDto.class, userId);
         MatchMakingRating matchMakingRating2 = matchMakingRatingRepository.findByUserId("test2");
         if (matchMakingRating2 == null) {
