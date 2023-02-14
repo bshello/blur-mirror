@@ -52,7 +52,7 @@ eureka:
     register-with-eureka: true
 
 blur-profile:
-  url: http://i8b307.p.ssafy.io//blur-profile/profile
+  url: http://i8b307.p.ssafy.io/blur-profile/profile
 
 
 
