@@ -58,6 +58,7 @@ public class ProfileService {
     private AmazonS3 amazonS3;
 
     public Boolean check(String userId) {
+
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         if (userProfile == null) {
             return false;

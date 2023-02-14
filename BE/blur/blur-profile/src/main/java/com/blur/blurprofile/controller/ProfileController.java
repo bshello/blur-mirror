@@ -7,9 +7,7 @@ import com.blur.blurprofile.dto.response.ResponseCardDto;
 import com.blur.blurprofile.dto.response.ResponseInterestDto;
 import com.blur.blurprofile.dto.response.ResponseProfileSettingDto;
 import com.blur.blurprofile.entity.Interest;
-import com.blur.blurprofile.entity.UserProfile;
 import com.blur.blurprofile.repository.InterestRepository;
-import com.blur.blurprofile.repository.UserProfileRepository;
 import com.blur.blurprofile.service.ProfileService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +29,6 @@ public class ProfileController {
 
     @Autowired
     InterestRepository interestRepository;
-    @Autowired
-    private UserProfileRepository userProfileRepository;
 
     @PostMapping("/test")
     public void test(@PathVariable("id") String userId) {
@@ -46,15 +42,16 @@ public class ProfileController {
         }
     }
 
-    @ApiOperation(value = "프로필 유무 확인", response = Boolean.class)
+    @ApiOperation(value = "프로필 유무 확인", response = ResponseCardDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "프로필 유무 확인"),
     })
-    @GetMapping("check")
-    public ResponseEntity<Boolean> check(@ApiParam(value = "사용자의 ID", required = true) @PathVariable("id") String userId) {
+    @GetMapping("/check")
+    public ResponseEntity<Boolean> check(
+            @ApiParam(value = "사용자의 ID", required = true) @PathVariable("id") String userId) {
 
         Boolean res = profileService.check(userId);
-        return  ResponseEntity.status(HttpStatus.OK).body(res);
+        return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
     @ApiOperation(value = "카드 정보 가져오기", response = ResponseCardDto.class)
