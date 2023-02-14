@@ -1,12 +1,13 @@
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Hash from "./Hash/Hash";
 import { useNavigate } from "react-router-dom";
 import ModalWrap from "../Start/ModalWrap/modalWrap";
 import Alert from "../../pages/Start/Alert";
+import axios from "axios";
 
 function MyInfo() {
   // 화면 켜지자 말자 띄우는 거
@@ -15,23 +16,21 @@ function MyInfo() {
   const API_URL = `http://192.168.31.73:8000/blur-profile/profile/${id}`;
   // const id = "123123";
   // const [proFile, setProFile] = useState([]);
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `${API_URL}`,
-      data: {},
+  axios({
+    method: "GET",
+    url: `${API_URL}`,
+    data: {},
+  })
+    .then((res) => {
+      console.log(res.data);
+      console.log(res.status);
+      // setProFile(res.data);
+      console.log("성공><");
     })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.status);
-        // setProFile(res.data);
-        console.log("성공><");
-      })
-      .catch((err) => {
-        alert("기존 데이터 없다.");
-        console.log(err);
-      });
-  }, []);
+    .catch((err) => {
+      alert("기존 데이터 없다.");
+      console.log(err);
+    });
 
   //profile edit modal
   const [miModal, setMyInfoModal] = useState(false);
@@ -75,9 +74,9 @@ function MyInfo() {
     return state.intro.value;
   });
 
-  // const age = useSelector((state) => {
-  //   return state.age.value;
-  // });
+  const age = useSelector((state) => {
+    return state.age.value;
+  });
 
   // 이미지 미리보기
   // const [imgFile, setImgFile] = useState("");
