@@ -1,5 +1,9 @@
 package com.blur.blurprofile.service;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.MultipartUpload;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.blur.blurprofile.dto.*;
 import com.blur.blurprofile.dto.request.RequestProfileSettingDto;
 import com.blur.blurprofile.dto.request.RequestUserInterestDto;
@@ -12,18 +16,21 @@ import com.blur.blurprofile.entity.UserProfile;
 import com.blur.blurprofile.repository.InterestRepository;
 import com.blur.blurprofile.repository.UserInterestRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import com.blur.blurprofile.repository.UserProfileRepository;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -43,6 +50,12 @@ public class ProfileService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucket;
+
+    @Autowired
+    private AmazonS3 amazonS3;
 
     public ResponseCardDto getCard(String userId) {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
@@ -81,7 +94,7 @@ public class ProfileService {
         String userId = requestProfileSettingDto.getUserId();
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         userProfile.updateProfile(requestProfileSettingDto.getAge(), requestProfileSettingDto.getNickname(),
-                requestProfileSettingDto.getImage(), requestProfileSettingDto.getGender(), requestProfileSettingDto.getIntroduce());
+                requestProfileSettingDto.getGender(), requestProfileSettingDto.getIntroduce());
         userProfileRepository.save(userProfile);
         MatchSettingDto matchSettingDto = new ModelMapper().map(requestProfileSettingDto, MatchSettingDto.class);
         HttpHeaders headers = new HttpHeaders();
@@ -91,6 +104,17 @@ public class ProfileService {
         System.out.println(updateMatchSettingUrl);
         ResponseEntity<String> response = restTemplate.exchange(updateMatchSettingUrl, HttpMethod.PUT, request, String.class);
         return requestProfileSettingDto;
+    }
+
+    public String updateImage(String userId, MultipartFile profileImage) throws IOException {
+        UserProfile userProfile = userProfileRepository.findByUserId(userId);
+        String s3FileName = UUID.randomUUID() + "-" + profileImage.getOriginalFilename();
+        ObjectMetadata objMeta = new ObjectMetadata();
+        objMeta.setContentLength(profileImage.getInputStream().available());
+        amazonS3.putObject(bucket, s3FileName, profileImage.getInputStream(), objMeta);
+        amazonS3.setObjectAcl(bucket, s3FileName, CannedAccessControlList.PublicRead);
+        userProfile.updateImage(amazonS3.getUrl(bucket, s3FileName).toString());
+        return amazonS3.getUrl(bucket, s3FileName).toString();
     }
 
     public ResponseInterestDto getInterests(String userId) {

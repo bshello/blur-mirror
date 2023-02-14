@@ -43,12 +43,15 @@ public class UserProfile {
     private List<UserInterest> userInterests =  new ArrayList<>();
 
 
-    public void updateProfile(Integer age, String nickname, String image, String gender, String introduce) {
+    public void updateProfile(Integer age, String nickname, String gender, String introduce) {
         this.age = age;
         this.nickname = nickname;
-        this.image = image;
         this.gender = gender;
         this.introduce = introduce;
+    }
+
+    public void updateImage(String image) {
+        this.image = image;
     }
 
 }
