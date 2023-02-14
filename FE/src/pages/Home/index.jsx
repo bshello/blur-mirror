@@ -117,7 +117,8 @@ function Home() {
             })
             .catch((err) => {
               console.log(err);
-
+              console.log(err.response.status === 500);
+              console.log(`token: ${myToken}`);
               if (err.response.status === 403) {
                 console.log(err);
                 axios({
