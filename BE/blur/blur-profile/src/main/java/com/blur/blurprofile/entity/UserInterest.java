@@ -22,6 +22,7 @@ public class UserInterest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_profile")
     private UserProfile userProfile;

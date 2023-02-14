@@ -1,4 +1,4 @@
-package com.blur.blurprofile.dto;
+package com.blur.blurprofile.dto.request;
 
 import com.blur.blurprofile.entity.Interest;
 import io.swagger.annotations.ApiModel;
@@ -15,9 +15,9 @@ import java.util.List;
 public class RequestUserInterestDto {
 
     @ApiModelProperty(value = "관심사 목록", required = true)
-    private List<Interest> Interests;
+    private List<String> Interests;
 
-    public RequestUserInterestDto(List<Interest> interests) {
+    public RequestUserInterestDto(List<String> interests) {
         this.Interests = interests;
     }
 

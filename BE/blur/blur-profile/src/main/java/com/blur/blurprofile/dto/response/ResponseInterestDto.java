@@ -1,7 +1,6 @@
-package com.blur.blurprofile.dto;
+package com.blur.blurprofile.dto.response;
 
 import com.blur.blurprofile.entity.Interest;
-import com.blur.blurprofile.entity.UserInterest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -14,16 +13,16 @@ import java.util.List;
 @Getter
 @Setter
 @ApiModel(description = "InterestDto")
-public class InterestDto {
+public class ResponseInterestDto {
 
     @ApiModelProperty(value = "전체 관심사 목록")
     private List<Interest> interests;
 
     @ApiModelProperty(value = "사용자 관심사 목록")
-    private List<UserInterest> userInterests;
+    private List<Interest> userInterests;
 
-    public InterestDto(List<Interest> interests, List<UserInterest> userInterests) {
-        this.interests = interests;
+    public ResponseInterestDto(List<Interest> allInterests, List<Interest> userInterests) {
+        this.interests = allInterests;
         this.userInterests = userInterests;
     }
 }

@@ -1,6 +1,7 @@
 package com.blur.blurprofile.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,6 +38,7 @@ public class UserProfile {
     @Column(name = "introduce")
     private String introduce;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "userProfile")
     private List<UserInterest> userInterests =  new ArrayList<>();
 
