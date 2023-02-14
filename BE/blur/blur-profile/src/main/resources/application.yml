@@ -65,4 +65,4 @@ eureka:
     register-with-eureka: true
 
 blur-match:
-  url: http://i8b307.p.ssafy.io/blur-match/match
+  url: https://i8b307.p.ssafy.io/blur-match/match

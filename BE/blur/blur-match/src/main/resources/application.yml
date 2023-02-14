@@ -42,12 +42,6 @@ spring:
         order_updates: true
         format_sql: true
 
-logging:
-  level:
-    root: INFO
-    com.blur.blurmatch: DEBUG
-
-
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

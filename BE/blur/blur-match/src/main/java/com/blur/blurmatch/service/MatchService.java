@@ -112,54 +112,12 @@ public class MatchService {
         ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl, ResponseProfileDto.class, userId);
         ResponseProfileDto responseProfileDto = profileResponse.getBody();
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
-        if (responseProfileDto == null) {
-                MatchMakingRating matchMakingRating222 = MatchMakingRating.builder()
-                        .userId("responseProfileDto")
-                        .point(1000)
-                        .winningStreak(0)
-                        .losingStreak(0)
-                        .reportCount(0)
-                        .build();
-                matchMakingRatingRepository.save(matchMakingRating222);
-        }
-        else {
-            MatchMakingRating matchMakingRating223 = MatchMakingRating.builder()
-                    .userId("null아님")
-                    .point(1000)
-                    .winningStreak(0)
-                    .losingStreak(0)
-                    .reportCount(0)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating223);
-
-        }
-
-
-
-
-
         MatchDto matchDto = new MatchDto(requestMatchDto, matchSetting, matchMakingRating, responseProfileDto);
-        MatchMakingRating matchMakingRating5 = matchMakingRatingRepository.findByUserId("test5");
-        if (matchMakingRating5 == null) {
-            matchMakingRating5 = MatchMakingRating.builder()
-                    .userId("test5")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating5);
-        }
         if (matchDto.getGender().equals("M")) {
             males.put(matchDto.getUserId(), matchDto);
             ResponseMatchDto responseMatchDto = new ResponseMatchDto();
             responseMatchDto.setMyGender(matchDto.getGender());
             return responseMatchDto;
-        }
-        MatchMakingRating matchMakingRating6 = matchMakingRatingRepository.findByUserId("test6");
-        if (matchMakingRating6 == null) {
-            matchMakingRating6 = MatchMakingRating.builder()
-                    .userId("test6")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating6);
         }
         Queue<QueueDto> maleList = new PriorityQueue<>((o1, o2) -> {
             if(o1.getPoint()  == o2.getPoint()) {
@@ -183,24 +141,8 @@ public class MatchService {
             ResponseMatchDto responseMatchDto = new ResponseMatchDto(femaleDto, selectedMale);
             return responseMatchDto;
         }
-        MatchMakingRating matchMakingRating7 = matchMakingRatingRepository.findByUserId("test7");
-        if (matchMakingRating7 == null) {
-            matchMakingRating7 = MatchMakingRating.builder()
-                    .userId("test7")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating7);
-        }
         ResponseMatchDto responseMatchDto = new ResponseMatchDto();
         responseMatchDto.setMyGender(femaleDto.getGender());
-        MatchMakingRating matchMakingRating8 = matchMakingRatingRepository.findByUserId("test8");
-        if (matchMakingRating8 == null) {
-            matchMakingRating8 = MatchMakingRating.builder()
-                    .userId("test8")
-                    .point(1000)
-                    .build();
-            matchMakingRatingRepository.save(matchMakingRating8);
-        }
         return responseMatchDto;
     }
 

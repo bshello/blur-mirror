@@ -162,7 +162,6 @@ public class ProfileService {
             userProfileRepository.save(userProfile);
         }
         ProfileDto profileDto = new ModelMapper().map(userProfile, ProfileDto.class);
-        UserProfile userProfile12 = userProfileRepository.findByUserId("test12");
         return profileDto;
     }
 
