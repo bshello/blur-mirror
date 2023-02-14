@@ -9,7 +9,7 @@ import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://i8b307.p.ssafy.io");
 let roomName;
 let myPeerConnection;
 let myStream;
