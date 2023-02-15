@@ -38,15 +38,15 @@
 }
 .HomeSubFrame .HomeLeftDiv {
   position: absolute;
-  width: 35.9375vw;
   height: 31.25vw;
+  width: 35.9375vw;
   left: 4.1667vw;
   top: 2.0833vw;
 }
 .HomeSubFrame .HomeLeftDiv .HomeCamDiv {
   position: absolute;
-  width: 30.5556vw;
   height: 23.6111vw;
+  width: 30.5556vw;
   left: 2.0833vw;
   top: 0vw;
   background: url(../../assets/images/man4.jfif);
@@ -55,16 +55,16 @@
 }
 .HomeSubFrame .HomeLeftDiv .HomeCamDiv .HomeCamImg {
   position: absolute;
-  width: 26.0417vw;
   height: 17.3611vw;
+  width: 26.0417vw;
   left: 0vw;
   top: 0vw;
   border-radius: 2.0833vw;
 }
 .HomeSubFrame .HomeLeftDiv .InfoBlurBtn {
   position: absolute;
-  width: 2.4306vw;
   height: 2.4306vw;
+  width: 2.4306vw;
   left: 33.3333vw;
   top: 11.1111vw;
   background: url(../../assets/images/info.png);
@@ -72,8 +72,8 @@
 }
 .HomeSubFrame .HomeLeftDiv .CamToggle {
   position: absolute;
-  width: 2.2917vw;
   height: 2.2917vw;
+  width: 2.2917vw;
   left: 33.3333vw;
   top: 13.8889vw;
   background: url(../../assets/images/camera.png);
@@ -81,8 +81,8 @@
 }
 .HomeSubFrame .HomeLeftDiv .CommBoxFrame2 {
   position: absolute;
-  width: 30.5556vw;
   height: 4.8611vw;
+  width: 30.5556vw;
   left: 2.0833vw;
   top: 24.3056vw;
   background: #50a1a3;
@@ -90,29 +90,29 @@
 }
 .HomeSubFrame .HomeLeftDiv .CommBoxFrame2 .CommBoxFrameStart {
   position: absolute;
-  width: 30.5556vw;
   height: 3.4722vw;
+  width: 30.5556vw;
   left: 0vw;
   top: 0.6944vw;
   font-weight: 400;
-  font-size: 2.8646vw;
   line-height: 3.4722vw;
+  font-size: 2.8646vw;
   text-align: center;
   color: #ffffff;
   cursor: pointer;
 }
 .HomeSubFrame .HomeRightDiv {
   position: absolute;
-  width: 37.0313vw;
   height: 31.25vw;
+  width: 37.0313vw;
   left: 46vw;
   top: 2.0833vw;
   animation: smoothAppear 1s;
 }
 .HomeSubFrame .HomeRightDiv .HomeRightImgDiv {
   position: absolute;
-  width: 38.1944vw;
   height: 23.6111vw;
+  width: 38.1944vw;
   left: 0vw;
   top: 0vw;
   border-radius: 2.0833vw;
@@ -120,16 +120,16 @@
 }
 .HomeSubFrame .HomeRightDiv .HomeRightImgDiv .HomeRightImg {
   position: absolute;
-  width: 38.1944vw;
   height: 23.6111vw;
+  width: 38.1944vw;
   left: 0vw;
   top: 0vw;
   border-radius: 2.0833vw;
 }
 .HomeSubFrame .HomeRightDiv .HomeRightToolTipDiv {
   position: absolute;
-  width: 38.1944vw;
   height: 4.8611vw;
+  width: 38.1944vw;
   left: 0vw;
   top: 24.3056vw;
   background: #fffdfd;
@@ -137,14 +137,14 @@
 }
 .HomeSubFrame .HomeRightDiv .HomeRightToolTipDiv .HomeRightToolTipText {
   position: absolute;
-  width: 38.1944vw;
   height: 1.875vw;
+  width: 38.1944vw;
   left: 0vw;
   top: 1.5vw;
   font-family: "Happy Monkey";
   font-style: normal;
   font-weight: 400;
-  font-size: 1.5vw;
   line-height: 1.875vw;
+  font-size: 1.5vw;
   color: #50a1a3;
 }/*# sourceMappingURL=index.css.map */
