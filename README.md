@@ -491,3 +491,23 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 
 ---
+
+## Jira
+
+#### []()Jira Convention
+
+| Issue Type | 설명  | 예시  |
+| --- | --- | --- |
+| Epic | 최상위 수준의 기능/작업 단위(프로젝트 전반 또는 여러 Sprint에 걸쳐 진행할 정도의 범위 | 회원 관리, 로그인 관리 |
+| Story | Epic에 대한 하위 Level 수준의 기능/작업 단위 | 회원 가입, 회원 정보 수정, 로그인.. |
+| Task | 개발에 직접 해당되지는 않으나 Sprint안에 포함하는 일 | ERD작성, 테스트케이스 작성 |
+| Sub-task | 위 Issue들과 관련하여 세부 단위 작업 등이 필요할 때 |     |
+
+#### []()Sprint
+
+- 예외가 없다면 Sub PJT 1, 2, 3을 Sprint로 생성(6주)
+- 1인 하루 8포인트씩 5일 = 40 point
+
+#### []()BurnDown Chart
+
+![](file://C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-02-15-14-29-42-image.png?msec=1676438982180)
