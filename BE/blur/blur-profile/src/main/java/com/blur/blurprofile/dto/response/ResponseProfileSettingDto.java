@@ -42,7 +42,10 @@ public class ResponseProfileSettingDto {
     @ApiModelProperty(value = "최대 나이")
     private Integer maxAge;
 
-    public ResponseProfileSettingDto(ProfileDto profileDto, MatchSettingDto matchSettingDto) {
+    @ApiModelProperty(value = "이메일")
+    private String email;
+
+    public ResponseProfileSettingDto(ProfileDto profileDto, MatchSettingDto matchSettingDto, String email) {
         this.userId = profileDto.getUserId();
         this.age = profileDto.getAge();
         this.nickname = profileDto.getNickname();
@@ -53,5 +56,6 @@ public class ResponseProfileSettingDto {
         this.maxDistance = matchSettingDto.getMaxDistance();
         this.minAge = matchSettingDto.getMinAge();
         this.maxAge = matchSettingDto.getMaxAge();
+        this.email = email;
     }
 }
