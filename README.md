@@ -139,11 +139,9 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 ![3](/uploads/15c172581cdb1da3ac51b8790ec0a9a6/3.png)
 
-<<<<<<< HEAD
+
 - [캐시서버 사용 이유 및 Redis 선택 이유](https://familiar-scourge-e4d.notion.site/7dbabaacacd74f01bc048f28903be833)
-=======
-- [캐시서버 사용 이유 및 Redis 선택 이유]()
->>>>>>> 584e9d565b9db029871106f3921adc67ba3b8852
+
 
 
 ## 피그마
