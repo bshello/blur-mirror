@@ -1,10 +1,10 @@
-import img1 from "../../../assets/images/HomeRightDiv.png";
+import slideImage2 from "../../../assets/images/slideImage2.jpg";
 
 function Slide1() {
   return (
     <div className="HomeRightDiv">
       <div className="HomeRightImgDiv">
-        <img className="HomeRightImg" src={img1} alt="no"></img>
+        <img className="HomeRightImg" src={slideImage2} alt="no"></img>
       </div>
       <div className="HomeRightToolTipDiv">
         <span className="HomeRightToolTipText">

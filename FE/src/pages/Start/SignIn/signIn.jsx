@@ -56,8 +56,8 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           navigate("/home");
         })
         .catch((err) => {
-          console.log(err);
-          alert("로그인 에러");
+          console.log(typeof err.response.status);
+          alert("에러가 발생했습니다.");
         });
     } else {
       alert("아이디와 비밀번호를 입력해주세요.");
@@ -80,13 +80,25 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         <label className="ModalInputIdLabel" htmlFor="user_id">
           ID
         </label>
-        <input className="ModalInputId" id="user_id" placeholder="ID를 입력해 주세요" onChange={enterSignId} defaultValue={savedId}></input>
+        <input
+          className="ModalInputId"
+          id="user_id"
+          placeholder="ID를 입력해 주세요"
+          onChange={enterSignId}
+          defaultValue={savedId}
+        ></input>
       </div>
       <div className="ModalInputPwDiv">
         <label className="ModalInputPwLabel" htmlFor="user_pw">
           PW
         </label>
-        <input className="ModalInputPw" id="user_pw" placeholder="PW를 입력해 주세요" type="password" onChange={enterSignPs}></input>
+        <input
+          className="ModalInputPw"
+          id="user_pw"
+          placeholder="PW를 입력해 주세요"
+          type="password"
+          onChange={enterSignPs}
+        ></input>
       </div>
 
       <div className="LoginBtnDiv">
@@ -94,7 +106,11 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           로그인
         </button>
         <div className="IdSaveDiv">
-          <input className="IdSaveToggle" type="checkbox" ref={checkbox}></input>
+          <input
+            className="IdSaveToggle"
+            type="checkbox"
+            ref={checkbox}
+          ></input>
 
           <label className="IdSaveText">아이디 저장</label>
         </div>
@@ -127,25 +143,6 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
       >
         카카오로 로그인
       </button>
-      <button
-        className="NaverLoginBtn"
-        onClick={(e) => {
-          e.preventDefault();
-          window.location.href = socialSignIn("naver");
-        }}
-      >
-        네이버로 로그인
-      </button>
-      <button
-        className="GoogleLoginBtn"
-        onClick={(e) => {
-          e.preventDefault();
-          window.location.href = socialSignIn("google");
-        }}
-      >
-        구글로 로그인
-      </button>
-      <div className="PlaceHolder"></div>
     </div>
   );
 }

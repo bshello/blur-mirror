@@ -7,7 +7,12 @@ function myInfoAlert({ showAlertModal, content }) {
         <span className="AlertHeaderText">Alert</span>
       </div>
       <span className="AlertDesc">{content}</span>
-      <button className="AlertBtnDiv" onClick={showAlertModal}>
+      <button
+        className="AlertBtnDiv"
+        onClick={() => {
+          showAlertModal();
+        }}
+      >
         <span className="AlertBtnText">확인</span>
       </button>
     </div>
