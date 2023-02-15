@@ -14,8 +14,8 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
 
   const callSearchPwCheck = () => {
     axios({
-      method: "post",
-      url: `${API_URL}/findPw`,
+      method: "put",
+      url: `${API_URL}/user/findPassword`,
       data: {
         userId: spId,
       },
@@ -41,9 +41,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
             showSignInModal();
             showSearchPwModal();
           }}
-        >
-          x
-        </button>
+        ></button>
       </div>
       <div className="SPModalInputIdDiv">
         <label className="SPModalInputIdLabel">ID</label>

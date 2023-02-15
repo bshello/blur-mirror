@@ -30,7 +30,7 @@ function SocialSignInRedirect() {
       })
         .then((res) => {
           console.log(res.data.body.userId);
-          loginId(res.data.body.userId);
+          dispatch(loginId(res.data.body.userId));
         })
         .catch((err) => {
           console.log(err);

@@ -8,6 +8,7 @@ import Meeting from "./pages/Meeting";
 import MyInfo from "./pages/MyInfo";
 import SocialSignInRedirect from "./pages/Start/SignIn/socialSignIn";
 import GuardedRoute from "./RouterGuard";
+import ChatPage from "./pages/Home/Chat/ChatPage/chatpage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             path="/oauth/redirect"
             element={<SocialSignInRedirect />}
           ></Route>
+          <Route path="/chat/room/enter/:roomId" element={<ChatPage />}></Route>
         </Routes>
       </Router>
     </div>

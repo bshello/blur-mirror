@@ -12,9 +12,9 @@ function ChatList({ showChatPage }) {
       </div>
       <div className="ChatList">
         <ChatItem showChatPage={showChatPage} />
-        <ChatItem />
-        <ChatItem />
-        <ChatItem />
+        <ChatItem showChatPage={showChatPage} />
+        <ChatItem showChatPage={showChatPage} />
+        <ChatItem showChatPage={showChatPage} />
       </div>
     </div>
   );
