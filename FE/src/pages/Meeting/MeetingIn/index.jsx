@@ -103,7 +103,7 @@ function MeetingIn() {
 
   // Peer A
   socket.on("welcome", async () => {
-    //
+    console.log("node로 부터 온 welcome ");
     const offer = await myPeerConnection.createOffer();
     myPeerConnection.setLocalDescription(offer);
     // console.log(myPeerConnection.setLocalDescription(offer));
@@ -389,6 +389,7 @@ function MeetingIn() {
 
   if (!firstRendering) {
     firstRendering = true;
+    console.log("첫 렌더링");
     setTimeout(async () => {
       // 소켓통신을 통해서 방에 접속(이부분은 매칭이 되었을때 진행해야 하므로 전 페이지로 빼낼예정)
       // 카메라 장치 동작 메서드
@@ -400,13 +401,13 @@ function MeetingIn() {
       roomName = sendRoomName;
     }, 3000);
 
-    setTimeout(() => {
-      if (!alert("상대가 접속하지 않았기 때문에 홈페이지로 이동합니다.")) {
-        dispatch(ROOM_NUM(""));
-        dispatch(PARTNERNICK(""));
-        navigate("/home");
-      }
-    }, 30000);
+    // setTimeout(() => {
+    //   if (!alert("상대가 접속하지 않았기 때문에 홈페이지로 이동합니다.")) {
+    //     dispatch(ROOM_NUM(""));
+    //     dispatch(PARTNERNICK(""));
+    //     navigate("/home");
+    //   }
+    // }, 30000);
   }
 
   useEffect(() => {

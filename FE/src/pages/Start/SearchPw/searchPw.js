@@ -3,7 +3,7 @@ import "./searchPw.css";
 import axios from "axios";
 
 function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
-  const API_URL = process.env.REACT_APP_SIGN_API_URL;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
 
   const [spId, setSpId] = useState(null);
 
@@ -45,11 +45,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
       </div>
       <div className="SPModalInputIdDiv">
         <label className="SPModalInputIdLabel">ID</label>
-        <input
-          className="SPModalInputId"
-          placeholder="ID를 입력해 주세요"
-          onChange={enterId}
-        ></input>
+        <input className="SPModalInputId" placeholder="ID를 입력해 주세요" onChange={enterId}></input>
       </div>
 
       <button
