@@ -31,7 +31,7 @@ const {
 wsServer.on("connection", (socket) => {
   socket.on("join_room", async (roomName) => {
     console.log("브라우저에서 받은 roomName : ", roomName);
-    await socket.join(roomName); // 방에 들어가는거
+    socket.join(roomName); // 방에 들어가는거
     socket.to(roomName).emit("welcome", rooms);
     socket.to(roomName).emit("roomsCheck", rooms);
     console.log(sids);
