@@ -103,7 +103,7 @@ public class ProfileService {
         String userId = requestProfileSettingDto.getUserId();
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         userProfile.updateProfile(requestProfileSettingDto.getAge(), requestProfileSettingDto.getNickname(),
-                requestProfileSettingDto.getGender(), requestProfileSettingDto.getIntroduce());
+                requestProfileSettingDto.getGender(), requestProfileSettingDto.getIntroduce(), requestProfileSettingDto.getMbti());
         userProfileRepository.save(userProfile);
         MatchSettingDto matchSettingDto = new ModelMapper().map(requestProfileSettingDto, MatchSettingDto.class);
         HttpHeaders headers = new HttpHeaders();
