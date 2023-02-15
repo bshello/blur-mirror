@@ -1,3 +1,5 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 import "../../App.css";
 import "./index.css";
 import MyInfoModal from "./MyInfoModal/myInfoModal";
@@ -25,7 +27,7 @@ function MyInfo() {
   });
   const id = "123123";
 
-  const API_URL = `http://192.168.31.73:8000/blur-profile/profile/${id}`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}`;
   const [proFile, setProFile] = useState([]);
   const [userInterests, setUserInterests] = useState([]);
   useEffect(() => {
