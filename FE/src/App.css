@@ -6,7 +6,7 @@
 .App {
   text-align: center;
   min-height: 100vh;
-  height: 500vh;
+  height: auto;
 
   overflow: hidden;
   /* @include mixin.image(bg, jpg); */
@@ -15,6 +15,10 @@
 
   font-family: "Happy Monkey", "BMHannaAir";
   /* font-family: "BMHannaAir"; */
+}
+
+.Start {
+  height: 500vh;
 }
 
 ::selection {

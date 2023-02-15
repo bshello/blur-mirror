@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Alert from "./Alert";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 function Start() {
   const [signInModal, setSignInModal] = useState(false);
@@ -54,56 +55,66 @@ function Start() {
   let page = 1;
   let selectedRef;
 
-  window.addEventListener(
-    "wheel",
-    (event) => {
-      event.preventDefault();
+  const scrollFunction = (event) => {
+    event.preventDefault();
 
-      const deltaY = event.deltaY;
-      const direction = deltaY > 0 ? "down" : "up"; //마우스 휠 방향
+    const deltaY = event.deltaY;
+    const direction = deltaY > 0 ? "down" : "up"; //마우스 휠 방향
 
-      if (direction === "down") {
-        if (page === 5) {
-          return;
-        }
-        page = page + 1;
-      } else {
-        if (page === 1) {
-          return;
-        }
-        page = page - 1;
+    if (direction === "down") {
+      if (page === 5) {
+        return;
       }
-
-      switch (page) {
-        case 1:
-          selectedRef = ref1.current;
-          break;
-        case 2:
-          selectedRef = ref2.current;
-          break;
-        case 3:
-          selectedRef = ref3.current;
-          break;
-        case 4:
-          selectedRef = ref4.current;
-          break;
-        case 5:
-          selectedRef = ref5.current;
-          break;
-        default:
-          // 예외 처리 코드 작성
-          break;
+      page = page + 1;
+    } else {
+      if (page === 1) {
+        return;
       }
-
-      selectedRef.scrollIntoView({ behavior: "smooth" });
-    },
-    {
-      passive: false,
+      page = page - 1;
     }
-  );
+
+    switch (page) {
+      case 1:
+        selectedRef = ref1.current;
+        break;
+      case 2:
+        selectedRef = ref2.current;
+        break;
+      case 3:
+        selectedRef = ref3.current;
+        break;
+      case 4:
+        selectedRef = ref4.current;
+        break;
+      case 5:
+        selectedRef = ref5.current;
+        break;
+      default:
+        // 예외 처리 코드 작성
+        break;
+    }
+
+    selectedRef.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollFunctionRef = useRef(scrollFunction);
+  const StartRef = useRef(null);
+
+  useEffect(() => {
+    if (!signUpModal && !signInModal && !searchPwModal && !alertModal) {
+      StartRef.current.addEventListener("wheel", scrollFunctionRef.current, {
+        passive: false,
+      });
+      document.body.style.overflow = "";
+    } else {
+      StartRef.current.removeEventListener("wheel", scrollFunctionRef.current);
+      document.body.style.overflow = "hidden";
+    }
+    console.log(signUpModal);
+  }, [signInModal, signUpModal, searchPwModal, alertModal, scrollFunctionRef]);
 
   return (
-    <div className="Start">
+    <div className="Start" ref={StartRef}>
       {signInModal || signUpModal || searchPwModal ? (
         <ModalWrap
           signInModal={signInModal}
