@@ -1,3 +1,5 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 import "../../../App.css";
 import "./myInfoModal.css";
 import React, { useState, useEffect } from "react";
@@ -5,15 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { edit } from "../../../redux/reducers/userEdit";
 import { intro } from "../../../redux/reducers/introEdit";
 import { age } from "../../../redux/reducers/ageEdit";
-import { setLeftValue, setRightValue } from "../../../redux/reducers/ageRange";
-import { setDistance } from "../../../redux/reducers/partnerDistance";
+import { setDistancee, setAgeRange } from "../../../redux/reducers/setDatee";
 import SetModal from "./SetModal/setmodal";
 
 import axios from "axios";
 // import styled from "styled-components";
 
 function MyInfoModal({ showMyinfoModal, showAlertModal }) {
-  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile`;
   // const id = useSelector((state) => {
   //   return state.strr.id;
   // });
@@ -45,6 +46,9 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   }, []);
 
   // 유저프로필 업데이트 하기
+  const distance = useSelector((state) => state.setDatee.distancee);
+  const minAge = useSelector((state) => state.setDatee.ageRange[0]);
+  const maxAge = useSelector((state) => state.setDatee.ageRange[1]);
 
   const handleSave = () => {
     axios({
@@ -61,20 +65,18 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         introduce: introInput,
         mbti: mbti,
         gender: gender[genderCheck === "check" ? 0 : 1],
-        // minAge: dispatch(setLeftValue(leftValue)),
-        // maxAge: dispatch(setRightValue(rightValue)),
-        // maxDistance: dispatch(setDistance(distance)),
+        minAge: minAge,
+        maxAge: maxAge,
+        maxDistance: distance,
       },
     })
       .then((res) => {
         dispatch(edit(res.data.nickname));
         dispatch(intro(res.data.introduce));
         dispatch(age(res.data.age));
-        console.log(FormData);
+        console.log(res.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   //setmodal
@@ -198,6 +200,22 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   // 데이터 주고 받기
   const dispatch = useDispatch();
+
+  const updatedProfile = {
+    userId: id,
+    age: ageInput === "" ? proFile.age : ageInput,
+    nickname: nameInput === "" ? proFile.nickname : nameInput,
+    introduce: introInput === "" ? proFile.introduce : introInput,
+    mbti: mbti === "" ? proFile.mbti : mbti,
+    gender:
+      genderCheck === ""
+        ? proFile.gender
+        : gender[genderCheck === "check" ? 0 : 1],
+    minAge: minAge === "" ? proFile.minAge : minAge,
+    maxAge: maxAge === "" ? proFile.maxAge : maxAge,
+    maxDistance: distance === "" ? proFile.maxDistance : distance,
+  };
+  // setProFile(updatedProfile);
   return (
     <div className="Modal">
       {setModal ? <SetModal showSettingModal={showSettingModal} /> : null}
@@ -213,7 +231,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
             <img
               className="leftModalImg"
               src={
-                previewImage ||
+                proFile.image ||
                 `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
               }
               alt="사진"
@@ -228,7 +246,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         </div>
         <div className="leftModalNameDiv">
           <span className="leftModalName">
-            welcome {proFile.nickName || "Guest"}
+            welcome {proFile.nickname || "Guest"}
           </span>
         </div>
         <div className="leftModalbtnDiv">

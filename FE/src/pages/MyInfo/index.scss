@@ -10,13 +10,17 @@
   font-size: 43px;
   line-height: 88px;
   /* identical to box height */
-
-  // display: flex;
   align-items: center;
   text-align: right;
   cursor: pointer;
-
   color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+  .MIbackbtn {
+    font-size: 32px;
+    line-height: 64px;
+  }
 }
 .MIImgDiv {
   position: absolute;
@@ -26,13 +30,6 @@
   top: 16%;
 
   background-size: 100% 100%;
-  // position: absolute;
-  // width: 500px;
-  // height: 500px;
-  // left: 17%;
-  // top: 16%;
-
-  // background-size: 100% 100%;
 
   .MIImg {
     position: absolute;
