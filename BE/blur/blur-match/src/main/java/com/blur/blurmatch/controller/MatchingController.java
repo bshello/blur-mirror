@@ -95,10 +95,10 @@ public class MatchingController {
             @ApiResponse(code = 200, message = "매치 세팅 확인"),
     })
     @GetMapping("/settingCheck")
-    public ResponseEntity<Boolean> settingCheck(
+    public ResponseEntity<Integer> settingCheck(
             @ApiParam(value = "사용자의 ID", required = true) @RequestParam("id") String userId) {
 
-        Boolean res = matchService.settingCheck(userId);
+        Integer res = matchService.settingCheck(userId);
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
