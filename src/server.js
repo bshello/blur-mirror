@@ -2,7 +2,6 @@ import express from "express"; // express를 사용한 일반적인 NodeJS
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
-import { instrument } from "socket.io/admin-ui";
 
 const app = express();
 
@@ -28,11 +27,6 @@ const {
     adapter: { sids, rooms },
   },
 } = wsServer;
-
-instrument(wsServer, {
-  auth: false,
-  namespaceName: "/",
-});
 
 wsServer.on("connection", (socket) => {
   socket.on("join_room", async (roomName) => {
