@@ -20,13 +20,14 @@
     .imageEditBtn {
       position: absolute;
       width: 50px;
-      height: 20px;
+      height: 22px;
       left: 220px;
       top: 10px;
       border-radius: 70px;
       border: solid white 1px;
       color: white;
       cursor: pointer;
+      background-color: #50a1a3;
     }
     :hover {
       background-color: white;
@@ -40,6 +41,7 @@
       top: 0px;
       background-size: 100% 100%;
       border-radius: 70%;
+      cursor: pointer;
     }
   }
 }
@@ -165,7 +167,7 @@
     height: 55px;
     left: 1090px;
     top: 445px;
-    z-index: 30;
+    z-index: 2;
 
     cursor: pointer;
     background: #68bbbd;
