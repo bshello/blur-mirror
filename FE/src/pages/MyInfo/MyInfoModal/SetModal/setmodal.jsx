@@ -10,17 +10,16 @@ import { setDistancee, setAgeRange } from "../../../../redux/reducers/setDatee";
 
 function SetModal() {
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile`;
-  // const id = useSelector((state) => {
-  //   return state.strr.id;
-  // });
-  const id = "123123";
+  const id = useSelector((state) => {
+    return state.strr.id;
+  });
+  // const id = "123123";
 
   // 컴포넌트 켜지자말자 데이터 받아 오기
   const [proFile, setProFile] = useState([]);
   const token = useSelector((state) => {
     return state.strr.token;
   });
-  const [gender, setGender] = useState("");
   useEffect(() => {
     axios({
       method: "GET",
@@ -34,11 +33,6 @@ function SetModal() {
       .then((res) => {
         setProFile(res.data);
         console.log(res.data);
-        if (res.data.gender === "male") {
-          setGender("Female");
-        } else if (res.data.gender === "female") {
-          setGender("Male");
-        }
       })
       .catch((err) => {
         console.log(err);
@@ -52,9 +46,10 @@ function SetModal() {
     dispatch(setAgeRange([leftSliderValue, rightSliderValue]));
     console.log(distance);
   };
+  // 파트너 셩별 고정
+  const gender = proFile.gender === "F" ? "Male" : "Femail";
 
   // //range
-
   const [distance, setDistance] = useState();
   const changeDistance = () => {
     const slider = document.querySelector(".slider");

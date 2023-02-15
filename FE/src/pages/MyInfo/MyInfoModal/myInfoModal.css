@@ -43,7 +43,7 @@
   cursor: pointer;
   background-color: #50a1a3;
 }
-.leftModal .imgbox :hover {
+.leftModal .imgbox .imageEditBtn:hover {
   background-color: white;
   color: black;
 }
@@ -356,6 +356,7 @@
   height: 60px;
   left: 0px;
   top: 30px;
+  display: flex;
 }
 .Modal .ProfileModal .PMMGender .PMMGenderdiv .PMMGenderMale {
   position: absolute;
