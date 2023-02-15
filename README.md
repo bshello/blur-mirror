@@ -242,239 +242,239 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 # 백앤드 디렉토리 구조
 
-📦blur
- ┣ 📂blur-apigateway
- ┃ ┗ 📂src
- ┃ ┃ ┗ 📂main
- ┃ ┃ ┃ ┣ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂apigateway
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthorizationHeaderFilter.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CorsConfiguration.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalFilter.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurApigatewayApplication.java
- ┃ ┃ ┃ ┗ 📂resources
- ┃ ┃ ┃ ┃ ┗ 📜application.yml
- ┣ 📂blur-auth
- ┃ ┗ 📂src
- ┃ ┃ ┗ 📂main
- ┃ ┃ ┃ ┣ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂auth
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂api
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ErrorResponse.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginModel.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜User.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRefreshToken.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRefreshTokenRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂common
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiResponseHeader.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Response.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂email
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailHandler.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MailConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂properties
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AppProperties.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CorsProperties.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂security
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomSecurityConfigurer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SecurityConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CacheConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂oauth
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthToken.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthTokenProvider.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ProviderType.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RoleType.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserPrincipal.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuthProviderMissMatchException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RestAuthenticationEntryPoint.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenValidFailedException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenAuthenticationFilter.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂handler
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2AuthenticationFailureHandler.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2AuthenticationSuccessHandler.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenAccessDeniedHandler.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂info
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂impl
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜GoogleOAuth2UserInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜KakaoOAuth2UserInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NaverOAuth2UserInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2UserInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OAuth2UserInfoFactory.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HttpCookieOAuth2AuthorizationRequestRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OAuth2AuthorizationRequestBasedOnCookieRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomOAuth2UserService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CustomUserDetailsService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂utils
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CookieUtil.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HeaderUtil.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BlurUserAuthApplication.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PortListener.java
- ┃ ┃ ┃ ┗ 📂resources
- ┃ ┃ ┃ ┃ ┣ 📜application.yml
- ┃ ┃ ┃ ┃ ┗ 📜log4j2.xml
- ┣ 📂blur-chat
- ┃ ┗ 📂src
- ┃ ┃ ┗ 📂main
- ┃ ┃ ┃ ┣ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂chat
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂api
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatDataController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RoomController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StompChatController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatMessageSaveDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatPagingDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜EnterRoom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatPagingResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfoDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Chat.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Chatroom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatJdbcRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRoomNoRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatRoomRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRedisCacheService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRoomService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisPublisher.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisSubscriber.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StompHandler.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StompWebSocketConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂utils
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatCachingInRedisScheduling.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatUtils.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatWriteBackScheduling.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BlurChatApplication.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PortListener.java
- ┃ ┃ ┃ ┗ 📂resources
- ┃ ┃ ┃ ┃ ┗ 📜application.yml
- ┣ 📂blur-discovery
- ┃ ┗ 📂src
- ┃ ┃ ┗ 📂main
- ┃ ┃ ┃ ┣ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurdiscovery
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurDiscoveryApplication.java
- ┃ ┃ ┃ ┗ 📂resources
- ┃ ┃ ┃ ┃ ┗ 📜application.yml
- ┣ 📂blur-match
- ┃ ┗ 📂src
- ┃ ┃ ┗ 📂main
- ┃ ┃ ┃ ┣ 📂generated
- ┃ ┃ ┃ ┣ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurmatch
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MatchingController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestAcceptDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestCheckDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RequestMatchDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseAceeptDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseMatchDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseProfileDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MeetingDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MMRDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QueueDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReportDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchedUser.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchMakingRating.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSetting.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Report.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchedUserRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchMakingRatingRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReportRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MatchService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurMatchApplication.java
- ┃ ┃ ┃ ┗ 📂resources
- ┃ ┃ ┃ ┃ ┗ 📜application.yml
- ┗ 📂blur-profile
- ┃ ┗ 📂src
- ┃ ┃ ┗ 📂main
- ┃ ┃ ┃ ┣ 📂generated
- ┃ ┃ ┃ ┣ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurprofile
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AwsConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestProfileSettingDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RequestUserInterestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseCardDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseInterestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseProfileSettingDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ProfileDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInterestCountDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Interest.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserInterest.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserProfile.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InterestRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserInterestRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserProfileRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CountService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurProfileApplication.java
- ┃ ┃ ┃ ┗ 📂resources
+📦blur  
+ ┣ 📂blur-apigateway  
+ ┃ ┗ 📂src  
+ ┃ ┃ ┗ 📂main  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂com  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂apigateway  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthorizationHeaderFilter.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CorsConfiguration.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalFilter.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurApigatewayApplication.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┗ 📜application.yml  
+ ┣ 📂blur-auth  
+ ┃ ┗ 📂src  
+ ┃ ┃ ┗ 📂main  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂com  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂auth  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂api  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ErrorResponse.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginModel.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfo.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜User.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRefreshToken.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRefreshTokenRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂common  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiResponseHeader.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Response.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂email  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailHandler.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MailConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂properties  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AppProperties.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CorsProperties.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂security  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomSecurityConfigurer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SecurityConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CacheConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂oauth  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthToken.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthTokenProvider.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ProviderType.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RoleType.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserPrincipal.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuthProviderMissMatchException.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RestAuthenticationEntryPoint.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenValidFailedException.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenAuthenticationFilter.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂handler  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2AuthenticationFailureHandler.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2AuthenticationSuccessHandler.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenAccessDeniedHandler.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂info  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂impl  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜GoogleOAuth2UserInfo.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜KakaoOAuth2UserInfo.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NaverOAuth2UserInfo.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2UserInfo.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OAuth2UserInfoFactory.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HttpCookieOAuth2AuthorizationRequestRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OAuth2AuthorizationRequestBasedOnCookieRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomOAuth2UserService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CustomUserDetailsService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂utils  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CookieUtil.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HeaderUtil.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BlurUserAuthApplication.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PortListener.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┣ 📜application.yml  
+ ┃ ┃ ┃ ┃ ┗ 📜log4j2.xml  
+ ┣ 📂blur-chat  
+ ┃ ┗ 📂src  
+ ┃ ┃ ┗ 📂main  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂com  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂chat  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂api  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatDataController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RoomController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StompChatController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatMessageSaveDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatPagingDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜EnterRoom.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatPagingResponseDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfoDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Chat.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Chatroom.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatJdbcRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRoomNoRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatRoomRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRedisCacheService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRoomService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisPublisher.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisSubscriber.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfo.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StompHandler.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StompWebSocketConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂utils  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatCachingInRedisScheduling.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatUtils.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatWriteBackScheduling.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BlurChatApplication.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PortListener.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┗ 📜application.yml  
+ ┣ 📂blur-discovery  
+ ┃ ┗ 📂src  
+ ┃ ┃ ┗ 📂main  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂com  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurdiscovery  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurDiscoveryApplication.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┗ 📜application.yml  
+ ┣ 📂blur-match  
+ ┃ ┗ 📂src  
+ ┃ ┃ ┗ 📂main  
+ ┃ ┃ ┃ ┣ 📂generated  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂com  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurmatch  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MatchingController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestAcceptDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestCheckDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RequestMatchDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseAceeptDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseMatchDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseProfileDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MeetingDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MMRDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QueueDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReportDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchedUser.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchMakingRating.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSetting.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Report.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchedUserRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchMakingRatingRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReportRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MatchService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurMatchApplication.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┗ 📜application.yml  
+ ┗ 📂blur-profile  
+ ┃ ┗ 📂src  
+ ┃ ┃ ┗ 📂main  
+ ┃ ┃ ┃ ┣ 📂generated  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂com  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurprofile  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AwsConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestProfileSettingDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RequestUserInterestDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseCardDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseInterestDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseProfileSettingDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ProfileDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInterestCountDto.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Interest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserInterest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserProfile.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InterestRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserInterestRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserProfileRepository.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CountService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileService.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurProfileApplication.java  
+ ┃ ┃ ┃ ┗ 📂resources  
  ┃ ┃ ┃ ┃ ┗ 📜application.yml
 
 ---
