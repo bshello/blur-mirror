@@ -95,10 +95,7 @@ public class ProfileService {
         String getMatchSettingUrl = String.format(env.getProperty("blur-match.url")) + "/getSetting?userId=" + userId;
         ResponseEntity<MatchSettingDto> response = restTemplate.getForEntity(getMatchSettingUrl, MatchSettingDto.class);
         MatchSettingDto matchSetting = response.getBody();
-        String getUserEmailUrl = String.format(env.getProperty("blur-auth.url")) + "/getEmail?userId=" + userId;
-        ResponseEntity<String> email = restTemplate.getForEntity(getUserEmailUrl, String.class);
-        String userEmail = email.getBody();
-        ResponseProfileSettingDto responseProfileSettingDto = new ResponseProfileSettingDto(profileDto, matchSetting, userEmail);
+        ResponseProfileSettingDto responseProfileSettingDto = new ResponseProfileSettingDto(profileDto, matchSetting);
         return responseProfileSettingDto;
     }
 
