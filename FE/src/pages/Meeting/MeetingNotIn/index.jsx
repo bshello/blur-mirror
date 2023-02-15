@@ -220,7 +220,7 @@ function MeetingNotIn() {
                       .catch(() => {
                         console.log("stop 통신 실패");
                       });
-                    clearInterval(interval);
+                    console.log(clearInterval(interval));
                     alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
                   }
                 });

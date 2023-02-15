@@ -29,7 +29,7 @@
       cursor: pointer;
       background-color: #50a1a3;
     }
-    :hover {
+    .imageEditBtn:hover {
       background-color: white;
       color: black;
     }
@@ -385,6 +385,7 @@
         height: 60px;
         left: 0px;
         top: 30px;
+        display: flex;
 
         .PMMGenderMale {
           position: absolute;

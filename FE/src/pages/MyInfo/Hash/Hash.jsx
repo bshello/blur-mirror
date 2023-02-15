@@ -1,15 +1,15 @@
-// eslint-disable-next-line react-hooks/exhaustive-deps
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import "./Hash.css";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import UserCheckdata from "./HashComponent/UserCheckdata";
-import saveToken from "../../../redux/reducers/saveToken";
+// import saveToken from "../../../redux/reducers/saveToken";
 import { useSelector } from "react-redux";
-import { type } from "@testing-library/user-event/dist/type";
 
 function Hash({ showHashModal, showAlertModal }) {
-  const id = "123123";
+  // const id = "123123";
   const [intdata, setIntData] = useState([]); // 관심사 전체 가져오기
   const [userIntData, setuserIntData] = useState([]); // 체크했던 데이터 가져오기
   const [checkData, setcheckData] = useState([]); //체크한 데이터 띄우기
@@ -21,7 +21,9 @@ function Hash({ showHashModal, showAlertModal }) {
   const token = useSelector((state) => {
     return state.strr.token;
   });
-
+  const id = useSelector((state) => {
+    return state.strr.id;
+  });
   useEffect(() => {
     axios({
       method: "GET",

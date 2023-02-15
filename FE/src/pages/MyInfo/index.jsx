@@ -1,4 +1,5 @@
-// eslint-disable-next-line react-hooks/exhaustive-deps
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import "../../App.css";
 import "./index.css";
@@ -25,7 +26,11 @@ function MyInfo() {
   const age = useSelector((state) => {
     return state.age.value;
   });
-  const id = "123123";
+
+  const id = useSelector((state) => {
+    return state.strr.id;
+  });
+  // const id = "123123";
 
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}`;
   const [proFile, setProFile] = useState([]);
@@ -85,37 +90,12 @@ function MyInfo() {
 
   return (
     <div className="myinfo">
-      {miModal || hashModal ? (
-        <ModalWrap
-          miModal={miModal}
-          hashModal={hashModal}
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-        />
-      ) : null}
-      {miModal && !hashModal ? (
-        <MyInfoModal
-          showHashModal={showHashModal}
-          showMyinfoModal={showMyinfoModal}
-          showAlertModal={showAlertModal}
-          setUserInterests={setUserInterests}
-        />
-      ) : null}
+      {miModal || hashModal ? <ModalWrap miModal={miModal} hashModal={hashModal} showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} /> : null}
+      {miModal && !hashModal ? <MyInfoModal showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} showAlertModal={showAlertModal} setUserInterests={setUserInterests} /> : null}
 
-      {hashModal && !miModal ? (
-        <Hash
-          showMyinfoModal={showMyinfoModal}
-          showHashModal={showHashModal}
-          showAlertModal={showAlertModal}
-        />
-      ) : null}
+      {hashModal && !miModal ? <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} showAlertModal={showAlertModal} /> : null}
 
-      {alertModal && !miModal && !hashModal ? (
-        <Alert
-          showAlertModal={showAlertModal}
-          content={"변경사항이 저장되었습니다."}
-        />
-      ) : null}
+      {alertModal && !miModal && !hashModal ? <Alert showAlertModal={showAlertModal} content={"변경사항이 저장되었습니다."} /> : null}
 
       <div className="DarkBlurDiv"></div>
       <div
@@ -127,16 +107,15 @@ function MyInfo() {
         out
       </div>
       <div className="MIImgDiv">
-        <img className="MIImg" src={proFile.image}></img>
-        <div className="MISetDiv"></div>
+        {proFile.image ? (
+          <img className="MIImg" src={proFile.image} />
+        ) : (
+          <img className="MIImgBack" />
+        )}
       </div>
       <span className="MIHashTag">Hash Tag</span>
       {userInterests.length > 0 ? (
-        <div
-          className="showint"
-          onClick={showHashModal}
-          disabled={alertModal === true ? true : false}
-        >
+        <div className="showint" onClick={showHashModal} disabled={alertModal === true ? true : false}>
           {userInterests.map((item, idx) => {
             return (
               <div className="showintdiv" key={item.userinterests}>
@@ -146,11 +125,7 @@ function MyInfo() {
           })}
         </div>
       ) : (
-        <div
-          className="MIHashSet"
-          onClick={showHashModal}
-          disabled={alertModal === true ? true : false}
-        >
+        <div className="MIHashSet" onClick={showHashModal} disabled={alertModal === true ? true : false}>
           <div className="MIHashSetIcon">
             <span className="MIHashSetText">설정하기</span>
           </div>
@@ -163,9 +138,7 @@ function MyInfo() {
       </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>
-        <span className="MIIntroducingText">
-          {intro === "" ? proFile.introduce : intro}{" "}
-        </span>
+        <span className="MIIntroducingText">{intro === "" ? proFile.introduce : intro} </span>
       </div>
       <span className="MIProfileLogo">Blur:</span>
       <div

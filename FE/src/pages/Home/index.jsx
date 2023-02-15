@@ -20,7 +20,7 @@ import { saveToken, ISMYPROFILE } from "../../redux/reducers/saveToken";
 
 let myStream;
 let carousel;
-let getProfileToggle = 0;
+
 function Home() {
   let userId = useSelector((state) => state.strr.id); // Redux에 저장되어있는 MToggle
   let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
