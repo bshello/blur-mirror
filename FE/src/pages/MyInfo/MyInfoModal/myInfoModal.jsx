@@ -122,6 +122,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   };
 
   //introducing
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const [introducing, setIntroducing] = useState("");
   const introHandleChange = (e) => {
     setIntroInput(e.target.value);
@@ -257,9 +258,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
           />
         </div>
         <div className="leftModalNameDiv">
-          <span className="leftModalName">
-            welcome {proFile.nickname || "Guest"}
-          </span>
+          <span className="leftModalName">welcome {proFile.nickname || "Guest"}</span>
         </div>
         <div className="leftModalbtnDiv">
           <button
@@ -290,21 +289,11 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         </div>
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
-          <input
-            type="text"
-            className="PMAgeSelect"
-            value={proFile.age ? proFile.age : ageInput}
-            onChange={handleAgeChange}
-            placeholder="숫자만 입력 가능합니다."
-          ></input>
+          <input type="text" className="PMAgeSelect" value={proFile.age ? proFile.age : ageInput} onChange={handleAgeChange} placeholder="숫자만 입력 가능합니다."></input>
         </div>
         <div className="PMMBTI">
           <span className="PMMBTILabel">MBTI</span>
-          <select
-            value={mbti}
-            onChange={handleSelectChange}
-            className="PMMBTISelect"
-          >
+          <select value={mbti} onChange={handleSelectChange} className="PMMBTISelect">
             {mbtiOptions.map((mbtiOptions) => (
               <option key={mbtiOptions.value} value={mbtiOptions.value}>
                 {mbtiOptions.label}
@@ -338,12 +327,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
         <div className="PMIntroducing">
           <span className="PMIntroducingLabel">Introducing</span>
-          <input
-            type="text"
-            className="PMIntroducingInput"
-            value={proFile.introduce ? proFile.introduce : introInput}
-            onChange={introHandleChange}
-          />
+          <input type="text" className="PMIntroducingInput" value={proFile.introduce ? proFile.introduce : introInput} onChange={introHandleChange} />
         </div>
       </div>
       <button
