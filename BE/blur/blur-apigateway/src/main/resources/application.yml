@@ -36,7 +36,7 @@ spring:
             - Method= GET, POST, PUT, OPTIONS
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
+            - RewritePath=/blur-match/(?<segment>.*), /$\{segment}
         - id: blur-chat
           uri: lb://BLUR-CHAT
           predicates:
@@ -44,7 +44,7 @@ spring:
             - Method= GET, POST, PUT, OPTIONS
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/blur-profile/(?<segment>.*), /$\{segment}
+            - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
         - id: blur-profile
           uri: lb://BLUR-PROFILE
           predicates:
