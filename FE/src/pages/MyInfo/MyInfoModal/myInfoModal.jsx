@@ -113,7 +113,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   //introducing
   const [introducing, setIntroducing] = useState("");
-
   const introHandleChange = (e) => {
     setIntroInput(e.target.value);
     setProFile({ ...proFile, introduce: e.target.value });
@@ -143,6 +142,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     { value: "ENFJ", label: "ENFJ - Teacher" },
     { value: "ENTJ", label: "ENTJ - Commander" },
   ]);
+  console.log(setMbti);
 
   const handleSelectChange = (event) => {
     setMbti(event.target.value);
@@ -255,6 +255,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         <span className="PMLabel">Profile Edit</span>
         <div className="PMIdDiv">
           <span className="PMIdLable">NickName </span>
+
           <input
             type="text"
             className="PMIdInput"

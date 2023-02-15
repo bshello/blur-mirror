@@ -3,42 +3,49 @@ import { useCallback, useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
-import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE } from "../../../redux/reducers/MToggle";
+import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, ROOM_NUM, PARTNERNICK } from "../../../redux/reducers/MToggle";
 import Alert from "../../Start/Alert";
 import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
+import { useNavigate } from "react-router-dom";
 
-const socket = io.connect("http://localhost:3001");
+let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
 let roomName;
 let myPeerConnection;
 let myStream;
-let videoDevices = [];
 let firstRendering = false;
+let meetingInTmp = 0;
+// let videoDevices = [];
 
 // console.log("MeetingIn 페이지 렌더링");
 function MeetingIn() {
-  // 컴퓨터와 연결되어있는 모든 장치를 가져옴
-  const getCameras = useCallback(async () => {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const cameras = devices.filter((device) => device.kind === "videoinput");
-      videoDevices = cameras;
-      const currentCamera = myStream.getVideoTracks()[0];
+  const navigate = useNavigate();
 
-      const camerasSelect = document.querySelector("#cameras");
-      cameras.forEach((camera) => {
-        const option = document.createElement("option");
-        option.value = camera.deviceId;
-        option.innerText = camera.label;
-        if (currentCamera.label === camera.label) {
-          option.selected = true;
-        }
-        camerasSelect.appendChild(option);
-      });
-    } catch (error) {
-      console.log(error);
+  // 컴퓨터와 연결되어있는 모든 장치를 가져옴
+  const getCameras = async () => {
+    if (meetingInTmp === 0) {
+      meetingInTmp = 1;
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const cameras = devices.filter((device) => device.kind === "videoinput");
+        // videoDevices = cameras;
+        const currentCamera = myStream.getVideoTracks()[0];
+
+        const camerasSelect = document.querySelector("#cameras");
+        cameras.forEach((camera) => {
+          const option = document.createElement("option");
+          option.value = camera.deviceId;
+          option.innerText = camera.label;
+          if (currentCamera.label === camera.label) {
+            option.selected = true;
+          }
+          camerasSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }, []);
+  };
 
   const getMedia = useCallback(async (deviceId) => {
     // 초기 실행
@@ -96,7 +103,7 @@ function MeetingIn() {
 
   // Peer A
   socket.on("welcome", async () => {
-    // console.log("someone joined");
+    //
     const offer = await myPeerConnection.createOffer();
     myPeerConnection.setLocalDescription(offer);
     // console.log(myPeerConnection.setLocalDescription(offer));
@@ -107,7 +114,7 @@ function MeetingIn() {
   // Peer B
   socket.on("offer", async (offer) => {
     console.log("received the offer");
-    myPeerConnection.setRemoteDescription(offer);
+    await myPeerConnection.setRemoteDescription(offer);
     const answer = await myPeerConnection.createAnswer();
     myPeerConnection.setLocalDescription(answer);
     socket.emit("answer", answer, roomName);
@@ -124,6 +131,75 @@ function MeetingIn() {
     console.log("receive candidate");
     myPeerConnection.addIceCandidate(ice);
   });
+
+  socket.on("peer-leaving", () => {
+    const peerStream = document.querySelector(".MPartenerCamDiv1");
+
+    dispatch(PARTNERNICK(""));
+    document.querySelector(".MPartenerCamSubText").innerText = partnerNick;
+
+    peerStream.srcObject.getTracks().forEach((track) => {
+      track.stop();
+    });
+    peerStream.srcObject = null;
+
+    if (!alert("상대방이 나가셨습니다.\n 확인을 누르시면 홈페이지로 이동합니다.")) {
+      hangUp();
+    }
+
+    /**
+     *   // Display Modal
+    const modalWrapper = callView.querySelector('#disconnected-peer-overlay');
+    const disconnectedPeer = modalWrapper.querySelector('#disconnected-peer');
+    modalWrapper.style.display = 'flex';
+    disconnectedPeer.style.display = 'flex';
+
+    // Press Leave Room Button
+    const leaveRoomBtn = disconnectedPeer.querySelector('button#leave-room');
+    leaveRoomBtn.onclick = () => {
+      // Hide Modal
+      modalWrapper.style.display = 'none';
+      disconnectedPeer.style.display = 'none';
+      // Leave Chat Room
+      hangUp();
+    };
+     */
+  });
+
+  // 미팅 나가기버튼 && (한명이 나가고) 미팅 나가기 버튼 클릭시
+  function hangUp() {
+    const peerStream = document.querySelector(".MPartenerCamDiv1");
+
+    myPeerConnection.close();
+    myPeerConnection = null;
+    dispatch(PARTNERNICK(""));
+    document.querySelector(".MPartenerCamSubText").innerText = partnerNick;
+
+    // 내 비디오 끔
+    myStream.getTracks().forEach((track) => {
+      // Clearly eindicates that th stream no longer uses the source
+      track.stop();
+    });
+
+    // 피어 비디오 끔
+    if (peerStream?.srcObject) {
+      peerStream.srcObject.getTracks().forEach((track) => {
+        track.stop();
+      });
+      peerStream.srcObject = null;
+    }
+
+    // 방 떠나기
+    socket.emit("leave-room", roomName, () => {
+      roomName = "";
+
+      // Generate new socketIO socket (disconnect from previous)
+      socket.disconnect();
+      socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
+      // 인터벌 초기화 해줘야 함!!!!!!!!!!!!!!!!!!!!!!! -> 인터벌 왜쓰는지부터 알기
+      navigate("/home");
+    });
+  }
 
   // RTC Code
 
@@ -323,6 +399,14 @@ function MeetingIn() {
 
       roomName = sendRoomName;
     }, 3000);
+
+    setTimeout(() => {
+      if (!alert("상대가 접속하지 않았기 때문에 홈페이지로 이동합니다.")) {
+        dispatch(ROOM_NUM(""));
+        dispatch(PARTNERNICK(""));
+        navigate("/home");
+      }
+    }, 30000);
   }
 
   useEffect(() => {
@@ -380,14 +464,7 @@ function MeetingIn() {
           </div>
         </div>
         <div className="MRightDiv1">
-          <div className="lightTagsDiv">
-            {/* <span className="lightTag1">운동</span>
-            <span className="lightTag2">맛집</span>
-            <span className="lightTag3">카페</span>
-            <span className="lightTag4">영화</span>
-            <span className="lightTag5">등산하기</span>
-            <span className="lightTag6">쇼핑</span> */}
-          </div>
+          <div className="lightTagsDiv"></div>
           <div className="lightTagBtn" onClick={showLight}></div>
           <div className="MPartenerCamDiv">
             <div className="blurEffect"></div>
@@ -396,6 +473,7 @@ function MeetingIn() {
           <div className="MPartenerCamSubDiv">
             <span className="MPartenerCamSubText">{partnerNick} </span>
             <div className="MPartenerCamSubBtnsDiv">
+              <div className="MPartenerCamSubExitBtn" onClick={hangUp}></div>
               <div className="MPartenerCamSubBlockBtn" onClick={openBlock}></div>
               <div className="MPartenerCamSubBlockDesc">
                 <div className="MPartenerCamSubBlockDescTop"></div>

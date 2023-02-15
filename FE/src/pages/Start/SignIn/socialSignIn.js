@@ -22,7 +22,7 @@ function SocialSignInRedirect() {
 
       axios({
         method: "get",
-        url: process.env.REACT_APP_SIGN_API_URL,
+        url: `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth/auth`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -37,6 +37,7 @@ function SocialSignInRedirect() {
           alert("아이디가 저장되지 못했습니다.");
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <></>;
 }

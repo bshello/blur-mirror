@@ -7,14 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
-import useFetch from "../../../hooks/useFetch";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
-  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
+  let API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
+  console.log(API_URL);
+  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const API_URL = process.env.REACT_APP_SIGN_API_URL;
-  const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const savedId = useSelector((state) => state.strr.id);
   const checkbox = useRef();
 
@@ -30,13 +29,6 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
     setSignPs(e.target.value);
     console.log(signPs);
   };
-
-  //로그인 함수
-  // const [signIn1] = useFetch("post", `${API_URL}/auth/login`, {
-  //   userId: signId,
-  //   password: signPs,
-  // });
-  // console.log(signIn1);
 
   const signIn = () => {
     if (signId && signPs) {
@@ -68,13 +60,13 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           alert("로그인 에러");
         });
     } else {
-      alert("아이디와 비밀번호를 입력해주세요");
+      alert("아이디와 비밀번호를 입력해주세요.");
     }
   };
 
   //소셜 로그인 함수
   const socialSignIn = (socialType) => {
-    return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=http://localhost:3000/oauth/redirect`;
+    return `${SOCIAL_API_URL}/oauth2/authorization/${socialType}?redirect_uri=${SOCIAL_API_URL}/oauth/redirect`;
   };
 
   return (
@@ -88,25 +80,13 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
         <label className="ModalInputIdLabel" htmlFor="user_id">
           ID
         </label>
-        <input
-          className="ModalInputId"
-          id="user_id"
-          placeholder="ID를 입력해 주세요"
-          onChange={enterSignId}
-          defaultValue={savedId}
-        ></input>
+        <input className="ModalInputId" id="user_id" placeholder="ID를 입력해 주세요" onChange={enterSignId} defaultValue={savedId}></input>
       </div>
       <div className="ModalInputPwDiv">
         <label className="ModalInputPwLabel" htmlFor="user_pw">
           PW
         </label>
-        <input
-          className="ModalInputPw"
-          id="user_pw"
-          placeholder="PW를 입력해 주세요"
-          type="password"
-          onChange={enterSignPs}
-        ></input>
+        <input className="ModalInputPw" id="user_pw" placeholder="PW를 입력해 주세요" type="password" onChange={enterSignPs}></input>
       </div>
 
       <div className="LoginBtnDiv">
@@ -114,11 +94,7 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           로그인
         </button>
         <div className="IdSaveDiv">
-          <input
-            className="IdSaveToggle"
-            type="checkbox"
-            ref={checkbox}
-          ></input>
+          <input className="IdSaveToggle" type="checkbox" ref={checkbox}></input>
 
           <label className="IdSaveText">아이디 저장</label>
         </div>

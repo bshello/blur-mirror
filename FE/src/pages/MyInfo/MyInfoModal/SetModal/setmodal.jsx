@@ -111,13 +111,7 @@ function SetModal() {
               <div className="blurdiv" />
 
               <div className="range-slider">
-                <input
-                  type="range"
-                  className="slider"
-                  min="0"
-                  max="50"
-                  onChange={changeDistance}
-                ></input>
+                <input type="range" className="slider" min="0" max="50" onChange={changeDistance}></input>
                 <div className="progressSlider"></div>
               </div>
             </div>
