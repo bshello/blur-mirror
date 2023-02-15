@@ -128,8 +128,11 @@ function MyInfo() {
         out
       </div>
       <div className="MIImgDiv">
-        <img className="MIImg" src={proFile.image}></img>
-        <div className="MISetDiv"></div>
+        {proFile.image ? (
+          <img className="MIImg" src={proFile.image} />
+        ) : (
+          <img className="MIImgBack" />
+        )}
       </div>
       <span className="MIHashTag">Hash Tag</span>
       {userInterests.length > 0 ? (

@@ -40,15 +40,22 @@
   position: absolute;
   width: 500px;
   height: 500px;
-  left: 15%;
+  left: 16%;
   top: 16%;
   background-size: 100% 100%;
+}
+.MIImgDiv .MIImgBack {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-image: url(../../assets/images/woman.jpg);
+  background-size: 100% 100%;
+  border-radius: 70%;
 }
 .MIImgDiv .MIImg {
   position: absolute;
   width: 500px;
   height: 500px;
-  background-image: url(../../assets/images/woman.jpg);
   background-size: 100% 100%;
   border-radius: 70%;
 }
