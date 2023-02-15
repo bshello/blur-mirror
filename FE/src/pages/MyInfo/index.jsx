@@ -26,7 +26,11 @@ function MyInfo() {
   const age = useSelector((state) => {
     return state.age.value;
   });
-  const id = "123123";
+
+  const id = useSelector((state) => {
+    return state.strr.id;
+  });
+  // const id = "123123";
 
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}`;
   const [proFile, setProFile] = useState([]);
@@ -103,8 +107,11 @@ function MyInfo() {
         out
       </div>
       <div className="MIImgDiv">
-        <img className="MIImg" src={proFile.image}></img>
-        <div className="MISetDiv"></div>
+        {proFile.image ? (
+          <img className="MIImg" src={proFile.image} />
+        ) : (
+          <img className="MIImgBack" />
+        )}
       </div>
       <span className="MIHashTag">Hash Tag</span>
       {userInterests.length > 0 ? (
