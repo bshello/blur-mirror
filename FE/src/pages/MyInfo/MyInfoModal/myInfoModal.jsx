@@ -1,4 +1,4 @@
-// eslint-disable-next-line react-hooks/exhaustive-deps
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import "../../../App.css";
 import "./myInfoModal.css";
@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { edit } from "../../../redux/reducers/userEdit";
 import { intro } from "../../../redux/reducers/introEdit";
 import { age } from "../../../redux/reducers/ageEdit";
-import { setDistancee, setAgeRange } from "../../../redux/reducers/setDatee";
 import SetModal from "./SetModal/setmodal";
 
 import axios from "axios";
@@ -92,7 +91,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   // nicName
   const [nickName, setNickName] = useState("");
-
+  console.log(nickName);
   const handleInputChange = (e) => {
     if (e.target.value.length <= 10) {
       setNameInput(e.target.value);
@@ -112,7 +111,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
       alert("숫자 2자리 이하만 입력 가능합니다.");
     }
   };
-
+  console.log(agee);
   //introducing
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const [introducing, setIntroducing] = useState("");
@@ -120,7 +119,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     setIntroInput(e.target.value);
     setProFile({ ...proFile, introduce: e.target.value });
   };
-
+  console.log(introducing);
   // mbti
   const [mbti, setMbti] = useState("");
 
@@ -145,7 +144,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     { value: "ENFJ", label: "ENFJ - Teacher" },
     { value: "ENTJ", label: "ENTJ - Commander" },
   ]);
-
+  console.log(setMbtiOptions);
   const handleSelectChange = (event) => {
     setMbti(event.target.value);
   };
@@ -172,6 +171,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   // 이미지
   const [selectedImage, setSelectedImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  console.log(previewImage);
 
   function handleImageChange(event) {
     setSelectedImage(event.target.files[0]);
@@ -190,11 +190,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
       .catch((err) => {});
   }
 
-  function handleImageChange(event) {
-    setSelectedImage(event.target.files[0]);
-    setPreviewImage(URL.createObjectURL(event.target.files[0]));
-  }
-
   // 성별
   const gender = ["M", "F"];
   const [genderCheck, setgenderCheck] = useState("check");
@@ -202,17 +197,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   // 데이터 주고 받기
   const dispatch = useDispatch();
 
-  const updatedProfile = {
-    userId: id,
-    age: ageInput === "" ? proFile.age : ageInput,
-    nickname: nameInput === "" ? proFile.nickname : nameInput,
-    introduce: introInput === "" ? proFile.introduce : introInput,
-    mbti: mbti === "" ? proFile.mbti : mbti,
-    gender: genderCheck === "" ? proFile.gender : gender[genderCheck === "check" ? 0 : 1],
-    minAge: minAge === "" ? proFile.minAge : minAge,
-    maxAge: maxAge === "" ? proFile.maxAge : maxAge,
-    maxDistance: distance === "" ? proFile.maxDistance : distance,
-  };
   // setProFile(updatedProfile);
   return (
     <div className="Modal">

@@ -5,6 +5,8 @@ $_subFrameLeft: 3;
 
 .SubFrame {
   @include mixin.sf;
+  height: 70vh;
+  scroll-margin: 200vw; //스크롤로 이동해왔을때 여백좀 주기
   .SubLeftDiv {
     position: absolute;
     width: 36.806vw;
@@ -123,4 +125,72 @@ $_subFrameLeft: 3;
       border-radius: 2.083vw;
     }
   }
+}
+
+.SubFrame2 {
+  scroll-margin: 2vw;
+  box-sizing: border-box;
+
+  position: absolute;
+  right: 4.514vw;
+  left: 4.514vw;
+  top: 105vh;
+  // bottom: 5.556vw;
+  height: 90vh;
+
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.052vw solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.083vw;
+}
+
+.SubFrame3 {
+  scroll-margin: 2vw;
+  box-sizing: border-box;
+
+  position: absolute;
+  right: 4.514vw;
+  left: 4.514vw;
+  top: 205vh;
+  // bottom: 5.556vw;
+  height: 90vh;
+
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.052vw solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.083vw;
+}
+
+.SubFrame4 {
+  scroll-margin: 2vw;
+  box-sizing: border-box;
+
+  position: absolute;
+  right: 4.514vw;
+  left: 4.514vw;
+  top: 305vh;
+  // bottom: 5.556vw;
+  height: 90vh;
+
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.052vw solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.083vw;
+}
+
+.SubFrame5 {
+  scroll-margin: 2vw;
+  box-sizing: border-box;
+
+  position: absolute;
+  right: 4.514vw;
+  left: 4.514vw;
+  top: 405vh;
+  // bottom: 5.556vw;
+  height: 90vh;
+
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.052vw solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.083vw;
 }
