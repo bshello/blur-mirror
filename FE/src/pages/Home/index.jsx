@@ -114,12 +114,8 @@ function Home() {
       if (!alert("미팅 대기 페이지로 이동합니다.")) {
         // 데이터 백에 넘겨줌
         navigator.geolocation.getCurrentPosition((loc) => {
-          console.log(
-            `lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`
-          );
-          dispatch(
-            MYGEO({ lat: loc.coords.latitude, lng: loc.coords.longitude })
-          );
+          console.log(`lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`);
+          dispatch(MYGEO({ lat: loc.coords.latitude, lng: loc.coords.longitude }));
           axios({
             method: "post",
             url: `${API_URL}/blur-match/match/start`,
@@ -166,10 +162,7 @@ function Home() {
                 navigate("/");
               }
               // 실패 시 알람 띄움
-              alert(
-                err.response.status +
-                  "error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!"
-              );
+              alert(err.response.status + "error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
             });
         });
       }
@@ -186,22 +179,10 @@ function Home() {
     <div className="Home">
       {chatList ? <ChatList showChatPage={showChatPage} /> : null}
       {chatPage ? <ChatPage showChatPage={showChatPage} /> : null}
-      {blurInfoModal || alertModal ? (
-        <ModalWrap
-          blurInfoModal={blurInfoModal}
-          showBlurInfoModal={showBlurInfoModal}
-        />
-      ) : null}
-      {blurInfoModal && !alertModal ? (
-        <BlurInfo showBlurInfoModal={showBlurInfoModal} />
-      ) : null}
+      {blurInfoModal || alertModal ? <ModalWrap blurInfoModal={blurInfoModal} showBlurInfoModal={showBlurInfoModal} /> : null}
+      {blurInfoModal && !alertModal ? <BlurInfo showBlurInfoModal={showBlurInfoModal} /> : null}
 
-      {alertModal && !blurInfoModal ? (
-        <Alert
-          showAlertModal={goMyInfo}
-          content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."}
-        />
-      ) : null}
+      {alertModal && !blurInfoModal ? <Alert showAlertModal={goMyInfo} content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."} /> : null}
 
       <Header showChatList={showChatList} />
 
