@@ -25,10 +25,9 @@ function MyInfo() {
   });
   const id = "123123";
 
-  const API_URL = `http://192.168.31.192:8000/blur-profile/profile/${id}`;
+  const API_URL = `http://192.168.31.73:8000/blur-profile/profile/${id}`;
   const [proFile, setProFile] = useState([]);
   const [userInterests, setUserInterests] = useState([]);
-  const [getInterest, setGetInterest] = useState([]);
   useEffect(() => {
     axios({
       method: "GET",

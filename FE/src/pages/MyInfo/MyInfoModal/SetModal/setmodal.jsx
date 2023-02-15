@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 function SetModal() {
-  const API_URL = `http://192.168.31.192/blur-profile/profile`;
+  const API_URL = `http:///192.168.31.73:8000/blur-profile/profile`;
   // const id = useSelector((state) => {
   //   return state.strr.id;
   // });
@@ -111,7 +111,13 @@ function SetModal() {
               <div className="blurdiv" />
 
               <div className="range-slider">
-                <input type="range" className="slider" min="0" max="50" onChange={changeDistance}></input>
+                <input
+                  type="range"
+                  className="slider"
+                  min="0"
+                  max="50"
+                  onChange={changeDistance}
+                ></input>
                 <div className="progressSlider"></div>
               </div>
             </div>

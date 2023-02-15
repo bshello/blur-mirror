@@ -13,7 +13,7 @@ import axios from "axios";
 // import styled from "styled-components";
 
 function MyInfoModal({ showMyinfoModal, showAlertModal }) {
-  const API_URL = `http://192.168.31.192:8000/blur-profile/profile`;
+  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
   // const id = useSelector((state) => {
   //   return state.strr.id;
   // });
@@ -37,7 +37,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     })
       .then((res) => {
         setProFile(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         // console.log(err);
@@ -46,7 +46,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
   // 유저프로필 업데이트 하기
 
-  const handleSave = (leftValue, rightValue, distance) => {
+  const handleSave = () => {
     axios({
       method: "put",
       headers: {
@@ -61,15 +61,16 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         introduce: introInput,
         mbti: mbti,
         gender: gender[genderCheck === "check" ? 0 : 1],
-        minAge: dispatch(setLeftValue(leftValue)),
-        maxAge: dispatch(setRightValue(rightValue)),
-        maxDistance: dispatch(setDistance(distance)),
+        // minAge: dispatch(setLeftValue(leftValue)),
+        // maxAge: dispatch(setRightValue(rightValue)),
+        // maxDistance: dispatch(setDistance(distance)),
       },
     })
       .then((res) => {
         dispatch(edit(res.data.nickname));
         dispatch(intro(res.data.introduce));
         dispatch(age(res.data.age));
+        console.log(FormData);
       })
       .catch((err) => {
         console.log(err);
@@ -100,7 +101,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   };
   // age
   const [agee, setAge] = useState("");
-
   const handleAgeChange = (e) => {
     const inputValue = e.target.value;
     if (!isNaN(inputValue) && inputValue.length <= 2) {
@@ -142,12 +142,10 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     { value: "ENFJ", label: "ENFJ - Teacher" },
     { value: "ENTJ", label: "ENTJ - Commander" },
   ]);
-  console.log(setMbti);
 
   const handleSelectChange = (event) => {
     setMbti(event.target.value);
   };
-
   // state 변경 핸들러
   const handleUpload = () => {
     setNickName(() => {
@@ -185,12 +183,8 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
       .post(`${API_URL}/${id}/updateImage`, formData)
       .then((res) => {
         console.log(res.data);
-        console.log(res.status);
       })
-      .catch((err) => {
-        console.log(err.data);
-        console.log(err.status);
-      });
+      .catch((err) => {});
   }
 
   function handleImageChange(event) {
@@ -199,7 +193,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   }
 
   // 성별
-  const gender = ["Male", "FeMale"];
+  const gender = ["M", "F"];
   const [genderCheck, setgenderCheck] = useState("check");
 
   // 데이터 주고 받기
@@ -255,7 +249,6 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         <span className="PMLabel">Profile Edit</span>
         <div className="PMIdDiv">
           <span className="PMIdLable">NickName </span>
-
           <input
             type="text"
             className="PMIdInput"
@@ -278,13 +271,13 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         <div className="PMMBTI">
           <span className="PMMBTILabel">MBTI</span>
           <select
-            value={mbtiOptions}
+            value={mbti}
             onChange={handleSelectChange}
             className="PMMBTISelect"
           >
             {mbtiOptions.map((mbtiOptions) => (
               <option key={mbtiOptions.value} value={mbtiOptions.value}>
-                {mbtiOptions.value}
+                {mbtiOptions.label}
               </option>
             ))}
           </select>
@@ -328,22 +321,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         onClick={() => {
           showMyinfoModal();
           showAlertModal();
-          {
-            const namechange = document.querySelector(".PMIdInput").value;
-            const introchange = document.querySelector(
-              ".PMIntroducingInput"
-            ).value;
-            const ageChange = document.querySelector(".PMAgeSelect").value;
-            // dispatch(edit(namechange));
-            // dispatch(intro(introchange));
-            // dispatch(age(ageChange));
-          }
           handleSave();
-          console.log(gender[genderCheck === "check" ? 0 : 1]);
-          console.log(mbti);
-          console.log(nameInput);
-          console.log(ageInput);
-          console.log(introInput);
         }}
       >
         <span className="ModalOutText">confirm</span>

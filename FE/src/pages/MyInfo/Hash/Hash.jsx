@@ -42,7 +42,7 @@ function Hash({ showHashModal, showAlertModal }) {
 
   // 관심사 업데이트
 
-  const API_URL = `http://192.168.31.192:8000/blur-profile/profile`;
+  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
 
   const intSave = () => {
     axios({
