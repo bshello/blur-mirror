@@ -1,11 +1,56 @@
-import { useState } from "react";
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
+import React, { useState, useEffect } from "react";
 import "../../MyInfoModal/myInfoModal.css";
 import "./setmodal.css";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { setDistancee, setAgeRange } from "../../../../redux/reducers/setDatee";
 
 function SetModal() {
-  // 성별 바꾸기
-  const [gender, setGender] = useState(true);
-  const handleClick = () => setGender((setGender) => !setGender);
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile`;
+  // const id = useSelector((state) => {
+  //   return state.strr.id;
+  // });
+  const id = "123123";
+
+  // 컴포넌트 켜지자말자 데이터 받아 오기
+  const [proFile, setProFile] = useState([]);
+  const token = useSelector((state) => {
+    return state.strr.token;
+  });
+  const [gender, setGender] = useState("");
+  useEffect(() => {
+    axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      url: `${API_URL}/${id}/getProfile`,
+      data: {},
+    })
+      .then((res) => {
+        setProFile(res.data);
+        console.log(res.data);
+        if (res.data.gender === "male") {
+          setGender("Female");
+        } else if (res.data.gender === "female") {
+          setGender("Male");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const dispatch = useDispatch();
+
+  const handleSave = () => {
+    dispatch(setDistancee(distance));
+    dispatch(setAgeRange([leftSliderValue, rightSliderValue]));
+    console.log(distance);
+  };
 
   // //range
 
@@ -35,20 +80,19 @@ function SetModal() {
       setRightSliderValue(newRightSliderValue);
     }
   };
+
   return (
     <div className="SettingModal">
-      <div></div>
+      <div className="setsavebtn" onClick={handleSave}>
+        Save
+      </div>
       <div className="SetModal">
         <span className="SEtLabel">Setting</span>
         <div className="SEtMidModalChangediv">
           <div className="ModalInputBox">
             <span className="SetMidPartnerLable">Partner Gender</span>
             <div className="SetMMPartnerCheckdiv">
-              <div className="SetMMPartnerChekdiv">
-                <div className="arrow" onClick={handleClick}></div>
-                {gender ? <p>FeMale</p> : <p>Male</p>}
-                {gender}
-              </div>
+              <div className="SetMMPartnerChekdiv"> {gender} </div>
 
               <div className="blurdiv"></div>
             </div>
@@ -61,7 +105,13 @@ function SetModal() {
               <div className="blurdiv" />
 
               <div className="range-slider">
-                <input type="range" className="slider" min="0" max="50" onChange={changeDistance}></input>
+                <input
+                  type="range"
+                  className="slider"
+                  min="0"
+                  max="50"
+                  onChange={changeDistance}
+                ></input>
                 <div className="progressSlider"></div>
               </div>
             </div>

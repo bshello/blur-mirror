@@ -1,49 +1,41 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 import "./Hash.css";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Checkdata from "../Hash/HashComponent/Checkdata";
-// import saveToken from "../../../redux/reducers/saveToken";
+import UserCheckdata from "./HashComponent/UserCheckdata";
+import saveToken from "../../../redux/reducers/saveToken";
 import { useSelector } from "react-redux";
-// import { type } from "@testing-library/user-event/dist/type";
+import { type } from "@testing-library/user-event/dist/type";
 
 function Hash({ showHashModal, showAlertModal }) {
-  // const API_URL = "blur-profile/profile/dddd";
-
-  // const getCategories = () => {
-  //   axios({
-  //     method: "GET",
-  //     url: `http://192.168.31.73:8000/blur-profile/profile/dddd/getAllInterests`,
-  //     data: {},
-  //   })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       console.log(res.status);
-  //     })
-  //     .catch((err) => {
-  //       alert("카테고리 없다.");
-  //       console.log(err);
-  //     });
-  // };
-
-  // useEffect 함수를 사용하여 데이터를 가져오는 방법
-  // const id = useSelector((state) => {
-  //   return state.strr.id;
-  // });
   const id = "123123";
+  const [intdata, setIntData] = useState([]); // 관심사 전체 가져오기
+  const [userIntData, setuserIntData] = useState([]); // 체크했던 데이터 가져오기
+  const [checkData, setcheckData] = useState([]); //체크한 데이터 띄우기
+  const [limit] = useState(5);
+  // 검색기능
+  const [searchBar, setSearchBar] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const [intdata, setIntData] = useState([]);
+  const token = useSelector((state) => {
+    return state.strr.token;
+  });
 
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://192.168.31.73:8000/blur-profile/profile/${id}/getInterest`,
+      url: `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}/getInterest`,
       data: {},
     })
       .then((res) => {
         console.log(res.data.interests);
+        console.log(res.data.userIntData);
         console.log(res.status);
         setIntData(res.data.interests);
+        setuserIntData(res.data.userIntData);
       })
+
       .catch((err) => {
         alert("카테고리 없다.");
         console.log(err);
@@ -51,15 +43,8 @@ function Hash({ showHashModal, showAlertModal }) {
   }, []);
 
   // 관심사 업데이트
-  const token = useSelector((state) => {
-    return state.strr.token;
-  });
-
-  // console.log(typeof checkData);
-  // console.log(checkData[0]);
 
   const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
-  console.log(`${API_URL}/${id}/updateInterest`);
 
   const intSave = () => {
     axios({
@@ -70,7 +55,7 @@ function Hash({ showHashModal, showAlertModal }) {
       },
       url: `${API_URL}/${id}/updateInterest`,
       data: {
-        interests: [checkData],
+        interests: checkData,
       },
     })
       .then((res) => {
@@ -80,16 +65,10 @@ function Hash({ showHashModal, showAlertModal }) {
         console.log("성공><");
       })
       .catch((err) => {
-        alert("기존 데이터 없다.");
         console.log(err);
       });
   };
 
-  const [checkData, setcheckData] = useState([]); //체크한 데이터 띄우기
-  const [limit] = useState(5);
-  // 검색기능
-  const [searchBar, setSearchBar] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const filteredData = intdata.filter((item) =>
     item.interestName.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -114,8 +93,6 @@ function Hash({ showHashModal, showAlertModal }) {
       setcheckData((prev) => [...prev, interestName]);
     }
   };
-
-  // console.log(checkData);
 
   const HashSerch = ({ results, handleClick }) => {
     const handleClickOutside = (event) => {
@@ -161,9 +138,13 @@ function Hash({ showHashModal, showAlertModal }) {
             <div className="searchdiv">
               {searchQuery.length > 0 &&
                 filteredData.map((item, idx) => {
-                  const selected = checkData.includes(item);
+                  const selected = checkData.includes(item.interestName);
                   return (
-                    <div className="searchbox" key={item} data-idx={idx}>
+                    <div
+                      className="searchbox"
+                      key={item.interestName}
+                      data-idx={idx}
+                    >
                       <button
                         className={`btn ${
                           selected ? "changesearchback" : "searchback"
@@ -172,12 +153,12 @@ function Hash({ showHashModal, showAlertModal }) {
                         <input
                           className="custom-checkbox-style"
                           type="checkbox"
-                          key={item}
+                          key={item.interestName}
                           data-idx={idx}
-                          value={item}
+                          value={item.interestName}
                           checked={selected}
                           onChange={(e) => {
-                            handleClick(item);
+                            handleClick(item.interestName);
                           }}
                         />
                         {item.interestName}
@@ -189,10 +170,26 @@ function Hash({ showHashModal, showAlertModal }) {
           </div>
           <div>
             <div className="hashaddiv">
-              {checkData &&
-                checkData.map((item, idx) => (
-                  <Checkdata item={item} onRemove={() => handleRemove(item)} />
-                ))}
+              {checkData.length > 0 && (
+                <div className="hashaddiv">
+                  {checkData.map((item, idx) => (
+                    <UserCheckdata
+                      item={item}
+                      onRemove={() => handleRemove(item)}
+                    />
+                  ))}
+                </div>
+              )}
+              {/* {userIntData.length > 0 && (
+                <div className="hashaddiv">
+                  {userIntData.map((item, idx) => (
+                    <userCheckdata
+                      item={item}
+                      onRemove={() => handleRemove(item)}
+                    />
+                  ))}
+                </div>
+              )} */}
             </div>
           </div>
           <div className="cainterestdiv">
@@ -212,12 +209,12 @@ function Hash({ showHashModal, showAlertModal }) {
                     <input
                       className="custom-checkbox-style"
                       type="checkbox"
-                      key={item}
+                      key={item.interestName}
                       data-idx={idx}
-                      value={item}
+                      value={item.interestName}
                       checked={selected}
                       onChange={(e) => {
-                        handleClick(item);
+                        handleClick(item.interestName);
                       }}
                     />
                     {item.interestName}

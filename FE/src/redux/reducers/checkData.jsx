@@ -1,5 +1,3 @@
-// 체크한데이터 가져오기
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const checkDataSlice = createSlice({
