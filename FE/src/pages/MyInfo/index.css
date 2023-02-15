@@ -34,9 +34,8 @@
   position: absolute;
   width: 500px;
   height: 500px;
-  left: 32%;
+  left: 15%;
   top: 16%;
-  opacity: 0.5;
   background-size: 100% 100%;
 }
 .MIImgDiv .MIImg {
@@ -44,6 +43,13 @@
   width: 500px;
   height: 500px;
   background-image: url(../../assets/images/woman.jpg);
+  background-size: 100% 100%;
+  border-radius: 70%;
+}
+.MIImgDiv .MIUserImg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
   background-size: 100% 100%;
   border-radius: 70%;
 }
@@ -115,7 +121,7 @@
   line-height: 55px;
   /* identical to box height */
   align-items: center;
-  text-align: center;
+  text-align: left;
   color: #ffffff;
 }
 .MINameAgeDiv .MIAge {
@@ -208,4 +214,49 @@
   opacity: 0.5;
   z-index: 10;
   background-color: black;
+}
+
+.showint {
+  position: absolute;
+  width: 145px;
+  height: 500px;
+  left: 6.3%;
+  top: 26.5%;
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.showint .showintdiv {
+  position: relative;
+  width: 145px;
+  height: 55px;
+  border-radius: 30px;
+  background-color: #50a1a3;
+  margin-top: 10px;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.showint .showintbox {
+  position: absolute;
+  width: 80px;
+  height: 30px;
+  left: 25px;
+  top: -4px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  align-items: center;
+  text-align: center;
+  color: #50a1a3;
+}
+.showint :hover {
+  background-color: #68bbbd;
+  color: white;
 }/*# sourceMappingURL=index.css.map */
