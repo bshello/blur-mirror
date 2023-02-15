@@ -1,9 +1,10 @@
 import "./blurInfo.css";
 
-function BlurInfo() {
+function BlurInfo({ showBlurInfoModal }) {
   return (
     <div className="BlurInfoSubFrame">
       <p className="CommNavLogo">Blur :-)</p>
+      <button className="BlurInfoClose" onClick={showBlurInfoModal}></button>
       <p className="Paragraph1">
         블러(blur)는 대표적인 첫인상인 외모를 차단함으로써 자신의 첫인상을
         만들어가자는 취지로 만들어졌습니다.

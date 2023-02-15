@@ -4,51 +4,51 @@
 
 .SIModal {
   position: absolute;
-  width: 460px;
-  height: 615px;
-  left: 493px;
-  top: 30px;
+  width: 31.9444vw;
+  height: 38.1944vw;
+  left: 34.2361vw;
+  top: 2.0833vw;
 
   background: #ffffff;
-  border-radius: 30px;
+  border-radius: 2.0833vw;
   z-index: 30;
   overflow-y: scroll;
   overflow-x: hidden;
 
   .SIModalHeader {
     position: absolute;
-    width: 460px;
-    height: 75px;
-    left: 0px;
-    top: 0px;
+    width: 31.9444vw;
+    height: 5.2083vw;
+    left: 0vw;
+    top: 0vw;
 
     background: #e1f1f2;
-    border-radius: 30px 30px 0px 0px;
+    border-radius: 2.0833vw 2.0833vw 0vw 0vw;
 
     .SIModalHeaderText {
       position: absolute;
-      height: 39px;
-      left: 0px;
-      right: 0px;
-      top: 19.5px;
+      height: 2.7083vw;
+      left: 0vw;
+      right: 0vw;
+      top: 1.3542vw;
 
       font-style: normal;
       font-weight: 500;
-      font-size: 27px;
-      line-height: 39px;
+      font-size: 1.875vw;
+      line-height: 2.7083vw;
       text-align: center;
       color: #50a1a3;
     }
 
     .SIModalClose {
       position: absolute;
-      right: 20px;
-      top: 30px;
+      right: 1.3889vw;
+      top: 1.75vw;
 
-      background: url(../../../assets/images/x-mark.png);
+      background: url(../../../assets/images/cross.png);
       background-size: cover;
-      width: 30px;
-      height: 30px;
+      width: 2.0833vw;
+      height: 2.0833vw;
 
       cursor: pointer;
     }
@@ -56,23 +56,23 @@
 
   .ModalInputIdDiv {
     position: absolute;
-    width: 330px;
-    height: 87.75px;
-    left: 66px;
-    top: 107.25px;
+    width: 22.9167vw;
+    height: 6.0938vw;
+    left: 4.5833vw;
+    top: 7.4479vw;
 
     .ModalInputIdLabel {
       position: absolute;
-      width: 330px;
-      height: 18px;
-      left: 0px;
-      top: 0px;
+      width: 22.9167vw;
+      height: 1.25vw;
+      left: 0vw;
+      top: 0vw;
 
       font-family: "Happy Monkey";
       font-style: normal;
       font-weight: 400;
-      font-size: 15px;
-      line-height: 18px;
+      font-size: 1.0417vw;
+      line-height: 1.25vw;
       /* identical to box height */
 
       display: flex;
@@ -83,37 +83,37 @@
 
     .ModalInputId {
       position: absolute;
-      width: 330px;
-      height: 56.25px;
-      left: 0px;
-      top: 31.5px;
-      padding-left: 10px;
+      width: 22.9167vw;
+      height: 3.9063vw;
+      left: 0vw;
+      top: 2.1875vw;
+      padding-left: 0.6944vw;
 
       background: #e1f1f2;
-      border-radius: 7.5px;
+      border-radius: 0.5208vw;
       border: 0;
     }
   }
 
   .ModalInputPwDiv {
     position: absolute;
-    width: 330px;
-    height: 86.25px;
-    left: 65.25px;
-    top: 206.25px;
+    width: 22.9167vw;
+    height: 5.9896vw;
+    left: 4.5313vw;
+    top: 14.3229vw;
 
     .ModalInputPwLabel {
       position: absolute;
-      width: 23px;
-      height: 18px;
-      left: 0.75px;
-      top: 0px;
+      width: 1.5972vw;
+      height: 1.25vw;
+      left: 0.0521vw;
+      top: 0vw;
 
       font-family: "Happy Monkey";
       font-style: normal;
       font-weight: 400;
-      font-size: 15px;
-      line-height: 18px;
+      font-size: 1.0417vw;
+      line-height: 1.25vw;
       /* identical to box height */
 
       display: flex;
@@ -124,66 +124,66 @@
 
     .ModalInputPw {
       position: absolute;
-      width: 330px;
-      height: 56.25px;
-      left: 0px;
-      top: 30px;
-      padding-left: 10px;
+      width: 22.9167vw;
+      height: 3.9063vw;
+      left: 0vw;
+      top: 2.0833vw;
+      padding-left: 0.6944vw;
 
       background: #e1f1f2;
-      border-radius: 7.5px;
+      border-radius: 0.5208vw;
       border: 0;
     }
   }
 
   .LoginBtnDiv {
     position: absolute;
-    width: 342px;
-    height: 78.75px;
-    left: 65.25px;
-    top: 324.75px;
+    width: 23.75vw;
+    height: 5.4688vw;
+    left: 4.5313vw;
+    top: 22.5521vw;
 
     .LoginBtn {
       position: absolute;
-      width: 342px;
-      height: 56.25px;
-      left: 0px;
-      top: 0px;
+      width: 23.75vw;
+      height: 3.9063vw;
+      left: 0vw;
+      top: 0vw;
       cursor: pointer;
 
       background: #50a1a3;
-      border-radius: 7.5px;
+      border-radius: 0.5208vw;
     }
 
     .IdSaveDiv {
       position: absolute;
-      width: 81px;
-      height: 15px;
-      left: 0.75px;
-      top: 63.75px;
+      width: 5.625vw;
+      height: 1.0417vw;
+      left: 0.0521vw;
+      top: 4.4271vw;
 
       .IdSaveToggle {
         position: absolute;
-        width: 15px;
-        height: 15px;
-        left: 0px;
-        top: 0px;
+        width: 1.0417vw;
+        height: 1.0417vw;
+        left: 0vw;
+        top: 0vw;
 
         background: #d9d9d9;
       }
 
       .IdSaveText {
         position: absolute;
-        width: 65px;
-        height: 14px;
-        left: 22.5px;
-        top: 0.75px;
+        width: 4.5139vw;
+        height: 0.9722vw;
+        left: 1.5625vw;
+        top: 0.0521vw;
 
         font-family: "Happy Monkey";
         font-style: normal;
         font-weight: 400;
-        font-size: 12px;
-        line-height: 14px;
+        font-size: 0.8333vw;
+        line-height: 0.9722vw;
         display: flex;
         align-items: center;
         text-align: center;
@@ -194,17 +194,17 @@
 
     .SISignUpBtn {
       position: absolute;
-      width: 65px;
-      height: 14px;
-      left: 200px;
-      top: 64.5px;
+      width: 4.5139vw;
+      height: 0.9722vw;
+      left: 13.8889vw;
+      top: 4.4792vw;
       cursor: pointer;
 
       font-family: "Happy Monkey";
       font-style: normal;
       font-weight: 400;
-      font-size: 12px;
-      line-height: 14px;
+      font-size: 0.8333vw;
+      line-height: 0.9722vw;
       display: flex;
       align-items: center;
       text-align: center;
@@ -215,17 +215,17 @@
 
     .SISearchingPwBtn {
       position: absolute;
-      width: 90px;
-      height: 14px;
-      left: 260px;
-      top: 64.5px;
+      width: 6.25vw;
+      height: 0.9722vw;
+      left: 18.0556vw;
+      top: 4.4792vw;
       cursor: pointer;
 
       font-family: "Happy Monkey";
       font-style: normal;
       font-weight: 400;
-      font-size: 12px;
-      line-height: 14px;
+      font-size: 0.8333vw;
+      line-height: 0.9722vw;
       display: flex;
       align-items: center;
       text-align: center;
@@ -237,45 +237,45 @@
 
   .KakaoLoginBtn {
     position: absolute;
-    width: 342px;
-    height: 56.25px;
-    left: 65.25px;
-    top: 441px;
+    width: 23.75vw;
+    height: 3.9063vw;
+    left: 4.5313vw;
+    top: 30.625vw;
     cursor: pointer;
 
     background: #fee500;
-    border-radius: 7.5px;
+    border-radius: 0.5208vw;
   }
 
   .NaverLoginBtn {
     position: absolute;
-    width: 342px;
-    height: 56.25px;
-    left: 66px;
-    top: 512.25px;
+    width: 23.75vw;
+    height: 3.9063vw;
+    left: 4.5833vw;
+    top: 35.5729vw;
     cursor: pointer;
 
     background: #00ca51;
-    border-radius: 7.5px;
+    border-radius: 0.5208vw;
   }
 
   .GoogleLoginBtn {
     position: absolute;
-    width: 342px;
-    height: 56.25px;
-    left: 66px;
-    top: 580px;
+    width: 23.75vw;
+    height: 3.9063vw;
+    left: 4.5833vw;
+    top: 40.2778vw;
     cursor: pointer;
 
     background: #8098d9f5;
-    border-radius: 7.5px;
+    border-radius: 0.5208vw;
   }
 
   .PlaceHolder {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    left: 66px;
-    top: 650px;
+    width: 0.6944vw;
+    height: 0.6944vw;
+    left: 4.5833vw;
+    top: 45.1389vw;
   }
 }

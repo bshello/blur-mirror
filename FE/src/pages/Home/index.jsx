@@ -7,6 +7,8 @@ import Alert from "../Start/Alert";
 import Slide1 from "./Slide1/slide1";
 import Slide2 from "./Slide2/slide2";
 import Slide3 from "./Slide3/slide3";
+import Slide4 from "./Slide4/slide4";
+import Slide5 from "./Slide5/slide5";
 import ChatList from "./Chat/ChatList/chatlist";
 import ChatPage from "./Chat/ChatPage/chatpage";
 import { useRef } from "react";
@@ -77,7 +79,7 @@ function Home() {
 
   //캐러셀 화면
   useEffect(() => {
-    carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 10000);
+    carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 5), 10000);
   }, [slideNumber]);
 
   //Start 버튼에서 미팅으로 갈지, 프로필로 갈지
@@ -172,7 +174,9 @@ function Home() {
           showBlurInfoModal={showBlurInfoModal}
         />
       ) : null}
-      {blurInfoModal && !alertModal ? <BlurInfo /> : null}
+      {blurInfoModal && !alertModal ? (
+        <BlurInfo showBlurInfoModal={showBlurInfoModal} />
+      ) : null}
 
       {alertModal && !blurInfoModal ? (
         <Alert
@@ -196,6 +200,8 @@ function Home() {
         {slideNumber === 0 ? <Slide1 /> : null}
         {slideNumber === 1 ? <Slide2 /> : null}
         {slideNumber === 2 ? <Slide3 /> : null}
+        {slideNumber === 3 ? <Slide4 /> : null}
+        {slideNumber === 4 ? <Slide5 /> : null}
       </div>
     </div>
   );

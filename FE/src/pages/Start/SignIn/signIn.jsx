@@ -143,25 +143,6 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
       >
         카카오로 로그인
       </button>
-      <button
-        className="NaverLoginBtn"
-        onClick={(e) => {
-          e.preventDefault();
-          window.location.href = socialSignIn("naver");
-        }}
-      >
-        네이버로 로그인
-      </button>
-      <button
-        className="GoogleLoginBtn"
-        onClick={(e) => {
-          e.preventDefault();
-          window.location.href = socialSignIn("google");
-        }}
-      >
-        구글로 로그인
-      </button>
-      <div className="PlaceHolder"></div>
     </div>
   );
 }

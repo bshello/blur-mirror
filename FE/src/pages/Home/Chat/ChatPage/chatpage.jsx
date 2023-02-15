@@ -11,12 +11,8 @@ function ChatPage({ showChatPage }) {
       </div>
       <div className="ChatPageContent">
         <div className="ChatPageDialogue">
-          <ChatPageDialogueMe content={"안녕"} />
-          <ChatPageDialogueYou content={"응 안녕"} />
-          <ChatPageDialogueMe content={"난 이승기야"} />
-          <ChatPageDialogueYou content={"난 한효주야"} />
-          <ChatPageDialogueMe content={"노브랜드버거먹자"} />
           <ChatPageDialogueYou content={"그래그래"} />
+          <ChatPageDialogueMe content={"아니아니"} />
         </div>
         <div className="ChatPageInputDiv">
           <div className="ChatPageInput">

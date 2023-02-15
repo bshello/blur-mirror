@@ -296,9 +296,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
             showSignUpModal();
             showSignInModal();
           }}
-        >
-          x
-        </button>
+        ></button>
       </div>
       <form>
         <div className="SUModalInputIdDiv">

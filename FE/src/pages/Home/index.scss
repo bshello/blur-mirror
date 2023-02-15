@@ -14,49 +14,54 @@
 .HomeSubFrame {
   @include mixin.sf;
   // position: absolute;
-  // width: 1305px;
-  // height: 570px;
-  // left: 61.5px;
-  // top: 157.5px;
+  // width: 90.6250vw;
+  // height: 39.5833vw;
+  // left: 4.2708vw;
+  // top: 10.9375vw;
 
   // background: rgba(255, 255, 255, 0.2);
-  // border-radius: 30px;
+  // border-radius: 2.0833vw;
 
   .HomeLeftDiv {
     position: absolute;
-    width: 517.5px;
-    height: 450px;
-    left: 60px;
-    top: 30px;
+    width: 35.9375vw;
+    height: 31.25vw;
+    left: 4.1667vw;
+    top: 2.0833vw;
+
+    // width: 25.8vw;
+    // height: 22.5vw;
+    // left: 3vw;
+    // top: 1.5vw;
 
     .HomeCamDiv {
       position: absolute;
-      width: 440px;
-      height: 340px;
-      left: 30px;
-      top: 0px;
+      width: 30.5556vw;
+      height: 23.6111vw;
+      left: 2.0833vw;
+      top: 0vw;
 
       background: url(../../assets/images/man4.jfif);
       background-size: 100% 100%;
-      border-radius: 30px;
+      border-radius: 2.0833vw;
 
       .HomeCamImg {
         position: absolute;
-        width: 375px;
-        height: 250px;
-        left: 0px;
-        top: 0px;
+        width: 26.0417vw;
+        height: 17.3611vw;
+        left: 0vw;
+        top: 0vw;
 
-        border-radius: 30px;
+        border-radius: 2.0833vw;
       }
     }
 
     .InfoBlurBtn {
       position: absolute;
-      width: 35px;
-      height: 35px;
-      left: 480px;
-      top: 160px;
+      width: 2.4306vw;
+      height: 2.4306vw;
+      left: 33.3333vw;
+      top: 11.1111vw;
 
       background: url(../../assets/images/info.png);
       // background-size: cover;
@@ -65,10 +70,10 @@
 
     .CamToggle {
       position: absolute;
-      width: 33px;
-      height: 33px;
-      left: 480px;
-      top: 200px;
+      width: 2.2917vw;
+      height: 2.2917vw;
+      left: 33.3333vw;
+      top: 13.8889vw;
 
       background: url(../../assets/images/camera.png);
       background-size: cover;
@@ -76,23 +81,23 @@
 
     .CommBoxFrame2 {
       position: absolute;
-      width: 440px;
-      height: 70px;
-      left: 30px;
-      top: 350px;
+      width: 30.5556vw;
+      height: 4.8611vw;
+      left: 2.0833vw;
+      top: 24.3056vw;
 
       background: #50a1a3;
-      border-radius: 15px;
+      border-radius: 1.0417vw;
       .CommBoxFrameStart {
         position: absolute;
-        width: 440px;
-        height: 50px;
-        left: 0px;
-        top: 10px;
+        width: 30.5556vw;
+        height: 3.4722vw;
+        left: 0vw;
+        top: 0.6944vw;
 
         font-weight: 400;
-        font-size: 41.25px;
-        line-height: 50px;
+        font-size: 2.8646vw;
+        line-height: 3.4722vw;
         text-align: center;
         color: #ffffff;
         cursor: pointer;
@@ -102,54 +107,56 @@
 
   .HomeRightDiv {
     position: absolute;
-    width: 533.25px;
-    height: 450px;
-    left: 780px;
-    top: 30px;
+    width: 37.0313vw;
+    height: 31.25vw;
+    left: 46vw;
+    top: 2.0833vw;
     animation: smoothAppear 1s;
 
     .HomeRightImgDiv {
       position: absolute;
-      width: 550px;
-      height: 340px;
-      left: 0px;
-      top: 0px;
+      width: 38.1944vw;
+      height: 23.6111vw;
+      left: 0vw;
+      top: 0vw;
 
       // background: url(../../assets/images/HomeRightDiv.png);
-      border-radius: 30px;
+      border-radius: 2.0833vw;
       transition: all 0.3s;
 
       .HomeRightImg {
         position: absolute;
-        width: 550px;
-        height: 340px;
-        left: 0px;
-        top: 0px;
+        width: 38.1944vw;
+        height: 23.6111vw;
+        left: 0vw;
+        top: 0vw;
+
+        border-radius: 2.0833vw;
       }
     }
 
     .HomeRightToolTipDiv {
       position: absolute;
-      width: 550px;
-      height: 70px;
-      left: 0px;
-      top: 350px;
+      width: 38.1944vw;
+      height: 4.8611vw;
+      left: 0vw;
+      top: 24.3056vw;
 
       background: #fffdfd;
-      border-radius: 15px;
+      border-radius: 1.0417vw;
 
       .HomeRightToolTipText {
         position: absolute;
-        width: 421px;
-        height: 27px;
-        left: 56.25px;
-        top: 16.5px;
+        width: 38.1944vw;
+        height: 1.875vw;
+        left: 0vw;
+        top: 1.5vw;
 
         font-family: "Happy Monkey";
         font-style: normal;
         font-weight: 400;
-        font-size: 15px;
-        line-height: 27px;
+        font-size: 1.5vw;
+        line-height: 1.875vw;
 
         color: #50a1a3;
       }

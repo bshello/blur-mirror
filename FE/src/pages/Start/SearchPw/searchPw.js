@@ -41,9 +41,7 @@ function SearchPw({ showSignInModal, showSearchPwModal, showAlertModal }) {
             showSignInModal();
             showSearchPwModal();
           }}
-        >
-          x
-        </button>
+        ></button>
       </div>
       <div className="SPModalInputIdDiv">
         <label className="SPModalInputIdLabel">ID</label>
