@@ -10,10 +10,10 @@ import { setDistancee, setAgeRange } from "../../../../redux/reducers/setDatee";
 
 function SetModal() {
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile`;
-  // const id = useSelector((state) => {
-  //   return state.strr.id;
-  // });
-  const id = "123123";
+  const id = useSelector((state) => {
+    return state.strr.id;
+  });
+  // const id = "123123";
 
   // 컴포넌트 켜지자말자 데이터 받아 오기
   const [proFile, setProFile] = useState([]);

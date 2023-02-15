@@ -26,7 +26,11 @@ function MyInfo() {
   const age = useSelector((state) => {
     return state.age.value;
   });
-  const id = "123123";
+
+  const id = useSelector((state) => {
+    return state.strr.id;
+  });
+  // const id = "123123";
 
   const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}`;
   const [proFile, setProFile] = useState([]);
