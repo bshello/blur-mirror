@@ -46,8 +46,7 @@ public class StompChatController {
     	UserInfoDto userInfoDto = userInfo.getUserInfo(userId);
 //    	System.out.println(feignUserDto.toString());
         message.setNickname(userInfoDto.getNickname());
-        message.setWriter(userInfoDto.getUserId());
-        message.setType(ChatMessageSaveDto.MessageType.TALK);
+        message.setNickname(userInfoDto.getNickname());
         message.setCreatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS")));
         
         redisPublisher.publish(channelTopic, message);

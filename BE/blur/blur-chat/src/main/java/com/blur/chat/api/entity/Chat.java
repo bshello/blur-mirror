@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.blur.chat.api.dto.request.ChatMessageSaveDto;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,7 +31,6 @@ public class Chat implements Serializable {
 
     private static final long serialVersionUID = 5090380600159441769L;
 
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "chat_no")
@@ -47,7 +47,8 @@ public class Chat implements Serializable {
     private String createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "chatroom_no", nullable = false)
+    @JsonManagedReference
+    @JoinColumn(name = "room_no", nullable = false)
     private Chatroom chatroom;
 
     public static Chat of(ChatMessageSaveDto chatMessageSaveDto, Chatroom chatroom){
@@ -55,10 +56,9 @@ public class Chat implements Serializable {
         return Chat.builder()
                 .message(chatMessageSaveDto.getMessage())
                 .createdAt(chatMessageSaveDto.getCreatedAt())
-                .users(chatMessageSaveDto.getWriter())
+                .users(chatMessageSaveDto.getNickname())
                 .chatroom(chatroom)
                 .build();
-
 
     }
 }

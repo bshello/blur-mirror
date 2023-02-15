@@ -54,7 +54,7 @@ public class ChatUtils {
 
 		for (Chat chat : chatList) {
 			ChatMessageSaveDto chatMessageSaveDto = ChatMessageSaveDto.of(chat);
-			zSetOperations.add(CHAT_SORTED_SET_ + chat.getChatroom().getChatroomNo(), chatMessageSaveDto,
+			zSetOperations.add(CHAT_SORTED_SET_ + chat.getChatroom().getRoomNo(), chatMessageSaveDto,
 					changeLocalDateTimeToDouble(chat.getCreatedAt()));
 		}
 	}

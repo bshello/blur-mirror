@@ -41,7 +41,6 @@ public class ChatRedisCacheService {
     public static final String USERNAME_NICKNAME = "USERNAME_NICKNAME";
     private final RedisTemplate<String, Object> redisTemplate;
     private final ChatRepository chatRepository;
-//    private final UserRepository userRepository;
     private final UserInfo userInfo;
 
     private final RedisTemplate<String, ChatMessageSaveDto> chatRedisTemplate;
@@ -69,11 +68,10 @@ public class ChatRedisCacheService {
 
         //마지막 채팅을 기준으로 redis의 Sorted set에 몇번째 항목인지 파악
         ChatMessageSaveDto cursorDto = ChatMessageSaveDto.builder()
-                .type(ChatMessageSaveDto.MessageType.TALK)
                 .roomNo(roomNo.toString())
                 .createdAt(chatPagingDto.getCursor())
                 .message(chatPagingDto.getMessage())
-                .writer(chatPagingDto.getWriter())
+                .nickname(chatPagingDto.getNickname())
                 .build();
 
 
@@ -101,7 +99,7 @@ public class ChatRedisCacheService {
 
         //redis caching 닉네임으로 작성자 삽입
         for (ChatPagingResponseDto chatPagingResponseDto : chatMessageDtoList) {
-            chatPagingResponseDto.setNickname(findUserNicknameByUsername(chatPagingResponseDto.getWriter()));
+            chatPagingResponseDto.setNickname(findUserNicknameByUsername(chatPagingResponseDto.getNickname()));
         }
 
         return ResponseDto.success(chatMessageDtoList);
