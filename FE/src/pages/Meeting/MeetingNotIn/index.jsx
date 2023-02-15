@@ -257,7 +257,7 @@ function MeetingNotIn() {
           // => 비정상(다시 요청을 보내야함)
           else {
             console.log("여자를 안거치고 바로와서 partnerId/sessionId가 없음 => 인터벌 안닫힘, 다시 요청해야함", errorCnt);
-            if (++errorCnt >= 10) {
+            if (++errorCnt >= 30) {
               // 에러가 5회이상일 경우 해당 요청 취소 및 알람
               axios({
                 method: "post",

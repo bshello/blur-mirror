@@ -103,13 +103,18 @@ function MeetingIn() {
   // socket Code
 
   // Peer A
-  socket.on("welcome", async () => {
+  socket.on("welcome", async (rooms) => {
     console.log("node로 부터 온 welcome ");
+    console.log(`현재 들어온 rooms들 확인`, rooms);
     const offer = await myPeerConnection.createOffer();
     myPeerConnection.setLocalDescription(offer);
     // console.log(myPeerConnection.setLocalDescription(offer));
     console.log("send the offer");
     socket.emit("offer", offer, roomName);
+  });
+
+  socket.on("roomsCheck", (rooms) => {
+    console.log(rooms);
   });
 
   // Peer B
