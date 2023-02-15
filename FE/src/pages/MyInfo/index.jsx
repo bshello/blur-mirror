@@ -1,4 +1,5 @@
-// eslint-disable-next-line react-hooks/exhaustive-deps
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import "../../App.css";
 import "./index.css";
