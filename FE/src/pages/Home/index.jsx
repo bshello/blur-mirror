@@ -82,8 +82,7 @@ function Home() {
     carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 5), 10000);
   }, [slideNumber]);
 
-  if (getProfileToggle === 0) {
-    getProfileToggle = 1;
+  useEffect(() => {
     axios({
       method: "GET",
       url: `${API_URL}/blur-profile/profile/${userId}/check`,
@@ -97,7 +96,8 @@ function Home() {
         dispatch(ISMYPROFILE(res.data));
       })
       .catch((err) => console.log(err));
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   //Start 버튼에서 미팅으로 갈지, 프로필로 갈지
   const goMeeting = () => {
@@ -107,17 +107,14 @@ function Home() {
      * - axios 성공 시 : 미팅 페이지로 이동
      *         실패 시 : 알람 띄움
      */
+    // console.log(`profiled: ${profiled}`);
     if (profiled) {
       // meeting Not In 로 이동
       if (!alert("미팅 대기 페이지로 이동합니다.")) {
         // 데이터 백에 넘겨줌
         navigator.geolocation.getCurrentPosition((loc) => {
-          console.log(
-            `lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`
-          );
-          dispatch(
-            MYGEO({ lat: loc.coords.latitude, lng: loc.coords.longitude })
-          );
+          console.log(`lat: ${loc.coords.latitude}, lng: ${loc.coords.longitude}`);
+          dispatch(MYGEO({ lat: loc.coords.latitude, lng: loc.coords.longitude }));
           axios({
             method: "post",
             url: `${API_URL}/blur-match/match/start`,
@@ -164,10 +161,7 @@ function Home() {
                 navigate("/");
               }
               // 실패 시 알람 띄움
-              alert(
-                err.response.status +
-                  "error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!"
-              );
+              alert(err.response.status + "error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
             });
         });
       }
@@ -184,22 +178,10 @@ function Home() {
     <div className="Home">
       {chatList ? <ChatList showChatPage={showChatPage} /> : null}
       {chatPage ? <ChatPage showChatPage={showChatPage} /> : null}
-      {blurInfoModal || alertModal ? (
-        <ModalWrap
-          blurInfoModal={blurInfoModal}
-          showBlurInfoModal={showBlurInfoModal}
-        />
-      ) : null}
-      {blurInfoModal && !alertModal ? (
-        <BlurInfo showBlurInfoModal={showBlurInfoModal} />
-      ) : null}
+      {blurInfoModal || alertModal ? <ModalWrap blurInfoModal={blurInfoModal} showBlurInfoModal={showBlurInfoModal} /> : null}
+      {blurInfoModal && !alertModal ? <BlurInfo showBlurInfoModal={showBlurInfoModal} /> : null}
 
-      {alertModal && !blurInfoModal ? (
-        <Alert
-          showAlertModal={goMyInfo}
-          content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."}
-        />
-      ) : null}
+      {alertModal && !blurInfoModal ? <Alert showAlertModal={goMyInfo} content={"프로필 설정을 하지 않으셨습니다. 작성 페이지로 이동합니다."} /> : null}
 
       <Header showChatList={showChatList} />
 

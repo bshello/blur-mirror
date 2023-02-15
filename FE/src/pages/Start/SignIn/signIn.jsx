@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
   let API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
-  console.log(API_URL);
+  // console.log(API_URL);
   const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,12 +22,12 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
 
   const enterSignId = (e) => {
     setSignId(e.target.value);
-    console.log(signId);
+    // console.log(signId);
   };
 
   const enterSignPs = (e) => {
     setSignPs(e.target.value);
-    console.log(signPs);
+    // console.log(signPs);
   };
 
   const signIn = () => {
@@ -45,11 +45,11 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
           dispatch(saveToken(res.data.body.token));
           dispatch(loginId(signId));
           if (checkbox.current.checked) {
-            console.log("디스패치");
+            // console.log("디스패치");
 
             dispatch(saveId(signId));
           } else {
-            console.log("초기화");
+            // console.log("초기화");
             dispatch(saveId(""));
           }
 
