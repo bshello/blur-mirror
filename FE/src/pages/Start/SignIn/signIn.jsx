@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 
-function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
+function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal, ref }) {
   let API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-auth`;
   // console.log(API_URL);
   const SOCIAL_API_URL = process.env.REACT_APP_SOCIAL_SIGN_API_URL;
@@ -143,6 +143,17 @@ function SignIn({ showSignUpModal, showSignInModal, showSearchPwModal }) {
       >
         카카오로 로그인
       </button>
+
+      <button
+        className="GoogleLoginBtn"
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = socialSignIn("google");
+        }}
+      >
+        구글로 로그인
+      </button>
+      <div className="PlaceHolder"></div>
     </div>
   );
 }
