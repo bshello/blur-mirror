@@ -103,7 +103,7 @@ public class ProfileService {
         String userId = requestProfileSettingDto.getUserId();
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         userProfile.updateProfile(requestProfileSettingDto.getAge(), requestProfileSettingDto.getNickname(),
-                requestProfileSettingDto.getGender(), requestProfileSettingDto.getIntroduce());
+                requestProfileSettingDto.getGender(), requestProfileSettingDto.getIntroduce(), requestProfileSettingDto.getMbti());
         userProfileRepository.save(userProfile);
         MatchSettingDto matchSettingDto = new ModelMapper().map(requestProfileSettingDto, MatchSettingDto.class);
         HttpHeaders headers = new HttpHeaders();
@@ -123,6 +123,7 @@ public class ProfileService {
         amazonS3.putObject(bucket, s3FileName, profileImage.getInputStream(), objMeta);
         amazonS3.setObjectAcl(bucket, s3FileName, CannedAccessControlList.PublicRead);
         userProfile.updateImage(amazonS3.getUrl(bucket, s3FileName).toString());
+        userProfileRepository.save(userProfile);
         return amazonS3.getUrl(bucket, s3FileName).toString();
     }
 

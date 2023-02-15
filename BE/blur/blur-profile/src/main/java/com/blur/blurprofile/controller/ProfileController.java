@@ -8,6 +8,7 @@ import com.blur.blurprofile.dto.response.ResponseInterestDto;
 import com.blur.blurprofile.dto.response.ResponseProfileSettingDto;
 import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.repository.InterestRepository;
+import com.blur.blurprofile.service.CountService;
 import com.blur.blurprofile.service.ProfileService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class ProfileController {
 
     @Autowired
     InterestRepository interestRepository;
+    
+    @Autowired
+    CountService countService;
 
     @PostMapping("/test")
     public void test(@PathVariable("id") String userId) {
@@ -42,6 +46,7 @@ public class ProfileController {
         }
     }
 
+
     @ApiOperation(value = "프로필 유무 확인", response = ResponseCardDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "프로필 유무 확인"),
@@ -53,6 +58,8 @@ public class ProfileController {
         Boolean res = profileService.check(userId);
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }
+
+
 
     @ApiOperation(value = "카드 정보 가져오기", response = ResponseCardDto.class)
     @ApiResponses(value = {
@@ -172,5 +179,20 @@ public class ProfileController {
         Collection<String> partnerInterest = profileService.getPartnerInterest(partnerId);
         return ResponseEntity.status(HttpStatus.OK).body(partnerInterest);
     }
-
+    
+    
+    
+    @ApiOperation(value = "관심사 순위 가져오기", response = ResponseInterestDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "관심사 순위 가져오기 성공"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @GetMapping("/getInterestRank")
+    public ResponseEntity<?> getInterestRank(@RequestBody String interestName) {
+        return ResponseEntity.status(HttpStatus.OK).body(countService.getTopUserInterestsByInterest(interestName));
+    }
 }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 @Entity
 @Getter
@@ -38,16 +39,20 @@ public class UserProfile {
     @Column(name = "introduce")
     private String introduce;
 
+    @Column(name = "mbti")
+    private String mbti;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "userProfile")
     private List<UserInterest> userInterests =  new ArrayList<>();
 
 
-    public void updateProfile(Integer age, String nickname, String gender, String introduce) {
+    public void updateProfile(Integer age, String nickname, String gender, String introduce, String mbti) {
         this.age = age;
         this.nickname = nickname;
         this.gender = gender;
         this.introduce = introduce;
+        this.mbti = mbti;
     }
 
     public void updateImage(String image) {
