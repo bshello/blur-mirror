@@ -65,4 +65,4 @@ wsServer.on("connection", (socket) => {
   });
 });
 const handleListen = () => console.log(`Listening on https://i8b307.p.ssafy.io`);
-httpServer.listen(3001, handleListen);
+httpServer.listen(`${process.env.REACT_APP_NODE}`, handleListen);
