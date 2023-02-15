@@ -17,16 +17,24 @@ const httpServer = http.createServer(app);
 // // http 서버 위에 ws(webSocket) 서버를 만듦
 const wsServer = new Server(httpServer, {
   cors: {
-    origin: ["https://admin.socket.io"],
+    origin: "http://localhost:3000",
     credentials: true,
   },
 });
 
+const {
+  sockets: {
+    adapter: { sids, rooms },
+  },
+} = wsServer;
+
 wsServer.on("connection", (socket) => {
-  socket.on("join_room", (roomName) => {
+  socket.on("join_room", async (roomName) => {
     console.log("브라우저에서 받은 roomName : ", roomName);
-    socket.join(roomName);
+    await socket.join(roomName); // 방에 들어가는거
     socket.to(roomName).emit("welcome");
+    console.log(sids);
+    console.log(rooms);
   });
   socket.on("offer", (offer, roomName) => {
     socket.to(roomName).emit("offer", offer);
@@ -50,4 +58,4 @@ wsServer.on("connection", (socket) => {
   });
 });
 const handleListen = () => console.log(`Listening on https://i8b307.p.ssafy.io`);
-httpServer.listen(process.env.REACT_APP_NODE, handleListen);
+httpServer.listen(3001, handleListen);
