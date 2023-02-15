@@ -209,7 +209,7 @@ function MeetingNotIn() {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${myToken}`,
                       },
-                      data: {
+                      params: {
                         gender: USERSEX,
                         userId: userId,
                       },
@@ -270,7 +270,7 @@ function MeetingNotIn() {
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${myToken}`,
                 },
-                data: {
+                params: {
                   gender: USERSEX,
                   userId: userId,
                 },
@@ -354,7 +354,7 @@ function MeetingNotIn() {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${myToken}`,
                       },
-                      data: {
+                      params: {
                         gender: USERSEX,
                         userId: userId,
                       },
@@ -412,7 +412,7 @@ function MeetingNotIn() {
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${myToken}`,
                 },
-                data: {
+                params: {
                   gender: USERSEX,
                   userId: userId,
                 },
@@ -454,7 +454,7 @@ function MeetingNotIn() {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${myToken}`,
               },
-              data: {
+              params: {
                 gender: USERSEX,
                 userId: userId,
               },
