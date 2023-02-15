@@ -1,3 +1,5 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 import "./Hash.css";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
@@ -23,7 +25,7 @@ function Hash({ showHashModal, showAlertModal }) {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://192.168.31.192:8000/blur-profile/profile/${id}/getInterest`,
+      url: `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}/getInterest`,
       data: {},
     })
       .then((res) => {

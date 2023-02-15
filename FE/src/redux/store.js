@@ -15,8 +15,7 @@ import saveTokenReducer from "./reducers/saveToken";
 import checkData from "./reducers/checkData";
 import storage from "redux-persist/lib/storage";
 import ageEdit from "./reducers/ageEdit";
-import ageRange from "./reducers/ageRange";
-import partnerDistance from "./reducers/partnerDistance";
+import setDatee from "./reducers/setDatee";
 
 import {
   persistStore,
@@ -36,8 +35,7 @@ const rootReducer = combineReducers({
   strr: saveTokenReducer,
   check: checkData,
   age: ageEdit,
-  ageRange: ageRange,
-  partnerDistance: partnerDistance,
+  setDatee: setDatee,
 });
 
 const persistConfig = {

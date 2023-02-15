@@ -1,11 +1,14 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 import React, { useState, useEffect } from "react";
 import "../../MyInfoModal/myInfoModal.css";
 import "./setmodal.css";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { setDistancee, setAgeRange } from "../../../../redux/reducers/setDatee";
 
 function SetModal() {
-  const API_URL = `http:///192.168.31.73:8000/blur-profile/profile`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile`;
   // const id = useSelector((state) => {
   //   return state.strr.id;
   // });
@@ -44,18 +47,9 @@ function SetModal() {
   const dispatch = useDispatch();
 
   const handleSave = () => {
-    dispatch({ type: "SET_DISTANCE", payload: distance });
-    dispatch({
-      type: "SET_AGE_RANGE",
-      payload: [leftSliderValue, rightSliderValue],
-    });
-    const saveSuccessful = Math.random() >= 0.5;
-
-    if (saveSuccessful) {
-      window.alert("Data saved successfully!");
-    } else {
-      window.alert("Data save failed.");
-    }
+    dispatch(setDistancee(distance));
+    dispatch(setAgeRange([leftSliderValue, rightSliderValue]));
+    console.log(distance);
   };
 
   // //range

@@ -30,6 +30,12 @@
   color: #ffffff;
 }
 
+@media only screen and (max-width: 768px) {
+  .MIbackbtn {
+    font-size: 32px;
+    line-height: 64px;
+  }
+}
 .MIImgDiv {
   position: absolute;
   width: 500px;
