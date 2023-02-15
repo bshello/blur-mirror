@@ -17,7 +17,10 @@ const httpServer = http.createServer(app);
 
 // // http 서버 위에 ws(webSocket) 서버를 만듦
 const wsServer = new Server(httpServer, {
-  path: "/socket.io",
+  cors: {
+    origin: "[https://admin.socket.io, https://i8b307.p.ssafy.io]",
+    credentials: true,
+  },
 });
 
 const {
@@ -62,4 +65,4 @@ wsServer.on("connection", (socket) => {
   });
 });
 const handleListen = () => console.log(`Listening on https://i8b307.p.ssafy.io`);
-httpServer.listen(`${process.env.REACT_APP_NODE}`, handleListen);
+httpServer.listen(3001, handleListen);
