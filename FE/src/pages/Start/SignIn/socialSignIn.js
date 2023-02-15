@@ -3,7 +3,6 @@ import { loginId, saveToken } from "../../../redux/reducers/saveToken";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import axios from "axios";
 
 function SocialSignInRedirect() {
