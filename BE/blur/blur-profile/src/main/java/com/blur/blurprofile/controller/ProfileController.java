@@ -47,7 +47,7 @@ public class ProfileController {
     }
 
 
-    @ApiOperation(value = "프로필 유무 확인", response = ResponseCardDto.class)
+    @ApiOperation(value = "프로필 유무 확인", response = Boolean.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "프로필 유무 확인"),
     })

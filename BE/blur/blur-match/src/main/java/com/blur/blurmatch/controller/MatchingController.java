@@ -90,6 +90,18 @@ public class MatchingController {
         return ResponseEntity.status(HttpStatus.OK).body(responseMatchDto);
     }
 
+    @ApiOperation(value = "매치 세팅 확인", response = Boolean.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "매치 세팅 확인"),
+    })
+    @GetMapping("/settingCheck")
+    public ResponseEntity<Boolean> settingCheck(
+            @ApiParam(value = "사용자의 ID", required = true) @RequestParam("id") String userId) {
+
+        Boolean res = matchService.settingCheck(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
     @ApiOperation(value = "매칭 종료", response = Void.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "매칭 종료 성공"),
