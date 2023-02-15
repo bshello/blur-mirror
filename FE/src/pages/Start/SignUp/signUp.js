@@ -223,7 +223,7 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       setIdCheck(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   //중복확인 통과뒤 이메일이 바뀐경우 경고
   useEffect(() => {
@@ -231,7 +231,8 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       alert("이메일이 바뀌었습니다. 다시 인증코드 보내세요");
       setEmailCheck(false);
     }
-  }, [emailCheck]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [email]);
 
   //중복확인 통과뒤 이메일 인증코드 가 바뀐경우 경고
   useEffect(() => {
@@ -239,7 +240,8 @@ function SignUp({ showSignUpModal, showSignInModal }) {
       alert("이메일인증코드가 바뀌었습니다. 제대로 다시 입력해주세요!");
       setEmailCodeCheck(false);
     }
-  }, [emailCodeCheck]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [emailCode]);
 
   //회원가입 버튼 활성화 비활성화
   useEffect(() => {

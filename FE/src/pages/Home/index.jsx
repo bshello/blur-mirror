@@ -78,8 +78,7 @@ function Home() {
     carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 3), 10000);
   }, [slideNumber]);
 
-  if (getProfileToggle === 0) {
-    getProfileToggle = 1;
+  useEffect(() => {
     axios({
       method: "GET",
       url: `${API_URL}/blur-profile/profile/${userId}/check`,
@@ -90,10 +89,11 @@ function Home() {
     })
       .then((res) => {
         console.log(`res.data: ${res.data}`);
-        dispatch(ISMYPROFILE(res.data));
+        // dispatch(ISMYPROFILE(res.data));
       })
       .catch((err) => console.log(err));
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   //Start 버튼에서 미팅으로 갈지, 프로필로 갈지
   const goMeeting = () => {
