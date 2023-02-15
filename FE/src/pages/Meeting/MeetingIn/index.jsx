@@ -3,7 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
-import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, ROOM_NUM, PARTNERNICK } from "../../../redux/reducers/MToggle";
+// 아래 ROOM_NUM 빼놨음
+import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, PARTNERNICK } from "../../../redux/reducers/MToggle";
 import Alert from "../../Start/Alert";
 import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
