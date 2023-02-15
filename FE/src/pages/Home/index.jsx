@@ -16,16 +16,17 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
-import { saveToken } from "../../redux/reducers/saveToken";
+import { saveToken, ISMYPROFILE } from "../../redux/reducers/saveToken";
 
 let myStream;
 let carousel;
+let getProfileToggle = 0;
 function Home() {
   let userId = useSelector((state) => state.strr.id); // Redux에 저장되어있는 MToggle
   let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
   const dispatch = useDispatch();
 
-  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}`;
   // startVideo 함수 실행하면 자신의 모습 볼수있음
   const videoRef = useRef(null);
   const CONSTRAINTS = {
@@ -52,8 +53,7 @@ function Home() {
   const [slideNumber, setSlideNumber] = useState(0);
 
   //프로필 설정이 완료여부 알려주는 변수
-  // const profiled = useSelector((state) => state.strr.profiled);
-  const profiled = true;
+  const profiled = useSelector((state) => state.strr.profiled);
   const navigate = useNavigate();
 
   const showBlurInfoModal = () => {
@@ -82,6 +82,23 @@ function Home() {
     carousel = setTimeout(() => setSlideNumber((pre) => (pre + 1) % 5), 10000);
   }, [slideNumber]);
 
+  if (getProfileToggle === 0) {
+    getProfileToggle = 1;
+    axios({
+      method: "GET",
+      url: `${API_URL}/blur-profile/profile/${userId}/check`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${myToken}`,
+      },
+    })
+      .then((res) => {
+        console.log(`res.data: ${res.data}`);
+        dispatch(ISMYPROFILE(res.data));
+      })
+      .catch((err) => console.log(err));
+  }
+
   //Start 버튼에서 미팅으로 갈지, 프로필로 갈지
   const goMeeting = () => {
     /**
@@ -103,7 +120,7 @@ function Home() {
           );
           axios({
             method: "post",
-            url: `${API_URL}/start`,
+            url: `${API_URL}/blur-match/match/start`,
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${myToken}`,
@@ -129,9 +146,9 @@ function Home() {
             })
             .catch((err) => {
               console.log(err);
-
-              if (err.response.status === 403) {
-                console.log(err);
+              console.log(err.response.status === 500);
+              console.log(`token: ${myToken}`);
+              if (err.response.status === 401) {
                 axios({
                   method: "get",
                   url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
@@ -143,7 +160,6 @@ function Home() {
                   dispatch(saveToken(res.data.body.token));
                 });
               } else if (err.response.status === 500) {
-                console.log(err);
                 dispatch(saveToken(""));
                 navigate("/");
               }
