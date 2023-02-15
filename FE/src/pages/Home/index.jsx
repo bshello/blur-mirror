@@ -54,6 +54,7 @@ function Home() {
 
   //프로필 설정이 완료여부 알려주는 변수
   const profiled = useSelector((state) => state.strr.profiled);
+  console.log(profiled);
   const navigate = useNavigate();
 
   const showBlurInfoModal = () => {
