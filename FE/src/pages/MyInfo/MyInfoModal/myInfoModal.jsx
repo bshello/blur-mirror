@@ -114,6 +114,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
   };
 
   //introducing
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const [introducing, setIntroducing] = useState("");
   const introHandleChange = (e) => {
     setIntroInput(e.target.value);
@@ -207,10 +208,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
     nickname: nameInput === "" ? proFile.nickname : nameInput,
     introduce: introInput === "" ? proFile.introduce : introInput,
     mbti: mbti === "" ? proFile.mbti : mbti,
-    gender:
-      genderCheck === ""
-        ? proFile.gender
-        : gender[genderCheck === "check" ? 0 : 1],
+    gender: genderCheck === "" ? proFile.gender : gender[genderCheck === "check" ? 0 : 1],
     minAge: minAge === "" ? proFile.minAge : minAge,
     maxAge: maxAge === "" ? proFile.maxAge : maxAge,
     maxDistance: distance === "" ? proFile.maxDistance : distance,
@@ -228,26 +226,12 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
           </form>
 
           <label htmlFor="profileImg">
-            <img
-              className="leftModalImg"
-              src={
-                proFile.image ||
-                `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
-              }
-              alt="사진"
-            />
-            <input
-              type="file"
-              id="profileImg"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-            />
+            <img className="leftModalImg" src={proFile.image || `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`} alt="사진" />
+            <input type="file" id="profileImg" onChange={handleImageChange} style={{ display: "none" }} />
           </label>
         </div>
         <div className="leftModalNameDiv">
-          <span className="leftModalName">
-            welcome {proFile.nickname || "Guest"}
-          </span>
+          <span className="leftModalName">welcome {proFile.nickname || "Guest"}</span>
         </div>
         <div className="leftModalbtnDiv">
           <button
@@ -278,21 +262,11 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
         </div>
         <div className="PMAge">
           <span className="PMAgeLabel">Age</span>
-          <input
-            type="text"
-            className="PMAgeSelect"
-            value={proFile.age ? proFile.age : ageInput}
-            onChange={handleAgeChange}
-            placeholder="숫자만 입력 가능합니다."
-          ></input>
+          <input type="text" className="PMAgeSelect" value={proFile.age ? proFile.age : ageInput} onChange={handleAgeChange} placeholder="숫자만 입력 가능합니다."></input>
         </div>
         <div className="PMMBTI">
           <span className="PMMBTILabel">MBTI</span>
-          <select
-            value={mbti}
-            onChange={handleSelectChange}
-            className="PMMBTISelect"
-          >
+          <select value={mbti} onChange={handleSelectChange} className="PMMBTISelect">
             {mbtiOptions.map((mbtiOptions) => (
               <option key={mbtiOptions.value} value={mbtiOptions.value}>
                 {mbtiOptions.label}
@@ -326,12 +300,7 @@ function MyInfoModal({ showMyinfoModal, showAlertModal }) {
 
         <div className="PMIntroducing">
           <span className="PMIntroducingLabel">Introducing</span>
-          <input
-            type="text"
-            className="PMIntroducingInput"
-            value={proFile.introduce ? proFile.introduce : introInput}
-            onChange={introHandleChange}
-          />
+          <input type="text" className="PMIntroducingInput" value={proFile.introduce ? proFile.introduce : introInput} onChange={introHandleChange} />
         </div>
       </div>
       <button
