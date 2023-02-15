@@ -6,7 +6,7 @@ spring:
     name: blur-chat
   
   redis:
-    host: localhost
+    host: 127.0.0.1
     port: 6379
     
 #스웨거 설정    
