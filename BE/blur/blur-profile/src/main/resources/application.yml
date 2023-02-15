@@ -42,12 +42,6 @@ spring:
         order_updates: true
         format_sql: true
 
-  # 파일 크기 제한
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
-
 cloud:
   aws:
     credentials:

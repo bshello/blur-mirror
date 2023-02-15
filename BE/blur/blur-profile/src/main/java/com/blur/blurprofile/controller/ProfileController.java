@@ -1,6 +1,26 @@
 package com.blur.blurprofile.controller;
 
-import com.blur.blurprofile.dto.*;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.blur.blurprofile.dto.ProfileDto;
 import com.blur.blurprofile.dto.request.RequestProfileSettingDto;
 import com.blur.blurprofile.dto.request.RequestUserInterestDto;
 import com.blur.blurprofile.dto.response.ResponseCardDto;
@@ -8,17 +28,14 @@ import com.blur.blurprofile.dto.response.ResponseInterestDto;
 import com.blur.blurprofile.dto.response.ResponseProfileSettingDto;
 import com.blur.blurprofile.entity.Interest;
 import com.blur.blurprofile.repository.InterestRepository;
-import com.blur.blurprofile.service.CountService;
+import com.blur.blurprofile.service.InterestService;
 import com.blur.blurprofile.service.ProfileService;
-import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/profile/{id}")
@@ -32,7 +49,7 @@ public class ProfileController {
     InterestRepository interestRepository;
     
     @Autowired
-    CountService countService;
+    InterestService interestService;
 
     @PostMapping("/test")
     public void test(@PathVariable("id") String userId) {
@@ -45,21 +62,6 @@ public class ProfileController {
             interests.add(randomInterest);
         }
     }
-
-
-    @ApiOperation(value = "프로필 유무 확인", response = Boolean.class)
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "프로필 유무 확인"),
-    })
-    @GetMapping("/check")
-    public ResponseEntity<Boolean> check(
-            @ApiParam(value = "사용자의 ID", required = true) @PathVariable("id") String userId) {
-
-        Boolean res = profileService.check(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(res);
-    }
-
-
 
     @ApiOperation(value = "카드 정보 가져오기", response = ResponseCardDto.class)
     @ApiResponses(value = {
@@ -191,8 +193,9 @@ public class ProfileController {
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 500, message = "Internal server error")
     })
-    @GetMapping("/getInterestRank")
+    @PostMapping("/getInterestRank")
     public ResponseEntity<?> getInterestRank(@RequestBody String interestName) {
-        return ResponseEntity.status(HttpStatus.OK).body(countService.getTopUserInterestsByInterest(interestName));
+    	System.out.println(interestService.findPopularInterestsByInterestName(interestName).toString());
+        return ResponseEntity.status(HttpStatus.OK).body(interestService.findPopularInterestsByInterestName(interestName));
     }
 }

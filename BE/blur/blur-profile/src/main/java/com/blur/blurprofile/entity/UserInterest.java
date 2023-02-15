@@ -24,12 +24,12 @@ public class UserInterest {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "user_profile")
+    @JoinColumn(name = "user_id")
     private UserProfile userProfile;
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "interest")
+    @JoinColumn(name = "interest_name")
     private Interest interest;
 
 

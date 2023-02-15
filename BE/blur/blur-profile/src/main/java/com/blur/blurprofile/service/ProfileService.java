@@ -62,8 +62,6 @@ public class ProfileService {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         if (userProfile == null) {
             return false;
-        } else if (userProfile.getAge() == null || userProfile.getGender() == null || userProfile.getNickname() == null) {
-            return false;
         }
         return true;
     }

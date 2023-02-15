@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInterestCountDto {
-	private Long userInterestCount;
-    private String interestName;
+	private String interestName;
+    private Long count;
 }
