@@ -1,4 +1,4 @@
-FROM openjdk:11-slim
+FROM openjdk:11
 VOLUME /tmp
 COPY ./build/libs/blur-chat-0.0.1-SNAPSHOT.jar BlurChat.jar
 ENTRYPOINT [ "java", "-jar", "BlurChat.jar" ]   

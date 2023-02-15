@@ -139,10 +139,21 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 ![3](/uploads/15c172581cdb1da3ac51b8790ec0a9a6/3.png)
 
-
 - [캐시서버 사용 이유 및 Redis 선택 이유](https://familiar-scourge-e4d.notion.site/7dbabaacacd74f01bc048f28903be833)
 
+=======
 
+## Api명세서(Swagger)
+
+![auth_swagger.PNG](/uploads/ecf68f8caeb25f22d70555e0f92d6b00/auth_swagger.PNG.png)
+
+![match_swagger.PNG](/uploads/1c51d20e2848417f61739543d9026a4d/match_swagger.PNG.png)
+
+![profile_swagger.PNG](/uploads/f19eadac94f7771770c66e2e8c77a7cd/profile_swagger.PNG.png)
+
+![chat_swagger.PNG](/uploads/4b431c31dec32ac6a8e588710fa482b5/chat_swagger.PNG.png)
+
+---
 
 ## 피그마
 
@@ -242,240 +253,17 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 # 백앤드 디렉토리 구조
 
-📦blur  
- ┣ 📂blur-apigateway  
- ┃ ┗ 📂src  
- ┃ ┃ ┗ 📂main  
- ┃ ┃ ┃ ┣ 📂java  
- ┃ ┃ ┃ ┃ ┗ 📂com  
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂apigateway  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthorizationHeaderFilter.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CorsConfiguration.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalFilter.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurApigatewayApplication.java  
- ┃ ┃ ┃ ┗ 📂resources  
- ┃ ┃ ┃ ┃ ┗ 📜application.yml  
- ┣ 📂blur-auth  
- ┃ ┗ 📂src  
- ┃ ┃ ┗ 📂main  
- ┃ ┃ ┃ ┣ 📂java  
- ┃ ┃ ┃ ┃ ┗ 📂com  
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂auth  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂api  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthController.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ErrorResponse.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginModel.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfo.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜User.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRefreshToken.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRefreshTokenRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂common  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiResponseHeader.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Response.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂email  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailHandler.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MailConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂properties  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AppProperties.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CorsProperties.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂security  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomSecurityConfigurer.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SecurityConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CacheConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂oauth  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthToken.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthTokenProvider.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ProviderType.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RoleType.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserPrincipal.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuthProviderMissMatchException.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RestAuthenticationEntryPoint.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenValidFailedException.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenAuthenticationFilter.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂handler  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2AuthenticationFailureHandler.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2AuthenticationSuccessHandler.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenAccessDeniedHandler.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂info  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂impl  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜GoogleOAuth2UserInfo.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜KakaoOAuth2UserInfo.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NaverOAuth2UserInfo.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OAuth2UserInfo.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OAuth2UserInfoFactory.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HttpCookieOAuth2AuthorizationRequestRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OAuth2AuthorizationRequestBasedOnCookieRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomOAuth2UserService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CustomUserDetailsService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂utils  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CookieUtil.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HeaderUtil.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BlurUserAuthApplication.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PortListener.java  
- ┃ ┃ ┃ ┗ 📂resources  
- ┃ ┃ ┃ ┃ ┣ 📜application.yml  
- ┃ ┃ ┃ ┃ ┗ 📜log4j2.xml  
- ┣ 📂blur-chat  
- ┃ ┗ 📂src  
- ┃ ┃ ┗ 📂main  
- ┃ ┃ ┃ ┣ 📂java  
- ┃ ┃ ┃ ┃ ┗ 📂com  
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂chat  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂api  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatDataController.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RoomController.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StompChatController.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatMessageSaveDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatPagingDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜EnterRoom.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatPagingResponseDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfoDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Chat.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Chatroom.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatJdbcRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRoomNoRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatRoomRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRedisCacheService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatRoomService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisPublisher.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisSubscriber.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInfo.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StompHandler.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StompWebSocketConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂utils  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatCachingInRedisScheduling.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChatUtils.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ChatWriteBackScheduling.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BlurChatApplication.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PortListener.java  
- ┃ ┃ ┃ ┗ 📂resources  
- ┃ ┃ ┃ ┃ ┗ 📜application.yml  
- ┣ 📂blur-discovery  
- ┃ ┗ 📂src  
- ┃ ┃ ┗ 📂main  
- ┃ ┃ ┃ ┣ 📂java  
- ┃ ┃ ┃ ┃ ┗ 📂com  
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurdiscovery  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurDiscoveryApplication.java  
- ┃ ┃ ┃ ┗ 📂resources  
- ┃ ┃ ┃ ┃ ┗ 📜application.yml  
- ┣ 📂blur-match  
- ┃ ┗ 📂src  
- ┃ ┃ ┗ 📂main  
- ┃ ┃ ┃ ┣ 📂generated  
- ┃ ┃ ┃ ┣ 📂java  
- ┃ ┃ ┃ ┃ ┗ 📂com  
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurmatch  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MatchingController.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestAcceptDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestCheckDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RequestMatchDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseAceeptDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseMatchDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseProfileDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MeetingDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MMRDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QueueDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReportDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchedUser.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchMakingRating.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSetting.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Report.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchedUserRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchMakingRatingRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReportRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MatchService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurMatchApplication.java  
- ┃ ┃ ┃ ┗ 📂resources  
- ┃ ┃ ┃ ┃ ┗ 📜application.yml  
- ┗ 📂blur-profile  
- ┃ ┗ 📂src  
- ┃ ┃ ┗ 📂main  
- ┃ ┃ ┃ ┣ 📂generated  
- ┃ ┃ ┃ ┣ 📂java  
- ┃ ┃ ┃ ┃ ┗ 📂com  
- ┃ ┃ ┃ ┃ ┃ ┗ 📂blur  
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂blurprofile  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AwsConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SwaggerConfig.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileController.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂request  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RequestProfileSettingDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RequestUserInterestDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂response  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseCardDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ResponseInterestDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseProfileSettingDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MatchSettingDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ProfileDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserInterestCountDto.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Interest.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserInterest.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserProfile.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InterestRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserInterestRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserProfileRepository.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CountService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileService.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BlurProfileApplication.java  
- ┃ ┃ ┃ ┗ 📂resources  
- ┃ ┃ ┃ ┃ ┗ 📜application.yml
+![Untitled](/uploads/893723128e634378976b0e604e4f2beb/Untitled.png)
+
+![Untitled__1_](/uploads/36c87d2387fd64b927f68a55cb5b1402/Untitled__1_.png)
+
+![Untitled__2_](/uploads/f2078a549efa4c342239697a624d92bb/Untitled__2_.png)
+
+![Untitled__3_](/uploads/e56dfd48596038956c4932f308e88bee/Untitled__3_.png)
+
+![Untitled__10_](/uploads/47d2068efe039d8dd167596ca62becdc/Untitled__10_.png)
+
+![Untitled__11_](/uploads/03ba0fd1afe8f1fabbad620b5fa32f7b/Untitled__11_.png)
 
 ---
 
@@ -491,23 +279,3 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 
 ---
-
-## Jira
-
-#### []()Jira Convention
-
-| Issue Type | 설명  | 예시  |
-| --- | --- | --- |
-| Epic | 최상위 수준의 기능/작업 단위(프로젝트 전반 또는 여러 Sprint에 걸쳐 진행할 정도의 범위 | 회원 관리, 로그인 관리 |
-| Story | Epic에 대한 하위 Level 수준의 기능/작업 단위 | 회원 가입, 회원 정보 수정, 로그인.. |
-| Task | 개발에 직접 해당되지는 않으나 Sprint안에 포함하는 일 | ERD작성, 테스트케이스 작성 |
-| Sub-task | 위 Issue들과 관련하여 세부 단위 작업 등이 필요할 때 |     |
-
-#### []()Sprint
-
-- 예외가 없다면 Sub PJT 1, 2, 3을 Sprint로 생성(6주)
-- 1인 하루 8포인트씩 5일 = 40 point
-
-#### []()BurnDown Chart
-
-![제목_없음](/uploads/c5fdb281b53fc410262630b1b9f9ba15/제목_없음.png)
