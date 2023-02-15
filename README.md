@@ -510,4 +510,4 @@ BLUR는 블라인드 소개팅과 사람들이 대화할 때 나는 소리인 �
 
 #### []()BurnDown Chart
 
-![](file://C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-02-15-14-29-42-image.png?msec=1676438982180)
+![제목_없음](/uploads/c5fdb281b53fc410262630b1b9f9ba15/제목_없음.png)
