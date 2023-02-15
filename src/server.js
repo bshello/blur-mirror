@@ -2,6 +2,7 @@ import express from "express"; // express를 사용한 일반적인 NodeJS
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
+import { instrument } from "socket.io/admin-ui";
 
 const app = express();
 
@@ -17,7 +18,7 @@ const httpServer = http.createServer(app);
 // // http 서버 위에 ws(webSocket) 서버를 만듦
 const wsServer = new Server(httpServer, {
   cors: {
-    origin: "[https://admin.socket.io]",
+    origin: "https://i8b307.p.ssafy.io",
     credentials: true,
   },
 });
