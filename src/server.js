@@ -18,7 +18,7 @@ const httpServer = http.createServer(app);
 // // http 서버 위에 ws(webSocket) 서버를 만듦
 const wsServer = new Server(httpServer, {
   cors: {
-    origin: "https://i8b307.p.ssafy.io",
+    origin: "[https://admin.socket.io, https://i8b307.p.ssafy.io/]",
     credentials: true,
   },
 });
@@ -28,6 +28,11 @@ const {
     adapter: { sids, rooms },
   },
 } = wsServer;
+
+instrument(wsServer, {
+  auth: false,
+  namespaceName: "/",
+});
 
 wsServer.on("connection", (socket) => {
   socket.on("join_room", async (roomName) => {
