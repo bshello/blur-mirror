@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./index.css";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
 import { MTOGGLE, ROOM_NUM, PARTNERINTERESTS, PARTNERNICK } from "../../../redux/reducers/MToggle";
 import { saveToken } from "../../../redux/reducers/saveToken";
@@ -10,8 +11,9 @@ let myStream;
 let USERSEX = "";
 let firstRendering = false;
 let errorCnt = 0;
-let meetingNotInTmp = 0;
 function MeetingNotIn() {
+  let mainTimer = setInterval(actionStart, 7000);
+
   let userId = useSelector((state) => state.strr.id); // store에 저장되어있는 내 아이디
   USERSEX = useSelector((state) => state.mt.myGender); // store에 저장되어있는 내 성별
   let myGeo = useSelector((state) => state.mt.myGeo); // store에 저장되어있는 내 위치(위도, 경도)
@@ -123,12 +125,12 @@ function MeetingNotIn() {
     setMyMicToggle(!myMicToggle);
   }, [myMicToggle]);
 
-  if (meetingNotInTmp === 0) {
-    meetingNotInTmp = 1;
+  useEffect(() => {
     getCameras1();
-  }
+  }, []);
+
   // 아래 코드는 axios 통신 시 사용할 코드
-  const interval = setInterval(() => {
+  function actionStart() {
     axios({
       method: "post",
       url: `${API_URL}/check`,
@@ -190,7 +192,7 @@ function MeetingNotIn() {
                     anima();
 
                     const timer = setTimeout(() => {
-                      clearInterval(interval);
+                      clearInterval(mainTimer);
                       clearTimeout(timer);
                       toggleChange();
                     }, 7 * 1000);
@@ -220,8 +222,9 @@ function MeetingNotIn() {
                       .catch(() => {
                         console.log("stop 통신 실패");
                       });
-                    console.log(clearInterval(interval));
-                    alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+                    if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+                      stopMatching();
+                    }
                   }
                 });
             } else {
@@ -237,20 +240,13 @@ function MeetingNotIn() {
                 data: {},
               })
                 .then((res) => {
-                  clearInterval(interval);
+                  clearInterval(mainTimer);
                   navigate("/home");
                 })
                 .catch((err) => {
                   console.log(`${err.response.status}error, decline error 발생`);
-                  if (err.response.status === 403) {
-                    axios({
-                      method: "get",
-                      url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
-                    }).then((res) => {
-                      console.log("액세스 토큰 재발급");
-                      dispatch(saveToken(res.data.body.token));
-                    });
-                  } else if (err.response.status === 500) {
+                  if (err.response.status === 401) {
+                    clearInterval(mainTimer);
                     dispatch(saveToken(""));
                     navigate("/");
                   }
@@ -261,7 +257,7 @@ function MeetingNotIn() {
           // => 비정상(다시 요청을 보내야함)
           else {
             console.log("여자를 안거치고 바로와서 partnerId/sessionId가 없음 => 인터벌 안닫힘, 다시 요청해야함", errorCnt);
-            if (++errorCnt >= 10) {
+            if (++errorCnt >= 30) {
               // 에러가 5회이상일 경우 해당 요청 취소 및 알람
               axios({
                 method: "post",
@@ -281,8 +277,9 @@ function MeetingNotIn() {
                 .catch(() => {
                   console.log("stop 통신 실패");
                 });
-              clearInterval(interval);
-              alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+              if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+                stopMatching();
+              }
             }
           }
         }
@@ -335,7 +332,7 @@ function MeetingNotIn() {
                     anima();
 
                     const timer = setTimeout(() => {
-                      clearInterval(interval);
+                      clearInterval(mainTimer);
                       clearTimeout(timer);
                       toggleChange();
                     }, 7 * 1000);
@@ -365,8 +362,9 @@ function MeetingNotIn() {
                       .catch(() => {
                         console.log("stop 통신 실패");
                       });
-                    clearInterval(interval);
-                    alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+                    if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+                      stopMatching();
+                    }
                   }
                 });
             } else {
@@ -382,70 +380,62 @@ function MeetingNotIn() {
                 data: {},
               })
                 .then((res) => {
-                  clearInterval(interval);
+                  clearInterval(mainTimer);
                   navigate("/home");
                 })
                 .catch((err) => {
                   console.log(`${err.response.status}error, decline error 발생`);
-                  if (err.response.status === 403) {
-                    axios({
-                      method: "get",
-                      url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
-                    }).then((res) => {
-                      console.log("액세스 토큰 재발급");
-                      dispatch(saveToken(res.data.body.token));
-                    });
-                  } else if (err.response.status === 500) {
+                  if (err.response.status === 401) {
+                    clearInterval(mainTimer);
                     dispatch(saveToken(""));
                     navigate("/");
                   }
                 });
             }
           } else {
-            console.log("check OK, 남자와 매칭이 안됐을 경우", errorCnt);
-            if (++errorCnt >= 10) {
-              // 에러가 5회이상일 경우 해당 요청 취소 및 알람
-              axios({
-                method: "post",
-                url: `${API_URL}/stop`,
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${myToken}`,
-                },
-                params: {
-                  gender: USERSEX,
-                  userId: userId,
-                },
-              })
-                .then((res) => {
-                  console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
-                })
-                .catch(() => {
-                  console.log("stop 통신 실패");
-                });
-              clearInterval(interval);
-              alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+            console.log("check OK, 남자와 매칭이 안됐을 경우", ++errorCnt);
+            if (errorCnt >= 5) {
+              clearInterval(mainTimer);
+              mainTimer = null;
             }
+            // if (errorCnt >= 5) {
+            //   // 에러가 5회이상일 경우 해당 요청 취소 및 알람
+            //   axios({
+            //     method: "post",
+            //     url: `${API_URL}/stop`,
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //       Authorization: `Bearer ${myToken}`,
+            //     },
+            //     params: {
+            //       gender: USERSEX,
+            //       userId: userId,
+            //     },
+            //   })
+            //     .then((res) => {
+            //       console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
+            //     })
+            //     .catch(() => {
+            //       console.log("stop 통신 실패");
+            //     });
+
+            //   if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+            //     stopMatching();
+            //   }
+            // }
           }
         }
       })
       // check axios 통신이 아예 안되는 경우 => 인터벌 안닫힘, 다시 요청해야함
       .catch((err) => {
         console.log(err);
-        if (err.response.status === 403) {
-          axios({
-            method: "get",
-            url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
-          }).then((res) => {
-            console.log("액세스 토큰 재발급");
-            dispatch(saveToken(res.data.body.token));
-          });
-        } else if (err.response.status === 500) {
+        if (err.response.status === 401) {
+          clearInterval(mainTimer);
           dispatch(saveToken(""));
           navigate("/");
         } else {
           console.log("check 실패 ", errorCnt);
-          if (++errorCnt >= 10) {
+          if (++errorCnt >= 30) {
             // 에러가 10회이상일 경우 해당 요청 취소 및 알람
             axios({
               method: "post",
@@ -465,12 +455,13 @@ function MeetingNotIn() {
               .catch(() => {
                 console.log("stop 통신 실패");
               });
-            clearInterval(interval);
-            alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+            if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+              stopMatching();
+            }
           }
         }
       });
-  }, 7 * 1000);
+  }
 
   // 테스트용 axios 통신 true 가정하고 없앰
   // const interval = setInterval(() => {
@@ -498,7 +489,12 @@ function MeetingNotIn() {
 
   function stopMatching() {
     dispatch(ROOM_NUM(""));
-    clearInterval(interval);
+    console.log(`stopMatching 발동`);
+    myStream.getTracks().forEach((track) => track.stop());
+    document.querySelector(".MMyCamDiv3").srcObject = null;
+    myStream = "";
+    clearInterval(mainTimer);
+    mainTimer = null;
     navigate("/home");
   }
 
