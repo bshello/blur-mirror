@@ -5,8 +5,8 @@ import "./Hash.css";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import UserCheckdata from "./HashComponent/UserCheckdata";
-// import saveToken from "../../../redux/reducers/saveToken";
-import { useSelector } from "react-redux";
+import { setCheckDataa } from "../../../redux/reducers/checkDataSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Hash({ showHashModal, showAlertModal }) {
   // const id = "123123";
@@ -20,12 +20,15 @@ function Hash({ showHashModal, showAlertModal }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResult, setSearchResult] = useState(null);
 
+  //데이터 가져오기
   const token = useSelector((state) => {
     return state.strr.token;
   });
   const id = useSelector((state) => {
     return state.strr.id;
   });
+
+  const dispatch = useDispatch();
 
   const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-profile/profile`;
   useEffect(() => {
@@ -35,11 +38,11 @@ function Hash({ showHashModal, showAlertModal }) {
       data: {},
     })
       .then((res) => {
-        // console.log(res.data.interests);
-        // console.log(res.data.userIntData);
-        // console.log(res.status);
         setIntData(res.data.interests);
-        setuserIntData(res.data.userIntData);
+        const userInterests = res.data.userInterests.map((interest) => {
+          return interest.interestName;
+        });
+        setuserIntData(userInterests);
       })
 
       .catch((err) => {
@@ -50,6 +53,12 @@ function Hash({ showHashModal, showAlertModal }) {
 
   // 관심사 업데이트
   const intSave = () => {
+    const updatedHash = {
+      interests: checkData.length > 0 ? checkData : userIntData,
+    };
+
+    setcheckData(updatedHash);
+
     axios({
       method: "put",
       headers: {
@@ -57,14 +66,13 @@ function Hash({ showHashModal, showAlertModal }) {
         Authorization: `Bearer ${token}`,
       },
       url: `${API_URL}/${id}/updateInterest`,
-      data: {
-        interests: checkData,
-      },
+      data: updatedHash,
     })
       .then((res) => {
-        console.log(res.data);
-        console.log(res.status);
+        // console.log(res.data);
         console.log("성공><");
+        dispatch(setCheckDataa(checkData));
+        console.log(updatedHash);
       })
       .catch((err) => {
         console.log(err);
@@ -139,7 +147,6 @@ function Hash({ showHashModal, showAlertModal }) {
 
   return (
     <div className="Hash">
-      {/* {searchBar ? <HashSearch showSearchBar={setSearchBar} /> : null} */}
       {searchBar && (
         <HashSearch
           data={searchResult}
@@ -215,16 +222,6 @@ function Hash({ showHashModal, showAlertModal }) {
                   ))}
                 </div>
               )}
-              {/* {userIntData.length > 0 && (
-                <div className="hashaddiv">
-                  {userIntData.map((item, idx) => (
-                    <userCheckdata
-                      item={item}
-                      onRemove={() => handleRemove(item)}
-                    />
-                  ))}
-                </div>
-              )} */}
             </div>
           </div>
           <div className="cainterestdiv">
