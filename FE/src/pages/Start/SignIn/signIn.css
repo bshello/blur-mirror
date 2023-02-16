@@ -7,11 +7,11 @@
   width: 31.9444vw;
   height: 38.1944vw;
   left: 34.2361vw;
-  top: 2.0833vw;
+  top: 15vh;
   background: #ffffff;
   border-radius: 2.0833vw;
   z-index: 30;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 .SIModal .SIModalHeader {
@@ -234,5 +234,5 @@
   width: 0.6944vw;
   height: 0.6944vw;
   left: 4.5833vw;
-  top: 85vh;
+  top: 42vw;
 }/*# sourceMappingURL=signIn.css.map */
