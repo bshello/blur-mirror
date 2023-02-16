@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 function Hash({ showHashModal, showAlertModal }) {
   // const id = "123123";
+
   const [intdata, setIntData] = useState([]); // 관심사 전체 가져오기
   const [userIntData, setuserIntData] = useState([]); // 체크했던 데이터 가져오기
   const [checkData, setcheckData] = useState([]); //체크한 데이터 띄우기
@@ -17,6 +18,7 @@ function Hash({ showHashModal, showAlertModal }) {
   // 검색기능
   const [searchBar, setSearchBar] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResult, setSearchResult] = useState(null);
 
   const token = useSelector((state) => {
     return state.strr.token;
@@ -24,16 +26,18 @@ function Hash({ showHashModal, showAlertModal }) {
   const id = useSelector((state) => {
     return state.strr.id;
   });
+
+  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-profile/profile`;
   useEffect(() => {
     axios({
       method: "GET",
-      url: `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}/getInterest`,
+      url: `${API_URL}/${id}/getInterest`,
       data: {},
     })
       .then((res) => {
-        console.log(res.data.interests);
-        console.log(res.data.userIntData);
-        console.log(res.status);
+        // console.log(res.data.interests);
+        // console.log(res.data.userIntData);
+        // console.log(res.status);
         setIntData(res.data.interests);
         setuserIntData(res.data.userIntData);
       })
@@ -45,9 +49,6 @@ function Hash({ showHashModal, showAlertModal }) {
   }, []);
 
   // 관심사 업데이트
-
-  const API_URL = `http://192.168.31.73:8000/blur-profile/profile`;
-
   const intSave = () => {
     axios({
       method: "put",
@@ -63,7 +64,6 @@ function Hash({ showHashModal, showAlertModal }) {
       .then((res) => {
         console.log(res.data);
         console.log(res.status);
-
         console.log("성공><");
       })
       .catch((err) => {
@@ -74,9 +74,11 @@ function Hash({ showHashModal, showAlertModal }) {
   const filteredData = intdata.filter((item) =>
     item.interestName.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
   };
+
   const handleRemove = (item) => {
     setcheckData((prev) => prev.filter((intdata) => intdata !== item));
   };
@@ -96,9 +98,9 @@ function Hash({ showHashModal, showAlertModal }) {
     }
   };
 
-  const HashSerch = ({ results, handleClick }) => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
+  const HashSearch = ({ results, handleClick }) => {
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
         handleClick();
       }
     };
@@ -115,9 +117,35 @@ function Hash({ showHashModal, showAlertModal }) {
     return <div ref={ref}></div>;
   };
 
+  const simularSearch = () => {
+    axios
+      .post(`${API_URL}/${id}/getInterestRank`, {
+        interestName: searchQuery,
+      })
+      .then((response) => {
+        console.dir(response);
+        console.log(searchQuery);
+
+        const data = response.data; // 응답 데이터 추출
+
+        setSearchResult(data);
+        setSearchBar(true);
+      })
+      .catch((error) => {
+        console.error(error);
+        console.error(error.status);
+      });
+  };
+
   return (
     <div className="Hash">
-      {searchBar ? <HashSerch showSearchBar={setSearchBar} /> : null}
+      {/* {searchBar ? <HashSearch showSearchBar={setSearchBar} /> : null} */}
+      {searchBar && (
+        <HashSearch
+          data={searchResult}
+          handleClick={() => setSearchBar(false)}
+        />
+      )}
 
       <div>
         <div className="hashSerchDiv">
@@ -128,10 +156,15 @@ function Hash({ showHashModal, showAlertModal }) {
             placeholder="Search interests"
             value={searchQuery}
             onChange={handleSearch}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                simularSearch();
+              }
+            }}
             style={{ outline: "none" }}
           />
           {searchQuery !== "" && (
-            <HashSerch handleClick={() => setSearchQuery("")} />
+            <HashSearch handleClick={() => setSearchQuery("")} />
           )}
           <div className="hashVec" />
         </div>

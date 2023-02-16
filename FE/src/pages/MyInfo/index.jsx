@@ -32,7 +32,7 @@ function MyInfo() {
   });
   // const id = "123123";
 
-  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-profile/profile/${id}`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-profile/profile/${id}`;
   const [proFile, setProFile] = useState([]);
   const [userInterests, setUserInterests] = useState([]);
   useEffect(() => {
@@ -74,19 +74,6 @@ function MyInfo() {
 
   // 페이지 이동
   const navigate = useNavigate();
-
-  // 이미지 미리보기
-  // const [imgFile, setImgFile] = useState("");
-  // const imgRef = useRef();
-
-  // const saveImgFile = () => {
-  //   const file = imgRef.current.files[0];
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onloadend = () => {
-  //     setImgFile(reader.result);
-  //   };
-  // };
 
   return (
     <div className="myinfo">
