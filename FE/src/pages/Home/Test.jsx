@@ -31,7 +31,7 @@ const VideoCall = ({ roomId }) => {
         peerConnection.addTrack(stream.getTracks()[1], stream);
 
         // create STOMP client
-        const socket = new SockJS("https://i8b307.p.ssafy.io:7777");
+        const socket = new SockJS("https://i8b307.p.ssafy.io:7777/ws/meeting");
         const stompClient = Stomp.over(socket);
         setStompClient(stompClient);
         stompClient.connect({}, () => {
