@@ -20,7 +20,6 @@ import { saveToken, ISMYPROFILE } from "../../redux/reducers/saveToken";
 
 let myStream;
 let carousel;
-
 function Home() {
   let userId = useSelector((state) => state.strr.id); // Redux에 저장되어있는 MToggle
   let myToken = useSelector((state) => state.strr.token); // store에 저장되어있는 토큰
@@ -84,7 +83,7 @@ function Home() {
 
   useEffect(() => {
     axios({
-      method: "GET",
+      method: "get",
       url: `${API_URL}/blur-profile/profile/${userId}/check`,
       headers: {
         "Content-Type": "application/json",
@@ -94,6 +93,19 @@ function Home() {
       .then((res) => {
         // console.log(`res.data: ${res.data}`);
         dispatch(ISMYPROFILE(res.data));
+
+        // if (res.data === true) {
+        //   axios({
+        //     method: "get",
+        //     url: `${API_URL}/blur-match/match/settingCheck`,
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Authorization: `Bearer ${myToken}`,
+        //     },
+        //   }).then((res) => {
+        //     console.log(`settingCheck res data: ${res.data}`);
+        //   });
+        // }
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -143,20 +155,8 @@ function Home() {
             })
             .catch((err) => {
               console.log(err);
-              console.log(err.response.status === 500);
               console.log(`token: ${myToken}`);
               if (err.response.status === 401) {
-                axios({
-                  method: "get",
-                  url: `${process.env.REACT_APP_API_ROOT_DONGHO}/auth/refresh`,
-                  header: {
-                    token: myToken,
-                  },
-                }).then((res) => {
-                  console.log("액세스 토큰 재발급");
-                  dispatch(saveToken(res.data.body.token));
-                });
-              } else if (err.response.status === 500) {
                 dispatch(saveToken(""));
                 navigate("/");
               }
