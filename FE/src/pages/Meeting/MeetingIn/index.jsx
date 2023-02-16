@@ -186,7 +186,7 @@ function MeetingIn() {
 
       // Generate new socketIO socket (disconnect from previous)
       socket.disconnect();
-      socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
+      socket = io(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
       // 인터벌 초기화 해줘야 함!!!!!!!!!!!!!!!!!!!!!!! -> 인터벌 왜쓰는지부터 알기
       navigate("/home");
     });
@@ -397,7 +397,7 @@ function MeetingIn() {
       roomName = sendRoomName;
       socket.emit("join_room", roomName);
       console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
-      socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
+      socket = io(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
         cors: { origin: "*", credentials: true },
       });
       console.log(`socket: ${socket} `, socket);
