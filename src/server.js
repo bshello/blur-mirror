@@ -17,8 +17,8 @@ const httpServer = http.createServer(app);
 // // http 서버 위에 ws(webSocket) 서버를 만듦
 const wsServer = new Server(httpServer, {
   cors: {
-    origin: "[]",
-    credentials: false,
+    origin: "https://i8b307.p.ssafy.io",
+    credentials: true,
   },
 });
 
