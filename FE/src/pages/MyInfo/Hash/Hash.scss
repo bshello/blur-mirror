@@ -547,3 +547,21 @@
   top: 50px;
   left: 10px;
 }
+
+.simulSearch {
+  position: absolute;
+  top: -20px;
+  left: 120px;
+  width: 320px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.742);
+  border-radius: 40px;
+  justify-content: center;
+  font-weight: 400px;
+  font-size: 17px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #68bbbd;
+}
