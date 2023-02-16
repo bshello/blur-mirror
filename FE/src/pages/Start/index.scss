@@ -1,5 +1,23 @@
 @use "../../style/common" as mixin;
 
+.animate {
+  animation: shake 2s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(3%);
+  }
+  100% {
+    transform: translateY(-1%);
+    opacity: 1;
+  }
+}
+
 // 기본변수 설정
 $_subFrameLeft: 3;
 
@@ -128,6 +146,7 @@ $_subFrameLeft: 3;
 }
 
 .SubFrame2 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
 
@@ -142,9 +161,32 @@ $_subFrameLeft: 3;
   border: 0.052vw solid rgba(255, 255, 255, 0.5);
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
   border-radius: 2.083vw;
+
+  .SubFrameParagraph {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+    font-size: 300%;
+
+    .SubFrameParagraphText {
+      position: relative;
+      top: 25vh;
+    }
+  }
+
+  .SubFrameImage {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background: url(../../assets/images/menandwomen.jpg);
+    background-size: cover;
+    border-radius: 2.083vw;
+  }
 }
 
 .SubFrame3 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
 
@@ -159,9 +201,32 @@ $_subFrameLeft: 3;
   border: 0.052vw solid rgba(255, 255, 255, 0.5);
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
   border-radius: 2.083vw;
+
+  .SubFrameParagraph {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    font-size: 300%;
+
+    .SubFrameParagraphText {
+      position: relative;
+      top: 25vh;
+    }
+  }
+
+  .SubFrameImage {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+    background: url(../../assets/images/menandwomen2.jpg);
+    background-size: cover;
+    border-radius: 2.083vw;
+  }
 }
 
 .SubFrame4 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
 
@@ -176,9 +241,34 @@ $_subFrameLeft: 3;
   border: 0.052vw solid rgba(255, 255, 255, 0.5);
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
   border-radius: 2.083vw;
+
+  .SubFrameParagraph {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    font-size: 300%;
+
+    .SubFrameParagraphText {
+      position: relative;
+      top: 25vh;
+    }
+  }
+
+  .SubFrameImage {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+    background: url(../../assets/images/menandwomen3.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 2.083vw;
+  }
 }
 
 .SubFrame5 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
 
@@ -193,4 +283,29 @@ $_subFrameLeft: 3;
   border: 0.052vw solid rgba(255, 255, 255, 0.5);
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
   border-radius: 2.083vw;
+
+  .SubFrameParagraph {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    font-size: 300%;
+
+    .SubFrameParagraphText {
+      position: relative;
+      top: 25vh;
+    }
+  }
+
+  .SubFrameImage {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+    background: url(../../assets/images/menandwomen2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    border-radius: 2.083vw;
+  }
 }

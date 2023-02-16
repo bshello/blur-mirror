@@ -36,10 +36,12 @@
 
     .HomeCamDiv {
       position: absolute;
-      height: 23.6111vw;
-      width: 30.5556vw;
+      // height: 23.6111vw;
+      // width: 30.5556vw;
+      height: 47vh;
+      width: 84.6%;
       left: 2.0833vw;
-      top: 0vw;
+      top: 1vh;
 
       background: url(../../assets/images/man4.jfif);
       background-size: 100% 100%;
@@ -47,10 +49,10 @@
 
       .HomeCamImg {
         position: absolute;
-        height: 17.3611vw;
+        height: 47vh;
         width: 26.0417vw;
         left: 0vw;
-        top: 0vw;
+        top: 1vh;
 
         border-radius: 2.0833vw;
       }
@@ -81,10 +83,10 @@
 
     .CommBoxFrame2 {
       position: absolute;
-      height: 4.8611vw;
+      height: 10vh;
       width: 30.5556vw;
       left: 2.0833vw;
-      top: 24.3056vw;
+      top: 51vh;
 
       background: #50a1a3;
       border-radius: 1.0417vw;
@@ -93,7 +95,7 @@
         height: 3.4722vw;
         width: 30.5556vw;
         left: 0vw;
-        top: 0.6944vw;
+        top: 1.2vh;
 
         font-weight: 400;
         line-height: 3.4722vw;
@@ -126,10 +128,10 @@
 
       .HomeRightImg {
         position: absolute;
-        height: 23.6111vw;
+        height: 47vh;
         width: 38.1944vw;
         left: 0vw;
-        top: 0vw;
+        top: 1vh;
 
         border-radius: 2.0833vw;
       }
@@ -137,10 +139,10 @@
 
     .HomeRightToolTipDiv {
       position: absolute;
-      height: 4.8611vw;
+      height: 10vh;
       width: 38.1944vw;
       left: 0vw;
-      top: 24.3056vw;
+      top: 51vh;
 
       background: #fffdfd;
       border-radius: 1.0417vw;
@@ -150,7 +152,7 @@
         height: 1.875vw;
         width: 38.1944vw;
         left: 0vw;
-        top: 1.5vw;
+        top: 3vh;
 
         font-family: "Happy Monkey";
         font-style: normal;
