@@ -265,8 +265,6 @@
   width: 50%;
   height: 100%;
   background: url(../../assets/images/menandwomen2.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-size: cover;
   border-radius: 2.083vw;
 }/*# sourceMappingURL=index.css.map */

@@ -110,25 +110,28 @@ function Start() {
     }
   }, [signInModal, signUpModal, searchPwModal, alertModal, scrollFunctionRef]);
 
-  const targets = document.querySelectorAll(".SubFrameImage");
-  const options = {
-    rootMargin: "0px",
-    threshold: 0.5,
-  };
+  useEffect(() => {
+    const targets = document.querySelectorAll(".SubFrameImage");
+    console.log(targets);
+    const options = {
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-      } else {
-        entry.target.classList.remove("animate");
-      }
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        } else {
+          entry.target.classList.remove("animate");
+        }
+      });
+    }, options);
+
+    targets.forEach((target) => {
+      observer.observe(target);
     });
-  }, options);
-
-  targets.forEach((target) => {
-    observer.observe(target);
-  });
+  }, []);
 
   return (
     <div className="Start" ref={StartRef}>

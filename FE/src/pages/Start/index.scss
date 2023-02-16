@@ -181,6 +181,7 @@ $_subFrameLeft: 3;
     height: 100%;
     background: url(../../assets/images/menandwomen.jpg);
     background-size: cover;
+
     border-radius: 2.083vw;
   }
 }
@@ -221,6 +222,7 @@ $_subFrameLeft: 3;
 
     background: url(../../assets/images/menandwomen2.jpg);
     background-size: cover;
+
     border-radius: 2.083vw;
   }
 }
@@ -302,9 +304,7 @@ $_subFrameLeft: 3;
     height: 100%;
 
     background: url(../../assets/images/menandwomen2.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background-size: cover;
 
     border-radius: 2.083vw;
   }
