@@ -1,6 +1,6 @@
 FROM openjdk:11-slim
 VOLUME /tmp
-COPY ./build/libs/blur-profile-0.0.1-SNAPSHOT.jar BlurStomp.jar
+COPY ./build/libs/blur-socket0.0.1-SNAPSHOT.jar BlurStomp.jar
 ENTRYPOINT [ "java", "-jar", "BlurStomp.jar" ]
 
 # ./gradlew clean build 먼저 시행
