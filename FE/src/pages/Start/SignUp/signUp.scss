@@ -127,19 +127,28 @@
     }
 
     .ShowPassword {
-      display: flex;
+      position: absolute;
+      width: 4%;
+      height: 4%;
+      top: 49.5%;
+      right: 17%;
+
       align-items: center;
-      background: url(../../../assets/images/EyeToggleShow.png);
-      background-size: cover;
+      background: url(../../../assets/images/EyeToggleShow.png) no-repeat;
+      background-size: contain;
 
       color: #000000;
     }
 
     .HidePassword {
-      display: flex;
+      position: absolute;
+      width: 4%;
+      height: 4%;
+      top: 49.5%;
+      right: 17%;
       align-items: center;
-      background: url(../../../assets/images/EyeToggleHidden.png);
-      background-size: cover;
+      background: url(../../../assets/images/EyeToggleHidden.png) no-repeat;
+      background-size: contain;
 
       color: #000000;
     }
