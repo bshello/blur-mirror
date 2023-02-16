@@ -66,3 +66,6 @@ eureka:
 
 blur-match:
   url: https://i8b307.p.ssafy.io/blur-match/match
+
+blur-auth:
+  url: https://i8b307.p.ssafy.io/blur-auth/user

@@ -63,6 +63,18 @@ public class ProfileController {
         }
     }
 
+    @ApiOperation(value = "프로필 유무 확인", response = ResponseCardDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "프로필 유무 확인"),
+    })
+    @GetMapping("/check")
+    public ResponseEntity<Boolean> check(
+            @ApiParam(value = "사용자의 ID", required = true) @PathVariable("id") String userId) {
+
+        Boolean res = profileService.check(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
     @ApiOperation(value = "카드 정보 가져오기", response = ResponseCardDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "카드 정보 가져오기 성공"),

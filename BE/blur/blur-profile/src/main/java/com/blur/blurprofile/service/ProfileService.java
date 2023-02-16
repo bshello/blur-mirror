@@ -62,6 +62,8 @@ public class ProfileService {
         UserProfile userProfile = userProfileRepository.findByUserId(userId);
         if (userProfile == null) {
             return false;
+        } else if (userProfile.getAge() == null || userProfile.getGender() == null || userProfile.getNickname() == null) {
+            return false;
         }
         return true;
     }
@@ -95,7 +97,10 @@ public class ProfileService {
         String getMatchSettingUrl = String.format(env.getProperty("blur-match.url")) + "/getSetting?userId=" + userId;
         ResponseEntity<MatchSettingDto> response = restTemplate.getForEntity(getMatchSettingUrl, MatchSettingDto.class);
         MatchSettingDto matchSetting = response.getBody();
-        ResponseProfileSettingDto responseProfileSettingDto = new ResponseProfileSettingDto(profileDto, matchSetting);
+        String getUserEmailUrl = String.format(env.getProperty("blur-auth.url")) + "/getEmail?userId=" + userId;
+        ResponseEntity<String> email = restTemplate.getForEntity(getUserEmailUrl, String.class);
+        String userEmail = email.getBody();
+        ResponseProfileSettingDto responseProfileSettingDto = new ResponseProfileSettingDto(profileDto, matchSetting, userEmail);
         return responseProfileSettingDto;
     }
 
