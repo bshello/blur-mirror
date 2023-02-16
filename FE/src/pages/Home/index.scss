@@ -14,8 +14,8 @@
 .HomeSubFrame {
   @include mixin.sf;
   // position: absolute;
-  // width: 90.6250vw;
   // height: 39.5833vw;
+  // width: 90.6250vw;
   // left: 4.2708vw;
   // top: 10.9375vw;
 
@@ -24,22 +24,24 @@
 
   .HomeLeftDiv {
     position: absolute;
-    width: 35.9375vw;
     height: 31.25vw;
+    width: 35.9375vw;
     left: 4.1667vw;
     top: 2.0833vw;
 
-    // width: 25.8vw;
     // height: 22.5vw;
+    // width: 25.8vw;
     // left: 3vw;
     // top: 1.5vw;
 
     .HomeCamDiv {
       position: absolute;
-      width: 30.5556vw;
-      height: 23.6111vw;
+      // height: 23.6111vw;
+      // width: 30.5556vw;
+      height: 47vh;
+      width: 84.6%;
       left: 2.0833vw;
-      top: 0vw;
+      top: 1vh;
 
       background: url(../../assets/images/man4.jfif);
       background-size: 100% 100%;
@@ -47,10 +49,10 @@
 
       .HomeCamImg {
         position: absolute;
+        height: 47vh;
         width: 26.0417vw;
-        height: 17.3611vw;
         left: 0vw;
-        top: 0vw;
+        top: 1vh;
 
         border-radius: 2.0833vw;
       }
@@ -58,8 +60,8 @@
 
     .InfoBlurBtn {
       position: absolute;
-      width: 2.4306vw;
       height: 2.4306vw;
+      width: 2.4306vw;
       left: 33.3333vw;
       top: 11.1111vw;
 
@@ -70,8 +72,8 @@
 
     .CamToggle {
       position: absolute;
-      width: 2.2917vw;
       height: 2.2917vw;
+      width: 2.2917vw;
       left: 33.3333vw;
       top: 13.8889vw;
 
@@ -81,23 +83,23 @@
 
     .CommBoxFrame2 {
       position: absolute;
+      height: 10vh;
       width: 30.5556vw;
-      height: 4.8611vw;
       left: 2.0833vw;
-      top: 24.3056vw;
+      top: 51vh;
 
       background: #50a1a3;
       border-radius: 1.0417vw;
       .CommBoxFrameStart {
         position: absolute;
-        width: 30.5556vw;
         height: 3.4722vw;
+        width: 30.5556vw;
         left: 0vw;
-        top: 0.6944vw;
+        top: 1.2vh;
 
         font-weight: 400;
-        font-size: 2.8646vw;
         line-height: 3.4722vw;
+        font-size: 2.8646vw;
         text-align: center;
         color: #ffffff;
         cursor: pointer;
@@ -107,16 +109,16 @@
 
   .HomeRightDiv {
     position: absolute;
-    width: 37.0313vw;
     height: 31.25vw;
+    width: 37.0313vw;
     left: 46vw;
     top: 2.0833vw;
     animation: smoothAppear 1s;
 
     .HomeRightImgDiv {
       position: absolute;
-      width: 38.1944vw;
       height: 23.6111vw;
+      width: 38.1944vw;
       left: 0vw;
       top: 0vw;
 
@@ -126,10 +128,10 @@
 
       .HomeRightImg {
         position: absolute;
+        height: 47vh;
         width: 38.1944vw;
-        height: 23.6111vw;
         left: 0vw;
-        top: 0vw;
+        top: 1vh;
 
         border-radius: 2.0833vw;
       }
@@ -137,26 +139,26 @@
 
     .HomeRightToolTipDiv {
       position: absolute;
+      height: 10vh;
       width: 38.1944vw;
-      height: 4.8611vw;
       left: 0vw;
-      top: 24.3056vw;
+      top: 51vh;
 
       background: #fffdfd;
       border-radius: 1.0417vw;
 
       .HomeRightToolTipText {
         position: absolute;
-        width: 38.1944vw;
         height: 1.875vw;
+        width: 38.1944vw;
         left: 0vw;
-        top: 1.5vw;
+        top: 3vh;
 
         font-family: "Happy Monkey";
         font-style: normal;
         font-weight: 400;
-        font-size: 1.5vw;
         line-height: 1.875vw;
+        font-size: 1.5vw;
 
         color: #50a1a3;
       }

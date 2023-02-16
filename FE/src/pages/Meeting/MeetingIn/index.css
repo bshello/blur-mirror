@@ -435,9 +435,15 @@
   right: 0vw;
 }
 .MeetingIn .MeetingIn_CamDiv .MRightDiv1 .MPartenerCamSubDiv .MPartenerCamSubBtnsDiv .MPartenerCamSubExitBtn {
-  width: 50px;
-  height: 50px;
+  position: absolute;
+  width: 1.806vw;
+  height: 1.806vw;
+  left: -3vw;
   z-index: 6;
+  top: 0.556vw;
+  background-image: url(../../../assets/images/out.png);
+  background-size: 100% 100%;
+  cursor: pointer;
 }
 .MeetingIn .MeetingIn_CamDiv .MRightDiv1 .MPartenerCamSubDiv .MPartenerCamSubBtnsDiv .MPartenerCamSubBlockBtn {
   position: absolute;
