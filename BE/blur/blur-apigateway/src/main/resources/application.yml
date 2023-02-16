@@ -6,9 +6,6 @@ spring:
     name: blur-gateway
   cloud:
     gateway:
-      httpclient:
-        websocket:
-          enabled: true
       default-filters:
         - name: GlobalFilter
           args:
@@ -75,12 +72,6 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
 #            - AuthorizationHeaderFilter
-        - id: blur-socket
-          uri: ws://localhost:3001
-          predicates:
-            - Path=/blur-socket/**
-          filters:
-            - RewritePath=/blur-socket/(?<segment>.*), /$\{segment}
 
 eureka:
   client:
