@@ -76,7 +76,7 @@ spring:
             - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
 #            - AuthorizationHeaderFilter
         - id: blur-socket
-          uri: ws://i8b307.p.ssafy.io:3001
+          uri: ws://localhost:3001
           predicates:
             - Path=/blur-socket/**
           filters:
