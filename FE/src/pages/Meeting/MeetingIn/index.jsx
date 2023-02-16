@@ -4,7 +4,7 @@ import ProgressBar from "./ProgressBar";
 import BlockModal from "./BlockModal";
 import { useDispatch, useSelector } from "react-redux";
 // 아래 ROOM_NUM 빼놨음
-import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, PARTNERNICK } from "../../../redux/reducers/MToggle";
+import { BTOGGLE, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, PARTNERNICK, ROOM_NUM, PARTNERID, PARTNERINTERESTS, ROOMTOKEN } from "../../../redux/reducers/MToggle";
 import Alert from "../../Start/Alert";
 import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
@@ -141,7 +141,11 @@ function MeetingIn() {
   socket.on("peer-leaving", () => {
     const peerStream = document.querySelector(".MPartenerCamDiv1");
 
+    dispatch(ROOM_NUM(""));
+    dispatch(PARTNERID(""));
     dispatch(PARTNERNICK(""));
+    dispatch(PARTNERINTERESTS(""));
+    dispatch(ROOMTOKEN(""));
     document.querySelector(".MPartenerCamSubText").innerText = partnerNick;
 
     peerStream.srcObject.getTracks().forEach((track) => {
@@ -160,7 +164,11 @@ function MeetingIn() {
 
     myPeerConnection.close();
     myPeerConnection = null;
+    dispatch(ROOM_NUM(""));
+    dispatch(PARTNERID(""));
     dispatch(PARTNERNICK(""));
+    dispatch(PARTNERINTERESTS(""));
+    dispatch(ROOMTOKEN(""));
     document.querySelector(".MPartenerCamSubText").innerText = partnerNick;
 
     // 내 비디오 끔
@@ -390,8 +398,11 @@ function MeetingIn() {
 
     // setTimeout(() => {
     //   if (!alert("상대가 접속하지 않았기 때문에 홈페이지로 이동합니다.")) {
-    //     dispatch(ROOM_NUM(""));
-    //     dispatch(PARTNERNICK(""));
+    // dispatch(ROOM_NUM(""));
+    // dispatch(PARTNERID(""))
+    // dispatch(PARTNERNICK(""))
+    // dispatch(PARTNERINTERESTS(""))
+    // dispatch(ROOMTOKEN(""))
     //     navigate("/home");
     //   }
     // }, 30000);

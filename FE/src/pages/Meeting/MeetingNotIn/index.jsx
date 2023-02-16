@@ -2,7 +2,7 @@
 import "./index.css";
 import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
-import { MTOGGLE, ROOM_NUM, PARTNERINTERESTS, PARTNERNICK } from "../../../redux/reducers/MToggle";
+import { MTOGGLE, ROOM_NUM, PARTNERINTERESTS, PARTNERNICK, PARTNERID, ROOMTOKEN } from "../../../redux/reducers/MToggle";
 import { saveToken } from "../../../redux/reducers/saveToken";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ function MeetingNotIn() {
   }
 
   const navigate = useNavigate();
-  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}/blur-match/match`;
+  const API_URL = `${process.env.REACT_APP_API_ROOT_WONWOONG}`;
 
   const [isMatching, setIsMatching] = useState(false);
   const [camToggle, setCamToggle] = useState(true);
@@ -133,7 +133,7 @@ function MeetingNotIn() {
   function actionStart() {
     axios({
       method: "post",
-      url: `${API_URL}/check`,
+      url: `${API_URL}/blur-match/match/check`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${myToken}`,
@@ -165,7 +165,7 @@ function MeetingNotIn() {
             if (window.confirm("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.")) {
               axios({
                 method: "post",
-                url: `${API_URL}/accept`,
+                url: `${API_URL}/blur-match/match/accept`,
                 headers: {
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${myToken}`,
@@ -179,11 +179,25 @@ function MeetingNotIn() {
               })
                 // 데이터가 정상적으로 온다면 -> res 데이터 안씀 + meeting In으로 넘어감
                 .then((res) => {
-                  // resData인 관심사 배열을 store에 저장(meeting In에서 사용할 것)
-                  // console.log(`accept partnerInterests :`, res.data.partnerInterests);
                   console.log(`accept data : `, res.data);
                   dispatch(PARTNERINTERESTS(res.data.partnerInterests));
                   dispatch(PARTNERNICK(res.data.partnerNickname));
+                  dispatch(PARTNERID(res.res.data.partnerId));
+
+                  axios({
+                    method: "post",
+                    url: `${API_URL}/blur-meeting/meeting/enter`,
+                    data: {
+                      userId: userId,
+                      sessionId: res.data.sessionId,
+                    },
+                  })
+                    .then((res) => {
+                      // roomToken을 받음
+                      console.log(res.data);
+                      dispatch(ROOMTOKEN(res.data));
+                    })
+                    .catch((err) => console.log(err.state.code + "에러가 발생했습니다."));
 
                   if (!firstRendering) {
                     firstRendering = true;
@@ -206,7 +220,7 @@ function MeetingNotIn() {
                     // 에러가 5회이상일 경우 해당 요청 취소 및 알람
                     axios({
                       method: "post",
-                      url: `${API_URL}/stop`,
+                      url: `${API_URL}/blur-match/match/stop`,
                       headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${myToken}`,
@@ -230,6 +244,9 @@ function MeetingNotIn() {
             } else {
               // 취소 버튼을 눌렀을 때, axios:decline
               dispatch(ROOM_NUM(""));
+              dispatch(PARTNERID(""));
+              dispatch(PARTNERNICK(""));
+              dispatch(PARTNERINTERESTS(""));
               axios({
                 method: "post",
                 url: `${process.env.REACT_APP_API_ROOT_WONWOONG}/decline`,
@@ -246,6 +263,10 @@ function MeetingNotIn() {
                 .catch((err) => {
                   console.log(`${err.response.status}error, decline error 발생`);
                   if (err.response.status === 401) {
+                    dispatch(ROOM_NUM(""));
+                    dispatch(PARTNERID(""));
+                    dispatch(PARTNERNICK(""));
+                    dispatch(PARTNERINTERESTS(""));
                     clearInterval(mainTimer);
                     dispatch(saveToken(""));
                     navigate("/");
@@ -261,7 +282,7 @@ function MeetingNotIn() {
               // 에러가 5회이상일 경우 해당 요청 취소 및 알람
               axios({
                 method: "post",
-                url: `${API_URL}/stop`,
+                url: `${API_URL}/blur-match/match/stop`,
                 headers: {
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${myToken}`,
@@ -305,7 +326,7 @@ function MeetingNotIn() {
             if (window.confirm("매칭 상대를 찾았습니다.\n미팅 페이지로 이동합니다.")) {
               axios({
                 method: "post",
-                url: `${API_URL}/accept`,
+                url: `${API_URL}/blur-match/match/accept`,
                 headers: {
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${myToken}`,
@@ -324,6 +345,21 @@ function MeetingNotIn() {
                   console.log(`accept data : `, res.data);
                   dispatch(PARTNERINTERESTS(res.data.partnerInterests));
                   dispatch(PARTNERNICK(res.data.partnerNickname));
+
+                  axios({
+                    method: "post",
+                    url: `${API_URL}/blur-meeting/meeting/enter`,
+                    data: {
+                      userId: userId,
+                      sessionId: res.data.sessionId,
+                    },
+                  })
+                    .then((res) => {
+                      // roomToken을 받음
+                      console.log(res.data);
+                      dispatch(ROOMTOKEN(res.data));
+                    })
+                    .catch((err) => console.log(err.state.code + "에러가 발생했습니다."));
 
                   if (!firstRendering) {
                     firstRendering = true;
@@ -346,7 +382,7 @@ function MeetingNotIn() {
                     // 에러가 5회이상일 경우 해당 요청 취소 및 알람
                     axios({
                       method: "post",
-                      url: `${API_URL}/stop`,
+                      url: `${API_URL}/blur-match/match/stop`,
                       headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${myToken}`,
@@ -370,6 +406,9 @@ function MeetingNotIn() {
             } else {
               // 취소 버튼을 눌렀을 때, axios:decline
               dispatch(ROOM_NUM(""));
+              dispatch(PARTNERID(""));
+              dispatch(PARTNERNICK(""));
+              dispatch(PARTNERINTERESTS(""));
               axios({
                 method: "post",
                 url: `${process.env.REACT_APP_API_ROOT_WONWOONG}/decline`,
@@ -386,6 +425,10 @@ function MeetingNotIn() {
                 .catch((err) => {
                   console.log(`${err.response.status}error, decline error 발생`);
                   if (err.response.status === 401) {
+                    dispatch(ROOM_NUM(""));
+                    dispatch(PARTNERID(""));
+                    dispatch(PARTNERNICK(""));
+                    dispatch(PARTNERINTERESTS(""));
                     clearInterval(mainTimer);
                     dispatch(saveToken(""));
                     navigate("/");
@@ -402,7 +445,7 @@ function MeetingNotIn() {
             //   // 에러가 5회이상일 경우 해당 요청 취소 및 알람
             //   axios({
             //     method: "post",
-            //     url: `${API_URL}/stop`,
+            //     url: `${API_URL}/blur-match/match/stop`,
             //     headers: {
             //       "Content-Type": "application/json",
             //       Authorization: `Bearer ${myToken}`,
@@ -431,6 +474,10 @@ function MeetingNotIn() {
         console.log(err);
         if (err.response.status === 401) {
           clearInterval(mainTimer);
+          dispatch(ROOM_NUM(""));
+          dispatch(PARTNERID(""));
+          dispatch(PARTNERNICK(""));
+          dispatch(PARTNERINTERESTS(""));
           dispatch(saveToken(""));
           navigate("/");
         } else {
@@ -439,7 +486,7 @@ function MeetingNotIn() {
             // 에러가 10회이상일 경우 해당 요청 취소 및 알람
             axios({
               method: "post",
-              url: `${API_URL}/stop`,
+              url: `${API_URL}/blur-match/match/stop`,
               headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${myToken}`,
@@ -489,6 +536,9 @@ function MeetingNotIn() {
 
   function stopMatching() {
     dispatch(ROOM_NUM(""));
+    dispatch(PARTNERID(""));
+    dispatch(PARTNERNICK(""));
+    dispatch(PARTNERINTERESTS(""));
     console.log(`stopMatching 발동`);
     myStream.getTracks().forEach((track) => track.stop());
     document.querySelector(".MMyCamDiv3").srcObject = null;
