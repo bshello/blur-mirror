@@ -10,6 +10,7 @@
 // import { io } from "socket.io-client";
 // import { useNavigate } from "react-router-dom";
 
+<<<<<<< HEAD
 // let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
 //   cors: { origin: "*", credentials: true },
 // });
@@ -20,6 +21,18 @@
 // let firstRendering = false;
 // let meetingInTmp = 0;
 // // let videoDevices = [];
+=======
+let socket = io("wss://i8b307.p.ssafy.io/socket.io", {
+  cors: { origin: "*", credentials: false },
+});
+console.log(`socket: `, socket);
+let roomName;
+let myPeerConnection;
+let myStream;
+let firstRendering = false;
+let meetingInTmp = 0;
+// let videoDevices = [];
+>>>>>>> 6a383e02c4a2a8366e2d5b7139d44b8b1d4b301f
 
 // // console.log("MeetingIn 페이지 렌더링");
 // function MeetingIn() {
@@ -184,6 +197,7 @@
 //     socket.emit("leave-room", roomName, () => {
 //       roomName = "";
 
+<<<<<<< HEAD
 //       // Generate new socketIO socket (disconnect from previous)
 //       socket.disconnect();
 //       socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
@@ -191,6 +205,15 @@
 //       navigate("/home");
 //     });
 //   }
+=======
+      // Generate new socketIO socket (disconnect from previous)
+      socket.disconnect();
+      socket = io(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
+      // 인터벌 초기화 해줘야 함!!!!!!!!!!!!!!!!!!!!!!! -> 인터벌 왜쓰는지부터 알기
+      navigate("/home");
+    });
+  }
+>>>>>>> 6a383e02c4a2a8366e2d5b7139d44b8b1d4b301f
 
 //   // RTC Code
 
@@ -386,6 +409,7 @@
 //     dispatch(CAM_OPEN_TOGGLE(true));
 //   };
 
+<<<<<<< HEAD
 //   if (!firstRendering) {
 //     firstRendering = true;
 //     console.log("첫 렌더링");
@@ -402,6 +426,24 @@
 //       });
 //       console.log(`socket: ${socket} `, socket);
 //     }, 3000);
+=======
+  if (!firstRendering) {
+    firstRendering = true;
+    console.log("첫 렌더링");
+    setTimeout(async () => {
+      // 소켓통신을 통해서 방에 접속(이부분은 매칭이 되었을때 진행해야 하므로 전 페이지로 빼낼예정)
+      // 카메라 장치 동작 메서드
+      await getMedia();
+      makeConnection();
+      roomName = sendRoomName;
+      socket.emit("join_room", roomName);
+      console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
+      socket = io(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
+        cors: { origin: "*", credentials: true },
+      });
+      console.log(`socket: ${socket} `, socket);
+    }, 3000);
+>>>>>>> 6a383e02c4a2a8366e2d5b7139d44b8b1d4b301f
 
 //     // setTimeout(() => {
 //     //   if (!alert("상대가 접속하지 않았기 때문에 홈페이지로 이동합니다.")) {
