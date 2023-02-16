@@ -10,7 +10,7 @@ import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
+let socket = io.connect("https://i8b307.p.ssafy.io");
 let roomName;
 let myPeerConnection;
 let myStream;
@@ -152,24 +152,6 @@ function MeetingIn() {
     if (!alert("상대방이 나가셨습니다.\n 확인을 누르시면 홈페이지로 이동합니다.")) {
       hangUp();
     }
-
-    /**
-     *   // Display Modal
-    const modalWrapper = callView.querySelector('#disconnected-peer-overlay');
-    const disconnectedPeer = modalWrapper.querySelector('#disconnected-peer');
-    modalWrapper.style.display = 'flex';
-    disconnectedPeer.style.display = 'flex';
-
-    // Press Leave Room Button
-    const leaveRoomBtn = disconnectedPeer.querySelector('button#leave-room');
-    leaveRoomBtn.onclick = () => {
-      // Hide Modal
-      modalWrapper.style.display = 'none';
-      disconnectedPeer.style.display = 'none';
-      // Leave Chat Room
-      hangUp();
-    };
-     */
   });
 
   // 미팅 나가기버튼 && (한명이 나가고) 미팅 나가기 버튼 클릭시
