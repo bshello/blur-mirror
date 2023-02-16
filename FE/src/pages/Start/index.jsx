@@ -158,8 +158,9 @@ function Start() {
     });
   }, []);
 
+  // 둥둥 떠있는 포인터 마지막 페이지에서는 사라지게 하기.
   useEffect(() => {
-    const targets = [ref5.current];
+    const targets = [ref4.current];
     const scrollElement = document.querySelector(".scrollTemp");
 
     const options = {
@@ -179,6 +180,13 @@ function Start() {
 
     observer.observe(targets[0]);
   }, []);
+
+  //마지막 페이지에서 첫 페이지로 가는 함수
+
+  const goBlur = () => {
+    ref1.current.scrollIntoView({ behavior: "smooth" });
+    page = 1;
+  };
 
   return (
     <div className="Start" ref={StartRef}>
@@ -272,18 +280,24 @@ function Start() {
             <span> Blur에서 당신의 매력을 </span>
             <br />
             <span>마음껏 보여주세요!</span>
+            <br />
+            <br />
+            <br />
+            <span className="BlurGo" onClick={goBlur}>
+              블러 하러가기 Click!
+            </span>
           </strong>
         </div>
         <div className="SubFrameImage"></div>
       </div>
-      <div className="SubFrame5" ref={ref5}>
+      {/* <div className="SubFrame5" ref={ref5}>
         <div className="SubFrameImage"></div>
         <div className="SubFrameParagraph">
           <strong className="SubFrameParagraphText">
             <span> 그래도 안된다면...</span>
           </strong>
         </div>
-      </div>
+      </div> */}
       <span className="scrollTemp"></span>
     </div>
   );

@@ -307,4 +307,23 @@
   animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+.scrollTemp {
+  width: 5%;
+  height: 5%;
+  top: 95%;
+}
+
+.BlurGo {
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  color: rgb(237, 153, 209);
+  cursor: pointer;
+  transform: translate(-50%, 0);
+  animation-name: wave;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }/*# sourceMappingURL=index.css.map */
