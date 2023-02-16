@@ -14,13 +14,30 @@
   arg: size
   desc: 인자(size)를 받아 원을 만듦
 */
+.animate {
+  animation: shake 2s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(3%);
+  }
+  100% {
+    transform: translateY(-1%);
+    opacity: 1;
+  }
+}
 .SubFrame {
   box-sizing: border-box;
   position: absolute;
   right: 4.514vw;
   left: 4.514vw;
   top: 20vh;
-  bottom: 5.556vw;
+  bottom: 10vh;
   background: rgba(255, 255, 255, 0.19);
   border: 0.052vw solid rgba(255, 255, 255, 0.5);
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
@@ -119,6 +136,7 @@
 }
 
 .SubFrame2 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
   position: absolute;
@@ -131,8 +149,27 @@
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
   border-radius: 2.083vw;
 }
+.SubFrame2 .SubFrameParagraph {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 300%;
+}
+.SubFrame2 .SubFrameParagraph .SubFrameParagraphText {
+  position: relative;
+  top: 25vh;
+}
+.SubFrame2 .SubFrameImage {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  background: url(../../assets/images/menandwomen.jpg);
+  background-size: cover;
+  border-radius: 2.083vw;
+}
 
 .SubFrame3 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
   position: absolute;
@@ -145,8 +182,27 @@
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
   border-radius: 2.083vw;
 }
+.SubFrame3 .SubFrameParagraph {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 300%;
+}
+.SubFrame3 .SubFrameParagraph .SubFrameParagraphText {
+  position: relative;
+  top: 25vh;
+}
+.SubFrame3 .SubFrameImage {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  background: url(../../assets/images/menandwomen2.jpg);
+  background-size: cover;
+  border-radius: 2.083vw;
+}
 
 .SubFrame4 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
   position: absolute;
@@ -159,8 +215,29 @@
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
   border-radius: 2.083vw;
 }
+.SubFrame4 .SubFrameParagraph {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 300%;
+}
+.SubFrame4 .SubFrameParagraph .SubFrameParagraphText {
+  position: relative;
+  top: 25vh;
+}
+.SubFrame4 .SubFrameImage {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  background: url(../../assets/images/menandwomen3.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 2.083vw;
+}
 
 .SubFrame5 {
+  display: flex;
   scroll-margin: 2vw;
   box-sizing: border-box;
   position: absolute;
@@ -171,5 +248,23 @@
   background: rgba(255, 255, 255, 0.19);
   border: 0.052vw solid rgba(255, 255, 255, 0.5);
   box-shadow: 0vw 0.209vw 0.209vw rgba(0, 0, 0, 0.25);
+  border-radius: 2.083vw;
+}
+.SubFrame5 .SubFrameParagraph {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 300%;
+}
+.SubFrame5 .SubFrameParagraph .SubFrameParagraphText {
+  position: relative;
+  top: 25vh;
+}
+.SubFrame5 .SubFrameImage {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  background: url(../../assets/images/menandwomen2.jpg);
+  background-size: cover;
   border-radius: 2.083vw;
 }/*# sourceMappingURL=index.css.map */

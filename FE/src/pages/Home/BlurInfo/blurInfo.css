@@ -1,9 +1,9 @@
 .BlurInfoSubFrame {
   position: absolute;
   width: 69vw;
-  height: 40vw;
+  height: 70vh;
   left: 16vw;
-  top: 5vw;
+  top: 13vh;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 2vw;
   overflow-y: auto;
