@@ -395,16 +395,20 @@ function MeetingIn() {
       await getMedia();
       makeConnection();
       roomName = sendRoomName;
-      socket.emit("join_room", roomName);
-      console.log("emit join_room: " + socket.emit("join_room", roomName));
+      try {
+        socket.emit("join_room", roomName);
+        console.log("emit join_room: 성공");
+      } catch (error) {
+        console.log("emit join_room:  실패");
+      }
       try {
         socket.onopen("join_room", roomName);
         console.log("onopen 성공");
       } catch (error) {
-        console.log("onopen 성공");
+        console.log("onopen 실패");
       }
-      console.log("onopen join_room: " + socket.onopen("join_room", roomName));
       console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
+      console.log(`socket: ${socket} `, socket);
     }, 3000);
 
     // setTimeout(() => {
