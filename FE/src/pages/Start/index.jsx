@@ -110,9 +110,34 @@ function Start() {
     }
   }, [signInModal, signUpModal, searchPwModal, alertModal, scrollFunctionRef]);
 
+  //이미지 애니메이션.
+  // useEffect(() => {
+  //   const targets = document.querySelectorAll(".SubFrameImage");
+  //   console.log(targets);
+  //   const options = {
+  //     rootMargin: "0px",
+  //     threshold: 0.5,
+  //   };
+
+  //   const observer = new IntersectionObserver((entries, observer) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         entry.target.classList.add("animate");
+  //       } else {
+  //         entry.target.classList.remove("animate");
+  //       }
+  //     });
+  //   }, options);
+
+  //   targets.forEach((target) => {
+  //     observer.observe(target);
+  //   });
+  // }, []);
+
+  //텍스트 애니메이션.
   useEffect(() => {
-    const targets = document.querySelectorAll(".SubFrameImage");
-    console.log(targets);
+    const targets = document.querySelectorAll(".SubFrameParagraphText");
+
     const options = {
       rootMargin: "0px",
       threshold: 0.5,
@@ -121,9 +146,9 @@ function Start() {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate");
+          entry.target.classList.add("fade-up");
         } else {
-          entry.target.classList.remove("animate");
+          entry.target.classList.remove("fade-up");
         }
       });
     }, options);
@@ -131,6 +156,28 @@ function Start() {
     targets.forEach((target) => {
       observer.observe(target);
     });
+  }, []);
+
+  useEffect(() => {
+    const targets = [ref5.current];
+    const scrollElement = document.querySelector(".scrollTemp");
+
+    const options = {
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollElement.classList.remove("scroll");
+        } else {
+          scrollElement.classList.add("scroll");
+        }
+      });
+    }, options);
+
+    observer.observe(targets[0]);
   }, []);
 
   return (
@@ -237,6 +284,7 @@ function Start() {
           </strong>
         </div>
       </div>
+      <span className="scrollTemp"></span>
     </div>
   );
 }
