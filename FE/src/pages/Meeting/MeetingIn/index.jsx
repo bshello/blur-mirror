@@ -194,17 +194,24 @@ function MeetingIn() {
   // RTC Code
 
   function makeConnection() {
-    myPeerConnection = new RTCPeerConnection({
-      iceServers: [
-        {
-          urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302", "stun:stun3.l.google.com:19302", "stun:stun4.l.google.com:19302"],
-        },
-      ],
-    });
-    // console.log(myStream.getTracks());
-    myPeerConnection.addEventListener("icecandidate", handleIce);
-    myPeerConnection.addEventListener("track", handleAddStream);
-    myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track, myStream));
+    console.log("makeConnection 들어왔음");
+    try {
+      myPeerConnection = new RTCPeerConnection({
+        iceServers: [
+          {
+            urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302", "stun:stun3.l.google.com:19302", "stun:stun4.l.google.com:19302"],
+          },
+        ],
+      });
+      // console.log(myStream.getTracks());
+      myPeerConnection.addEventListener("icecandidate", handleIce);
+      myPeerConnection.addEventListener("track", handleAddStream);
+      myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track, myStream));
+
+      console.log(`makeConnection이 성공했습니다.`);
+    } catch (error) {
+      console.log(`${error} makeConnection이 실패했습니다.`);
+    }
   }
 
   function handleIce(data) {
