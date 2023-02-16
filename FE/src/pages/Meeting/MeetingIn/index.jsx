@@ -10,7 +10,7 @@ import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
+let socket = io(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
   cors: { origin: "*", credentials: true },
 });
 console.log(`socket: `, socket);
