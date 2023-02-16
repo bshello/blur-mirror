@@ -15,7 +15,7 @@ const httpServer = http.createServer(app);
 // httpServer.listen: 3001  /  https://i8b307.p.ssafy.io
 
 // // http 서버 위에 ws(webSocket) 서버를 만듦
-const wsServer = new WebSocket.Server(httpServer, {
+const wsServer = new Server(httpServer, {
   cors: {
     origin: "[]",
     credentials: false,
