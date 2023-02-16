@@ -9,6 +9,7 @@ import MyInfo from "./pages/MyInfo";
 import SocialSignInRedirect from "./pages/Start/SignIn/socialSignIn";
 import GuardedRoute from "./RouterGuard";
 import ChatPage from "./pages/Home/Chat/ChatPage/chatpage";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             element={<SocialSignInRedirect />}
           ></Route>
           <Route path="/chat/room/enter/:roomId" element={<ChatPage />}></Route>
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>
