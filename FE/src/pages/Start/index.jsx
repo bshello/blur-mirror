@@ -25,8 +25,6 @@ function Start() {
   const ref4 = useRef(null);
   const ref5 = useRef(null);
 
-  console.log(process.env);
-
   const showSignInModal = () => {
     setSignInModal((pre) => !pre);
   };
@@ -110,8 +108,30 @@ function Start() {
       StartRef.current.removeEventListener("wheel", scrollFunctionRef.current);
       document.body.style.overflow = "hidden";
     }
-    console.log(signUpModal);
   }, [signInModal, signUpModal, searchPwModal, alertModal, scrollFunctionRef]);
+
+  useEffect(() => {
+    const targets = document.querySelectorAll(".SubFrameImage");
+    console.log(targets);
+    const options = {
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        } else {
+          entry.target.classList.remove("animate");
+        }
+      });
+    }, options);
+
+    targets.forEach((target) => {
+      observer.observe(target);
+    });
+  }, []);
 
   return (
     <div className="Start" ref={StartRef}>
@@ -175,10 +195,48 @@ function Start() {
           <div className="SubRightImg"></div>
         </div>
       </div>
-      <div className="SubFrame2" ref={ref2}></div>
-      <div className="SubFrame3" ref={ref3}></div>
-      <div className="SubFrame4" ref={ref4}></div>
-      <div className="SubFrame5" ref={ref5}></div>
+      <div className="SubFrame2" ref={ref2}>
+        <div className="SubFrameParagraph">
+          <strong className="SubFrameParagraphText">
+            <span>안녕하세요.</span>
+            <br></br>
+            <span>보여줄 수 없었던</span>
+            <br></br>
+            <span>내 모습을 보여줄 수 있는곳,</span>
+            <br></br>
+            <span>Blur입니다.</span>
+          </strong>
+        </div>
+        <div className="SubFrameImage"></div>
+      </div>
+      <div className="SubFrame3" ref={ref3}>
+        <div className="SubFrameImage"></div>
+        <div className="SubFrameParagraph">
+          <strong className="SubFrameParagraphText">
+            <span>입구컷 당하는 당신</span>
+            <br></br>
+            <span>걱정마세요!</span>
+          </strong>
+        </div>
+      </div>
+      <div className="SubFrame4" ref={ref4}>
+        <div className="SubFrameParagraph">
+          <strong className="SubFrameParagraphText">
+            <span> Blur에서 당신의 매력을 </span>
+            <br />
+            <span>마음껏 보여주세요!</span>
+          </strong>
+        </div>
+        <div className="SubFrameImage"></div>
+      </div>
+      <div className="SubFrame5" ref={ref5}>
+        <div className="SubFrameImage"></div>
+        <div className="SubFrameParagraph">
+          <strong className="SubFrameParagraphText">
+            <span> 그래도 안된다면...</span>
+          </strong>
+        </div>
+      </div>
     </div>
   );
 }
