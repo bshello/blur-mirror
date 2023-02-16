@@ -10,13 +10,13 @@ app.use(cors());
 const server = createServer(
   {
     ca: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/fullchain.pem'),
-    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem'),
+    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem', 'utf-8').toString(),
+    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem', 'utf-8').toString(),
   },
   app
 );
 
-const io = new Server(server, {
+const io = new Server(server, { 
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -53,6 +53,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen("http://rtc-server:3001", () => {
+server.listen(`${process.env.REACT_APP_NODE}`, () => {
   console.log("Server started");
 });
