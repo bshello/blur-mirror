@@ -1,6 +1,5 @@
 import "./index.css";
 import { useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
-
 import MeetingNotIn from "./MeetingNotIn";
 import MeetingIn from "./MeetingIn";
 

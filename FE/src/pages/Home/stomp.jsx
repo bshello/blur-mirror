@@ -16,7 +16,7 @@ const WebSocketComponent = () => {
   };
 
   useEffect(() => {
-    const socket = new SockJS("http://localhost:8080/ws");
+    const socket = new SockJS("http://172.30.1.45:8080/ws");
     const stompClient = Stomp.over(socket);
     stompClient.connect({}, () => {
       setSocket(stompClient);
