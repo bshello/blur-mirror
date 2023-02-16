@@ -53,6 +53,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
+server.listen("http://rtc-server:3001", () => {
   console.log("Server started");
 });
