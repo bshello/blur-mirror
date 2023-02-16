@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 
 let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
   cors: { origin: "*", credentials: true },
-  transports: ["websocket"],
 });
 console.log(`socket: `, socket);
 let roomName;
@@ -400,7 +399,6 @@ function MeetingIn() {
       console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
       socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
         cors: { origin: "*", credentials: true },
-        transports: ["websocket"],
       });
       console.log(`socket: ${socket} `, socket);
     }, 3000);
