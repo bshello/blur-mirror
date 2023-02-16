@@ -20,6 +20,9 @@ let myStream;
 let firstRendering = false;
 let meetingInTmp = 0;
 // let videoDevices = [];
+socket.on("abc", (src) => {
+  console.log(src);
+});
 
 // console.log("MeetingIn 페이지 렌더링");
 function MeetingIn() {
