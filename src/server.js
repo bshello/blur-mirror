@@ -30,8 +30,6 @@ io.on("connection", (socket) => {
     socket.join(roomName); // 방에 들어가는거
     socket.to(roomName).emit("welcome", rooms);
     socket.to(roomName).emit("roomsCheck", rooms);
-    console.log(sids);
-    console.log(rooms);
   });
   socket.on("offer", (offer, roomName) => {
     socket.to(roomName).emit("offer", offer);
