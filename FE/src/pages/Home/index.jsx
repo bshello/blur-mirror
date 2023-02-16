@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Header from "../../components/Header";
 import "./index.css";
 import BlurInfo from "./BlurInfo/blurInfo";
@@ -18,7 +17,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
 import { saveToken, ISMYPROFILE } from "../../redux/reducers/saveToken";
-import StompJS from "./stomp";
 
 let myStream;
 let carousel;
@@ -190,6 +188,7 @@ function Home() {
 
       <div className="HomeSubFrame">
         <div className="HomeLeftDiv">
+          {/* <div className="HomeCamImg"></div> */}
           <video className="HomeCamDiv" autoPlay ref={videoRef} />
           <button className="InfoBlurBtn" onClick={showBlurInfoModal}></button>
           <button className="CamToggle" onClick={startVideo}></button>
@@ -202,7 +201,6 @@ function Home() {
         {slideNumber === 2 ? <Slide3 /> : null}
         {slideNumber === 3 ? <Slide4 /> : null}
         {slideNumber === 4 ? <Slide5 /> : null}
-        <StompJS />
       </div>
     </div>
   );
