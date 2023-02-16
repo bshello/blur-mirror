@@ -10,19 +10,22 @@ import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
-  cors: { origin: "*", credentials: true },
-});
-console.log(`socket: `, socket);
 let roomName;
 let myPeerConnection;
 let myStream;
 let firstRendering = false;
 let meetingInTmp = 0;
 // let videoDevices = [];
-
+let socket;
 // console.log("MeetingIn 페이지 렌더링");
 function MeetingIn() {
+  useEffect(() => {
+    socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
+      cors: { origin: "*", credentials: true },
+    });
+  }, []);
+  console.log(`socket: `, socket);
+
   const navigate = useNavigate();
 
   // 컴퓨터와 연결되어있는 모든 장치를 가져옴
@@ -396,7 +399,14 @@ function MeetingIn() {
       makeConnection();
       roomName = sendRoomName;
       socket.emit("join_room", roomName);
-      console.log(socket.emit("join_room", roomName));
+      console.log("emit join_room: " + socket.emit("join_room", roomName));
+      try {
+        socket.onopen("join_room", roomName);
+        console.log("onopen 성공");
+      } catch (error) {
+        console.log("onopen 실패");
+      }
+      console.log("onopen join_room: " + socket.onopen("join_room", roomName));
       console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
     }, 3000);
 
