@@ -1,35 +1,29 @@
-import express from "express"; // express를 사용한 일반적인 NodeJS
-import http from "http";
+import express from "express";
+import { createServer } from "https";
 import { Server } from "socket.io";
 import cors from "cors";
+import fs from "fs";
 
 const app = express();
-
 app.use(cors());
 
-// express를 이용해 http 서버를 만듦(노출 서버)
-const httpServer = http.createServer(app);
+const server = createServer(
+  {
+    key: fs.readFileSync("/path/to/key.pem"),
+    cert: fs.readFileSync("/path/to/cert.pem"),
+  },
+  app
+);
 
-// 로컬 / ec2서버
-// cors: http://localhost:3000  /  [https://admin.socket.io]
-// httpServer.listen: 3001  /  https://i8b307.p.ssafy.io
-
-// // http 서버 위에 ws(webSocket) 서버를 만듦
-const wsServer = new Server(httpServer, {
+const io = new Server(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
   },
 });
 
-const {
-  sockets: {
-    adapter: { sids, rooms },
-  },
-} = wsServer;
-
-wsServer.on("connection", (socket) => {
-  console.log("connecting 성공, 서버에 도달");
+io.on("connection", (socket) => {
+  console.log("Client connected:", socket.id);
   socket.on("join_room", async (roomName) => {
     console.log("브라우저에서 받은 roomName : ", roomName);
     socket.join(roomName); // 방에 들어가는거
@@ -59,5 +53,7 @@ wsServer.on("connection", (socket) => {
     });
   });
 });
-const handleListen = () => console.log(`Listening on https://i8b307.p.ssafy.io`);
-httpServer.listen(3001, handleListen);
+
+server.listen(3001, () => {
+  console.log("Server started");
+});
