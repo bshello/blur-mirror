@@ -10,8 +10,8 @@ app.use(cors());
 const server = createServer(
   {
     ca: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/fullchain.pem'),
-    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem', "utf-8").toString(),
-    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem', "utf-8").toString(),
+    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem', "utf-8"),
+    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem', "utf-8"),
   },
   app
 );
@@ -19,7 +19,7 @@ const server = createServer(
 const io = new Server(server, { 
   cors: {
     origin: "*",
-    methods: ["GET", "POST"],
+    credentials: true
   },
 });
 
@@ -53,6 +53,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(`${process.env.REACT_APP_NODE}`, () => {
+server.listen(3001, () => {
   console.log("Server started");
 });
