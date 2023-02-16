@@ -1,36 +1,45 @@
 package com.blur.chat.api.entity;
 
-import java.util.HashSet;
-import java.util.Set;
 
-import org.springframework.web.socket.WebSocketSession;
+import java.io.Serializable;
 
-import com.blur.chat.api.service.ChatService;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Chatroom {
-    private String roomId;
-    private String name;
-    private Set<WebSocketSession> sessions = new HashSet<>();
+@Entity
+@AllArgsConstructor
+@Builder
+public class Chatroom implements Serializable {
 
-    @Builder
-    public Chatroom(String roomId, String name) {
-        this.roomId = roomId;
-        this.name = name;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
 
-    public void handleActions(WebSocketSession session, Chat chat, ChatService chatService) {
-        if (chat.getType().equals(Chat.MessageType.ENTER)) {
-            sessions.add(session);
-            chat.setMessage(chat.getNickname() + "님이 입장했습니다.");
-        }
-        sendMessage(chat, chatService);
-    }
 
-    public <T> void sendMessage(T message, ChatService chatService) {
-        sessions.parallelStream().forEach(session -> chatService.sendMessage(session, message));
-    }
+
+//    public void update(WorkSpaceUpdateReqeustDto requestDto, String imageUrl) {
+//
+//        if(requestDto.getContent()!=null){
+//            this.content = requestDto.getContent();
+//        }
+//
+//        if(requestDto.getTitle()!=null){
+//            this.title = requestDto.getTitle();
+//        }
+//
+//        this.imageUrl = imageUrl;
+//    }
+
+
 }
