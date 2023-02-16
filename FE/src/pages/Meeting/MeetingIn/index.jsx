@@ -203,7 +203,7 @@ function MeetingIn() {
     });
     // console.log(myStream.getTracks());
     myPeerConnection.addEventListener("icecandidate", handleIce);
-    myPeerConnection.addEventListener("addstream", handleAddStream);
+    myPeerConnection.addEventListener("track", handleAddStream);
     myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track, myStream));
   }
 
@@ -215,7 +215,7 @@ function MeetingIn() {
   function handleAddStream(data) {
     console.log("got an event from my peer");
     const peerStream = document.querySelector(".MPartenerCamDiv1");
-    peerStream.srcObject = data.stream;
+    peerStream.srcObject = data.stream[0];
   }
 
   // (파트너 캠 상단의) 관심사 표현 토글
