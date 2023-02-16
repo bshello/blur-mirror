@@ -381,12 +381,11 @@ function MeetingIn() {
     setTimeout(async () => {
       // 소켓통신을 통해서 방에 접속(이부분은 매칭이 되었을때 진행해야 하므로 전 페이지로 빼낼예정)
       // 카메라 장치 동작 메서드
-      await getMedia();
+      getMedia();
       makeConnection();
-      socket.emit("join_room", sendRoomName);
-      console.log(`sendRoomName: ${sendRoomName}`);
-
       roomName = sendRoomName;
+      await socket.emit("join_room", roomName);
+      console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
     }, 3000);
 
     // setTimeout(() => {
