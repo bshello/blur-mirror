@@ -164,7 +164,7 @@ function MyInfo() {
           {intro === "" ? proFile.introduce : intro}{" "}
         </span>
       </div>
-      <span className="MIProfileLogo">Blur:</span>
+      <span className="MIProfileLogo">Blur:-)</span>
       <div
         className="MIEdit"
         onClick={() => {
@@ -172,7 +172,7 @@ function MyInfo() {
         }}
         disabled={alertModal === true ? true : false}
       >
-        profile edit -
+        profile edit
       </div>
     </div>
   );
