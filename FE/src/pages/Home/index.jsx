@@ -189,7 +189,6 @@ function Home() {
 
       <div className="HomeSubFrame">
         <div className="HomeLeftDiv">
-          {/* <div className="HomeCamImg"></div> */}
           <video className="HomeCamDiv" autoPlay ref={videoRef} />
           <button className="InfoBlurBtn" onClick={showBlurInfoModal}></button>
           <button className="CamToggle" onClick={startVideo}></button>
