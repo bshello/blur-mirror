@@ -9,8 +9,9 @@ app.use(cors());
 
 const server = createServer(
   {
-    key: fs.readFileSync("/path/to/key.pem"),
-    cert: fs.readFileSync("/path/to/cert.pem"),
+    ca: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/fullchain.pem'),
+    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem','utf-8').toString(),
+    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem', 'utf-8').toString(),
   },
   app
 );
