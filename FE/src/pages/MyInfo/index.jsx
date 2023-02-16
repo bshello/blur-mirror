@@ -13,7 +13,23 @@ import Alert from "../../pages/Start/Alert";
 import axios from "axios";
 
 function MyInfo() {
-  // 화면 켜지자 말자 띄우는 거
+  //profile edit modal
+  const [miModal, setMyInfoModal] = useState(false);
+  const showMyinfoModal = () => {
+    setMyInfoModal((pre) => !pre);
+  };
+  //hash modal
+  const [hashModal, setHashModal] = useState(false);
+  const showHashModal = () => {
+    setHashModal((pre) => !pre);
+  };
+  //alert modal
+  const [alertModal, setalertModal] = useState(false);
+  const showAlertModal = () => {
+    setalertModal((pre) => !pre);
+  };
+  // 페이지 이동
+  const navigate = useNavigate();
   // reducer에서 변경된 값을 가져오자
   const user = useSelector((state) => {
     return state.user.value;
@@ -30,8 +46,12 @@ function MyInfo() {
   const id = useSelector((state) => {
     return state.strr.id;
   });
-  // const id = "123123";
+  const hashCheck = useSelector((state) => {
+    return state.hashCheck.checkIntData;
+  });
+  console.log(hashCheck);
 
+  // 화면 켜지자 말자 띄우는 거
   const API_URL = `${process.env.REACT_APP_API_ROOT_DONGHO}/blur-profile/profile/${id}`;
   const [proFile, setProFile] = useState([]);
   const [userInterests, setUserInterests] = useState([]);
@@ -48,41 +68,46 @@ function MyInfo() {
         setProFile(res.data);
         setUserInterests(res.data.userInterests);
         console.log("성공><");
+        // console.log(hashCheck);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [user, intro, age]);
-
-  //profile edit modal
-  const [miModal, setMyInfoModal] = useState(false);
-  const showMyinfoModal = () => {
-    setMyInfoModal((pre) => !pre);
-  };
-
-  //hash modal
-  const [hashModal, setHashModal] = useState(false);
-  const showHashModal = () => {
-    setHashModal((pre) => !pre);
-  };
-
-  //alert modal
-  const [alertModal, setalertModal] = useState(false);
-  const showAlertModal = () => {
-    setalertModal((pre) => !pre);
-  };
-
-  // 페이지 이동
-  const navigate = useNavigate();
+  }, [user, intro, age, hashCheck]);
 
   return (
     <div className="myinfo">
-      {miModal || hashModal ? <ModalWrap miModal={miModal} hashModal={hashModal} showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} /> : null}
-      {miModal && !hashModal ? <MyInfoModal showHashModal={showHashModal} showMyinfoModal={showMyinfoModal} showAlertModal={showAlertModal} setUserInterests={setUserInterests} /> : null}
+      {miModal || hashModal ? (
+        <ModalWrap
+          miModal={miModal}
+          hashModal={hashModal}
+          showHashModal={showHashModal}
+          showMyinfoModal={showMyinfoModal}
+        />
+      ) : null}
+      {miModal && !hashModal ? (
+        <MyInfoModal
+          showHashModal={showHashModal}
+          showMyinfoModal={showMyinfoModal}
+          showAlertModal={showAlertModal}
+          setUserInterests={setUserInterests}
+        />
+      ) : null}
 
-      {hashModal && !miModal ? <Hash showMyinfoModal={showMyinfoModal} showHashModal={showHashModal} showAlertModal={showAlertModal} /> : null}
+      {hashModal && !miModal ? (
+        <Hash
+          showMyinfoModal={showMyinfoModal}
+          showHashModal={showHashModal}
+          showAlertModal={showAlertModal}
+        />
+      ) : null}
 
-      {alertModal && !miModal && !hashModal ? <Alert showAlertModal={showAlertModal} content={"변경사항이 저장되었습니다."} /> : null}
+      {alertModal && !miModal && !hashModal ? (
+        <Alert
+          showAlertModal={showAlertModal}
+          content={"변경사항이 저장되었습니다."}
+        />
+      ) : null}
 
       <div className="DarkBlurDiv"></div>
       <div
@@ -102,17 +127,27 @@ function MyInfo() {
       </div>
       <span className="MIHashTag">Hash Tag</span>
       {userInterests.length > 0 ? (
-        <div className="showint" onClick={showHashModal} disabled={alertModal === true ? true : false}>
+        <div
+          className="showint"
+          onClick={showHashModal}
+          disabled={alertModal === true ? true : false}
+        >
           {userInterests.map((item, idx) => {
             return (
               <div className="showintdiv" key={item.userinterests}>
                 {item.interestName}
+                {/* {hashCheck === "" ? item.interestName : hashCheck} */}
+                {/* {user === "" ? proFile.userInterests : user} */}
               </div>
             );
           })}
         </div>
       ) : (
-        <div className="MIHashSet" onClick={showHashModal} disabled={alertModal === true ? true : false}>
+        <div
+          className="MIHashSet"
+          onClick={showHashModal}
+          disabled={alertModal === true ? true : false}
+        >
           <div className="MIHashSetIcon">
             <span className="MIHashSetText">설정하기</span>
           </div>
@@ -125,7 +160,9 @@ function MyInfo() {
       </div>
       <div className="MIIntroducingDiv">
         <span className="MIIntroducingTitle">Introducing</span>
-        <span className="MIIntroducingText">{intro === "" ? proFile.introduce : intro} </span>
+        <span className="MIIntroducingText">
+          {intro === "" ? proFile.introduce : intro}{" "}
+        </span>
       </div>
       <span className="MIProfileLogo">Blur:</span>
       <div

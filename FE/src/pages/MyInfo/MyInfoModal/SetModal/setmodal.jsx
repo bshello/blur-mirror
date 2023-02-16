@@ -44,7 +44,6 @@ function SetModal() {
   const handleSave = () => {
     dispatch(setDistancee(distance));
     dispatch(setAgeRange([leftSliderValue, rightSliderValue]));
-    console.log(distance);
   };
   // 파트너 셩별 고정
   const gender = proFile.gender === "F" ? "Male" : "Femail";
