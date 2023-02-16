@@ -396,25 +396,12 @@ function MeetingIn() {
       await getMedia();
       makeConnection();
       roomName = sendRoomName;
-      try {
-        socket.emit("join_room", roomName);
-        console.log("emit join_room: 성공");
-      } catch (error) {
-        console.log("emit join_room:  실패");
-      }
-      try {
-        socket.onopen("join_room", roomName);
-        console.log("onopen 성공");
-      } catch (error) {
-        console.log("onopen 실패");
-      }
-      try {
-        socket.emit("join_room1", roomName);
-        console.log("emit join_room1: 성공");
-      } catch (error) {
-        console.log("emit join_room1: 실패");
-      }
+      socket.emit("join_room", roomName);
       console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
+      socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
+        cors: { origin: "*", credentials: true },
+        transports: ["websocket"],
+      });
       console.log(`socket: ${socket} `, socket);
     }, 3000);
 
