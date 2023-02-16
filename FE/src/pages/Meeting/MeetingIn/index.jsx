@@ -10,9 +10,8 @@ import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-let socket = io("https://i8b307.p.ssafy.io/socket.io", {
+let socket = io("wss://i8b307.p.ssafy.io", {
   cors: { origin: "*", credentials: true },
-  transports: ['websocket']
 });
 console.log(`socket: `, socket);
 let roomName;
