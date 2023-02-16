@@ -16,16 +16,17 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ChatPagingResponseDto {
 
-    private Long chatroomNo;
-    private String writer;
+	private Long roomNo;
+	private String sessionId;
+    private String nickname;
     private String message;
     private String createdAt;
-    private String nickname;
 
     public static ChatPagingResponseDto of(Chat chat){
         return ChatPagingResponseDto.builder()
-                .writer(chat.getUsers())
-                .chatroomNo(chat.getChatroom().getChatroomNo())
+        		.roomNo(chat.getChatroom().getRoomNo())
+                .nickname(chat.getUsers())
+                .sessionId(chat.getChatroom().getSessionId())
                 .createdAt(chat.getCreatedAt())
                 .message(chat.getMessage())
                 .build();
@@ -33,10 +34,35 @@ public class ChatPagingResponseDto {
 
     public static ChatPagingResponseDto byChatMessageDto(ChatMessageSaveDto chatMessageSaveDto){
         return ChatPagingResponseDto.builder()
-                .writer(chatMessageSaveDto.getWriter())
+        		.roomNo(Long.parseLong(chatMessageSaveDto.getRoomNo()))
+                .nickname(chatMessageSaveDto.getNickname())
                 .createdAt(chatMessageSaveDto.getCreatedAt())
-                .chatroomNo(Long.parseLong(chatMessageSaveDto.getRoomNo()))
+                .sessionId(chatMessageSaveDto.getSessionId())
                 .message(chatMessageSaveDto.getMessage())
                 .build();
     }
+	
+//    private Long chatroomNo;
+//    private String writer;
+//    private String message;
+//    private String createdAt;
+//    private String nickname;
+//
+//    public static ChatPagingResponseDto of(Chat chat){
+//        return ChatPagingResponseDto.builder()
+//                .writer(chat.getUsers())
+//                .chatroomNo(chat.getChatroom().getChatroomNo())
+//                .createdAt(chat.getCreatedAt())
+//                .message(chat.getMessage())
+//                .build();
+//    }
+//
+//    public static ChatPagingResponseDto byChatMessageDto(ChatMessageSaveDto chatMessageSaveDto){
+//        return ChatPagingResponseDto.builder()
+//                .writer(chatMessageSaveDto.getWriter())
+//                .createdAt(chatMessageSaveDto.getCreatedAt())
+//                .chatroomNo(Long.parseLong(chatMessageSaveDto.getRoomNo()))
+//                .message(chatMessageSaveDto.getMessage())
+//                .build();
+//    }
 }

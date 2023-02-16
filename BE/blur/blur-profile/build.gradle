@@ -36,6 +36,9 @@ dependencies {
 
 	// swagger
 	implementation "io.springfox:springfox-boot-starter:3.0.0"
+
+	//s3
+	implementation 'com.amazonaws:aws-java-sdk-s3:1.11.819'
 }
 
 dependencyManagement {

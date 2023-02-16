@@ -29,8 +29,6 @@ public class ChatRoomRepository {
     private final RedisTemplate<String, Object> redisTemplate;
     private final RedisTemplate<String, String> roomRedisTemplate;
 
-//    private final WorkSpaceRepository workSpaceRepository;
-
     private final ChatRedisCacheService chatRedisCacheService;
 
     private final ChatUtils chatUtils;
@@ -81,22 +79,22 @@ public class ChatRoomRepository {
     }
 
     //채팅 참여자 list 생성
-    public List<String> findUsersInChatroom(String roomNo, String sessionId) {
-
-        setOperations = roomRedisTemplate.boundHashOps(CHAT_ROOM_ID_ + roomNo);
-        ScanOptions scanOptions = ScanOptions.scanOptions().build();
-        List<String> userListInChatroom = new ArrayList<>();
-
-        try (Cursor<Map.Entry<String, String>> cursor = setOperations.scan(scanOptions)) {
-
-            while (cursor.hasNext()) {
-                Map.Entry<String, String> data = cursor.next();
-                userListInChatroom.add(chatRedisCacheService.findUserNicknameByUsername(data.getValue()));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return userListInChatroom;
-    }
+//    public List<String> findUsersInChatroom(String roomNo, String sessionId) {
+//
+//        setOperations = roomRedisTemplate.boundHashOps(CHAT_ROOM_ID_ + roomNo);
+//        ScanOptions scanOptions = ScanOptions.scanOptions().build();
+//        List<String> userListInChatroom = new ArrayList<>();
+//
+//        try (Cursor<Map.Entry<String, String>> cursor = setOperations.scan(scanOptions)) {
+//
+//            while (cursor.hasNext()) {
+//                Map.Entry<String, String> data = cursor.next();
+//                userListInChatroom.add(chatRedisCacheService.findUserNicknameByUsername(data.getValue()));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return userListInChatroom;
+//    }
 
 }

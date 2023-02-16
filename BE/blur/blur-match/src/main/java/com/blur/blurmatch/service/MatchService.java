@@ -76,6 +76,15 @@ public class MatchService {
     public void updateSetting(MatchSettingDto matchSettingDto) {
 
         String userId = matchSettingDto.getUserId();
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
+        System.out.println("1111111111111111111111111111111111");
+        System.out.println(userId);
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
         matchSetting.update(matchSettingDto);
         matchSettingRepository.save(matchSetting);
@@ -100,18 +109,16 @@ public class MatchService {
             return null;
         }
         String getProfileUrl = String.format(env.getProperty("blur-profile.url")) + "/" + userId + "/service";
-        ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl , ResponseProfileDto.class, userId);
+        ResponseEntity<ResponseProfileDto> profileResponse = restTemplate.getForEntity(getProfileUrl, ResponseProfileDto.class, userId);
         ResponseProfileDto responseProfileDto = profileResponse.getBody();
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
         MatchDto matchDto = new MatchDto(requestMatchDto, matchSetting, matchMakingRating, responseProfileDto);
-
         if (matchDto.getGender().equals("M")) {
             males.put(matchDto.getUserId(), matchDto);
             ResponseMatchDto responseMatchDto = new ResponseMatchDto();
             responseMatchDto.setMyGender(matchDto.getGender());
             return responseMatchDto;
         }
-
         Queue<QueueDto> maleList = new PriorityQueue<>((o1, o2) -> {
             if(o1.getPoint()  == o2.getPoint()) {
                 return o2.getPoint();

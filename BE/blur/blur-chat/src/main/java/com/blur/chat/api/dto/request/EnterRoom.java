@@ -15,4 +15,5 @@ public class EnterRoom {
 	private String userId;
 	@ApiModelProperty(value = "chatroomNo", example = "chatroomNo")
 	private Long chatroomNo;
+	private String sessionId;
 }

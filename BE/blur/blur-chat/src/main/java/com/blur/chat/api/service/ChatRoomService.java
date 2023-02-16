@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.blur.chat.api.dto.ResponseDto;
 import com.blur.chat.api.dto.UserInfoDto;
+import com.blur.chat.api.dto.request.EnterRoom;
 import com.blur.chat.api.entity.Chatroom;
 import com.blur.chat.api.repository.ChatRoomNoRepository;
 import com.blur.chat.api.repository.ChatRoomRepository;
@@ -33,35 +34,35 @@ public class ChatRoomService {
 		return chatRoomRepository.leaveChatRoom(sessionId);
 	}
 
-    public List<String> findUser(String roomNo,String sessionId){
-       return chatRoomRepository.findUsersInChatroom(roomNo,sessionId);
-    }
+//    public List<String> findUser(String roomNo, String sessionId){
+//       return chatRoomRepository.findUsersInChatroom(roomNo, sessionId);
+//    }
     
-    public Long createChatroom(UserInfoDto userInfoDto){
-    	Chatroom chatroom = new Chatroom(userInfoDto.getUserNo(), userInfoDto.getNickname());
-    	System.out.println(chatroom.toString());
+    public Long createChatroom(UserInfoDto userInfoDto, String sessionId){
+    	Chatroom chatroom = new Chatroom(userInfoDto.getNickname(), sessionId);
+//    	System.out.println(chatroom.toString());
     	chatRoomNoRepository.save(chatroom);
-    	Long chatroomNo = chatroom.getChatroomNo();
+    	Long chatroomNo = chatroom.getRoomNo();
     	System.out.println("createChatroom : " + chatroomNo);
     	
     	return chatroomNo;
     }
     
-    public Chatroom enterChat(UserInfoDto userInfoDto, Long chatroomNo){
-    	Chatroom chatroom = chatRoomNoRepository.findByChatroomNo(chatroomNo);
-    	chatroom.update(userInfoDto.getUserNo(), userInfoDto.getUserId());
+    public Chatroom enterChatroom(UserInfoDto userInfoDto, EnterRoom enterRoom){
+    	Chatroom chatroom = chatRoomNoRepository.findByRoomNo(enterRoom.getChatroomNo());
+    	chatroom.enterUser(userInfoDto.getNickname());
     	
     	chatRoomNoRepository.save(chatroom);
     	return chatroom;
     }
     
-    public List<Chatroom> getWomanRooms(Long womanNo){
-    	List<Chatroom> result = chatRoomNoRepository.findByWomanNo(womanNo);
-    	return result;
-    }
-    
-    public List<Chatroom> getManRooms(Long manNo){
-    	List<Chatroom> result = chatRoomNoRepository.findByManNo(manNo);
-    	return result;
-    }
+//    public List<Chatroom> getWomanRooms(Long womanNo){
+//    	List<Chatroom> result = chatRoomNoRepository.findByWomanNo(womanNo);
+//    	return result;
+//    }
+//    
+//    public List<Chatroom> getManRooms(Long manNo){
+//    	List<Chatroom> result = chatRoomNoRepository.findByManNo(manNo);
+//    	return result;
+//    }
 }

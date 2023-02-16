@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blur.auth.api.dto.LoginModel;
+import com.blur.auth.api.entity.User;
 import com.blur.auth.api.entity.UserRefreshToken;
 import com.blur.auth.api.repository.UserRefreshTokenRepository;
+import com.blur.auth.api.repository.UserRepository;
 import com.blur.auth.common.Response;
 import com.blur.auth.config.properties.AppProperties;
 import com.blur.auth.oauth.entity.AuthToken;
@@ -48,7 +51,8 @@ public class AuthController {
     private final AuthTokenProvider tokenProvider;
     private final AuthenticationManager authenticationManager;
     private final UserRefreshTokenRepository userRefreshTokenRepository;
-
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder encoder;
     private final static long THREE_DAYS_MSEC = 259200000;
 //    private final static long THREE_DAYS_MSEC = 5;
     private final static String REFRESH_TOKEN = "refresh_token";
@@ -67,6 +71,14 @@ public class AuthController {
     ) {
     	
     	System.out.printf(loginModel.getUserId(), loginModel.getPassword());
+    	
+    	User user = userRepository.findByUserId(loginModel.getUserId());
+    	
+    	if(user == null) 
+    		return Response.IDfail();
+    	if(!encoder.matches(loginModel.getPassword(), user.getPassword()))
+    		return Response.PWfail();
+    	
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                 		loginModel.getUserId(),
@@ -74,6 +86,7 @@ public class AuthController {
                 )
         );
 
+        
         String userId = loginModel.getUserId();
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

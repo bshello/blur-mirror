@@ -34,6 +34,11 @@ public class StompChatController {
     private final UserInfo userInfo;
     
     @MessageMapping("/chat/message")
+    @ApiResponses(value= {
+            @ApiResponse(code = 200, message = "SUCCESS", response = ApiResponse.class),
+            @ApiResponse(code = 400, message = "NOT FOUND"),
+            @ApiResponse(code = 500, message = "서버오류"),
+        })
     public void message(ChatMessageSaveDto message, @Header("userId") String userId) {
 //    public void message(ChatMessageSaveDto message, @Header("token") String token){
 //        UserInfo userInfo = jwtDecoder.decodeUsername(headerTokenExtractor.extract(token));
@@ -41,8 +46,6 @@ public class StompChatController {
     	UserInfoDto userInfoDto = userInfo.getUserInfo(userId);
 //    	System.out.println(feignUserDto.toString());
         message.setNickname(userInfoDto.getNickname());
-        message.setWriter(userInfoDto.getUserId());
-        message.setType(ChatMessageSaveDto.MessageType.TALK);
         message.setCreatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS")));
         
         redisPublisher.publish(channelTopic, message);

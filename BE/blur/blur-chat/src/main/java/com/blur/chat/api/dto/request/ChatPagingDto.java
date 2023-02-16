@@ -11,8 +11,8 @@ import lombok.*;
 public class ChatPagingDto {
 	@ApiModelProperty(value = "message", example = "message", required=true)
     private String message;
-	@ApiModelProperty(value = "writer", example = "writer", required=true)
-    private String writer;
+	@ApiModelProperty(value = "writer", example = "nickname", required=true)
+    private String nickname;
 	@ApiModelProperty(value = "cursor", example = "cursor", required=true)
     private String cursor;
 }

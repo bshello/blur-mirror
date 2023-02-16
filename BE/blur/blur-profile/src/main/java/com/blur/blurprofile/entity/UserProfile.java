@@ -1,14 +1,20 @@
 package com.blur.blurprofile.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -37,16 +43,24 @@ public class UserProfile {
     @Column(name = "introduce")
     private String introduce;
 
+    @Column(name = "mbti")
+    private String mbti;
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "userProfile")
     private List<UserInterest> userInterests =  new ArrayList<>();
 
 
-    public void updateProfile(Integer age, String nickname, String image, String gender, String introduce) {
+    public void updateProfile(Integer age, String nickname, String gender, String introduce, String mbti) {
         this.age = age;
         this.nickname = nickname;
-        this.image = image;
         this.gender = gender;
         this.introduce = introduce;
+        this.mbti = mbti;
+    }
+
+    public void updateImage(String image) {
+        this.image = image;
     }
 
 }

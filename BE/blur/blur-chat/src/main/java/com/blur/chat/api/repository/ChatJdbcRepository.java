@@ -32,7 +32,7 @@ public class ChatJdbcRepository {
                 Chat chat = chatList.get(i);
                 ps.setString(1,chat.getMessage());
                 ps.setString(2,chat.getUsers());
-                ps.setLong(3,chat.getChatroom().getChatroomNo());
+                ps.setLong(3,chat.getChatroom().getRoomNo());
                 ps.setString(4,chat.getCreatedAt());
             }
 

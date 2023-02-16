@@ -27,7 +27,7 @@ public class RedisSubscriber {
             ChatMessageSaveDto roomMessage = objectMapper.readValue(publishMessage, ChatMessageSaveDto.class);
 
             //WebSocket 구독자에게 채팅 메시지 Send
-            messagingTemplate.convertAndSend("/sub/chat/room/"+ roomMessage.getRoomNo(),roomMessage);
+            messagingTemplate.convertAndSend("/sub/chat/room/"+ roomMessage.getSessionId(),roomMessage);
         }catch (Exception e){
             log.error(e.getMessage());
         }
