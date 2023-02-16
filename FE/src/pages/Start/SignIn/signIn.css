@@ -5,7 +5,7 @@
 .SIModal {
   position: absolute;
   width: 31.9444vw;
-  height: 38.1944vw;
+  height: 39vw;
   left: 34.2361vw;
   top: 15vh;
   background: #ffffff;
@@ -203,19 +203,9 @@
   width: 23.75vw;
   height: 3.9063vw;
   left: 4.5313vw;
-  top: 30.625vw;
+  top: 29vw;
   cursor: pointer;
   background: #fee500;
-  border-radius: 0.5208vw;
-}
-.SIModal .NaverLoginBtn {
-  position: absolute;
-  width: 23.75vw;
-  height: 3.9063vw;
-  left: 4.5833vw;
-  top: 40.2778vw;
-  cursor: pointer;
-  background: #00ca51;
   border-radius: 0.5208vw;
 }
 .SIModal .GoogleLoginBtn {
@@ -223,8 +213,7 @@
   width: 23.75vw;
   height: 3.9063vw;
   left: 4.5833vw;
-  top: 40.2778vw;
-  top: 35.5729vw;
+  top: 33.6vw;
   cursor: pointer;
   background: rgba(128, 152, 217, 0.9607843137);
   border-radius: 0.5208vw;
