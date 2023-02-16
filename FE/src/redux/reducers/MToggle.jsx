@@ -13,6 +13,8 @@ const MToggle = createSlice({
     myGeo: {},
     partnerInterests: [],
     partnerNick: "",
+    partnerId: "",
+    roomToken: "",
   },
   reducers: {
     /**
@@ -74,9 +76,15 @@ const MToggle = createSlice({
     PARTNERNICK: (state, action) => {
       state.partnerNick = action.payload;
     },
+    PARTNERID: (state, action) => {
+      state.partnerId = action.payload;
+    },
+    ROOMTOKEN: (state, action) => {
+      state.roomToken = action.payload;
+    },
   },
 });
 
 // 리듀서메서드명.reducer에 해당 리듀서가 담겨있음
 export default MToggle.reducer;
-export const { MTOGGLE, BTOGGLE, ROOM_NUM, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, MYGENDER, MYGEO, PARTNERINTERESTS, PARTNERNICK } = MToggle.actions;
+export const { MTOGGLE, BTOGGLE, ROOM_NUM, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, MYGENDER, MYGEO, PARTNERINTERESTS, PARTNERNICK, PARTNERID, ROOMTOKEN } = MToggle.actions;
