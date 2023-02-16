@@ -15,10 +15,10 @@ const httpServer = http.createServer(app);
 // httpServer.listen: 3001  /  https://i8b307.p.ssafy.io
 
 // // http 서버 위에 ws(webSocket) 서버를 만듦
-const wsServer = new Server(httpServer, {
+const wsServer = new WebSocket.Server(httpServer, {
   cors: {
     origin: "[]",
-    credentials: true,
+    credentials: false,
   },
 });
 
@@ -28,7 +28,12 @@ const {
   },
 } = wsServer;
 
-wsServer.on("connection", (socket) => {
+wsServer.on("connection", (socket, req) => {
+  const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+  console.log("새로운 클라이언트 접속", ip);
+
+  console.log("connection이 되었습니다");
+
   socket.on("join_room", async (roomName) => {
     console.log("브라우저에서 받은 roomName : ", roomName);
     socket.join(roomName); // 방에 들어가는거
