@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
   cors: { origin: "*", credentials: true },
 });
+console.log(`socket: ${socket}`);
 let roomName;
 let myPeerConnection;
 let myStream;
@@ -217,6 +218,7 @@ function MeetingIn() {
   function handleIce(data) {
     console.log("sent candidate");
     socket.emit("ice", data.candidate, roomName);
+    console.log(socket.emit("ice", data.candidate, roomName));
   }
 
   function handleAddStream(data) {
@@ -394,6 +396,7 @@ function MeetingIn() {
       makeConnection();
       roomName = sendRoomName;
       socket.emit("join_room", roomName);
+      console.log(socket.emit("join_room", roomName));
       console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
     }, 3000);
 
