@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
 import { saveToken, ISMYPROFILE } from "../../redux/reducers/saveToken";
+import StompJS from "./stomp";
 
 let myStream;
 let carousel;
@@ -156,12 +157,13 @@ function Home() {
             .catch((err) => {
               console.log(err);
               console.log(`token: ${myToken}`);
-              if (err.response.status === 401) {
-                dispatch(saveToken(""));
-                navigate("/");
-              }
+
+              // if (err.response.status === 401) {
+              //   dispatch(saveToken(""));
+              //   navigate("/");
+              // }
               // 실패 시 알람 띄움
-              alert(err.response.status + "error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
+              alert("error\n서버와 통신에 실패했습니다.\n잠시후 다시 한번 시도해 주세요!");
             });
         });
       }
@@ -200,6 +202,7 @@ function Home() {
         {slideNumber === 2 ? <Slide3 /> : null}
         {slideNumber === 3 ? <Slide4 /> : null}
         {slideNumber === 4 ? <Slide5 /> : null}
+        <StompJS />
       </div>
     </div>
   );

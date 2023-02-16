@@ -244,12 +244,12 @@ function MeetingNotIn() {
                   navigate("/home");
                 })
                 .catch((err) => {
-                  console.log(`${err.response.status}error, decline error 발생`);
-                  if (err.response.status === 401) {
-                    clearInterval(mainTimer);
-                    dispatch(saveToken(""));
-                    navigate("/");
-                  }
+                  console.log(`error, decline error 발생`);
+                  // if (err.response.status === 401) {
+                  //   clearInterval(mainTimer);
+                  //   dispatch(saveToken(""));
+                  //   navigate("/");
+                  // }
                 });
             }
           }
@@ -384,12 +384,12 @@ function MeetingNotIn() {
                   navigate("/home");
                 })
                 .catch((err) => {
-                  console.log(`${err.response.status}error, decline error 발생`);
-                  if (err.response.status === 401) {
-                    clearInterval(mainTimer);
-                    dispatch(saveToken(""));
-                    navigate("/");
-                  }
+                  console.log(`error, decline error 발생`);
+                  // if (err.response.status === 401) {
+                  //   clearInterval(mainTimer);
+                  //   dispatch(saveToken(""));
+                  //   navigate("/");
+                  // }
                 });
             }
           } else {
@@ -429,35 +429,35 @@ function MeetingNotIn() {
       // check axios 통신이 아예 안되는 경우 => 인터벌 안닫힘, 다시 요청해야함
       .catch((err) => {
         console.log(err);
-        if (err.response.status === 401) {
-          clearInterval(mainTimer);
-          dispatch(saveToken(""));
-          navigate("/");
-        } else {
-          console.log("check 실패 ", errorCnt);
-          if (++errorCnt >= 30) {
-            // 에러가 10회이상일 경우 해당 요청 취소 및 알람
-            axios({
-              method: "post",
-              url: `${API_URL}/stop`,
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${myToken}`,
-              },
-              params: {
-                gender: USERSEX,
-                userId: userId,
-              },
+        // if (err.response.status === 401) {
+        //   clearInterval(mainTimer);
+        //   dispatch(saveToken(""));
+        //   navigate("/");
+        // } else {
+
+        console.log("check 실패 ", errorCnt);
+        if (++errorCnt >= 30) {
+          // 에러가 10회이상일 경우 해당 요청 취소 및 알람
+          axios({
+            method: "post",
+            url: `${API_URL}/stop`,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${myToken}`,
+            },
+            params: {
+              gender: USERSEX,
+              userId: userId,
+            },
+          })
+            .then((res) => {
+              console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
             })
-              .then((res) => {
-                console.log("stop: 10회 이상 실패했으므로 백에서 대기열 삭제");
-              })
-              .catch(() => {
-                console.log("stop 통신 실패");
-              });
-            if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
-              stopMatching();
-            }
+            .catch(() => {
+              console.log("stop 통신 실패");
+            });
+          if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+            stopMatching();
           }
         }
       });
