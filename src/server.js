@@ -18,7 +18,10 @@ const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer, {
   cors: {
     origin: "https://i8b307.p.ssafy.io",
-    credentials: true,
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"],
+    },
   },
 });
 
