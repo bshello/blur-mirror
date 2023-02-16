@@ -44,7 +44,7 @@ function ProgressBar() {
           //   .catch((err) => console.log(err));
         } else {
           if (width > 60) currentProcessBar.innerHTML = `${minute}분 ${second}초`;
-
+          // if(width === )
           width++;
           currentProcessBar.style.width = (width / 600) * 100 + "%";
         }

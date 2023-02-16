@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./index.css";
 import { useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
 import MeetingNotIn from "./MeetingNotIn";
@@ -8,7 +9,7 @@ function Meeting() {
 
   return (
     <div className="Meeting">
-      <div className="togglePage">{mToggle ? <MeetingIn /> : <MeetingNotIn />}</div>
+      <div className="togglePage">{mToggle ? "" : <MeetingNotIn />}</div>
     </div>
   );
 }
