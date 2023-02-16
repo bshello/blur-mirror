@@ -10,8 +10,10 @@ app.use(cors());
 const server = createServer(
   {
     ca: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/fullchain.pem'),
-    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem', "utf-8"),
-    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem', "utf-8"),
+    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem'),
+    requestCert: false,     
+    rejectUnauthorized: false
   },
   app
 );
@@ -19,7 +21,7 @@ const server = createServer(
 const io = new Server(server, { 
   cors: {
     origin: "*",
-    credentials: true
+    credentials: false
   },
 });
 
