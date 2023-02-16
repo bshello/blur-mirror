@@ -3,7 +3,6 @@ import "./index.css";
 import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; // useSeletor: useState와 같은 값 변경 메서드
 import { MTOGGLE, ROOM_NUM, PARTNERINTERESTS, PARTNERNICK } from "../../../redux/reducers/MToggle";
-// eslint-disable-next-line no-unused-vars
 import { saveToken } from "../../../redux/reducers/saveToken";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
