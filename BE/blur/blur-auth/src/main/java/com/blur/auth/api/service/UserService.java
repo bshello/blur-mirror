@@ -71,4 +71,10 @@ public class UserService implements UserDetailsService {
 		System.out.println(userInfo.toString());
 		return userInfo;
 	}
+	
+    public String getEmail(String userId) {
+        User user = userRepository.findByUserId(userId);
+        String userEmail = user.getEmail();
+        return userEmail;
+    }
 }

@@ -1,10 +1,6 @@
 package com.blur.auth.api.controller;
 
-import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blur.auth.api.dto.UserInfo;
@@ -21,12 +18,8 @@ import com.blur.auth.api.entity.UserDto;
 import com.blur.auth.api.service.EmailService;
 import com.blur.auth.api.service.PasswordService;
 import com.blur.auth.api.service.UserService;
-import com.blur.auth.common.Response;
-import com.blur.auth.oauth.entity.AuthToken;
 import com.blur.auth.oauth.entity.AuthTokenProvider;
-import com.blur.auth.utils.HeaderUtil;
 
-import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -186,6 +179,17 @@ public class UserController {
 		return new ResponseEntity<>(userNo, HttpStatus.OK);
 	}
 	
+	   @GetMapping("/getEmail")
+	   @ApiOperation(value = "이메일 가져오기", notes = "이메일")
+	   @ApiResponses(value= {
+	         @ApiResponse(code = 200, message = "SUCCESS", response = String.class),
+	   })
+	   public ResponseEntity<?> getEmail(@ApiParam(value = "유저 ID", required = true) @RequestParam("userId") String userId) throws Exception{
+
+	      String userEmail = userService.getEmail(userId);
+	      return ResponseEntity.status(HttpStatus.OK).body(userEmail);
+	   }
+
 	
 //	@Data
 //    @NoArgsConstructor(access = AccessLevel.PROTECTED)
