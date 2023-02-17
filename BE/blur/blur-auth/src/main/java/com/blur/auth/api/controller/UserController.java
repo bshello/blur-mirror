@@ -8,7 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.blur.auth.api.dto.UserInfo;
 import com.blur.auth.api.entity.UserDto;
@@ -179,18 +185,8 @@ public class UserController {
 //		userInfo.setNickname("test");
 		return new ResponseEntity<>(userNo, HttpStatus.OK);
 	}
-
-	@GetMapping("/getEmail")
-	@ApiOperation(value = "이메일 가져오기", notes = "이메일")
-	@ApiResponses(value= {
-			@ApiResponse(code = 200, message = "SUCCESS", response = String.class),
-	})
-	public ResponseEntity<?> getEmail(@ApiParam(value = "유저 ID", required = true) @RequestParam("userId") String userId) throws Exception{
-
-		String userEmail = userService.getEmail(userId);
-		return ResponseEntity.status(HttpStatus.OK).body(userEmail);
-	}
-
+	
+	
 //	@Data
 //    @NoArgsConstructor(access = AccessLevel.PROTECTED)
 //    public class LoginUserResponse {

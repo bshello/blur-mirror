@@ -67,10 +67,9 @@ spring:
           uri: lb://BLUR-CHAT
           predicates:
             - Path=/blur-chat/**
-            - Method= GET, POST, PUT, OPTIONS
           filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
+#            - RemoveRequestHeader=Cookie
+#            - RewritePath=/blur-chat/(?<segment>.*), /$\{segment}
 #            - AuthorizationHeaderFilter
 
 eureka:

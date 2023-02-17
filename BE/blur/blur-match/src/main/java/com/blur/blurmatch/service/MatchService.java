@@ -146,17 +146,6 @@ public class MatchService {
         return responseMatchDto;
     }
 
-    public Integer settingCheck(String userId) {
-
-        MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
-        if (matchSetting == null) {
-            return 0;
-        } else if (matchSetting.getMinAge() == null || matchSetting.getMaxAge() == null || matchSetting.getMaxDistance() == null) {
-            return 1;
-        }
-        return 2;
-    }
-
     public ResponseMatchDto matchCheck(String userId, String gender) {
         List<String> successInfo = success.get(userId);
         ResponseMatchDto responseMatchDto = new ResponseMatchDto();

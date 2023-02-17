@@ -1,12 +1,13 @@
 package com.blur.apigateway.filter;
 
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
+
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -22,7 +23,9 @@ public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Conf
         return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest(); // reactive포함된거로 import
             ServerHttpResponse response = exchange.getResponse();
-
+            System.out.println(request.getHeaders());
+            System.out.println(response.getHeaders());
+            
             log.info("Global com.example.scg.filter baseMessgae: {}", config.getBaseMessage());
 
             // Global pre Filter

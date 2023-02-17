@@ -10,7 +10,6 @@ import java.util.Map;
 @Getter
 @RequiredArgsConstructor
 public class Response<T> {
-
     public final static int SUCCESS = 200;
     public final static int NOT_FOUND = 400;
     public final static int FAILED = 500;

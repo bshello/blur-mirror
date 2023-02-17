@@ -1,7 +1,5 @@
 package com.blur.chat.api.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +16,6 @@ import com.blur.chat.api.service.UserInfo;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
