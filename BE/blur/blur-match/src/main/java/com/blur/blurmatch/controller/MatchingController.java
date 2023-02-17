@@ -71,6 +71,18 @@ public class MatchingController {
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
+    @ApiOperation(value = "매치 세팅 확인", response = Boolean.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "매치 세팅 확인"),
+    })
+    @GetMapping("/settingCheck")
+    public ResponseEntity<Integer> settingCheck(
+            @ApiParam(value = "사용자의 ID", required = true) @RequestParam("id") String userId) {
+
+        Integer res = matchService.settingCheck(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
     @ApiOperation(value = "매칭 시작", response = ResponseMatchDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "매칭 시작 성공"),
@@ -129,10 +141,6 @@ public class MatchingController {
         }
         String userId = requestCheckDto.getUserId();
         ResponseMatchDto responseMatchDto = matchService.matchCheck(userId, gender);
-//        ResponseMatchDto responseMatchDto = new ResponseMatchDto();
-//        responseMatchDto.setMyGender("M");
-//        responseMatchDto.setSessionId("20230213112856");
-//        responseMatchDto.setPartnerId("kim125");
         return ResponseEntity.status(HttpStatus.OK).body(responseMatchDto);
     }
 
@@ -152,11 +160,6 @@ public class MatchingController {
         if (responseAceeptDto == null) {
             return ResponseEntity.status(404).body("Failed");
         }
-        System.out.println("11111111111111111111111111111111111111111111111111111111111");
-        System.out.println(responseAceeptDto.getPartnerId());
-        System.out.println(responseAceeptDto.getSessionId());
-        System.out.println(responseAceeptDto.getPartnerInterests());
-        System.out.println("11111111111111111111111111111111111111111111111111111111111");
         return ResponseEntity.status(HttpStatus.OK).body(responseAceeptDto);
     }
 

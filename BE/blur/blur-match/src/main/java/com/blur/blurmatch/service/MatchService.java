@@ -76,18 +76,20 @@ public class MatchService {
     public void updateSetting(MatchSettingDto matchSettingDto) {
 
         String userId = matchSettingDto.getUserId();
-        System.out.println("1111111111111111111111111111111111");
-        System.out.println("1111111111111111111111111111111111");
-        System.out.println(userId);
-        System.out.println("1111111111111111111111111111111111");
-        System.out.println(userId);
-        System.out.println("1111111111111111111111111111111111");
-        System.out.println(userId);
-        System.out.println("1111111111111111111111111111111111");
-        System.out.println(userId);
         MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
         matchSetting.update(matchSettingDto);
         matchSettingRepository.save(matchSetting);
+    }
+
+    public Integer settingCheck(String userId) {
+
+        MatchSetting matchSetting = matchSettingRepository.findByUserId(userId);
+        if (matchSetting == null) {
+            return 0;
+        } else if (matchSetting.getMinAge() == null || matchSetting.getMaxAge() == null || matchSetting.getMaxDistance() == null) {
+            return 1;
+        }
+        return 2;
     }
 
     public ResponseMatchDto matchStart(RequestMatchDto requestMatchDto) {
