@@ -184,6 +184,7 @@ function MeetingNotIn() {
                   // console.log(`accept partnerInterests :`, res.data.partnerInterests);
                   console.log(`accept data : `, res.data);
                   dispatch(PARTNERINTERESTS(res.data.partnerInterests));
+                  console.log("partnerInterests: ", res.data.partnerInterests);
                   dispatch(PARTNERNICK(res.data.partnerNickname));
 
                   if (!firstRendering) {
@@ -223,9 +224,9 @@ function MeetingNotIn() {
                       .catch(() => {
                         console.log("stop 통신 실패");
                       });
-                    if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
-                      stopMatching();
-                    }
+                    // if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+                    stopMatching();
+                    // }
                   }
                 });
             } else {
@@ -278,9 +279,9 @@ function MeetingNotIn() {
                 .catch(() => {
                   console.log("stop 통신 실패");
                 });
-              if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
-                stopMatching();
-              }
+              // if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+              stopMatching();
+              // }
             }
           }
         }
@@ -363,9 +364,9 @@ function MeetingNotIn() {
                       .catch(() => {
                         console.log("stop 통신 실패");
                       });
-                    if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
-                      stopMatching();
-                    }
+                    // if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+                    stopMatching();
+                    // }
                   }
                 });
             } else {
@@ -457,9 +458,9 @@ function MeetingNotIn() {
             .catch(() => {
               console.log("stop 통신 실패");
             });
-          if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
-            stopMatching();
-          }
+          // if (!alert("서버와 통신에 10회 이상 실패했습니다.\n잠시후 다시 한번 시도해 주세요!")) {
+          stopMatching();
+          // }
         }
       });
   }

@@ -1,8 +1,13 @@
 // import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BLURCOUNT } from "../../../../redux/reducers/MToggle";
+
 import "./index.css";
 
 let ProgressBarTmp = 0;
 function ProgressBar() {
+  const dispatch = useDispatch();
+
   let currentVal = false;
   // const user = useSelector((state) => state.mt.@@@@@@); // Redux에 저장되어있는 @@@@@
 
@@ -43,7 +48,13 @@ function ProgressBar() {
           //   .then((res) => console.log(res.data))
           //   .catch((err) => console.log(err));
         } else {
-          if (width > 60) currentProcessBar.innerHTML = `${minute}분 ${second}초`;
+          if (width > 30) currentProcessBar.innerHTML = `${minute}분 ${second}초`;
+          else currentProcessBar.innerHTML = `${second}초`;
+
+          // 블러
+          if (width === 20 || width === 30 || width === 40) {
+            dispatch(BLURCOUNT(width));
+          }
           // if(width === )
           width++;
           currentProcessBar.style.width = (width / 600) * 100 + "%";
@@ -52,8 +63,8 @@ function ProgressBar() {
     }
   };
 
-  if (ProgressBarTmp === 1) {
-    ProgressBarTmp = 0;
+  if (ProgressBarTmp === 0) {
+    ProgressBarTmp = 1;
     setTimeout(() => {
       start();
     }, 3000);

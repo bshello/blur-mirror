@@ -15,6 +15,7 @@ const MToggle = createSlice({
     partnerNick: "",
     partnerId: "",
     roomToken: "",
+    blurCount: 0,
   },
   reducers: {
     /**
@@ -72,6 +73,7 @@ const MToggle = createSlice({
      */
     PARTNERINTERESTS: (state, action) => {
       state.partnerInterests = action.payload;
+      console.log(state.partnerInterests);
     },
     PARTNERNICK: (state, action) => {
       state.partnerNick = action.payload;
@@ -82,9 +84,12 @@ const MToggle = createSlice({
     ROOMTOKEN: (state, action) => {
       state.roomToken = action.payload;
     },
+    BLURCOUNT: (state, action) => {
+      state.blurCount = action.payload;
+    },
   },
 });
 
 // 리듀서메서드명.reducer에 해당 리듀서가 담겨있음
 export default MToggle.reducer;
-export const { MTOGGLE, BTOGGLE, ROOM_NUM, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, MYGENDER, MYGEO, PARTNERINTERESTS, PARTNERNICK, PARTNERID, ROOMTOKEN } = MToggle.actions;
+export const { MTOGGLE, BTOGGLE, ROOM_NUM, CLOSE_ALERT_TOGGLE, CAM_OPEN_TOGGLE, MYGENDER, MYGEO, PARTNERINTERESTS, PARTNERNICK, PARTNERID, ROOMTOKEN, BLURCOUNT } = MToggle.actions;

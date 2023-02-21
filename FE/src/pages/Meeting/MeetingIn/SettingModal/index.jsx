@@ -27,8 +27,7 @@ function SettingModal() {
           className="camAlertSelect"
           // onChange={catchingValue}
         >
-          <option value="1">Logitech 3.0</option>
-          <option value="2">Desktop Cam</option>
+          <option value="1">720p HD Camera</option>
         </select>
         <div className="camConfirmBtnDiv" onClick={confirmClick}>
           <span className="camConfirmBtnText">확인</span>
