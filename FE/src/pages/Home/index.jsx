@@ -18,7 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MYGENDER, MYGEO } from "../../redux/reducers/MToggle";
 import { saveToken, ISMYPROFILE } from "../../redux/reducers/saveToken";
-import Test from "./Test";
 
 let myStream;
 let carousel;
@@ -204,7 +203,6 @@ function Home() {
         {slideNumber === 3 ? <Slide4 /> : null}
         {slideNumber === 4 ? <Slide5 /> : null}
       </div>
-      <Test roomId="1" />
     </div>
   );
 }

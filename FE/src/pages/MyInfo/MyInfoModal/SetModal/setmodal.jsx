@@ -100,13 +100,7 @@ function SetModal() {
               <div className="blurdiv" />
 
               <div className="range-slider">
-                <input
-                  type="range"
-                  className="slider"
-                  min="0"
-                  max="50"
-                  onChange={changeDistance}
-                ></input>
+                <input type="range" className="slider" min="0" max="50" onChange={changeDistance}></input>
                 <div className="progressSlider"></div>
               </div>
             </div>
@@ -119,24 +113,8 @@ function SetModal() {
               <div className="blurdiv"></div>
 
               <div className="range-slider">
-                <input
-                  className="range-slider1 range-slider1-left"
-                  type="range"
-                  min="20"
-                  max="50"
-                  style={{ pointerEvents: "none" }}
-                  value={leftSliderValue}
-                  onChange={handleLeftSliderChange}
-                />
-                <input
-                  className="range-slider1 range-slider1-right"
-                  type="range"
-                  min="20"
-                  max="50"
-                  style={{ pointerEvents: "none" }}
-                  value={rightSliderValue}
-                  onChange={handleRightSliderChange}
-                />
+                <input className="range-slider1 range-slider1-left" type="range" min="20" max="50" style={{ pointerEvents: "none" }} value={leftSliderValue} onChange={handleLeftSliderChange} />
+                <input className="range-slider1 range-slider1-right" type="range" min="20" max="50" style={{ pointerEvents: "none" }} value={rightSliderValue} onChange={handleRightSliderChange} />
                 <div
                   className="range-bar"
                   style={{
