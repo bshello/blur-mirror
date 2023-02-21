@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
   cors: { origin: "*", credentials: true },
+
 });
 console.log(`socket: `, socket);
 let roomName;
