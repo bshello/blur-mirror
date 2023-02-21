@@ -9,19 +9,18 @@ app.use(cors());
 
 const server = createServer(
   {
-    ca: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/fullchain.pem'),
-    key: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem'),
-    requestCert: false,     
-    rejectUnauthorized: false
+    ca: fs.readFileSync("/etc/letsencrypt/live/i8b307.p.ssafy.io/fullchain.pem"),
+    key: fs.readFileSync("/etc/letsencrypt/live/i8b307.p.ssafy.io/privkey.pem"),
+    cert: fs.readFileSync("/etc/letsencrypt/live/i8b307.p.ssafy.io/cert.pem"),
+    requestCert: false,
+    rejectUnauthorized: false,
   },
   app
 );
 
-const io = new Server(server, { 
+const io = new Server(server, {
   cors: {
     origin: "*",
-<<<<<<< HEAD
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -36,14 +35,6 @@ const {
 wsServer.on("connection", (socket) => {
   console.log("connecting 성공, 서버에 도달");
 
-=======
-    credentials: false
-  },
-});
-
-io.on("connection", (socket) => {
-  console.log("Client connected:", socket.id);
->>>>>>> 73fb6e8ec0161ff5aa0a1fbb5ede6f6c4283b087
   socket.on("join_room", async (roomName) => {
     console.log("브라우저에서 받은 roomName : ", roomName);
     socket.join(roomName); // 방에 들어가는거
@@ -72,4 +63,3 @@ io.on("connection", (socket) => {
     });
   });
 });
-
