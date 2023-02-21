@@ -19,6 +19,7 @@ const wsServer = new Server(httpServer, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
@@ -30,6 +31,7 @@ const {
 
 wsServer.on("connection", (socket) => {
   console.log("connecting 성공, 서버에 도달");
+
   socket.on("join_room", async (roomName) => {
     console.log("브라우저에서 받은 roomName : ", roomName);
     socket.join(roomName); // 방에 들어가는거
@@ -40,6 +42,7 @@ wsServer.on("connection", (socket) => {
   });
   socket.on("offer", (offer, roomName) => {
     socket.to(roomName).emit("offer", offer);
+    console.log("");
   });
   socket.on("answer", (answer, roomName) => {
     socket.to(roomName).emit("answer", answer);

@@ -103,8 +103,8 @@ async function handleWelcomeSubmit(e) {
   e.preventDefault();
   const input = welcomeForm.querySelector("input");
   await initCall();
-  //
-  socket.emit("join_room", input.value);
+  //input.value을 aa로 변경
+  socket.emit("join_room", "aa");
   roomName = input.value;
   input.value = "";
 }
