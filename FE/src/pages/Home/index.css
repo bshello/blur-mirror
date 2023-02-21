@@ -49,7 +49,7 @@
   width: 84.6%;
   left: 2.0833vw;
   top: 1vh;
-  background: url(../../assets/images/man4.jfif);
+  background: url(../../assets/images/HomeCamImg.png);
   background-size: 100% 100%;
   border-radius: 2.0833vw;
 }
@@ -77,6 +77,9 @@
   width: 30.5556vw;
   left: 2.0833vw;
   top: 51vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #50a1a3;
   border-radius: 1.0417vw;
 }
@@ -85,7 +88,6 @@
   height: 3.4722vw;
   width: 30.5556vw;
   left: 0vw;
-  top: 1.2vh;
   font-weight: 400;
   line-height: 3.4722vw;
   font-size: 2.8646vw;
@@ -129,11 +131,10 @@
 }
 .HomeSubFrame .HomeRightDiv .HomeRightToolTipDiv .HomeRightToolTipText {
   position: absolute;
-  height: 1.875vw;
+  height: 2.075vw;
   width: 38.1944vw;
   left: 0vw;
   top: 3vh;
-  font-family: "Happy Monkey";
   font-style: normal;
   font-weight: 400;
   line-height: 1.875vw;

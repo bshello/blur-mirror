@@ -377,7 +377,7 @@
 .MeetingIn .MeetingIn_CamDiv .MRightDiv1 .lightTagBtn.basicLight {
   animation: unMoving 1s 0s linear forwards; /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
 }
-.MeetingIn .MeetingIn_CamDiv .MRightDiv1 .blurEffect {
+.MeetingIn .MeetingIn_CamDiv .MRightDiv1 .blurEffect1 {
   position: absolute;
   left: 0vw;
   right: 0vw;
@@ -385,6 +385,42 @@
   background: rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(2.604vw);
           backdrop-filter: blur(2.604vw);
+  border-radius: 2.083vw;
+  z-index: 6;
+}
+.MeetingIn .MeetingIn_CamDiv .MRightDiv1 .blurEffect2 {
+  display: none;
+  position: absolute;
+  left: 0vw;
+  right: 0vw;
+  height: 36.5vw;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(2vw);
+          backdrop-filter: blur(2vw);
+  border-radius: 2.083vw;
+  z-index: 6;
+}
+.MeetingIn .MeetingIn_CamDiv .MRightDiv1 .blurEffect3 {
+  display: none;
+  position: absolute;
+  left: 0vw;
+  right: 0vw;
+  height: 36.5vw;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(1.2vw);
+          backdrop-filter: blur(1.2vw);
+  border-radius: 2.083vw;
+  z-index: 6;
+}
+.MeetingIn .MeetingIn_CamDiv .MRightDiv1 .blurEffect4 {
+  display: none;
+  position: absolute;
+  left: 0vw;
+  right: 0vw;
+  height: 36.5vw;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(0vw);
+          backdrop-filter: blur(0vw);
   border-radius: 2.083vw;
   z-index: 6;
 }
@@ -426,6 +462,7 @@
   font-size: 1.667vw;
   line-height: 3.056vw;
   color: #50a1a3;
+  text-align: left;
 }
 .MeetingIn .MeetingIn_CamDiv .MRightDiv1 .MPartenerCamSubDiv .MPartenerCamSubBtnsDiv {
   position: absolute;
@@ -436,11 +473,11 @@
 }
 .MeetingIn .MeetingIn_CamDiv .MRightDiv1 .MPartenerCamSubDiv .MPartenerCamSubBtnsDiv .MPartenerCamSubExitBtn {
   position: absolute;
-  width: 1.806vw;
-  height: 1.806vw;
-  left: -3vw;
+  width: 1.706vw;
+  height: 1.706vw;
+  left: -3.2vw;
   z-index: 6;
-  top: 0.556vw;
+  top: 0.706vw;
   background-image: url(../../../assets/images/out.png);
   background-size: 100% 100%;
   cursor: pointer;

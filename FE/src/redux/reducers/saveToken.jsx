@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const saveTokenReducer = createSlice({
   name: "saveTokenReducer",
   initialState: {
-    token: "a",
+    token: "",
     savedId: "",
     id: "",
     profiled: "false",
@@ -28,5 +28,4 @@ const saveTokenReducer = createSlice({
 });
 
 export default saveTokenReducer.reducer;
-export const { saveToken, saveId, loginId, ISMYPROFILE } =
-  saveTokenReducer.actions;
+export const { saveToken, saveId, loginId, ISMYPROFILE } = saveTokenReducer.actions;

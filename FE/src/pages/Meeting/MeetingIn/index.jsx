@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./index.css";
 import { useCallback, useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
@@ -10,8 +11,9 @@ import SettingModal from "../MeetingIn/SettingModal";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 
-let socket = io("wss://i8b307.p.ssafy.io/socket.io", {
-  cors: { origin: "*", credentials: false },
+let socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
+  cors: { origin: "*", credentials: true },
+
 });
 console.log(`socket: `, socket);
 let roomName;
@@ -102,7 +104,9 @@ function MeetingIn() {
   const sendRoomName = useSelector((state) => state.mt.roomNumber);
   const partnerInterests = useSelector((state) => state.mt.partnerInterests);
   const partnerNick = useSelector((state) => state.mt.partnerNick);
-
+  const checkIntData = useSelector((state) => state.hashCheck.checkIntData);
+  const blurCount = useSelector((state) => state.mt.blurCount);
+  console.log(`checkIntData: ${checkIntData}`);
   // socket Code
 
   // Peer A
@@ -153,66 +157,64 @@ function MeetingIn() {
     peerStream.srcObject = null;
 
     if (!alert("상대방이 나가셨습니다.\n 확인을 누르시면 홈페이지로 이동합니다.")) {
-      hangUp();
+      // hangUp();
+      navigate("/home");
+      // window.location.reload();
     }
   });
 
   // 미팅 나가기버튼 && (한명이 나가고) 미팅 나가기 버튼 클릭시
   function hangUp() {
-    const peerStream = document.querySelector(".MPartenerCamDiv1");
+    // const peerStream = document.querySelector(".MPartenerCamDiv1");
 
-    myPeerConnection.close();
-    myPeerConnection = null;
-    dispatch(PARTNERNICK(""));
-    document.querySelector(".MPartenerCamSubText").innerText = partnerNick;
+    // myPeerConnection.close();
+    // myPeerConnection = null;
+    // dispatch(PARTNERNICK(""));
+    // document.querySelector(".MPartenerCamSubText").innerText = partnerNick;
 
-    // 내 비디오 끔
-    myStream.getTracks().forEach((track) => {
-      // Clearly eindicates that th stream no longer uses the source
-      track.stop();
-    });
+    // // 내 비디오 끔
+    // myStream.getTracks().forEach((track) => {
+    //   // Clearly eindicates that th stream no longer uses the source
+    //   track.stop();
+    // });
 
-    // 피어 비디오 끔
-    if (peerStream?.srcObject) {
-      peerStream.srcObject.getTracks().forEach((track) => {
-        track.stop();
-      });
-      peerStream.srcObject = null;
-    }
+    // // 피어 비디오 끔
+    // if (peerStream?.srcObject) {
+    //   peerStream.srcObject.getTracks().forEach((track) => {
+    //     track.stop();
+    //   });
+    //   peerStream.srcObject = null;
+    // }
 
-    // 방 떠나기
-    socket.emit("leave-room", roomName, () => {
-      roomName = "";
+    // // 방 떠나기
+    // socket.emit("leave-room", roomName, () => {
+    //   roomName = "";
 
-      // Generate new socketIO socket (disconnect from previous)
-      socket.disconnect();
-      socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
-      // 인터벌 초기화 해줘야 함!!!!!!!!!!!!!!!!!!!!!!! -> 인터벌 왜쓰는지부터 알기
-      navigate("/home");
-    });
+    //   // Generate new socketIO socket (disconnect from previous)
+    //   socket.disconnect();
+    //   socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`);
+    //   // 인터벌 초기화 해줘야 함!!!!!!!!!!!!!!!!!!!!!!! -> 인터벌 왜쓰는지부터 알기
+    //   navigate("/home");
+    // });
+    navigate("/home");
+    // window.location.reload();
   }
 
   // RTC Code
 
   function makeConnection() {
     console.log("makeConnection 들어왔음");
-    try {
-      myPeerConnection = new RTCPeerConnection({
-        iceServers: [
-          {
-            urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302", "stun:stun3.l.google.com:19302", "stun:stun4.l.google.com:19302"],
-          },
-        ],
-      });
-      // console.log(myStream.getTracks());
-      myPeerConnection.addEventListener("icecandidate", handleIce);
-      myPeerConnection.addEventListener("track", handleAddStream);
-      myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track, myStream));
-
-      console.log(`makeConnection이 성공했습니다.`);
-    } catch (error) {
-      console.log(`${error} makeConnection이 실패했습니다.`);
-    }
+    myPeerConnection = new RTCPeerConnection({
+      iceServers: [
+        {
+          urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302", "stun:stun3.l.google.com:19302", "stun:stun4.l.google.com:19302"],
+        },
+      ],
+    });
+    // console.log(myStream.getTracks());
+    myPeerConnection.addEventListener("icecandidate", handleIce);
+    myPeerConnection.addEventListener("addstream", handleAddStream);
+    myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track, myStream));
   }
 
   function handleIce(data) {
@@ -224,7 +226,7 @@ function MeetingIn() {
   function handleAddStream(data) {
     console.log("got an event from my peer");
     const peerStream = document.querySelector(".MPartenerCamDiv1");
-    peerStream.srcObject = data.stream[0];
+    peerStream.srcObject = data.stream;
   }
 
   // (파트너 캠 상단의) 관심사 표현 토글
@@ -397,9 +399,6 @@ function MeetingIn() {
       roomName = sendRoomName;
       socket.emit("join_room", roomName);
       console.log(`sendRoomName: ${sendRoomName}, ${roomName}`);
-      socket = io.connect(`${process.env.REACT_APP_API_ROOT_SOCKET}`, {
-        cors: { origin: "*", credentials: true },
-      });
       console.log(`socket: ${socket} `, socket);
     }, 3000);
 
@@ -419,6 +418,26 @@ function MeetingIn() {
       lightTag.id = `lightTag${i}`;
       lightTag.innerText = partnerInterests[i - 1];
       lightTagsDiv.appendChild(lightTag);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("hi im blur product");
+    if (blurCount === 20) {
+      document.querySelector(".blurEffect1").style.display = "none";
+      document.querySelector(".blurEffect2").style.display = "block";
+      document.querySelector(".blurEffect3").style.display = "none";
+      document.querySelector(".blurEffect4").style.display = "none";
+    } else if (blurCount === 30) {
+      document.querySelector(".blurEffect1").style.display = "none";
+      document.querySelector(".blurEffect2").style.display = "none";
+      document.querySelector(".blurEffect3").style.display = "block";
+      document.querySelector(".blurEffect4").style.display = "none";
+    } else if (blurCount === 40) {
+      document.querySelector(".blurEffect1").style.display = "none";
+      document.querySelector(".blurEffect2").style.display = "none";
+      document.querySelector(".blurEffect3").style.display = "none";
+      document.querySelector(".blurEffect4").style.display = "block";
     }
   });
 
@@ -470,7 +489,11 @@ function MeetingIn() {
           <div className="lightTagsDiv"></div>
           <div className="lightTagBtn" onClick={showLight}></div>
           <div className="MPartenerCamDiv">
-            <div className="blurEffect"></div>
+            <div className="blurEffect1"></div>
+            <div className="blurEffect2"></div>
+            <div className="blurEffect3"></div>
+            <div className="blurEffect4"></div>
+
             <video className="MPartenerCamDiv1" autoPlay playsInline></video>
           </div>
           <div className="MPartenerCamSubDiv">
